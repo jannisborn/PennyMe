@@ -37,6 +37,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         PennyMap.showsScale = true
         PennyMap.showsPointsOfInterest = true
         
+        // Register the functions to create annotated pins
+        PennyMap.register(
+            ArtworkMarkerView.self,
+            forAnnotationViewWithReuseIdentifier:MKMapViewDefaultAnnotationViewReuseIdentifier
+        )
         loadInitialData()
         PennyMap.addAnnotations(artworks)
 
@@ -135,48 +140,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 @available(iOS 13.0, *)
 extension ViewController: MKMapViewDelegate {
-    // 1
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
-        // Eventually possible?? Update location position
-        //        PennyMap.setCenter(userLocation.coordinate, animated: true)
-
-
-        // 2
-        guard let annotation = annotation as? Artwork else { return nil }
-        // 3
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
-        // 4
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            // 5
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            
-            // Create left and right buttons
-            view.leftCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            
-            let mapsButton = UIButton(
-                frame: CGRect(origin: CGPoint.zero,
-                size: CGSize(width: 30, height: 30))
-            )
-            mapsButton.setBackgroundImage(UIImage(named: "GO-Button"), for: UIControl.State()
-            )
-            view.rightCalloutAccessoryView = mapsButton
-        }
-        return view
-    }
-    
-    
-    
-    
-
-    
+    // callout when maps button is pressed
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! Artwork
@@ -190,12 +155,7 @@ extension ViewController: MKMapViewDelegate {
             //Open the website when you click on the link.
             UIApplication.shared.openURL(URL(string: location.link)!)
         }
-
-        
-
     }
-    
-
 }
 
 

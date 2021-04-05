@@ -15,13 +15,15 @@ class Artwork: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
     let link: String
+    let status: String
     let coordinate: CLLocationCoordinate2D
     
-    init(title: String, locationName: String, link: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
         self.link = link
+        self.status = status
         
         super.init()
     }
@@ -37,23 +39,19 @@ class Artwork: NSObject, MKAnnotation {
         let properties = json as? [String: Any]
         else {
           return nil
-      }
-
-      // Extract class variables
-      title = properties["name"] as? String
+        }
+        // Extract class variables
+        title = properties["name"] as? String
         locationName = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
-      coordinate = point.coordinate
-      super.init()
+        status = (properties["status"] as? String)!
+        coordinate = point.coordinate
+        super.init()
     }
     
     
     var subtitle: String? {
         return locationName
-    }
-    
-    var imageName: String? {
-        return "GO-Button"
     }
     
     // To get directions in map
@@ -70,6 +68,18 @@ class Artwork: NSObject, MKAnnotation {
         return self.link
     }
     
+    var markerTintColor: UIColor  {
+      switch status {
+      case "unvisited":
+        return .red
+      case "visited":
+        return .yellow
+      case "collected":
+        return .green
+      default:
+        return .black
+      }
+    }
 }
 
 

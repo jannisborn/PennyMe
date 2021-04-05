@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F421AB2261B9755004197B4 /* ArtworkViews.swift */; };
 		9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F612053230CAC2300F1D9DE /* Artwork.swift */; };
 		9F70CCEA231850DC003AED89 /* all_locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F70CCE9231850DC003AED89 /* all_locations.json */; };
 		9F9F31A52300B40900C0E854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F31A42300B40900C0E854 /* AppDelegate.swift */; };
@@ -25,33 +26,34 @@
 			containerPortal = 9F9F31992300B40900C0E854 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9F9F31A02300B40900C0E854;
-			remoteInfo = "PennyMe";
+			remoteInfo = PennyMe;
 		};
 		9F9F31C12300B40A00C0E854 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F9F31992300B40900C0E854 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9F9F31A02300B40900C0E854;
-			remoteInfo = "PennyMe";
+			remoteInfo = PennyMe;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F421AB2261B9755004197B4 /* ArtworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViews.swift; sourceTree = "<group>"; };
 		9F612053230CAC2300F1D9DE /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		9F70CCE9231850DC003AED89 /* all_locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = all_locations.json; path = data/all_locations.json; sourceTree = "<group>"; };
-		9F9F31A12300B40900C0E854 /* PennyMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PennyMe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9F31A12300B40900C0E854 /* PennyMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PennyMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9F31A42300B40900C0E854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9F31A62300B40900C0E854 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9F9F31A92300B40900C0E854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F9F31AE2300B40A00C0E854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F9F31B02300B40A00C0E854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F9F31B52300B40A00C0E854 /* PennyMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PennyMeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9F31B52300B40A00C0E854 /* PennyMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PennyMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9F31B92300B40A00C0E854 /* PennyMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyMeTests.swift; sourceTree = "<group>"; };
 		9F9F31BB2300B40A00C0E854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F9F31C02300B40A00C0E854 /* PennyMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PennyMeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9F31C02300B40A00C0E854 /* PennyMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PennyMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9F31C42300B40A00C0E854 /* PennyMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyMeUITests.swift; sourceTree = "<group>"; };
 		9F9F31C62300B40A00C0E854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FAC9325231828ED00BDEA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "PennyMe/Assets.xcassets"; sourceTree = "<group>"; };
+		9FAC9325231828ED00BDEA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PennyMe/Assets.xcassets; sourceTree = "<group>"; };
 		9FC12D6A230E9B1E00016617 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,8 +115,9 @@
 				9F9F31A82300B40900C0E854 /* Main.storyboard */,
 				9F9F31AD2300B40A00C0E854 /* LaunchScreen.storyboard */,
 				9F9F31B02300B40A00C0E854 /* Info.plist */,
+				9F421AB2261B9755004197B4 /* ArtworkViews.swift */,
 			);
-			path = "PennyMe";
+			path = PennyMe;
 			sourceTree = "<group>";
 		};
 		9F9F31B82300B40A00C0E854 /* PennyMeTests */ = {
@@ -123,7 +126,7 @@
 				9F9F31B92300B40A00C0E854 /* PennyMeTests.swift */,
 				9F9F31BB2300B40A00C0E854 /* Info.plist */,
 			);
-			path = "PennyMeTests";
+			path = PennyMeTests;
 			sourceTree = "<group>";
 		};
 		9F9F31C32300B40A00C0E854 /* PennyMeUITests */ = {
@@ -132,7 +135,7 @@
 				9F9F31C42300B40A00C0E854 /* PennyMeUITests.swift */,
 				9F9F31C62300B40A00C0E854 /* Info.plist */,
 			);
-			path = "PennyMeUITests";
+			path = PennyMeUITests;
 			sourceTree = "<group>";
 		};
 		9FCD083F230EADB200BC8797 /* Frameworks */ = {
@@ -157,8 +160,8 @@
 			);
 			dependencies = (
 			);
-			name = "PennyMe";
-			productName = "PennyMe";
+			name = PennyMe;
+			productName = PennyMe;
 			productReference = 9F9F31A12300B40900C0E854 /* PennyMe.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -175,8 +178,8 @@
 			dependencies = (
 				9F9F31B72300B40A00C0E854 /* PBXTargetDependency */,
 			);
-			name = "PennyMeTests";
-			productName = "PennyMeTests";
+			name = PennyMeTests;
+			productName = PennyMeTests;
 			productReference = 9F9F31B52300B40A00C0E854 /* PennyMeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -193,8 +196,8 @@
 			dependencies = (
 				9F9F31C22300B40A00C0E854 /* PBXTargetDependency */,
 			);
-			name = "PennyMeUITests";
-			productName = "PennyMeUITests";
+			name = PennyMeUITests;
+			productName = PennyMeUITests;
 			productReference = 9F9F31C02300B40A00C0E854 /* PennyMeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9F31A72300B40900C0E854 /* ViewController.swift in Sources */,
+				9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */,
 				9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */,
 				9FC12D6B230E9B1E00016617 /* AboutViewController.swift in Sources */,
 				9F9F31A52300B40900C0E854 /* AppDelegate.swift in Sources */,
@@ -459,7 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
-				INFOPLIST_FILE = "PennyMe/Info.plist";
+				INFOPLIST_FILE = PennyMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,7 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
-				INFOPLIST_FILE = "PennyMe/Info.plist";
+				INFOPLIST_FILE = PennyMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,13 +500,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
-				INFOPLIST_FILE = "PennyMeTests/Info.plist";
+				INFOPLIST_FILE = PennyMeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.me.Pressed-Penny-LocatorTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.PennyMeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -517,13 +521,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
-				INFOPLIST_FILE = "PennyMeTests/Info.plist";
+				INFOPLIST_FILE = PennyMeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.me.Pressed-Penny-LocatorTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.PennyMeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -537,17 +541,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
-				INFOPLIST_FILE = "PennyMeUITests/Info.plist";
+				INFOPLIST_FILE = PennyMeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.me.Pressed-Penny-LocatorUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.PennyMeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "PennyMe";
+				TEST_TARGET_NAME = PennyMe;
 			};
 			name = Debug;
 		};
@@ -557,17 +561,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
-				INFOPLIST_FILE = "PennyMeUITests/Info.plist";
+				INFOPLIST_FILE = PennyMeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.me.Pressed-Penny-LocatorUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.me.PennyMeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "PennyMe";
+				TEST_TARGET_NAME = PennyMe;
 			};
 			name = Release;
 		};
