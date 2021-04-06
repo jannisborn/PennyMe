@@ -49,8 +49,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
         button.frame = CGRect(x: 150, y: 150, width: 100, height: 50)
         self.view.addSubview(button)
         
+        addMapTrackingButton()
+        
     }
     
+    // center to own location
+    func addMapTrackingButton(){
+        let own_location = UIButton()
+        let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.black)
+        own_location.backgroundColor = .white
+        own_location.frame = CGRect(x: UIScreen.main.bounds.width-45, y: UIScreen.main.bounds.height-90, width: 40, height: 40)
+        own_location.layer.cornerRadius = 0.5 * own_location.bounds.size.width
+        own_location.clipsToBounds = true
+        own_location.setImage(image, for: .normal)
+        own_location.imageView?.contentMode = .scaleAspectFit
+        own_location.addTarget(self, action: #selector(ViewController.centerMapOnUserButtonClicked), for: .touchUpInside)
+        PennyMap.addSubview(own_location)
+    }
+
+    @objc func centerMapOnUserButtonClicked() {
+        self.PennyMap.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+    }
     
     // Check if global location services are enabled
     func checkLocationServices() {
