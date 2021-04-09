@@ -16,6 +16,7 @@ import Contacts
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var PennyMap: MKMapView!
+    @IBOutlet weak var own_location: UIButton!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
@@ -55,10 +56,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // center to own location
     func addMapTrackingButton(){
-        let own_location = UIButton()
         let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.black)
         own_location.backgroundColor = .white
-        own_location.frame = CGRect(x: UIScreen.main.bounds.width-45, y: UIScreen.main.bounds.height-90, width: 40, height: 40)
+//        own_location.frame = CGRect(x: UIScreen.main.bounds.width-45, y: UIScreen.main.bounds.height-90, width: 40, height: 40)
         own_location.layer.cornerRadius = 0.5 * own_location.bounds.size.width
         own_location.clipsToBounds = true
         own_location.setImage(image, for: .normal)
