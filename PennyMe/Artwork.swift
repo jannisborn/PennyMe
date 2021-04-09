@@ -76,6 +76,8 @@ class Artwork: NSObject, MKAnnotation {
         return .yellow
       case "collected":
         return .green
+      case "retired":
+        return .gray
       default:
         return .black
       }

@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8oV-HC-UL6">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--PennyMe-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-vW-D6p">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMD-vm-GLI">
-                                <rect key="frame" x="335" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="335" y="44" width="30" height="30"/>
                                 <state key="normal" title="Info"/>
                                 <connections>
                                     <segue destination="tc2-2V-Hin" kind="presentation" modalTransitionStyle="flipHorizontal" id="loy-db-JQn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvf-JL-VdF">
-                                <rect key="frame" x="305" y="577" width="50" height="50"/>
+                                <rect key="frame" x="305" y="597" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="GDa-rd-pBo"/>
                                     <constraint firstAttribute="width" constant="50" id="Lca-dg-5Uc"/>
@@ -52,14 +53,51 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="50" id="sMU-hj-uOC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="PennyMe" id="rX1-V4-AoS"/>
                     <connections>
                         <outlet property="PennyMap" destination="gN9-vW-D6p" id="Xqe-g8-yhM"/>
                         <outlet property="own_location" destination="uvf-JL-VdF" id="V8r-E5-Axi"/>
+                        <segue destination="ooO-IG-Hvd" kind="push" identifier="ShowPinViewController" id="B08-OF-KJp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1072.8" y="132.68365817091455"/>
+        </scene>
+        <!--Pin-->
+        <scene sceneID="rNg-Ne-eKU">
+            <objects>
+                <viewController id="ooO-IG-Hvd" customClass="PinViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Uu-wp-1K8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-yD-0ah">
+                                <rect key="frame" x="36" y="56" width="240" height="128"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="esm-gZ-pOV"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="4tp-TA-fym"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OA7-dF-9T9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OA7-dF-9T9" firstAttribute="trailing" secondItem="NmC-yD-0ah" secondAttribute="trailing" id="fmD-L7-byu"/>
+                            <constraint firstItem="OA7-dF-9T9" firstAttribute="bottom" secondItem="NmC-yD-0ah" secondAttribute="bottom" id="hTe-ff-SkU"/>
+                            <constraint firstItem="NmC-yD-0ah" firstAttribute="top" secondItem="OA7-dF-9T9" secondAttribute="top" id="ipJ-rD-Dy5"/>
+                            <constraint firstItem="NmC-yD-0ah" firstAttribute="leading" secondItem="OA7-dF-9T9" secondAttribute="leading" id="qmG-Aa-Ec9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pin" largeTitleDisplayMode="always" id="JYs-L4-Xmf">
+                        <barButtonItem key="backBarButtonItem" title="Map" id="lGI-fH-gu5"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="scrollView" destination="NmC-yD-0ah" id="sYE-PX-RkQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoR-eX-GbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864.8" y="411.544227886057"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="RhM-Ax-3dz">
@@ -79,7 +117,7 @@
                                     <color key="titleColor" red="1" green="0.45831897890000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="flipHorizontal" id="xva-qh-69G"/>
+                                    <segue destination="8oV-HC-UL6" kind="presentation" modalTransitionStyle="flipHorizontal" id="xva-qh-69G"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="PennyMe" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="U2L-i8-sFK">
@@ -127,7 +165,30 @@ This is PennyMe V0.1 which only lists penny machines inside Switzerland (more to
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQ2-9O-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="-349"/>
+            <point key="canvasLocation" x="1864.8" y="-349.47526236881561"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Me-Sc-wVu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8oV-HC-UL6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pzt-62-3P7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="34o-JM-KV2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zet-ES-pLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

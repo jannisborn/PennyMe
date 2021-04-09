@@ -154,25 +154,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
           print("Unexpected error: \(error).")
         }
     }
+
 }
 
 
 @available(iOS 13.0, *)
 extension ViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.calloutTapped))
+        view.addGestureRecognizer(gesture)
+    }
 
-    // callout when maps button is pressed
+    @objc func calloutTapped(sender:UITapGestureRecognizer) {
+        guard let annotation = (sender.view as? MKAnnotationView)?.annotation as? Artwork else { return }
+
+        let selectedLocation = annotation.title
+        print(selectedLocation)
+        self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+    }
+    
+//     callout when maps button is pressed
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! Artwork
-        
         if (control == view.rightCalloutAccessoryView) {
             // This would open the directions
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             location.mapItem().openInMaps(launchOptions: launchOptions)
         }
         else {
-            //Open the website when you click on the link.
-            UIApplication.shared.openURL(URL(string: location.link)!)
+            self.performSegue(withIdentifier: "ShowPinViewController", sender: nil)
         }
     }
 }
