@@ -87,7 +87,6 @@
 		9F9F31982300B40900C0E854 = {
 			isa = PBXGroup;
 			children = (
-				83D226CC2620F4910050ED9E /* PinViewController.swift */,
 				9FAC9325231828ED00BDEA98 /* Assets.xcassets */,
 				9F9F31A32300B40900C0E854 /* PennyMe */,
 				9F9F31B82300B40A00C0E854 /* PennyMeTests */,
@@ -111,6 +110,7 @@
 		9F9F31A32300B40900C0E854 /* PennyMe */ = {
 			isa = PBXGroup;
 			children = (
+				83D226CC2620F4910050ED9E /* PinViewController.swift */,
 				9FC12D6A230E9B1E00016617 /* AboutViewController.swift */,
 				9F9F31A42300B40900C0E854 /* AppDelegate.swift */,
 				9F9F31A62300B40900C0E854 /* ViewController.swift */,
