@@ -73,7 +73,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-yD-0ah">
-                                <rect key="frame" x="36" y="56" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-gm-A0v">
+                                        <rect key="frame" x="20" y="101" width="335" height="32"/>
+                                        <segments>
+                                            <segment title="Unvisited"/>
+                                            <segment title="Visited"/>
+                                            <segment title="Marked"/>
+                                            <segment title="Retired"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn3-k3-zKr">
+                                        <rect key="frame" x="30" y="30" width="345" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-31-Zr7">
+                                        <rect key="frame" x="0.0" y="162" width="375" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="zWp-2B-lzt"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="websiteButton:" destination="kNq-E7-yRt" eventType="touchUpInside" id="nTx-Mn-QgO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rn3-k3-zKr" firstAttribute="top" secondItem="4tp-TA-fym" secondAttribute="top" constant="30" id="3hw-G6-FIY"/>
+                                    <constraint firstItem="rn3-k3-zKr" firstAttribute="leading" secondItem="4tp-TA-fym" secondAttribute="leading" id="CVc-3M-rvJ"/>
+                                    <constraint firstItem="Iez-gm-A0v" firstAttribute="top" secondItem="rn3-k3-zKr" secondAttribute="bottom" constant="50" id="P27-sj-RN0"/>
+                                    <constraint firstItem="K8z-31-Zr7" firstAttribute="top" secondItem="Iez-gm-A0v" secondAttribute="bottom" constant="30" id="WT9-VF-0yh"/>
+                                    <constraint firstItem="4tp-TA-fym" firstAttribute="trailing" secondItem="rn3-k3-zKr" secondAttribute="trailing" id="YBT-XT-MtL"/>
+                                    <constraint firstItem="K8z-31-Zr7" firstAttribute="leading" secondItem="4tp-TA-fym" secondAttribute="leading" id="ZsU-2T-eXn"/>
+                                    <constraint firstItem="rn3-k3-zKr" firstAttribute="trailing" secondItem="4tp-TA-fym" secondAttribute="trailing" constant="30" id="a8Z-ux-s0W"/>
+                                    <constraint firstItem="4tp-TA-fym" firstAttribute="trailing" secondItem="K8z-31-Zr7" secondAttribute="trailing" id="cwF-Hc-h1S"/>
+                                    <constraint firstItem="rn3-k3-zKr" firstAttribute="leading" secondItem="4tp-TA-fym" secondAttribute="leading" constant="30" id="iHf-N3-mNd"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="esm-gZ-pOV"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="4tp-TA-fym"/>
                             </scrollView>
@@ -93,9 +131,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="scrollView" destination="NmC-yD-0ah" id="sYE-PX-RkQ"/>
+                        <outlet property="statusPicker" destination="Iez-gm-A0v" id="MgH-DQ-Ffl"/>
+                        <outlet property="titleLabel" destination="rn3-k3-zKr" id="U2U-nQ-cMg"/>
+                        <outlet property="websiteButton" destination="K8z-31-Zr7" id="8Vd-Fb-cjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoR-eX-GbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kNq-E7-yRt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1864.8" y="411.544227886057"/>
         </scene>

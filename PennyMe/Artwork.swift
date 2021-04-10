@@ -15,7 +15,7 @@ class Artwork: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
     let link: String
-    let status: String
+    var status: String
     let coordinate: CLLocationCoordinate2D
     
     init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D) {
