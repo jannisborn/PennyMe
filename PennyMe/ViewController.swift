@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let regionInMeters: Double = 10000
     // Array for annotation database
     var artworks: [Artwork] = []
+    var selectedPin: Artwork?
     
     // Searchbar variables
     let searchController = UISearchController(searchResultsController: nil)
@@ -220,6 +221,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
 
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "ShowPinViewController") {
+//            let destinationViewController = segue.destination as! PinViewController
+//            destinationViewController.pinData = self.selectedPin!
+//        }
+//    }
 }
 
 
@@ -235,6 +242,8 @@ extension ViewController: MKMapViewDelegate {
         guard let annotation = (sender.view as? MKAnnotationView)?.annotation as? Artwork else { return }
 
         let selectedLocation = annotation.title
+        // set selected pin to pass it to detail VC
+        self.selectedPin = annotation
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
     

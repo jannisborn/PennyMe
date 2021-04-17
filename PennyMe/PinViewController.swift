@@ -11,6 +11,19 @@ import UIKit
 class PinViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var statusPicker: UISegmentedControl!
+    @IBOutlet weak var websiteButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    var pinData : Artwork!
+    let statusChoices = ["unvisited", "visited", "collected", "retired"]
+    
+    
+    enum StatusChoice : String {
+            case Free
+            case Collected
+            case Marked
+            case Retired
+        }
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -23,24 +36,21 @@ class PinViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-
+        super.viewDidLoad()
         let contentWidth = UIScreen.main.bounds.width
-        let contentHeight = UIScreen.main.bounds.height * 3
-            scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
+        
+        addTitle(title: self.pinData.title!)
+        statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
+        
+        statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
+        
+        // Website Button
+        websiteButton.setTitle("Website", for: .normal)
+        websiteButton.backgroundColor = .lightGray
+        websiteButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+        websiteButton.setTitleColor(.black, for: .normal)
+        websiteButton.addTarget(self, action: #selector(PinViewController.goToWebsite(_:)), for:.touchUpInside)
 
-            let subviewHeight = CGFloat(120)
-            var currentViewOffset = CGFloat(0);
-
-            while currentViewOffset < contentHeight {
-                let frame = CGRect(x: 0, y: currentViewOffset, width: contentWidth, height: subviewHeight).insetBy(dx: 5, dy: 5)
-                let hue = currentViewOffset/contentHeight
-                let subview = UIView(frame: frame)
-                subview.backgroundColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-                scrollView.addSubview(subview)
-
-                currentViewOffset += subviewHeight
-            }
         }
     
     func configureView() {
@@ -53,4 +63,31 @@ class PinViewController: UIViewController {
       }
     }
 
+    @objc func goToWebsite(_ sender: UIButton){
+        //Open the website when you click on the link.
+        UIApplication.shared.openURL(URL(string: pinData.link)!)
+    }
+    
+    @objc func statusChanged(_ sender: UISegmentedControl) {
+        let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .Collected
+        
+        print("changed status", status)
+        // TODO
+//        let defaults = UserDefaults.standard
+//        defaults.set(status, forKey: self.pinData.title!)
+//        defaults.synchronize()
+        self.pinData.status = status.rawValue
+    }
+    
+    func addTitle(title: String){
+        let titleHeight = 100
+        let contentWidth = UIScreen.main.bounds.width
+
+        titleLabel.numberOfLines = 3
+        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: "Halvetica", size: 20.0)
+        scrollView.addSubview(titleLabel)
+    }
 }
+
