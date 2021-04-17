@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8oV-HC-UL6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8oV-HC-UL6">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,21 +13,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-vW-D6p">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="591"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMD-vm-GLI">
-                                <rect key="frame" x="335" y="44" width="30" height="30"/>
-                                <state key="normal" title="Info"/>
-                                <connections>
-                                    <segue destination="tc2-2V-Hin" kind="presentation" modalTransitionStyle="flipHorizontal" id="loy-db-JQn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvf-JL-VdF">
-                                <rect key="frame" x="305" y="597" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvf-JL-VdF">
+                                <rect key="frame" x="305" y="577" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="GDa-rd-pBo"/>
                                     <constraint firstAttribute="width" constant="50" id="Lca-dg-5Uc"/>
@@ -37,21 +29,19 @@
                                 </constraints>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E2N-SR-NMl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="20" id="KJ8-Zc-DbP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uvf-JL-VdF" secondAttribute="bottom" constant="50" id="QG8-6I-qJi"/>
-                            <constraint firstItem="fMD-vm-GLI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XOj-hz-nLg"/>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Y4U-JK-4Bi"/>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YLE-9g-sff"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uvf-JL-VdF" secondAttribute="bottom" constant="20" id="ZJf-WB-dhL"/>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jEd-KZ-ISx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="20" id="lW0-Hb-oeS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fMD-vm-GLI" secondAttribute="trailing" constant="10" id="pg3-Ul-Dqs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="50" id="sMU-hj-uOC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="PennyMe" id="rX1-V4-AoS"/>
                     <connections>
@@ -69,14 +59,14 @@
             <objects>
                 <viewController id="ooO-IG-Hvd" customClass="PinViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Uu-wp-1K8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-yD-0ah">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-gm-A0v">
-                                        <rect key="frame" x="20" y="101" width="335" height="32"/>
+                                        <rect key="frame" x="20" y="89" width="335" height="32"/>
                                         <segments>
                                             <segment title="Unvisited"/>
                                             <segment title="Visited"/>
@@ -85,13 +75,13 @@
                                         </segments>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn3-k3-zKr">
-                                        <rect key="frame" x="30" y="30" width="345" height="21"/>
+                                        <rect key="frame" x="30" y="18" width="345" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-31-Zr7">
-                                        <rect key="frame" x="0.0" y="162" width="375" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-31-Zr7">
+                                        <rect key="frame" x="0.0" y="150" width="375" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="zWp-2B-lzt"/>
                                         </constraints>
@@ -116,14 +106,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="4tp-TA-fym"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="OA7-dF-9T9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="OA7-dF-9T9" firstAttribute="trailing" secondItem="NmC-yD-0ah" secondAttribute="trailing" id="fmD-L7-byu"/>
                             <constraint firstItem="OA7-dF-9T9" firstAttribute="bottom" secondItem="NmC-yD-0ah" secondAttribute="bottom" id="hTe-ff-SkU"/>
                             <constraint firstItem="NmC-yD-0ah" firstAttribute="top" secondItem="OA7-dF-9T9" secondAttribute="top" id="ipJ-rD-Dy5"/>
                             <constraint firstItem="NmC-yD-0ah" firstAttribute="leading" secondItem="OA7-dF-9T9" secondAttribute="leading" id="qmG-Aa-Ec9"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="OA7-dF-9T9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pin" largeTitleDisplayMode="always" id="JYs-L4-Xmf">
                         <barButtonItem key="backBarButtonItem" title="Map" id="lGI-fH-gu5"/>
@@ -145,11 +135,11 @@
         <scene sceneID="RhM-Ax-3dz">
             <objects>
                 <viewController id="tc2-2V-Hin" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="3KB-sd-7ds">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                    <view key="view" contentMode="scaleToFill" id="3KB-sd-7ds">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0Y-HH-24q">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0Y-HH-24q">
                                 <rect key="frame" x="123" y="563.5" width="129" height="83.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="s0Y-HH-24q" secondAttribute="height" multiplier="37:24" id="IfX-q2-gvu"/>
@@ -171,8 +161,8 @@
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" smartDashesType="yes"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="zL9-X4-1xb">
-                                <rect key="frame" x="10" y="123" width="355" height="386.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="zL9-X4-1xb">
+                                <rect key="frame" x="10" y="103" width="355" height="440.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zL9-X4-1xb" secondAttribute="height" multiplier="343:387" id="txw-UI-hfq"/>
@@ -187,7 +177,6 @@ This is PennyMe V0.1 which only lists penny machines inside Switzerland (more to
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="4yO-kg-YXo"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="U2L-i8-sFK" firstAttribute="top" secondItem="4yO-kg-YXo" secondAttribute="top" constant="34" id="3xW-xB-apW"/>
@@ -203,6 +192,7 @@ This is PennyMe V0.1 which only lists penny machines inside Switzerland (more to
                             <constraint firstItem="zL9-X4-1xb" firstAttribute="top" secondItem="U2L-i8-sFK" secondAttribute="bottom" constant="8" id="yQu-cA-yj3"/>
                             <constraint firstItem="zL9-X4-1xb" firstAttribute="top" secondItem="U2L-i8-sFK" secondAttribute="bottom" constant="10" id="z1O-qs-eHT"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4yO-kg-YXo"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQ2-9O-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,9 +218,4 @@ This is PennyMe V0.1 which only lists penny machines inside Switzerland (more to
             <point key="canvasLocation" x="133.59999999999999" y="132.68365817091455"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

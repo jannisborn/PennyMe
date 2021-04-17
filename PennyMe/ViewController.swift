@@ -31,6 +31,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Searchbar variables
     let searchController = UISearchController(searchResultsController: nil)
     var filteredArtworks: [Artwork] = []
+    
+    // To display the search results
+    lazy var locationResult : UITableView = UITableView(frame: PennyMap.frame)
+    var tableShown: Bool = false
 
 
     override func viewDidLoad() {
@@ -38,15 +42,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view, typically from a nib.
         artworks = Artwork.artworks()
-//        searchBar = UISearchBar()
-//        searchBar.sizeToFit()
-//        navigationItem.titleView = searchBar
+
         
         // Set up search bar
         searchController.searchResultsUpdater = self
         // Results should be displayed in same searchbar as used for searching
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search penny machines"
+        searchController.hidesNavigationBarDuringPresentation = false
         // iOS 11 compatability issue
         navigationItem.searchController = searchController
         // Disable search bar if view is changed
@@ -55,17 +58,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Check and enable localization (blue dot)
         checkLocationServices()
         
-        
         // Map initialization goes here:
-        PennyMap.delegate = self
-        PennyMap.showsScale = true
-        PennyMap.showsPointsOfInterest = true
+        setDelegates()
         
         // Register the functions to create annotated pins
         PennyMap.register(
             ArtworkMarkerView.self,
             forAnnotationViewWithReuseIdentifier:MKMapViewDefaultAnnotationViewReuseIdentifier
         )
+//        self.locationResult.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+
         loadInitialData()
         PennyMap.addAnnotations(artworks)
 
@@ -77,11 +79,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func setDelegates(){
+    
+        PennyMap.delegate = self
+        PennyMap.showsScale = true
+        PennyMap.showsPointsOfInterest = true
+        locationResult.delegate = self
+        locationResult.dataSource = self
+        searchController.searchBar.delegate = self
+        
+    }
+    
     // center to own location
     func addMapTrackingButton(){
         let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.black)
         own_location.backgroundColor = .white
-//        own_location.frame = CGRect(x: UIScreen.main.bounds.width-45, y: UIScreen.main.bounds.height-90, width: 40, height: 40)
         own_location.layer.cornerRadius = 0.5 * own_location.bounds.size.width
         own_location.clipsToBounds = true
         own_location.setImage(image, for: .normal)
@@ -168,12 +180,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
           let features = try MKGeoJSONDecoder()
             .decode(artworkData!)
             .compactMap { $0 as? MKGeoJSONFeature }
-          // 3
           let validWorks = features.compactMap(Artwork.init)
-          // 4
           artworks.append(contentsOf: validWorks)
         } catch {
-          // 5
           print("Unexpected error: \(error).")
         }
     }
@@ -186,18 +195,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Implements the search itself
     func filterContentForSearchText(_ searchText: String,
                                     category: Artwork? = nil) {
-        print("FILTERING RESULTS")
     filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
         return artwork.title!.lowercased().contains(searchText.lowercased())
         }
-        print(filteredArtworks)
-      
-//      tableView.reloadData()
+        
+        // This sets the table view frame to cover exactly the entire underlying map
+        locationResult.frame = PennyMap.bounds
+        
+        print(PennyMap.bounds)
+        
+        if !tableShown {
+            PennyMap.addSubview(locationResult)
+            tableShown = true
+        }
     }
+    
     // Whether we are currently filtering
     var isFiltering: Bool {
       return searchController.isActive && !isSearchBarEmpty
     }
+    
+
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
@@ -207,26 +225,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //      }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      guard
-        segue.identifier == "ShowDetailSegue",
-        let indexPath = tableView.indexPathForSelectedRow,
-        let pinViewController = segue.destination as? PinViewController
-        else {
-          return
-        }
-        let artwork = artworks[indexPath.row]
-        pinViewController.artwork = artwork
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      guard
+//        segue.identifier == "ShowDetailSegue",
+//        let indexPath = tableView.indexPathForSelectedRow,
+//        let pinViewController = segue.destination as? PinViewController
+//        else {
+//          return
+//        }
+//        let artwork = artworks[indexPath.row]
+//        pinViewController.artwork = artwork
+//    }
     
 
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "ShowPinViewController") {
-//            let destinationViewController = segue.destination as! PinViewController
-//            destinationViewController.pinData = self.selectedPin!
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ShowPinViewController") {
+            let destinationViewController = segue.destination as! PinViewController
+            destinationViewController.pinData = self.selectedPin!
+        }
+//        if (segue.identifier == "ShowDetailSegue"){
+//            let indexPath = tableView.indexPathForSelectedRow,
+//            let pinViewController = segue.destination as? PinViewController
+//            else {
+//              return
+//            }
+//            let artwork = artworks[indexPath.row]
+//            pinViewController.artwork = artwork
 //        }
-//    }
+        
+    }
 }
 
 
@@ -261,6 +289,7 @@ extension ViewController: MKMapViewDelegate {
         }
     }
 }
+
 
 
 
@@ -299,8 +328,12 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
-    print("BEFORE CALLING SERARCH")
-    filterContentForSearchText(searchBar.text!)
+    
+    // Display the penny pin options and execture the search only if a string is entered
+    // Makes sure that list is not displayed if cancel is pressed
+    if searchBar.text!.count > 0 {
+        filterContentForSearchText(searchBar.text!)
+    }
     
 //    let category = Candy.Category(rawValue:
 //      searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
@@ -308,12 +341,25 @@ extension ViewController: UISearchResultsUpdating {
   }
 }
 
+@available(iOS 13.0, *)
+extension ViewController: UISearchBarDelegate {
+    
+    //  Cancel button execution
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        locationResult.removeFromSuperview()
+        tableShown = false
+    }
+
+}
+
 // Table with search results
 @available(iOS 13.0, *)
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "location")
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let artwork: Artwork
         if isFiltering {
           artwork = filteredArtworks[indexPath.row]
@@ -324,23 +370,20 @@ extension ViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = artwork.locationName
         return cell
     }
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+          return filteredArtworks.count
+        }
+        return artworks.count
+      if isFiltering {
+        searchFooter.setIsFilteringToShow(filteredItemCount:
+          filteredArtworks.count, of: artworks.count)
+        return filteredArtworks.count
+      }
+
+      searchFooter.setNotFiltering()
       return artworks.count
     }
-    
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if isFiltering {
-//          return filteredArtworks.count
-//        }
-//        return artworks.count
-//      if isFiltering {
-//        searchFooter.setIsFilteringToShow(filteredItemCount:
-//          filteredArtworks.count, of: artworks.count)
-//        return filteredArtworks.count
-//      }
-//
-//      searchFooter.setNotFiltering()
-//      return candies.count
 }

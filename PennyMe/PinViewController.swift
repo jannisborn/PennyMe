@@ -62,7 +62,7 @@ class PinViewController: UIViewController {
         title = artwork.title
       }
     }
-
+    
     @objc func goToWebsite(_ sender: UIButton){
         //Open the website when you click on the link.
         UIApplication.shared.openURL(URL(string: pinData.link)!)
@@ -90,4 +90,3 @@ class PinViewController: UIViewController {
         scrollView.addSubview(titleLabel)
     }
 }
-
