@@ -202,12 +202,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // This sets the table view frame to cover exactly the entire underlying map
         locationResult.frame = PennyMap.bounds
         
-        print(PennyMap.bounds)
+        // Default height of table view cell is 44 - locationResult.rowHeight does not work
+        let height = CGFloat(filteredArtworks.count * 44)
+        if height < PennyMap.bounds.height{
+            var tableFrame = locationResult.frame
+            tableFrame.size.height = height
+            locationResult.frame = tableFrame
+        }
         
         if !tableShown {
             PennyMap.addSubview(locationResult)
             tableShown = true
         }
+        locationResult.reloadData()
     }
     
     // Whether we are currently filtering
@@ -385,5 +392,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
       searchFooter.setNotFiltering()
       return artworks.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        self.selectedPin = filteredArtworks[indexPath.row]
+        self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
 }
