@@ -19,6 +19,7 @@
 		9F9F31C52300B40A00C0E854 /* PennyMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F31C42300B40A00C0E854 /* PennyMeUITests.swift */; };
 		9FAC9326231828ED00BDEA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FAC9325231828ED00BDEA98 /* Assets.xcassets */; };
 		9FC12D6B230E9B1E00016617 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12D6A230E9B1E00016617 /* AboutViewController.swift */; };
+		9FF43BDA2621221A00BE3F6A /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF43BD92621221A00BE3F6A /* SearchFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		9F9F31C62300B40A00C0E854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FAC9325231828ED00BDEA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PennyMe/Assets.xcassets; sourceTree = "<group>"; };
 		9FC12D6A230E9B1E00016617 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9FF43BD92621221A00BE3F6A /* SearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				9F9F31AD2300B40A00C0E854 /* LaunchScreen.storyboard */,
 				9F9F31B02300B40A00C0E854 /* Info.plist */,
 				9F421AB2261B9755004197B4 /* ArtworkViews.swift */,
+				9FF43BD92621221A00BE3F6A /* SearchFooter.swift */,
 			);
 			path = PennyMe;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */,
 				9FC12D6B230E9B1E00016617 /* AboutViewController.swift in Sources */,
 				9F9F31A52300B40900C0E854 /* AppDelegate.swift in Sources */,
+				9FF43BDA2621221A00BE3F6A /* SearchFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

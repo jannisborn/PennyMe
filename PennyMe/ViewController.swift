@@ -18,16 +18,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var own_location: UIButton!
     
+    //    For search results
+    @IBOutlet var searchFooter: SearchFooter!
+    @IBOutlet var tableView: UITableView!
+    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     // Array for annotation database
     var artworks: [Artwork] = []
-
     
+    // Searchbar variables
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredArtworks: [Artwork] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        artworks = Artwork.artworks()
+//        searchBar = UISearchBar()
+//        searchBar.sizeToFit()
+//        navigationItem.titleView = searchBar
+        
+        // Set up search bar
+        searchController.searchResultsUpdater = self
+        // Results should be displayed in same searchbar as used for searching
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search penny machines"
+        // iOS 11 compatability issue
+        navigationItem.searchController = searchController
+        // Disable search bar if view is changed
+        definesPresentationContext = true
 
         // Check and enable localization (blue dot)
         checkLocationServices()
@@ -154,6 +176,49 @@ class ViewController: UIViewController, UITextFieldDelegate {
           print("Unexpected error: \(error).")
         }
     }
+    
+    // Search bar functionalities
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    // Implements the search itself
+    func filterContentForSearchText(_ searchText: String,
+                                    category: Artwork? = nil) {
+        print("FILTERING RESULTS")
+    filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
+        return artwork.title!.lowercased().contains(searchText.lowercased())
+        }
+        print(filteredArtworks)
+      
+//      tableView.reloadData()
+    }
+    // Whether we are currently filtering
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+//      if let indexPath = tableView.indexPathForSelectedRow {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//      }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      guard
+        segue.identifier == "ShowDetailSegue",
+        let indexPath = tableView.indexPathForSelectedRow,
+        let pinViewController = segue.destination as? PinViewController
+        else {
+          return
+        }
+        let artwork = artworks[indexPath.row]
+        pinViewController.artwork = artwork
+    }
+    
+
 
 }
 
@@ -170,7 +235,6 @@ extension ViewController: MKMapViewDelegate {
         guard let annotation = (sender.view as? MKAnnotationView)?.annotation as? Artwork else { return }
 
         let selectedLocation = annotation.title
-        print(selectedLocation)
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
     
@@ -221,4 +285,53 @@ extension ViewController: CLLocationManagerDelegate {
 }
 
 
+// Searchbar updating
+@available(iOS 13.0, *)
+extension ViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchBar = searchController.searchBar
+    print("BEFORE CALLING SERARCH")
+    filterContentForSearchText(searchBar.text!)
+    
+//    let category = Candy.Category(rawValue:
+//      searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+//    filterContentForSearchText(searchBar.text!, category: category)
+  }
+}
 
+// Table with search results
+@available(iOS 13.0, *)
+extension ViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let artwork: Artwork
+        if isFiltering {
+          artwork = filteredArtworks[indexPath.row]
+        } else {
+          artwork = artworks[indexPath.row]
+        }
+        cell.textLabel?.text = artwork.title
+        cell.detailTextLabel?.text = artwork.locationName
+        return cell
+    }
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+      return artworks.count
+    }
+    
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if isFiltering {
+//          return filteredArtworks.count
+//        }
+//        return artworks.count
+//      if isFiltering {
+//        searchFooter.setIsFilteringToShow(filteredItemCount:
+//          filteredArtworks.count, of: artworks.count)
+//        return filteredArtworks.count
+//      }
+//
+//      searchFooter.setNotFiltering()
+//      return candies.count
+}

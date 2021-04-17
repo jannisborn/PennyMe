@@ -84,4 +84,20 @@ class Artwork: NSObject, MKAnnotation {
     }
 }
 
+extension Artwork {
+  static func artworks() -> [Artwork] {
+    guard
+      let url = Bundle.main.url(forResource: "candies", withExtension: "json"),
+      let data = try? Data(contentsOf: url)
+      else {
+        return []
+    }
+    
+    do {
+      return []
+    } catch {
+      return []
+    }
+  }
+}
 

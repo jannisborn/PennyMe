@@ -12,6 +12,16 @@ class PinViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    var artwork: Artwork? {
+      didSet {
+        configureView()
+      }
+    }
+    
     override func viewDidLoad() {
             super.viewDidLoad()
 
@@ -32,5 +42,15 @@ class PinViewController: UIViewController {
                 currentViewOffset += subviewHeight
             }
         }
+    
+    func configureView() {
+      if let artwork = artwork,
+        let textLabel = textLabel,
+        let imageView = imageView {
+        textLabel.text = artwork.title
+        imageView.image = UIImage(named: "maps")
+        title = artwork.title
+      }
+    }
 
 }
