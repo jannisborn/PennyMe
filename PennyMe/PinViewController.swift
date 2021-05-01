@@ -19,8 +19,8 @@ class PinViewController: UIViewController {
     
     
     enum StatusChoice : String {
-            case Free
-            case Collected
+            case Unvisited
+            case Visited
             case Marked
             case Retired
         }
@@ -69,14 +69,67 @@ class PinViewController: UIViewController {
     }
     
     @objc func statusChanged(_ sender: UISegmentedControl) {
-        let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .Collected
+        let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "Unvisited") ?? .Unvisited
         
-        print("changed status", status)
-        // TODO
-//        let defaults = UserDefaults.standard
-//        defaults.set(status, forKey: self.pinData.title!)
-//        defaults.synchronize()
-        self.pinData.status = status.rawValue
+        saveStatusChange(machinetitle: self.pinData.title!, new_status: status.rawValue)
+    }
+    
+    func saveStatusChange(machinetitle: String, new_status: String){
+        // find directory in documents folder corresponding to app data
+        let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
+
+        // set output file path
+        let jsonFilePath = documentsDirectoryPath.appendingPathComponent("pin_status.json")
+        let fileManager = FileManager.default
+        var isDirectory: ObjCBool = false
+
+        // creating a .json file in the Documents folder
+        // first check whether file exists
+        var currentStatusDict = [[String: String]()]
+        if !fileManager.fileExists(atPath: jsonFilePath!.absoluteString, isDirectory: &isDirectory) {
+            let created = fileManager.createFile(atPath: jsonFilePath!.absoluteString, contents: nil, attributes: nil)
+            if created {
+                print("File created ")
+            } else {
+                print("Couldn't create file for some reason")
+            }
+            // create empty dictionary
+        } else {
+            do{
+//                try fileManager.removeItem(atPath: jsonFilePath!.absoluteString)
+                let data = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath!.absoluteString), options:.mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                currentStatusDict = jsonResult as! [[String:String]]
+            }
+            catch{
+                print("file already exists but could not be read", error)
+            }
+        }
+//        print("loaded / new status dictionary", currentStatusDict)
+        // update value
+        currentStatusDict[0][machinetitle] = new_status
+        print("after update value", currentStatusDict)
+        
+        // creating JSON out of the above array
+        var jsonData: NSData!
+        do {
+            // setup json encoder
+            jsonData = try JSONSerialization.data(withJSONObject: currentStatusDict, options: JSONSerialization.WritingOptions()) as NSData
+            let jsonString = String(data: jsonData as Data, encoding: String.Encoding.utf8)
+        } catch let error as NSError {
+            print("Array to JSON conversion failed: \(error.localizedDescription)")
+        }
+
+        // Write that JSON to the file created earlier
+//        let jsonFilePath = documentsDirectoryPath.appendingPathComponent("pin_status.json")
+        do {
+            let file = try FileHandle(forWritingTo: jsonFilePath!)
+            file.write(jsonData as Data)
+//            print("JSON data was written to teh file successfully!")
+        } catch let error as NSError {
+            print("Couldn't write to file: \(error.localizedDescription)")
+        }
     }
     
     func addTitle(title: String){
