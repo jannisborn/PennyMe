@@ -16,11 +16,14 @@ import Contacts
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var PennyMap: MKMapView!
-    @IBOutlet weak var own_location: UIButton!
+    @IBOutlet weak var ownLocation: UIButton!
+    @IBOutlet var toggleMapButton: UIButton!
     
     //    For search results
     @IBOutlet var searchFooter: SearchFooter!
+    @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
+
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
@@ -35,6 +38,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // To display the search results
     lazy var locationResult : UITableView = UITableView(frame: PennyMap.frame)
     var tableShown: Bool = false
+    
+    //  Map type + button
+    var currMap = 1
+    let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
+    @IBOutlet weak var mapType : UISegmentedControl!
 
 
     override func viewDidLoad() {
@@ -54,6 +62,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         navigationItem.searchController = searchController
         // Disable search bar if view is changed
         definesPresentationContext = true
+        
 
         // Check and enable localization (blue dot)
         checkLocationServices()
@@ -66,7 +75,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             ArtworkMarkerView.self,
             forAnnotationViewWithReuseIdentifier:MKMapViewDefaultAnnotationViewReuseIdentifier
         )
-//        self.locationResult.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
         loadInitialData()
         PennyMap.addAnnotations(artworks)
@@ -76,30 +84,46 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(button)
         
         addMapTrackingButton()
+        toggleMapTypeButton()
+    
+    
         
     }
     
     func setDelegates(){
-    
         PennyMap.delegate = self
         PennyMap.showsScale = true
         PennyMap.showsPointsOfInterest = true
         locationResult.delegate = self
         locationResult.dataSource = self
         searchController.searchBar.delegate = self
-        
     }
+    
     
     // center to own location
     func addMapTrackingButton(){
         let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.black)
-        own_location.backgroundColor = .white
-        own_location.layer.cornerRadius = 0.5 * own_location.bounds.size.width
-        own_location.clipsToBounds = true
-        own_location.setImage(image, for: .normal)
-        own_location.imageView?.contentMode = .scaleAspectFit
-        own_location.addTarget(self, action: #selector(ViewController.centerMapOnUserButtonClicked), for: .touchUpInside)
-        PennyMap.addSubview(own_location)
+        ownLocation.backgroundColor = .white
+        ownLocation.layer.cornerRadius = 0.5 * ownLocation.bounds.size.width
+        ownLocation.clipsToBounds = true
+        ownLocation.setImage(image, for: .normal)
+        ownLocation.imageView?.contentMode = .scaleAspectFit
+        ownLocation.addTarget(self, action: #selector(ViewController.centerMapOnUserButtonClicked), for: .touchUpInside)
+        PennyMap.addSubview(ownLocation)
+    }
+    
+    
+    
+    
+    func toggleMapTypeButton(){
+        
+        var toggleMapImage:UIImage = UIImage(named: "map_symbol_without_border")!
+        toggleMapImage = toggleMapImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        
+        toggleMapButton.setImage(toggleMapImage, for: .normal)
+        toggleMapButton.imageView?.contentMode = .scaleAspectFit
+        toggleMapButton.addTarget(self, action: #selector(changeMapType), for: .touchUpInside)
+        self.view.addSubview(toggleMapButton)
     }
 
     @objc func centerMapOnUserButtonClicked() {
@@ -222,45 +246,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
       return searchController.isActive && !isSearchBarEmpty
     }
     
-
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      
-//      if let indexPath = tableView.indexPathForSelectedRow {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//      }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      guard
-//        segue.identifier == "ShowDetailSegue",
-//        let indexPath = tableView.indexPathForSelectedRow,
-//        let pinViewController = segue.destination as? PinViewController
-//        else {
-//          return
-//        }
-//        let artwork = artworks[indexPath.row]
-//        pinViewController.artwork = artwork
-//    }
     
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ShowPinViewController") {
             let destinationViewController = segue.destination as! PinViewController
             destinationViewController.pinData = self.selectedPin!
         }
-//        if (segue.identifier == "ShowDetailSegue"){
-//            let indexPath = tableView.indexPathForSelectedRow,
-//            let pinViewController = segue.destination as? PinViewController
-//            else {
-//              return
-//            }
-//            let artwork = artworks[indexPath.row]
-//            pinViewController.artwork = artwork
-//        }
         
+    }
+    
+    @objc func changeMapType(sender: UIButton!) {
+         switch currMap{
+             case 1:
+                PennyMap.mapType = .satellite
+                 currMap = 2
+             case 2:
+                PennyMap.mapType = .hybrid
+                 currMap = 3
+             default:
+                PennyMap.mapType = .standard
+                 currMap = 1
+         }
     }
 }
 
@@ -397,5 +408,36 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.selectedPin = filteredArtworks[indexPath.row]
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+    }
+}
+
+extension UISearchBar {
+
+    private var textField: UITextField? {
+        return subviews.first?.subviews.compactMap { $0 as? UITextField }.first
+    }
+
+    private var activityIndicator: UIActivityIndicatorView? {
+        return textField?.leftView?.subviews.compactMap{ $0 as? UIActivityIndicatorView }.first
+    }
+
+    var isLoading: Bool {
+        get {
+            return activityIndicator != nil
+        } set {
+            if newValue {
+                if activityIndicator == nil {
+                    let newActivityIndicator = UIActivityIndicatorView(style: .gray)
+                    newActivityIndicator.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+                    newActivityIndicator.startAnimating()
+                    newActivityIndicator.backgroundColor = UIColor.white
+                    textField?.leftView?.addSubview(newActivityIndicator)
+                    let leftViewSize = textField?.leftView?.frame.size ?? CGSize.zero
+                    newActivityIndicator.center = CGPoint(x: leftViewSize.width/2, y: leftViewSize.height/2)
+                }
+            } else {
+                activityIndicator?.removeFromSuperview()
+            }
+        }
     }
 }
