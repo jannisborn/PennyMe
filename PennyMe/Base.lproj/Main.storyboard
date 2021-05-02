@@ -21,16 +21,16 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="591"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvf-JL-VdF">
-                                <rect key="frame" x="305" y="577" width="50" height="50"/>
+                                <rect key="frame" x="318" y="570" width="47" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="GDa-rd-pBo"/>
-                                    <constraint firstAttribute="width" constant="50" id="Lca-dg-5Uc"/>
-                                    <constraint firstAttribute="height" constant="50" id="WUj-sb-ZMc"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="rev-LM-PVl"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="47" id="GDa-rd-pBo"/>
+                                    <constraint firstAttribute="width" constant="47" id="Lca-dg-5Uc"/>
+                                    <constraint firstAttribute="height" constant="47" id="WUj-sb-ZMc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="rev-LM-PVl"/>
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3D0-gh-Z0t">
-                                <rect key="frame" x="20" y="577" width="50" height="50"/>
+                                <rect key="frame" x="10" y="567" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Mcl-dv-1ck"/>
                                     <constraint firstAttribute="height" constant="50" id="QET-5I-NhP"/>
@@ -42,16 +42,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E2N-SR-NMl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="20" id="KJ8-Zc-DbP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="10" id="KJ8-Zc-DbP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uvf-JL-VdF" secondAttribute="bottom" constant="50" id="QG8-6I-qJi"/>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Y4U-JK-4Bi"/>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YLE-9g-sff"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uvf-JL-VdF" secondAttribute="bottom" constant="20" id="ZJf-WB-dhL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uvf-JL-VdF" secondAttribute="bottom" constant="30" id="ZJf-WB-dhL"/>
                             <constraint firstItem="gN9-vW-D6p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jEd-KZ-ISx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3D0-gh-Z0t" secondAttribute="bottom" constant="20" id="l6X-Zw-2St"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="20" id="lW0-Hb-oeS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3D0-gh-Z0t" secondAttribute="bottom" constant="30" id="l6X-Zw-2St"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="10" id="lW0-Hb-oeS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvf-JL-VdF" secondAttribute="trailing" constant="50" id="sMU-hj-uOC"/>
-                            <constraint firstItem="3D0-gh-Z0t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zFk-Cf-eP7"/>
+                            <constraint firstItem="3D0-gh-Z0t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zFk-Cf-eP7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PennyMe" id="rX1-V4-AoS"/>
