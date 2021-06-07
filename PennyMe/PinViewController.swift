@@ -15,14 +15,14 @@ class PinViewController: UIViewController {
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     var pinData : Artwork!
-    let statusChoices = ["unvisited", "visited", "collected", "retired"]
+    let statusChoices = ["unvisited", "visited", "marked", "retired"]
     
     
     enum StatusChoice : String {
-            case Unvisited
-            case Visited
-            case Marked
-            case Retired
+            case unvisited
+            case visited
+            case marked
+            case retired
         }
     
     @IBOutlet weak var textLabel: UILabel!
@@ -69,7 +69,7 @@ class PinViewController: UIViewController {
     }
     
     @objc func statusChanged(_ sender: UISegmentedControl) {
-        let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "Unvisited") ?? .Unvisited
+        let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .unvisited
         
         saveStatusChange(machinetitle: self.pinData.title!, new_status: status.rawValue)
     }
@@ -87,20 +87,15 @@ class PinViewController: UIViewController {
         // creating a .json file in the Documents folder
         // first check whether file exists
         var currentStatusDict = [[String: String]()]
-        if !fileManager.fileExists(atPath: jsonFilePath!.absoluteString, isDirectory: &isDirectory) {
-            let created = fileManager.createFile(atPath: jsonFilePath!.absoluteString, contents: nil, attributes: nil)
-            if created {
-                print("File created ")
-            } else {
-                print("Couldn't create file for some reason")
-            }
-            // create empty dictionary
-        } else {
+        // Load the json data
+        if fileManager.fileExists(atPath: jsonFilePath!.absoluteString, isDirectory: &isDirectory) {
             do{
-//                try fileManager.removeItem(atPath: jsonFilePath!.absoluteString)
                 let data = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath!.absoluteString), options:.mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 currentStatusDict = jsonResult as! [[String:String]]
+//                print("Read json successfully for changing status", jsonResult)
+                // remove file
+                try fileManager.removeItem(atPath: jsonFilePath!.absoluteString)
             }
             catch{
                 print("file already exists but could not be read", error)
@@ -109,7 +104,7 @@ class PinViewController: UIViewController {
 //        print("loaded / new status dictionary", currentStatusDict)
         // update value
         currentStatusDict[0][machinetitle] = new_status
-        print("after update value", currentStatusDict)
+//        print("after update value", currentStatusDict)
         
         // creating JSON out of the above array
         var jsonData: NSData!
@@ -121,9 +116,13 @@ class PinViewController: UIViewController {
             print("Array to JSON conversion failed: \(error.localizedDescription)")
         }
 
-        // Write that JSON to the file created earlier
-//        let jsonFilePath = documentsDirectoryPath.appendingPathComponent("pin_status.json")
+        // Write that JSON
         do {
+            // Bug fix: create new file each time to prevent that file is only partly overwritten
+            let created = fileManager.createFile(atPath: jsonFilePath!.absoluteString, contents: nil, attributes: nil)
+            if !created {
+                print("Couldn't create file for some reason")
+            }
             let file = try FileHandle(forWritingTo: jsonFilePath!)
             file.write(jsonData as Data)
 //            print("JSON data was written to teh file successfully!")

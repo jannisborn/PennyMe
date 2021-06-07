@@ -80,10 +80,10 @@
                                     <segmentedControl opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-gm-A0v">
                                         <rect key="frame" x="20" y="89" width="335" height="32"/>
                                         <segments>
-                                            <segment title="Unvisited"/>
-                                            <segment title="Visited"/>
-                                            <segment title="Marked"/>
-                                            <segment title="Retired"/>
+                                            <segment title="unvisited"/>
+                                            <segment title="visited"/>
+                                            <segment title="marked"/>
+                                            <segment title="retired"/>
                                         </segments>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn3-k3-zKr">

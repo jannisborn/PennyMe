@@ -73,9 +73,9 @@ class Artwork: NSObject, MKAnnotation {
       case "unvisited":
         return .red
       case "visited":
-        return .yellow
-      case "collected":
         return .green
+      case "marked":
+        return .yellow
       case "retired":
         return .gray
       default:
