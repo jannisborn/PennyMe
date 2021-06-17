@@ -225,11 +225,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //            print("updating with vals from json")
             let titles_in_dict = Array(statusDict[0].keys)
             for machine in artworks{
-                if titles_in_dict.contains(machine.title!){
+                if titles_in_dict.contains(machine.id){
 //                    print("changed", machine.title!)
                     // remove old color and add new one
                     PennyMap.removeAnnotation(machine)
-                    machine.status = statusDict[0][machine.title!] ?? "unvisited"
+                    machine.status = statusDict[0][machine.id] ?? "unvisited"
                     PennyMap.addAnnotation(machine)
                 }
             }

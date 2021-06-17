@@ -71,10 +71,10 @@ class PinViewController: UIViewController {
     @objc func statusChanged(_ sender: UISegmentedControl) {
         let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .unvisited
         
-        saveStatusChange(machinetitle: self.pinData.title!, new_status: status.rawValue)
+        saveStatusChange(machineid: self.pinData.id, new_status: status.rawValue)
     }
     
-    func saveStatusChange(machinetitle: String, new_status: String){
+    func saveStatusChange(machineid: String, new_status: String){
         // find directory in documents folder corresponding to app data
         let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
@@ -103,7 +103,7 @@ class PinViewController: UIViewController {
         }
 //        print("loaded / new status dictionary", currentStatusDict)
         // update value
-        currentStatusDict[0][machinetitle] = new_status
+        currentStatusDict[0][machineid] = new_status
 //        print("after update value", currentStatusDict)
         
         // creating JSON out of the above array

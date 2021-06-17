@@ -17,13 +17,15 @@ class Artwork: NSObject, MKAnnotation {
     let link: String
     var status: String
     let coordinate: CLLocationCoordinate2D
+    let id: String
     
-    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
         self.link = link
         self.status = status
+        self.id = String(id)
         
         super.init()
     }
@@ -45,6 +47,7 @@ class Artwork: NSObject, MKAnnotation {
         locationName = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
         status = (properties["status"] as? String)!
+        id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
         super.init()
     }
