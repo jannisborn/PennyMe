@@ -14,6 +14,7 @@ class PinViewController: UIViewController {
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     
@@ -40,6 +41,8 @@ class PinViewController: UIViewController {
         let contentWidth = UIScreen.main.bounds.width
         
         addTitle(title: self.pinData.title!)
+        addAddress(address: self.pinData.locationName)
+        
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
@@ -140,5 +143,16 @@ class PinViewController: UIViewController {
         titleLabel.text = title
         titleLabel.font = UIFont(name: "Halvetica", size: 20.0)
         scrollView.addSubview(titleLabel)
+    }
+    
+    func addAddress(address: String){
+        let titleHeight = 100
+        let contentWidth = UIScreen.main.bounds.width
+
+        addressLabel.numberOfLines = 3
+        addressLabel.textAlignment = NSTextAlignment.center
+        addressLabel.text = address
+        addressLabel.font = UIFont(name: "Halvetica", size: 13.0)
+        scrollView.addSubview(addressLabel)
     }
 }

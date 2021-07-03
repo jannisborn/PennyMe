@@ -23,7 +23,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var searchFooter: SearchFooter!
     @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
-
+    
+    @IBOutlet weak var settingsbutton: UIButton!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
@@ -84,6 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(button)
         
         addMapTrackingButton()
+        addSettingsButton()
         toggleMapTypeButton()
     
     }
@@ -116,6 +118,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         PennyMap.addSubview(ownLocation)
     }
     
+    func addSettingsButton(){
+        let image = UIImage(systemName: "gearshape", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.gray)
+        settingsbutton.backgroundColor = .white
+        settingsbutton.layer.cornerRadius = 0.5 * settingsbutton.bounds.size.width
+        settingsbutton.clipsToBounds = true
+        settingsbutton.setImage(image, for: .normal)
+        settingsbutton.imageView?.contentMode = .scaleAspectFit
+        PennyMap.addSubview(settingsbutton)
+    }
     
     
     

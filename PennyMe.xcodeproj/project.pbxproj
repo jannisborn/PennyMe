@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		839CF440267B78AB00E259D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839CF43F267B78AB00E259D9 /* SettingsViewController.swift */; };
 		83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D226CC2620F4910050ED9E /* PinViewController.swift */; };
 		9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F421AB2261B9755004197B4 /* ArtworkViews.swift */; };
 		9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F612053230CAC2300F1D9DE /* Artwork.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		839CF43F267B78AB00E259D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		83D226CC2620F4910050ED9E /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		9F421AB2261B9755004197B4 /* ArtworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViews.swift; sourceTree = "<group>"; };
 		9F612053230CAC2300F1D9DE /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		9F9F31A32300B40900C0E854 /* PennyMe */ = {
 			isa = PBXGroup;
 			children = (
+				839CF43F267B78AB00E259D9 /* SettingsViewController.swift */,
 				83D226CC2620F4910050ED9E /* PinViewController.swift */,
 				9FC12D6A230E9B1E00016617 /* AboutViewController.swift */,
 				9F9F31A42300B40900C0E854 /* AppDelegate.swift */,
@@ -295,6 +298,7 @@
 				9FC12D6B230E9B1E00016617 /* AboutViewController.swift in Sources */,
 				9F9F31A52300B40900C0E854 /* AppDelegate.swift in Sources */,
 				9FF43BDA2621221A00BE3F6A /* SearchFooter.swift in Sources */,
+				839CF440267B78AB00E259D9 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,13 +474,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H8Z8J2BM93;
+				DEVELOPMENT_TEAM = AJ8J4VXPCN;
 				INFOPLIST_FILE = PennyMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PennyMe;
+				PRODUCT_BUNDLE_IDENTIFIER = PennyMe0.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -488,13 +492,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H8Z8J2BM93;
+				DEVELOPMENT_TEAM = AJ8J4VXPCN;
 				INFOPLIST_FILE = PennyMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PennyMe;
+				PRODUCT_BUNDLE_IDENTIFIER = PennyMe0.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
