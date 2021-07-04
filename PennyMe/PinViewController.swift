@@ -8,13 +8,13 @@
 
 import UIKit
 
-class PinViewController: UIViewController {
+class PinViewController: UITableViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var statusPicker: UISegmentedControl!
-    @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var statusPicker: UISegmentedControl!
+    @IBOutlet weak var websiteCell: UITableViewCell!
+    
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     
@@ -48,11 +48,11 @@ class PinViewController: UIViewController {
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
         
         // Website Button
-        websiteButton.setTitle("Website", for: .normal)
-        websiteButton.backgroundColor = .lightGray
-        websiteButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-        websiteButton.setTitleColor(.black, for: .normal)
-        websiteButton.addTarget(self, action: #selector(PinViewController.goToWebsite(_:)), for:.touchUpInside)
+//        websiteButton.setTitle("Website", for: .normal)
+//        websiteButton.backgroundColor = .lightGray
+//        websiteButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+//        websiteButton.setTitleColor(.black, for: .normal)
+//        websiteButton.addTarget(self, action: #selector(PinViewController.goToWebsite(_:)), for:.touchUpInside)
 
         }
     
@@ -70,6 +70,15 @@ class PinViewController: UIViewController {
         //Open the website when you click on the link.
         UIApplication.shared.openURL(URL(string: pinData.link)!)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+        {
+        if indexPath.section == 3
+            {
+                //Open the website when you click on the link.
+                UIApplication.shared.openURL(URL(string: pinData.link)!)
+            }
+        }
     
     @objc func statusChanged(_ sender: UISegmentedControl) {
         let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .unvisited
@@ -135,24 +144,16 @@ class PinViewController: UIViewController {
     }
     
     func addTitle(title: String){
-        let titleHeight = 100
-        let contentWidth = UIScreen.main.bounds.width
-
         titleLabel.numberOfLines = 3
         titleLabel.textAlignment = NSTextAlignment.center
         titleLabel.text = title
-        titleLabel.font = UIFont(name: "Halvetica", size: 20.0)
-        scrollView.addSubview(titleLabel)
+//        titleLabel.font = UIFont(name: "Halvetica", size: 20.0)
     }
     
     func addAddress(address: String){
-        let titleHeight = 100
-        let contentWidth = UIScreen.main.bounds.width
-
         addressLabel.numberOfLines = 3
-        addressLabel.textAlignment = NSTextAlignment.center
+//        addressLabel.textAlignment = NSTextAlignment.center
         addressLabel.text = address
-        addressLabel.font = UIFont(name: "Halvetica", size: 13.0)
-        scrollView.addSubview(addressLabel)
+//        addressLabel.font = UIFont(name: "Halvetica", size: 13.0)
     }
 }

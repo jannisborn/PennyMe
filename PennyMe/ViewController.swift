@@ -458,6 +458,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.selectedPin = filteredArtworks[indexPath.row]
+        // TODO: update map location to selected
+        let center = self.selectedPin!.coordinate
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.PennyMap.setRegion(region, animated: true)
+        locationResult.removeFromSuperview()
+        tableShown = false
+        searchController.searchBar.text = ""
+        
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
 }
