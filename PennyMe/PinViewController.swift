@@ -12,6 +12,7 @@ class PinViewController: UITableViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
     
@@ -40,9 +41,15 @@ class PinViewController: UITableViewController {
         super.viewDidLoad()
         let contentWidth = UIScreen.main.bounds.width
         
-        addTitle(title: self.pinData.title!)
-        addAddress(address: self.pinData.locationName)
+        // Add title, address and updated
+        titleLabel.numberOfLines = 3
+        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.text = self.pinData.title!
+        addressLabel.numberOfLines = 3
+        addressLabel.text = self.pinData.locationName
+        updatedLabel.text = self.pinData.last_updated
         
+        // default status
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
@@ -143,17 +150,4 @@ class PinViewController: UITableViewController {
         }
     }
     
-    func addTitle(title: String){
-        titleLabel.numberOfLines = 3
-        titleLabel.textAlignment = NSTextAlignment.center
-        titleLabel.text = title
-//        titleLabel.font = UIFont(name: "Halvetica", size: 20.0)
-    }
-    
-    func addAddress(address: String){
-        addressLabel.numberOfLines = 3
-//        addressLabel.textAlignment = NSTextAlignment.center
-        addressLabel.text = address
-//        addressLabel.font = UIFont(name: "Halvetica", size: 13.0)
-    }
 }
