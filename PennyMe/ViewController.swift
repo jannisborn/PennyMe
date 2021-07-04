@@ -108,13 +108,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // center to own location
     func addMapTrackingButton(){
-        let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.black)
+        let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .bold, scale: .large))?.withTintColor(.white)
         ownLocation.backgroundColor = .white
         ownLocation.layer.cornerRadius = 0.5 * ownLocation.bounds.size.width
         ownLocation.clipsToBounds = true
         ownLocation.setImage(image, for: .normal)
         ownLocation.imageView?.contentMode = .scaleAspectFit
         ownLocation.addTarget(self, action: #selector(ViewController.centerMapOnUserButtonClicked), for: .touchUpInside)
+        
+        // Add shadow
+        ownLocation.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        ownLocation.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        ownLocation.layer.shadowOpacity = 1.0
+        ownLocation.layer.shadowRadius = 0.0
+        ownLocation.layer.masksToBounds = false
+        
         PennyMap.addSubview(ownLocation)
     }
     
@@ -134,10 +142,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         var toggleMapImage:UIImage = UIImage(named: "map_symbol_without_border")!
         toggleMapImage = toggleMapImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        
         toggleMapButton.setImage(toggleMapImage, for: .normal)
         toggleMapButton.imageView?.contentMode = .scaleAspectFit
         toggleMapButton.addTarget(self, action: #selector(changeMapType), for: .touchUpInside)
+        
+        // Add shadow
+        toggleMapButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        toggleMapButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        toggleMapButton.layer.shadowOpacity = 1.0
+        toggleMapButton.layer.shadowRadius = 0.0
+        toggleMapButton.layer.masksToBounds = false
+        toggleMapButton.layer.cornerRadius = 4.0
+        
         self.view.addSubview(toggleMapButton)
     }
 
