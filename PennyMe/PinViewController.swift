@@ -53,14 +53,6 @@ class PinViewController: UITableViewController {
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
-        
-        // Website Button
-//        websiteButton.setTitle("Website", for: .normal)
-//        websiteButton.backgroundColor = .lightGray
-//        websiteButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-//        websiteButton.setTitleColor(.black, for: .normal)
-//        websiteButton.addTarget(self, action: #selector(PinViewController.goToWebsite(_:)), for:.touchUpInside)
-
         }
     
     func configureView() {
@@ -73,14 +65,10 @@ class PinViewController: UITableViewController {
       }
     }
     
-    @objc func goToWebsite(_ sender: UIButton){
-        //Open the website when you click on the link.
-        UIApplication.shared.openURL(URL(string: pinData.link)!)
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
         {
-        if indexPath.section == 3
+        // Website is section 4 of the table view currently
+        if indexPath.section == 4
             {
                 //Open the website when you click on the link.
                 UIApplication.shared.openURL(URL(string: pinData.link)!)
