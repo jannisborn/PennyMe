@@ -11822,7 +11822,7 @@
                 "name": "Zoom Erlebniswelt",
                 "active": true,
                 "area": "Germany",
-                "address": "Bleckstraße 64",
+                "address": "Bleckstraße 64, Gelsenkirchen, Germany",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=193091",
                 "internal_url": "null",
@@ -11830,7 +11830,7 @@
                 "longitude": "7.110161",
                 "id": 492,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-06-18"
             }
         },
         {
@@ -17150,7 +17150,7 @@
                 "name": "BärenPark / Tourist-Information",
                 "active": true,
                 "area": "Switzerland",
-                "address": "Klösterlisturz",
+                "address": "Klösterlisturz, Bern, Schweiz",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=76399",
                 "internal_url": "null",
@@ -17158,7 +17158,7 @@
                 "longitude": "7.459712",
                 "id": 714,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-06-18"
             }
         },
         {
@@ -17278,7 +17278,7 @@
                 "longitude": "7.856268694038387",
                 "id": 719,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-07-15"
             }
         },
         {
@@ -120959,6 +120959,30 @@
                 "id": 5039,
                 "notes": {},
                 "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.245868,
+                    53.578475
+                ]
+            },
+            "properties": {
+                "name": "Butjadingen Deich (dyke)",
+                "active": true,
+                "area": "Germany",
+                "address": "Nordseeallee, 26969 Butjadingen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.578475",
+                "longitude": "8.245868",
+                "id": 5040,
+                "notes": {},
+                "last_updated": "2021-07-15"
             }
         }
     ]
