@@ -23,7 +23,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var searchFooter: SearchFooter!
     @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
-
+    
+    @IBOutlet weak var settingsbutton: UIButton!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
@@ -84,10 +85,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(button)
         
         addMapTrackingButton()
+        addSettingsButton()
         toggleMapTypeButton()
     
+    }
     
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // each time the view appears, check colours of the pins
+        check_json_dict()
     }
     
     func setDelegates(){
@@ -120,6 +126,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         PennyMap.addSubview(ownLocation)
     }
     
+    func addSettingsButton(){
+        let image = UIImage(systemName: "gearshape", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.gray)
+        settingsbutton.backgroundColor = .white
+        settingsbutton.layer.cornerRadius = 0.5 * settingsbutton.bounds.size.width
+        settingsbutton.clipsToBounds = true
+        settingsbutton.setImage(image, for: .normal)
+        settingsbutton.imageView?.contentMode = .scaleAspectFit
+        PennyMap.addSubview(settingsbutton)
+    }
     
     
     
@@ -207,6 +222,47 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func check_json_dict(){
+//        print("checking json dictionary")
+        // initialize empty status dictionary
+        var statusDict = [[String: String]()]
+        //variable indicating whether we load something
+        var is_empty = true
+        // whole stuff required to read file
+        let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
+        let jsonFilePath = documentsDirectoryPath.appendingPathComponent("pin_status.json")
+        let fileManager = FileManager.default
+        var isDirectory: ObjCBool = false
+        if fileManager.fileExists(atPath: jsonFilePath!.absoluteString, isDirectory: &isDirectory) {
+//            print("file path exists, try load data")
+            do{
+                let data = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath!.absoluteString), options:.mappedIfSafe)
+                
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                statusDict = jsonResult as! [[String:String]]
+                is_empty = false
+            }
+            catch{
+                print("file already exists but could not be read", error)
+            }
+        }
+        // If we have saved some already:
+        if !is_empty{
+//            print("updating with vals from json")
+            let titles_in_dict = Array(statusDict[0].keys)
+            for machine in artworks{
+                if titles_in_dict.contains(machine.id){
+//                    print("changed", machine.title!)
+                    // remove old color and add new one
+                    PennyMap.removeAnnotation(machine)
+                    machine.status = statusDict[0][machine.id] ?? "unvisited"
+                    PennyMap.addAnnotation(machine)
+                }
+            }
+        }
+    }
+    
     // To load machine locations from JSON
     @available(iOS 13.0, *)
     func loadInitialData() {
@@ -260,11 +316,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Whether we are currently filtering
     var isFiltering: Bool {
       return searchController.isActive && !isSearchBarEmpty
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
     }
     
     
@@ -423,6 +474,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.selectedPin = filteredArtworks[indexPath.row]
+        // TODO: update map location to selected
+        let center = self.selectedPin!.coordinate
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.PennyMap.setRegion(region, animated: true)
+        locationResult.removeFromSuperview()
+        tableShown = false
+        searchController.searchBar.text = ""
+        
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
 }

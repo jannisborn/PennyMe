@@ -17,13 +17,17 @@ class Artwork: NSObject, MKAnnotation {
     let link: String
     var status: String
     let coordinate: CLLocationCoordinate2D
+    let id: String
+    let last_updated: String
     
-    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
         self.link = link
         self.status = status
+        self.id = String(id)
+        self.last_updated = last_updated
         
         super.init()
     }
@@ -45,6 +49,8 @@ class Artwork: NSObject, MKAnnotation {
         locationName = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
         status = (properties["status"] as? String)!
+        last_updated = (properties["last_updated"] as? String)!
+        id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
         super.init()
     }
@@ -73,9 +79,9 @@ class Artwork: NSObject, MKAnnotation {
       case "unvisited":
         return .red
       case "visited":
-        return .yellow
-      case "collected":
         return .green
+      case "marked":
+        return .yellow
       case "retired":
         return .gray
       default:
