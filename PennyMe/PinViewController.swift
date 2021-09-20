@@ -15,6 +15,7 @@ class PinViewController: UITableViewController {
     @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
+    @IBOutlet weak var imageview: UIImageView!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -39,7 +40,6 @@ class PinViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let contentWidth = UIScreen.main.bounds.width
         
         // Add title, address and updated
         titleLabel.numberOfLines = 3
@@ -53,6 +53,19 @@ class PinViewController: UITableViewController {
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
+        
+        // load image
+            let urlString = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/1200px-Test-Logo.svg.png"
+            guard let url = URL(string: urlString) else { return }
+            print(url)
+            guard let imageData = try? Data(contentsOf: url) else {
+                return
+            }
+            let image = UIImage(data: imageData)
+            imageview.image = image
+        // WORKING test
+        //        imageview.image = UIImage(named: "maps")
+           
         }
     
     func configureView() {
