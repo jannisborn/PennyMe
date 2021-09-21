@@ -54,18 +54,13 @@ class PinViewController: UITableViewController {
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
         
-        // load image
-            let urlString = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/1200px-Test-Logo.svg.png"
-            guard let url = URL(string: urlString) else { return }
-            print(url)
-            guard let imageData = try? Data(contentsOf: url) else {
-                return
-            }
-            let image = UIImage(data: imageData)
-            imageview.image = image
-        // WORKING test
-        //        imageview.image = UIImage(named: "maps")
-           
+        // load image asynchronously
+        let urlString = self.pinData.link_to_image
+        guard let imageUrl = URL(string: urlString) else { return }
+        self.imageview.loadurl(url: imageUrl)
+        
+        // Next step: Scale table cell to fit any image https://stackoverflow.com/questions/44338392/swift-dynamic-uitableviewcell-size-based-on-image-aspect-ratio
+        
         }
     
     func configureView() {
@@ -152,3 +147,18 @@ class PinViewController: UITableViewController {
     }
     
 }
+
+extension UIImageView {
+    func loadurl(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
+

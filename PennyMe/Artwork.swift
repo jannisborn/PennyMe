@@ -19,8 +19,9 @@ class Artwork: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let id: String
     let last_updated: String
+    let link_to_image: String
     
-    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String) {
+    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, link_to_image: String) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
@@ -28,6 +29,7 @@ class Artwork: NSObject, MKAnnotation {
         self.status = status
         self.id = String(id)
         self.last_updated = last_updated
+        self.link_to_image = link_to_image
         
         super.init()
     }
@@ -52,6 +54,7 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
+        link_to_image = String((properties["image_link"]  as? String ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/1200px-Test-Logo.svg.png")!)
         super.init()
     }
     
