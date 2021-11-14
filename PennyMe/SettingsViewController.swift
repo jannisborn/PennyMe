@@ -16,6 +16,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        reportProblemButton!.titleLabel?.text = "Report a problem"
         reportProblemButton.tintColor = UIColor.black
         reportProblemButton.addTarget(self, action: #selector(reportProblem), for: .touchUpInside)
     }
