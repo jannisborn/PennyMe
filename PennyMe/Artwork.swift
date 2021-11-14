@@ -54,7 +54,8 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
-        link_to_image = String((properties["image_link"]  as? String ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/1200px-Test-Logo.svg.png")!)
+        link_to_image = String((properties["image_link"]  as? String ??
+        "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG")!)
         super.init()
     }
     

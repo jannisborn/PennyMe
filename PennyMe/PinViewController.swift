@@ -58,10 +58,16 @@ class PinViewController: UITableViewController {
         let urlString = self.pinData.link_to_image
         guard let imageUrl = URL(string: urlString) else { return }
         self.imageview.loadurl(url: imageUrl)
-        
-        // Next step: Scale table cell to fit any image https://stackoverflow.com/questions/44338392/swift-dynamic-uitableviewcell-size-based-on-image-aspect-ratio
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)));
+        self.imageview.isUserInteractionEnabled = true
+        self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
         }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.performSegue(withIdentifier: "bigImage", sender: self)
+    }
     
     func configureView() {
       if let artwork = artwork,
