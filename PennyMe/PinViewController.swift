@@ -152,6 +152,14 @@ class PinViewController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "bigImage") {
+            let destinationViewController = segue.destination as! ZoomViewController
+            destinationViewController.link_to_image = self.pinData.link_to_image
+        }
+        
+    }
+    
 }
 
 extension UIImageView {

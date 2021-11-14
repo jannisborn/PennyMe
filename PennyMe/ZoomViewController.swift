@@ -13,16 +13,15 @@ class ZoomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var bigImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var link_to_image: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString = "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG"
-        guard let imageUrl = URL(string: urlString) else { return }
+        guard let imageUrl = URL(string: self.link_to_image) else { return }
         self.bigImageView.loadurl(url: imageUrl)
 
-
         scrollView.delegate = self
-
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 4.0
         
