@@ -15,6 +15,7 @@ class PinViewController: UITableViewController {
     @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
+    @IBOutlet weak var imageview: UIImageView!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -39,7 +40,6 @@ class PinViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let contentWidth = UIScreen.main.bounds.width
         
         // Add title, address and updated
         titleLabel.numberOfLines = 3
@@ -53,7 +53,26 @@ class PinViewController: UITableViewController {
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
+        
+        // load image asynchronously
+        self.imageview.getimage(id: self.pinData.id, exists: self.pinData.has_image)
+        // initialize tap gesture to enlarge image
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)));
+        self.imageview.isUserInteractionEnabled = true
+        self.imageview.addGestureRecognizer(tapGestureRecognizer)
+        
         }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        if self.pinData.has_image{
+            self.performSegue(withIdentifier: "bigImage", sender: self)
+        }
+        else{
+            //open mailto url
+            UIApplication.shared.openURL(URL(string: "mailto:wnina@ethz.de")!)
+        }
+    }
     
     func configureView() {
       if let artwork = artwork,
@@ -138,4 +157,39 @@ class PinViewController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "bigImage") {
+            let destinationViewController = segue.destination as! ZoomViewController
+            destinationViewController.image = self.imageview.image
+        }
+        
+    }
+    
 }
+
+extension UIImageView {
+    func loadurl(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+    
+    func getimage(id: String, exists: Bool){
+        if exists{
+            let link_to_image = "\(id).jpg"
+//            "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG"
+            guard let imageUrl = URL(string: link_to_image) else { return }
+            self.loadurl(url: imageUrl)
+        }
+        else{
+            self.image = UIImage(named: "default_image")
+        }
+    }
+}
+

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
 		839CF440267B78AB00E259D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839CF43F267B78AB00E259D9 /* SettingsViewController.swift */; };
 		83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D226CC2620F4910050ED9E /* PinViewController.swift */; };
 		9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F421AB2261B9755004197B4 /* ArtworkViews.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8319D8CF27414AC100E97D93 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		839CF43F267B78AB00E259D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		83D226CC2620F4910050ED9E /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		9F421AB2261B9755004197B4 /* ArtworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViews.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				9F9F31A62300B40900C0E854 /* ViewController.swift */,
 				9F612053230CAC2300F1D9DE /* Artwork.swift */,
 				9F9F31A82300B40900C0E854 /* Main.storyboard */,
+				8319D8CF27414AC100E97D93 /* ZoomViewController.swift */,
 				9F9F31AD2300B40A00C0E854 /* LaunchScreen.storyboard */,
 				9F9F31B02300B40A00C0E854 /* Info.plist */,
 				9F421AB2261B9755004197B4 /* ArtworkViews.swift */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9F31A72300B40900C0E854 /* ViewController.swift in Sources */,
+				8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */,
 				9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */,
 				83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */,
 				9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */,
