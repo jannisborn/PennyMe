@@ -35,9 +35,6 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
         mapsButton.setBackgroundImage(UIImage(named: "maps"), for: UIControl.State())
         rightCalloutAccessoryView = mapsButton
         
-        // Create left button
-        leftCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        
         // Multiline subtitles
         let detailLabel = UILabel()
         detailLabel.numberOfLines = 0

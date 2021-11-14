@@ -55,10 +55,9 @@ class PinViewController: UITableViewController {
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
         
         // load image asynchronously
-        let urlString = self.pinData.link_to_image
-        guard let imageUrl = URL(string: urlString) else { return }
-        self.imageview.loadurl(url: imageUrl)
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)));
+        self.imageview.getimage(id: self.pinData.id, exists: self.pinData.has_image)
+        // initialize tap gesture to enlarge image
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)));
         self.imageview.isUserInteractionEnabled = true
         self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
@@ -66,7 +65,13 @@ class PinViewController: UITableViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        self.performSegue(withIdentifier: "bigImage", sender: self)
+        if self.pinData.has_image{
+            self.performSegue(withIdentifier: "bigImage", sender: self)
+        }
+        else{
+            //open mailto url
+            UIApplication.shared.openURL(URL(string: "mailto:nwiedemann@uos.de")!)
+        }
     }
     
     func configureView() {
@@ -155,7 +160,7 @@ class PinViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "bigImage") {
             let destinationViewController = segue.destination as! ZoomViewController
-            destinationViewController.link_to_image = self.pinData.link_to_image
+            destinationViewController.image = self.imageview.image
         }
         
     }
@@ -172,6 +177,20 @@ extension UIImageView {
                     }
                 }
             }
+        }
+    }
+    
+    func getimage(id: String, exists: Bool){
+        if exists{
+            print("Image exists")
+            let link_to_image = "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG" // "\(id).jpg" TODO
+            print("LINK", link_to_image)
+            guard let imageUrl = URL(string: link_to_image) else { return }
+            self.loadurl(url: imageUrl)
+        }
+        else{
+            print("Image does not exist")
+            self.image = UIImage(named: "default_image")
         }
     }
 }
