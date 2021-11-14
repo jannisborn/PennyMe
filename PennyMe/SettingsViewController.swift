@@ -10,24 +10,18 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    @IBOutlet weak var reportProblemButton: UIButton!
     // @IBOutlet weak var aboutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Do any additional setup after loading the view.
+        reportProblemButton.tintColor = UIColor.black
+        reportProblemButton.addTarget(self, action: #selector(reportProblem), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func reportProblem (sender: UIButton!){
+        UIApplication.shared.openURL(URL(string: "mailto:wnina@ethz.de")!)
     }
-    */
 
 }

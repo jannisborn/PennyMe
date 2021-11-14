@@ -70,7 +70,7 @@ class PinViewController: UITableViewController {
         }
         else{
             //open mailto url
-            UIApplication.shared.openURL(URL(string: "mailto:nwiedemann@uos.de")!)
+            UIApplication.shared.openURL(URL(string: "mailto:wnina@ethz.de")!)
         }
     }
     
@@ -182,14 +182,12 @@ extension UIImageView {
     
     func getimage(id: String, exists: Bool){
         if exists{
-            print("Image exists")
-            let link_to_image = "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG" // "\(id).jpg" TODO
-            print("LINK", link_to_image)
+            let link_to_image = "\(id).jpg"
+//            "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG"
             guard let imageUrl = URL(string: link_to_image) else { return }
             self.loadurl(url: imageUrl)
         }
         else{
-            print("Image does not exist")
             self.image = UIImage(named: "default_image")
         }
     }

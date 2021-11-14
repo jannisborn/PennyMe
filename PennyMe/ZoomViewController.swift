@@ -18,13 +18,15 @@ class ZoomViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        guard let imageUrl = URL(string: self.link_to_image) else { return }
-//        self.bigImageView.loadurl(url: imageUrl)
         self.bigImageView.image = image
-
+        self.view.addSubview(bigImageView)
         scrollView.delegate = self
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 4.0
+        
+        let minScale = min(scrollView.frame.size.width / bigImageView.frame.size.width, scrollView.frame.size.height / bigImageView.frame.size.height);
+        scrollView.minimumZoomScale = minScale
+        scrollView.maximumZoomScale = 4.0 * minScale
+        scrollView.contentSize = bigImageView.frame.size
+        scrollView.addSubview(bigImageView)
         
     }
     
