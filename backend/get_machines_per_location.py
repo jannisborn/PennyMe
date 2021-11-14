@@ -3,7 +3,7 @@ Country based download of HTML from PennyCollector.com
 This script does:
 1. Parsing the HTML and extracting machine name/subtitle and link.
 2. Searches the location name on a map and saves the geographic coordinates
-3. Saves data to .csv and .json
+3. Saves data to .json
 """
 
 import json
