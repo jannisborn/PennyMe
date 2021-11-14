@@ -12686,7 +12686,7 @@
                 "name": "Jennerbahn",
                 "active": true,
                 "area": "Germany",
-                "address": "(Unknown at which station the machine is)",
+                "address": "Schönau am Königssee",
                 "status": "unvisited",
                 "external_url": "",
                 "internal_url": "null",
@@ -12694,7 +12694,10 @@
                 "longitude": "12.993986",
                 "id": 528,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-04-05",
+                "logs": {
+                    "2021-04-05": "It's unknown at which platform/level of the lift the machine is"
+                }
             }
         },
         {
@@ -14118,8 +14121,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.880854,
-                    53.02438
+                    9.873242,
+                    53.022797
                 ]
             },
             "properties": {
@@ -14130,11 +14133,14 @@
                 "status": "unvisited",
                 "external_url": "TODO",
                 "internal_url": "null",
-                "latitude": "53.024380",
-                "longitude": "9.880854",
+                "latitude": "53.0227970",
+                "longitude": "9.873242",
                 "id": 588,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-04-05",
+                "logs": {
+                    "2021-04-05": "The exact location of the machine in the park is not known"
+                }
             }
         },
         {
@@ -17075,7 +17081,7 @@
                 ]
             },
             "properties": {
-                "name": "Ütliberg",
+                "name": "Ütliberg Kulm",
                 "active": true,
                 "area": "Switzerland",
                 "address": "8143 Zurich, Switzerland",
@@ -17278,7 +17284,10 @@
                 "longitude": "7.856268694038387",
                 "id": 719,
                 "notes": {},
-                "last_updated": "2021-07-15"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Requires 2 CHF + 20 Rappen."
+                }
             }
         },
         {
@@ -17412,17 +17421,20 @@
             },
             "properties": {
                 "name": "Alpamare",
-                "active": true,
+                "active": false,
                 "area": "Switzerland",
                 "address": "Gwattstrasse 12",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=303431",
                 "internal_url": "null",
                 "latitude": "47.199183",
                 "longitude": "8.791195",
                 "id": 725,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Could not find machine before the entrance anymore. Checked both levels, but it might have been move inside the waterpark (behind paywall)."
+                }
             }
         },
         {
@@ -19542,23 +19554,26 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    17.5108737,
-                    46.8025268
+                    17.508120,
+                    46.787347
                 ]
             },
             "properties": {
                 "name": "Badacsonytomaj Port",
                 "active": true,
                 "area": "Hungary",
-                "address": "",
+                "address": "Badacsonytomaj, Badacsony (Balaton), 8261 Hungary",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=257644",
                 "internal_url": "null",
-                "latitude": "46.8025268",
-                "longitude": "17.5108737",
+                "latitude": "46.787347",
+                "longitude": "17.508120",
                 "id": 814,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-04-05": "Requires 2x 100 + 5 Hungarian forint. Watch out for the other machine nearby."
+                }
             }
         },
         {
@@ -19566,23 +19581,26 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    17.6560695,
-                    46.7739764
+                    17.648751,
+                    46.780481
                 ]
             },
             "properties": {
-                "name": "Balatonboglár Port",
+                "name": "Balatonboglar Port",
                 "active": true,
                 "area": "Hungary",
-                "address": "",
+                "address": "Balatonboglar (Balaton), 8630 Hungary",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=257451",
                 "internal_url": "null",
-                "latitude": "46.7739764",
-                "longitude": "17.6560695",
+                "latitude": "46.780481",
+                "longitude": "17.648751",
                 "id": 815,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Requires 2x 100 + 5 Hungarian forint."
+                }
             }
         },
         {
@@ -19590,23 +19608,26 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    17.8851202,
-                    46.9599039
+                    17.893787,
+                    46.953151
                 ]
             },
             "properties": {
                 "name": "Balatonfüred Port",
                 "active": true,
                 "area": "Hungary",
-                "address": "",
+                "address": "Balatonfüred, Vitorlás ter (Balaton), 8230 Hungary",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=256776",
                 "internal_url": "null",
-                "latitude": "46.9599039",
-                "longitude": "17.8851202",
+                "latitude": "46.953151",
+                "longitude": "17.893787",
                 "id": 816,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Machine location not exactly clear. Requires 2x 100 + 5 Hungarian forint"
+                }
             }
         },
         {
@@ -20382,23 +20403,26 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    17.2664565,
-                    46.7640879
+                    17.256292,
+                    46.757892
                 ]
             },
             "properties": {
-                "name": "Keszthely Port",
+                "name": "Keszthely Port (Molo)",
                 "active": true,
                 "area": "Hungary",
-                "address": "",
+                "address": "Keszthely, Kikötő (Balaton), 8360 Hungary",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=257282",
                 "internal_url": "null",
-                "latitude": "46.7640879",
-                "longitude": "17.2664565",
+                "latitude": "46.757892",
+                "longitude": "17.256292",
                 "id": 849,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Requires 2x 100 + 5 Hungarian forint."
+                }
             }
         },
         {
@@ -20603,10 +20627,10 @@
                 ]
             },
             "properties": {
-                "name": "Siófok Port",
+                "name": "Siofok Port",
                 "active": true,
                 "area": "Hungary",
-                "address": "Krúdy sétány",
+                "address": "Krúdy sétány, Mártírok útja 17, 8600 Siofok, Hungary",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=257280",
                 "internal_url": "null",
@@ -20614,7 +20638,10 @@
                 "longitude": "18.0447925",
                 "id": 858,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Requires 2x 100 + 5 Hungarian forint."
+                }
             }
         },
         {
@@ -20750,7 +20777,7 @@
                 "name": "Tihany Port",
                 "active": true,
                 "area": "Hungary",
-                "address": "Rév u. 1.",
+                "address": "Rév u. 1., 8237 Tihany, Hungary",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=257277",
                 "internal_url": "null",
@@ -20758,7 +20785,7 @@
                 "longitude": "17.8901768",
                 "id": 864,
                 "notes": {},
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-11-14"
             }
         },
         {
@@ -120983,6 +121010,87 @@
                 "id": 5040,
                 "notes": {},
                 "last_updated": "2021-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.900720,
+                    46.879730
+                ]
+            },
+            "properties": {
+                "name": "Szantod Port",
+                "active": true,
+                "area": "Hungary",
+                "address": "Szantod, Tihany u. 9 (Balaton), 8622 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.879730",
+                "longitude": "17.900720",
+                "id": 5041,
+                "notes": {},
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Requires 2x 100 + 5 Hungarian forint."
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.508880,
+                    46.786980
+                ]
+            },
+            "properties": {
+                "name": "Badacsonytomaj Port (Machine 2)",
+                "active": true,
+                "area": "Hungary",
+                "address": "Badacsonytomaj, Badacsony (Balaton), 8261 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.786980",
+                "longitude": "17.508880",
+                "id": 5042,
+                "notes": {},
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-04-05": "Watch out for the other machine nearby."
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.313653,
+                    46.754447
+                ]
+            },
+            "properties": {
+                "name": "Vonyarcvashegy Lido",
+                "active": true,
+                "area": "Hungary",
+                "address": "Vonyarcvashegy (Balaton), 8314 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.754447",
+                "longitude": "17.313653",
+                "id": 5043,
+                "notes": {},
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-04-05": "Requires 2x 100 + 5 Hungarian forint."
+                }
             }
         }
     ]
