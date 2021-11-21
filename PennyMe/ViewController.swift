@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import Contacts
 
+let locationManager = CLLocationManager()
 
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -26,7 +27,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingsbutton: UIButton!
     
-    let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     // Array for annotation database
     var artworks: [Artwork] = []
@@ -172,8 +172,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setupLocationManager(){
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        PennyMe.locationManager.delegate = self
+        PennyMe.locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     // Check whether this app has location permission
@@ -188,7 +188,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Show alert instructing how to turn on permissions
             break
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            PennyMe.locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
             // Show alert that location can not be accessed
@@ -201,7 +201,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Set the initial map location
     func centerViewOnUserLocation() {
         // Default to user location if accessible
-        if let location = locationManager.location?.coordinate{
+        if let location = PennyMe.locationManager.location?.coordinate{
             let region = MKCoordinateRegion.init(
                 center:location,
                 latitudinalMeters: regionInMeters,
@@ -385,6 +385,7 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations : [CLLocation]) {
         // Update position on map
         guard let location = locations.last else {return}
+        print("Location change", location)
         // Below code only executes if locations.last exists
         let center = CLLocationCoordinate2D(
             latitude: location.coordinate.latitude,
