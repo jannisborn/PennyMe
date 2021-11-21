@@ -70,7 +70,10 @@ class PinViewController: UITableViewController {
         }
         else{
             //open mailto url
-            UIApplication.shared.openURL(URL(string: "mailto:wnina@ethz.de")!)
+            let mailtostring = String(
+                "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
+            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
+            UIApplication.shared.openURL(URL(string: mailtostring)!)
         }
     }
     
@@ -183,7 +186,6 @@ extension UIImageView {
     func getimage(id: String, exists: Bool){
         if exists{
             let link_to_image = "http://37.120.179.15:8000/\(id).jpg"
-//            "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG"
             guard let imageUrl = URL(string: link_to_image) else { return }
             self.loadurl(url: imageUrl)
         }
