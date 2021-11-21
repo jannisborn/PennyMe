@@ -292,7 +292,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func filterContentForSearchText(_ searchText: String,
                                     category: Artwork? = nil) {
     filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
-        return artwork.title!.lowercased().contains(searchText.lowercased())
+        return artwork.text.lowercased().contains(searchText.lowercased())
         }
         
         // This sets the table view frame to cover exactly the entire underlying map
@@ -420,9 +420,6 @@ extension ViewController: UISearchResultsUpdating {
         filterContentForSearchText(searchBar.text!)
     }
     
-//    let category = Candy.Category(rawValue:
-//      searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
-//    filterContentForSearchText(searchBar.text!, category: category)
   }
 }
 
