@@ -182,7 +182,7 @@ extension UIImageView {
     
     func getimage(id: String, exists: Bool){
         if exists{
-            let link_to_image = "\(id).jpg"
+            let link_to_image = "http://37.120.179.15:8000/\(id).jpg"
 //            "https://pennybiz.com/images/cms/full/Old%20fashion%202.JPG"
             guard let imageUrl = URL(string: link_to_image) else { return }
             self.loadurl(url: imageUrl)
