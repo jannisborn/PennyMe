@@ -20,6 +20,7 @@ class Artwork: NSObject, MKAnnotation {
     let id: String
     let last_updated: String
     let has_image: Bool
+    let text: String
     
     init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, has_image: Bool) {
         self.title = title
@@ -30,6 +31,7 @@ class Artwork: NSObject, MKAnnotation {
         self.id = String(id)
         self.last_updated = last_updated
         self.has_image = has_image
+        self.text = self.title! + self.locationName
         
         super.init()
     }
@@ -55,6 +57,8 @@ class Artwork: NSObject, MKAnnotation {
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
         has_image = Bool((properties["has_image"]  as? Bool ?? false)!)
+        text = title! + locationName
+        
         super.init()
     }
     
