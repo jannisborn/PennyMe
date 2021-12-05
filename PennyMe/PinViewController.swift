@@ -8,6 +8,8 @@
 
 import UIKit
 
+var FOUNDIMAGE : Bool = false
+
 class PinViewController: UITableViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,7 +57,7 @@ class PinViewController: UITableViewController {
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
         
         // load image asynchronously
-        self.imageview.getimage(id: self.pinData.id, exists: self.pinData.has_image)
+        self.imageview.getImage(id: self.pinData.id)
         // initialize tap gesture to enlarge image
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)));
         self.imageview.isUserInteractionEnabled = true
@@ -65,7 +67,7 @@ class PinViewController: UITableViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        if self.pinData.has_image{
+        if FOUNDIMAGE{
             self.performSegue(withIdentifier: "bigImage", sender: self)
         }
         else{
@@ -171,27 +173,28 @@ class PinViewController: UITableViewController {
 }
 
 extension UIImageView {
-    func loadurl(url: URL) {
+    func loadURL(url: URL) {
+        FOUNDIMAGE = false
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image
                     }
+                    FOUNDIMAGE = true
                 }
             }
         }
-    }
-    
-    func getimage(id: String, exists: Bool){
-        if exists{
-            let link_to_image = "http://37.120.179.15:8000/\(id).jpg"
-            guard let imageUrl = URL(string: link_to_image) else { return }
-            self.loadurl(url: imageUrl)
-        }
-        else{
+        // If link cannot be found, show default image
+        if !FOUNDIMAGE {
             self.image = UIImage(named: "default_image")
         }
+    }
+    
+    func getImage(id: String){
+        let link_to_image = "http://37.120.179.15:8000/\(id).jpg"
+        guard let imageUrl = URL(string: link_to_image) else { return }
+        self.loadURL(url: imageUrl)
     }
 }
 

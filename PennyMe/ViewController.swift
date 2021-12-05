@@ -135,6 +135,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         settingsbutton.clipsToBounds = true
         settingsbutton.setImage(image, for: .normal)
         settingsbutton.imageView?.contentMode = .scaleAspectFit
+
+        // Add shadow
+        settingsbutton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        settingsbutton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        settingsbutton.layer.shadowOpacity = 1.0
+        settingsbutton.layer.shadowRadius = 0.0
+        settingsbutton.layer.masksToBounds = false
+
         PennyMap.addSubview(settingsbutton)
     }
     
