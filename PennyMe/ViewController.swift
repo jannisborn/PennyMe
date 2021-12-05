@@ -11,6 +11,8 @@ import MapKit
 import CoreLocation
 import Contacts
 
+let locationManager = CLLocationManager()
+let LAT_DEGREE_TO_KM = 110.948
 
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -26,7 +28,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingsbutton: UIButton!
     
-    let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     // Array for annotation database
     var artworks: [Artwork] = []
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Searchbar variables
     let searchController = UISearchController(searchResultsController: nil)
     var filteredArtworks: [Artwork] = []
+    var pastNearby : Array<Int> = []
     
     // To display the search results
     lazy var locationResult : UITableView = UITableView(frame: PennyMap.frame)
@@ -133,6 +135,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         settingsbutton.clipsToBounds = true
         settingsbutton.setImage(image, for: .normal)
         settingsbutton.imageView?.contentMode = .scaleAspectFit
+
+        // Add shadow
+        settingsbutton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        settingsbutton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        settingsbutton.layer.shadowOpacity = 1.0
+        settingsbutton.layer.shadowRadius = 0.0
+        settingsbutton.layer.masksToBounds = false
+
         PennyMap.addSubview(settingsbutton)
     }
     
@@ -172,8 +182,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setupLocationManager(){
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        PennyMe.locationManager.delegate = self
+        PennyMe.locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     // Check whether this app has location permission
@@ -188,12 +198,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Show alert instructing how to turn on permissions
             break
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            PennyMe.locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
             // Show alert that location can not be accessed
             break
         case .authorizedAlways:
+            PennyMap.showsUserLocation = true
+            centerViewOnUserLocation()
             break
         }
     }
@@ -201,7 +213,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Set the initial map location
     func centerViewOnUserLocation() {
         // Default to user location if accessible
-        if let location = locationManager.location?.coordinate{
+        if let location = PennyMe.locationManager.location?.coordinate{
             let region = MKCoordinateRegion.init(
                 center:location,
                 latitudinalMeters: regionInMeters,
@@ -385,6 +397,18 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations : [CLLocation]) {
         // Update position on map
         guard let location = locations.last else {return}
+
+        // Get closest pins
+        let lonCurrent = location.coordinate.longitude // 168.823 // 8.5490 // here are we!
+        let latCurrent =  location.coordinate.latitude // -44.9408  // 47.3899
+        let (pennyCounter, minDist, closestID, foundIndices) = getCandidates(artworks: artworks, curLat: latCurrent, curLon: lonCurrent, radius:radius)
+//        print("Found", pennyCounter, "machines, the closest is", minDist, closestID, artworks[closestID].title)
+        // check whether we have found any new machines
+        let doPush = determinePush(currentNearby: foundIndices)
+        if doPush && (pennyCounter > 0){
+            let notificationString = "There are \(pennyCounter) machines nearby. The closest is \(round(minDist * 10)/10)km away \(artworks[closestID].title!)"
+            pushNotification(notificationString: notificationString)
+        }
         // Below code only executes if locations.last exists
         let center = CLLocationCoordinate2D(
             latitude: location.coordinate.latitude,
@@ -396,11 +420,132 @@ extension ViewController: CLLocationManagerDelegate {
             longitudinalMeters: regionInMeters
         )
         PennyMap.setRegion(region, animated: true)
-
-
-
+    }
+    
+    // Send user a local notification if they have the app running in the bg
+    func pushNotification(notificationString: String) {
+        print("This is the push notification")
+        let notification = UILocalNotification()
+        notification.alertAction = "Check PennyMe"
+        notification.alertBody = notificationString
+        notification.fireDate = Date(timeIntervalSinceNow: 1)
+        UIApplication.shared.scheduleLocalNotification(notification)
+    }
+    
+    func determinePush(currentNearby:Array<Int>) -> Bool {
+        // Decide whether a push notification is sent to the user.
+        // If any of the found nearby machines has not been nearby at previous lookup, send a notification.
+        var doPush = false
+        for i in currentNearby {
+            if !pastNearby.contains(i) {
+                doPush = true
+                break
+            }
+        }
+        self.pastNearby = currentNearby
+        return doPush
     }
 
+    // Function to measure distances to pins
+    func getCoordinateRange(lat: Double, long: Double, radius: Double) -> (Double, Double, Double, Double) {
+        
+        // Determine the range of latitude/longitude values that we have to search
+        let latDegreeChange = radius / LAT_DEGREE_TO_KM
+        let longDegreeChange = radius / (LAT_DEGREE_TO_KM * cos(lat*(Double.pi/180)))
+        let minLat = lat - latDegreeChange
+        let maxLat = lat + latDegreeChange
+        let minLong = long - longDegreeChange
+        let maxLong = long + longDegreeChange
+        
+        return (minLat, maxLat, minLong, maxLong)
+    }
+    
+    // Function to compute haversine distance between two points
+    func haversineDinstance(la1: Double, lo1: Double, la2: Double, lo2: Double, radius: Double = 6367444.7) -> Double {
+
+        let haversin = { (angle: Double) -> Double in
+            return (1 - cos(angle))/2
+        }
+
+        let ahaversin = { (angle: Double) -> Double in
+            return 2*asin(sqrt(angle))
+        }
+
+        // Converts from degrees to radians
+        let dToR = { (angle: Double) -> Double in
+            return (angle / 360) * 2 * Double.pi
+        }
+
+        let lat1 = dToR(la1)
+        let lon1 = dToR(lo1)
+        let lat2 = dToR(la2)
+        let lon2 = dToR(lo2)
+
+        return radius * ahaversin(haversin(lat2 - lat1) + cos(lat1) * cos(lat2) * haversin(lon2 - lon1))
+    }
+    func searchLatIndex(artworks: [Artwork], minLat: Double, curIndex: Int, totalIndex: Int) -> Int{
+        let curLength = artworks.count
+        if curLength == 1{
+            return totalIndex
+        }
+        if artworks[curIndex].coordinate.latitude > minLat{
+            let nextIndex = Int(curIndex/2)
+            return searchLatIndex(artworks: Array(artworks[0..<curIndex]), minLat: minLat, curIndex: nextIndex, totalIndex: totalIndex - curIndex + nextIndex)
+        }
+        else if artworks[curIndex].coordinate.latitude < minLat{
+            let nextMiddle = (Double(curLength-curIndex)/2.0)
+            let nextIndex = Int(ceil(nextMiddle))
+            return searchLatIndex(artworks: Array(artworks[curIndex..<curLength]), minLat: minLat, curIndex: nextIndex, totalIndex: nextIndex + totalIndex)
+        }
+        else{
+            return totalIndex
+        }
+    }
+
+    func getCandidates(artworks: [Artwork], curLat:Double, curLon: Double, radius: Double) -> (Int, Double, Int, [Int]){
+        let (minLat, maxLat, minLon, maxLon) = getCoordinateRange(lat: curLat, long: curLon, radius: radius)
+        print("min and max", (minLat, maxLat, minLon, maxLon))
+        
+        let guess = Int(artworks.count/2)
+        let startIndex = searchLatIndex(artworks: artworks, minLat: minLat, curIndex: guess, totalIndex: guess)
+
+        // helpers
+        var lat: Double
+        var lon: Double
+        var index = startIndex
+        // returns
+        var minDist = radius
+        var pennyCounter = 0
+        var closestID = 0
+        var foundIndices: [Int] = []
+        
+        // iterate over artworks
+        for artwork in artworks[startIndex..<artworks.count] {
+            lat = artwork.coordinate.latitude
+            lon = artwork.coordinate.longitude
+            if lat > maxLat {
+                break
+            }
+
+            // Check whether the pin is in the square
+            if minLon < lon && lon < maxLon && artwork.status == "unvisited"{
+                let distInKm = haversineDinstance(la1: curLat, lo1: curLon, la2: lat, lo2: lon)/1000
+                // check whether in circle
+                if distInKm < radius{
+                    pennyCounter += 1
+                    if distInKm < minDist{
+                        minDist = distInKm
+                        closestID = index
+                    }
+                    foundIndices.append(index)
+                }
+            }
+            index += 1
+
+        }
+        return (pennyCounter, minDist, closestID, foundIndices)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // called if authorization has changed
         checkLocationAuthorization()

@@ -9,15 +9,24 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+        UNUserNotificationCenter.current().delegate = self
+        
         return true
     }
+// Insert this to enable foreground notifications
+//    func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                                willPresent notification: UNNotification,
+//                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        completionHandler([.alert, .sound, .badge])
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -25,8 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // check whether push notifications are enabled
+        if UserDefaults.standard.bool(forKey: "switchState"){
+            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.allowsBackgroundLocationUpdates = true
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
