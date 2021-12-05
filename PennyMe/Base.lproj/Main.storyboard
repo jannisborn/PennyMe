@@ -505,12 +505,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zL9-X4-1xb" secondAttribute="height" multiplier="343:387" id="txw-UI-hfq"/>
                                 </constraints>
-                                <string key="text">You like collecting "pressed pennys" or "elongated coins"?
-PennyMe makes collecting pennys easier than ever before - anywhere you travel. Simply tap on a pin on the map and press "GO" to navigate directly to the machine. Tap on the info button to retrieve additional information about the designs.
+                                <mutableString key="text">PennyMe makes collecting pennys easier than ever before - anywhere you travel. 
 
-This is PennyMe V0.1 which only lists penny machines inside Switzerland (more to follow).
+You can view locations of nearby penny machines and explore your favorite destinations. Change the status of the pins and turn PennyMe into your digital penny collection. PennyMe also helps you to navigate to the next machine and provides pictures and more information about each machine. To ease your life, PennyMe can also send you push notifications if you are nearby an unvisted penny machine.  Please help growing our database by sending pictures or information about machine and feel free to send us any feedback.
 
-© Jannis Born (2019)</string>
+This is PennyMe V1.0.
+© Jannis Born &amp; Nina Wiedemann (2022)</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
