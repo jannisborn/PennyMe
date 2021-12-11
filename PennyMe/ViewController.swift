@@ -13,6 +13,7 @@ import Contacts
 
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
+let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -37,6 +38,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let searchController = UISearchController(searchResultsController: nil)
     var filteredArtworks: [Artwork] = []
     var pastNearby : Array<Int> = []
+    // this variable is to notify once when we are very close to a machine (-1 as placeholder)
+    var lastClosestID: Int = -1
     
     // To display the search results
     lazy var locationResult : UITableView = UITableView(frame: PennyMap.frame)
@@ -393,6 +396,12 @@ extension ViewController: MKMapViewDelegate {
 // Global handling of GPS  localization issues
 @available(iOS 13.0, *)
 extension ViewController: CLLocationManagerDelegate {
+    // location manager fail
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+       manager.stopMonitoringSignificantLocationChanges()
+        print("Stopped monitoring because of error", error)
+        return
+    }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations : [CLLocation]) {
         // Update position on map
@@ -409,6 +418,14 @@ extension ViewController: CLLocationManagerDelegate {
             let notificationString = "There are \(pennyCounter) machines nearby. The closest is \(round(minDist * 10)/10)km away \(artworks[closestID].title!)"
             pushNotification(notificationString: notificationString)
         }
+        // push with other notification if one is really close
+        // Do this only once (variable sendVeryCloseNotification)
+        if pennyCounter > 0 && minDist < closeNotifyDist && closestID != lastClosestID{
+            let notificationString = "You are very close to a Penny! It is only \(round(minDist * 10)/10)km away \(artworks[closestID].title!)"
+            pushNotification(notificationString: notificationString)
+            // this is to prevent that the "nearby" notification is sent only once (per location)
+            lastClosestID = closestID
+        }
         // Below code only executes if locations.last exists
         let center = CLLocationCoordinate2D(
             latitude: location.coordinate.latitude,
@@ -424,7 +441,7 @@ extension ViewController: CLLocationManagerDelegate {
     
     // Send user a local notification if they have the app running in the bg
     func pushNotification(notificationString: String) {
-        print("This is the push notification")
+        // print("SENT PUSH", notificationString)
         let notification = UILocalNotification()
         notification.alertAction = "Check PennyMe"
         notification.alertBody = notificationString
@@ -504,7 +521,7 @@ extension ViewController: CLLocationManagerDelegate {
 
     func getCandidates(artworks: [Artwork], curLat:Double, curLon: Double, radius: Double) -> (Int, Double, Int, [Int]){
         let (minLat, maxLat, minLon, maxLon) = getCoordinateRange(lat: curLat, long: curLon, radius: radius)
-        print("min and max", (minLat, maxLat, minLon, maxLon))
+//        print("min and max", (minLat, maxLat, minLon, maxLon))
         
         let guess = Int(artworks.count/2)
         let startIndex = searchLatIndex(artworks: artworks, minLat: minLat, curIndex: guess, totalIndex: guess)

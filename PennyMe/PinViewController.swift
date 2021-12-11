@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 var FOUNDIMAGE : Bool = false
 
@@ -96,6 +97,10 @@ class PinViewController: UITableViewController {
             {
                 //Open the website when you click on the link.
                 UIApplication.shared.openURL(URL(string: pinData.link)!)
+            }
+            else if indexPath.section == 2 {
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+                self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
             }
         }
     
