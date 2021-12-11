@@ -31,13 +31,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need your location to find your closest penny machine</string>
+	<string>The location is needed to send push notification when a penny machine is nearby</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to find your closest penny machine</string>
+	<string>The location is needed to send push notification when a penny machine is nearby</string>
 	<key>NSLocationUsageDescription</key>
-	<string>We need your location to find your closest penny machine</string>
+	<string>The location is needed to display penny machines around you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to find your closest penny machine</string>
+	<string>The location is needed to display penny machines around you.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
