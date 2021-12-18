@@ -14,6 +14,7 @@ import Contacts
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
 let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
+var radius = 20.0
 
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate {

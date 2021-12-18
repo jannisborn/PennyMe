@@ -11,7 +11,6 @@ import MapKit
 import CoreLocation
 import Contacts
 
-var radius = 20.0
 
 class SettingsViewController: UITableViewController {
     
