@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,35 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bL-wm-v4U">
-                                <rect key="frame" x="35" y="98" width="305" height="21"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="penny" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kf2-De-FIc">
+                                <rect key="frame" x="0.0" y="216.5" width="375" height="290"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="p3u-zW-vGh"/>
+                                    <constraint firstAttribute="height" constant="290" id="aP0-tX-KJr"/>
                                 </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bL-wm-v4U">
+                                <rect key="frame" x="35" y="111" width="305" height="43"/>
                                 <attributedString key="attributedText">
                                     <fragment content="PennyMe">
                                         <attributes>
-                                            <font key="NSFont" size="24" name=".SFNS-Regular"/>
+                                            <font key="NSFont" size="38" name=".SFNS-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="2" height="-1"/>
                             </label>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1G-mt-iG7">
-                                <rect key="frame" x="10" y="219" width="354" height="432"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="E1G-mt-iG7" secondAttribute="trailing" constant="11" id="39c-4O-k3z"/>
-                            <constraint firstItem="E1G-mt-iG7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Pmd-0p-kbl"/>
-                            <constraint firstItem="1bL-wm-v4U" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cfU-7n-vz6"/>
-                            <constraint firstAttribute="trailing" secondItem="E1G-mt-iG7" secondAttribute="trailing" constant="11" id="wFa-2P-6iz"/>
-                            <constraint firstItem="1bL-wm-v4U" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="98" id="xca-aN-8Lv"/>
-                            <constraint firstItem="E1G-mt-iG7" firstAttribute="top" secondItem="1bL-wm-v4U" secondAttribute="bottom" constant="100" id="ydx-vM-ljZ"/>
-                            <constraint firstItem="1bL-wm-v4U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="zuG-XZ-b5u"/>
+                            <constraint firstItem="Kf2-De-FIc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Gp-q3-WZb"/>
+                            <constraint firstItem="1bL-wm-v4U" firstAttribute="centerX" secondItem="Kf2-De-FIc" secondAttribute="centerX" id="EPW-n9-XBu"/>
+                            <constraint firstItem="1bL-wm-v4U" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="111" id="GiD-04-Azx"/>
+                            <constraint firstItem="Kf2-De-FIc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VAw-nK-OEZ"/>
+                            <constraint firstItem="Kf2-De-FIc" firstAttribute="top" secondItem="1bL-wm-v4U" secondAttribute="bottom" constant="62.5" id="ggZ-7d-qGY"/>
+                            <constraint firstItem="1bL-wm-v4U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="pJj-km-dYc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -54,6 +54,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="test" width="628" height="432"/>
+        <image name="penny" width="197.5" height="197.5"/>
     </resources>
 </document>
