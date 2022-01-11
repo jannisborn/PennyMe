@@ -96048,45 +96048,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    2.3324222,
-                    48.8338325
-                ]
-            },
-            "properties": {
-                "name": "Les Catacombes de Paris (Paris Catacombs)",
-                "active": true,
-                "area": "France",
-                "address": "1 Avenue du Colonel Henri Rol-Tanguy, Paris - Île-De-France",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=303375",
-                "internal_url": "null",
-                "latitude": "48.8338325",
-                "longitude": "2.3324222",
-                "id": 97,
-                "last_updated": "2021-04-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     2.3219514,
                     48.8421379
                 ]
             },
             "properties": {
                 "name": "Tour Montparnasse (Montparnasse Tower)",
-                "active": true,
+                "active": false,
                 "area": "France",
                 "address": "33 Avenue du Maine , Paris - Île-De-France",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=110005",
                 "internal_url": "null",
                 "latitude": "48.8421379",
                 "longitude": "2.3219514",
                 "id": 100,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-01-08"
             }
         },
         {
@@ -96094,45 +96071,26 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    2.2944813,
-                    48.85837009999999
-                ]
-            },
-            "properties": {
-                "name": "Tour Eiffel (Eiffel Tower)",
-                "active": true,
-                "area": "France",
-                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
-                "internal_url": "null",
-                "latitude": "48.85837009999999",
-                "longitude": "2.2944813",
-                "id": 99,
-                "last_updated": "2021-04-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    2.290996,
-                    48.862216
+                    2.291067,
+                    48.862188
                 ]
             },
             "properties": {
                 "name": "Cineaqua/L'Aquarium de Paris",
                 "active": true,
                 "area": "France",
-                "address": "5 Albert de Mun Avenue, Paris - Île-De-France",
+                "address": "5 Albert de Mun Avenue, Paris, France",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=234359",
                 "internal_url": "null",
-                "latitude": "48.862216",
-                "longitude": "2.290996",
+                "latitude": "48.862188",
+                "longitude": "2.291067",
                 "id": 96,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-01-08",
+                "notes": "paywall",
+                "logs": {
+                    "2022-01-08": "The machine is inside the gift shop right before the end of the exhibition. Technically, it's behind a paywall but you might convince a guard to let you access the machine."
+                }
             }
         },
         {
@@ -96155,29 +96113,6 @@
                 "latitude": "48.8689405",
                 "longitude": "2.7856416",
                 "id": 58,
-                "last_updated": "2021-04-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    2.3316014,
-                    48.8719697
-                ]
-            },
-            "properties": {
-                "name": "Palais Garnier (Paris Opera)",
-                "active": true,
-                "area": "France",
-                "address": "Place de l'Opéra, Paris - Île-De-France",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=268724",
-                "internal_url": "null",
-                "latitude": "48.8719697",
-                "longitude": "2.3316014",
-                "id": 98,
                 "last_updated": "2021-04-05"
             }
         },
@@ -116182,6 +116117,102 @@
                 "longitude": "-148.8992737",
                 "id": 1154,
                 "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.295138,
+                    48.858447
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 1 Machine 1 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858447",
+                "longitude": "2.295138",
+                "id": 99,
+                "last_updated": "2022-01-11",
+                "notes": "paywall"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.293787,
+                    48.858105
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 1 Machine 2 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858105",
+                "longitude": "2.293787",
+                "id": 5049,
+                "last_updated": "2022-01-11",
+                "notes": "paywall"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.294622,
+                    48.858330
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 2 Machine 1 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858330",
+                "longitude": "2.294622",
+                "id": 5050,
+                "last_updated": "2022-01-11",
+                "notes": "paywall"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.294272,
+                    48.858380
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 2 Machine 2 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858380",
+                "longitude": "2.294272",
+                "id": 5051,
+                "last_updated": "2022-01-11",
+                "notes": "paywall"
             }
         }
     ]
