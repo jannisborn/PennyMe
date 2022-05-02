@@ -49165,14 +49165,14 @@
                 "name": "Calleja de las Flores",
                 "active": true,
                 "area": "Spain",
-                "address": ", Cordoba ",
+                "address": "Calleja de las Flores, 14003 Cordoba",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=280800",
                 "internal_url": "null",
                 "latitude": "37.8804378",
                 "longitude": "-4.7795454",
                 "id": 303,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-05-02"
             }
         },
         {
@@ -62474,22 +62474,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -8.35,
-                    40.35
+                    -8.429125,
+                    40.20754
                 ]
             },
             "properties": {
-                "name": "Malabar gift shop",
+                "name": "Malabar gift shop (Bussaco)",
                 "active": true,
                 "area": "Portugal",
-                "address": ", Bussaco",
+                "address": "Largo da Portagem 33, 3000-337 Coimbra, Portugal",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=287511",
                 "internal_url": "null",
-                "latitude": "40.35",
-                "longitude": "-8.35",
+                "latitude": "40.20754",
+                "longitude": "-8.429125",
                 "id": 658,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-05-02"
             }
         },
         {
@@ -116213,6 +116213,52 @@
                 "id": 5051,
                 "last_updated": "2022-01-11",
                 "notes": "paywall"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.70510201,
+                    39.624064
+                ]
+            },
+            "properties": {
+                "name": "Grutas da Moeda",
+                "active": true,
+                "area": "Portugal",
+                "address": "R. das Grutas da Moeda, 2495-028 São Mamede, Portugal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.624064",
+                "longitude": "-8.70510201",
+                "id": 5052,
+                "last_updated": "2022-05-02"
+            }
+        },
+                {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.365600,
+                    40.376524
+                ]
+            },
+            "properties": {
+                "name": "Palace Hotel de Bussaco",
+                "active": true,
+                "area": "Portugal",
+                "address": "Bussaco Palace, 9JGM+JQ2 Luso",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.376524",
+                "longitude": "-8.365600",
+                "id": 5053,
+                "last_updated": "2022-05-02"
             }
         }
     ]
