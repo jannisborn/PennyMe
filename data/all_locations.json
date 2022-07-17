@@ -83570,17 +83570,17 @@
                 ]
             },
             "properties": {
-                "name": "Acquario di Genova (Aquarium of Genoa) ",
+                "name": "Aquarium of Genoa",
                 "active": true,
                 "area": "Italy",
-                "address": "Ponte degli Spinola",
+                "address": "Ponte Spinola, 16128 Genova GE, Italy",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=283676",
                 "internal_url": "null",
                 "latitude": "44.41022110000001",
                 "longitude": "8.9266709",
                 "id": 921,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -83593,10 +83593,10 @@
                 ]
             },
             "properties": {
-                "name": "L'Alicorno Magico & Accademia delle Arti Magiche",
+                "name": "The Magic & Alicorno Academy of Magical Arts",
                 "active": true,
                 "area": "Italy",
-                "address": "Via Egidio Lomellini 49 r",
+                "address": "Via Egidio, Via Lomellini, 49 r, 16124 Genova GE, Italy",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=277204",
                 "internal_url": "null",
@@ -91642,22 +91642,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.5222824,
-                    47.1411639
+                    9.522400,
+                    47.141050
                 ]
             },
             "properties": {
-                "name": "Central Plaza Souvenirs opposite the old town hall !",
+                "name": "Central Plaza Souvenirs",
                 "active": true,
                 "area": "Liechtenstein",
-                "address": "Städtle 7, Vaduz",
+                "address": "Städtle 5, 9490 Vaduz, Liechtenstein",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=85426",
                 "internal_url": "null",
-                "latitude": "47.1411639",
-                "longitude": "9.5222824",
+                "latitude": "47.141050",
+                "longitude": "9.522400",
                 "id": 730,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -92143,8 +92143,11 @@
                 "latitude": "47.338841",
                 "longitude": "8.761913",
                 "id": 713,
-                "last_updated": "2021-12-18",
-                "notes": "paywall"
+                "last_updated": "2022-07-17",
+                "paywall": true,
+                "logs":{
+                    "2022-07-17": "Convinced guard to access machine without paying entrance fee."
+                }
             }
         },
         {
@@ -96087,7 +96090,7 @@
                 "longitude": "2.291067",
                 "id": 96,
                 "last_updated": "2022-01-08",
-                "notes": "paywall",
+                "paywall": true,
                 "logs": {
                     "2022-01-08": "The machine is inside the gift shop right before the end of the exhibition. Technically, it's behind a paywall but you might convince a guard to let you access the machine."
                 }
@@ -96505,7 +96508,7 @@
                 "longitude": "-123.11223900873065",
                 "id": 4971,
                 "last_updated": "2021-12-18",
-                "notes": "paywall"
+                "paywall": true
             }
         },
         {
@@ -107061,17 +107064,17 @@
                 ]
             },
             "properties": {
-                "name": "Dali Ausstellung Berlin Potsdamer Platz",
-                "active": true,
+                "name": "Salvatore Dali exhibition",
+                "active": false,
                 "area": "Germany",
-                "address": "Leipziger Platz 7",
-                "status": "unvisited",
+                "address": "Leipziger Platz 7, 10117 Berlin",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=234302",
                 "internal_url": "null",
                 "latitude": "52.5088745",
                 "longitude": "13.3785761",
                 "id": 428,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -107084,17 +107087,17 @@
                 ]
             },
             "properties": {
-                "name": "Dunkin Donuts",
+                "name": "Dunkin Donuts (Boulevard der Stars)",
                 "active": true,
                 "area": "Germany",
-                "address": "Potsdamerstrasse 2",
+                "address": "Potsdamer Str. 2, 10785 Berlin, Germany",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=82165",
                 "internal_url": "null",
                 "latitude": "52.5095837",
                 "longitude": "13.3741044",
                 "id": 430,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -107131,16 +107134,16 @@
             },
             "properties": {
                 "name": "Begus Souvenirs",
-                "active": true,
+                "active": false,
                 "area": "Germany",
-                "address": "Ebertstrasse 2",
-                "status": "unvisited",
+                "address": "Ebertstrasse 2, 10117 Berlin",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=83319",
                 "internal_url": "null",
                 "latitude": "52.5116245",
                 "longitude": "13.3766049",
                 "id": 423,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -107176,17 +107179,17 @@
                 ]
             },
             "properties": {
-                "name": "Holocaust Memorial ",
+                "name": "Holocaust Memorial",
                 "active": true,
                 "area": "Germany",
-                "address": "Cora-Berliner-Straße  vis-à-vis Holocaust Memorial",
+                "address": "Cora-Berliner-Straße 1, 10117 Berlin",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=64734",
                 "internal_url": "null",
                 "latitude": "52.5139474",
                 "longitude": "13.3787127",
                 "id": 432,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -107202,14 +107205,14 @@
                 "name": "Brandenburg Gate Shop",
                 "active": true,
                 "area": "Germany",
-                "address": "Unter den Linden",
+                "address": "Brandenburger Tor, Unter den Linden, 10117 Berlin",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=49919",
                 "internal_url": "null",
-                "latitude": "52.5161619",
+                "latitude": "552.5161619",
                 "longitude": "13.3802624",
                 "id": 427,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -107245,17 +107248,17 @@
                 ]
             },
             "properties": {
-                "name": "Stadtrunfahrten Souvenirs (Berlin Store)",
+                "name": "Stadtrunfahrten Souvenirs",
                 "active": true,
                 "area": "Germany",
-                "address": "Unter den Linden 24, 10117",
+                "address": "Unter den Linden 24, 10117 Berlin, Germany",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=259087",
                 "internal_url": "null",
                 "latitude": "52.51661319999999",
                 "longitude": "13.3880967",
                 "id": 442,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -112237,22 +112240,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    25.2889763,
-                    54.6862023
+                    25.288900,
+                    54.686210
                 ]
             },
             "properties": {
                 "name": "National MuseumPalace of the Grand Dukes of Lithuania",
                 "active": true,
                 "area": "Lithunia",
-                "address": "Katedros a. 3, Vilnius",
+                "address": "Katedros a. 4, Vilnius 01143, Lithuania",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=247678",
                 "internal_url": "null",
-                "latitude": "54.6862023",
-                "longitude": "25.2889763",
+                "latitude": "54.686210",
+                "longitude": "25.288900",
                 "id": 799,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -112283,22 +112286,26 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    23.903934,
-                    54.898067
+                    23.903690,
+                    54.897880
                 ]
             },
             "properties": {
-                "name": "Tadas Ivanauskas Zoological Museum",
+                "name": "Kaunas Tadas Ivanauskas Museum of Zoology",
                 "active": true,
                 "area": "Lithunia",
-                "address": "Laisves al. 106, Kaunas",
+                "address": "Laisvės al. 106, Kaunas 44253, Lithuania",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=280573",
                 "internal_url": "null",
-                "latitude": "54.898067",
-                "longitude": "23.903934",
+                "latitude": "54.897880",
+                "longitude": "23.903690",
                 "id": 795,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17",
+                "paywall": true,
+                "notes": {
+                    "2022-07-17": "Convinced guard to enter without paying entrance fee."
+                }
             }
         },
         {
@@ -112321,7 +112328,7 @@
                 "latitude": "54.8998822",
                 "longitude": "23.9120006",
                 "id": 796,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -112334,17 +112341,17 @@
                 ]
             },
             "properties": {
-                "name": "muidzinavicius Museum (Devil museum)",
+                "name": "Devils' Museum",
                 "active": true,
                 "area": "Lithunia",
-                "address": "V. Putvinskio g. 64, Kaunas",
+                "address": "V. Putvinskio g. 64, Kaunas 44211, Lithuania",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=312630",
                 "internal_url": "null",
                 "latitude": "54.900914",
                 "longitude": "23.9106175",
                 "id": 794,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -114335,17 +114342,17 @@
                 ]
             },
             "properties": {
-                "name": "Latvian War Museum (Latvijas Kara muzejs) ",
+                "name": "Latvian War Museum",
                 "active": true,
                 "area": "Latvia",
-                "address": "Smilsu iela 20, Riga",
+                "address": "Smilšu iela 20, Centra rajons, Rīga, LV-1050, Latvia",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=42763",
                 "internal_url": "null",
                 "latitude": "56.9511993",
                 "longitude": "24.1083225",
                 "id": 404,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-17"
             }
         },
         {
@@ -116140,7 +116147,7 @@
                 "longitude": "2.295138",
                 "id": 99,
                 "last_updated": "2022-01-11",
-                "notes": "paywall"
+                "paywall": true
             }
         },
         {
@@ -116164,7 +116171,7 @@
                 "longitude": "2.293787",
                 "id": 5049,
                 "last_updated": "2022-01-11",
-                "notes": "paywall"
+                "paywall": true
             }
         },
         {
@@ -116188,7 +116195,7 @@
                 "longitude": "2.294622",
                 "id": 5050,
                 "last_updated": "2022-01-11",
-                "notes": "paywall"
+                "paywall": true
             }
         },
         {
@@ -116212,7 +116219,7 @@
                 "longitude": "2.294272",
                 "id": 5051,
                 "last_updated": "2022-01-11",
-                "notes": "paywall"
+                "paywall": true
             }
         },
         {
@@ -116259,6 +116266,52 @@
                 "longitude": "-8.365600",
                 "id": 5053,
                 "last_updated": "2022-05-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.214803,
+                    54.687268
+                ]
+            },
+            "properties": {
+                "name": "Vilnius TV Tower",
+                "active": true,
+                "area": "Lithunia",
+                "address": "Sausio 13-osios g. 10, Vilnius 04347, Lithuania",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=365220",
+                "internal_url": "null",
+                "latitude": "54.687268",
+                "longitude": "25.214803",
+                "id": 5054,
+                "last_updated": "2022-07-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.380440,
+                    52.516500
+                ]
+            },
+            "properties": {
+                "name": "Brandenburg Gate Shop 2",
+                "active": true,
+                "area": "Germany",
+                "address": "Brandenburger Tor, Unter den Linden 78, 10117 Berlin",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.516500",
+                "longitude": "13.380440",
+                "id": 5055,
+                "last_updated": "2022-07-17"
             }
         }
     ]
