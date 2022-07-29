@@ -7693,7 +7693,7 @@
                 ]
             },
             "properties": {
-                "name": "Hard Rock Cafe",
+                "name": "Hard Rock Cafe - Miami",
                 "active": true,
                 "area": "Florida",
                 "address": "401 Biscayne Blvd, Miami",
@@ -7703,7 +7703,7 @@
                 "latitude": "25.7775106",
                 "longitude": "-80.184461",
                 "id": 3384,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-28"
             }
         },
         {
@@ -24506,7 +24506,7 @@
                 ]
             },
             "properties": {
-                "name": "Hard Rock Cafe",
+                "name": "Hard Rock Cafe - Atlanta",
                 "active": true,
                 "area": "Georgia",
                 "address": "215 Peachtree St NE, Atlanta",
@@ -24516,7 +24516,7 @@
                 "latitude": "33.7598163",
                 "longitude": "-84.38744990000001",
                 "id": 1620,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-27"
             }
         },
         {
@@ -56039,7 +56039,7 @@
                 ]
             },
             "properties": {
-                "name": "Hard Rock Cafe",
+                "name": "Hard Rock Cafe - Baltimore",
                 "active": true,
                 "area": "Maryland",
                 "address": "601 E Pratt St, Baltimore",
@@ -56049,7 +56049,7 @@
                 "latitude": "39.2863929",
                 "longitude": "-76.607204",
                 "id": 3608,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-07-27"
             }
         },
         {
@@ -106967,8 +106967,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.3295571,
-                    52.5031312
+                    13.329860,
+                    52.503294
                 ]
             },
             "properties": {
@@ -106979,8 +106979,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=108529",
                 "internal_url": "null",
-                "latitude": "52.5031312",
-                "longitude": "13.3295571",
+                "latitude": "52.503294",
+                "longitude": "13.329860",
                 "id": 435,
                 "last_updated": "2021-04-05"
             }
@@ -116312,6 +116312,29 @@
                 "longitude": "13.380440",
                 "id": 5055,
                 "last_updated": "2022-07-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.329519,
+                    52.503017
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe - Berlin",
+                "active": true,
+                "area": "Germany",
+                "address": "Kurfuerstendamm 224, 10719 Berlin, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.503017",
+                "longitude": "13.329519",
+                "id": 5056,
+                "last_updated": "2022-07-27"
             }
         }
     ]
