@@ -44603,8 +44603,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -8.99592,
-                    37.02307
+                    -8.995973,
+                    37.023150
                 ]
             },
             "properties": {
@@ -44615,8 +44615,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=271750",
                 "internal_url": "null",
-                "latitude": "37.02307",
-                "longitude": "-8.99592",
+                "latitude": "37.023150",
+                "longitude": "-8.995973",
                 "id": 679,
                 "last_updated": "2022-04-16"
             }
@@ -72300,7 +72300,7 @@
                 ]
             },
             "properties": {
-                "name": "Lincoln Park Zoo",
+                "name": "Lincoln Park Zoo (Chicago)",
                 "active": true,
                 "area": "Illinois",
                 "address": "2234 North Cannon Drive, Chicago",
@@ -72310,7 +72310,7 @@
                 "latitude": "41.9220582",
                 "longitude": "-87.63346639999999",
                 "id": 1211,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-08-05"
             }
         },
         {
@@ -82604,7 +82604,7 @@
                 ]
             },
             "properties": {
-                "name": "Lincoln Park Zoo",
+                "name": "Lincoln Park Zoo (Manitowoc)",
                 "active": true,
                 "area": "Wisconsin",
                 "address": "1215 N 8th St., Manitowoc",
@@ -82614,7 +82614,7 @@
                 "latitude": "44.1108358",
                 "longitude": "-87.648534",
                 "id": 2434,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-08-05"
             }
         },
         {
@@ -92145,7 +92145,7 @@
                 "id": 713,
                 "last_updated": "2022-07-17",
                 "paywall": true,
-                "logs":{
+                "logs": {
                     "2022-07-17": "Convinced guard to access machine without paying entrance fee."
                 }
             }
@@ -107616,17 +107616,17 @@
                 ]
             },
             "properties": {
-                "name": "Great Yarmouth Sea Life Centre ",
+                "name": "Great Yarmouth Sea Life Centre",
                 "active": true,
                 "area": "England",
-                "address": "Marine Parade, Great Yarmouth, NORFOLK - Great Yarmouth",
+                "address": "Marine Parade, Great Yarmouth NR30 3AH, United Kingdom",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3561",
                 "internal_url": "null",
                 "latitude": "52.6003335",
                 "longitude": "1.7364876",
                 "id": 1516,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-08-05"
             }
         },
         {
@@ -110558,8 +110558,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.1597306,
-                    53.6126236
+                    7.156786,
+                    53.612054
                 ]
             },
             "properties": {
@@ -110570,10 +110570,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=72570",
                 "internal_url": "null",
-                "latitude": "53.6126236",
-                "longitude": "7.1597306",
+                "latitude": "53.612054",
+                "longitude": "7.156786",
                 "id": 575,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-08-05"
             }
         },
         {
@@ -116245,7 +116245,7 @@
                 "last_updated": "2022-05-02"
             }
         },
-                {
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -116335,6 +116335,75 @@
                 "longitude": "13.329519",
                 "id": 5056,
                 "last_updated": "2022-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.409412,
+                    52.520840
+                ]
+            },
+            "properties": {
+                "name": "Berlin TV Tower (Fernsehturm) ",
+                "active": true,
+                "area": "Germany",
+                "address": "Panoramastrasse 1A, 10178 Berlin, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=802",
+                "internal_url": "null",
+                "latitude": "52.520840",
+                "longitude": "13.409412",
+                "id": 5057,
+                "last_updated": "2022-08-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.155580,
+                    53.620440
+                ]
+            },
+            "properties": {
+                "name": "Norddeich waterfront",
+                "active": true,
+                "area": "Germany",
+                "address": "Badestraße 1, 26506 Norden, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.620440",
+                "longitude": "7.155580",
+                "id": 5058,
+                "last_updated": "2022-08-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.152950,
+                    53.613490
+                ]
+            },
+            "properties": {
+                "name": "Norddeich Dörper",
+                "active": true,
+                "area": "Germany",
+                "address": "Dörper Weg 6, 26506 Norden, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.613490",
+                "longitude": "7.152950",
+                "id": 5059,
+                "last_updated": "2022-08-04"
             }
         }
     ]
