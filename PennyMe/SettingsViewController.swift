@@ -33,6 +33,7 @@ class SettingsViewController: UITableViewController {
         radiusSlider.value =  UserDefaults.standard.float(forKey: "radius")
         radius = Double(radiusSlider.value)
         radiusSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+        radiusSlider.isContinuous = false
     }
     
     @objc func reportProblem (sender: UIButton!){
@@ -47,6 +48,7 @@ class SettingsViewController: UITableViewController {
         radius =  Double(sender.value)
         UserDefaults.standard.set(sender.value, forKey: "radius")
         UserDefaults.standard.synchronize()
+        self.tableView.reloadData()
     }
     
     @objc func setPushNotifications(sender:UISwitch!) {
@@ -80,5 +82,16 @@ class SettingsViewController: UITableViewController {
             // show the alert
             self.present(alert, animated: true, completion: nil)
         }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?{
 
+        if section == 1{
+            return "Send push notification if a new penny machine is less than \(Int(self.radiusSlider.value)) km away. Location services must be set to 'Always' in settings. Attention: The app must be opened regularly to keep the location updates running."
+        }
+        if section == 2{
+            return "Tell us if 1) there is a problem wit the app, 2) if you found a new machine that is not listed, or 3) a machine has changed"
+        }
+        return ""
+    }
 }
+
