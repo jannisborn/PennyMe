@@ -102,8 +102,14 @@ class PinViewController: UITableViewController {
                 let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
                 self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
             }
+        if indexPath.section == 5{
+            let mailtostring = String(
+                "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
+            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
+            UIApplication.shared.openURL(URL(string:mailtostring )!)
+            }
         }
-    
+
     @objc func statusChanged(_ sender: UISegmentedControl) {
         let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .unvisited
         
