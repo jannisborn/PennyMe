@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8oV-HC-UL6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8oV-HC-UL6">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -226,14 +226,14 @@
                             <tableViewSection headerTitle="Further information" id="yoa-01-ZMn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wcD-oI-gR2">
-                                        <rect key="frame" x="0.0" y="614.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="614.5" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcD-oI-gR2" id="mFT-jz-Gf6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More info (external Website)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmi-Mj-sEq">
-                                                    <rect key="frame" x="16" y="11" width="215" height="22"/>
+                                                    <rect key="frame" x="16" y="11" width="215" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -243,6 +243,31 @@
                                                 <constraint firstItem="Wmi-Mj-sEq" firstAttribute="centerY" secondItem="mFT-jz-Gf6" secondAttribute="centerY" id="1qU-n6-hmM"/>
                                                 <constraint firstItem="Wmi-Mj-sEq" firstAttribute="top" secondItem="mFT-jz-Gf6" secondAttribute="topMargin" id="Im3-73-UT2"/>
                                                 <constraint firstItem="Wmi-Mj-sEq" firstAttribute="leading" secondItem="mFT-jz-Gf6" secondAttribute="leadingMargin" id="nej-14-87o"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Contribute" footerTitle="Tell us if this machine has retired or if the address is not correct." id="wLy-lG-XH8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="meO-D7-5e4">
+                                        <rect key="frame" x="0.0" y="715" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="meO-D7-5e4" id="GXP-u1-AO6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nW1-p8-ny1">
+                                                    <rect key="frame" x="16" y="11" width="112" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nW1-p8-ny1" firstAttribute="leading" secondItem="GXP-u1-AO6" secondAttribute="leadingMargin" id="6qm-Fg-neh"/>
+                                                <constraint firstItem="nW1-p8-ny1" firstAttribute="top" secondItem="GXP-u1-AO6" secondAttribute="topMargin" id="HW9-6w-DzB"/>
+                                                <constraint firstItem="nW1-p8-ny1" firstAttribute="centerY" secondItem="GXP-u1-AO6" secondAttribute="centerY" id="YWf-99-DY1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -478,12 +503,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zL9-X4-1xb" secondAttribute="height" multiplier="343:387" id="txw-UI-hfq"/>
                                 </constraints>
-                                <mutableString key="text">PennyMe makes collecting pennys easier than ever before - anywhere you travel. 
+                                <string key="text">PennyMe makes collecting pennys easier than ever before - anywhere you travel. 
 
 You can view locations of nearby penny machines and explore your favorite destinations. Change the status of the pins and turn PennyMe into your digital penny collection. PennyMe also helps you to navigate to the next machine and provides pictures and more information about each machine. To ease your life, PennyMe can also send you push notifications if you are nearby an unvisted penny machine.  Please help growing our database by sending pictures or information about machine and feel free to send us any feedback.
 
 This is PennyMe V1.0.
-© Jannis Born &amp; Nina Wiedemann (2022)</mutableString>
+© Jannis Born &amp; Nina Wiedemann (2022)</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
