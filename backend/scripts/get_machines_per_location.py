@@ -8,17 +8,14 @@ This script does:
 import argparse
 import json
 import os
-from datetime import datetime
 
-from googlemaps import Client as GoogleMaps
-
-from pennyme.locations import (
-    parse_location_name,
-    remove_html_and,
-    COUNTRY_TO_CODE,
+from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
+from pennyme.pennycollector import (
+    LOCATION_PREFIX,
+    get_location_list_from_website,
+    get_machine_list_from_locations,
 )
-from pennyme.webconfig import LOCATION_PREFIX, get_website
-
+from pennyme.webconfig import get_website
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -50,7 +47,7 @@ def get_json_from_location(
     current_id = start_id - 1
 
     url = LOCATION_PREFIX + str(country_id)
-    gmaps = GoogleMaps(api_key)
+
     print("Set up Google Maps API")
     website = get_website(url)
     print("Loaded website")
@@ -61,88 +58,16 @@ def get_json_from_location(
     with open(os.path.join(directory, "raw_website.mhtml"), "w") as f:
         f.write(str(website))
 
-    location_raw_table = website.find("table", attrs={"border": "1"})
-    location_raw_list = list(location_raw_table.find_all("td"))
+    # REFACTOR THIS TO 2 METHODS/FUNCTIONS since I also have to get GONE machines
+    location_raw_list = get_location_list_from_website(
+        website,
+        current_id=current_id,
+        country=country,
+        api_key=api_key,
+        add_date=True,
+    )
 
-    # Skip the first 5 rows (they contain design issues)
-    location_raw_list = location_raw_list[5:]
-
-    ind = -1
-    locations = []
-    date = datetime.today()
-    year, month, day = date.year, date.month, date.day
-    while ind < len(location_raw_list) - 1:
-
-        ind += 1
-
-        content = str(location_raw_list[ind])
-
-        if ind % 50 == 0 and ind > 0:
-            print("Now processing location no. {}".format(ind / 5))
-
-        # Each location item consists of 5 tds. Create a list of content attributes per location item
-        if ind % 5 == 0:
-            # Title and subtitle cell
-            title = remove_html_and(content.split("<td>")[1].split("<br/>")[0])
-            subtitle = remove_html_and(
-                content.split('">')[1].split("</span>")[0]
-            )
-        elif ind % 5 == 1:
-            city = remove_html_and(content.split("<td>")[1].split("</td>")[0])
-            subtitle = subtitle + ", " + city
-        elif ind % 5 == 2:
-            state = remove_html_and(
-                content.split('Center">')[1].split("</td>")[0]
-            )
-        elif ind % 5 == 3:
-            link = LOCATION_PREFIX + content.split('href="')[1].split('"><')[0]
-
-        elif ind % 5 == 4:
-            if state != "Gone" and "<s>" not in title:
-
-                # Make GM request, default title and subtitle. Optionally with city?
-                query_coord = title + ", " + subtitle
-                coordinates = gmaps.geocode(query_coord)
-
-                try:
-                    lat = coordinates[0]["geometry"]["location"]["lat"]
-                    lng = coordinates[0]["geometry"]["location"]["lng"]
-                except IndexError:
-                    # In case no location was found, try only the subtitle
-                    print(f"SECOND attempt needed for {title}\t{subtitle}.")
-                    coordinates = gmaps.geocode(subtitle)
-                    try:
-                        lat = coordinates[0]["geometry"]["location"]["lat"]
-                        lng = coordinates[0]["geometry"]["location"]["lng"]
-                    except IndexError:
-                        print(f"MANUAL handling needed: {title}\t{subtitle}")
-
-                lat = str(lat)
-                lng = str(lng)
-                current_id += 1
-
-                locations.append(
-                    {
-                        "type": "Feature",
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [lng, lat],
-                        },
-                        "properties": {
-                            "name": title,
-                            "active": True,
-                            "area": country,
-                            "address": subtitle,
-                            "status": "unvisited",
-                            "external_url": link,
-                            "internal_url": "null",
-                            "latitude": lat,
-                            "longitude": lng,
-                            "id": current_id,
-                            "last_updated": f"{year}-{month}-{day}",
-                        },
-                    }
-                )
+    locations = get_machine_list_from_locations(location_raw_list)
 
     data = {"type": "FeatureCollection", "features": locations}
     with open(os.path.join(directory, "data.json"), "w", encoding="utf8") as f:
