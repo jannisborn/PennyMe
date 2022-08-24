@@ -1,17 +1,69 @@
 """Utils to parse pennycollector.com"""
-import datetime
+from datetime import datetime
 from typing import Dict, List, Optional
 
 from googlemaps import Client as GoogleMaps
 
-from .locations import remove_html_and
+from .locations import remove_html_and, COUNTRY_TO_CODE
 
-LOCATION_PREFIX = "http://209.221.138.252/Locations.aspx?area="
+WEBSITE_ROOT = "http://209.221.138.252/"
+LOCATION_PREFIX = WEBSITE_ROOT + "Locations.aspx?area="
+AREA_SITE = WEBSITE_ROOT + "AreaList.aspx"
 DATE = datetime.today()
 YEAR, MONTH, DAY = DATE.year, DATE.month, DATE.day
 
+# StatesList
+def get_area_list_from_area_website(website) -> List[str]:
+    """
+    Get a list with areas from the overall area website.
 
-def get_location_list_from_website(website) -> List:
+    Args:
+        website: AREA_SITE website.
+
+    Returns:
+        List[str]: A list of areas.
+    """
+
+    unparsed_locs = website.find("table", id="StatesList")
+    us_locs = [loc.split("\t")[-1] for loc in str(unparsed_locs).split("</a>")][
+        :-1
+    ]
+
+    non_us_unparsed = website.findAll("option", attrs={"selected": ""})
+    non_us_locations = []
+    for can in non_us_unparsed[1:]:
+        loc = str(can).split("</option>")[0].split(">")[-1]
+        if loc == "Select One":
+            break
+        non_us_locations.append(loc)
+    return us_locs + non_us_locations
+
+
+def validate_location_list(locations: List[str]) -> bool:
+    """
+    Receive a list of locations (str) and validate that all of them are
+    known to the app.
+
+    Args:
+        List: List of locations
+
+    Returns:
+        bool: Whether or not all locations are known.
+    """
+    return all([loc in COUNTRY_TO_CODE.keys() for loc in locations])
+
+
+def get_location_list_from_location_website(website) -> List[str]:
+    """
+    Retrieves a list of locations from a website of any location, e.g.:
+    http://209.221.138.252/Locations.aspx?area=42
+
+    Args:
+        website: The bs4 website content.
+
+    Returns:
+        List[str]: List of
+    """
     location_raw_table = website.find("table", attrs={"border": "1"})
     location_raw_list = list(location_raw_table.find_all("td"))
 
@@ -20,7 +72,7 @@ def get_location_list_from_website(website) -> List:
 
 
 def get_machine_list_from_locations(
-    raw_locations: List,
+    raw_locations: List[str],
     current_id: int,
     country: str,
     api_key: Optional[str] = None,
@@ -102,8 +154,6 @@ def get_machine_list_from_locations(
                                 f"MANUAL handling needed: {title}\t{subtitle}"
                             )
 
-                    lat = str(lat)
-                    lng = str(lng)
                 else:
                     lat = "N.A."
                     lng = "N.A."
@@ -123,8 +173,8 @@ def get_machine_list_from_locations(
                         "status": "unvisited",
                         "external_url": link,
                         "internal_url": "null",
-                        "latitude": lat,
-                        "longitude": lng,
+                        "latitude": str(lat),
+                        "longitude": str(lng),
                         "id": current_id,
                     },
                 }
