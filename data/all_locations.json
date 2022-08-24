@@ -100588,7 +100588,8 @@
                 "latitude": "50.9415352",
                 "longitude": "6.9932434",
                 "id": 523,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-08-22",
+                "paywall": true
             }
         },
         {
@@ -100634,7 +100635,9 @@
                 "latitude": "50.9597901",
                 "longitude": "6.9739506",
                 "id": 521,
-                "last_updated": "2021-04-05"
+                "paywall": true,
+                "multimachine": 6,
+                "last_updated": "2022-08-22"
             }
         },
         {
@@ -118820,6 +118823,29 @@
                 "longitude": "-120.185405",
                 "id": 5164,
                 "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.39018,
+                    52.51001
+                ]
+            },
+            "properties": {
+                "name": "Berlin City Kiosk 56",
+                "active": true,
+                "area": "Germany",
+                "address": "Friedrichstraße 56, 10117 Berlin, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.51001",
+                "longitude": "13.39018",
+                "id": 5165,
+                "last_updated": "2022-08-22"
             }
         }
     ]
