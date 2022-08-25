@@ -310,6 +310,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
         return artwork.text.lowercased().contains(searchText.lowercased())
         }
+        filteredArtworks = filteredArtworks.sorted(by: {$0.title! < $1.title! })
         
         // This sets the table view frame to cover exactly the entire underlying map
         locationResult.frame = PennyMap.bounds
