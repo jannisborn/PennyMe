@@ -44604,7 +44604,7 @@
                 "type": "Point",
                 "coordinates": [
                     -8.995973,
-                    37.023150
+                    37.02315
                 ]
             },
             "properties": {
@@ -91642,8 +91642,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.522400,
-                    47.141050
+                    9.5224,
+                    47.14105
                 ]
             },
             "properties": {
@@ -100588,7 +100588,8 @@
                 "latitude": "50.9415352",
                 "longitude": "6.9932434",
                 "id": 523,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-08-22",
+                "paywall": true
             }
         },
         {
@@ -100634,7 +100635,9 @@
                 "latitude": "50.9597901",
                 "longitude": "6.9739506",
                 "id": 521,
-                "last_updated": "2021-04-05"
+                "paywall": true,
+                "multimachine": 6,
+                "last_updated": "2022-08-22"
             }
         },
         {
@@ -102283,13 +102286,14 @@
                 "name": "Legoland Windsor",
                 "active": true,
                 "area": "England",
-                "address": "Winkfield Road, BERKSHIRE - Windsor",
+                "address": "Winkfield Road, Windsor SL4 4AY, United Kingdom",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4290",
                 "internal_url": "null",
                 "latitude": "51.4638338",
                 "longitude": "-0.6500275",
                 "id": 1332,
+                "multimachine": 11,
                 "last_updated": "2021-04-05"
             }
         },
@@ -106967,7 +106971,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.329860,
+                    13.32986,
                     52.503294
                 ]
             },
@@ -112240,8 +112244,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    25.288900,
-                    54.686210
+                    25.2889,
+                    54.68621
                 ]
             },
             "properties": {
@@ -112286,8 +112290,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    23.903690,
-                    54.897880
+                    23.90369,
+                    54.89788
                 ]
             },
             "properties": {
@@ -116180,7 +116184,7 @@
                 "type": "Point",
                 "coordinates": [
                     2.294622,
-                    48.858330
+                    48.85833
                 ]
             },
             "properties": {
@@ -116204,7 +116208,7 @@
                 "type": "Point",
                 "coordinates": [
                     2.294272,
-                    48.858380
+                    48.85838
                 ]
             },
             "properties": {
@@ -116250,7 +116254,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -8.365600,
+                    -8.3656,
                     40.376524
                 ]
             },
@@ -116296,8 +116300,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.380440,
-                    52.516500
+                    13.38044,
+                    52.5165
                 ]
             },
             "properties": {
@@ -116343,7 +116347,7 @@
                 "type": "Point",
                 "coordinates": [
                     13.409412,
-                    52.520840
+                    52.52084
                 ]
             },
             "properties": {
@@ -116365,8 +116369,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.155580,
-                    53.620440
+                    7.15558,
+                    53.62044
                 ]
             },
             "properties": {
@@ -116388,8 +116392,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.152950,
-                    53.613490
+                    7.15295,
+                    53.61349
                 ]
             },
             "properties": {
@@ -116404,6 +116408,2444 @@
                 "longitude": "7.152950",
                 "id": 5059,
                 "last_updated": "2022-08-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.34273,
+                    47.24906
+                ]
+            },
+            "properties": {
+                "name": "Säntis tourist shop",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Säntis, 68XV+J2 Wildhaus, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.249060",
+                "longitude": "9.342730",
+                "id": 5060,
+                "last_updated": "2022-08-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.9660068,
+                    44.166968
+                ]
+            },
+            "properties": {
+                "name": "The Brick Store",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "21 Lisbon Rd, Bath",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=290113",
+                "internal_url": "null",
+                "latitude": "44.166968",
+                "longitude": "-71.9660068",
+                "id": 5061,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.4410175,
+                    44.2601099
+                ]
+            },
+            "properties": {
+                "name": "Mount Washington State Park",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "Shermin Adams Building - Base Road, Bretton Woods",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3380",
+                "internal_url": "null",
+                "latitude": "44.2601099",
+                "longitude": "-71.4410175",
+                "id": 5062,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.532578,
+                    43.2241603
+                ]
+            },
+            "properties": {
+                "name": "McAuliffe - Sheppard Science Center (Was Christa McAuliffe Planetarium) ",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "2 Institute Drive, Concord",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=17620",
+                "internal_url": "null",
+                "latitude": "43.2241603",
+                "longitude": "-71.532578",
+                "id": 5063,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.1374294,
+                    44.781559
+                ]
+            },
+            "properties": {
+                "name": "L.L. Cote",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "7 Main Street, Errol",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=272802",
+                "internal_url": "null",
+                "latitude": "44.781559",
+                "longitude": "-71.1374294",
+                "id": 5064,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.688864,
+                    44.1702871
+                ]
+            },
+            "properties": {
+                "name": "Cannon Mountain Aerial Tram",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "260 Tramway Drive, Franconia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=47349",
+                "internal_url": "null",
+                "latitude": "44.1702871",
+                "longitude": "-71.688864",
+                "id": 5065,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.36193190000002,
+                    43.5462348
+                ]
+            },
+            "properties": {
+                "name": "Gunstock Mountain Resort",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "719 Cherry Valey Rd, Gilford",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=295770",
+                "internal_url": "null",
+                "latitude": "43.5462348",
+                "longitude": "-71.36193190000002",
+                "id": 5066,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.1787196,
+                    44.1051634
+                ]
+            },
+            "properties": {
+                "name": "Glen Ellis Jellystone Park",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "83 Glen Ellis Campground Road, Glen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=343972",
+                "internal_url": "null",
+                "latitude": "44.1051634",
+                "longitude": "-71.1787196",
+                "id": 5067,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.2240647,
+                    44.2892568
+                ]
+            },
+            "properties": {
+                "name": "Great Glen Trails Outdoor Center",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "1 Mount Washington Auto Road - Route 16, Pinkham Notch, Gorham ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3394",
+                "internal_url": "null",
+                "latitude": "44.2892568",
+                "longitude": "-71.2240647",
+                "id": 5068,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.8112501,
+                    42.9085956
+                ]
+            },
+            "properties": {
+                "name": "Rexall Drug Store",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "131 Ocean Blvd, Hampton Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3392",
+                "internal_url": "null",
+                "latitude": "42.9085956",
+                "longitude": "-70.8112501",
+                "id": 5069,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.4767103,
+                    43.1085635
+                ]
+            },
+            "properties": {
+                "name": "Common Man Roadside North",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "25 Springer Road, Hooksett",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=264001",
+                "internal_url": "null",
+                "latitude": "43.1085635",
+                "longitude": "-71.4767103",
+                "id": 5070,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.4768964,
+                    43.1088412
+                ]
+            },
+            "properties": {
+                "name": "Common Man Roadside South",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "25 Springer Road, Hooksett",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=263996",
+                "internal_url": "null",
+                "latitude": "43.1088412",
+                "longitude": "-71.4768964",
+                "id": 5071,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.4950537,
+                    44.42631
+                ]
+            },
+            "properties": {
+                "name": "Santa's Village",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "528 Presidential Highway, Jefferson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=101670",
+                "internal_url": "null",
+                "latitude": "44.42631",
+                "longitude": "-71.4950537",
+                "id": 5072,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.458934,
+                    43.607508
+                ]
+            },
+            "properties": {
+                "name": "Mt Washington Cruises Ticket Office",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "211 Lakeside Avenue, Laconia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3376",
+                "internal_url": "null",
+                "latitude": "43.607508",
+                "longitude": "-71.458934",
+                "id": 5073,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.6858232,
+                    44.04772
+                ]
+            },
+            "properties": {
+                "name": "Clarks Trading Post",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "US Route 3, Lincoln",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=5809",
+                "internal_url": "null",
+                "latitude": "44.04772",
+                "longitude": "-71.6858232",
+                "id": 5074,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.67988489999999,
+                    44.0969773
+                ]
+            },
+            "properties": {
+                "name": "Flume Gorge - Part of Franconia Notch State Park",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "852 Daniel Webster Hwy, Lincoln",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=17616",
+                "internal_url": "null",
+                "latitude": "44.0969773",
+                "longitude": "-71.67988489999999",
+                "id": 5075,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.33912839999999,
+                    42.8762744
+                ]
+            },
+            "properties": {
+                "name": "Deja Vu Furniture & More",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "113 Hillside Ave, Londonderry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=353377",
+                "internal_url": "null",
+                "latitude": "42.8762744",
+                "longitude": "-71.33912839999999",
+                "id": 5076,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.7203164,
+                    42.7411973
+                ]
+            },
+            "properties": {
+                "name": "Parker's Maple Barn Resturant",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "1316 Brookline Road, Mason",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=20458",
+                "internal_url": "null",
+                "latitude": "42.7411973",
+                "longitude": "-71.7203164",
+                "id": 5077,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.968886,
+                    43.4426175
+                ]
+            },
+            "properties": {
+                "name": "Yogi Bears Jellystone Park /Lakes Region",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "111 mi-te-jo rd, Milton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=343988",
+                "internal_url": "null",
+                "latitude": "43.4426175",
+                "longitude": "-70.968886",
+                "id": 5078,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.3963212,
+                    43.7551555
+                ]
+            },
+            "properties": {
+                "name": "The Old Country Store and Museum ",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "1011 Whittier Hwy. P.O. Box 186, Moultonboro",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=211389",
+                "internal_url": "null",
+                "latitude": "43.7551555",
+                "longitude": "-71.3963212",
+                "id": 5079,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.35082799999999,
+                    44.270017
+                ]
+            },
+            "properties": {
+                "name": "Mount Washington Cog Railway",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "3168 Base Station Road, Mount Washington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3381",
+                "internal_url": "null",
+                "latitude": "44.270017",
+                "longitude": "-71.35082799999999",
+                "id": 5080,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.1287719,
+                    44.0519703
+                ]
+            },
+            "properties": {
+                "name": "Conway Scenic Railway",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "38 Norcross Circle, North Conway ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3398",
+                "internal_url": "null",
+                "latitude": "44.0519703",
+                "longitude": "-71.1287719",
+                "id": 5081,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.126617,
+                    44.0516875
+                ]
+            },
+            "properties": {
+                "name": "The Rugged Mill",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "2633 White Mountain Highway / PO Box 997, North Conway",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=196011",
+                "internal_url": "null",
+                "latitude": "44.0516875",
+                "longitude": "-71.126617",
+                "id": 5082,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.784092,
+                    44.037235
+                ]
+            },
+            "properties": {
+                "name": "Lost River Gorge & Boulder Caves",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "1712 Lost River Road, Route 112, North Woodstock",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=8220",
+                "internal_url": "null",
+                "latitude": "44.037235",
+                "longitude": "-71.784092",
+                "id": 5083,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.67705889999999,
+                    44.0354653
+                ]
+            },
+            "properties": {
+                "name": "White Mountain Visitor Center",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "200 Kancamagus Highway, North Woodstock",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3386",
+                "internal_url": "null",
+                "latitude": "44.0354653",
+                "longitude": "-71.67705889999999",
+                "id": 5084,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.7809941,
+                    43.7823004
+                ]
+            },
+            "properties": {
+                "name": "Polar Caves Park",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "705 Rumney Route 25, Rumney",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3389",
+                "internal_url": "null",
+                "latitude": "43.7823004",
+                "longitude": "-71.7809941",
+                "id": 5085,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.2479706,
+                    42.79353
+                ]
+            },
+            "properties": {
+                "name": "Canobie Lake Park Amusement Park",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "85 North Policy Street , Salem",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=3377",
+                "internal_url": "null",
+                "latitude": "42.79353",
+                "longitude": "-71.2479706",
+                "id": 5086,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.3034964,
+                    44.2695664
+                ]
+            },
+            "properties": {
+                "name": "Sherman Adams Visitors Center",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "Mt. Washington Summit, 1598 Mt. Washington Auto Road, Sargent's Purchase",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=192322",
+                "internal_url": "null",
+                "latitude": "44.2695664",
+                "longitude": "-71.3034964",
+                "id": 5087,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.17205369999999,
+                    43.8049745
+                ]
+            },
+            "properties": {
+                "name": "Westward Shores Cottages & Resort",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "110 Nichols Rd or PO Box 577, West Ossipee ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=343971",
+                "internal_url": "null",
+                "latitude": "43.8049745",
+                "longitude": "-71.17205369999999",
+                "id": 5088,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.2131412,
+                    43.5846458
+                ]
+            },
+            "properties": {
+                "name": "Black's Paper Store & Gift Shop",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "8 South Main St., Wolfeboro",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=97673",
+                "internal_url": "null",
+                "latitude": "43.5846458",
+                "longitude": "-71.2131412",
+                "id": 5089,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.20947989999999,
+                    43.5852069
+                ]
+            },
+            "properties": {
+                "name": "Wright Museum of World War 11",
+                "active": true,
+                "area": "New Hampshire",
+                "address": "PO Box 1212/ 77 Center St., Wolfeboro",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=360287",
+                "internal_url": "null",
+                "latitude": "43.5852069",
+                "longitude": "-71.20947989999999",
+                "id": 5090,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6205104,
+                    48.4200483
+                ]
+            },
+            "properties": {
+                "name": "Deception Pass Tours",
+                "active": true,
+                "area": "Washington",
+                "address": "5596 SR 20, Anacortes",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=287887",
+                "internal_url": "null",
+                "latitude": "48.4200483",
+                "longitude": "-122.6205104",
+                "id": 5091,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.5183722,
+                    47.62513449999999
+                ]
+            },
+            "properties": {
+                "name": "Calico Toy Shoppe",
+                "active": true,
+                "area": "Washington",
+                "address": "290 Winslow Way East, Bainbridge Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=208150",
+                "internal_url": "null",
+                "latitude": "47.62513449999999",
+                "longitude": "-122.5183722",
+                "id": 5092,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.201676,
+                    47.6161012
+                ]
+            },
+            "properties": {
+                "name": "Snowflake Lane, Bellevue Square",
+                "active": true,
+                "area": "Washington",
+                "address": "227 Bellevue Way NE, Bellevue",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=308539",
+                "internal_url": "null",
+                "latitude": "47.6161012",
+                "longitude": "-122.201676",
+                "id": 5093,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7446058,
+                    48.9176301
+                ]
+            },
+            "properties": {
+                "name": "The C Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "4825 Alderson Road, Birch Bay",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=323522",
+                "internal_url": "null",
+                "latitude": "48.9176301",
+                "longitude": "-122.7446058",
+                "id": 5094,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.751201,
+                    48.992991
+                ]
+            },
+            "properties": {
+                "name": "Horseshoe Coins & Antiques",
+                "active": true,
+                "area": "Washington",
+                "address": "810 Peace Portal Dr, Blaine",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1067",
+                "internal_url": "null",
+                "latitude": "48.992991",
+                "longitude": "-122.751201",
+                "id": 5095,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4554087,
+                    48.2417165
+                ]
+            },
+            "properties": {
+                "name": "Camano Commons Marketplace",
+                "active": true,
+                "area": "Washington",
+                "address": "848 North Sunrise Blvd Suite C, Camano Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=353661",
+                "internal_url": "null",
+                "latitude": "48.2417165",
+                "longitude": "-122.4554087",
+                "id": 5096,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.01,
+                    46.7905036
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge Great Mound",
+                "active": true,
+                "area": "Washington",
+                "address": "20500 Old Highway 99, SW, Centralia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=286782",
+                "internal_url": "null",
+                "latitude": "46.7905036",
+                "longitude": "-123.01",
+                "id": 5097,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.018734,
+                    47.840235
+                ]
+            },
+            "properties": {
+                "name": "Culinary Apple",
+                "active": true,
+                "area": "Washington",
+                "address": "109 East Woodin Avenue, Chelan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=179500",
+                "internal_url": "null",
+                "latitude": "47.840235",
+                "longitude": "-120.018734",
+                "id": 5098,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2764812,
+                    46.9148704
+                ]
+            },
+            "properties": {
+                "name": "Northwest Trek Wildlife Park",
+                "active": true,
+                "area": "Washington",
+                "address": "11610 Trek Drive East , Eatonville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1068",
+                "internal_url": "null",
+                "latitude": "46.9148704",
+                "longitude": "-122.2764812",
+                "id": 5099,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.915076,
+                    47.564792
+                ]
+            },
+            "properties": {
+                "name": "Baxter Barn",
+                "active": true,
+                "area": "Washington",
+                "address": "31929 SE 44th Street, Fall City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=317207",
+                "internal_url": "null",
+                "latitude": "47.564792",
+                "longitude": "-121.915076",
+                "id": 5100,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.3855776,
+                    47.9506104
+                ]
+            },
+            "properties": {
+                "name": "Native to Twilight ",
+                "active": true,
+                "area": "Washington",
+                "address": "10 North Forks Avenue (Highway 101), Forks",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=57885",
+                "internal_url": "null",
+                "latitude": "47.9506104",
+                "longitude": "-124.3855776",
+                "id": 5101,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0142862,
+                    48.5349606
+                ]
+            },
+            "properties": {
+                "name": "Dockside Treasures",
+                "active": true,
+                "area": "Washington",
+                "address": "100 Front Street #6, Friday Harbor on San Juan Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=74355",
+                "internal_url": "null",
+                "latitude": "48.5349606",
+                "longitude": "-123.0142862",
+                "id": 5102,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.1863394,
+                    46.1809577
+                ]
+            },
+            "properties": {
+                "name": "GESA Carousel of Dreams",
+                "active": true,
+                "area": "Washington",
+                "address": "2901-F. Southridge Boulevard, Kennewick",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=214339",
+                "internal_url": "null",
+                "latitude": "46.1809577",
+                "longitude": "-119.1863394",
+                "id": 5103,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4956125,
+                    48.3924211
+                ]
+            },
+            "properties": {
+                "name": "Nasty Jack's Antiques",
+                "active": true,
+                "area": "Washington",
+                "address": "103 Morris Street - P.O. Box 251, La Conner",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=256208",
+                "internal_url": "null",
+                "latitude": "48.3924211",
+                "longitude": "-122.4956125",
+                "id": 5104,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.784746,
+                    47.06195
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "active": true,
+                "area": "Washington",
+                "address": "1600 Gateway Boulevard NE, Lacey",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=34395",
+                "internal_url": "null",
+                "latitude": "47.06195",
+                "longitude": "-122.784746",
+                "id": 5105,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6627256,
+                    47.59458739999999
+                ]
+            },
+            "properties": {
+                "name": "Hat Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "719 Front Street, Leavenworth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=265140",
+                "internal_url": "null",
+                "latitude": "47.59458739999999",
+                "longitude": "-120.6627256",
+                "id": 5106,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6618122,
+                    47.5950263
+                ]
+            },
+            "properties": {
+                "name": "Icicle Creek Clothing",
+                "active": true,
+                "area": "Washington",
+                "address": "807 Front Street, Leavenworth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=369422",
+                "internal_url": "null",
+                "latitude": "47.5950263",
+                "longitude": "-120.6618122",
+                "id": 5107,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6602696,
+                    47.5959107
+                ]
+            },
+            "properties": {
+                "name": "Leavenworth Shirt Company ",
+                "active": true,
+                "area": "Washington",
+                "address": "929 Front Street, Leavenworth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=305475",
+                "internal_url": "null",
+                "latitude": "47.5959107",
+                "longitude": "-120.6602696",
+                "id": 5108,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.661929,
+                    47.5950001
+                ]
+            },
+            "properties": {
+                "name": "Simple Treasure",
+                "active": true,
+                "area": "Washington",
+                "address": "805 Front Street, Leavenworth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=305211",
+                "internal_url": "null",
+                "latitude": "47.5950001",
+                "longitude": "-120.661929",
+                "id": 5109,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.661837,
+                    47.59519909999999
+                ]
+            },
+            "properties": {
+                "name": "The Gingerbread Factory (Was in Village Pharmacy)",
+                "active": true,
+                "area": "Washington",
+                "address": "829 Front Street, Leavenworth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1076",
+                "internal_url": "null",
+                "latitude": "47.59519909999999",
+                "longitude": "-120.661837",
+                "id": 5110,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6626787,
+                    47.5945772
+                ]
+            },
+            "properties": {
+                "name": "The Wood Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "721 Front Street, Leavenworth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1077",
+                "internal_url": "null",
+                "latitude": "47.5945772",
+                "longitude": "-120.6626787",
+                "id": 5111,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.0552941,
+                    46.34928530000001
+                ]
+            },
+            "properties": {
+                "name": "Marsh's Free Museum ",
+                "active": true,
+                "area": "Washington",
+                "address": "409 Pacific Avenue South, Long Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1080",
+                "internal_url": "null",
+                "latitude": "46.34928530000001",
+                "longitude": "-124.0552941",
+                "id": 5112,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3960998,
+                    46.3084976
+                ]
+            },
+            "properties": {
+                "name": "Mount St. Helens Forest Learning Center",
+                "active": true,
+                "area": "Washington",
+                "address": "17000 Spirit Lake Highway (Highway 504 Milepost 33), Mount St. Helens  (Past Toutle, WA)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1084",
+                "internal_url": "null",
+                "latitude": "46.3084976",
+                "longitude": "-122.3960998",
+                "id": 5113,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.1955509,
+                    46.19140059999999
+                ]
+            },
+            "properties": {
+                "name": "Mount St. Helens National Volcanic Monument - Ape Caves",
+                "active": true,
+                "area": "Washington",
+                "address": "FR-8303, Mount St. Helens (Past Cougar, WA)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=326374",
+                "internal_url": "null",
+                "latitude": "46.19140059999999",
+                "longitude": "-122.1955509",
+                "id": 5114,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2704093,
+                    46.2872369
+                ]
+            },
+            "properties": {
+                "name": "Mount St. Helens National Volcanic Monument - Johnston Ridge Observatory",
+                "active": true,
+                "area": "Washington",
+                "address": "21500 Spirit Lake Highway (Highway 504 Milepost 52), Mount St. Helens (Past Toutle, WA)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1083",
+                "internal_url": "null",
+                "latitude": "46.2872369",
+                "longitude": "-122.2704093",
+                "id": 5115,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.8138761,
+                    46.2962338
+                ]
+            },
+            "properties": {
+                "name": "Mount St. Helens Washington State Silver Lake Visitors Center",
+                "active": true,
+                "area": "Washington",
+                "address": "3029 Spirit Lake Highway (Highway 504 Milepost 5), Mount St. Helens (Past Toutle, WA)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=15979",
+                "internal_url": "null",
+                "latitude": "46.2962338",
+                "longitude": "-122.8138761",
+                "id": 5116,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.0443777,
+                    48.1781892
+                ]
+            },
+            "properties": {
+                "name": "Owen's Grocery & Deli",
+                "active": true,
+                "area": "Washington",
+                "address": "337 S Washington Avenue, Newport",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=15744",
+                "internal_url": "null",
+                "latitude": "48.1781892",
+                "longitude": "-117.0443777",
+                "id": 5117,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.1670528,
+                    47.0067543
+                ]
+            },
+            "properties": {
+                "name": "Cloud Nine Gifts and Souvenirs",
+                "active": true,
+                "area": "Washington",
+                "address": "699 Ocean Shores Boulevard NW, Ocean Shores",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=326362",
+                "internal_url": "null",
+                "latitude": "47.0067543",
+                "longitude": "-124.1670528",
+                "id": 5118,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.1632258,
+                    47.009909
+                ]
+            },
+            "properties": {
+                "name": "Pacific Paradise Park",
+                "active": true,
+                "area": "Washington",
+                "address": "767 Minard Ave NW, Ocean Shores",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=366006",
+                "internal_url": "null",
+                "latitude": "47.009909",
+                "longitude": "-124.1632258",
+                "id": 5119,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.8965656,
+                    47.0480478
+                ]
+            },
+            "properties": {
+                "name": "Hands on Children's Museum",
+                "active": true,
+                "area": "Washington",
+                "address": "414 Jefferson Street NE, Olympia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=196005",
+                "internal_url": "null",
+                "latitude": "47.0480478",
+                "longitude": "-122.8965656",
+                "id": 5120,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.9048253,
+                    47.0357351
+                ]
+            },
+            "properties": {
+                "name": "Washington State Capitol Campus - Legislative Gift Center",
+                "active": true,
+                "area": "Washington",
+                "address": "416 Sid Snyder Avenue SW #110, Olympia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=180322",
+                "internal_url": "null",
+                "latitude": "47.0357351",
+                "longitude": "-122.9048253",
+                "id": 5121,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.9011873,
+                    47.0353254
+                ]
+            },
+            "properties": {
+                "name": "Washington State Capitol Campus - Olympia, Lacey, Tumwater Visitor Center",
+                "active": true,
+                "area": "Washington",
+                "address": "103 Sid Snyder Avenue SW, Olympia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=105594",
+                "internal_url": "null",
+                "latitude": "47.0353254",
+                "longitude": "-122.9011873",
+                "id": 5122,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.9046353,
+                    47.0369433
+                ]
+            },
+            "properties": {
+                "name": "Washington State Capitol Campus - Temple of Justice Building",
+                "active": true,
+                "area": "Washington",
+                "address": "415 12th Avenue SW, Olympia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=105595",
+                "internal_url": "null",
+                "latitude": "47.0369433",
+                "longitude": "-122.9046353",
+                "id": 5123,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.4984784,
+                    47.9691753
+                ]
+            },
+            "properties": {
+                "name": "Hurricane Ridge Visitors Center / Olympic National Park",
+                "active": true,
+                "area": "Washington",
+                "address": "Located 17.8 miles south of the Olympic National Park Visitors Center, Olympic National Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=236703",
+                "internal_url": "null",
+                "latitude": "47.9691753",
+                "longitude": "-123.4984784",
+                "id": 5124,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.945631,
+                    48.59801359999999
+                ]
+            },
+            "properties": {
+                "name": "Cottage Gift Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "8289 Orcas Road, Orcas Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1096",
+                "internal_url": "null",
+                "latitude": "48.59801359999999",
+                "longitude": "-122.945631",
+                "id": 5125,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.6693304,
+                    46.6084775
+                ]
+            },
+            "properties": {
+                "name": "Blanton's Market IGA",
+                "active": true,
+                "area": "Washington",
+                "address": "13040 Highway 12, Packwood",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1098",
+                "internal_url": "null",
+                "latitude": "46.6084775",
+                "longitude": "-121.6693304",
+                "id": 5126,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6136936,
+                    47.574029
+                ]
+            },
+            "properties": {
+                "name": "Smallwood's Harvest",
+                "active": true,
+                "area": "Washington",
+                "address": "10461 Stemm Road, Peshastin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=243327",
+                "internal_url": "null",
+                "latitude": "47.574029",
+                "longitude": "-120.6136936",
+                "id": 5127,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7708206,
+                    48.1096763
+                ]
+            },
+            "properties": {
+                "name": "Celtic Crossroads Northwest (Formerly Wandering Angus: Celtic Traders)",
+                "active": true,
+                "area": "Washington",
+                "address": "2205 East Sims Way, Port Townsend",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=227935",
+                "internal_url": "null",
+                "latitude": "48.1096763",
+                "longitude": "-122.7708206",
+                "id": 5128,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2966347,
+                    47.18236479999999
+                ]
+            },
+            "properties": {
+                "name": "Washington State Fair ",
+                "active": true,
+                "area": "Washington",
+                "address": "110 9th Ave SW, Puyallup",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=196234",
+                "internal_url": "null",
+                "latitude": "47.18236479999999",
+                "longitude": "-122.2966347",
+                "id": 5129,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.8482939,
+                    47.4669367
+                ]
+            },
+            "properties": {
+                "name": "Lake Quinault Lodge",
+                "active": true,
+                "area": "Washington",
+                "address": "345 South Shore Road, Quinault",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1102",
+                "internal_url": "null",
+                "latitude": "47.4669367",
+                "longitude": "-123.8482939",
+                "id": 5130,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.7327405,
+                    46.6834358
+                ]
+            },
+            "properties": {
+                "name": "Northwest Carriage Museum",
+                "active": true,
+                "area": "Washington",
+                "address": "314 Alder Street, Raymond",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=319490",
+                "internal_url": "null",
+                "latitude": "46.6834358",
+                "longitude": "-123.7327405",
+                "id": 5131,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.1985505,
+                    47.1945415
+                ]
+            },
+            "properties": {
+                "name": "Brooklets Toys",
+                "active": true,
+                "area": "Washington",
+                "address": "208 Market Street, Seabrook ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=248816",
+                "internal_url": "null",
+                "latitude": "47.1945415",
+                "longitude": "-124.1985505",
+                "id": 5132,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3417195,
+                    47.6616019
+                ]
+            },
+            "properties": {
+                "name": "Archie McPhee",
+                "active": true,
+                "area": "Washington",
+                "address": "1300 N 45th Street, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=267433",
+                "internal_url": "null",
+                "latitude": "47.6616019",
+                "longitude": "-122.3417195",
+                "id": 5133,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3971838,
+                    47.66550429999999
+                ]
+            },
+            "properties": {
+                "name": "Ballard Locks (Hiram M. Chittenden Locks) Fish Ladder",
+                "active": true,
+                "area": "Washington",
+                "address": "3015 Northwest 54th Street, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=4498",
+                "internal_url": "null",
+                "latitude": "47.66550429999999",
+                "longitude": "-122.3971838",
+                "id": 5134,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3347081,
+                    47.5871138
+                ]
+            },
+            "properties": {
+                "name": "Filson",
+                "active": true,
+                "area": "Washington",
+                "address": "1741 1st Avenue South , Seattle ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=281852",
+                "internal_url": "null",
+                "latitude": "47.5871138",
+                "longitude": "-122.3347081",
+                "id": 5135,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2968545,
+                    47.5185379
+                ]
+            },
+            "properties": {
+                "name": "Museum of Flight",
+                "active": true,
+                "area": "Washington",
+                "address": "9404 East Marginal Way, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1106",
+                "internal_url": "null",
+                "latitude": "47.5185379",
+                "longitude": "-122.2968545",
+                "id": 5136,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.350051,
+                    47.6116397
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line Ship 'Pearl'",
+                "active": true,
+                "area": "Washington",
+                "address": "Pier 66/ Bell Street Terminal, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=112646",
+                "internal_url": "null",
+                "latitude": "47.6116397",
+                "longitude": "-122.350051",
+                "id": 5137,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.350051,
+                    47.6116397
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Ship - Norwegian Jewel",
+                "active": true,
+                "area": "Washington",
+                "address": "Pier 66 / Bell Street Terminal, Seattle ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=273848",
+                "internal_url": "null",
+                "latitude": "47.6116397",
+                "longitude": "-122.350051",
+                "id": 5138,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3390337,
+                    47.6041729
+                ]
+            },
+            "properties": {
+                "name": "Pier 54 - Simply Seattle",
+                "active": true,
+                "area": "Washington",
+                "address": "1001 Alaskan Way suite 103, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=51617",
+                "internal_url": "null",
+                "latitude": "47.6041729",
+                "longitude": "-122.3390337",
+                "id": 5139,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3399489,
+                    47.6043346
+                ]
+            },
+            "properties": {
+                "name": "Pier 54 - Ye Olde Curiosity Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "1001 Alaskan Way, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1124",
+                "internal_url": "null",
+                "latitude": "47.6043346",
+                "longitude": "-122.3399489",
+                "id": 5140,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.339716,
+                    47.604747
+                ]
+            },
+            "properties": {
+                "name": "Pier 55 - Seattle Shirt Company (Was Shirt Shop)",
+                "active": true,
+                "area": "Washington",
+                "address": "1101 Alaskan Way, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=181210",
+                "internal_url": "null",
+                "latitude": "47.604747",
+                "longitude": "-122.339716",
+                "id": 5141,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3402453,
+                    47.6054427
+                ]
+            },
+            "properties": {
+                "name": "Pier 56 - The Seattle Shop ",
+                "active": true,
+                "area": "Washington",
+                "address": "1201 Alaskan Way suite 102, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=237103",
+                "internal_url": "null",
+                "latitude": "47.6054427",
+                "longitude": "-122.3402453",
+                "id": 5142,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3425246,
+                    47.6061342
+                ]
+            },
+            "properties": {
+                "name": "Pier 57 - Miners Landing Building - The Seattle Great Wheel",
+                "active": true,
+                "area": "Washington",
+                "address": "1301 Alaskan Way, Seattle ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=198948",
+                "internal_url": "null",
+                "latitude": "47.6061342",
+                "longitude": "-122.3425246",
+                "id": 5143,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3418041,
+                    47.60607630000001
+                ]
+            },
+            "properties": {
+                "name": "Pier 57 - Miners Landing Building - Wings Over Washington (WOW) & Caro",
+                "active": true,
+                "area": "Washington",
+                "address": "1301 Alaskan Way, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=274047",
+                "internal_url": "null",
+                "latitude": "47.60607630000001",
+                "longitude": "-122.3418041",
+                "id": 5144,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3421874,
+                    47.6073853
+                ]
+            },
+            "properties": {
+                "name": "Pier 59 - Seattle Aquarium",
+                "active": true,
+                "area": "Washington",
+                "address": "1483 Alaskan Way suite 103, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1111",
+                "internal_url": "null",
+                "latitude": "47.6073853",
+                "longitude": "-122.3421874",
+                "id": 5145,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3409729,
+                    47.6084816
+                ]
+            },
+            "properties": {
+                "name": "Pike Place Market - Market Magic Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "1501 Pike Place, #427, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1107",
+                "internal_url": "null",
+                "latitude": "47.6084816",
+                "longitude": "-122.3409729",
+                "id": 5146,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3320708,
+                    47.6062095
+                ]
+            },
+            "properties": {
+                "name": "Royal Caribbean International",
+                "active": true,
+                "area": "Washington",
+                "address": "Ovation of the Seas, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=267490",
+                "internal_url": "null",
+                "latitude": "47.6062095",
+                "longitude": "-122.3320708",
+                "id": 5147,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3481245,
+                    47.6214824
+                ]
+            },
+            "properties": {
+                "name": "Seattle Center - MoPop / Museum of Pop Culture (was the EMP)",
+                "active": true,
+                "area": "Washington",
+                "address": "325 5th Avenue North, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=4952",
+                "internal_url": "null",
+                "latitude": "47.6214824",
+                "longitude": "-122.3481245",
+                "id": 5148,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3492774,
+                    47.6205063
+                ]
+            },
+            "properties": {
+                "name": "Seattle Center - Space Needle Space Base Gift Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "400 Broad Street, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1117",
+                "internal_url": "null",
+                "latitude": "47.6205063",
+                "longitude": "-122.3492774",
+                "id": 5149,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3397622,
+                    47.6088014
+                ]
+            },
+            "properties": {
+                "name": "Seattle Shirt Company",
+                "active": true,
+                "area": "Washington",
+                "address": "103 Pike Street, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=132542",
+                "internal_url": "null",
+                "latitude": "47.6088014",
+                "longitude": "-122.3397622",
+                "id": 5150,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3336804,
+                    47.6023525
+                ]
+            },
+            "properties": {
+                "name": "Seattle Underground Tour",
+                "active": true,
+                "area": "Washington",
+                "address": "608 First Avenue, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1118",
+                "internal_url": "null",
+                "latitude": "47.6023525",
+                "longitude": "-122.3336804",
+                "id": 5151,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3408736,
+                    47.6100454
+                ]
+            },
+            "properties": {
+                "name": "Simply Seattle Gift Shop ",
+                "active": true,
+                "area": "Washington",
+                "address": "1600 1st Avenue, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=271549",
+                "internal_url": "null",
+                "latitude": "47.6100454",
+                "longitude": "-122.3408736",
+                "id": 5152,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3325172,
+                    47.591349
+                ]
+            },
+            "properties": {
+                "name": "T-Mobile Park Team Store / Seattle Mariners Baseball ",
+                "active": true,
+                "area": "Washington",
+                "address": "1250 1st Avenue South, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1110",
+                "internal_url": "null",
+                "latitude": "47.591349",
+                "longitude": "-122.3325172",
+                "id": 5153,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3508786,
+                    47.668436
+                ]
+            },
+            "properties": {
+                "name": "Woodland Park Zoo",
+                "active": true,
+                "area": "Washington",
+                "address": "5500 Phinney Ave. N., Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=303741",
+                "internal_url": "null",
+                "latitude": "47.668436",
+                "longitude": "-122.3508786",
+                "id": 5154,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.1468407,
+                    48.1351759
+                ]
+            },
+            "properties": {
+                "name": "Olympic Game Farm",
+                "active": true,
+                "area": "Washington",
+                "address": "1423 Ward Road, Sequim",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=207409",
+                "internal_url": "null",
+                "latitude": "48.1351759",
+                "longitude": "-123.1468407",
+                "id": 5155,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.825668,
+                    47.528513
+                ]
+            },
+            "properties": {
+                "name": "Northwest Railway Museum",
+                "active": true,
+                "area": "Washington",
+                "address": "38625 SE King Street, Snoqualmie",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1129",
+                "internal_url": "null",
+                "latitude": "47.528513",
+                "longitude": "-121.825668",
+                "id": 5156,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.837451,
+                    47.54377299999999
+                ]
+            },
+            "properties": {
+                "name": "Snoqualmie Falls Gift Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "6351 Railroad Avenue SE, Snoqualmie",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=26140",
+                "internal_url": "null",
+                "latitude": "47.54377299999999",
+                "longitude": "-121.837451",
+                "id": 5157,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.4088807,
+                    47.7021855
+                ]
+            },
+            "properties": {
+                "name": "Northtown Mall - Blue Zoo Aquarium",
+                "active": true,
+                "area": "Washington",
+                "address": "4750 N. Division Suite #1242, Spokane",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=323795",
+                "internal_url": "null",
+                "latitude": "47.7021855",
+                "longitude": "-117.4088807",
+                "id": 5158,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.4224572,
+                    47.6603492
+                ]
+            },
+            "properties": {
+                "name": "Numerica Skate Ribbon ",
+                "active": true,
+                "area": "Washington",
+                "address": "720 W Spokane Falls Blvd , Spokane",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=371579",
+                "internal_url": "null",
+                "latitude": "47.6603492",
+                "longitude": "-117.4224572",
+                "id": 5159,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.4191283,
+                    47.6620637
+                ]
+            },
+            "properties": {
+                "name": "Riverfront Park - Looff Carrousel",
+                "active": true,
+                "area": "Washington",
+                "address": "507 North Howard Street, Spokane",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=109768",
+                "internal_url": "null",
+                "latitude": "47.6620637",
+                "longitude": "-117.4191283",
+                "id": 5160,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2479647,
+                    47.2038379
+                ]
+            },
+            "properties": {
+                "name": "The Old Cannery Furniture Warehouse",
+                "active": true,
+                "area": "Washington",
+                "address": "13608 Cannery Way, Sumner",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=371114",
+                "internal_url": "null",
+                "latitude": "47.2038379",
+                "longitude": "-122.2479647",
+                "id": 5161,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.5216575,
+                    47.3049533
+                ]
+            },
+            "properties": {
+                "name": "Point Defiance Zoo & Aquarium",
+                "active": true,
+                "area": "Washington",
+                "address": "5400 N. Pearl St., Tacoma",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1130",
+                "internal_url": "null",
+                "latitude": "47.3049533",
+                "longitude": "-122.5216575",
+                "id": 5162,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.113522,
+                    46.909205
+                ]
+            },
+            "properties": {
+                "name": "Granny Hazel's Candy and Gift Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "2329 Westhaven Drive, Westport",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1133",
+                "internal_url": "null",
+                "latitude": "46.909205",
+                "longitude": "-124.113522",
+                "id": 5163,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.185405,
+                    48.47754
+                ]
+            },
+            "properties": {
+                "name": "Sheri's Sweet Shoppe",
+                "active": true,
+                "area": "Washington",
+                "address": "207 Riverside Avenue (Highway 20), Winthrop",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Locations.aspx?area=Details.aspx?location=1165",
+                "internal_url": "null",
+                "latitude": "48.47754",
+                "longitude": "-120.185405",
+                "id": 5164,
+                "last_updated": "2022-8-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.39018,
+                    52.51001
+                ]
+            },
+            "properties": {
+                "name": "Berlin City Kiosk 56",
+                "active": true,
+                "area": "Germany",
+                "address": "Friedrichstraße 56, 10117 Berlin, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.51001",
+                "longitude": "13.39018",
+                "id": 5165,
+                "last_updated": "2022-08-22"
             }
         }
     ]
