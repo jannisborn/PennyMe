@@ -22,7 +22,7 @@ class PinViewController: UITableViewController {
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
-    
+    let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     
     enum StatusChoice : String {
             case unvisited
@@ -44,6 +44,9 @@ class PinViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // main command to ensure that the subviews are sorted
+        statusPicker.layoutSubviews()
+        
         // Add title, address and updated
         titleLabel.numberOfLines = 3
         titleLabel.textAlignment = NSTextAlignment.center
@@ -57,6 +60,23 @@ class PinViewController: UITableViewController {
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
         
+        // get color of currently selected index
+        let colForSegment: UIColor = statusColors[statusPicker.selectedSegmentIndex]
+        // color selected segmented
+        if #available(iOS 13.0, *) {
+            statusPicker.selectedSegmentTintColor = colForSegment
+        }
+        else{
+            statusPicker.tintColor = colForSegment
+        }
+        // color all the other segments with alpha=0.2
+        for (num, col) in zip([0, 1, 2, 3], statusColors){
+            let subView = statusPicker.subviews[num] as UIView
+            subView.layer.backgroundColor = col.cgColor
+            subView.layer.zPosition = -1
+            subView.alpha = 0.2
+        }
+
         // load image asynchronously
         self.imageview.getImage(id: self.pinData.id)
         // initialize tap gesture to enlarge image
@@ -111,9 +131,18 @@ class PinViewController: UITableViewController {
         }
 
     @objc func statusChanged(_ sender: UISegmentedControl) {
-        let status = StatusChoice(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "unvisited") ?? .unvisited
+        let status = statusChoices[sender.selectedSegmentIndex]
         
-        saveStatusChange(machineid: self.pinData.id, new_status: status.rawValue)
+        saveStatusChange(machineid: self.pinData.id, new_status: status)
+        
+        // change color for selected segment
+        let colForSegment = statusColors[sender.selectedSegmentIndex]
+        if #available(iOS 13.0, *) {
+            statusPicker.selectedSegmentTintColor = colForSegment
+        }
+        else{
+            statusPicker.tintColor = colForSegment
+        }
     }
     
     func saveStatusChange(machineid: String, new_status: String){
@@ -143,7 +172,7 @@ class PinViewController: UITableViewController {
                 print("file already exists but could not be read", error)
             }
         }
-//        print("loaded / new status dictionary", currentStatusDict)
+
         // update value
         currentStatusDict[0][machineid] = new_status
 //        print("after update value", currentStatusDict)

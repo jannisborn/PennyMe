@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let regionInMeters: Double = 10000
     // Array for annotation database
     var artworks: [Artwork] = []
+    var pinIdDict : [String:Int] = [:]
     var selectedPin: Artwork?
     
     // Searchbar variables
@@ -265,16 +266,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         // If we have saved some already:
         if !is_empty{
-//            print("updating with vals from json")
-            let titles_in_dict = Array(statusDict[0].keys)
-            for machine in artworks{
-                if titles_in_dict.contains(machine.id){
-//                    print("changed", machine.title!)
-                    // remove old color and add new one
-                    PennyMap.removeAnnotation(machine)
-                    machine.status = statusDict[0][machine.id] ?? "unvisited"
-                    PennyMap.addAnnotation(machine)
-                }
+            let ids_in_dict = Array(statusDict[0].keys)
+            // iterate over saved IDs and update status on map
+            for id_machine in ids_in_dict{
+                let machine = artworks[pinIdDict[id_machine]!]
+                PennyMap.removeAnnotation(machine)
+                machine.status = statusDict[0][machine.id] ?? "unvisited"
+                PennyMap.addAnnotation(machine)
             }
         }
     }
@@ -294,8 +292,48 @@ class ViewController: UIViewController, UITextFieldDelegate {
             .compactMap { $0 as? MKGeoJSONFeature }
           let validWorks = features.compactMap(Artwork.init)
           artworks.append(contentsOf: validWorks)
+        // put IDs into a dictionary
+            for (ind, pin) in artworks.enumerated(){
+                pinIdDict[pin.id] = ind
+            }
         } catch {
           print("Unexpected error: \(error).")
+        }
+        
+        // load from server
+        let link_to_json = "http://37.120.179.15:8000/server_locations.json"
+        guard let json_url = URL(string: link_to_json) else { return }
+        do{
+            let serverJsonData = try Data(contentsOf: json_url, options:.mappedIfSafe)
+//            // print json for debugging
+//            let jsonResult = try JSONSerialization.jsonObject(with: serverJsonData, options: .mutableLeaves)
+//            print(jsonResult)
+            let serverJsonAsMap = try MKGeoJSONDecoder()
+              .decode(serverJsonData)
+              .compactMap { $0 as? MKGeoJSONFeature }
+            // transform to Artwork objects
+            let pinsFromServer = serverJsonAsMap.compactMap(Artwork.init)
+            var pinsFromServerList: [Artwork] = []
+            pinsFromServerList.append(contentsOf: pinsFromServer)
+            
+            // update pins
+            for pin in pinsFromServerList{
+                // Case 1: pin already exists
+                let pinIndex = pinIdDict[pin.id]
+                if (pinIndex != nil){
+                    // overwrite the pin in the list
+                    artworks[pinIndex!] = pin
+                }
+                // Case 2: pin is new
+                else{
+                    // add to list and to dictionary
+                    artworks.append(pin)
+                    pinIdDict[pin.id] = artworks.count - 1
+                }
+            }
+        }
+        catch{
+            print("Error in loading updates from server", error)
         }
     }
     
@@ -310,6 +348,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
         return artwork.text.lowercased().contains(searchText.lowercased())
         }
+        filteredArtworks = filteredArtworks.sorted(by: {$0.title! < $1.title! })
         
         // This sets the table view frame to cover exactly the entire underlying map
         locationResult.frame = PennyMap.bounds

@@ -44258,8 +44258,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.0192203,
-                    36.9641957
+                    -122.019203,
+                    36.964230
                 ]
             },
             "properties": {
@@ -44270,10 +44270,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=23741",
                 "internal_url": "null",
-                "latitude": "36.9641957",
-                "longitude": "-122.0192203",
+                "latitude": "36.964230",
+                "longitude": "-122.019203",
                 "id": 4848,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-10-03"
             }
         },
         {
@@ -44281,8 +44281,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.017415,
-                    36.9643592
+                    -122.017394,
+                    36.964338
                 ]
             },
             "properties": {
@@ -44293,10 +44293,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=224368",
                 "internal_url": "null",
-                "latitude": "36.9643592",
-                "longitude": "-122.017415",
+                "latitude": "36.964338",
+                "longitude": "-122.017394",
                 "id": 4846,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-10-03"
             }
         },
         {
@@ -65924,8 +65924,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -82.502481,
-                    40.784215
+                    -82.502403,
+                    40.783588
                 ]
             },
             "properties": {
@@ -65936,8 +65936,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=27802",
                 "internal_url": "null",
-                "latitude": "40.784215",
-                "longitude": "-82.502481",
+                "latitude": "40.783588",
+                "longitude": "-82.502403",
                 "id": 1984,
                 "last_updated": "2021-04-05"
             }
@@ -94798,6 +94798,7 @@
                 "latitude": "48.136428",
                 "longitude": "11.575688",
                 "id": 563,
+                "paywall": true,
                 "last_updated": "2021-11-14",
                 "logs": {
                     "2021-11-14": "There is several machines on different levels on the stairs to the tower. Watch out for the entrance hours. Machines should require 1 Euro and 5 Cents. "
@@ -94870,6 +94871,8 @@
                 "latitude": "48.1740593",
                 "longitude": "11.5563904",
                 "id": 565,
+                "multimachine": 2,
+                "paywall": true,
                 "last_updated": "2021-04-05"
             }
         },
@@ -95156,8 +95159,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    16.3958889,
-                    48.2166205
+                    16.396075,
+                    48.216908
                 ]
             },
             "properties": {
@@ -95168,11 +95171,11 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=61195",
                 "internal_url": "null",
-                "multimachine": 5,
-                "latitude": "48.2166205",
-                "longitude": "16.3958889",
+                "latitude": "48.216908",
+                "longitude": "16.396075",
                 "id": 1023,
-                "last_updated": "2022-10-05"
+                "last_updated": "2022-10-03",
+                "multimachine": 5
             }
         },
         {
@@ -101263,7 +101266,8 @@
                 "latitude": "51.1858099",
                 "longitude": "-2.2744112",
                 "id": 1601,
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-04-05",
+                "multimachine": 4
             }
         },
         {
@@ -118835,8 +118839,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.39018,
-                    52.51001
+                    13.39010,
+                    52.51000
                 ]
             },
             "properties": {
@@ -118847,10 +118851,56 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": "52.51001",
-                "longitude": "13.39018",
+                "latitude": "52.51000",
+                "longitude": "13.39010",
                 "id": 5165,
                 "last_updated": "2022-08-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.551913,
+                    48.093381
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hellabrunn München",
+                "active": true,
+                "area": "Germany",
+                "address": "Schlichtweg 11, 81543 München, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343393",
+                "internal_url": "null",
+                "latitude": "48.093381",
+                "longitude": "11.551913",
+                "id": 5166,
+                "last_updated": "2022-08-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.557955,
+                    48.098576
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hellabrunn München - Aquarium",
+                "active": true,
+                "area": "Germany",
+                "address": "Tierparkstraße 30, 81543 München, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.098576",
+                "longitude": "11.557955",
+                "id": 5167,
+                "last_updated": "2022-08-24"
             }
         },
         {
