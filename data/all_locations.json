@@ -44258,8 +44258,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.0192203,
-                    36.9641957
+                    -122.019203,
+                    36.964230
                 ]
             },
             "properties": {
@@ -44270,10 +44270,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=23741",
                 "internal_url": "null",
-                "latitude": "36.9641957",
-                "longitude": "-122.0192203",
+                "latitude": "36.964230",
+                "longitude": "-122.019203",
                 "id": 4848,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-10-03"
             }
         },
         {
@@ -44281,8 +44281,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.017415,
-                    36.9643592
+                    -122.017394,
+                    36.964338
                 ]
             },
             "properties": {
@@ -44293,10 +44293,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=224368",
                 "internal_url": "null",
-                "latitude": "36.9643592",
-                "longitude": "-122.017415",
+                "latitude": "36.964338",
+                "longitude": "-122.017394",
                 "id": 4846,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-10-03"
             }
         },
         {
@@ -94775,7 +94775,6 @@
                 "latitude": "48.13259430000001",
                 "longitude": "11.5421346",
                 "id": 562,
-                "paywall": false,
                 "last_updated": "2021-04-05"
             }
         },
@@ -95158,8 +95157,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    16.3958889,
-                    48.2166205
+                    16.396075,
+                    48.216908
                 ]
             },
             "properties": {
@@ -95170,10 +95169,11 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=61195",
                 "internal_url": "null",
-                "latitude": "48.2166205",
-                "longitude": "16.3958889",
+                "latitude": "48.216908",
+                "longitude": "16.396075",
                 "id": 1023,
-                "last_updated": "2021-04-05"
+                "last_updated": "2022-10-03",
+                "multimachine": 5
             }
         },
         {
@@ -101262,7 +101262,8 @@
                 "latitude": "51.1858099",
                 "longitude": "-2.2744112",
                 "id": 1601,
-                "last_updated": "2021-04-05"
+                "last_updated": "2021-04-05",
+                "multimachine": 4
             }
         },
         {
