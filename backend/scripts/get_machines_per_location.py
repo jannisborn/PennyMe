@@ -12,7 +12,7 @@ import os
 from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
 from pennyme.pennycollector import (
     LOCATION_PREFIX,
-    get_location_list_from_website,
+    get_location_list_from_location_website,
     get_machine_list_from_locations,
 )
 from pennyme.webconfig import get_website
@@ -59,15 +59,15 @@ def get_json_from_location(
         f.write(str(website))
 
     # REFACTOR THIS TO 2 METHODS/FUNCTIONS since I also have to get GONE machines
-    location_raw_list = get_location_list_from_website(
-        website,
+    location_raw_list = get_location_list_from_location_website(website)
+
+    locations = get_machine_list_from_locations(
+        location_raw_list,
         current_id=current_id,
         country=country,
         api_key=api_key,
         add_date=True,
     )
-
-    locations = get_machine_list_from_locations(location_raw_list)
 
     data = {"type": "FeatureCollection", "features": locations}
     with open(os.path.join(directory, "data.json"), "w", encoding="utf8") as f:
