@@ -1,9 +1,6 @@
 """
-Country based download of HTML from PennyCollector.com
-This script does:
-1. Scraping the HTML of a location and extracting machine name/subtitle and link.
-2. Searches the location name on a map and saves the geographic coordinates
-3. Saves data to .json
+PROBABLY THIS FILE IST MOSTLY DEPRECATED
+To check whether the website has been updated
 """
 import argparse
 import json
@@ -12,8 +9,9 @@ import os
 from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
 from pennyme.pennycollector import (
     LOCATION_PREFIX,
+    AREA_SITE,
+    get_area_list_from_area_website, validate_location_list
     get_machine_list_from_locations,
-    get_raw_locations_from_location_website,
 )
 from pennyme.webconfig import get_website
 
@@ -37,6 +35,17 @@ def get_json_from_location(
     country: str, api_key: str, output_folder: str, start_id: int
 ):
 
+    area_website = get_website(AREA_SITE)
+    areas = get_area_list_from_area_website(area_website)
+    valid, diff = validate_location_list(areas)
+    if not valid:
+        raise ValueError(f"It seems there were new locations: {diff}")
+
+
+    
+    
+
+    # AT SOME POINT I WILL LOOP HERE
     try:
         country_id = COUNTRY_TO_CODE[country]
     except KeyError:
@@ -50,7 +59,6 @@ def get_json_from_location(
 
     print("Set up Google Maps API")
     website = get_website(url)
-    print("Loaded website")
 
     directory = os.path.join(output_folder, parse_location_name(country))
     os.makedirs(directory, exist_ok=True)
@@ -59,7 +67,7 @@ def get_json_from_location(
         f.write(str(website))
 
     # REFACTOR THIS TO 2 METHODS/FUNCTIONS since I also have to get GONE machines
-    location_raw_list = get_raw_locations_from_location_website(website)
+    location_raw_list = get_location_list_from_location_website(website)
 
     locations = get_machine_list_from_locations(
         location_raw_list,
