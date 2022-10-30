@@ -13,35 +13,55 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
   override var annotation: MKAnnotation? {
     willSet {
       // 1
-      guard let artwork = newValue as? Artwork else {
-        return
-      }
-        // Set marker color
-        markerTintColor = artwork.markerTintColor
-        
-        // Create view when marker is pressed
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
-        view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        view.canShowCallout = true
-        view.calloutOffset = CGPoint(x: -5, y: 5)
-        
-        // Create right button
-        rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        let mapsButton = UIButton(
-            frame: CGRect(origin: CGPoint.zero,
-            size: CGSize(width: 30, height: 30))
-        )
-        mapsButton.setBackgroundImage(UIImage(named: "maps"), for: UIControl.State())
-        rightCalloutAccessoryView = mapsButton
-        
-        // Multiline subtitles
-        let detailLabel = UILabel()
-        detailLabel.numberOfLines = 0
-        detailLabel.font = detailLabel.font.withSize(12)
-        detailLabel.text = artwork.subtitle
-        detailCalloutAccessoryView = detailLabel
-
+        let check = newValue?.title
+        if check == "New Machine"{
+            guard let newmachine = newValue as? NewMachine else {
+                return
+            }
+            // Create view when marker is pressed
+            let identifier = "markerNewMachine"
+            var view: MKMarkerAnnotationView
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: 0, y: 0)
+           // Multiline subtitles
+           let detailLabel = UILabel()
+           detailLabel.numberOfLines = 0
+           detailLabel.font = detailLabel.font.withSize(12)
+           detailLabel.text = newmachine.text
+           detailCalloutAccessoryView = detailLabel
+           rightCalloutAccessoryView = nil
+        }
+        else {
+            guard let artwork = newValue as? Artwork else {
+                return
+            }
+            // Set marker color
+            markerTintColor = artwork.markerTintColor
+            
+            // Create view when marker is pressed
+            let identifier = "marker"
+            var view: MKMarkerAnnotationView
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            
+            // Create right button
+            rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            let mapsButton = UIButton(
+                frame: CGRect(origin: CGPoint.zero,
+                              size: CGSize(width: 30, height: 30))
+            )
+            mapsButton.setBackgroundImage(UIImage(named: "maps"), for: UIControl.State())
+            rightCalloutAccessoryView = mapsButton
+            
+            // Multiline subtitles
+            let detailLabel = UILabel()
+            detailLabel.numberOfLines = 0
+            detailLabel.font = detailLabel.font.withSize(12)
+            detailLabel.text = artwork.subtitle
+            detailCalloutAccessoryView = detailLabel
+        }
     }
   }
 }

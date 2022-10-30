@@ -30,7 +30,6 @@ class Artwork: NSObject, MKAnnotation {
         self.id = String(id)
         self.last_updated = last_updated
         self.text = self.title! + self.locationName
-        
         super.init()
     }
     

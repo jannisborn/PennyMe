@@ -17,7 +17,7 @@ let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
 @available(iOS 13.0, *)
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var ownLocation: UIButton!
@@ -52,6 +52,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
     @IBOutlet weak var mapType : UISegmentedControl!
 
+    // new machine annotation
+    var newMachineAnnotation: [MKAnnotation] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,9 +96,47 @@ class ViewController: UIViewController, UITextFieldDelegate {
         addMapTrackingButton()
         addSettingsButton()
         toggleMapTypeButton()
-    
+        
+        // long gesture recognizer
+        let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        PennyMap.addGestureRecognizer(lpgr)
+        
+        // tap gesture re
+        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(shortTap))
+        viewTapGesture.delegate = self
+        PennyMap.addGestureRecognizer(viewTapGesture)
+        
     }
     
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        let location = gestureRecognizer.location(in: PennyMap)
+        let coordinate = PennyMap.convert(location, toCoordinateFrom: PennyMap)
+        let annotation = NewMachine(coordinate: coordinate)
+        PennyMap.addAnnotation(annotation)
+        if gestureRecognizer.state != UIGestureRecognizer.State.ended {
+            PennyMap.selectAnnotation(annotation, animated: true)
+        }
+        self.newMachineAnnotation.append(annotation)
+    }
+    
+    @objc func shortTap(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (self.newMachineAnnotation.count > 0){
+            if let annotation = self.newMachineAnnotation[0] as? MKAnnotation{
+                print(PennyMap.annotations.count)
+                print("Removing", annotation.title)
+                self.PennyMap.removeAnnotation(annotation)
+                // WORKARAOUND: remove and add all
+                //            PennyMap.removeAnnotations(PennyMap.annotations)
+                //            PennyMap.addAnnotations(artworks)
+                print(PennyMap.annotations.count)
+                self.newMachineAnnotation = []
+            }
+            }
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
@@ -413,6 +453,7 @@ extension ViewController: MKMapViewDelegate {
         // set selected pin to pass it to detail VC
         self.selectedPin = annotation
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        // TODO: Do we really want segue here?
     }
     
 //     callout when maps button is pressed
