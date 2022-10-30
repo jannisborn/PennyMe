@@ -101,6 +101,8 @@ def location_differ(
     total_changes, new, depr = 0, 0, 0
     problem_data = {"type": "FeatureCollection", "features": []}
     for i, area in enumerate(areas):
+        if area == " Private Rollers" or area == "_Collector Books_":
+            continue
         logger.debug(f"Starting processing {area}")
 
         # Scraping data for that area
