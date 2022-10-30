@@ -271,7 +271,7 @@ def location_differ(
         f" and {depr} machines retired"
     )
 
-    fn = f"server_data_{YEAR}_{MONTH}_{DAY}.json"
+    fn = "server_locations.json"
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
         json.dump(server_data, f, ensure_ascii=False, indent=4)
 
