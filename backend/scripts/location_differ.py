@@ -249,7 +249,7 @@ def location_differ(
 
             geojson["properties"]["latitude"] = str(lat)
             geojson["properties"]["longitude"] = str(lng)
-            geojson["geometry"]["coordinates"] = [lat, lng]
+            geojson["geometry"]["coordinates"] = [lng, lat]
             geojson["properties"]["last_updated"] = today
             geojson["properties"]["id"] = machine_idx
             machine_idx += 1
