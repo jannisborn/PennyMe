@@ -86,7 +86,7 @@ def location_differ(
                 f"Currently, links have to be unique in server_dict, not {url}"
             )
         if geojson["properties"]["id"] > machine_idx:
-            machine_idx += 1
+            machine_idx = geojson["properties"]["id"]
     server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
@@ -137,9 +137,7 @@ def location_differ(
                     ]
                     if len(set(cur_states)) > 1:
                         # TODO: In the future we should be able to handle those
-                        raise ValueError(
-                            f"Multiple states for {cur_dict['this_link']}"
-                        )
+                        raise ValueError(f"Multiple states for {cur_dict['this_link']}")
                     cur_state = cur_states[0]
                     if this_state == cur_state:
                         # Existing machine with no update
@@ -181,9 +179,7 @@ def location_differ(
                             server_data["features"][i]["properties"][
                                 "status"
                             ] = "retired"
-                            server_data["features"][i]["properties"][
-                                "active"
-                            ] = False
+                            server_data["features"][i]["properties"]["active"] = False
                             server_data["features"][i]["properties"][
                                 "last_updated"
                             ] = today
@@ -215,9 +211,7 @@ def location_differ(
                             server_data["features"][idx]["properties"][
                                 "status"
                             ] = "unvisited"
-                            server_data["features"][idx]["properties"][
-                                "active"
-                            ] = True
+                            server_data["features"][idx]["properties"]["active"] = True
                             server_data["features"][i]["properties"][
                                 "last_updated"
                             ] = today
