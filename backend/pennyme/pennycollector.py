@@ -1,7 +1,7 @@
 """Utils to parse pennycollector.com"""
 import logging
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 import bs4
 from googlemaps import Client as GoogleMaps
@@ -30,9 +30,7 @@ def get_area_list_from_area_website(website) -> List[str]:
     """
 
     unparsed_locs = website.find("table", id="StatesList")
-    us_locs = [loc.split("\t")[-1] for loc in str(unparsed_locs).split("</a>")][
-        :-1
-    ]
+    us_locs = [loc.split("\t")[-1] for loc in str(unparsed_locs).split("</a>")][:-1]
 
     non_us_unparsed = website.findAll("option", attrs={"selected": ""})
     non_us_locations = []
@@ -130,15 +128,11 @@ def get_prelim_geojson(
     title = remove_html_and(raw_location[0].split("<td>")[1].split("<br/>")[0])
     if "<s>" in title:
         title = title.split("<s>")[1].split("</s>")[0]
-    subtitle = remove_html_and(
-        raw_location[0].split('">')[1].split("</span>")[0]
-    )
+    subtitle = remove_html_and(raw_location[0].split('">')[1].split("</span>")[0])
     city = remove_html_and(raw_location[1].split("<td>")[1].split("</td>")[0])
     subtitle = subtitle + ", " + city
 
-    state = remove_html_and(
-        raw_location[2].split('Center">')[1].split("</td>")[0]
-    )
+    state = remove_html_and(raw_location[2].split('Center">')[1].split("</td>")[0])
     if state not in UNAVAILABLE_MACHINE_STATES:
         # States like 1p, 4p and everything else
         state = "unvisited"
@@ -173,9 +167,7 @@ def get_prelim_geojson(
     return geojson
 
 
-def get_coordinates(
-    title: str, subtitle: str, api_key: str
-) -> Tuple[float, float]:
+def get_coordinates(title: str, subtitle: str, api_key: str) -> Tuple[float, float]:
     """
     Perform geolocationing for a title and a subtitle.
 
@@ -209,118 +201,3 @@ def get_coordinates(
         lat, lng = 0, 0
 
     return lat, lng
-
-
-def get_machine_list_from_locations(
-    raw_locations: List[str],
-    current_id: int,
-    country: str,
-    api_key: Optional[str] = None,
-    add_date: bool = False,
-) -> List[Dict]:
-    """
-    Parse a raw list of locations (from the HTML website) into a list of Penny
-    machines, one GEOJSON per machine.
-
-    NOTE: This is a LEGACY method.
-
-    Args:
-        raw_locations (List): A list of raw webcontent from pennylocator.com
-        current_id (int): The ID to be used for first machine. IDs are UNIQUE
-            and are assigned in ascending order.
-        country (str): Name of the country for which data is being parsed.
-        api_key (str): Key to access GoogleMaps API used to retrieve the exact
-            coordinates of a machine. If not provided, no exact locations
-            will be added.
-        add_date: Whether or not the current date is added to the GEOJSON.
-            Defaults to False since this is used for regular comparison.
-
-    Returns:
-        List[Dict]: A list of Penny machines, one GEOJSON per machine.
-    """
-
-    ind = -1
-    locations = []
-    if api_key:
-        gmaps = GoogleMaps(api_key)
-    get_coords = api_key is None
-
-    while ind < len(raw_locations) - 1:
-
-        ind += 1
-
-        content = str(raw_locations[ind])
-
-        if ind % 50 == 0 and ind > 0:
-            print("Now processing location no. {}".format(ind / 5))
-
-        # Each location item consists of 5 tds. Create a list of content attributes per location item
-        if ind % 5 == 0:
-            # Title and subtitle cell
-            title = remove_html_and(content.split("<td>")[1].split("<br/>")[0])
-            subtitle = remove_html_and(
-                content.split('">')[1].split("</span>")[0]
-            )
-        elif ind % 5 == 1:
-            city = remove_html_and(content.split("<td>")[1].split("</td>")[0])
-            subtitle = subtitle + ", " + city
-        elif ind % 5 == 2:
-            state = remove_html_and(
-                content.split('Center">')[1].split("</td>")[0]
-            )
-        elif ind % 5 == 3:
-            link = LOCATION_PREFIX + content.split('href="')[1].split('"><')[0]
-
-        elif ind % 5 == 4:
-            # TODO: ALSO PARSE GONE ARTICLES --> MAYBE 2 FUNCTIONS??
-            if state != "Gone" and "<s>" not in title:
-
-                if get_coords:
-                    # Make GM request, default title and subtitle.
-                    query_coord = title + ", " + subtitle
-                    coordinates = gmaps.geocode(query_coord)
-
-                    try:
-                        lat = coordinates[0]["geometry"]["location"]["lat"]
-                        lng = coordinates[0]["geometry"]["location"]["lng"]
-                    except IndexError:
-                        # In case no location was found, try only the subtitle
-                        print(f"SECOND attempt needed for {title}\t{subtitle}.")
-                        coordinates = gmaps.geocode(subtitle)
-                        try:
-                            lat = coordinates[0]["geometry"]["location"]["lat"]
-                            lng = coordinates[0]["geometry"]["location"]["lng"]
-                        except IndexError:
-                            print(
-                                f"MANUAL handling needed: {title}\t{subtitle}"
-                            )
-
-                else:
-                    lat = "N.A."
-                    lng = "N.A."
-
-                current_id += 1
-                loc = {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [lng, lat],
-                    },
-                    "properties": {
-                        "name": title,
-                        "active": True,
-                        "area": country,
-                        "address": subtitle,
-                        "status": "unvisited",
-                        "external_url": link,
-                        "internal_url": "null",
-                        "latitude": str(lat),
-                        "longitude": str(lng),
-                        "id": current_id,
-                    },
-                }
-                if add_date:
-                    loc.update({"last_updated": f"{YEAR}-{MONTH}-{DAY}"})
-                locations.append(loc)
-
-    return locations
