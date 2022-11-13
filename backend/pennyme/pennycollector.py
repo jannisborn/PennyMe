@@ -14,7 +14,7 @@ WEBSITE_ROOT = "http://209.221.138.252/"
 AREA_PREFIX = WEBSITE_ROOT + "Locations.aspx?area="
 AREA_SITE = WEBSITE_ROOT + "AreaList.aspx"
 DATE = datetime.today()
-YEAR, MONTH, DAY = DATE.year, DATE.month, DATE.day
+YEAR, MONTH, DAY = DATE.year, DATE.month, str(DATE.day).zfill(2)
 UNAVAILABLE_MACHINE_STATES = ["Moved", "Gone", "Out of Order"]
 
 # StatesList
