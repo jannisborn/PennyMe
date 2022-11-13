@@ -279,9 +279,9 @@ def location_differ(
         logger.error(
             f"Found {len(problem_data['features'])} problems that require manual intervention"
         )
-    pn = f"problems_{YEAR}_{MONTH}_{DAY}.json"
-    with open(os.path.join(output_folder, pn), "w", encoding="utf8") as f:
-        json.dump(problem_data, f, ensure_ascii=False, indent=4)
+        pn = f"problems_{YEAR}_{MONTH}_{DAY}.json"
+        with open(os.path.join(output_folder, pn), "w", encoding="utf8") as f:
+            json.dump(problem_data, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":
