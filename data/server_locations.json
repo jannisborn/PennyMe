@@ -1,4 +1,28 @@
 {
     "type": "FeatureCollection",
-    "features": []
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.008550,
+                    53.597140
+                ]
+            },
+            "properties": {
+                "name": "Planetarium Hamburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Linnering 1, 22299 Hamburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.597140",
+                "longitude": "10.008550",
+                "id": 6003,
+                "last_updated": "2022-12-05"
+            }
+        }
+    ]
 }
