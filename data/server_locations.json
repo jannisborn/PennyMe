@@ -47,6 +47,33 @@
                 "id": 460,
                 "last_updated": "2022-01-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6746599,
+                    35.2674132
+                ]
+            },
+            "properties": {
+                "name": "Madonna Inn",
+                "active": true,
+                "area": "California",
+                "address": "100 Madonna Rd, San Luis Obispo, CA 93405, USA",
+                "status": "unvisited",
+                "multimachine": 2,
+                "external_url": "http://209.221.138.252/Details.aspx?location=571",
+                "internal_url": "null",
+                "latitude": "35.2674132",
+                "longitude": "-120.6746599",
+                "id": 4832,
+                "last_updated": "2022-01-05",
+                "notes": {
+                    "2022-01-05": "This machine is currently located downstairs across from the wine cave (right near the men restroom that has a waterfall in it). The other machine is on the main floor, in the Copper Cafe. "
+                }
+            }
         }
     ]
 }
