@@ -74,6 +74,29 @@
                     "2022-01-05": "This machine is currently located downstairs across from the wine cave (right near the men restroom that has a waterfall in it). The other machine is on the main floor, in the Copper Cafe. "
                 }
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.07869,
+                    47.51557
+                ]
+            },
+            "properties": {
+                "name": "House of Music",
+                "active": true,
+                "area": "Hungary",
+                "address": "1146 Kós Károly street, G38H+8P Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=386368",
+                "internal_url": "null",
+                "latitude": "47.51557",
+                "longitude": "19.07869",
+                "id": 5802,
+                "last_updated": "2023-01-06"
+            }
         }
     ]
 }
