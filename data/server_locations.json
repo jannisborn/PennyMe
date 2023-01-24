@@ -97,6 +97,53 @@
                 "id": 5802,
                 "last_updated": "2023-01-15"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.156786,
+                    53.612054
+                ]
+            },
+            "properties": {
+                "name": "Seehundstation Norddeich",
+                "active": true,
+                "area": "Germany",
+                "address": "Nationalpark-Haus, Dörper Weg 24",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=72570",
+                "internal_url": "null",
+                "latitude": "53.612054",
+                "longitude": "7.156786",
+                "id": 575,
+                "last_updated": "2022-08-05",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.3181599,
+                    41.7561942
+                ]
+            },
+            "properties": {
+                "name": "SciTech Hands On Museum",
+                "active": true,
+                "area": "Illinois",
+                "address": "18 West Benton, Aurora",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2113",
+                "internal_url": "null",
+                "latitude": "41.7561942",
+                "longitude": "-88.3181599",
+                "id": 1197,
+                "last_updated": "2021-04-05"
+            }
         }
     ]
 }
