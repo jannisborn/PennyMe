@@ -46,6 +46,77 @@
                 "id": 2182,
                 "last_updated": "2021-04-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.7362959,
+                    32.1802194
+                ]
+            },
+            "properties": {
+                "name": "Saguaro National Park",
+                "active": false,
+                "area": "Arizona",
+                "address": "Visitor Centers, Tucson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250420",
+                "internal_url": "null",
+                "latitude": "32.1802194",
+                "longitude": "-110.7362959",
+                "id": 2714,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.5057612,
+                    38.5821574
+                ]
+            },
+            "properties": {
+                "name": "Old Sacramento - Stage Nine Store",
+                "active": true,
+                "area": "California",
+                "address": "102 K St. (Old Town), Sacramento",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1196",
+                "internal_url": "null",
+                "latitude": "38.5821574",
+                "longitude": "-121.5057612",
+                "id": 4756,
+                "last_updated": "2021-04-05",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.5044464,
+                    38.5850581
+                ]
+            },
+            "properties": {
+                "name": "Old Sacramento - California State Railroad Museum",
+                "active": true,
+                "area": "California",
+                "address": "125 I Street  Sacramento, Sacramento",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107181",
+                "internal_url": "null",
+                "latitude": "38.5850581",
+                "longitude": "-121.5044464",
+                "id": 4751,
+                "last_updated": "2021-04-05",
+                "paywall": true
+            }
         }
     ]
 }
