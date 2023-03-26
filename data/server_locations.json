@@ -29,6 +29,219 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    8.8461775,
+                    53.1066666
+                ]
+            },
+            "properties": {
+                "name": "Universum Bremen (Science Center)",
+                "active": true,
+                "area": "Germany",
+                "address": "Wiener Straße 1a, 28359 Bremen, Germany",
+                "multimachine": 2,
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=33908",
+                "internal_url": "null",
+                "latitude": "53.1066666",
+                "longitude": "8.8461775",
+                "id": 460,
+                "last_updated": "2022-01-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6746599,
+                    35.2674132
+                ]
+            },
+            "properties": {
+                "name": "Madonna Inn",
+                "active": true,
+                "area": "California",
+                "address": "100 Madonna Rd, San Luis Obispo, CA 93405, USA",
+                "status": "unvisited",
+                "multimachine": 2,
+                "external_url": "http://209.221.138.252/Details.aspx?location=571",
+                "internal_url": "null",
+                "latitude": "35.2674132",
+                "longitude": "-120.6746599",
+                "id": 4832,
+                "last_updated": "2022-01-05",
+                "notes": {
+                    "2022-01-05": "This machine is currently located downstairs across from the wine cave (right near the men restroom that has a waterfall in it). The other machine is on the main floor, in the Copper Cafe. "
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.083691,
+                    47.512203
+                ]
+            },
+            "properties": {
+                "name": "Liget Városliget (by house of music)",
+                "active": true,
+                "area": "Hungary",
+                "address": "1146 Kós Károly street, G38H+8P Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=386368",
+                "internal_url": "null",
+                "latitude": "47.512203",
+                "longitude": "19.083691",
+                "id": 5802,
+                "last_updated": "2023-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.156786,
+                    53.612054
+                ]
+            },
+            "properties": {
+                "name": "Seehundstation Norddeich",
+                "active": true,
+                "area": "Germany",
+                "address": "Nationalpark-Haus, Dörper Weg 24",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=72570",
+                "internal_url": "null",
+                "latitude": "53.612054",
+                "longitude": "7.156786",
+                "id": 575,
+                "last_updated": "2022-08-05",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.3181599,
+                    41.7561942
+                ]
+            },
+            "properties": {
+                "name": "SciTech Hands On Museum",
+                "active": true,
+                "area": "Illinois",
+                "address": "18 West Benton, Aurora",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2113",
+                "internal_url": "null",
+                "latitude": "41.7561942",
+                "longitude": "-88.3181599",
+                "id": 1197,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.4598379,
+                    51.5165055
+                ]
+            },
+            "properties": {
+                "name": "Dortmund Tourist and Information CENTER",
+                "active": false,
+                "area": "Germany",
+                "address": "Königswall 18a",
+                "status": "retired",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.5165055",
+                "longitude": "7.4598379",
+                "id": 476,
+                "last_updated": "2023-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.5928913,
+                    36.4500474
+                ]
+            },
+            "properties": {
+                "name": "Russell's Truck & Travel Center (Springer)",
+                "active": true,
+                "area": "New Mexico",
+                "address": "I-25 exit 419, Springer, NM87747",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333989",
+                "internal_url": "null",
+                "latitude": "36.4500474",
+                "longitude": "-104.5928913",
+                "id": 4946,
+                "last_updated": "2023-03-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.1040605,
+                    35.1753875
+                ]
+            },
+            "properties": {
+                "name": "Russell's  Truck & Travel Center (Glenrio)",
+                "active": true,
+                "area": "New Mexico",
+                "address": "1583 Frontage Rd 4132 (Exit 369 off route I-40), Glenrio, NM 88434",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=267781",
+                "internal_url": "null",
+                "latitude": "35.1753875",
+                "longitude": "-103.1040605",
+                "id": 4928,
+                "last_updated": "2023-03-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.0200013,
+                    36.9639462
+                ]
+            },
+            "properties": {
+                "name": "Santa Cruz Beach Boardwalk (Casino Arcade)",
+                "active": true,
+                "area": "California",
+                "address": "400 Beach Street, 95060 Santa Cruz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=543",
+                "internal_url": "null",
+                "latitude": "36.9639462",
+                "longitude": "-122.0200013",
+                "id": 4847,
+                "last_updated": "2023-03-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -79.986747,
                     32.806778
                 ]
@@ -61,7 +274,7 @@
                 "active": false,
                 "area": "Arizona",
                 "address": "Visitor Centers, Tucson",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=250420",
                 "internal_url": "null",
                 "latitude": "32.1802194",
