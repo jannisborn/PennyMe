@@ -167,6 +167,75 @@
                 "id": 476,
                 "last_updated": "2023-02-10"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.5928913,
+                    36.4500474
+                ]
+            },
+            "properties": {
+                "name": "Russell's Truck & Travel Center (Springer)",
+                "active": true,
+                "area": "New Mexico",
+                "address": "I-25 exit 419, Springer, NM87747",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333989",
+                "internal_url": "null",
+                "latitude": "36.4500474",
+                "longitude": "-104.5928913",
+                "id": 4946,
+                "last_updated": "2023-03-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.1040605,
+                    35.1753875
+                ]
+            },
+            "properties": {
+                "name": "Russell's  Truck & Travel Center (Glenrio)",
+                "active": true,
+                "area": "New Mexico",
+                "address": "1583 Frontage Rd 4132 (Exit 369 off route I-40), Glenrio, NM 88434",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=267781",
+                "internal_url": "null",
+                "latitude": "35.1753875",
+                "longitude": "-103.1040605",
+                "id": 4928,
+                "last_updated": "2023-03-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.0200013,
+                    36.9639462
+                ]
+            },
+            "properties": {
+                "name": "Santa Cruz Beach Boardwalk (Casino Arcade)",
+                "active": true,
+                "area": "California",
+                "address": "400 Beach Street, 95060 Santa Cruz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=543",
+                "internal_url": "null",
+                "latitude": "36.9639462",
+                "longitude": "-122.0200013",
+                "id": 4847,
+                "last_updated": "2023-03-20"
+            }
         }
     ]
 }
