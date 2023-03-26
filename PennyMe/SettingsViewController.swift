@@ -21,10 +21,9 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
-        }
-        if #available(iOS 13.0, *) {
             self.navigationbar.standardAppearance = UINavigationBarAppearance()
             self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         }
