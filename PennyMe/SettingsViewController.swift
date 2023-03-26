@@ -14,13 +14,20 @@ import Contacts
 
 class SettingsViewController: UITableViewController {
     
+    @IBOutlet weak var navigationbar: UINavigationItem!
     @IBOutlet weak var pushSwitch: UISwitch!
     @IBOutlet weak var reportProblemButton: UIButton!
     @IBOutlet weak var radiusSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        if #available(iOS 13.0, *) {
+            self.navigationbar.standardAppearance = UINavigationBarAppearance()
+            self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        }
         reportProblemButton!.titleLabel?.text = "Report a problem"
         reportProblemButton.tintColor = UIColor.black
         reportProblemButton.addTarget(self, action: #selector(reportProblem), for: .touchUpInside)

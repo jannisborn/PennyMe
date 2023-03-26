@@ -43,6 +43,9 @@ class PinViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         
         // main command to ensure that the subviews are sorted
         statusPicker.layoutSubviews()

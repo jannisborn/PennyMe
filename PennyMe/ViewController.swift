@@ -23,6 +23,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ownLocation: UIButton!
     @IBOutlet var toggleMapButton: UIButton!
     
+    @IBOutlet weak var navigationbar: UINavigationItem!
+    
     //    For search results
     @IBOutlet var searchFooter: SearchFooter!
     @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
@@ -55,7 +57,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
+        self.navigationbar.standardAppearance = UINavigationBarAppearance()
+        self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+
+
         // Do any additional setup after loading the view, typically from a nib.
         artworks = Artwork.artworks()
 
@@ -66,6 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search penny machines"
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.overrideUserInterfaceStyle = .light
         // iOS 11 compatability issue
         navigationItem.searchController = searchController
         // Disable search bar if view is changed
