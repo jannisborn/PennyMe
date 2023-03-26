@@ -330,6 +330,99 @@
                 "last_updated": "2021-04-05",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.205536,
+                    37.205406
+                ]
+            },
+            "properties": {
+                "name": "Fort Zion Gift Shop & Petting Zoo",
+                "active": true,
+                "area": "Utah",
+                "address": "1000 W Highway 9, Virgin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252187",
+                "internal_url": "null",
+                "latitude": "37.205406",
+                "longitude": "-113.205536",
+                "id": 2103,
+                "last_updated": "2022-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8235772,
+                    28.056906
+                ]
+            },
+            "properties": {
+                "name": "Honeymoon Island State Park",
+                "active": true,
+                "area": "Florida",
+                "address": "1 Causeway Blvd, Dunedin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=199508",
+                "internal_url": "null",
+                "latitude": "28.056906",
+                "longitude": "-82.8235772",
+                "id": 3294,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.82874137384263,
+                    27.97717905872123
+                ]
+            },
+            "properties": {
+                "name": "Clearwater Beach Pier 60",
+                "active": true,
+                "area": "Florida",
+                "address": "Pier 60, Clearwater Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39290",
+                "internal_url": "null",
+                "latitude": "27.97717905872123",
+                "longitude": "-82.82874137384263",
+                "id": 3270,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.7071264,
+                    38.2057299
+                ]
+            },
+            "properties": {
+                "name": "Louisville Zoo",
+                "active": true,
+                "area": "Kentucky",
+                "address": "1100 Trevilian Way, Louisville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2279",
+                "internal_url": "null",
+                "latitude": "38.2057299",
+                "longitude": "-85.7071264",
+                "id": 3536,
+                "last_updated": "2021-04-05",
+                "multimachine": 6
+            }
         }
     ]
 }
