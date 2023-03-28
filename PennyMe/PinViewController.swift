@@ -11,14 +11,18 @@ import MapKit
 
 var FOUNDIMAGE : Bool = false
 
-class PinViewController: UITableViewController {
+let BaseURL = "http://127.0.0.1:5000/"
 
+class PinViewController: UITableViewController {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
     @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -47,6 +51,24 @@ class PinViewController: UITableViewController {
             overrideUserInterfaceStyle = .light
         }
         
+        updatedLabel.numberOfLines = 10
+        updatedLabel.contentMode = .scaleToFill
+        updatedLabel.text = "No comments yet"
+        loadComments() {
+            (output) in
+            self.updatedLabel.text = output
+        }
+        // textfield
+        commentTextField.attributedPlaceholder = NSAttributedString(
+            string: "Type your comment here")
+            
+        // submit button
+//        submitButton.layer.cornerRadius = 5
+//        submitButton.layer.borderWidth = 1
+//        submitButton.layer.borderColor = UIColor.black.cgColor
+//        submitButton.tintColor = .black
+        submitButton.addTarget(self, action: #selector(addComment), for: .touchUpInside
+                               )
         // main command to ensure that the subviews are sorted
         statusPicker.layoutSubviews()
         
@@ -56,7 +78,6 @@ class PinViewController: UITableViewController {
         titleLabel.text = self.pinData.title!
         addressLabel.numberOfLines = 3
         addressLabel.text = self.pinData.locationName
-        updatedLabel.text = self.pinData.last_updated
         
         // default status
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
@@ -87,7 +108,25 @@ class PinViewController: UITableViewController {
         self.imageview.isUserInteractionEnabled = true
         self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
-        }
+    }
+    
+    func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
+        let urlEncodedStringRequest = BaseURL + "/get_comments"
+            if let url = URL(string: urlEncodedStringRequest){
+                let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+                    guard let data = data else { return }
+                    
+                    let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    
+                    if let results_ = results as? Dictionary<String, String> {
+                        if results_["\(self!.pinData.id)"] != nil {
+                            completionBlock(results_[self!.pinData.id] ?? "No comments yet")
+                        }
+                    }
+                }
+                task.resume()
+            }
+    }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -145,6 +184,26 @@ class PinViewController: UITableViewController {
         }
         else{
             statusPicker.tintColor = colForSegment
+        }
+    }
+    
+    @objc func addComment(){
+        var comment = self.commentTextField.text
+        if comment?.count ?? 0 > 0 {
+            self.commentTextField.text = ""
+            self.commentTextField.attributedPlaceholder = NSAttributedString(
+                string: "Your comment will be shown soon!")
+            if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+                let urlEncodedStringRequest = BaseURL + request
+                
+                if let url = URL(string: urlEncodedStringRequest){
+                    let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+                        guard data != nil else { return }
+                        
+                    }
+                    task.resume()
+                }
+            }
         }
     }
     
