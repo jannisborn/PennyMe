@@ -58,16 +58,14 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         
-//        updatedLabel.numberOfLines = 10
-//        updatedLabel.contentMode = .scaleToFill
-//        updatedLabel.text = "No comments yet"
-//        loadComments()
-//        {
-//            (output) in
-//            print("OUTPUT", output)
-//            self.updatedLabel.text = output
-//            print("LABEL", self.updatedLabel.text)
-//        }
+        updatedLabel.numberOfLines = 10
+        updatedLabel.contentMode = .scaleToFill
+        loadComments()
+        {
+            (output) in
+            print("OUTPUT", output)
+            self.updatedLabel.text = output
+        }
         // textfield
         commentTextField.attributedPlaceholder = NSAttributedString(
             string: "Type your comment here")
@@ -120,11 +118,16 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        loadComments()
-    }
+// THIS LEADS TO main-thread problem
+//    override func viewDidAppear(_ animated: Bool) {
+//        loadComments()
+//        {
+//            (output) in
+//            self.updatedLabel.text = output
+//        }
+//    }
     
-    func loadComments() { // completionBlock: @escaping (String) -> Void) -> Void {
+    func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
 //        let urlEncodedStringRequest = BaseURL + "/get_comments"
         let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
             if let url = URL(string: urlEncodedStringRequest){
@@ -132,24 +135,26 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     guard let data = data else { return }
                     
                     let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                    
                     if let results_ = results as? Dictionary<String, String> {
                         if results_["\(self!.pinData.id)"] != nil {
-//                            completionBlock(results_[self!.pinData.id] ?? "No comments yet")
-                            commentForLabel = results_["\(self!.pinData.id)"]!
+                            completionBlock(results_[self!.pinData.id] ?? "No comments yet")
+//                            commentForLabel = results_["\(self!.pinData.id)"]!
                             
                         }
                     }
-                    DispatchQueue.main.async {
-                        self!.updatedLabel.numberOfLines = 0 // Allow for multiple lines of text
-                        self!.updatedLabel.lineBreakMode = .byWordWrapping
-                        self!.updatedLabel.text = commentForLabel
+//                    DispatchQueue.main.async {
+//                        self!.updatedLabel.numberOfLines = 10 // Allow for multiple lines of text
+//                        self!.updatedLabel.lineBreakMode = .byWordWrapping
+//                        self!.updatedLabel.text = commentForLabel
+//                        print("TODO")
+//                        print(commentForLabel)
+//                        print(self!.updatedLabel.text)
 //                        self!.tableView.cellForRow(at: IndexPath(row: 1, section:3))?.addSubview(self!.updatedLabel)
 //                                self!.view.addSubview(self!.updatedLabel)
-                        self!.updatedLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+//                        self!.updatedLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
 
-                    }
+//                    }
                 }
                 task.resume()
             }
