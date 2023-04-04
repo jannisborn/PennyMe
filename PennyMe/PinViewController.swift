@@ -11,9 +11,11 @@ import MapKit
 
 var FOUNDIMAGE : Bool = false
 
-let BaseURL = "http://127.0.0.1:5000/"
+let flaskURL = "http://37.120.179.15:5000/"
+let imageURL = "http://37.120.179.15:8000/"
+var commentForLabel : String = "No comments yet"
 
-class PinViewController: UITableViewController {
+class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -38,6 +40,7 @@ class PinViewController: UITableViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    var imagePicker = UIImagePickerController()
     
     var artwork: Artwork? {
       didSet {
@@ -51,13 +54,20 @@ class PinViewController: UITableViewController {
             overrideUserInterfaceStyle = .light
         }
         
-        updatedLabel.numberOfLines = 10
-        updatedLabel.contentMode = .scaleToFill
-        updatedLabel.text = "No comments yet"
-        loadComments() {
-            (output) in
-            self.updatedLabel.text = output
-        }
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+//        updatedLabel.numberOfLines = 10
+//        updatedLabel.contentMode = .scaleToFill
+//        updatedLabel.text = "No comments yet"
+//        loadComments()
+//        {
+//            (output) in
+//            print("OUTPUT", output)
+//            self.updatedLabel.text = output
+//            print("LABEL", self.updatedLabel.text)
+//        }
         // textfield
         commentTextField.attributedPlaceholder = NSAttributedString(
             string: "Type your comment here")
@@ -110,8 +120,13 @@ class PinViewController: UITableViewController {
         
     }
     
-    func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
-        let urlEncodedStringRequest = BaseURL + "/get_comments"
+    override func viewDidAppear(_ animated: Bool) {
+        loadComments()
+    }
+    
+    func loadComments() { // completionBlock: @escaping (String) -> Void) -> Void {
+//        let urlEncodedStringRequest = BaseURL + "/get_comments"
+        let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
             if let url = URL(string: urlEncodedStringRequest){
                 let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
                     guard let data = data else { return }
@@ -120,13 +135,29 @@ class PinViewController: UITableViewController {
                     
                     if let results_ = results as? Dictionary<String, String> {
                         if results_["\(self!.pinData.id)"] != nil {
-                            completionBlock(results_[self!.pinData.id] ?? "No comments yet")
+//                            completionBlock(results_[self!.pinData.id] ?? "No comments yet")
+                            commentForLabel = results_["\(self!.pinData.id)"]!
+                            
                         }
+                    }
+                    DispatchQueue.main.async {
+                        self!.updatedLabel.numberOfLines = 0 // Allow for multiple lines of text
+                        self!.updatedLabel.lineBreakMode = .byWordWrapping
+                        self!.updatedLabel.text = commentForLabel
+//                        self!.tableView.cellForRow(at: IndexPath(row: 1, section:3))?.addSubview(self!.updatedLabel)
+//                                self!.view.addSubview(self!.updatedLabel)
+                        self!.updatedLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
+
                     }
                 }
                 task.resume()
             }
     }
+    
+//    func changeLabelText(newText: String){
+//           updatedLabel.text = newText
+//       }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -134,11 +165,12 @@ class PinViewController: UITableViewController {
             self.performSegue(withIdentifier: "bigImage", sender: self)
         }
         else{
-            //open mailto url
-            let mailtostring = String(
-                "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE. NOTE: Please send a sharp picture in <b>landscape</b> orientation. The penny motives should be visible, otherwise sent multiple images**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
-            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string: mailtostring)!)
+            chooseImage()
+//            //open mailto url
+//            let mailtostring = String(
+//                "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE. NOTE: Please send a sharp picture in <b>landscape</b> orientation. The penny motives should be visible, otherwise sent multiple images**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
+//            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
+//            UIApplication.shared.openURL(URL(string: mailtostring)!)
         }
     }
     
@@ -194,7 +226,8 @@ class PinViewController: UITableViewController {
             self.commentTextField.attributedPlaceholder = NSAttributedString(
                 string: "Your comment will be shown soon!")
             if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-                let urlEncodedStringRequest = BaseURL + request
+//                let urlEncodedStringRequest = BaseURL + request
+                let urlEncodedStringRequest = flaskURL + request
                 
                 if let url = URL(string: urlEncodedStringRequest){
                     let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
@@ -206,6 +239,64 @@ class PinViewController: UITableViewController {
             }
         }
     }
+    
+    func chooseImage() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+
+//         Convert the image to a data object
+            guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                print("Failed to convert image to data")
+                return
+            }
+
+            // call flask method to upload the image
+            guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
+                return
+            }
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+
+            // Add the image data to the request body
+            let boundary = UUID().uuidString
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            let body = NSMutableData()
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+            body.append(imageData)
+            body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+            request.httpBody = body as Data
+
+            // Create a URLSessionDataTask to send the request
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+
+                // Handle the response from the Flask backend
+//                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+//                    print("Image uploaded successfully")
+//                } else {
+//                    print("Failed to upload image")
+//                }
+            }
+            task.resume()
+
+        dismiss(animated:true, completion: nil)
+    }
+
+
     
     func saveStatusChange(machineid: String, new_status: String){
         // find directory in documents folder corresponding to app data
