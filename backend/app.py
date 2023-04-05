@@ -15,6 +15,9 @@ SLACK_TOKEN = os.environ.get('SLACK_TOKEN')
 
 client = WebClient(token=os.environ['SLACK_TOKEN'])
 
+with open("blocked_ips.json", "r") as infile:
+    blocked_ips = json.load(infile)
+
 
 @app.route('/add_comment', methods=['GET'])
 def add_comment():
@@ -24,6 +27,13 @@ def add_comment():
 
     comment = str(request.args.get('comment'))
     machine_id = str(request.args.get('id'))
+
+    ip_address = request.remote_addr
+    if ip_address in blocked_ips:
+        return jsonify("Blocked IP address")
+
+    with open("comments_by_ip.txt", "a") as myfile:
+        myfile.write(f"{ip_address} {comment}")
 
     path_machine_comments = os.path.join(PATH_COMMENTS, f"{machine_id}.json")
     if os.path.exists(path_machine_comments):
