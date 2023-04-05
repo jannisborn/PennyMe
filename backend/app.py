@@ -74,17 +74,16 @@ def upload_image():
     return 'Image uploaded successfully'
 
 
-async def send_to_slack(machine_id, upload_type, comment_text):
+def send_to_slack(machine_id, upload_type, comment_text):
     if upload_type == "image":
         text = f"Image uploaded for machine {machine_id}"
     else:
         text = f"New comment for machine {machine_id}: {comment_text}"
 
     try:
-        response = await client.chat_postMessage(
+        response = client.chat_postMessage(
             channel='#pennyme_uploads', text=text, username="PennyMe"
         )
-        assert response["message"]["text"] == text
     except SlackApiError as e:
         assert e.response["ok"] is False
         assert e.response["error"]
