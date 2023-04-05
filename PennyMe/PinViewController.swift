@@ -13,7 +13,6 @@ var FOUNDIMAGE : Bool = false
 
 let flaskURL = "http://37.120.179.15:5000/"
 let imageURL = "http://37.120.179.15:8000/"
-var commentForLabel : String = "No comments yet"
 
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -58,14 +57,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         
-        updatedLabel.numberOfLines = 10
+        updatedLabel.numberOfLines = 0
         updatedLabel.contentMode = .scaleToFill
-        loadComments()
+
+        loadComments(completionBlock:
         {
             (output) in
-            print("OUTPUT", output)
-            self.updatedLabel.text = output
-        }
+            DispatchQueue.main.async {
+                self.updatedLabel.text = output
+                self.tableView.reloadData()
+            }
+        })
         // textfield
         commentTextField.attributedPlaceholder = NSAttributedString(
             string: "Type your comment here")
@@ -117,48 +119,29 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
     }
-    
-// THIS LEADS TO main-thread problem
-//    override func viewDidAppear(_ animated: Bool) {
-//        loadComments()
-//        {
-//            (output) in
-//            self.updatedLabel.text = output
-//        }
-//    }
-    
+
     func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
-//        let urlEncodedStringRequest = BaseURL + "/get_comments"
         let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
+        
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        
             if let url = URL(string: urlEncodedStringRequest){
-                let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+                let session = URLSession(configuration: config)
+                let task = session.dataTask(with: url) {[weak self](data, response, error) in
                     guard let data = data else { return }
-                    
                     let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                     if let results_ = results as? Dictionary<String, String> {
                         if results_["\(self!.pinData.id)"] != nil {
                             completionBlock(results_[self!.pinData.id] ?? "No comments yet")
-//                            commentForLabel = results_["\(self!.pinData.id)"]!
                             
                         }
                     }
-//                    DispatchQueue.main.async {
-//                        self!.updatedLabel.numberOfLines = 10 // Allow for multiple lines of text
-//                        self!.updatedLabel.lineBreakMode = .byWordWrapping
-//                        self!.updatedLabel.text = commentForLabel
-//                        print("TODO")
-//                        print(commentForLabel)
-//                        print(self!.updatedLabel.text)
-//                        self!.tableView.cellForRow(at: IndexPath(row: 1, section:3))?.addSubview(self!.updatedLabel)
-//                                self!.view.addSubview(self!.updatedLabel)
-//                        self!.updatedLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-
-
-//                    }
                 }
                 task.resume()
             }
-    }
+        }
     
 //    func changeLabelText(newText: String){
 //           updatedLabel.text = newText
