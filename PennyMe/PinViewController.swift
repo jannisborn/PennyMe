@@ -73,10 +73,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             string: "Type your comment here")
             
         // submit button
-//        submitButton.layer.cornerRadius = 5
-//        submitButton.layer.borderWidth = 1
-//        submitButton.layer.borderColor = UIColor.black.cgColor
-//        submitButton.tintColor = .black
         submitButton.addTarget(self, action: #selector(addComment), for: .touchUpInside
                                )
         // main command to ensure that the subviews are sorted
@@ -142,10 +138,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 task.resume()
             }
         }
-    
-//    func changeLabelText(newText: String){
-//           updatedLabel.text = newText
-//       }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -271,13 +263,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     print("Error: \(error)")
                     return
                 }
-
-                // Handle the response from the Flask backend
-//                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-//                    print("Image uploaded successfully")
-//                } else {
-//                    print("Failed to upload image")
-//                }
             }
             task.resume()
 

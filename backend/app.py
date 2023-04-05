@@ -2,6 +2,8 @@ import json
 from datetime import date
 import os
 from PIL import Image, ImageOps
+from slack import WebClient
+from slack.errors import SlackApiError
 
 from flask import Flask, jsonify, request
 
@@ -9,6 +11,9 @@ app = Flask(__name__)
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
+SLACK_TOKEN = os.environ.get('SLACK_TOKEN')
+
+client = WebClient(token=os.environ['SLACK_TOKEN'])
 
 
 @app.route('/add_comment', methods=['GET'])
@@ -35,6 +40,9 @@ def add_comment():
     with open(path_machine_comments, "w") as outfile:
         json.dump(all_comments, outfile)
 
+    # send message to slack
+    send_to_slack(machine_id, "comment", new_comment)
+
     return jsonify({"response": 200})
 
 
@@ -52,15 +60,35 @@ def upload_image():
     img = Image.open(os.path.join(PATH_IMAGES, f'{machine_id}.jpg'))
     img = ImageOps.exif_transpose(img)
     basewidth = 400
-    wpercent = (basewidth/float(img.size[0]))
+    wpercent = (basewidth / float(img.size[0]))
     if wpercent > 1:
         return "Image uploaded successfully, no resize necessary"
     # resize
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((basewidth,hsize), Image.Resampling.LANCZOS)
+    hsize = int((float(img.size[1]) * float(wpercent)))
+    img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
     img.save(os.path.join(PATH_IMAGES, f'{machine_id}.jpg'), quality=95)
 
+    # send message to slack
+    send_to_slack(machine_id, "image", "")
+
     return 'Image uploaded successfully'
+
+
+async def send_to_slack(machine_id, upload_type, comment_text):
+    if upload_type == "image":
+        text = f"Image uploaded for machine {machine_id}"
+    else:
+        text = f"New comment for machine {machine_id}: {comment_text}"
+
+    try:
+        response = await client.chat_postMessage(
+            channel='#pennyme_uploads', text=text, username="PennyMe"
+        )
+        assert response["message"]["text"] == text
+    except SlackApiError as e:
+        assert e.response["ok"] is False
+        assert e.response["error"]
+        raise e
 
 
 def create_app():
