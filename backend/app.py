@@ -1,33 +1,35 @@
 import json
-from datetime import date
 import os
-from PIL import Image, ImageOps
-from slack import WebClient
-from slack.errors import SlackApiError
+from datetime import date
 
 from flask import Flask, jsonify, request
+from PIL import Image, ImageOps
+
+from slack import WebClient
+from slack.errors import SlackApiError
 
 app = Flask(__name__)
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
-SLACK_TOKEN = os.environ.get('SLACK_TOKEN')
+SLACK_TOKEN = os.environ.get("SLACK_TOKEN")
+IMG_PORT = "http://37.120.179.15:8000/"
 
-client = WebClient(token=os.environ['SLACK_TOKEN'])
+client = WebClient(token=os.environ["SLACK_TOKEN"])
 
 with open("blocked_ips.json", "r") as infile:
     # NOTE: blocking an IP requires restart of app.py via waitress
     blocked_ips = json.load(infile)
 
 
-@app.route('/add_comment', methods=['GET'])
+@app.route("/add_comment", methods=["GET"])
 def add_comment():
     """
     Receives a comment and adds it to the json file
     """
 
-    comment = str(request.args.get('comment'))
-    machine_id = str(request.args.get('id'))
+    comment = str(request.args.get("comment"))
+    machine_id = str(request.args.get("id"))
 
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
@@ -52,48 +54,80 @@ def add_comment():
         json.dump(all_comments, outfile)
 
     # send message to slack
-    send_to_slack(machine_id, "comment", new_comment)
+    message_slack(machine_id, new_comment, ip=ip_address)
 
     return jsonify({"response": 200})
 
 
-@app.route('/upload_image', methods=['POST'])
+@app.route("/upload_image", methods=["POST"])
 def upload_image():
-    machine_id = str(request.args.get('id'))
+    machine_id = str(request.args.get("id"))
+    ip_address = request.remote_addr
+    if ip_address in blocked_ips:
+        return jsonify("Blocked IP address")
 
-    if 'image' not in request.files:
-        return 'No image file', 400
+    if "image" not in request.files:
+        return "No image file", 400
 
-    image = request.files['image']
-    image.save(os.path.join(PATH_IMAGES, f'{machine_id}.jpg'))
+    image = request.files["image"]
+    img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+    image.save(img_path)
 
     # optimize file size
-    img = Image.open(os.path.join(PATH_IMAGES, f'{machine_id}.jpg'))
+    img = Image.open(img_path)
     img = ImageOps.exif_transpose(img)
     basewidth = 400
-    wpercent = (basewidth / float(img.size[0]))
+    wpercent = basewidth / float(img.size[0])
     if wpercent > 1:
         return "Image uploaded successfully, no resize necessary"
     # resize
     hsize = int((float(img.size[1]) * float(wpercent)))
     img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
-    img.save(os.path.join(PATH_IMAGES, f'{machine_id}.jpg'), quality=95)
+    img.save(img_path, quality=95)
 
     # send message to slack
-    send_to_slack(machine_id, "image", "")
+    image_slack(machine_id, img_path=img_path, ip=ip_address)
 
-    return 'Image uploaded successfully'
+    return "Image uploaded successfully"
 
 
-def send_to_slack(machine_id, upload_type, comment_text):
-    if upload_type == "image":
-        text = f"Image uploaded for machine {machine_id}"
-    else:
-        text = f"New comment for machine {machine_id}: {comment_text}"
-
+def image_slack(machine_id: int, img_path: str, ip: str):
+    text = f"Image uploaded for machine {machine_id} (from {ip})"
     try:
         response = client.chat_postMessage(
-            channel='#pennyme_uploads', text=text, username="PennyMe"
+            channel="#pennyme_uploads", text=text, username="PennyMe"
+        )
+        response = client.chat_postMessage(
+            channel="#pennyme_uploads",
+            text=text,
+            username="PennyMe",
+            blocks=[
+                {
+                    "type": "image",
+                    "title": {
+                        "type": "plain_text",
+                        "text": "NEW Image!",
+                        "emoji": True
+                    },
+                    "image_url": f"{IMG_PORT}{machine_id}.jpg",
+                    "alt_text": text
+                }
+            ]
+        )
+    except SlackApiError as e:
+        print("Error sending message: ", e)
+        assert e.response["ok"] is False
+        assert e.response["error"]
+        raise e
+
+
+
+def message_slack(machine_id, comment_text, ip: str):
+
+    text = f"New comment for machine {machine_id}: {comment_text} (from {ip})"
+    try:
+        response = client.chat_postMessage(
+            channel="#pennyme_uploads", text=text, username="PennyMe"
         )
     except SlackApiError as e:
         assert e.response["ok"] is False
@@ -105,5 +139,5 @@ def create_app():
     return app
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
