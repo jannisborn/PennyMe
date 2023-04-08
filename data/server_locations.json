@@ -142,7 +142,7 @@
                 "latitude": "41.7561942",
                 "longitude": "-88.3181599",
                 "id": 1197,
-                "last_updated": "2021-04-05"
+                "last_updated": "2023-03-26"
             }
         },
         {
@@ -235,6 +235,193 @@
                 "longitude": "-122.0200013",
                 "id": 4847,
                 "last_updated": "2023-03-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.986747,
+                    32.806778
+                ]
+            },
+            "properties": {
+                "name": "Charles Towne Landing State Historic Site",
+                "active": true,
+                "area": "South Carolina",
+                "address": "1500 Old Towne Road, Charleston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52726",
+                "internal_url": "null",
+                "latitude": "32.806778",
+                "longitude": "-79.986747",
+                "id": 2182,
+                "last_updated": "2023-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.7362959,
+                    32.1802194
+                ]
+            },
+            "properties": {
+                "name": "Saguaro National Park",
+                "active": false,
+                "area": "Arizona",
+                "address": "Visitor Centers, Tucson",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250420",
+                "internal_url": "null",
+                "latitude": "32.1802194",
+                "longitude": "-110.7362959",
+                "id": 2714,
+                "last_updated": "2023-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.5057612,
+                    38.5821574
+                ]
+            },
+            "properties": {
+                "name": "Old Sacramento - Stage Nine Store",
+                "active": true,
+                "area": "California",
+                "address": "102 K St. (Old Town), Sacramento",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1196",
+                "internal_url": "null",
+                "latitude": "38.5821574",
+                "longitude": "-121.5057612",
+                "id": 4756,
+                "last_updated": "2023-03-26",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.5044464,
+                    38.5850581
+                ]
+            },
+            "properties": {
+                "name": "Old Sacramento - California State Railroad Museum",
+                "active": true,
+                "area": "California",
+                "address": "125 I Street  Sacramento, Sacramento",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107181",
+                "internal_url": "null",
+                "latitude": "38.5850581",
+                "longitude": "-121.5044464",
+                "id": 4751,
+                "last_updated": "2023-03-26",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.205536,
+                    37.205406
+                ]
+            },
+            "properties": {
+                "name": "Fort Zion Gift Shop & Petting Zoo",
+                "active": true,
+                "area": "Utah",
+                "address": "1000 W Highway 9, Virgin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252187",
+                "internal_url": "null",
+                "latitude": "37.205406",
+                "longitude": "-113.205536",
+                "id": 2103,
+                "last_updated": "2023-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8235772,
+                    28.056906
+                ]
+            },
+            "properties": {
+                "name": "Honeymoon Island State Park",
+                "active": true,
+                "area": "Florida",
+                "address": "1 Causeway Blvd, Dunedin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=199508",
+                "internal_url": "null",
+                "latitude": "28.056906",
+                "longitude": "-82.8235772",
+                "id": 3294,
+                "last_updated": "2023-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.82874137384263,
+                    27.97717905872123
+                ]
+            },
+            "properties": {
+                "name": "Clearwater Beach Pier 60",
+                "active": true,
+                "area": "Florida",
+                "address": "Pier 60, Clearwater Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39290",
+                "internal_url": "null",
+                "latitude": "27.97717905872123",
+                "longitude": "-82.82874137384263",
+                "id": 3270,
+                "last_updated": "2023-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.7071264,
+                    38.2057299
+                ]
+            },
+            "properties": {
+                "name": "Louisville Zoo",
+                "active": true,
+                "area": "Kentucky",
+                "address": "1100 Trevilian Way, Louisville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2279",
+                "internal_url": "null",
+                "latitude": "38.2057299",
+                "longitude": "-85.7071264",
+                "id": 3536,
+                "last_updated": "2023-03-26",
+                "multimachine": 6
             }
         }
     ]
