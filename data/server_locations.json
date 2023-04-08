@@ -423,6 +423,102 @@
                 "last_updated": "2023-03-26",
                 "multimachine": 6
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5537665,
+                    48.1744897
+                ]
+            },
+            "properties": {
+                "name": "Olympiaturm Munich",
+                "active": true,
+                "area": "Germany",
+                "address": "Olympiapark, Spiridon-Louis-Ring 7, München",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=382501",
+                "internal_url": "null",
+                "latitude": "48.1744897",
+                "longitude": "11.5537665",
+                "multimachine": 2,
+                "paywall": true,
+                "id": 5743,
+                "last_updated": "2023-04-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5563904,
+                    48.1740593
+                ]
+            },
+            "properties": {
+                "name": "Sea Life München",
+                "active": true,
+                "area": "Germany",
+                "address": "Olympia Park, Willi-Daume-Platz 1, 80809 Munich",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=260690",
+                "internal_url": "null",
+                "latitude": "48.1740593",
+                "longitude": "11.5563904",
+                "id": 565,
+                "multimachine": 2,
+                "last_updated": "2023-04-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.16457564568073,
+                    36.14003117559121
+                ]
+            },
+            "properties": {
+                "name": "Circus Circus Hotel & Casino (Las Vegas) ",
+                "active": true,
+                "area": "Nevada",
+                "address": "2880 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2759",
+                "internal_url": "null",
+                "latitude": "36.14003117559121",
+                "longitude": "-115.16457564568073",
+                "multimachine": 4,
+                "id": 4494,
+                "last_updated": "2023-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.74532,
+                    53.07796
+                ]
+            },
+            "properties": {
+                "name": "Ecomare (Texel)",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Ruijslaan 92, 1796 AZ De Koog, Netherlands",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=86480",
+                "internal_url": "null",
+                "latitude": "53.07796",
+                "longitude": "4.74532",
+                "id": 179,
+                "last_updated": "2023-04-05"
+            }
         }
     ]
 }
