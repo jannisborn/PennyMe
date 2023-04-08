@@ -99,7 +99,7 @@ class PinViewController: UITableViewController {
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE. NOTE: Please send a sharp picture in <b>landscape</b> orientation. The penny motives should be visible, otherwise sent multiple images**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string: mailtostring)!)
+            UIApplication.shared.open(URL(string: mailtostring)!)
         }
     }
     
@@ -119,7 +119,7 @@ class PinViewController: UITableViewController {
         if indexPath.section == 4
             {
                 //Open the website when you click on the link.
-                UIApplication.shared.openURL(URL(string: pinData.link)!)
+                UIApplication.shared.open(URL(string: pinData.link)!)
             }
             else if indexPath.section == 2 {
                 let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
@@ -129,7 +129,7 @@ class PinViewController: UITableViewController {
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string:mailtostring )!)
+            UIApplication.shared.open(URL(string:mailtostring )!)
             }
         }
 
