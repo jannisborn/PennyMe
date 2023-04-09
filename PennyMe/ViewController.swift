@@ -15,10 +15,15 @@ let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
 let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
+let defaults = UserDefaults.standard
+
+protocol MapViewProvider: AnyObject {
+    func getMapView() -> MKMapView?
+}
 
 @available(iOS 13.0, *)
-class ViewController: UIViewController, UITextFieldDelegate {
-
+class ViewController: UIViewController, UITextFieldDelegate, MapViewProvider {
+    
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var ownLocation: UIButton!
     @IBOutlet var toggleMapButton: UIButton!
@@ -53,8 +58,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var currMap = 1
     let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
     @IBOutlet weak var mapType : UISegmentedControl!
-
-
+    
+    // Implement the getMapView function to return the mapView instance
+    func getMapView() -> MKMapView? {
+        return PennyMap
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -108,6 +117,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
         check_json_dict()
+        
+//        print("=============RESTORING VIEW============")
+//        // Load the saved map region
+//        let centerLatitude = defaults.double(forKey: "mapCenterLatitude")
+//        let centerLongitude = defaults.double(forKey: "mapCenterLongitude")
+//        let spanLatitude = defaults.double(forKey: "mapSpanLatitude")
+//        let spanLongitude = defaults.double(forKey: "mapSpanLongitude")
+//
+//        let center = CLLocationCoordinate2D(latitude: centerLatitude, longitude: centerLongitude)
+//        let span = MKCoordinateSpan(latitudeDelta: spanLatitude, longitudeDelta: spanLongitude)
+//
+//        let savedRegion = MKCoordinateRegion(center: center, span: span)
+//        PennyMap.setRegion(savedRegion, animated: false)
     }
     
     func setDelegates(){
@@ -137,7 +159,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ownLocation.layer.shadowRadius = 0.0
         ownLocation.layer.masksToBounds = false
         
-        PennyMap.addSubview(ownLocation)
+//        PennyMap.addSubview(ownLocation)
     }
     
     func addSettingsButton(){
@@ -247,7 +269,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func check_json_dict(){
-//        print("checking json dictionary")
         // initialize empty status dictionary
         var statusDict = [[String: String]()]
         //variable indicating whether we load something
@@ -435,6 +456,7 @@ extension ViewController: MKMapViewDelegate {
             self.performSegue(withIdentifier: "ShowPinViewController", sender: nil)
         }
     }
+
 }
 
 
@@ -484,6 +506,14 @@ extension ViewController: CLLocationManagerDelegate {
             longitudinalMeters: regionInMeters
         )
         PennyMap.setRegion(region, animated: true)
+
+//        let mapRegion = PennyMap.region
+//        defaults.set(mapRegion.center.latitude, forKey: "mapCenterLatitude")
+//        defaults.set(mapRegion.center.longitude, forKey: "mapCenterLongitude")
+//        defaults.set(mapRegion.span.latitudeDelta, forKey: "mapSpanLatitude")
+//        defaults.set(mapRegion.span.longitudeDelta, forKey: "mapSpanLongitude")
+//        print("=========SAVING VIEW locationManager=======")
+        
     }
     
     // Send user a local notification if they have the app running in the bg
@@ -688,6 +718,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         tableShown = false
         searchController.searchBar.text = ""
         
+//        // Save view
+//        let mapRegion = PennyMap.region
+//
+//        defaults.set(mapRegion.center.latitude, forKey: "mapCenterLatitude")
+//        defaults.set(mapRegion.center.longitude, forKey: "mapCenterLongitude")
+//        defaults.set(mapRegion.span.latitudeDelta, forKey: "mapSpanLatitude")
+//        defaults.set(mapRegion.span.longitudeDelta, forKey: "mapSpanLongitude")
+//        print("=========SAVING VIEW tableView=======")
+        
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
 }
@@ -722,3 +761,5 @@ extension UISearchBar {
         }
     }
 }
+
+
