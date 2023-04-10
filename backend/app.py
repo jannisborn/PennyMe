@@ -1,7 +1,6 @@
 import json
 import os
-from datetime import date
-
+from datetime import datetime
 from flask import Flask, jsonify, request
 from PIL import Image, ImageOps
 
@@ -42,19 +41,17 @@ def add_comment():
     if os.path.exists(path_machine_comments):
         with open(path_machine_comments, "r") as infile:
             # take previous comments and add paragaph
-            prev_comments = "\n" + json.load(infile)[machine_id]
+            all_comments = json.load(infile)
     else:
-        prev_comments = ""
+        all_comments = {}
 
-    new_comment = f"{date.today()}: {comment}"
-
-    all_comments = {machine_id: new_comment + prev_comments}
+    all_comments[str(datetime.now())] = comment
 
     with open(path_machine_comments, "w") as outfile:
         json.dump(all_comments, outfile)
 
     # send message to slack
-    message_slack(machine_id, new_comment, ip=ip_address)
+    message_slack(machine_id, comment, ip=ip_address)
 
     return jsonify({"response": 200})
 

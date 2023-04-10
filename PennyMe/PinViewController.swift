@@ -129,10 +129,25 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     guard let data = data else { return }
                     let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                     if let results_ = results as? Dictionary<String, String> {
-                        if results_["\(self!.pinData.id)"] != nil {
-                            completionBlock(results_[self!.pinData.id] ?? "No comments yet")
-                            
+                        let sortedDates = results_.keys.sorted {$0 > $1}
+                        var displayString : String = ""
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        var isFirst = true
+                        for date in sortedDates {
+                            if let value = results_[date]{
+                                let dateStringArr = date.split(separator: " ")
+                                let dateString = dateStringArr.first ?? ""
+                                if isFirst==false {
+                                    displayString += "\n"
+                                }
+                                else{
+                                    isFirst = false
+                                }
+                                displayString += "\(dateString): \(value)"
+                            }
                         }
+                        completionBlock(displayString ?? "No comments yet")
                     }
                 }
                 task.resume()
