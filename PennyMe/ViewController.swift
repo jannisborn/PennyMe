@@ -247,7 +247,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func check_json_dict(){
-//        print("checking json dictionary")
         // initialize empty status dictionary
         var statusDict = [[String: String]()]
         //variable indicating whether we load something
@@ -473,17 +472,6 @@ extension ViewController: CLLocationManagerDelegate {
             // this is to prevent that the "nearby" notification is sent only once (per location)
             lastClosestID = closestID
         }
-        // Below code only executes if locations.last exists
-        let center = CLLocationCoordinate2D(
-            latitude: location.coordinate.latitude,
-            longitude: location.coordinate.longitude
-        )
-        let region = MKCoordinateRegion(
-            center: center,
-            latitudinalMeters: regionInMeters,
-            longitudinalMeters: regionInMeters
-        )
-        PennyMap.setRegion(region, animated: true)
     }
     
     // Send user a local notification if they have the app running in the bg
