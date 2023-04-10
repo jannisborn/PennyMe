@@ -7,20 +7,17 @@
 //
 
 import UIKit
-import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
-    
+
     var window: UIWindow?
-    var mapView: MKMapView?
-    
-    
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         UNUserNotificationCenter.current().delegate = self
-    
         
         return true
     }
@@ -34,19 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        // Save the current map region
-        print("STARTING TO SAVE")
-        print(mapView)
-        guard let mapView = mapView else { return }
-        let mapRegion = mapView.region
-
-        let defaults = UserDefaults.standard
-        defaults.set(mapRegion.center.latitude, forKey: "mapCenterLatitude")
-        defaults.set(mapRegion.center.longitude, forKey: "mapCenterLongitude")
-        defaults.set(mapRegion.span.latitudeDelta, forKey: "mapSpanLatitude")
-        defaults.set(mapRegion.span.longitudeDelta, forKey: "mapSpanLongitude")
-        print("SAVED")
-
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
