@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
+PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
 SLACK_TOKEN = os.environ.get("SLACK_TOKEN")
 IMG_PORT = "http://37.120.179.15:8000/"
 
@@ -19,6 +20,14 @@ client = WebClient(token=os.environ["SLACK_TOKEN"])
 with open("blocked_ips.json", "r") as infile:
     # NOTE: blocking an IP requires restart of app.py via waitress
     blocked_ips = json.load(infile)
+
+with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
+    d = json.load(infile)
+machine_names = {
+    elem["properties"]["id"]:
+    f"{elem['properties']['name']} ({elem['properties']['area']})"
+    for elem in d["features"]
+}
 
 
 @app.route("/add_comment", methods=["GET"])
@@ -89,7 +98,8 @@ def upload_image():
 
 
 def image_slack(machine_id: int, img_path: str, ip: str):
-    text = f"Image uploaded for machine {machine_id} (from {ip})"
+    m_name = machine_names[int(machine_id)]
+    text = f"Image uploaded for machine {machine_id} - {m_name} (from {ip})"
     try:
         response = client.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"
@@ -120,8 +130,8 @@ def image_slack(machine_id: int, img_path: str, ip: str):
 
 
 def message_slack(machine_id, comment_text, ip: str):
-
-    text = f"New comment for machine {machine_id}: {comment_text} (from {ip})"
+    m_name = machine_names[int(machine_id)]
+    text = f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
     try:
         response = client.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"
