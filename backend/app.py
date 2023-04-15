@@ -12,6 +12,7 @@ app = Flask(__name__)
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
 PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
+PATH_SERVER_LOCATION = os.path.join("..", "..", "images", "server_locations.json")
 SLACK_TOKEN = os.environ.get("SLACK_TOKEN")
 IMG_PORT = "http://37.120.179.15:8000/"
 
@@ -28,7 +29,11 @@ machine_names = {
     f"{elem['properties']['name']} ({elem['properties']['area']})"
     for elem in d["features"]
 }
-
+# add server location IDs
+with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
+    d = json.load(infile)
+for elem in d["features"]:
+    machine_names[elem["properties"]["id"]] = f"{elem['properties']['name']} ({elem['properties']['area']})"
 
 @app.route("/add_comment", methods=["GET"])
 def add_comment():
