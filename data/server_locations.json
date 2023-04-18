@@ -540,7 +540,7 @@
                 "latitude": "40.4962489",
                 "longitude": "-74.4561063",
                 "id": 5455,
-                "last_updated": "2022-10-22"
+                "last_updated": "2023-04-05"
             }
         },
         {
@@ -564,6 +564,78 @@
                 "longitude": "-119.94187",
                 "id": 6004,
                 "last_updated": "2023-04-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.060138,
+                    43.09431
+                ]
+            },
+            "properties": {
+                "name": "Aquarium of Niagara",
+                "active": true,
+                "area": "New York",
+                "address": "701 Whirpool St, Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3594",
+                "internal_url": "null",
+                "latitude": "43.09431",
+                "longitude": "-79.060138",
+                "id": 3061,
+                "last_updated": "2023-04-15",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.07545069999999,
+                    43.0907761
+                ]
+            },
+            "properties": {
+                "name": "Ripley's Believe It or Not ",
+                "active": true,
+                "area": "Canada",
+                "address": "4960 Clifton Hill, Ontario - Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4223",
+                "internal_url": "null",
+                "latitude": "43.0907761",
+                "longitude": "-79.07545069999999",
+                "id": 5013,
+                "last_updated": "2023-04-15",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.076522,
+                    43.0920144
+                ]
+            },
+            "properties": {
+                "name": "House of Cuban Cigars",
+                "active": true,
+                "area": "Canada",
+                "address": "5743 Victoria Avenue, Ontario - Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=30366",
+                "internal_url": "null",
+                "latitude": "43.0920144",
+                "longitude": "-79.076522",
+                "id": 5624,
+                "last_updated": "2023-04-15",
+                "multimachine": 2
             }
         }
     ]
