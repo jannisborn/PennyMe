@@ -226,8 +226,16 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 
                 if let url = URL(string: urlEncodedStringRequest){
                     let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
-                        guard data != nil else { return }
-                        
+                        if let error = error {
+                            print("Error: \(error)")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                                let alertController = UIAlertController(title: "Comment added", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                alertController.addAction(okAction)
+                                self!.present(alertController, animated: true, completion: nil)
+                            }
                     }
                     task.resume()
                 }
@@ -237,7 +245,29 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     func chooseImage() {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            present(imagePicker, animated: true, completion: nil)
+            // Create the alert controller
+            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app. Please be considerate and upload only images that are strictly related to penny machines. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+
+            // Create the OK action
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                // Show the image picker
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+
+            // Create the cancel action
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            }
+
+            // Add the actions to the alert controller
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+
+            // Present the alert controller
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 
@@ -278,6 +308,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     print("Error: \(error)")
                     return
                 }
+                DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
             }
             task.resume()
 
