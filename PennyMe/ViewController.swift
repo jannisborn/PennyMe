@@ -675,6 +675,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         locationResult.removeFromSuperview()
         tableShown = false
         searchController.searchBar.text = ""
+        searchController.searchBar.endEditing(true)
         
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
