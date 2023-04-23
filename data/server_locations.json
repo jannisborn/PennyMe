@@ -707,6 +707,54 @@
                 "id": 3064,
                 "last_updated": "2023-04-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8762911,
+                    42.9354287
+                ]
+            },
+            "properties": {
+                "name": "The Buffalo History Museum",
+                "active": true,
+                "area": "New York",
+                "address": "1 Museum Court, Buffalo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3648",
+                "internal_url": "null",
+                "latitude": "42.9354287",
+                "longitude": "-78.8762911",
+                "id": 2999,
+                "last_updated": "2023-04-05",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.85160909999999,
+                    42.9371231
+                ]
+            },
+            "properties": {
+                "name": "Buffalo Zoo",
+                "active": true,
+                "area": "New York",
+                "address": "300 Parkside Ave., Buffalo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3644",
+                "internal_url": "null",
+                "latitude": "42.9371231",
+                "longitude": "-78.85160909999999",
+                "id": 2997,
+                "last_updated": "2023-04-05",
+                "paywall": true
+            }
         }
     ]
 }
