@@ -637,6 +637,76 @@
                 "last_updated": "2023-04-15",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.399999999999999,
+                    48.433333
+                ]
+            },
+            "properties": {
+                "name": "Mont Sainte Odile",
+                "active": true,
+                "area": "France",
+                "address": "67530 Ottrott (Vosges)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=240518",
+                "internal_url": "null",
+                "latitude": "48.433333",
+                "longitude": "7.399999999999999",
+                "id": 95,
+                "last_updated": "2023-04-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0707941,
+                    43.0822684
+                ]
+            },
+            "properties": {
+                "name": "Cave of the Winds Gift Shop",
+                "active": true,
+                "area": "New York",
+                "address": "Goat Island, Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3593",
+                "internal_url": "null",
+                "latitude": "43.0822684",
+                "longitude": "-79.0707941",
+                "id": 3062,
+                "last_updated": "2023 -04-05",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.06797163069787,
+                    43.08636007824847
+                ]
+            },
+            "properties": {
+                "name": "Niagara Falls State Park",
+                "active": true,
+                "area": "New York",
+                "address": "Niagara Falls State Park, Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=15836",
+                "internal_url": "null",
+                "latitude": "43.08636007824847",
+                "longitude": "-79.06797163069787",
+                "id": 3064,
+                "last_updated": "2023-04-05"
+            }
         }
     ]
 }
