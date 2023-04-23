@@ -161,11 +161,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
         else{
             chooseImage()
-//            //open mailto url
-//            let mailtostring = String(
-//                "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE. NOTE: Please send a sharp picture in <b>landscape</b> orientation. The penny motives should be visible, otherwise sent multiple images**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
-//            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-//            UIApplication.shared.openURL(URL(string: mailtostring)!)
         }
     }
     
@@ -215,29 +210,80 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     @objc func addComment(){
-        var comment = self.commentTextField.text
-        if comment?.count ?? 0 > 0 {
-            self.commentTextField.text = ""
-            self.commentTextField.attributedPlaceholder = NSAttributedString(
-                string: "Your comment will be shown soon!")
-            if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-//                let urlEncodedStringRequest = BaseURL + request
-                let urlEncodedStringRequest = flaskURL + request
-                
-                if let url = URL(string: urlEncodedStringRequest){
-                    let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
-                        guard data != nil else { return }
-                        
+        
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Attention!", message: "Please be mindful. Your comment will be shown to all users of the app. Write as clear & concise as possible.", preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK, add comment!", style: .default) { (_) in
+            
+            var comment = self.commentTextField.text
+            if comment?.count ?? 0 > 0 {
+                self.commentTextField.text = ""
+                self.commentTextField.attributedPlaceholder = NSAttributedString(
+                    string: "Your comment will be shown soon!")
+                if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+    //                let urlEncodedStringRequest = BaseURL + request
+                    let urlEncodedStringRequest = flaskURL + request
+                    
+                    if let url = URL(string: urlEncodedStringRequest){
+                        let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+                            if let error = error {
+                                print("Error: \(error)")
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                    let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
+                                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                    alertController.addAction(okAction)
+                                    self!.present(alertController, animated: true, completion: nil)
+                                }
+                        }
+                        task.resume()
                     }
-                    task.resume()
                 }
             }
         }
+
+        // Create the cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        }
+
+        // Add the actions to the alert controller
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+        
+
     }
     
     func chooseImage() {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            present(imagePicker, animated: true, completion: nil)
+            // Create the alert controller
+            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload only images that are strictly related to penny machines. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+
+            // Create the OK action
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                // Show the image picker
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+
+            // Create the cancel action
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            }
+
+            // Add the actions to the alert controller
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+
+            // Present the alert controller
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 
@@ -278,6 +324,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     print("Error: \(error)")
                     return
                 }
+                DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
             }
             task.resume()
 
