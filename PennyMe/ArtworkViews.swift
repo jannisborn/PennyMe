@@ -10,12 +10,19 @@ import Foundation
 import MapKit
 
 class ArtworkMarkerView: MKMarkerAnnotationView {
+
+  var clusterPins: Bool = true
   override var annotation: MKAnnotation? {
+
     willSet {
       // 1
       guard let artwork = newValue as? Artwork else {
         return
       }
+        if !clusterPins {
+            displayPriority = MKFeatureDisplayPriority.required
+        }
+
         // Set marker color
         markerTintColor = artwork.markerTintColor
         
