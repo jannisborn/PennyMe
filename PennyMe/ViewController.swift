@@ -16,6 +16,14 @@ let LAT_DEGREE_TO_KM = 110.948
 let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
+class PreventClusteringMKMarkerAnnotationView: MKMarkerAnnotationView {
+    override var annotation: MKAnnotation? {
+        willSet {
+            displayPriority = MKFeatureDisplayPriority.required
+        }
+    }
+}
+
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -104,6 +112,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            return PreventClusteringMKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyMarker")
+        }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
