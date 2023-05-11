@@ -19,6 +19,8 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
       guard let artwork = newValue as? Artwork else {
         return
       }
+        clusterPins = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
+        
         if !clusterPins {
             displayPriority = MKFeatureDisplayPriority.required
         }

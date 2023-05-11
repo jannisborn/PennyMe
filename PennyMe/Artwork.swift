@@ -55,6 +55,10 @@ class Artwork: NSObject, MKAnnotation {
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
         text = title! + locationName
+        if (status == "retired") &&
+            (UserDefaults.standard.bool(forKey: "retiredSwitch") == false) {
+            return nil
+        }
         
         super.init()
     }

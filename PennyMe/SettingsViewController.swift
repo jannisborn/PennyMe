@@ -18,10 +18,13 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var pushSwitch: UISwitch!
     @IBOutlet weak var reportProblemButton: UIButton!
     @IBOutlet weak var radiusSlider: UISlider!
+    @IBOutlet weak var retiredSwitch: UISwitch!
+    @IBOutlet weak var clusterPinsSwitch: UISwitch!
+    // TODO: add other switches via drag and drop
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
             self.navigationbar.standardAppearance = UINavigationBarAppearance()
@@ -40,6 +43,15 @@ class SettingsViewController: UITableViewController {
         radius = Double(radiusSlider.value)
         radiusSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         radiusSlider.isContinuous = false
+        
+        // cluster switch
+        clusterPinsSwitch.isOn = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
+        clusterPinsSwitch.addTarget(self, action: #selector(clusterPins), for: .valueChanged)
+        
+        // retired switch
+        retiredSwitch.isOn = UserDefaults.standard.bool(forKey: "retiredSwitch")
+        retiredSwitch.addTarget(self, action: #selector(showRetiredMachines), for: .valueChanged)
+        // TODO: add other switches
     }
     
     @objc func reportProblem (sender: UIButton!){
@@ -47,6 +59,15 @@ class SettingsViewController: UITableViewController {
             "mailto:wnina@ethz.ch?subject=[PennyMe] - Problem report&body=Dear PennyMe team,\n\n I would like to inform you about the following problem in your app:\n\n"
         ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
         UIApplication.shared.openURL(URL(string:mailtostring )!)
+    }
+    
+    @objc func showRetiredMachines(sender:UISwitch!) {
+        UserDefaults.standard.set(sender.isOn, forKey: "retiredSwitch")
+        UserDefaults.standard.synchronize()
+    }
+    @objc func clusterPins(sender:UISwitch!) {
+        UserDefaults.standard.set(sender.isOn, forKey: "clusterPinSwitch")
+        UserDefaults.standard.synchronize()
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!)

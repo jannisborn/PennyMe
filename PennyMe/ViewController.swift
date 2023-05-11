@@ -53,6 +53,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var currMap = 1
     let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
     @IBOutlet weak var mapType : UISegmentedControl!
+    
+    // settings what to show on map
+    var retiredOn: Bool = false
+    var clusterPins: Bool = false
 
 
     override func viewDidLoad() {
@@ -93,6 +97,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         loadInitialData()
         PennyMap.addAnnotations(artworks)
+        
+        // store pin settings
+        retiredOn = UserDefaults.standard.bool(forKey: "retiredSwitch")
 
         let button = UIButton()
         button.frame = CGRect(x: 150, y: 150, width: 100, height: 50)
@@ -106,8 +113,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // check whether some setting has changed, if yes, reload all data on the map
+        checkPinSettings()
         // each time the view appears, check colours of the pins
         check_json_dict()
+        
+    }
+    
+    func checkPinSettings() {
+        // Function to update the map view if the settings change what to show on the map
+        let newRetiredOn = UserDefaults.standard.bool(forKey: "retiredSwitch")
+        let newClusterPins = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
+        if (newRetiredOn != retiredOn)
+    ||  (newClusterPins != clusterPins) {
+            // reload data entirely
+            PennyMap.removeAnnotations(artworks)
+            artworks = []
+            pinIdDict = [:]
+            loadInitialData()
+            PennyMap.addAnnotations(artworks)
+            // update variables
+            retiredOn = newRetiredOn
+            clusterPins = newClusterPins
+        }
     }
     
     func setDelegates(){
