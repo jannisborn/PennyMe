@@ -38,6 +38,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var pinIdDict : [String:Int] = [:]
     var selectedPin: Artwork?
     
+    let default_switches: [String: Bool] = [
+        "unvisitedSwitch": true,
+        "visitedSwitch": true,
+        "markedSwitch": true,
+        "retiredSwitch": false,
+        "clusterPinSwitch": false
+    ]
+    
     // Searchbar variables
     let searchController = UISearchController(searchResultsController: nil)
     var filteredArtworks: [Artwork] = []
@@ -113,22 +121,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
             addAnnotationsIteratively()
             SettingsViewController.hasChanged = false
         }
+        if SettingsViewController.clusterHasChanged {
+            PennyMap.removeAnnotations(artworks)
+            addAnnotationsIteratively()
+            SettingsViewController.clusterHasChanged = false
+
+        }
         
     }
     
     func addAnnotationsIteratively() {
-        let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch"]
+        let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch", ]
         var includedStates : [String] = []
         for userdefault in relevantUserDefauls {
-            if UserDefaults.standard.bool(forKey: userdefault) {
+            let user_settings = UserDefaults.standard
+            let value = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
+            if value! {
                 let partStr = String( userdefault.prefix(userdefault.count - 6))
                 includedStates.append(partStr)
             }
         }
-        PennyMap.removeAnnotations(artworks)
+
         for artwork in artworks {
-            if includedStates.contains(artwork.status) {
-                PennyMap.addAnnotation(artwork)
+            if (includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) == nil) {
+            //  Artwork should be visible but is currently not visible
+                    PennyMap.addAnnotation(artwork)
+            } else if (!includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) != nil)  {
+                //  Artwork should not be visible but is currently not visible
+                PennyMap.removeAnnotation(artwork)
             }
         }
         
