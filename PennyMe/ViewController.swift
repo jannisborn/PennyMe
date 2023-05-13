@@ -674,7 +674,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         self.PennyMap.setRegion(region, animated: true)
         locationResult.removeFromSuperview()
         tableShown = false
-        searchController.searchBar.text = ""
         searchController.searchBar.endEditing(true)
         
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
