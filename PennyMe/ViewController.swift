@@ -96,7 +96,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         )
 
         loadInitialData()
-        PennyMap.addAnnotations(artworks)
+        addAnnotationsIteratively()
         
         // store pin settings
         retiredOn = UserDefaults.standard.bool(forKey: "retiredSwitch")
@@ -113,29 +113,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // check whether some setting has changed, if yes, reload all data on the map
-        checkPinSettings()
         // each time the view appears, check colours of the pins
         check_json_dict()
+        // check whether some setting has changed, if yes, reload all data on the map
+        if SettingsViewController.hasChanged {
+            addAnnotationsIteratively()
+            SettingsViewController.hasChanged = false
+        }
         
     }
     
-    func checkPinSettings() {
-        // Function to update the map view if the settings change what to show on the map
-        let newRetiredOn = UserDefaults.standard.bool(forKey: "retiredSwitch")
-        let newClusterPins = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
-        if (newRetiredOn != retiredOn)
-    ||  (newClusterPins != clusterPins) {
-            // reload data entirely
-            PennyMap.removeAnnotations(artworks)
-            artworks = []
-            pinIdDict = [:]
-            loadInitialData()
-            PennyMap.addAnnotations(artworks)
-            // update variables
-            retiredOn = newRetiredOn
-            clusterPins = newClusterPins
+    func addAnnotationsIteratively() {
+        let relevantUserDefauls : [String] = ["unvisitedSwitch","visitedSwitch", "markedSwitch", "retiredSwitch"]
+        var includedStates : [String] = []
+        for userdefault in relevantUserDefauls {
+            if UserDefaults.standard.bool(forKey: userdefault) {
+                let partStr = String( userdefault.prefix(userdefault.count - 6))
+                includedStates.append(partStr)
+            }
         }
+        PennyMap.removeAnnotations(artworks)
+        for artwork in artworks {
+            if includedStates.contains(artwork.status) {
+                PennyMap.addAnnotation(artwork)
+            }
+        }
+        
     }
     
     func setDelegates(){
@@ -305,8 +308,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             for id_machine in ids_in_dict{
                 let machine = artworks[pinIdDict[id_machine]!]
                 PennyMap.removeAnnotation(machine)
-                machine.status = statusDict[0][machine.id] ?? "unvisited"
-                PennyMap.addAnnotation(machine)
+                let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
+                machine.status = thisMachineStatus
+                // Only add the machine back to the map if it is supposed to be shown (according to settings)
+                if UserDefaults.standard.bool(forKey: thisMachineStatus+"Switch") {
+                    PennyMap.addAnnotation(machine)
+                }
             }
         }
     }
@@ -697,7 +704,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.selectedPin = filteredArtworks[indexPath.row]
-        // TODO: update map location to selected
         let center = self.selectedPin!.coordinate
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.PennyMap.setRegion(region, animated: true)
