@@ -53,10 +53,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var currMap = 1
     let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
     @IBOutlet weak var mapType : UISegmentedControl!
-    
-    // settings what to show on map
-    var retiredOn: Bool = false
-    var clusterPins: Bool = false
 
 
     override func viewDidLoad() {
@@ -97,9 +93,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         loadInitialData()
         addAnnotationsIteratively()
-        
-        // store pin settings
-        retiredOn = UserDefaults.standard.bool(forKey: "retiredSwitch")
 
         let button = UIButton()
         button.frame = CGRect(x: 150, y: 150, width: 100, height: 50)
@@ -124,7 +117,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addAnnotationsIteratively() {
-        let relevantUserDefauls : [String] = ["unvisitedSwitch","visitedSwitch", "markedSwitch", "retiredSwitch"]
+        let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch"]
         var includedStates : [String] = []
         for userdefault in relevantUserDefauls {
             if UserDefaults.standard.bool(forKey: userdefault) {
@@ -445,7 +438,6 @@ extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.calloutTapped))
         view.addGestureRecognizer(gesture)
-        
     }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {
