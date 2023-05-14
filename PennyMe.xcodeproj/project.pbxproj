@@ -13,6 +13,7 @@
 		9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F421AB2261B9755004197B4 /* ArtworkViews.swift */; };
 		9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F612053230CAC2300F1D9DE /* Artwork.swift */; };
 		9F70CCEA231850DC003AED89 /* all_locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F70CCE9231850DC003AED89 /* all_locations.json */; };
+		9F9C64A52A10D12E00C57887 /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C64A42A10D12E00C57887 /* VersionManager.swift */; };
 		9F9F31A52300B40900C0E854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F31A42300B40900C0E854 /* AppDelegate.swift */; };
 		9F9F31A72300B40900C0E854 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F31A62300B40900C0E854 /* ViewController.swift */; };
 		9F9F31AA2300B40900C0E854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9F31A82300B40900C0E854 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		9F421AB2261B9755004197B4 /* ArtworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViews.swift; sourceTree = "<group>"; };
 		9F612053230CAC2300F1D9DE /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		9F70CCE9231850DC003AED89 /* all_locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = all_locations.json; path = data/all_locations.json; sourceTree = "<group>"; };
+		9F9C64A42A10D12E00C57887 /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
 		9F9F31A12300B40900C0E854 /* PennyMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PennyMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9F31A42300B40900C0E854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9F31A62300B40900C0E854 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				9F9F31B02300B40A00C0E854 /* Info.plist */,
 				9F421AB2261B9755004197B4 /* ArtworkViews.swift */,
 				9FF43BD92621221A00BE3F6A /* SearchFooter.swift */,
+				9F9C64A42A10D12E00C57887 /* VersionManager.swift */,
 			);
 			path = PennyMe;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				9F9F31A72300B40900C0E854 /* ViewController.swift in Sources */,
 				8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */,
+				9F9C64A52A10D12E00C57887 /* VersionManager.swift in Sources */,
 				9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */,
 				83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */,
 				9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */,

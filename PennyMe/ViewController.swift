@@ -110,6 +110,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         addSettingsButton()
         toggleMapTypeButton()
     
+        // Check whether version is new
+        VersionManager.shared.showVersionInfoAlertIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
