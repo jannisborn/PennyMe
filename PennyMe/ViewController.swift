@@ -38,6 +38,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var pinIdDict : [String:Int] = [:]
     var selectedPin: Artwork?
     
+    let default_switches: [String: Bool] = [
+        "unvisitedSwitch": true,
+        "visitedSwitch": true,
+        "markedSwitch": true,
+        "retiredSwitch": false,
+        "clusterPinSwitch": false
+    ]
+    
     // Searchbar variables
     let searchController = UISearchController(searchResultsController: nil)
     var filteredArtworks: [Artwork] = []
@@ -92,7 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         )
 
         loadInitialData()
-        PennyMap.addAnnotations(artworks)
+        addAnnotationsIteratively()
 
         let button = UIButton()
         button.frame = CGRect(x: 150, y: 150, width: 100, height: 50)
@@ -102,12 +110,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
         addSettingsButton()
         toggleMapTypeButton()
     
+        // Check whether version is new
+        VersionManager.shared.showVersionInfoAlertIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
         check_json_dict()
+        // check whether some setting has changed, if yes, reload all data on the map
+        if SettingsViewController.hasChanged {
+            addAnnotationsIteratively()
+            SettingsViewController.hasChanged = false
+        }
+        if SettingsViewController.clusterHasChanged {
+            PennyMap.removeAnnotations(artworks)
+            addAnnotationsIteratively()
+            SettingsViewController.clusterHasChanged = false
+
+        }
+        
+    }
+    
+    func addAnnotationsIteratively() {
+        let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch", ]
+        var includedStates : [String] = []
+        for userdefault in relevantUserDefauls {
+            let user_settings = UserDefaults.standard
+            let value = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
+            if value! {
+                let partStr = String( userdefault.prefix(userdefault.count - 6))
+                includedStates.append(partStr)
+            }
+        }
+
+        for artwork in artworks {
+            if (includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) == nil) {
+            //  Artwork should be visible but is currently not visible
+                    PennyMap.addAnnotation(artwork)
+            } else if (!includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) != nil)  {
+                //  Artwork should not be visible but is currently not visible
+                PennyMap.removeAnnotation(artwork)
+            }
+        }
+        
     }
     
     func setDelegates(){
@@ -277,8 +323,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             for id_machine in ids_in_dict{
                 let machine = artworks[pinIdDict[id_machine]!]
                 PennyMap.removeAnnotation(machine)
-                machine.status = statusDict[0][machine.id] ?? "unvisited"
-                PennyMap.addAnnotation(machine)
+                let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
+                machine.status = thisMachineStatus
+                // Only add the machine back to the map if it is supposed to be shown (according to settings)
+                if UserDefaults.standard.bool(forKey: thisMachineStatus+"Switch") {
+                    PennyMap.addAnnotation(machine)
+                }
             }
         }
     }
@@ -421,9 +471,9 @@ extension ViewController: MKMapViewDelegate {
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }
     
-//     callout when maps button is pressed
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
+        //     callout when maps button is pressed
         let location = view.annotation as! Artwork
         if (control == view.rightCalloutAccessoryView) {
             // This would open the directions
@@ -668,7 +718,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.selectedPin = filteredArtworks[indexPath.row]
-        // TODO: update map location to selected
         let center = self.selectedPin!.coordinate
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.PennyMap.setRegion(region, animated: true)

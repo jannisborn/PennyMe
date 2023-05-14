@@ -30,11 +30,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     
     enum StatusChoice : String {
-            case unvisited
-            case visited
-            case marked
-            case retired
-        }
+        case unvisited
+        case visited
+        case marked
+        case retired
+    }
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
