@@ -850,6 +850,53 @@
                 "id": 4885,
                 "last_updated": "2023-05-15"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.952720,
+                    39.716177
+                ]
+            },
+            "properties": {
+                "name": "Cherry Street Diner",
+                "active": true,
+                "area": "Ohio",
+                "address": "80 Cherry St, Ashville, Ohio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329168",
+                "internal_url": "null",
+                "latitude": "39.716177",
+                "longitude": "-82.952720",
+                "id": 1942,
+                "last_updated": "2023-05-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0562669,
+                    38.8718568
+                ]
+            },
+            "properties": {
+                "name": "The Pentagon Visitor Center",
+                "active": true,
+                "area": "Virgina",
+                "address": "The Pentagon, Arlington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=104518",
+                "internal_url": "null",
+                "latitude": "38.8718568",
+                "longitude": "-77.0562669",
+                "paywall": true,
+                "id": 4406,
+                "last_updated": "2023-05-15"
+            }
         }
     ]
 }
