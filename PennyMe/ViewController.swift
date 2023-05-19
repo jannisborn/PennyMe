@@ -326,7 +326,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
                 machine.status = thisMachineStatus
                 // Only add the machine back to the map if it is supposed to be shown (according to settings)
-                if UserDefaults.standard.bool(forKey: thisMachineStatus+"Switch") {
+                let user_settings = UserDefaults.standard
+                let userdefault = thisMachineStatus+"Switch"
+                // get userdefault (use default if not set yet)
+                let shouldDisplayMachine = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
+                // add pin if necessary
+                if shouldDisplayMachine! {
                     PennyMap.addAnnotation(machine)
                 }
             }
