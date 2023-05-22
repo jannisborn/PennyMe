@@ -943,6 +943,52 @@
                 "id": 2290,
                 "last_updated": "2023-05-20"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.867617659,
+                    49.1269334
+                ]
+            },
+            "properties": {
+                "name": "See Camping Langlau",
+                "active": true,
+                "area": "Germany",
+                "address": "Seestraße 30, 91738 Pfofeld-Langlau",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.1269334",
+                "longitude": "10.867617659",
+                "id": 6005,
+                "last_updated": "2023-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.22519439999999,
+                    38.6581833
+                ]
+            },
+            "properties": {
+                "name": "Headmasters Pub",
+                "active": false,
+                "area": "Virginia",
+                "address": "12018 Lee Highway, Sperryville ",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=354166",
+                "internal_url": "null",
+                "latitude": "38.6581833",
+                "longitude": "-78.22519439999999",
+                "id": 5440,
+                "last_updated": "2022-10-22"
+            }
         }
     ]
 }
