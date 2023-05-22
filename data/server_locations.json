@@ -779,6 +779,170 @@
                 "last_updated": "2023-04-25",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.614899,
+                    47.676427
+                ]
+            },
+            "properties": {
+                "name": "Rheinfall / Schloss Laufen",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Areal Schloss Laufen, 8447 Dachsen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=76288",
+                "internal_url": "null",
+                "latitude": "47.676427",
+                "longitude": "8.614899",
+                "id": 726,
+                "last_updated": "2023-04-28",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.7548944,
+                    35.1936064
+                ]
+            },
+            "properties": {
+                "name": "Big Texan Steak Ranch",
+                "active": true,
+                "area": "Texas",
+                "address": "7701 Interstate (I-40 East bound Exit 75), Amarillo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1756",
+                "internal_url": "null",
+                "latitude": "35.1936064",
+                "longitude": "-101.7548944",
+                "id": 3639,
+                "last_updated": "2023-05-04",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.214130,
+                    34.256210
+                ]
+            },
+            "properties": {
+                "name": "Golf N' Stuff (Ventura)",
+                "active": true,
+                "area": "California",
+                "address": "5555 Walker Street, Ventura, CA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27731",
+                "internal_url": "null",
+                "latitude": "34.256210",
+                "longitude": "-119.214130",
+                "id": 4885,
+                "last_updated": "2023-05-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.952720,
+                    39.716177
+                ]
+            },
+            "properties": {
+                "name": "Cherry Street Diner",
+                "active": true,
+                "area": "Ohio",
+                "address": "80 Cherry St, Ashville, Ohio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329168",
+                "internal_url": "null",
+                "latitude": "39.716177",
+                "longitude": "-82.952720",
+                "id": 1942,
+                "last_updated": "2023-05-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0562669,
+                    38.8718568
+                ]
+            },
+            "properties": {
+                "name": "The Pentagon Visitor Center",
+                "active": true,
+                "area": "Virgina",
+                "address": "The Pentagon, Arlington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=104518",
+                "internal_url": "null",
+                "latitude": "38.8718568",
+                "longitude": "-77.0562669",
+                "paywall": true,
+                "id": 4406,
+                "last_updated": "2023-05-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.6076336,
+                    36.5001412
+                ]
+            },
+            "properties": {
+                "name": "Bear Creek Gifts, LLC",
+                "active": false,
+                "area": "North Carolina",
+                "address": "165 N. Main St., Mount Airy",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=95265",
+                "internal_url": "null",
+                "latitude": "36.5001412",
+                "longitude": "-80.6076336",
+                "id": 4132,
+                "last_updated": "2023-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.227874,
+                    39.7612
+                ]
+            },
+            "properties": {
+                "name": "Aunt Patty's On The Square",
+                "active": false,
+                "area": "Indiana",
+                "address": "101 W High St, Rockville",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=209856",
+                "internal_url": "null",
+                "latitude": "39.7612",
+                "longitude": "-87.227874",
+                "id": 2290,
+                "last_updated": "2023-05-20"
+            }
         }
     ]
 }
