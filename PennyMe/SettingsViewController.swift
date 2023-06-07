@@ -18,6 +18,21 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var pushSwitch: UISwitch!
     @IBOutlet weak var reportProblemButton: UIButton!
     @IBOutlet weak var radiusSlider: UISlider!
+    @IBOutlet weak var retiredSwitch: UISwitch!
+    @IBOutlet weak var clusterPinsSwitch: UISwitch!
+    @IBOutlet weak var markedSwitch: UISwitch!
+    @IBOutlet weak var visitedSwitch: UISwitch!
+    @IBOutlet weak var unvisitedSwitch: UISwitch!
+    
+    static var hasChanged = false
+    static var clusterHasChanged = false
+    let default_switches: [String: Bool] = [
+        "unvisitedSwitch": true,
+        "visitedSwitch": true,
+        "markedSwitch": true,
+        "retiredSwitch": false,
+        "clusterPinSwitch": false
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +55,25 @@ class SettingsViewController: UITableViewController {
         radius = Double(radiusSlider.value)
         radiusSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         radiusSlider.isContinuous = false
+        
+        // cluster switch
+        let user_settings = UserDefaults.standard
+        clusterPinsSwitch.isOn = user_settings.value(forKey: "clusterPinSwitch") as? Bool ?? default_switches["clusterPinSwitch"] as! Bool
+        clusterPinsSwitch.addTarget(self, action: #selector(clusterPins), for: .valueChanged)
+        // Machine status switches
+        // 1) unvisited switch
+        unvisitedSwitch.isOn = user_settings.value(forKey: "unvisitedSwitch") as? Bool ?? default_switches["unvisitedSwitch"] as! Bool
+        unvisitedSwitch.addTarget(self, action: #selector(showUnvisitedMachines), for: .valueChanged)
+        // 2) visied switch
+        visitedSwitch.isOn = user_settings.value(forKey: "visitedSwitch") as? Bool ?? default_switches["visitedSwitch"] as! Bool
+        visitedSwitch.addTarget(self, action: #selector(showVisitedMachines), for: .valueChanged)
+        // 3) marked switch
+        markedSwitch.isOn = user_settings.value(forKey: "markedSwitch") as? Bool ?? default_switches["markedSwitch"] as! Bool
+        markedSwitch.addTarget(self, action: #selector(showMarkedMachines), for: .valueChanged)
+        // 4) retired switch
+        retiredSwitch.isOn = user_settings.value(forKey: "retiredSwitch") as? Bool ?? default_switches["retiredSwitch"] as! Bool
+        retiredSwitch.addTarget(self, action: #selector(showRetiredMachines), for: .valueChanged)
+        
     }
     
     @objc func reportProblem (sender: UIButton!){
@@ -48,7 +82,34 @@ class SettingsViewController: UITableViewController {
         ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
         UIApplication.shared.openURL(URL(string:mailtostring )!)
     }
+    // Functions for Switches
+    @objc func showUnvisitedMachines(sender:UISwitch!) {
+        userdefauls_helper(defaultsKey: "unvisitedSwitch", isOn: sender.isOn)
+    }
+    @objc func showVisitedMachines(sender:UISwitch!) {
+        userdefauls_helper(defaultsKey: "visitedSwitch", isOn: sender.isOn)
+    }
+    @objc func showMarkedMachines(sender:UISwitch!) {
+        userdefauls_helper(defaultsKey: "markedSwitch", isOn: sender.isOn)
+    }
+    @objc func showRetiredMachines(sender:UISwitch!) {
+        userdefauls_helper(defaultsKey: "retiredSwitch", isOn: sender.isOn)
+    }
+    @objc func clusterPins(sender:UISwitch!) {
+        userdefauls_helper(defaultsKey: "clusterPinSwitch", isOn: sender.isOn)
+    }
+    func userdefauls_helper(defaultsKey: String, isOn: Bool) {
+        UserDefaults.standard.set(isOn, forKey: defaultsKey)
+        UserDefaults.standard.synchronize()
+        if defaultsKey == "clusterPinSwitch" {
+            SettingsViewController.clusterHasChanged = true
+        }
+        else {
+            SettingsViewController.hasChanged = true
+        }
+    }
     
+    // Function for radius slider for push notifications
     @objc func sliderValueDidChange(_ sender:UISlider!)
     {
         radius =  Double(sender.value)
