@@ -1150,6 +1150,75 @@
                 "id": 2547,
                 "last_updated": "2023-06-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.4370852,
+                    26.0700857
+                ]
+            },
+            "properties": {
+                "name": "Bobz World",
+                "active": false,
+                "area": "Texas",
+                "address": "36451 State Hwy 100, Los Fresnos",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=228625",
+                "internal_url": "null",
+                "latitude": "26.0700857",
+                "longitude": "-97.4370852",
+                "id": 3751,
+                "last_updated": "2023-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.339455,
+                    34.1025381
+                ]
+            },
+            "properties": {
+                "name": "Gifts Of Hollywood",
+                "active": false,
+                "area": "California",
+                "address": "6801 Hollywood Boulevard - level 4 bridge, Hollywood",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=48947",
+                "internal_url": "null",
+                "latitude": "34.1025381",
+                "longitude": "-118.339455",
+                "id": 4639,
+                "last_updated": "2023-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.6658438,
+                    37.377856
+                ]
+            },
+            "properties": {
+                "name": "Saint Louis Iron Mountain & Southern",
+                "active": true,
+                "area": "Missouri",
+                "address": "252 E Jackson Blvd, Jackson, MO 63755, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.377856",
+                "longitude": "-89.6658438",
+                "id": 6006,
+                "last_updated": "2023-06-09"
+            }
         }
     ]
 }
