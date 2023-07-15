@@ -1449,6 +1449,52 @@
                 "id": 6010,
                 "last_updated": "2023-07-14"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.053718,
+                    46.660467
+                ]
+            },
+            "properties": {
+                "name": "Mount First",
+                "active": false,
+                "area": "Switzerland",
+                "address": "",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=272929",
+                "internal_url": "null",
+                "latitude": "46.660467",
+                "longitude": "8.053718",
+                "id": 718,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.053941,
+                    46.659810
+                ]
+            },
+            "properties": {
+                "name": "Grindelwald First Station",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Bergstation First, 3818 Grindelwald",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=239193",
+                "internal_url": "null",
+                "latitude": "46.659810",
+                "longitude": "8.053941",
+                "id": 716,
+                "last_updated": "2023-07-16"
+            }
         }
     ]
 }
