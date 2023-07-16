@@ -62,7 +62,7 @@ def add_comment():
     all_comments[str(datetime.now())] = comment
 
     with open(path_machine_comments, "w") as outfile:
-        json.dump(all_comments, outfile)
+        json.dump(all_comments, outfile, indent=4)
 
     # send message to slack
     message_slack(machine_id, comment, ip=ip_address)
