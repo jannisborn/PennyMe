@@ -1095,7 +1095,7 @@
                 "name": "London Transport Museum",
                 "active": false,
                 "area": "England",
-                "address": "Covent Garden Piazza, , LONDON - Covent Garden",
+                "address": "Covent Garden Piazza, London WC2E 7BB",
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=208567",
                 "internal_url": "null",
@@ -1138,7 +1138,7 @@
                 ]
             },
             "properties": {
-                "name": "Island Bookstore  (#1)",
+                "name": "Island Bookstore (#1)",
                 "active": false,
                 "area": "Michigan",
                 "address": "7372 Main Street, Mackinac Island",
@@ -1517,6 +1517,121 @@
                 "longitude": "-84.11103797965455",
                 "id": 6011,
                 "last_updated": "2023-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8259479,
+                    44.4593593
+                ]
+            },
+            "properties": {
+                "name": "Old Faithful Lodge Gift Shop",
+                "active": false,
+                "area": "Wyoming",
+                "address": "725 Old Faithful Lodge Road, Yellowstone National Park",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=379935",
+                "internal_url": "null",
+                "latitude": "44.4593593",
+                "longitude": "-110.8259479",
+                "id": 5511,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1153282,
+                    51.5032484
+                ]
+            },
+            "properties": {
+                "name": "Golden Tours Waterloo Branch ",
+                "active": false,
+                "area": "England",
+                "address": "York Rd, Elizabeth House,Unit 31 Visitor Centre  , LONDON - Waterloo",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=325503",
+                "internal_url": "null",
+                "latitude": "51.5032484",
+                "longitude": "-0.1153282",
+                "id": 1490,
+                "last_updated": "2023-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.1933662,
+                    37.7291766
+                ]
+            },
+            "properties": {
+                "name": "University Mall (Center area by Hot Topic)",
+                "active": false,
+                "area": "Illinois",
+                "address": "1237 E Main St, Carbondale, IL 62901",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=299313",
+                "internal_url": "null",
+                "latitude": "37.7291766",
+                "longitude": "-89.1933662",
+                "id": 1204,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9120169,
+                    40.9864584
+                ]
+            },
+            "properties": {
+                "name": "Cabela's (Farmington)",
+                "active": false,
+                "area": "Utah",
+                "address": "391 N Cabela's Dr, 84025 Farmington",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250813",
+                "internal_url": "null",
+                "latitude": "40.9864584",
+                "longitude": "-111.9120169",
+                "id": 2063,
+                "last_updated": "2023-06-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1721634,
+                    36.1139743
+                ]
+            },
+            "properties": {
+                "name": "Paris Hotel Casino (Real Bodies gift shop)",
+                "active": true,
+                "area": "Nevada",
+                "address": "3643 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=377240",
+                "internal_url": "null",
+                "latitude": "36.1139743",
+                "longitude": "-115.1721634",
+                "id": 5427,
+                "last_updated": "2023-07-22"
             }
         }
     ]
