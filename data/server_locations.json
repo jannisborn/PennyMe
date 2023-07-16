@@ -1095,7 +1095,7 @@
                 "name": "London Transport Museum",
                 "active": false,
                 "area": "England",
-                "address": "Covent Garden Piazza, , LONDON - Covent Garden",
+                "address": "Covent Garden Piazza, London WC2E 7BB",
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=208567",
                 "internal_url": "null",
@@ -1138,7 +1138,7 @@
                 ]
             },
             "properties": {
-                "name": "Island Bookstore  (#1)",
+                "name": "Island Bookstore (#1)",
                 "active": false,
                 "area": "Michigan",
                 "address": "7372 Main Street, Mackinac Island",
@@ -1149,6 +1149,1021 @@
                 "longitude": "-84.61869089999999",
                 "id": 2547,
                 "last_updated": "2023-06-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.4370852,
+                    26.0700857
+                ]
+            },
+            "properties": {
+                "name": "Bobz World",
+                "active": false,
+                "area": "Texas",
+                "address": "36451 State Hwy 100, Los Fresnos",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=228625",
+                "internal_url": "null",
+                "latitude": "26.0700857",
+                "longitude": "-97.4370852",
+                "id": 3751,
+                "last_updated": "2023-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.339455,
+                    34.1025381
+                ]
+            },
+            "properties": {
+                "name": "Gifts Of Hollywood",
+                "active": false,
+                "area": "California",
+                "address": "6801 Hollywood Boulevard - level 4 bridge, Hollywood",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=48947",
+                "internal_url": "null",
+                "latitude": "34.1025381",
+                "longitude": "-118.339455",
+                "id": 4639,
+                "last_updated": "2023-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.6658438,
+                    37.377856
+                ]
+            },
+            "properties": {
+                "name": "Saint Louis Iron Mountain & Southern",
+                "active": true,
+                "area": "Missouri",
+                "address": "252 E Jackson Blvd, Jackson, MO 63755, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.377856",
+                "longitude": "-89.6658438",
+                "id": 6006,
+                "last_updated": "2023-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.8912094,
+                    34.7921982
+                ]
+            },
+            "properties": {
+                "name": "Crystal Forest Gift Shop & Museum",
+                "active": false,
+                "area": "Arizona",
+                "address": "6495 Petrified Forest Road, Holbrook",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27229",
+                "internal_url": "null",
+                "latitude": "34.7921982",
+                "longitude": "-109.8912094",
+                "id": 2634,
+                "last_updated": "2023-06-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.776731,
+                    36.161146
+                ]
+            },
+            "properties": {
+                "name": "Music City Showcase",
+                "active": true,
+                "area": "Tennessee",
+                "address": "323 Broadway, Nashville, TN 37201, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.16114574108638",
+                "longitude": "-86.77673080344822",
+                "id": 6007,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.2415239,
+                    43.9930366
+                ]
+            },
+            "properties": {
+                "name": "Wall Drugstore",
+                "active": true,
+                "area": "South Dakota",
+                "address": "510 Main St, Wall, SD 57790, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.99303664996626",
+                "longitude": "-102.24152390308831",
+                "id": 6008,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.3731069,
+                    35.282846
+                ]
+            },
+            "properties": {
+                "name": "Courthouse Square - Jack Daniels Souvenir Store",
+                "active": true,
+                "area": "Tennessee",
+                "address": "52 Mechanic St S, Lynchburg, TN 37352, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319740",
+                "internal_url": "null",
+                "latitude": "35.282846",
+                "longitude": "-86.3731069",
+                "id": 4228,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.69857537422314,
+                    44.588544548560485
+                ]
+            },
+            "properties": {
+                "name": "Devils Tower - Cattle Kate's Cafe",
+                "active": true,
+                "area": "Wyoming",
+                "address": "60 WY-110, Devils Tower, WY 82714, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.588544548560485",
+                "longitude": "-104.69857537422314",
+                "id": 6009,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.6992083,
+                    44.588659
+                ]
+            },
+            "properties": {
+                "name": "Devil's Tower Trading Post",
+                "active": true,
+                "area": "Wyoming",
+                "address": "57 WY-110 Devils tower, WY 82714 United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=824",
+                "internal_url": "null",
+                "latitude": "44.58865890018892",
+                "longitude": "-104.69920826005048",
+                "id": 3109,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0622478,
+                    43.0847267
+                ]
+            },
+            "properties": {
+                "name": "Honeymoon Capital Souvenir Shop",
+                "active": false,
+                "area": "New York",
+                "address": "16 Rainbow Blvd, Niagara Falls",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3588",
+                "internal_url": "null",
+                "latitude": "43.0847267",
+                "longitude": "-79.0622478",
+                "id": 5479,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.78978643,
+                    47.73167717508765
+                ]
+            },
+            "properties": {
+                "name": "Memory Lane Gems",
+                "active": true,
+                "area": "Idaho",
+                "address": "200 W Hanley Ave, Coeur d'Alene, ID 83815, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=293104",
+                "internal_url": "null",
+                "latitude": "47.73167717508765",
+                "longitude": "-116.78978643063256",
+                "id": 4312,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.17422239999999,
+                    25.7849814
+                ]
+            },
+            "properties": {
+                "name": "Jungle Island",
+                "active": false,
+                "area": "Florida",
+                "address": "1111 Parrot Jungle Trail, Miami",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1696",
+                "internal_url": "null",
+                "latitude": "25.7849814",
+                "longitude": "-80.17422239999999",
+                "id": 3385,
+                "last_updated": "2023-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.344381,
+                    47.079119
+                ]
+            },
+            "properties": {
+                "name": "Kölnbrein parking ",
+                "active": true,
+                "area": "Austria",
+                "address": "Brandstatt 36, 9854 Brandstatt, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "13.344381",
+                "longitude": "47.079119",
+                "id": 6010,
+                "last_updated": "2023-07-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.053718,
+                    46.660467
+                ]
+            },
+            "properties": {
+                "name": "Mount First",
+                "active": false,
+                "area": "Switzerland",
+                "address": "",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=272929",
+                "internal_url": "null",
+                "latitude": "46.660467",
+                "longitude": "8.053718",
+                "id": 718,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.053941,
+                    46.659810
+                ]
+            },
+            "properties": {
+                "name": "Grindelwald First Station",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Bergstation First, 3818 Grindelwald",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=239193",
+                "internal_url": "null",
+                "latitude": "46.659810",
+                "longitude": "8.053941",
+                "id": 716,
+                "last_updated": "2023-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.11103797965455,
+                    39.781620825116654
+                ]
+            },
+            "properties": {
+                "name": "Air Force Museum Ohio",
+                "active": true,
+                "area": "Ohio",
+                "address": "1100 Spaatz St, Wright-Patterson AFB, OH 45433, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.781620825116654",
+                "longitude": "-84.11103797965455",
+                "id": 6011,
+                "last_updated": "2023-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8259479,
+                    44.4593593
+                ]
+            },
+            "properties": {
+                "name": "Old Faithful Lodge Gift Shop",
+                "active": false,
+                "area": "Wyoming",
+                "address": "725 Old Faithful Lodge Road, Yellowstone National Park",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=379935",
+                "internal_url": "null",
+                "latitude": "44.4593593",
+                "longitude": "-110.8259479",
+                "id": 5511,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1153282,
+                    51.5032484
+                ]
+            },
+            "properties": {
+                "name": "Golden Tours Waterloo Branch ",
+                "active": false,
+                "area": "England",
+                "address": "York Rd, Elizabeth House,Unit 31 Visitor Centre  , LONDON - Waterloo",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=325503",
+                "internal_url": "null",
+                "latitude": "51.5032484",
+                "longitude": "-0.1153282",
+                "id": 1490,
+                "last_updated": "2023-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.1933662,
+                    37.7291766
+                ]
+            },
+            "properties": {
+                "name": "University Mall (Center area by Hot Topic)",
+                "active": false,
+                "area": "Illinois",
+                "address": "1237 E Main St, Carbondale, IL 62901",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=299313",
+                "internal_url": "null",
+                "latitude": "37.7291766",
+                "longitude": "-89.1933662",
+                "id": 1204,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9120169,
+                    40.9864584
+                ]
+            },
+            "properties": {
+                "name": "Cabela's (Farmington)",
+                "active": false,
+                "area": "Utah",
+                "address": "391 N Cabela's Dr, 84025 Farmington",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250813",
+                "internal_url": "null",
+                "latitude": "40.9864584",
+                "longitude": "-111.9120169",
+                "id": 2063,
+                "last_updated": "2023-06-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1721634,
+                    36.1139743
+                ]
+            },
+            "properties": {
+                "name": "Paris Hotel Casino (Real Bodies gift shop)",
+                "active": true,
+                "area": "Nevada",
+                "address": "3643 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=377240",
+                "internal_url": "null",
+                "latitude": "36.1139743",
+                "longitude": "-115.1721634",
+                "id": 5427,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1499551,
+                    32.7311958
+                ]
+            },
+            "properties": {
+                "name": "Balboa Park - Visitor Center",
+                "active": false,
+                "area": "California",
+                "address": "1549 El Prado, Suite. 1, San Diego",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2941",
+                "internal_url": "null",
+                "latitude": "32.7311958",
+                "longitude": "-117.1499551",
+                "id": 4763,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.4838741,
+                    35.715473
+                ]
+            },
+            "properties": {
+                "name": "Last Stop Travel Center,",
+                "active": false,
+                "area": "Arizona",
+                "address": "20331 N US Hwy 93, White Hills",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=357775",
+                "internal_url": "null",
+                "latitude": "35.715473",
+                "longitude": "-114.4838741",
+                "id": 5204,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0308172,
+                    44.9384502
+                ]
+            },
+            "properties": {
+                "name": "Oregon State Capitol Building",
+                "active": false,
+                "area": "Oregon",
+                "address": "900 Court Street Street NE, Salem",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=206303",
+                "internal_url": "null",
+                "latitude": "44.9384502",
+                "longitude": "-123.0308172",
+                "id": 4389,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0430662,
+                    44.9410879
+                ]
+            },
+            "properties": {
+                "name": "Salem's Riverfront Carousel",
+                "active": false,
+                "area": "Oregon",
+                "address": "101 Front Street NE, Salem",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3936",
+                "internal_url": "null",
+                "latitude": "44.9410879",
+                "longitude": "-123.0430662",
+                "id": 4390,
+                "last_updated": "2023-07-15",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.236364,
+                    40.781635
+                ]
+            },
+            "properties": {
+                "name": "Bar Rione Monti",
+                "active": true,
+                "area": "Italy",
+                "address": "Via Monte San Michele, 85/87, Alberobello, 70011 Italy",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=73132",
+                "internal_url": "null",
+                "latitude": "40.781635",
+                "longitude": "17.236364",
+                "id": 899,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6420882,
+                    35.1397707
+                ]
+            },
+            "properties": {
+                "name": "Jim And G's Apparel And Beachwear",
+                "active": false,
+                "area": "California",
+                "address": "685 Cypress St, Pismo Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343451",
+                "internal_url": "null",
+                "latitude": "35.1397707",
+                "longitude": "-120.6420882",
+                "id": 4733,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.5345256,
+                    40.5772468
+                ]
+            },
+            "properties": {
+                "name": "Dorney Park ",
+                "active": false,
+                "area": "Pennsylvania",
+                "address": "3830 Dorney Park Road, Allentown",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=5765",
+                "internal_url": "null",
+                "latitude": "40.5772468",
+                "longitude": "-75.5345256",
+                "id": 3950,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.7374931,
+                    37.5311219
+                ]
+            },
+            "properties": {
+                "name": "Abraham Lincoln Birthplace National Historical Park",
+                "active": false,
+                "area": "Kentucky",
+                "address": "2995 Lincoln Farm Rd., Hodgenville",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=370032",
+                "internal_url": "null",
+                "latitude": "37.5311219",
+                "longitude": "-85.7374931",
+                "id": 5500,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.5451949,
+                    38.0760832
+                ]
+            },
+            "properties": {
+                "name": "Calaveras County Visitors Bureau",
+                "active": false,
+                "area": "California",
+                "address": "1192 S. Main Street, Angels Camp",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=375",
+                "internal_url": "null",
+                "latitude": "38.0760832",
+                "longitude": "-120.5451949",
+                "id": 4563,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -135.3193941,
+                    59.45345440000001
+                ]
+            },
+            "properties": {
+                "name": "Alaska Shirt Company (Skagway)",
+                "active": false,
+                "area": "Alaska",
+                "address": "131 Broadway, Skagway, AK 99840, USA",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=204",
+                "internal_url": "null",
+                "latitude": "59.45345440000001",
+                "longitude": "-135.3193941",
+                "id": 1177,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.8061149,
+                    24.5604925
+                ]
+            },
+            "properties": {
+                "name": "Conch Tour Train Depot",
+                "active": false,
+                "area": "Florida",
+                "address": "303 Front St. at the corner of Duval Street and Front Street, Key West",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1795",
+                "internal_url": "null",
+                "latitude": "24.5604925",
+                "longitude": "-81.8061149",
+                "id": 3320,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.8724818,
+                    34.0505871
+                ]
+            },
+            "properties": {
+                "name": "Dodge City Petro",
+                "active": false,
+                "area": "Alabama",
+                "address": "426 AL-69 (I-65 Exit 299), Hanceville",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=275011",
+                "internal_url": "null",
+                "latitude": "34.0505871",
+                "longitude": "-86.8724818",
+                "id": 1722,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.85318889999999,
+                    29.2505778
+                ]
+            },
+            "properties": {
+                "name": "Galveston Fishing Pier",
+                "active": false,
+                "area": "Texas",
+                "address": "9001 Seawall Boulevard, Galveston",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245658",
+                "internal_url": "null",
+                "latitude": "29.2505778",
+                "longitude": "-94.85318889999999",
+                "id": 3705,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1758392,
+                    31.6067336
+                ]
+            },
+            "properties": {
+                "name": "Waco Mammoth Site",
+                "active": false,
+                "area": "Texas",
+                "address": "6220 Steinbeck Bend Dr, Waco",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=223253",
+                "internal_url": "null",
+                "latitude": "31.6067336",
+                "longitude": "-97.1758392",
+                "id": 3822,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.4590667,
+                    43.87910249999999
+                ]
+            },
+            "properties": {
+                "name": "Mount Rushmore National Monument",
+                "active": true,
+                "area": "South Dakota",
+                "address": "Mount Rushmore, Keystone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2898",
+                "internal_url": "null",
+                "latitude": "43.87910249999999",
+                "longitude": "-103.4590667",
+                "id": 1302,
+                "last_updated": "2023-07-15",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -155.9845063,
+                    19.6254406
+                ]
+            },
+            "properties": {
+                "name": "Club Wyndham ",
+                "active": false,
+                "area": "Hawaii",
+                "address": "756016 Kuakini Highway, Hawai'i (Big Island) - Kailua-Kona",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=337890",
+                "internal_url": "null",
+                "latitude": "19.6254406",
+                "longitude": "-155.9845063",
+                "id": 3828,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.6127355,
+                    45.40294129999999
+                ]
+            },
+            "properties": {
+                "name": "Indian River Trading Post / Shell Gas Station / McDonalds",
+                "active": false,
+                "area": "Michigan",
+                "address": "6153 M-68, Indian River",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3017",
+                "internal_url": "null",
+                "latitude": "45.40294129999999",
+                "longitude": "-84.6127355",
+                "id": 2536,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0884478,
+                    41.5922407
+                ]
+            },
+            "properties": {
+                "name": "NY State Thruway, Modena Travel Plaza (Southbound)",
+                "active": false,
+                "area": "New York",
+                "address": "I-87 South, Milepost 66, Wallkill",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3618",
+                "internal_url": "null",
+                "latitude": "41.5922407",
+                "longitude": "-74.0884478",
+                "id": 3093,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3399489,
+                    47.6043346
+                ]
+            },
+            "properties": {
+                "name": "Pier 54 - Ye Olde Curiosity Shop",
+                "active": true,
+                "area": "Washington",
+                "address": "1001 Alaskan Way, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1124",
+                "internal_url": "null",
+                "latitude": "47.6043346",
+                "longitude": "-122.3399489",
+                "id": 5140,
+                "last_updated": "2023-07-15",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.171648,
+                    36.084705
+                ]
+            },
+            "properties": {
+                "name": "Pinball Hall of Fame",
+                "active": true,
+                "area": "Nevada",
+                "address": "1610 East Tropicana Avenue, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=200907",
+                "internal_url": "null",
+                "latitude": "36.084705",
+                "longitude": "-115.171648",
+                "id": 4524,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.90648759999999,
+                    42.0756954
+                ]
+            },
+            "properties": {
+                "name": "Binghamton Zoo at Ross Park",
+                "active": false,
+                "area": "New York",
+                "address": "185 Park Avenue, Binghamton",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=16160",
+                "internal_url": "null",
+                "latitude": "42.0756954",
+                "longitude": "-75.90648759999999",
+                "id": 2994,
+                "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.88853370000001,
+                    37.4164584
+                ]
+            },
+            "properties": {
+                "name": "Forman Depot Museum",
+                "active": false,
+                "area": "Illinois",
+                "address": "298 E Vine St, Vienna",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=354560",
+                "internal_url": "null",
+                "latitude": "37.4164584",
+                "longitude": "-88.88853370000001",
+                "id": 5451,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1940022,
+                    32.7520286
+                ]
+            },
+            "properties": {
+                "name": "Old Town - San Diego's Best",
+                "active": false,
+                "area": "California",
+                "address": "2415 San Diego Avenue, Suite 101, San Diego",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=170628",
+                "internal_url": "null",
+                "latitude": "32.7520286",
+                "longitude": "-117.1940022",
+                "id": 4783,
+                "last_updated": "2023-07-15"
             }
         }
     ]
