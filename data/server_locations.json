@@ -2165,6 +2165,75 @@
                 "id": 4783,
                 "last_updated": "2023-07-15"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.025797,
+                    38.921010
+                ]
+            },
+            "properties": {
+                "name": "Crystal Reservoir Gift Shop Pikes Peak Mountain",
+                "active": false,
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=6650",
+                "internal_url": "null",
+                "latitude": "38.921010",
+                "longitude": "-105.025797",
+                "id": 1920,
+                "last_updated": "2023-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.042649,
+                    38.840653
+                ]
+            },
+            "properties": {
+                "name": "Summit House Gift Shop Pikes Peak Mountain",
+                "active": true,
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452",
+                "internal_url": "null",
+                "latitude": "38.840653",
+                "longitude": "-105.042649",
+                "id": 1922,
+                "last_updated": "2027-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.073020,
+                    38.875600
+                ]
+            },
+            "properties": {
+                "name": "Gift Shop at Glen Cove (Pikes Peak Mountain)",
+                "active": false,
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=6651",
+                "internal_url": "null",
+                "latitude": "38.875600",
+                "longitude": "-105.073020",
+                "id": 1921,
+                "last_updated": "2027-07-20"
+            }
         }
     ]
 }
