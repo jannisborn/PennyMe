@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 from flask import Flask, jsonify, request
 from PIL import Image, ImageOps
+from typing import Dict, Any
 
 from slack import WebClient
 from slack.errors import SlackApiError
@@ -24,16 +25,22 @@ with open("blocked_ips.json", "r") as infile:
 
 with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
     d = json.load(infile)
-machine_names = {
+MACHINE_NAMES = {
     elem["properties"]["id"]:
     f"{elem['properties']['name']} ({elem['properties']['area']})"
     for elem in d["features"]
 }
-# add server location IDs
-with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
-    d = json.load(infile)
-for elem in d["features"]:
-    machine_names[elem["properties"]["id"]] = f"{elem['properties']['name']} ({elem['properties']['area']})"
+
+with open('ip_comment_dict.json', 'r') as f:
+    IP_COMMENT_DICT = json.load(f)
+
+def reload_server_data():
+    # add server location IDs
+    with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
+        d = json.load(infile)
+    for elem in d["features"]:
+        MACHINE_NAMES[elem["properties"]["id"]] = f"{elem['properties']['name']} ({elem['properties']['area']})"
+    return MACHINE_NAMES
 
 @app.route("/add_comment", methods=["GET"])
 def add_comment():
@@ -47,9 +54,6 @@ def add_comment():
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
         return jsonify("Blocked IP address")
-
-    with open("comments_by_ip.txt", "a") as myfile:
-        myfile.write(f"\n{ip_address} {comment}")
 
     path_machine_comments = os.path.join(PATH_COMMENTS, f"{machine_id}.json")
     if os.path.exists(path_machine_comments):
@@ -66,6 +70,8 @@ def add_comment():
 
     # send message to slack
     message_slack(machine_id, comment, ip=ip_address)
+
+    save_comment(comment, ip_address, machine_id)
 
     return jsonify({"response": 200})
 
@@ -98,12 +104,15 @@ def upload_image():
 
     # send message to slack
     image_slack(machine_id, img_path=img_path, ip=ip_address)
+    
 
     return "Image uploaded successfully"
 
 
 def image_slack(machine_id: int, img_path: str, ip: str):
-    m_name = machine_names[int(machine_id)]
+
+    MACHINE_NAMES = reload_server_data()
+    m_name = MACHINE_NAMES[int(machine_id)]
     text = f"Image uploaded for machine {machine_id} - {m_name} (from {ip})"
     try:
         response = client.chat_postMessage(
@@ -135,7 +144,8 @@ def image_slack(machine_id: int, img_path: str, ip: str):
 
 
 def message_slack(machine_id, comment_text, ip: str):
-    m_name = machine_names[int(machine_id)]
+    MACHINE_NAMES = reload_server_data()
+    m_name = MACHINE_NAMES[int(machine_id)]
     text = f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
     try:
         response = client.chat_postMessage(
@@ -145,6 +155,21 @@ def message_slack(machine_id, comment_text, ip: str):
         assert e.response["ok"] is False
         assert e.response["error"]
         raise e
+
+def save_comment(comment: str, ip: str, machine_id: int):
+    
+    # Create dict hierarchy if needed
+    if ip not in IP_COMMENT_DICT.keys():
+        IP_COMMENT_DICT[ip] = {}
+    if machine_id not in IP_COMMENT_DICT[ip].keys():
+        IP_COMMENT_DICT[ip][machine_id] = {}
+    
+    # Add comment
+    IP_COMMENT_DICT[ip][machine_id][str(datetime.now())] = comment
+
+    # Resave the file
+    with open("ip_comment_dict.json", "w") as f:
+        json.dump(IP_COMMENT_DICT, f, indent=4)
 
 
 def create_app():
