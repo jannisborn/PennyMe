@@ -2281,6 +2281,52 @@
                 "multimachine": 2,
                 "last_updated": "2023-07-23"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.579208,
+                    36.902983
+                ]
+            },
+            "properties": {
+                "name": "Cumbres Mall",
+                "active": true,
+                "area": "New Mexico",
+                "address": "493 Terrace Ave, Chama, NM 87520, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=137052",
+                "internal_url": "null",
+                "latitude": "36.902983",
+                "longitude": "-106.579208",
+                "id": 4919,
+                "last_updated": "2023-07-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.703436,
+                    44.975659
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone - Mammoth General Store",
+                "active": false,
+                "area": "Wyoming",
+                "address": "315A Grand Loop Rd, Yellowstone National Park, WY 82190, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=369286",
+                "internal_url": "null",
+                "latitude": "44.975659",
+                "longitude": "-110.703436",
+                "id": 3124,
+                "last_updated": "2023-07-23"
+            }
         }
     ]
 }
