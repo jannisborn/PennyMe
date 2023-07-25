@@ -11,29 +11,35 @@ import MapKit
 
 var FOUNDIMAGE : Bool = false
 
-class PinViewController: UITableViewController {
+let flaskURL = "http://37.120.179.15:5000/"
+let imageURL = "http://37.120.179.15:8000/"
 
+class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
     @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     
     enum StatusChoice : String {
-            case unvisited
-            case visited
-            case marked
-            case retired
-        }
+        case unvisited
+        case visited
+        case marked
+        case retired
+    }
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    var imagePicker = UIImagePickerController()
     
     var artwork: Artwork? {
       didSet {
@@ -43,7 +49,32 @@ class PinViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        updatedLabel.numberOfLines = 0
+        updatedLabel.contentMode = .scaleToFill
+
+        loadComments(completionBlock:
+        {
+            (output) in
+            DispatchQueue.main.async {
+                self.updatedLabel.text = output
+                self.tableView.reloadData()
+            }
+        })
+        // textfield
+        commentTextField.attributedPlaceholder = NSAttributedString(
+            string: "Type your comment here")
+            
+        // submit button
+        submitButton.addTarget(self, action: #selector(addComment), for: .touchUpInside
+                               )
         // main command to ensure that the subviews are sorted
         statusPicker.layoutSubviews()
         
@@ -53,7 +84,6 @@ class PinViewController: UITableViewController {
         titleLabel.text = self.pinData.title!
         addressLabel.numberOfLines = 3
         addressLabel.text = self.pinData.locationName
-        updatedLabel.text = self.pinData.last_updated
         
         // default status
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
@@ -84,6 +114,44 @@ class PinViewController: UITableViewController {
         self.imageview.isUserInteractionEnabled = true
         self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
+    }
+
+    func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
+        let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
+        
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        
+            if let url = URL(string: urlEncodedStringRequest){
+                let session = URLSession(configuration: config)
+                let task = session.dataTask(with: url) {[weak self](data, response, error) in
+                    guard let data = data else { return }
+                    let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    if let results_ = results as? Dictionary<String, String> {
+                        let sortedDates = results_.keys.sorted {$0 > $1}
+                        var displayString : String = ""
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        var isFirst = true
+                        for date in sortedDates {
+                            if let value = results_[date]{
+                                let dateStringArr = date.split(separator: " ")
+                                let dateString = dateStringArr.first ?? ""
+                                if isFirst==false {
+                                    displayString += "\n"
+                                }
+                                else{
+                                    isFirst = false
+                                }
+                                displayString += "\(dateString): \(value)"
+                            }
+                        }
+                        completionBlock(displayString ?? "No comments yet")
+                    }
+                }
+                task.resume()
+            }
         }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -92,11 +160,7 @@ class PinViewController: UITableViewController {
             self.performSegue(withIdentifier: "bigImage", sender: self)
         }
         else{
-            //open mailto url
-            let mailtostring = String(
-                "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE. NOTE: Please send a sharp picture in <b>landscape</b> orientation. The penny motives should be visible, otherwise sent multiple images**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
-            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string: mailtostring)!)
+            chooseImage()
         }
     }
     
@@ -116,7 +180,7 @@ class PinViewController: UITableViewController {
         if indexPath.section == 4
             {
                 //Open the website when you click on the link.
-                UIApplication.shared.openURL(URL(string: pinData.link)!)
+                UIApplication.shared.open(URL(string: pinData.link)!)
             }
             else if indexPath.section == 2 {
                 let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
@@ -126,7 +190,7 @@ class PinViewController: UITableViewController {
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string:mailtostring )!)
+            UIApplication.shared.open(URL(string:mailtostring )!)
             }
         }
 
@@ -144,6 +208,135 @@ class PinViewController: UITableViewController {
             statusPicker.tintColor = colForSegment
         }
     }
+    
+    @objc func addComment(){
+        
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Attention!", message: "Please be mindful. Your comment will be shown to all users of the app. Write as clear & concise as possible.", preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK, add comment!", style: .default) { (_) in
+            
+            var comment = self.commentTextField.text
+            if comment?.count ?? 0 > 0 {
+                self.commentTextField.text = ""
+                self.commentTextField.attributedPlaceholder = NSAttributedString(
+                    string: "Your comment will be shown soon!")
+                if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+    //                let urlEncodedStringRequest = BaseURL + request
+                    let urlEncodedStringRequest = flaskURL + request
+                    
+                    if let url = URL(string: urlEncodedStringRequest){
+                        let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+                            if let error = error {
+                                print("Error: \(error)")
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                    let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
+                                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                    alertController.addAction(okAction)
+                                    self!.present(alertController, animated: true, completion: nil)
+                                }
+                        }
+                        task.resume()
+                    }
+                }
+            }
+        }
+
+        // Create the cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        }
+
+        // Add the actions to the alert controller
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+        
+
+    }
+    
+    func chooseImage() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            // Create the alert controller
+            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload only images that are strictly related to penny machines. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+
+            // Create the OK action
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                // Show the image picker
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+
+            // Create the cancel action
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            }
+
+            // Add the actions to the alert controller
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+
+            // Present the alert controller
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+
+//         Convert the image to a data object
+            guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                print("Failed to convert image to data")
+                return
+            }
+
+            // call flask method to upload the image
+            guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
+                return
+            }
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+
+            // Add the image data to the request body
+            let boundary = UUID().uuidString
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            let body = NSMutableData()
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+            body.append(imageData)
+            body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+            request.httpBody = body as Data
+
+            // Create a URLSessionDataTask to send the request
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+                DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+            }
+            task.resume()
+
+        dismiss(animated:true, completion: nil)
+    }
+
+
     
     func saveStatusChange(machineid: String, new_status: String){
         // find directory in documents folder corresponding to app data

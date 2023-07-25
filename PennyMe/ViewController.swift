@@ -23,6 +23,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     @IBOutlet weak var ownLocation: UIButton!
     @IBOutlet var toggleMapButton: UIButton!
     
+    @IBOutlet weak var navigationbar: UINavigationItem!
+    
     //    For search results
     @IBOutlet var searchFooter: SearchFooter!
     @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
@@ -35,6 +37,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var artworks: [Artwork] = []
     var pinIdDict : [String:Int] = [:]
     var selectedPin: Artwork?
+    
+    let default_switches: [String: Bool] = [
+        "unvisitedSwitch": true,
+        "visitedSwitch": true,
+        "markedSwitch": true,
+        "retiredSwitch": false,
+        "clusterPinSwitch": false
+    ]
     
     // Searchbar variables
     let searchController = UISearchController(searchResultsController: nil)
@@ -57,7 +67,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
+        self.navigationbar.standardAppearance = UINavigationBarAppearance()
+        self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+
+
         // Do any additional setup after loading the view, typically from a nib.
         artworks = Artwork.artworks()
 
@@ -68,6 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search penny machines"
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.overrideUserInterfaceStyle = .light
         // iOS 11 compatability issue
         navigationItem.searchController = searchController
         // Disable search bar if view is changed
@@ -87,7 +102,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         )
 
         loadInitialData()
-        PennyMap.addAnnotations(artworks)
+        addAnnotationsIteratively()
 
         let button = UIButton()
         button.frame = CGRect(x: 150, y: 150, width: 100, height: 50)
@@ -108,7 +123,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(shortTap))
         viewTapGesture.delegate = self
         PennyMap.addGestureRecognizer(viewTapGesture)
-        
+
+        // Check whether version is new
+        VersionManager.shared.showVersionInfoAlertIfNeeded()
     }
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -141,6 +158,42 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
         check_json_dict()
+        // check whether some setting has changed, if yes, reload all data on the map
+        if SettingsViewController.hasChanged {
+            addAnnotationsIteratively()
+            SettingsViewController.hasChanged = false
+        }
+        if SettingsViewController.clusterHasChanged {
+            PennyMap.removeAnnotations(artworks)
+            addAnnotationsIteratively()
+            SettingsViewController.clusterHasChanged = false
+
+        }
+        
+    }
+    
+    func addAnnotationsIteratively() {
+        let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch", ]
+        var includedStates : [String] = []
+        for userdefault in relevantUserDefauls {
+            let user_settings = UserDefaults.standard
+            let value = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
+            if value! {
+                let partStr = String( userdefault.prefix(userdefault.count - 6))
+                includedStates.append(partStr)
+            }
+        }
+
+        for artwork in artworks {
+            if (includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) == nil) {
+            //  Artwork should be visible but is currently not visible
+                    PennyMap.addAnnotation(artwork)
+            } else if (!includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) != nil)  {
+                //  Artwork should not be visible but is currently not visible
+                PennyMap.removeAnnotation(artwork)
+            }
+        }
+        
     }
     
     func setDelegates(){
@@ -280,7 +333,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     }
     
     func check_json_dict(){
-//        print("checking json dictionary")
         // initialize empty status dictionary
         var statusDict = [[String: String]()]
         //variable indicating whether we load something
@@ -311,8 +363,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             for id_machine in ids_in_dict{
                 let machine = artworks[pinIdDict[id_machine]!]
                 PennyMap.removeAnnotation(machine)
-                machine.status = statusDict[0][machine.id] ?? "unvisited"
-                PennyMap.addAnnotation(machine)
+                let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
+                machine.status = thisMachineStatus
+                // Only add the machine back to the map if it is supposed to be shown (according to settings)
+                let user_settings = UserDefaults.standard
+                let userdefault = thisMachineStatus+"Switch"
+                // get userdefault (use default if not set yet)
+                let shouldDisplayMachine = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
+                // add pin if necessary
+                if shouldDisplayMachine! {
+                    PennyMap.addAnnotation(machine)
+                }
             }
         }
     }
@@ -456,9 +517,9 @@ extension ViewController: MKMapViewDelegate {
         // TODO: Do we really want segue here?
     }
     
-//     callout when maps button is pressed
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
+        //     callout when maps button is pressed
         let location = view.annotation as! Artwork
         if (control == view.rightCalloutAccessoryView) {
             // This would open the directions
@@ -507,17 +568,6 @@ extension ViewController: CLLocationManagerDelegate {
             // this is to prevent that the "nearby" notification is sent only once (per location)
             lastClosestID = closestID
         }
-        // Below code only executes if locations.last exists
-        let center = CLLocationCoordinate2D(
-            latitude: location.coordinate.latitude,
-            longitude: location.coordinate.longitude
-        )
-        let region = MKCoordinateRegion(
-            center: center,
-            latitudinalMeters: regionInMeters,
-            longitudinalMeters: regionInMeters
-        )
-        PennyMap.setRegion(region, animated: true)
     }
     
     // Send user a local notification if they have the app running in the bg
@@ -714,13 +764,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.selectedPin = filteredArtworks[indexPath.row]
-        // TODO: update map location to selected
         let center = self.selectedPin!.coordinate
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.PennyMap.setRegion(region, animated: true)
         locationResult.removeFromSuperview()
         tableShown = false
-        searchController.searchBar.text = ""
+        searchController.searchBar.endEditing(true)
         
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
     }

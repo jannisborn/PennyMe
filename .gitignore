@@ -95,3 +95,7 @@ iOSInjectionProject/
 # IDE
 *.vscode
 *__pycache__*
+
+*egg-info
+
+.secrets/
