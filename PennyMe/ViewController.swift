@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Contacts
+import SwiftUI
 
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
@@ -118,11 +119,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         lpgr.delaysTouchesBegan = true
         lpgr.delegate = self
         PennyMap.addGestureRecognizer(lpgr)
-        
-        // tap gesture re
-        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(shortTap))
-        viewTapGesture.delegate = self
-        PennyMap.addGestureRecognizer(viewTapGesture)
 
         // Check whether version is new
         VersionManager.shared.showVersionInfoAlertIfNeeded()
@@ -139,19 +135,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         self.newMachineAnnotation.append(annotation)
     }
     
-    @objc func shortTap(gestureRecognizer: UILongPressGestureRecognizer) {
-        if (self.newMachineAnnotation.count > 0){
-            if let annotation = self.newMachineAnnotation[0] as? MKAnnotation{
-                print(PennyMap.annotations.count)
-                print("Removing", annotation.title)
-                self.PennyMap.removeAnnotation(annotation)
-                // WORKARAOUND: remove and add all
-                //            PennyMap.removeAnnotations(PennyMap.annotations)
-                //            PennyMap.addAnnotations(artworks)
-                print(PennyMap.annotations.count)
-                self.newMachineAnnotation = []
-            }
-            }
+    func removeNewMachinePin() -> Void {
+        if !newMachineAnnotation.isEmpty {
+            PennyMap.removeAnnotations(self.newMachineAnnotation)
+            self.newMachineAnnotation = []
+        }
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -169,6 +157,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             SettingsViewController.clusterHasChanged = false
 
         }
+        // always remove pins for new machines if there are any
+        removeNewMachinePin()
         
     }
     
@@ -508,13 +498,22 @@ extension ViewController: MKMapViewDelegate {
     }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {
-        guard let annotation = (sender.view as? MKAnnotationView)?.annotation as? Artwork else { return }
-
-        let selectedLocation = annotation.title
-        // set selected pin to pass it to detail VC
-        self.selectedPin = annotation
-        self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
-        // TODO: Do we really want segue here?
+        guard let annotation = (sender.view as? MKAnnotationView)?.annotation  else {return}
+        // first option: it's a new machine pin - present form
+        if let newmachine = annotation as? NewMachine {
+            if #available(iOS 13.0, *) {
+                let swiftUIViewController = UIHostingController(rootView: RequestFormView(coords: newmachine.coordinate)
+                )
+                present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
+                
+            }
+        // second option: it's a regular machine
+        } else if let artworkAnnotation = annotation as? Artwork {
+            let selectedLocation = artworkAnnotation.title
+            // set selected pin to pass it to detail VC
+            self.selectedPin = artworkAnnotation
+            self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        } else {return}
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
