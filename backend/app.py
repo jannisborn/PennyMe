@@ -181,7 +181,7 @@ def create_machine():
     machine_title = str(request.args.get("title"))
     address = str(request.args.get("address"))
     area = str(request.args.get("area"))
-    location = (float(request.args.get("lat_coord")), float(request.args.get("lon_coord")))
+    location = (float(request.args.get("lon_coord")), float(request.args.get("lat_coord")))
     multimachine = int(request.args.get("multimachine"))
     paywall = bool(int(request.args.get("paywall")))
 
