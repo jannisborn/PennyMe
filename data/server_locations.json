@@ -6,8 +6,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    10.008550,
-                    53.597140
+                    10.00855,
+                    53.59714
                 ]
             },
             "properties": {
@@ -833,8 +833,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -119.214130,
-                    34.256210
+                    -119.21413,
+                    34.25621
                 ]
             },
             "properties": {
@@ -856,7 +856,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -82.952720,
+                    -82.95272,
                     39.716177
                 ]
             },
@@ -1479,7 +1479,7 @@
                 "type": "Point",
                 "coordinates": [
                     8.053941,
-                    46.659810
+                    46.65981
                 ]
             },
             "properties": {
@@ -2164,6 +2164,31 @@
                 "longitude": "-117.1940022",
                 "id": 4783,
                 "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    47.421449899593284,
+                    8.532892977675488
+                ]
+            },
+            "properties": {
+                "name": "Test",
+                "active": true,
+                "area": "Mars",
+                "address": "Mars",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 8.532892977675488,
+                "longitude": 47.421449899593284,
+                "id": 6012,
+                "last_updated": "2023-07-26",
+                "multimachine": 2,
+                "paywall": false
             }
         }
     ]
