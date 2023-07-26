@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from datetime import datetime
 from flask import Flask, jsonify, request
 from PIL import Image, ImageOps
@@ -7,6 +8,7 @@ from typing import Dict, Any
 
 from slack import WebClient
 from slack.errors import SlackApiError
+from pull_request import push_to_github_and_open_pr
 
 app = Flask(__name__)
 
@@ -170,6 +172,59 @@ def save_comment(comment: str, ip: str, machine_id: int):
     # Resave the file
     with open("ip_comment_dict.json", "w") as f:
         json.dump(IP_COMMENT_DICT, f, indent=4)
+
+@app.route("/create_machine", methods=["GET"])
+def create_machine():
+    """
+    Receives a comment and adds it to the json file
+    """
+    machine_title = str(request.args.get("title"))
+    address = str(request.args.get("address"))
+    area = str(request.args.get("area"))
+    location = (float(request.args.get("lat_coord")), float(request.args.get("lon_coord")))
+    multimachine = int(request.args.get("multimachine"))
+    paywall = bool(int(request.args.get("paywalls")))
+
+    # set unique branch name
+    branch_name = f'new_machine_{round(time.time())}'
+
+    # load the current server locations file
+    with open("../data/server_locations.json", "r") as infile:
+        server_locations = json.load(infile)
+    # retrieve new ID
+    new_machine_id = max(
+        [item["properties"]["id"] for item in server_locations["features"]]
+    ) + 1
+    # add new item to json
+    server_locations["features"].append(
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": location
+            },
+            "properties":
+                {
+                    "name": machine_title,
+                    "active": True,
+                    "area": area,
+                    "address": address,
+                    "status": "unvisited",
+                    "external_url": "null",
+                    "internal_url": "null",
+                    "latitude": location[1],
+                    "longitude": location[0],
+                    "id": new_machine_id,
+                    "last_updated": str(datetime.today()).split(" ")[0],
+                    "multimachine": multimachine,
+                    "paywall": paywall
+                }
+        }
+    )
+
+    commit_message = f'add new machine {new_machine_id} named {machine_title}'
+    push_to_github_and_open_pr(server_locations, branch_name, commit_message)
+
 
 
 def create_app():
