@@ -183,7 +183,7 @@ def create_machine():
     area = str(request.args.get("area"))
     location = (float(request.args.get("lat_coord")), float(request.args.get("lon_coord")))
     multimachine = int(request.args.get("multimachine"))
-    paywall = bool(int(request.args.get("paywalls")))
+    paywall = bool(int(request.args.get("paywall")))
 
     # set unique branch name
     branch_name = f'new_machine_{round(time.time())}'
@@ -224,7 +224,7 @@ def create_machine():
 
     commit_message = f'add new machine {new_machine_id} named {machine_title}'
     push_to_github_and_open_pr(server_locations, branch_name, commit_message)
-
+    return jsonify({"response": 200})
 
 
 def create_app():

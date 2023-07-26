@@ -59,6 +59,9 @@ struct RequestFormView: View {
     // Properties to hold user input
     @State private var name: String = ""
     @State private var address: String = ""
+    @State private var area: String = ""
+    @State private var paywall: String = "0"
+    @State private var multimachine: String = "1"
     @State private var showFinishedAlert = false
     @State private var submittedName: String = ""
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
@@ -76,14 +79,26 @@ struct RequestFormView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            // Message input field
-//            TextEditor(text: $message)
-//                .padding()
-//                .frame(height: 150)
-//                .border(Color.gray, width: 1)
+            // Area input field
+            TextField("Area (Country or US state)", text: $area)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            // Paywall input field
+            Text("Paywall? (Change to 1 if there is a fee to visit the machine)")
+            TextField("Paywall", text: $paywall)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            // Multimachine input field
+            Text("Multi-machines? (Change if there are multiple machines at this location)")
+            TextField("Number of machines", text: $multimachine)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Text("\(submittedName)").foregroundColor(.red)
             
+            Text("When submitting, you will be ask to upload a photo for the machine.").foregroundColor(.white)
             // Submit button
             Button(action: submitRequest) {
                 Text("Submit")
@@ -104,13 +119,28 @@ struct RequestFormView: View {
     
     // Function to handle the submission of the request
     private func submitRequest() {
-        if name == "" || address == "" {
+        if name == "" || address == "" || area == "" || paywall == "" || multimachine == "" {
             submittedName = "Please enter all information"
         } else {
-            // TODO: send to backend
-            print(coords, name, address)
-            showFinishedAlert = true
-            presentationMode.wrappedValue.dismiss()
+            
+            if let request = "/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+                //                let urlEncodedStringRequest = BaseURL + request
+                let urlEncodedStringRequest = flaskURL + request
+                
+                if let url = URL(string: urlEncodedStringRequest){
+                    let task = URLSession.shared.dataTask(with: url) {[ self](data, response, error) in
+                        if let error = error {
+                            print("Error: \(error)")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            showFinishedAlert = true
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                    task.resume()
+                }
+            }
         }
     }
 }
