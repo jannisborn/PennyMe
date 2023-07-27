@@ -2397,6 +2397,52 @@
                 "last_updated": "2023-07-24",
                 "multimachine": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.8025109,
+                    43.0841472
+                ]
+            },
+            "properties": {
+                "name": "Truck Towne Plaza Center",
+                "active": false,
+                "area": "South Dakota",
+                "address": "47018 SD-46, Beresford",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=380713",
+                "internal_url": "null",
+                "latitude": "43.0841472",
+                "longitude": "-96.8025109",
+                "id": 5310,
+                "last_updated": "2023-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.900353,
+                    43.8211949
+                ]
+            },
+            "properties": {
+                "name": "Badlands Range Store",
+                "active": true,
+                "area": "South Dakota",
+                "address": "21190 SD-240, Philip, SD 57567, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.82119488255879",
+                "longitude": "-101.90035296542767",
+                "id": 6015,
+                "last_updated": "2023-07-27"
+            }
         }
     ]
 }
