@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from datetime import datetime
 from flask import Flask, jsonify, request
 from PIL import Image, ImageOps
@@ -7,6 +8,7 @@ from typing import Dict, Any
 
 from slack import WebClient
 from slack.errors import SlackApiError
+from pull_request import push_to_github_and_open_pr
 
 app = Flask(__name__)
 
@@ -76,18 +78,7 @@ def add_comment():
     return jsonify({"response": 200})
 
 
-@app.route("/upload_image", methods=["POST"])
-def upload_image():
-    machine_id = str(request.args.get("id"))
-    ip_address = request.remote_addr
-    if ip_address in blocked_ips:
-        return jsonify("Blocked IP address")
-
-    if "image" not in request.files:
-        return "No image file", 400
-
-    image = request.files["image"]
-    img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+def process_uploaded_image(image, img_path):
     image.save(img_path)
 
     # optimize file size
@@ -102,18 +93,38 @@ def upload_image():
     img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
     img.save(img_path, quality=95)
 
-    # send message to slack
-    image_slack(machine_id, img_path=img_path, ip=ip_address)
-    
 
+@app.route("/upload_image", methods=["POST"])
+def upload_image():
+    machine_id = str(request.args.get("id"))
+    ip_address = request.remote_addr
+    if ip_address in blocked_ips:
+        return jsonify("Blocked IP address")
+
+    if "image" not in request.files:
+        return "No image file", 400
+
+    image = request.files["image"]
+    img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+    process_uploaded_image(image, img_path)
+
+    # send message to slack
+    image_slack(machine_id, ip=ip_address)
+    
     return "Image uploaded successfully"
 
 
-def image_slack(machine_id: int, img_path: str, ip: str):
+def image_slack(
+        machine_id: int,
+        ip: str,
+        m_name: str = None,
+        img_slack_text: str = "Image uploaded for machine"
+    ):
 
-    MACHINE_NAMES = reload_server_data()
-    m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"Image uploaded for machine {machine_id} - {m_name} (from {ip})"
+    if m_name is None:
+        MACHINE_NAMES = reload_server_data()
+        m_name = MACHINE_NAMES[int(machine_id)]
+    text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     try:
         response = client.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"
@@ -170,6 +181,94 @@ def save_comment(comment: str, ip: str, machine_id: int):
     # Resave the file
     with open("ip_comment_dict.json", "w") as f:
         json.dump(IP_COMMENT_DICT, f, indent=4)
+
+@app.route("/create_machine", methods=["POST"])
+def create_machine():
+    """
+    Receives a comment and adds it to the json file
+    """
+    machine_title = str(request.args.get("title"))
+    address = str(request.args.get("address"))
+    area = str(request.args.get("area"))
+    location = (float(request.args.get("lon_coord")), float(request.args.get("lat_coord")))
+    try:
+        multimachine = int(request.args.get("multimachine"))
+    except ValueError:
+        # just put the multimachine as a string, we need to correct it then
+        multimachine = str(request.args.get("multimachine"))
+    try:
+        paywall = bool(int(request.args.get("paywall")))
+    except ValueError:
+        paywall = str(request.args.get("paywall"))
+
+    # set unique branch name
+    branch_name = f'new_machine_{round(time.time())}'
+
+    # load the current server locations file
+    with open("../data/server_locations.json", "r") as infile:
+        server_locations = json.load(infile)
+    # make new machine ID: one more than any machine in images / server_loc
+    existing_machines = [
+        item["properties"]["id"] for item in server_locations["features"]
+    ]
+    potential_new_machines = [
+        int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im
+    ]
+    new_machine_id = max(existing_machines + potential_new_machines) + 1
+
+    # put properties into dictionary
+    properties_dict = {
+        "name": machine_title,
+        "active": True,
+        "area": area,
+        "address": address,
+        "status": "unvisited",
+        "external_url": "null",
+        "internal_url": "null",
+        "latitude": location[1],
+        "longitude": location[0],
+        "id": new_machine_id,
+        "last_updated": str(datetime.today()).split(" ")[0],
+    }
+    # add multimachine or paywall only if not defaults
+    if multimachine != 1:
+        properties_dict["multimachine"] = multimachine
+    if paywall:
+        properties_dict["paywall"] = paywall
+    # add new item to json
+    server_locations["features"].append(
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": location
+            },
+            "properties":
+                properties_dict
+        }
+    )
+
+    commit_message = f'add new machine {new_machine_id} named {machine_title}'
+    push_to_github_and_open_pr(server_locations, branch_name, commit_message)
+
+    # Upload the image
+    if "image" not in request.files:
+        return "No image file", 400
+    image = request.files["image"]
+    ip_address = request.remote_addr
+    # crop and save the image
+    img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+    process_uploaded_image(image, img_path)
+
+    # send message to slack
+    image_slack(
+        new_machine_id,
+        ip=ip_address,
+        m_name=machine_title,
+        img_slack_text="New machine proposed:"
+    )
+    
+    return jsonify({"response": 200})
 
 
 def create_app():

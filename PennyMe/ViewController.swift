@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Contacts
+import SwiftUI
 
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
@@ -17,7 +18,7 @@ let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
 @available(iOS 13.0, *)
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var ownLocation: UIButton!
@@ -62,6 +63,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
     @IBOutlet weak var mapType : UISegmentedControl!
 
+    // new machine annotation
+    var newMachineAnnotation: [MKAnnotation] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,11 +112,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
         addMapTrackingButton()
         addSettingsButton()
         toggleMapTypeButton()
-    
+        
+        // long gesture recognizer
+        let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        PennyMap.addGestureRecognizer(lpgr)
+
         // Check whether version is new
         VersionManager.shared.showVersionInfoAlertIfNeeded()
     }
     
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        let location = gestureRecognizer.location(in: PennyMap)
+        let coordinate = PennyMap.convert(location, toCoordinateFrom: PennyMap)
+        let annotation = NewMachine(coordinate: coordinate)
+        PennyMap.addAnnotation(annotation)
+        if gestureRecognizer.state != UIGestureRecognizer.State.ended {
+            PennyMap.selectAnnotation(annotation, animated: true)
+        }
+        self.newMachineAnnotation.append(annotation)
+    }
+    
+    func removeNewMachinePin() -> Void {
+        if !newMachineAnnotation.isEmpty {
+            PennyMap.removeAnnotations(self.newMachineAnnotation)
+            self.newMachineAnnotation = []
+        }
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
@@ -129,6 +157,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             SettingsViewController.clusterHasChanged = false
 
         }
+        // always remove pins for new machines if there are any
+        removeNewMachinePin()
         
     }
     
@@ -468,12 +498,22 @@ extension ViewController: MKMapViewDelegate {
     }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {
-        guard let annotation = (sender.view as? MKAnnotationView)?.annotation as? Artwork else { return }
-
-        let selectedLocation = annotation.title
-        // set selected pin to pass it to detail VC
-        self.selectedPin = annotation
-        self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        guard let annotation = (sender.view as? MKAnnotationView)?.annotation  else {return}
+        // first option: it's a new machine pin - present form
+        if let newmachine = annotation as? NewMachine {
+            if #available(iOS 13.0, *) {
+                let swiftUIViewController = UIHostingController(rootView: RequestFormView(coords: newmachine.coordinate)
+                )
+                present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
+                
+            }
+        // second option: it's a regular machine
+        } else if let artworkAnnotation = annotation as? Artwork {
+            let selectedLocation = artworkAnnotation.title
+            // set selected pin to pass it to detail VC
+            self.selectedPin = artworkAnnotation
+            self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        } else {return}
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
