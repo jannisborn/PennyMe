@@ -222,8 +222,15 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 self.commentTextField.text = ""
                 self.commentTextField.attributedPlaceholder = NSAttributedString(
                     string: "Your comment will be shown soon!")
+                
+                // show alert that the comment was added
+                let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+                // submit request to backend
                 if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-    //                let urlEncodedStringRequest = BaseURL + request
                     let urlEncodedStringRequest = flaskURL + request
                     
                     if let url = URL(string: urlEncodedStringRequest){
@@ -232,12 +239,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                                 print("Error: \(error)")
                                 return
                             }
-                            DispatchQueue.main.async {
-                                    let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
-                                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                                    alertController.addAction(okAction)
-                                    self!.present(alertController, animated: true, completion: nil)
-                                }
                         }
                         task.resume()
                     }
@@ -299,6 +300,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 print("Failed to convert image to data")
                 return
             }
+        
+            dismiss(animated:true, completion: nil)
+            // show success alert
+            let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
 
             // call flask method to upload the image
             guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
@@ -324,16 +332,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     print("Error: \(error)")
                     return
                 }
-                DispatchQueue.main.async {
-                        let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alertController.addAction(okAction)
-                        self.present(alertController, animated: true, completion: nil)
-                    }
             }
             task.resume()
 
-        dismiss(animated:true, completion: nil)
     }
 
 
