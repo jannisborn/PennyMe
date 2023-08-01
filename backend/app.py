@@ -109,20 +109,21 @@ def upload_image():
     process_uploaded_image(image, img_path)
 
     # send message to slack
-    image_slack(machine_id, img_path=img_path, ip=ip_address)
+    image_slack(machine_id, ip=ip_address)
     
     return "Image uploaded successfully"
 
 
 def image_slack(
         machine_id: int,
-        img_path: str,
         ip: str,
-        img_slack_text:str = "Image uploaded for machine"
+        m_name: str = None,
+        img_slack_text: str = "Image uploaded for machine"
     ):
 
-    MACHINE_NAMES = reload_server_data()
-    m_name = MACHINE_NAMES[int(machine_id)]
+    if m_name is None:
+        MACHINE_NAMES = reload_server_data()
+        m_name = MACHINE_NAMES[int(machine_id)]
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     try:
         response = client.chat_postMessage(
@@ -262,8 +263,8 @@ def create_machine():
     # send message to slack
     image_slack(
         new_machine_id,
-        img_path=img_path,
         ip=ip_address,
+        m_name=machine_title,
         img_slack_text="New machine proposed:"
     )
     

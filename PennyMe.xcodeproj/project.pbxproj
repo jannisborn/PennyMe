@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
 		839CF440267B78AB00E259D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839CF43F267B78AB00E259D9 /* SettingsViewController.swift */; };
+		83BAF44E2A792D45002365D2 /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BAF44D2A792D45002365D2 /* ImagePickerHelper.swift */; };
 		83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D226CC2620F4910050ED9E /* PinViewController.swift */; };
 		83E4551F2A705829003D0D8A /* NewMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4551E2A705829003D0D8A /* NewMachine.swift */; };
 		83E455212A705D67003D0D8A /* NewMachineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E455202A705D67003D0D8A /* NewMachineRequest.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		8319D8CF27414AC100E97D93 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		839CF43F267B78AB00E259D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		83BAF44D2A792D45002365D2 /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		83D226CC2620F4910050ED9E /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		83E4551E2A705829003D0D8A /* NewMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMachine.swift; sourceTree = "<group>"; };
 		83E455202A705D67003D0D8A /* NewMachineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMachineRequest.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				9F421AB2261B9755004197B4 /* ArtworkViews.swift */,
 				9FF43BD92621221A00BE3F6A /* SearchFooter.swift */,
 				9F9C64A42A10D12E00C57887 /* VersionManager.swift */,
+				83BAF44D2A792D45002365D2 /* ImagePickerHelper.swift */,
 			);
 			path = PennyMe;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				9F9C64A52A10D12E00C57887 /* VersionManager.swift in Sources */,
 				9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */,
 				83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */,
+				83BAF44E2A792D45002365D2 /* ImagePickerHelper.swift in Sources */,
 				9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */,
 				83E455212A705D67003D0D8A /* NewMachineRequest.swift in Sources */,
 				9FC12D6B230E9B1E00016617 /* AboutViewController.swift in Sources */,
