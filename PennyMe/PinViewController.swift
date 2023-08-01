@@ -199,7 +199,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
             UIPasteboard.general.string = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
             )
-            // TODO: Confirm copy message
             showConfirmationMessage(message: "Copied!", duration: 1.5)
         }
     }
