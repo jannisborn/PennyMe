@@ -182,8 +182,15 @@ def create_machine():
     address = str(request.args.get("address"))
     area = str(request.args.get("area"))
     location = (float(request.args.get("lon_coord")), float(request.args.get("lat_coord")))
-    multimachine = int(request.args.get("multimachine"))
-    paywall = bool(int(request.args.get("paywall")))
+    try:
+        multimachine = int(request.args.get("multimachine"))
+    except ValueError:
+        # just put the multimachine as a string, we need to correct it then
+        multimachine = str(request.args.get("multimachine"))
+    try:
+        paywall = bool(int(request.args.get("paywall")))
+    except ValueError:
+        paywall = str(request.args.get("paywall"))
 
     # set unique branch name
     branch_name = f'new_machine_{round(time.time())}'
@@ -195,6 +202,26 @@ def create_machine():
     new_machine_id = max(
         [item["properties"]["id"] for item in server_locations["features"]]
     ) + 1
+
+    # put properties into dictionary
+    properties_dict = {
+        "name": machine_title,
+        "active": True,
+        "area": area,
+        "address": address,
+        "status": "unvisited",
+        "external_url": "null",
+        "internal_url": "null",
+        "latitude": location[1],
+        "longitude": location[0],
+        "id": new_machine_id,
+        "last_updated": str(datetime.today()).split(" ")[0],
+    }
+    # add multimachine or paywall only if not defaults
+    if multimachine != 1:
+        properties_dict["multimachine"] = multimachine
+    if paywall:
+        properties_dict["paywall"] = paywall
     # add new item to json
     server_locations["features"].append(
         {
@@ -204,21 +231,7 @@ def create_machine():
                 "coordinates": location
             },
             "properties":
-                {
-                    "name": machine_title,
-                    "active": True,
-                    "area": area,
-                    "address": address,
-                    "status": "unvisited",
-                    "external_url": "null",
-                    "internal_url": "null",
-                    "latitude": location[1],
-                    "longitude": location[0],
-                    "id": new_machine_id,
-                    "last_updated": str(datetime.today()).split(" ")[0],
-                    "multimachine": multimachine,
-                    "paywall": paywall
-                }
+                properties_dict
         }
     )
 
