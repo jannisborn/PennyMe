@@ -78,18 +78,7 @@ def add_comment():
     return jsonify({"response": 200})
 
 
-@app.route("/upload_image", methods=["POST"])
-def upload_image():
-    machine_id = str(request.args.get("id"))
-    ip_address = request.remote_addr
-    if ip_address in blocked_ips:
-        return jsonify("Blocked IP address")
-
-    if "image" not in request.files:
-        return "No image file", 400
-
-    image = request.files["image"]
-    img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+def process_uploaded_image(image, img_path):
     image.save(img_path)
 
     # optimize file size
@@ -104,18 +93,37 @@ def upload_image():
     img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
     img.save(img_path, quality=95)
 
+
+@app.route("/upload_image", methods=["POST"])
+def upload_image():
+    machine_id = str(request.args.get("id"))
+    ip_address = request.remote_addr
+    if ip_address in blocked_ips:
+        return jsonify("Blocked IP address")
+
+    if "image" not in request.files:
+        return "No image file", 400
+
+    image = request.files["image"]
+    img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+    process_uploaded_image(image, img_path)
+
     # send message to slack
     image_slack(machine_id, img_path=img_path, ip=ip_address)
     
-
     return "Image uploaded successfully"
 
 
-def image_slack(machine_id: int, img_path: str, ip: str):
+def image_slack(
+        machine_id: int,
+        img_path: str,
+        ip: str,
+        img_slack_text:str = "Image uploaded for machine"
+    ):
 
     MACHINE_NAMES = reload_server_data()
     m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"Image uploaded for machine {machine_id} - {m_name} (from {ip})"
+    text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     try:
         response = client.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"
@@ -173,7 +181,7 @@ def save_comment(comment: str, ip: str, machine_id: int):
     with open("ip_comment_dict.json", "w") as f:
         json.dump(IP_COMMENT_DICT, f, indent=4)
 
-@app.route("/create_machine", methods=["GET"])
+@app.route("/create_machine", methods=["POST"])
 def create_machine():
     """
     Receives a comment and adds it to the json file
@@ -198,10 +206,14 @@ def create_machine():
     # load the current server locations file
     with open("../data/server_locations.json", "r") as infile:
         server_locations = json.load(infile)
-    # retrieve new ID
-    new_machine_id = max(
-        [item["properties"]["id"] for item in server_locations["features"]]
-    ) + 1
+    # make new machine ID: one more than any machine in images / server_loc
+    existing_machines = [
+        item["properties"]["id"] for item in server_locations["features"]
+    ]
+    potential_new_machines = [
+        int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im
+    ]
+    new_machine_id = max(existing_machines + potential_new_machines) + 1
 
     # put properties into dictionary
     properties_dict = {
@@ -237,6 +249,24 @@ def create_machine():
 
     commit_message = f'add new machine {new_machine_id} named {machine_title}'
     push_to_github_and_open_pr(server_locations, branch_name, commit_message)
+
+    # Upload the image
+    if "image" not in request.files:
+        return "No image file", 400
+    image = request.files["image"]
+    ip_address = request.remote_addr
+    # crop and save the image
+    img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+    process_uploaded_image(image, img_path)
+
+    # send message to slack
+    image_slack(
+        new_machine_id,
+        img_path=img_path,
+        ip=ip_address,
+        img_slack_text="New machine proposed:"
+    )
+    
     return jsonify({"response": 200})
 
 

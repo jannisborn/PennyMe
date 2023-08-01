@@ -60,12 +60,13 @@ struct RequestFormView: View {
     @State private var name: String = ""
     @State private var address: String = ""
     @State private var area: String = ""
-    @State private var paywall: String = "0"
-    @State private var multimachine: String = "1"
+    @State private var paywall: Bool = false
+    @State private var multimachine: String = ""
     @State private var showFinishedAlert = false
     @State private var submittedName: String = ""
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
-
+    @State private var selectedImage: UIImage? = nil
+    @State private var isImagePickerPresented: Bool = false
     
     var body: some View {
         VStack {
@@ -84,62 +85,113 @@ struct RequestFormView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            // Paywall input field
-            Text("Paywall? (Change to 1 if there is a fee to visit the machine)")
-            TextField("Paywall", text: $paywall)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
             // Multimachine input field
-            Text("Multi-machines? (Change if there are multiple machines at this location)")
-            TextField("Number of machines", text: $multimachine)
+//            Text("Multi-machines? (Change if there are multiple machines)")
+            TextField("Number of machines (leave empty if 1)", text: $multimachine)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            Text("\(submittedName)").foregroundColor(.red)
+            // Paywall checkbox
+            Toggle(isOn: $paywall) {
+                            Text("Is there a fee / paywall?")
+                        }
+                        .padding()
             
-            Text("When submitting, you will be ask to upload a photo for the machine.").foregroundColor(.white)
-            // Submit button
-            Button(action: submitRequest) {
-                Text("Submit")
-                    .foregroundColor(.white)
+            // Button to open the ImagePicker when tapped
+            Button(action: {
+                isImagePickerPresented = true
+            }) {
+                Text("Select Image")
                     .padding()
+                    .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .cornerRadius(10)
-
-            AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for adding this machine. We will review this request and the machine will be added shortly.")
+                
+                // Display the selected image
+                if let selectedImage = selectedImage {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .scaledToFit()
+                }
             }
             .padding()
             
+            
+            // Submit button
+            Button(action: {
+                submitRequest()
+                showFinishedAlert = true
+            }) {
+                Text("Submit")
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            }.padding()
+            
+            // Enter all info
+            Text("\(submittedName)").foregroundColor(Color.red)
+            
+            AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for adding this machine. We will review this request and the machine will be added shortly.")
+                .padding()
         }
         .padding()
-        .navigationBarTitle("Submit Request")
+        .navigationBarTitle("Add new machine")
+        .sheet(isPresented: $isImagePickerPresented) {
+            ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+        }
     }
     
     // Function to handle the submission of the request
     private func submitRequest() {
-        if name == "" || address == "" || area == "" || paywall == "" || multimachine == "" {
-            submittedName = "Please enter all information"
+        if name == "" || address == "" || area == "" || selectedImage == nil {
+            submittedName = "Please enter all information & upload image"
         } else {
+            // correct multimachine information
+            if multimachine == "" {
+                multimachine = "1"
+            }
             
-            if let request = "/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-                //                let urlEncodedStringRequest = BaseURL + request
-                let urlEncodedStringRequest = flaskURL + request
-                
-                if let url = URL(string: urlEncodedStringRequest){
-                    let task = URLSession.shared.dataTask(with: url) {[ self](data, response, error) in
-                        if let error = error {
-                            print("Error: \(error)")
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            showFinishedAlert = true
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                    }
-                    task.resume()
+            // upload image and make request
+            if let image = selectedImage! as UIImage ?? nil {
+                //  Convert the image to a data object
+                guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                    print("Failed to convert image to data")
+                    return
                 }
+                // call flask method called create_machine
+                guard let url = URL(string: flaskURL+"/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+                ) else {
+                    return
+                }
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                
+                // Add the image data to the request body
+                let boundary = UUID().uuidString
+                request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+                let body = NSMutableData()
+                body.append("--\(boundary)\r\n".data(using: .utf8)!)
+                body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+                body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+                body.append(imageData)
+                body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+                request.httpBody = body as Data
+                
+                // Create a URLSessionDataTask to send the request
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    if let error = error {
+                        print("Error: \(error)")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        showFinishedAlert = true
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+                task.resume()
             }
         }
     }
