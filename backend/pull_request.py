@@ -72,11 +72,6 @@ def push_to_github_and_open_pr(file_content, branch_name, commit_message):
         json=payload
     )
 
-    if response.status_code == 201:
-        print('Pull request created successfully.')
-    else:
-        print('Failed to create a pull request.')
-
 
 def get_latest_commit_sha(repo_owner, repo_name, branch):
     response = requests.get(

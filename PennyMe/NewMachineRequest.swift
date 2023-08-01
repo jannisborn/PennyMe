@@ -30,7 +30,6 @@ struct AlertPresenter: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<AlertPresenter>) {
         if showAlert {
             presentAlert()
-            showAlert = false
         }
     }
 
@@ -154,6 +153,9 @@ struct RequestFormView: View {
                 multimachine = "1"
             }
             
+            showFinishedAlert = true
+            presentationMode.wrappedValue.dismiss()
+        
             // upload image and make request
             if let image = selectedImage! as UIImage ?? nil {
                 //  Convert the image to a data object
@@ -185,10 +187,6 @@ struct RequestFormView: View {
                     if let error = error {
                         print("Error: \(error)")
                         return
-                    }
-                    DispatchQueue.main.async {
-                        showFinishedAlert = true
-                        presentationMode.wrappedValue.dismiss()
                     }
                 }
                 task.resume()
