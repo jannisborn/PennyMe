@@ -93,7 +93,6 @@ def process_uploaded_image(image, img_path):
     img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
     img.save(img_path, quality=95)
 
-
 @app.route("/upload_image", methods=["POST"])
 def upload_image():
     machine_id = str(request.args.get("id"))
@@ -112,7 +111,6 @@ def upload_image():
     image_slack(machine_id, ip=ip_address)
     
     return "Image uploaded successfully"
-
 
 def image_slack(
         machine_id: int,
@@ -269,7 +267,6 @@ def create_machine():
     )
     
     return jsonify({"response": 200})
-
 
 def create_app():
     return app
