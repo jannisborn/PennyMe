@@ -2749,6 +2749,98 @@
                 "paywall": true,
                 "last_updated": "2023-07-30"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.2801847,
+                    43.3424366
+                ]
+            },
+            "properties": {
+                "name": "Michigan's Adventure Amusement Park",
+                "active": false,
+                "area": "Michigan",
+                "address": "4750 Whitehall Rd, Muskegon, MI 49445, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2799",
+                "internal_url": "null",
+                "latitude": "43.3424366",
+                "longitude": "-86.2801847",
+                "id": 2572,
+                "last_updated": "2023-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.5123912,
+                    51.4051002
+                ]
+            },
+            "properties": {
+                "name": "Thorpe Park",
+                "active": false,
+                "area": "England",
+                "address": "Staines Rd, Chertsey KT16 8PN, United Kingdom",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=14617",
+                "internal_url": "null",
+                "latitude": "51.4051002",
+                "longitude": "-0.5123912",
+                "id": 1563,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3951098,
+                    33.763382
+                ]
+            },
+            "properties": {
+                "name": "Georgia Aquarium",
+                "active": false,
+                "area": "Georgia",
+                "address": "225 Baker Street, Atlanta",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=13967",
+                "internal_url": "null",
+                "latitude": "33.763382",
+                "longitude": "-84.3951098",
+                "id": 1619,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.4459262,
+                    35.4307239
+                ]
+            },
+            "properties": {
+                "name": "Great Smoky Mountains Railroad Retail Store & Train Museum",
+                "active": true,
+                "area": "North Carolina",
+                "address": "100 Greenlee St, Bryson City, NC 28713, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=26517",
+                "internal_url": "null",
+                "latitude": "35.4307239",
+                "longitude": "-83.4459262",
+                "id": 4088,
+                "last_updated": "2023-08-02"
+            }
         }
     ]
 }
