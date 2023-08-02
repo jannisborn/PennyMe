@@ -24,6 +24,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var coordinateLabel: UILabel!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -85,6 +86,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         addressLabel.numberOfLines = 3
         addressLabel.text = self.pinData.locationName
         
+        coordinateLabel.text = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+        )
+                
         // default status
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
@@ -175,24 +179,42 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-        {
-        // Website is section 4 of the table view currently
-        if indexPath.section == 4
-            {
-                //Open the website when you click on the link.
-                UIApplication.shared.open(URL(string: pinData.link)!)
-            }
-            else if indexPath.section == 2 {
-                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-                self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
-            }
-        if indexPath.section == 5{
+    {
+        if indexPath.section == 2 {
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+            self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
+        }
+        else if indexPath.section == 4{
+            //Open the website when you click on the link.
+            UIApplication.shared.open(URL(string: pinData.link)!)
+        }
+        else if indexPath.section == 5{
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
             UIApplication.shared.open(URL(string:mailtostring )!)
-            }
         }
+        else if indexPath.section == 6{
+            // Copy coordinate section
+
+            UIPasteboard.general.string = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+            )
+            showConfirmationMessage(message: "Copied!", duration: 1.5)
+        }
+    }
+    
+    func showConfirmationMessage(message: String, duration: Double) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.view.alpha = 0.7
+        alertController.view.layer.cornerRadius = 15
+        
+        present(alertController, animated: true, completion: nil)
+        
+        // Automatically dismiss the message after the specified duration
+        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+    }
 
     @objc func statusChanged(_ sender: UISegmentedControl) {
         let status = statusChoices[sender.selectedSegmentIndex]
@@ -222,8 +244,15 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 self.commentTextField.text = ""
                 self.commentTextField.attributedPlaceholder = NSAttributedString(
                     string: "Your comment will be shown soon!")
+                
+                // show alert that the comment was added
+                let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+                // submit request to backend
                 if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-    //                let urlEncodedStringRequest = BaseURL + request
                     let urlEncodedStringRequest = flaskURL + request
                     
                     if let url = URL(string: urlEncodedStringRequest){
@@ -232,12 +261,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                                 print("Error: \(error)")
                                 return
                             }
-                            DispatchQueue.main.async {
-                                    let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
-                                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                                    alertController.addAction(okAction)
-                                    self!.present(alertController, animated: true, completion: nil)
-                                }
                         }
                         task.resume()
                     }
@@ -299,6 +322,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 print("Failed to convert image to data")
                 return
             }
+        
+            dismiss(animated:true, completion: nil)
+            // show success alert
+            let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
 
             // call flask method to upload the image
             guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
@@ -324,16 +354,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     print("Error: \(error)")
                     return
                 }
-                DispatchQueue.main.async {
-                        let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alertController.addAction(okAction)
-                        self.present(alertController, animated: true, completion: nil)
-                    }
             }
             task.resume()
 
-        dismiss(animated:true, completion: nil)
     }
 
 

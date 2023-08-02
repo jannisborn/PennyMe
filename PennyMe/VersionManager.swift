@@ -27,7 +27,7 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Customize your map! \n This version includes new options to display pins on the map. Up to now, pins where clustered together when zooming out. From now on, you will see *all* pins on the map by default. Please also note that retired machines are now hidden by default. Tap the Settings button and play with the new \"map options\".", preferredStyle: .alert)
+            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Add new machines! \n This version allows you to submit a request to add a new machine to the map. Simply press longer on the map, at the location where you found a machine. You can then input some information about the machine. You will have to upload a picture as a “proof”. Help to complete the PennyMe database with your contributions!\n In addition, this version exposes the GPS coordinates of each machine.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
