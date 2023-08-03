@@ -6,8 +6,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    10.008550,
-                    53.597140
+                    10.00855,
+                    53.59714
                 ]
             },
             "properties": {
@@ -833,8 +833,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -119.214130,
-                    34.256210
+                    -119.21413,
+                    34.25621
                 ]
             },
             "properties": {
@@ -856,7 +856,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -82.952720,
+                    -82.95272,
                     39.716177
                 ]
             },
@@ -1479,7 +1479,7 @@
                 "type": "Point",
                 "coordinates": [
                     8.053941,
-                    46.659810
+                    46.65981
                 ]
             },
             "properties": {
@@ -2172,7 +2172,7 @@
                 "type": "Point",
                 "coordinates": [
                     -105.025797,
-                    38.921010
+                    38.92101
                 ]
             },
             "properties": {
@@ -2217,8 +2217,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -105.073020,
-                    38.875600
+                    -105.07302,
+                    38.8756
                 ]
             },
             "properties": {
@@ -2333,7 +2333,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -111.0993760,
+                    -111.099376,
                     44.65901618
                 ]
             },
@@ -2841,6 +2841,30 @@
                 "id": 4088,
                 "multimachine": 2,
                 "last_updated": "2023-08-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.48118392892013,
+                    47.45182792135376
+                ]
+            },
+            "properties": {
+                "name": "Blub",
+                "active": true,
+                "area": "Germany",
+                "address": "Bla",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.45182792135376,
+                "longitude": 8.48118392892013,
+                "id": 6018,
+                "last_updated": "2023-08-03",
+                "paywall": "true"
             }
         }
     ]
