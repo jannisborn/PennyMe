@@ -2842,6 +2842,54 @@
                 "multimachine": 2,
                 "last_updated": "2023-08-02"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2425191,
+                    32.6735426
+                ]
+            },
+            "properties": {
+                "name": "Cabrillo National Monument",
+                "active": true,
+                "area": "California",
+                "address": "1800 Cabrillo Memorial Drive, San Diego, CA 92106, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52109",
+                "internal_url": "null",
+                "latitude": "32.6735426",
+                "longitude": "-117.2425191",
+                "multimachine": 2,
+                "paywall": true,
+                "id": 4773,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.086904,
+                    41.3874555
+                ]
+            },
+            "properties": {
+                "name": "USS Natilus / Submarine Force Museum",
+                "active": false,
+                "area": "Connecticut",
+                "address": "Naval Submarine Base New London, 1 Crystal Lake Rd, Groton, CT 06340, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1458",
+                "internal_url": "null",
+                "latitude": "41.3874555",
+                "longitude": "-72.086904",
+                "id": 1689,
+                "last_updated": "2023-08-05"
+            }
         }
     ]
 }
