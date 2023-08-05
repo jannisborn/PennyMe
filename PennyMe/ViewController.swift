@@ -88,7 +88,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         navigationItem.searchController = searchController
         // Disable search bar if view is changed
         definesPresentationContext = true
-        
 
         // Check and enable localization (blue dot)
         checkLocationServices()
@@ -434,10 +433,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     }
     
     // Implements the search itself
-    func filterContentForSearchText(_ searchText: String,
-                                    category: Artwork? = nil) {
-    filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
-        return artwork.text.lowercased().contains(searchText.lowercased())
+    func filterContentForSearchText(_ searchText: String, category: Artwork? = nil) {
+        filteredArtworks = artworks.filter {
+            (artwork: Artwork) -> Bool in return artwork.text.lowercased().contains(searchText.lowercased())
         }
         filteredArtworks = filteredArtworks.sorted(by: {$0.title! < $1.title! })
         
@@ -706,7 +704,7 @@ extension ViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
     
-    // Display the penny pin options and execture the search only if a string is entered
+    // Display the penny pin options and execute the search only if a string is entered
     // Makes sure that list is not displayed if cancel is pressed
     if searchBar.text!.count > 0 {
         filterContentForSearchText(searchBar.text!)
@@ -729,19 +727,20 @@ extension ViewController: UISearchBarDelegate {
 // Table with search results
 @available(iOS 13.0, *)
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "location")
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let artwork: Artwork
         if isFiltering {
-          artwork = filteredArtworks[indexPath.row]
+            artwork = filteredArtworks[indexPath.row]
         } else {
-          artwork = artworks[indexPath.row]
+            artwork = artworks[indexPath.row]
         }
         cell.textLabel?.text = artwork.title
         cell.detailTextLabel?.text = artwork.locationName
+        // Set the custom color for the cell based on the artwork color
+        cell.backgroundColor = artwork.markerTintColor.withAlphaComponent(0.15)
         return cell
     }
     
