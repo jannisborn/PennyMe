@@ -27,7 +27,7 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Add new machines! \n This version allows you to submit a request to add a new machine to the map. Simply press longer on the map, at the location where you found a machine. You can then input some information about the machine. You will have to upload a picture as a “proof”. Help to complete the PennyMe database with your contributions!\n In addition, this version exposes the GPS coordinates of each machine.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Add new machine (BUGFIX)! \n This version allows you to submit a request to add a new machine to the map. Simply press longer on the map, input some information, upload a picture as a “proof” and complete the PennyMe database with your contributions!\n In addition, search results are now colored based on machine status.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
