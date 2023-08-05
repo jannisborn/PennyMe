@@ -3078,6 +3078,31 @@
                 "last_updated": "2023-08-05",
                 "paywall": "false"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543135910001752,
+                    47.408543487931354
+                ]
+            },
+            "properties": {
+                "name": "Test",
+                "active": true,
+                "area": "Bday 12378",
+                "address": "Bla here",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.408543487931354,
+                "longitude": 8.543135910001752,
+                "id": 6019,
+                "last_updated": "2023-08-06",
+                "multimachine": 3,
+                "paywall": true
+            }
         }
     ]
 }
