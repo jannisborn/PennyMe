@@ -194,10 +194,8 @@ def create_machine():
     except ValueError:
         # just put the multimachine as a string, we need to correct it then
         multimachine = str(request.args.get("multimachine"))
-    try:
-        paywall = bool(int(request.args.get("paywall")))
-    except ValueError:
-        paywall = str(request.args.get("paywall"))
+    
+    paywall = True if request.args.get("paywall") == "true" else False
 
     # set unique branch name
     branch_name = f'new_machine_{round(time.time())}'
