@@ -502,7 +502,7 @@ extension ViewController: MKMapViewDelegate {
         // first option: it's a new machine pin - present form
         if let newmachine = annotation as? NewMachine {
             if #available(iOS 13.0, *) {
-                let swiftUIViewController = UIHostingController(rootView: RequestFormView(coords: newmachine.coordinate)
+                let swiftUIViewController = UIHostingController(rootView: RequestFormView(coordinate: newmachine.coordinate)
                 )
                 present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
                 
