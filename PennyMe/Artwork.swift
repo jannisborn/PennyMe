@@ -53,8 +53,7 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
-        text = title! + locationName
-        
+        text = title! + locationName + id
         super.init()
     }
     
