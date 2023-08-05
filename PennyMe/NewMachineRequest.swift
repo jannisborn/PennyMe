@@ -12,6 +12,7 @@ import MapKit
 // RequestFormView.swift
 
 import SwiftUI
+import Combine
 
 @available(iOS 13.0, *)
 struct AlertPresenter: UIViewControllerRepresentable {
@@ -66,8 +67,23 @@ struct RequestFormView: View {
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
     @State private var selectedImage: UIImage? = nil
     @State private var isImagePickerPresented: Bool = false
-    
+    @State private var isSubmitting = false
+  
+    @State private var keyboardHeight: CGFloat = 0
+    private var keyboardObserver: AnyCancellable?
+
+    init(coordinate: CLLocationCoordinate2D) {
+        coords = coordinate
+        // Observe keyboard frame changes
+        keyboardObserver = NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
+            .compactMap { $0.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect }
+            .map { $0.height }
+            .subscribe(on: DispatchQueue.main)
+            .assign(to: \.keyboardHeight, on: self)
+    }
+
     var body: some View {
+        ScrollView{
         VStack {
             // Name input field
             TextField("Machine title", text: $name)
@@ -120,7 +136,6 @@ struct RequestFormView: View {
             // Submit button
             Button(action: {
                 submitRequest()
-                showFinishedAlert = true
             }) {
                 Text("Submit")
                     .padding()
@@ -128,7 +143,7 @@ struct RequestFormView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .cornerRadius(10)
-            }.padding()
+            }.padding().disabled(isSubmitting)
             
             // Enter all info
             Text("\(submittedName)").foregroundColor(Color.red)
@@ -141,6 +156,8 @@ struct RequestFormView: View {
         .sheet(isPresented: $isImagePickerPresented) {
             ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
         }
+        }
+        .padding(.bottom, keyboardHeight)
     }
     
     // Function to handle the submission of the request
@@ -153,19 +170,20 @@ struct RequestFormView: View {
                 multimachine = "1"
             }
             
-            showFinishedAlert = true
-            presentationMode.wrappedValue.dismiss()
-        
+            isSubmitting = true
             // upload image and make request
             if let image = selectedImage! as UIImage ?? nil {
                 //  Convert the image to a data object
                 guard let imageData = image.jpegData(compressionQuality: 1.0) else {
                     print("Failed to convert image to data")
+                    submittedName = "Something went wrong with your image"
                     return
                 }
                 // call flask method called create_machine
-                guard let url = URL(string: flaskURL+"/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+                let urlString = flaskURL+"/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+                guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
                 ) else {
+                    submittedName = "Something went wrong. Please try to re-enter the information"
                     return
                 }
                 var request = URLRequest(url: url)
@@ -187,6 +205,11 @@ struct RequestFormView: View {
                     if let error = error {
                         print("Error: \(error)")
                         return
+                    }
+                    DispatchQueue.main.async {
+                        self.showFinishedAlert = true
+                        self.presentationMode.wrappedValue.dismiss()
+                        isSubmitting = false
                     }
                 }
                 task.resume()
