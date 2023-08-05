@@ -2333,7 +2333,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -111.0993760,
+                    -111.099376,
                     44.65901618
                 ]
             },
@@ -3076,6 +3076,31 @@
                 "longitude": -86.15813267991254,
                 "id": 6018,
                 "last_updated": "2023-08-05",
+                "paywall": "false"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.54672062418674,
+                    47.39070590491108
+                ]
+            },
+            "properties": {
+                "name": "Our home <3",
+                "active": true,
+                "area": "Züri",
+                "address": "Here",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39070590491108,
+                "longitude": 8.54672062418674,
+                "id": 6020,
+                "last_updated": "2023-08-06",
+                "multimachine": 1000,
                 "paywall": "false"
             }
         }
