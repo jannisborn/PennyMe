@@ -3078,6 +3078,30 @@
                 "last_updated": "2023-08-05",
                 "paywall": "false"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.950819542858468,
+                    48.36008796614072
+                ]
+            },
+            "properties": {
+                "name": "Museum 123",
+                "active": true,
+                "area": "Germany",
+                "address": "Hausberg 45",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 48.36008796614072,
+                "longitude": 7.950819542858468,
+                "id": 6020,
+                "last_updated": "2023-08-06",
+                "paywall": true
+            }
         }
     ]
 }
