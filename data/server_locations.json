@@ -3102,6 +3102,29 @@
                 "last_updated": "2023-08-05",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.692751,
+                    52.130516
+                ]
+            },
+            "properties": {
+                "name": "Flughafen Münster Osnabrück (FMO) - 2",
+                "active": true,
+                "area": "Germany",
+                "address": "Airportallee 1, 48268 Greven",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.130516",
+                "longitude": "7.692751",
+                "id": 587,
+                "last_updated": "2023-08-05"
+            }
         }
     ]
 }
