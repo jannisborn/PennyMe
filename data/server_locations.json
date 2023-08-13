@@ -3149,6 +3149,52 @@
                 "multimachine": 2,
                 "last_updated": "2023-08-05"
             }
-        }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.142154,
+                    36.169548
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Crazy Ely Western Village",
+                "active": false,
+                "area": "Nevada",
+                "address": "321 Fremont Street, Las Vegas",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=388167",
+                "internal_url": "null",
+                "latitude": "36.169548",
+                "longitude": "-115.142154",
+                "id": 4497,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5678459,
+                    35.7991683
+                ]
+            },
+            "properties": {
+                "name": "Three Bears General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "2861 Parkway, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318213",
+                "internal_url": "null",
+                "latitude": "35.7991683",
+                "longitude": "-83.5678459",
+                "id": 4282,
+                "last_updated": "2023-08-13"
+            }
+        },
     ]
 }
