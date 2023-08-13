@@ -3220,5 +3220,53 @@
                 "last_updated": "2023-08-13"
             }
         },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.10995,
+                    51.24126
+                ]
+            },
+            "properties": {
+                "name": "Zoo Wuppertal",
+                "active": true,
+                "area": "Germany",
+                "address": "Hubertusallee 30",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=210558",
+                "internal_url": "null",
+                "latitude": "51.24126",
+                "longitude": "7.10995",
+                "id": 645,
+                "last_updated": "2023-08-13",
+                "paywall": true,
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.110161,
+                    51.54385
+                ]
+            },
+            "properties": {
+                "name": "Zoom Erlebniswelt",
+                "active": true,
+                "area": "Germany",
+                "address": "Bleckstraße 64, Gelsenkirchen, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=193091",
+                "internal_url": "null",
+                "latitude": "51.543850",
+                "longitude": "7.110161",
+                "id": 492,
+                "last_updated": "2023-08-14",
+                "paywall": true
+            }
+        },
     ]
 }
