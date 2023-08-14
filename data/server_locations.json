@@ -3291,5 +3291,29 @@
                 "last_updated": "2023-08-13"
             }
         },
+                {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.8357137,
+                    41.8328916
+                ]
+            },
+            "properties": {
+                "name": "Brookfield Zoo",
+                "active": true,
+                "area": "Illinois",
+                "address": "8400 31st St, Brookfield, IL 60513, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2106",
+                "internal_url": "null",
+                "latitude": "41.8328916",
+                "longitude": "-87.8357137",
+                "id": 1203,
+                "multimachine": 9,
+                "last_updated": "2023-08-15"
+            }
+        }
     ]
 }
