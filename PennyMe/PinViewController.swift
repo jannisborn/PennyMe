@@ -186,7 +186,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
         else if indexPath.section == 4{
             //Open the website when you click on the link.
-            UIApplication.shared.open(URL(string: pinData.link)!)
+            if !pinData.link.contains("http") {
+                showConfirmationMessage(message: "Sorry! The machine is not available on pennycollector.com!", duration: 2)
+            } else {
+                UIApplication.shared.open(URL(string: pinData.link)!)
+            }
         }
         else if indexPath.section == 5{
             let mailtostring = String(
