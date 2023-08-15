@@ -54,6 +54,31 @@ struct AlertPresenter: UIViewControllerRepresentable {
 }
 
 @available(iOS 13.0, *)
+struct ConfirmationMessageView: View {
+    let message: String
+    @Binding var isPresented: Bool
+    
+    @available(iOS 13.0.0, *)
+    var body: some View {
+        VStack {
+            Text(message)
+                .padding()
+                .background(Color.gray)
+                .cornerRadius(15)
+        }
+        .opacity(isPresented ? 1 : 0)
+        .animation(.easeInOut(duration: 0.3))
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                withAnimation {
+                    isPresented = false
+                }
+            }
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 struct RequestFormView: View {
     let coords: CLLocationCoordinate2D
     // Properties to hold user input
@@ -68,7 +93,9 @@ struct RequestFormView: View {
     @State private var selectedImage: UIImage? = nil
     @State private var isImagePickerPresented: Bool = false
     @State private var isSubmitting = false
-  
+    @State private var showAlert = false
+    @State private var submitted = false
+
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
 
@@ -151,6 +178,13 @@ struct RequestFormView: View {
             AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for adding this machine. We will review this request and the machine will be added shortly.")
                 .padding()
         }
+        .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Processing"), message: Text("Please wait..."), dismissButton: .default(Text("Dismiss")))
+                }
+                .onAppear {
+                    // Call the private function to regulate the machine
+                    checkRequest()
+                }
         .padding()
         .navigationBarTitle("Add new machine")
         .sheet(isPresented: $isImagePickerPresented) {
@@ -160,16 +194,23 @@ struct RequestFormView: View {
         .padding(.bottom, keyboardHeight)
     }
     
+    private func checkRequest() {
+        if submitted{
+            showAlert = true
+        }
+    }
+    
     // Function to handle the submission of the request
     private func submitRequest() {
+        submitted = true
         if name == "" || address == "" || area == "" || selectedImage == nil {
             submittedName = "Please enter all information & upload image"
         } else {
+            showAlert = true
             // correct multimachine information
             if multimachine == "" {
                 multimachine = "1"
             }
-            
             isSubmitting = true
             // upload image and make request
             if let image = selectedImage! as UIImage ?? nil {
