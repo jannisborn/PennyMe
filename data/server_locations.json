@@ -3291,7 +3291,7 @@
                 "last_updated": "2023-08-13"
             }
         },
-                {
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -3313,6 +3313,75 @@
                 "id": 1203,
                 "multimachine": 9,
                 "last_updated": "2023-08-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.555183,
+                    35.788432
+                ]
+            },
+            "properties": {
+                "name": "Try My Nuts",
+                "active": false,
+                "area": "Tennessee",
+                "address": "100 Old Mill Ave, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318206",
+                "internal_url": "null",
+                "latitude": "35.788432",
+                "longitude": "-83.555183",
+                "id": 4285,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.485234,
+                    41.8961598
+                ]
+            },
+            "properties": {
+                "name": "Prudenzi Simone Souvenir Market Emporium",
+                "active": false,
+                "area": "Italy",
+                "address": "Via Magnanapoli 5",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259790",
+                "internal_url": "null",
+                "latitude": "41.8961598",
+                "longitude": "12.485234",
+                "id": 967,
+                "last_updated": "2023-08-14"
             }
         }
     ]
