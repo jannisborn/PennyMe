@@ -3383,6 +3383,101 @@
                 "id": 967,
                 "last_updated": "2023-08-14"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.118062,
+                    53.448537
+                ]
+            },
+            "properties": {
+                "name": "Dangast Souvenir shop",
+                "active": true,
+                "area": "Germany",
+                "address": "Edo-Wiemken-Straße 57, 26316 Varel, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329562",
+                "internal_url": "null",
+                "latitude": "53.448537",
+                "longitude": "8.118062",
+                "id": 5697,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.235490,
+                    39.696617
+                ]
+            },
+            "properties": {
+                "name": "Private Roller - Brad Ream/ Kay Harpold",
+                "active": true,
+                "area": " Indiana",
+                "address": "4919 South Catlin Road, Rockville, Indiana",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186392",
+                "internal_url": "null",
+                "latitude": "39.696617",
+                "longitude": "-87.235490",
+                "id": 5535,
+                "last_updated": "2023-08-16",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.488272,
+                    38.9776983
+                ]
+            },
+            "properties": {
+                "name": "A. L. Goodies General Store",
+                "active": true,
+                "area": "Maryland",
+                "address": "112 Main Street, Annapolis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2580",
+                "internal_url": "null",
+                "latitude": "38.9776983",
+                "longitude": "-76.488272",
+                "id": 3604,
+                "last_updated": "2023-08-10",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6660136,
+                    45.5083863
+                ]
+            },
+            "properties": {
+                "name": "Oregon Museum of Science & Industry (OMSI)",
+                "active": true,
+                "area": "Oregon",
+                "address": "1945 SE Water Avenue, Portland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3945",
+                "internal_url": "null",
+                "latitude": "45.5083863",
+                "longitude": "-122.6660136",
+                "id": 4382,
+                "multimachine": 2,
+                "last_updated": "2023-08-16"
+            }
         }
     ]
 }
