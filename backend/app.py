@@ -250,21 +250,15 @@ def create_machine():
 
     out = gm_client.reverse_geocode((location[1], location[0]), result_type="address")
 
+    b = True
     if out != []:
         ad = out[0]["formatted_address"]
         _, score = fuzzysearch.extract(ad, [address], limit=1)
-        if score < 85:
-            return (
-                jsonify(
-                    {
-                        "error": f"Google maps address {ad} differs from your entered address {address}. Please reconsider!"
-                    }
-                ),
-                400,
-            )
-        # Prefer Google Maps address over user address
-        address = ad
-    else:
+        if score > 85:
+            # Prefer Google Maps address over user address
+            address = ad
+            b = False
+    elif b:
         out = gm_client.reverse_geocode(
             (location[1], location[0]), result_type="point_of_interest"
         )
