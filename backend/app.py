@@ -9,6 +9,8 @@ from typing import Dict, Any
 from slack import WebClient
 from slack.errors import SlackApiError
 from pull_request import push_to_github_and_open_pr
+from pennyme.locations import COUNTRIES
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
@@ -55,7 +57,7 @@ def add_comment():
 
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
-        return jsonify("Blocked IP address")
+        return jsonify({"error": "User IP address is blocked"}), 403
 
     path_machine_comments = os.path.join(PATH_COMMENTS, f"{machine_id}.json")
     if os.path.exists(path_machine_comments):
@@ -75,7 +77,7 @@ def add_comment():
 
     save_comment(comment, ip_address, machine_id)
 
-    return jsonify({"response": 200})
+    return jsonify({"message": "Success!"}), 200
 
 
 def process_uploaded_image(image, img_path):
@@ -98,10 +100,10 @@ def upload_image():
     machine_id = str(request.args.get("id"))
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
-        return jsonify("Blocked IP address")
+        return jsonify({"error": "User IP address is blocked"}), 403
 
     if "image" not in request.files:
-        return "No image file", 400
+        return jsonify({"error": "No image file found"}), 400
 
     image = request.files["image"]
     img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
@@ -185,9 +187,15 @@ def create_machine():
     """
     Receives a comment and adds it to the json file
     """
-    machine_title = str(request.args.get("title"))
-    address = str(request.args.get("address"))
-    area = str(request.args.get("area"))
+    machine_title = str(request.args.get("title")).strip()
+    address = str(request.args.get("address")).strip()
+    area = str(request.args.get("area")).strip()
+    # Identify area
+    area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)
+    if score < 90:
+        return jsonify({"error": "Could not match country. Provide country or US state name in English"}), 400
+
+
     location = (float(request.args.get("lon_coord")), float(request.args.get("lat_coord")))
     try:
         multimachine = int(request.args.get("multimachine"))
@@ -264,7 +272,7 @@ def create_machine():
         img_slack_text="New machine proposed:"
     )
     
-    return jsonify({"response": 200})
+    return jsonify({"message": "Success!"}), 200
 
 def create_app():
     return app
