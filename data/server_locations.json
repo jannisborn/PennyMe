@@ -3478,6 +3478,53 @@
                 "multimachine": 2,
                 "last_updated": "2023-08-16"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.661378,
+                    42.496887
+                ]
+            },
+            "properties": {
+                "name": "National Mississippi River Museum & Aquarium",
+                "active": true,
+                "area": "Iowa",
+                "address": "350 East 3rd Street, Dubuque",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2208",
+                "internal_url": "null",
+                "latitude": "42.496887",
+                "longitude": "-90.661378",
+                "id": 2340,
+                "multimachine": 2,
+                "last_updated": "2023-08-20"
+            }
         }
     ]
 }
