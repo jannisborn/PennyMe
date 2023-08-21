@@ -3194,6 +3194,31 @@
                 "longitude": "-83.5678459",
                 "id": 4282,
                 "last_updated": "2023-08-13"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.324981747460556,
+                    51.61623604176483
+                ]
+            },
+            "properties": {
+                "name": "Schiffshebewerk Henrichenburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Hebewerk 26, 45731 Waltrop ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 51.61623604176483,
+                "longitude": 7.324981747460556,
+                "id": 6019,
+                "last_updated": "2023-08-06",
+                "paywall": true
             }
         },
         {
@@ -3225,6 +3250,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    11.578492210556622,
+                    48.135996181736594
+                ]
+            },
+            "properties": {
+                "name": "Herrschaftszeiten – Das Paulaner im Tal",
+                "active": true,
+                "area": "Germany",
+                "address": "Tal 12, 80331 München",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 48.135996181736594,
+                "longitude": 11.578492210556622,
+                "id": 6020,
+                "last_updated": "2023-08-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     7.10995,
                     51.24126
                 ]
@@ -3241,7 +3289,31 @@
                 "longitude": "7.10995",
                 "id": 645,
                 "last_updated": "2023-08-13",
-                "paywall": true,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.112364262779767,
+                    51.2408963866181
+                ]
+            },
+            "properties": {
+                "name": "Zoo Wuppertal 2 - Original Souvenirs (penguins)",
+                "active": true,
+                "area": "Germany",
+                "address": "Hubertusallee 30, 42117 Wuppertal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 51.2408963866181,
+                "longitude": 7.112364262779767,
+                "id": 6021,
+                "last_updated": "2023-08-13",
+                "paywall": true
             }
         },
         {
@@ -3264,6 +3336,30 @@
                 "latitude": "51.543850",
                 "longitude": "7.110161",
                 "id": 492,
+                "last_updated": "2023-08-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.91915319019523,
+                    52.26363095986876
+                ]
+            },
+            "properties": {
+                "name": "Beelitz-Heilstätten Baum",
+                "active": true,
+                "area": "Germany",
+                "address": "Str. nach Fichtenwalde 13, 14547 Beelitz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 52.26363095986876,
+                "longitude": 12.91915319019523,
+                "id": 6022,
                 "last_updated": "2023-08-14",
                 "paywall": true
             }
@@ -3389,6 +3485,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -75.38173092744259,
+                    40.62166658801588
+                ]
+            },
+            "properties": {
+                "name": "Bethlehem Gem Shop",
+                "active": true,
+                "area": "Pennsylvania",
+                "address": "550 Main St, Bethlehem, PA 18018, US",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 40.62166658801588,
+                "longitude": -75.38173092744259,
+                "id": 6023,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     8.118062,
                     53.448537
                 ]
@@ -3427,8 +3546,31 @@
                 "latitude": "39.696617",
                 "longitude": "-87.235490",
                 "id": 5535,
-                "last_updated": "2023-08-16",
-                "multimachine": 4
+                "multimachine": 4,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.597611513206037,
+                    50.360884087346385
+                ]
+            },
+            "properties": {
+                "name": "Koblenz Souvenir Ship Firmungstraße",
+                "active": true,
+                "area": "Germany",
+                "address": "Corner Firmungstraße/Kornpfortstrasse, 56068 Koblenz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.360884087346385,
+                "longitude": 7.597611513206037,
+                "id": 6024,
+                "last_updated": "2023-08-17"
             }
         },
         {
@@ -3453,6 +3595,29 @@
                 "id": 3604,
                 "last_updated": "2023-08-10",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.316382173794873,
+                    47.596146276763385
+                ]
+            },
+            "properties": {
+                "name": "Walchensee",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Tanneneck 6, 82432 Kochel am See",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.596146276763385,
+                "longitude": 11.316382173794873,
+                "id": 6025,
+                "last_updated": "2023-08-18"
             }
         },
         {
@@ -3507,6 +3672,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    7.869094158908551,
+                    46.693324646941804
+                ]
+            },
+            "properties": {
+                "name": "Interlaken Ost (landing pier)",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Brienzstrasse 30, 3800 Interlaken, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 46.693324646941804,
+                "longitude": 7.869094158908551,
+                "id": 6026,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -90.661378,
                     42.496887
                 ]
@@ -3524,6 +3712,29 @@
                 "id": 2340,
                 "multimachine": 2,
                 "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.993400722493528,
+                    53.55107655647828
+                ]
+            },
+            "properties": {
+                "name": "Lotto at townhall Hamburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Rathausmarkt 1 Kiosk III, Laden C, 20095 Hamburg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 53.55107655647828,
+                "longitude": 9.993400722493528,
+                "id": 6027,
+                "last_updated": "2023-08-21"
             }
         }
     ]
