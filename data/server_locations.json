@@ -3194,7 +3194,6 @@
                 "longitude": "-83.5678459",
                 "id": 4282,
                 "last_updated": "2023-08-13"
-
             }
         },
         {
@@ -3531,7 +3530,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -87.235490,
+                    -87.23549,
                     39.696617
                 ]
             },
@@ -3735,6 +3734,29 @@
                 "longitude": 9.993400722493528,
                 "id": 6027,
                 "last_updated": "2023-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51094316183755,
+                    35.717208675897886
+                ]
+            },
+            "properties": {
+                "name": "Ripley’s Mountain Coaster ",
+                "active": true,
+                "area": "Tennessee ",
+                "address": "386 Parkway",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.717208675897886,
+                "longitude": -83.51094316183755,
+                "id": 6031,
+                "last_updated": "2023-08-23"
             }
         }
     ]
