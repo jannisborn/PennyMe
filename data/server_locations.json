@@ -3194,7 +3194,6 @@
                 "longitude": "-83.5678459",
                 "id": 4282,
                 "last_updated": "2023-08-13"
-
             }
         },
         {
@@ -3531,7 +3530,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -87.235490,
+                    -87.23549,
                     39.696617
                 ]
             },
@@ -3735,6 +3734,29 @@
                 "longitude": 9.993400722493528,
                 "id": 6027,
                 "last_updated": "2023-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.41522770982236,
+                    19.379946215605646
+                ]
+            },
+            "properties": {
+                "name": "Cayman Turtle center",
+                "active": true,
+                "area": "Cayman Islands",
+                "address": "786 Northwest Point Road, West Bay Grand Cayman",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 19.379946215605646,
+                "longitude": -81.41522770982236,
+                "id": 6029,
+                "last_updated": "2023-08-22"
             }
         }
     ]
