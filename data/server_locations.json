@@ -886,7 +886,7 @@
             "properties": {
                 "name": "The Pentagon Visitor Center",
                 "active": true,
-                "area": "Virgina",
+                "area": "Virginia",
                 "address": "The Pentagon, Arlington",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=104518",
@@ -3084,6 +3084,124 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -111.0221934,
+                    35.0277544
+                ]
+            },
+            "properties": {
+                "name": "Meteor Crater, The Museum of Astrogeology",
+                "active": false,
+                "area": "Arizona",
+                "address": "Exit 233 East off I-40, Winslow",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=351",
+                "internal_url": "null",
+                "latitude": "35.0277544",
+                "longitude": "-111.0221934",
+                "id": 2737,
+                "last_updated": "2023-08-05",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.692751,
+                    52.130516
+                ]
+            },
+            "properties": {
+                "name": "Flughafen Münster Osnabrück (FMO) - 2",
+                "active": true,
+                "area": "Germany",
+                "address": "Airportallee 1, 48268 Greven",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.130516",
+                "longitude": "7.692751",
+                "id": 587,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.92549919999999,
+                    32.7909936
+                ]
+            },
+            "properties": {
+                "name": "South Carolina Aquarium",
+                "active": true,
+                "area": "South Carolina",
+                "address": "100 Aquarium Wharf, Charleston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3101",
+                "internal_url": "null",
+                "latitude": "32.7909936",
+                "longitude": "-79.92549919999999",
+                "id": 2184,
+                "multimachine": 2,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.142154,
+                    36.169548
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Crazy Ely Western Village",
+                "active": false,
+                "area": "Nevada",
+                "address": "321 Fremont Street, Las Vegas",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=388167",
+                "internal_url": "null",
+                "latitude": "36.169548",
+                "longitude": "-115.142154",
+                "id": 4497,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5678459,
+                    35.7991683
+                ]
+            },
+            "properties": {
+                "name": "Three Bears General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "2861 Parkway, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318213",
+                "internal_url": "null",
+                "latitude": "35.7991683",
+                "longitude": "-83.5678459",
+                "id": 4282,
+                "last_updated": "2023-08-13"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     7.324981747460556,
                     51.61623604176483
                 ]
@@ -3101,6 +3219,30 @@
                 "id": 6019,
                 "last_updated": "2023-08-06",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.4771196,
+                    51.4950472
+                ]
+            },
+            "properties": {
+                "name": "Westfalenpark Dortmund",
+                "active": true,
+                "area": "Germany",
+                "address": "An der Buschmühle 3",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=197176",
+                "internal_url": "null",
+                "latitude": "51.4950472",
+                "longitude": "7.4771196",
+                "paywall": true,
+                "id": 477,
+                "last_updated": "2023-08-13"
             }
         },
         {
@@ -3131,6 +3273,30 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    7.10995,
+                    51.24126
+                ]
+            },
+            "properties": {
+                "name": "Zoo Wuppertal",
+                "active": true,
+                "area": "Germany",
+                "address": "Hubertusallee 30",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=210558",
+                "internal_url": "null",
+                "latitude": "51.24126",
+                "longitude": "7.10995",
+                "id": 645,
+                "last_updated": "2023-08-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     7.112364262779767,
                     51.2408963866181
                 ]
@@ -3147,6 +3313,30 @@
                 "longitude": 7.112364262779767,
                 "id": 6021,
                 "last_updated": "2023-08-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.110161,
+                    51.54385
+                ]
+            },
+            "properties": {
+                "name": "Zoom Erlebniswelt",
+                "active": true,
+                "area": "Germany",
+                "address": "Bleckstraße 64, Gelsenkirchen, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=193091",
+                "internal_url": "null",
+                "latitude": "51.543850",
+                "longitude": "7.110161",
+                "id": 492,
+                "last_updated": "2023-08-14",
                 "paywall": true
             }
         },
@@ -3179,6 +3369,122 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -119.9443247,
+                    38.9562465
+                ]
+            },
+            "properties": {
+                "name": "Powder House Ski & Snowboard",
+                "active": false,
+                "area": "California",
+                "address": "4045 Lake Tahoe Boulevard, South Lake Tahoe",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=282551",
+                "internal_url": "null",
+                "latitude": "38.9562465",
+                "longitude": "-119.9443247",
+                "id": 4875,
+                "last_updated": "2023-08-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.8357137,
+                    41.8328916
+                ]
+            },
+            "properties": {
+                "name": "Brookfield Zoo",
+                "active": true,
+                "area": "Illinois",
+                "address": "8400 31st St, Brookfield, IL 60513, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2106",
+                "internal_url": "null",
+                "latitude": "41.8328916",
+                "longitude": "-87.8357137",
+                "id": 1203,
+                "multimachine": 9,
+                "last_updated": "2023-08-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.555183,
+                    35.788432
+                ]
+            },
+            "properties": {
+                "name": "Try My Nuts",
+                "active": false,
+                "area": "Tennessee",
+                "address": "100 Old Mill Ave, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318206",
+                "internal_url": "null",
+                "latitude": "35.788432",
+                "longitude": "-83.555183",
+                "id": 4285,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.485234,
+                    41.8961598
+                ]
+            },
+            "properties": {
+                "name": "Prudenzi Simone Souvenir Market Emporium",
+                "active": false,
+                "area": "Italy",
+                "address": "Via Magnanapoli 5",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259790",
+                "internal_url": "null",
+                "latitude": "41.8961598",
+                "longitude": "12.485234",
+                "id": 967,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -75.38173092744259,
                     40.62166658801588
                 ]
@@ -3195,6 +3501,53 @@
                 "longitude": -75.38173092744259,
                 "id": 6023,
                 "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.118062,
+                    53.448537
+                ]
+            },
+            "properties": {
+                "name": "Dangast Souvenir shop",
+                "active": true,
+                "area": "Germany",
+                "address": "Edo-Wiemken-Straße 57, 26316 Varel, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329562",
+                "internal_url": "null",
+                "latitude": "53.448537",
+                "longitude": "8.118062",
+                "id": 5697,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.235490,
+                    39.696617
+                ]
+            },
+            "properties": {
+                "name": "Private Roller - Brad Ream/ Kay Harpold",
+                "active": true,
+                "area": " Indiana",
+                "address": "4919 South Catlin Road, Rockville, Indiana",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186392",
+                "internal_url": "null",
+                "latitude": "39.696617",
+                "longitude": "-87.235490",
+                "id": 5535,
+                "multimachine": 4,
+                "last_updated": "2023-08-16"
             }
         },
         {
@@ -3225,6 +3578,30 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -76.488272,
+                    38.9776983
+                ]
+            },
+            "properties": {
+                "name": "A. L. Goodies General Store",
+                "active": true,
+                "area": "Maryland",
+                "address": "112 Main Street, Annapolis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2580",
+                "internal_url": "null",
+                "latitude": "38.9776983",
+                "longitude": "-76.488272",
+                "id": 3604,
+                "last_updated": "2023-08-10",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     11.316382173794873,
                     47.596146276763385
                 ]
@@ -3248,6 +3625,53 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -122.6660136,
+                    45.5083863
+                ]
+            },
+            "properties": {
+                "name": "Oregon Museum of Science & Industry (OMSI)",
+                "active": true,
+                "area": "Oregon",
+                "address": "1945 SE Water Avenue, Portland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3945",
+                "internal_url": "null",
+                "latitude": "45.5083863",
+                "longitude": "-122.6660136",
+                "id": 4382,
+                "multimachine": 2,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     7.869094158908551,
                     46.693324646941804
                 ]
@@ -3263,6 +3687,30 @@
                 "latitude": 46.693324646941804,
                 "longitude": 7.869094158908551,
                 "id": 6026,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.661378,
+                    42.496887
+                ]
+            },
+            "properties": {
+                "name": "National Mississippi River Museum & Aquarium",
+                "active": true,
+                "area": "Iowa",
+                "address": "350 East 3rd Street, Dubuque",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2208",
+                "internal_url": "null",
+                "latitude": "42.496887",
+                "longitude": "-90.661378",
+                "id": 2340,
+                "multimachine": 2,
                 "last_updated": "2023-08-20"
             }
         },
