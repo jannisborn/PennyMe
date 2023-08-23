@@ -3671,8 +3671,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.869094158908551,
-                    46.693324646941804
+                    7.869247,
+                    46.691724
                 ]
             },
             "properties": {
@@ -3683,8 +3683,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 46.693324646941804,
-                "longitude": 7.869094158908551,
+                "latitude": 46.691724,
+                "longitude": 7.869247,
                 "id": 6026,
                 "last_updated": "2023-08-20"
             }
@@ -3803,6 +3803,53 @@
                 "latitude": "47.050732",
                 "longitude": "8.302606",
                 "id": 720,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.1816236,
+                    43.0555332
+                ]
+            },
+            "properties": {
+                "name": "Fanshawe Pioneer Village",
+                "active": true,
+                "area": "Canada",
+                "address": "1424 Clarke Rd , Ontario - London ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311515",
+                "internal_url": "null",
+                "latitude": "43.0555332",
+                "longitude": "-81.1816236",
+                "id": 5006,
+                "paywall": true,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.878282,
+                    33.716508
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - East Visitor's Center",
+                "active": true,
+                "area": "South Carolina",
+                "address": "1325 Celebrity Circle, #34, Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19337",
+                "internal_url": "null",
+                "latitude": "33.716508",
+                "longitude": "-78.878282",
+                "id": 2211,
                 "last_updated": "2023-08-23"
             }
         }
