@@ -3194,7 +3194,6 @@
                 "longitude": "-83.5678459",
                 "id": 4282,
                 "last_updated": "2023-08-13"
-
             }
         },
         {
@@ -3531,7 +3530,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -87.235490,
+                    -87.23549,
                     39.696617
                 ]
             },
@@ -3735,6 +3734,29 @@
                 "longitude": 9.993400722493528,
                 "id": 6027,
                 "last_updated": "2023-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.807630734199602,
+                    53.07604407204777
+                ]
+            },
+            "properties": {
+                "name": "Ratskeller",
+                "active": true,
+                "area": "Duitsland",
+                "address": "Am Markt, 28195 Bremen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 53.07604407204777,
+                "longitude": 8.807630734199602,
+                "id": 6032,
+                "last_updated": "2023-08-23"
             }
         }
     ]
