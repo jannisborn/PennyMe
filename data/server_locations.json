@@ -3194,7 +3194,6 @@
                 "longitude": "-83.5678459",
                 "id": 4282,
                 "last_updated": "2023-08-13"
-
             }
         },
         {
@@ -3735,6 +3734,76 @@
                 "longitude": 9.993400722493528,
                 "id": 6027,
                 "last_updated": "2023-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.303173,
+                    47.054107
+                ]
+            },
+            "properties": {
+                "name": "The Nine Towers/ Museggmauer ",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Museggstrasse 21 / Schirmertorweg, Lucerne (Luzern), 6004 Switzerland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186791",
+                "internal_url": "null",
+                "latitude": "47.054107",
+                "longitude": "8.303173",
+                "id": 721,
+                "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.5224,
+                    47.14105
+                ]
+            },
+            "properties": {
+                "name": "Central Plaza Souvenirs",
+                "active": true,
+                "area": "Liechtenstein",
+                "address": "Städtle 5, 9490 Vaduz, Liechtenstein",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=85426",
+                "internal_url": "null",
+                "latitude": "47.141050",
+                "longitude": "9.522400",
+                "id": 730,
+                "last_updated": "2023-08-23",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.302606,
+                    47.050732
+                ]
+            },
+            "properties": {
+                "name": "Harry's AG",
+                "active": false,
+                "area": "Switzerland",
+                "address": "Pfistergasse 10, 6003 Lucerne (Luzern), Switzerland",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=183775",
+                "internal_url": "null",
+                "latitude": "47.050732",
+                "longitude": "8.302606",
+                "id": 720,
+                "last_updated": "2023-08-23"
             }
         }
     ]
