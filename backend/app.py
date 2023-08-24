@@ -207,7 +207,7 @@ def create_machine():
     area = str(request.args.get("area")).strip()
 
     # Identify area
-    area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)
+    area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
     if score < 90:
         return (
             jsonify(
@@ -248,12 +248,12 @@ def create_machine():
             400,
         )
 
-    out = gm_client.reverse_geocode((location[1], location[0]), result_type="address")
+    out = gm_client.reverse_geocode([location[1], location[0]], result_type="street_address")
 
     b = True
     if out != []:
         ad = out[0]["formatted_address"]
-        _, score = fuzzysearch.extract(ad, [address], limit=1)
+        _, score = fuzzysearch.extract(ad, [address], limit=1)[0]
         if score > 85:
             # Prefer Google Maps address over user address
             address = ad
