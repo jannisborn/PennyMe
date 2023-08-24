@@ -3875,6 +3875,29 @@
                 "multimachine": 2,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546102292869278,
+                    47.39347321803808
+                ]
+            },
+            "properties": {
+                "name": "Test machine",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 110, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39347321803808,
+                "longitude": 8.546102292869278,
+                "id": 6035,
+                "last_updated": "2023-08-25"
+            }
         }
     ]
 }
