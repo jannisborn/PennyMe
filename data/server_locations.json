@@ -3833,8 +3833,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  8.807630734199602,
-                  53.07604407204777
+                    8.807630734199602,
+                    53.07604407204777
                 ]
             },
             "properties": {
@@ -3849,6 +3849,29 @@
                 "longitude": 8.807630734199602,
                 "id": 6032,
                 "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.98362286627801,
+                    50.26453700927211
+                ]
+            },
+            "properties": {
+                "name": "Veste Coburg ",
+                "active": true,
+                "area": "Bayern ",
+                "address": "Gustav-Freytag-Weg 39, 96450 Coburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.26453700927211,
+                "longitude": 10.98362286627801,
+                "id": 6034,
+                "last_updated": "2023-08-24"
             }
         }
     ]
