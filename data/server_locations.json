@@ -3875,6 +3875,31 @@
                 "multimachine": 2,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1000,
+                    1000
+                ]
+            },
+            "properties": {
+                "name": "wuhu ein test",
+                "active": true,
+                "area": "Marsstate",
+                "address": "1 Mars street, Mars",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 1000,
+                "longitude": 1000,
+                "id": 6034,
+                "last_updated": "2023-08-24",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
