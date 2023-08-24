@@ -10,7 +10,7 @@ from PIL import Image, ImageOps
 
 from haversine import haversine
 from pennyme.locations import COUNTRIES
-from pull_request import push_to_github_and_open_pr, get_latest_data_update
+from pennyme.github_update import push_to_github
 from slack import WebClient
 from slack.errors import SlackApiError
 from thefuzz import process as fuzzysearch

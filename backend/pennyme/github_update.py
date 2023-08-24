@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 import time
 
-with open("../GITHUB_TOKEN.json", "r") as infile:
+with open("github_token.json", "r") as infile:
     github_infos = json.load(infile)
 # Define GitHub repository information
 GITHUB_TOKEN = github_infos["token"]
