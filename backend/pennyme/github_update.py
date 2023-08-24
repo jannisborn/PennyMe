@@ -11,7 +11,7 @@ GITHUB_TOKEN = github_infos["token"]
 REPO_OWNER = github_infos["owner"]
 REPO_NAME = github_infos["repo"]
 BASE_BRANCH = "main"  # Replace with the appropriate base branch name
-DATA_BRANCH = "test_data_branch"
+DATA_BRANCH = "machine_updates"
 HEADERS = {
     "Authorization": f"token {GITHUB_TOKEN}",
     "accept": "application/vnd.github+json",
