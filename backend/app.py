@@ -132,7 +132,6 @@ def image_slack(
     m_name: str = None,
     img_slack_text: str = "Image uploaded for machine",
 ):
-
     if m_name is None:
         MACHINE_NAMES = reload_server_data()
         m_name = MACHINE_NAMES[int(machine_id)]
@@ -182,7 +181,6 @@ def message_slack(machine_id, comment_text, ip: str):
 
 
 def save_comment(comment: str, ip: str, machine_id: int):
-
     # Create dict hierarchy if needed
     if ip not in IP_COMMENT_DICT.keys():
         IP_COMMENT_DICT[ip] = {}
@@ -248,7 +246,9 @@ def create_machine():
             400,
         )
 
-    out = gm_client.reverse_geocode([location[1], location[0]], result_type="street_address")
+    out = gm_client.reverse_geocode(
+        [location[1], location[0]], result_type="street_address"
+    )
 
     b = True
     if out != []:
@@ -308,16 +308,14 @@ def create_machine():
     if paywall:
         properties_dict["paywall"] = paywall
     # add new item to json
-    new_machines_entry = {
-        {
-            "type": "Feature",
-            "geometry": {"type": "Point", "coordinates": location},
-            "properties": properties_dict,
-        }
+    new_machine_entry = {
+        "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": location},
+        "properties": properties_dict,
     }
     # If pushing to new branch: set unique branch name
     # branch_name = f"new_machine_{round(time.time())}"
-    new_machine_id = push_to_github(server_locations)
+    new_machine_id = push_to_github(new_machine_entry)
 
     # Upload the image
     if "image" not in request.files:
