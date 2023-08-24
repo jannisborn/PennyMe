@@ -10,7 +10,7 @@ from PIL import Image, ImageOps
 
 from haversine import haversine
 from pennyme.locations import COUNTRIES
-from pull_request import push_to_github_and_open_pr
+from pull_request import push_to_github_and_open_pr, get_latest_data_update
 from slack import WebClient
 from slack.errors import SlackApiError
 from thefuzz import process as fuzzysearch
@@ -281,20 +281,12 @@ def create_machine():
 
     paywall = True if request.args.get("paywall") == "true" else False
 
-    # set unique branch name
-    branch_name = f"new_machine_{round(time.time())}"
-
-    # load the current server locations file
-    with open("../data/server_locations.json", "r") as infile:
-        server_locations = json.load(infile)
-    # make new machine ID: one more than any machine in images / server_loc
-    existing_machines = [
-        item["properties"]["id"] for item in server_locations["features"]
-    ]
     potential_new_machines = [
         int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im
     ]
-    new_machine_id = max(existing_machines + potential_new_machines) + 1
+    # note: this is not the final id yet, we double check with the max in the server
+    # locations file
+    new_machine_id = max(potential_new_machines) + 1
 
     # put properties into dictionary
     properties_dict = {
@@ -316,16 +308,16 @@ def create_machine():
     if paywall:
         properties_dict["paywall"] = paywall
     # add new item to json
-    server_locations["features"].append(
+    new_machines_entry = {
         {
             "type": "Feature",
             "geometry": {"type": "Point", "coordinates": location},
             "properties": properties_dict,
         }
-    )
-
-    commit_message = f"add new machine {new_machine_id} named {title}"
-    push_to_github_and_open_pr(server_locations, branch_name, commit_message)
+    }
+    # If pushing to new branch: set unique branch name
+    # branch_name = f"new_machine_{round(time.time())}"
+    new_machine_id = push_to_github(server_locations)
 
     # Upload the image
     if "image" not in request.files:
