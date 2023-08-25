@@ -3530,7 +3530,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -87.235490,
+                    -87.23549,
                     39.696617
                 ]
             },
@@ -3764,6 +3764,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -83.5190204762397,
+                    35.71046924802651
+                ]
+            },
+            "properties": {
+                "name": "Hollywood Star Cars",
+                "active": true,
+                "area": "Tennessee",
+                "address": "918 Parkway, Gatlinburg, TN 37738, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.71046924802651,
+                "longitude": -83.5190204762397,
+                "id": 6030,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     9.5224,
                     47.14105
                 ]
@@ -3781,6 +3804,30 @@
                 "id": 730,
                 "last_updated": "2023-08-23",
                 "multimachine": 2
+              
+             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.41522770982236,
+                    19.379946215605646
+                ]
+            },
+            "properties": {
+                "name": "Cayman Turtle center",
+                "active": true,
+                "area": "Cayman Islands",
+                "address": "786 Northwest Point Road, West Bay Grand Cayman",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=31625",
+                "internal_url": "null",
+                "latitude": 19.379946215605646,
+                "longitude": -81.41522770982236,
+                "id": 6029,
+                "last_updated": "2023-08-22"
             }
         },
         {
@@ -3811,6 +3858,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    0.04514298027618661,
+                    38.64424058169028
+                ]
+            },
+            "properties": {
+                "name": "Calpe Spanish flag steps",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Pedro García Ortiz esquina, C. Puchalt, bajo, 03710 Calp, Alicante, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 38.64424058169028,
+                "longitude": 0.04514298027618661,
+                "id": 6028,
+                "last_updated": "2023-08-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -81.1816236,
                     43.0555332
                 ]
@@ -3827,6 +3897,29 @@
                 "longitude": "-81.1816236",
                 "id": 5006,
                 "paywall": true,
+                "last_updated": "2023-08-23"
+             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51094316183755,
+                    35.717208675897886
+                ]
+            },
+            "properties": {
+                "name": "Ripley’s Mountain Coaster",
+                "active": true,
+                "area": "Tennessee",
+                "address": "386 Parkway, Gatlinburg, TN 37738, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.717208675897886,
+                "longitude": -83.51094316183755,
+                "id": 6031,
                 "last_updated": "2023-08-23"
             }
         },
@@ -3857,6 +3950,29 @@
             "type": "Feature",
             "geometry": {
                 "type": "Point",
+                "coordinates": [          
+                    8.807630734199602,
+                    53.07604407204777
+                ]
+            },
+            "properties": {
+                "name": "Ratskeller (town hall)",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Markt, 28195 Bremen, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 53.07604407204777,
+                "longitude": 8.807630734199602,
+                "id": 6032,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
                 "coordinates": [
                     -83.58340252422926,
                     41.62047786549837
@@ -3874,6 +3990,29 @@
                 "longitude": "-83.58340252422926",
                 "id": 2014,
                 "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.98362286627801,
+                  50.26453700927211
+                ]
+            },
+            "properties": {
+                "name": "Veste Coburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Gustav-Freytag-Weg 39, 96450 Coburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.26453700927211,
+                "longitude": 10.98362286627801,
+                "id": 6034,
+                "last_updated": "2023-08-24"
             }
         }
     ]
