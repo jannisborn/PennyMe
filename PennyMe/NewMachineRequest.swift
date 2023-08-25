@@ -78,7 +78,7 @@ struct ConfirmationMessageView: View {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 struct RequestFormView: View {
     let coords: CLLocationCoordinate2D
     // Properties to hold user input
@@ -88,13 +88,12 @@ struct RequestFormView: View {
     @State private var paywall: Bool = false
     @State private var multimachine: String = ""
     @State private var showFinishedAlert = false
-    @State private var submittedName: String = ""
+    @State private var displayResponse: String = ""
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
     @State private var selectedImage: UIImage? = nil
     @State private var isImagePickerPresented: Bool = false
-    @State private var isSubmitting = false
     @State private var showAlert = false
-    @State private var submitted = false
+    @State private var isLoading = false
 
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
@@ -159,31 +158,28 @@ struct RequestFormView: View {
             }
             .padding()
             
-            
-            // Enter all info
-            Text("\(submittedName)").foregroundColor(Color.red)
-            
             // Submit button
-            Button(action: {
-                submitRequest()
-            }) {
-                Text("Submit")
+            if isLoading {
+                ProgressView("Loading...")
                     .padding()
-                    .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }.padding().disabled(isSubmitting)
+            } else {
+                Button(action: {
+                    submitRequest()
+                }) {
+                    Text("Submit")
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }.padding().disabled(isLoading)
+            }
             
             AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for suggesting this machine. We will review this request shortly. Note that it can take up to a few days until the machine becomes visible.")
                 .padding()
         }
         .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Processing"), message: Text("Please wait..."), dismissButton: .default(Text("Dismiss")))
-                }
-                .onAppear {
-                    // Call the private function to regulate the machine
-                    checkRequest()
+                    Alert(title: Text("Attention!"), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
                 }
         .padding()
         .navigationBarTitle("Add new machine")
@@ -194,39 +190,35 @@ struct RequestFormView: View {
         .padding(.bottom, keyboardHeight)
     }
     
-    private func checkRequest() {
-        if submitted{
-            showAlert = true
-        }
+    private func finishLoading(message: String) {
+        displayResponse = message
+        showAlert = true
+        isLoading = false
     }
     
     // Function to handle the submission of the request
     private func submitRequest() {
-        submitted = true
+        isLoading = true
         if name == "" || address == "" || area == "" || selectedImage == nil {
-            submittedName = "Please enter all information & upload image"
+            finishLoading(message: "Please enter all information & upload image")
         } else {
-            showAlert = true
             // correct multimachine information
             if multimachine == "" {
                 multimachine = "1"
             }
-            isSubmitting = true
             // upload image and make request
             if let image = selectedImage! as UIImage ?? nil {
                 //  Convert the image to a data object
                 guard let imageData = image.jpegData(compressionQuality: 1.0) else {
                     print("Failed to convert image to data")
-                    submittedName = "Something went wrong with your image"
-                    isSubmitting = false
+                    finishLoading(message: "Something went wrong with your image")
                     return
                 }
                 // call flask method called create_machine
                 let urlString = flaskURL+"/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
                 guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
                 ) else {
-                    submittedName = "Something went wrong. Please try to re-enter the information"
-                    isSubmitting = false
+                    finishLoading(message: "Something went wrong. Please try to re-enter the information")
                     return
                 }
                 var request = URLRequest(url: url)
@@ -246,14 +238,12 @@ struct RequestFormView: View {
                 // Create a URLSessionDataTask to send the request
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                     if let error = error {
-                        submittedName = "Something went wrong. Please check your internet connection and try again"
-                        isSubmitting = false
+                        finishLoading(message: "Something went wrong. Please check your internet connection and try again")
                         return
                     }
                     // Check if a valid HTTP response was received
                     guard let httpResponse = response as? HTTPURLResponse else {
-                        submittedName = "Something went wrong. Please check your internet connection and try again"
-                        isSubmitting = false
+                        finishLoading(message: "Something went wrong. Please check your internet connection and try again")
                         return
                     }
                     // Extract the status code from the HTTP response
@@ -265,7 +255,7 @@ struct RequestFormView: View {
                         DispatchQueue.main.async {
                             self.showFinishedAlert = true
                             self.presentationMode.wrappedValue.dismiss()
-                            isSubmitting = false
+                            isLoading = false
                         }
                     }
                     else {
@@ -275,16 +265,13 @@ struct RequestFormView: View {
                                 if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
                                     // Handle the JSON data here
                                     if let answerString = json["error"] as? String {
-                                        print("Answer string: \(answerString)")
-                                        submittedName = answerString
-                                        isSubmitting = false
+                                        finishLoading(message: answerString)
                                         return
                                     }
                                 }
                             } catch {
                                 print("JSON parsing error: \(error)")
-                                submittedName = "Something went wrong. Please check your internet connection and try again"
-                                isSubmitting = false
+                                finishLoading(message: "Something went wrong. Please check your internet connection and try again")
                             }
                         }
                     }
