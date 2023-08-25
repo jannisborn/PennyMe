@@ -3898,6 +3898,29 @@
                 "id": 6035,
                 "last_updated": "2023-08-25"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.545952089150688,
+                    47.39354584790365
+                ]
+            },
+            "properties": {
+                "name": "Should work",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 110, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39354584790365,
+                "longitude": 8.545952089150688,
+                "id": 6036,
+                "last_updated": "2023-08-25"
+            }
         }
     ]
 }
