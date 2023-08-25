@@ -3559,7 +3559,7 @@
                 ]
             },
             "properties": {
-                "name": "Koblenz Souvenir Ship Firmungstraße",
+                "name": "Koblenz Souvenir Shop Firmungstraße",
                 "active": true,
                 "area": "Germany",
                 "address": "Corner Firmungstraße/Kornpfortstrasse, 56068 Koblenz",
@@ -3989,7 +3989,8 @@
                 "latitude": "41.62047786549837",
                 "longitude": "-83.58340252422926",
                 "id": 2014,
-                "last_updated": "2023-08-25"
+                "last_updated": "2023-08-25",
+                "paywall": true
             }
         },
         {
@@ -4013,6 +4014,30 @@
                 "longitude": 10.98362286627801,
                 "id": 6034,
                 "last_updated": "2023-08-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.58167902736798,
+                    41.61943698517184
+                ]
+            },
+            "properties": {
+                "name": "Toledo Zoo - Aviary",
+                "active": true,
+                "area": "Ohio",
+                "address": "2 Hippo Way, Toledo, OH 43609",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "latitude": 41.61943698517184,
+                "longitude": -83.58167902736798,
+                "id": 6036,
+                "last_updated": "2023-08-25",
+                "paywall": true
             }
         },
         {
