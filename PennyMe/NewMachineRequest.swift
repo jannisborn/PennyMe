@@ -175,7 +175,7 @@ struct RequestFormView: View {
                     .cornerRadius(10)
             }.padding().disabled(isSubmitting)
             
-            AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for adding this machine. We will review this request and the machine will be added shortly.")
+            AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for suggesting this machine. We will review this request shortly. Note that it can take up to a few days until the machine becomes visible.")
                 .padding()
         }
         .alert(isPresented: $showAlert) {

@@ -289,7 +289,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     func chooseImage() {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             // Create the alert controller
-            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload only images that are strictly related to penny machines. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload an image of the penny machine, not just an image of a coin. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
 
             // Create the OK action
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
