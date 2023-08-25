@@ -3671,8 +3671,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.869094158908551,
-                    46.693324646941804
+                    7.869247,
+                    46.691724
                 ]
             },
             "properties": {
@@ -3683,8 +3683,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 46.693324646941804,
-                "longitude": 7.869094158908551,
+                "latitude": 46.691724,
+                "longitude": 7.869247,
                 "id": 6026,
                 "last_updated": "2023-08-20"
             }
@@ -3741,6 +3741,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    8.303173,
+                    47.054107
+                ]
+            },
+            "properties": {
+                "name": "The Nine Towers/ Museggmauer ",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Museggstrasse 21 / Schirmertorweg, Lucerne (Luzern), 6004 Switzerland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186791",
+                "internal_url": "null",
+                "latitude": "47.054107",
+                "longitude": "8.303173",
+                "id": 721,
+                "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -83.5190204762397,
                     35.71046924802651
                 ]
@@ -3764,6 +3787,31 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    9.5224,
+                    47.14105
+                ]
+            },
+            "properties": {
+                "name": "Central Plaza Souvenirs",
+                "active": true,
+                "area": "Liechtenstein",
+                "address": "Städtle 5, 9490 Vaduz, Liechtenstein",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=85426",
+                "internal_url": "null",
+                "latitude": "47.141050",
+                "longitude": "9.522400",
+                "id": 730,
+                "last_updated": "2023-08-23",
+                "multimachine": 2
+              
+             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -81.41522770982236,
                     19.379946215605646
                 ]
@@ -3780,6 +3828,29 @@
                 "longitude": -81.41522770982236,
                 "id": 6029,
                 "last_updated": "2023-08-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.302606,
+                    47.050732
+                ]
+            },
+            "properties": {
+                "name": "Harry's AG",
+                "active": false,
+                "area": "Switzerland",
+                "address": "Pfistergasse 10, 6003 Lucerne (Luzern), Switzerland",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=183775",
+                "internal_url": "null",
+                "latitude": "47.050732",
+                "longitude": "8.302606",
+                "id": 720,
+                "last_updated": "2023-08-23"
             }
         },
         {
@@ -3810,6 +3881,30 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -81.1816236,
+                    43.0555332
+                ]
+            },
+            "properties": {
+                "name": "Fanshawe Pioneer Village",
+                "active": true,
+                "area": "Canada",
+                "address": "1424 Clarke Rd , Ontario - London ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311515",
+                "internal_url": "null",
+                "latitude": "43.0555332",
+                "longitude": "-81.1816236",
+                "id": 5006,
+                "paywall": true,
+                "last_updated": "2023-08-23"
+             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -83.51094316183755,
                     35.717208675897886
                 ]
@@ -3833,6 +3928,29 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -78.878282,
+                    33.716508
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - East Visitor's Center",
+                "active": true,
+                "area": "South Carolina",
+                "address": "1325 Celebrity Circle, #34, Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19337",
+                "internal_url": "null",
+                "latitude": "33.716508",
+                "longitude": "-78.878282",
+                "id": 2211,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [          
                     8.807630734199602,
                     53.07604407204777
                 ]
@@ -3856,8 +3974,31 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    10.98362286627801,
-                    50.26453700927211
+                    -83.58340252422926,
+                    41.62047786549837
+                ]
+            },
+            "properties": {
+                "name": "Toledo Zoo - Arctic Encounter",
+                "active": true,
+                "area": "Ohio",
+                "address": "Toledo Zoo, 2 Hippo Way, Toledo, OH 43609",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "latitude": "41.62047786549837",
+                "longitude": "-83.58340252422926",
+                "id": 2014,
+                "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.98362286627801,
+                  50.26453700927211
                 ]
             },
             "properties": {
