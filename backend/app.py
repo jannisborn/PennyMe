@@ -2,13 +2,18 @@ import json
 import os
 import time
 from datetime import datetime
-from flask import Flask, jsonify, request
-from PIL import Image, ImageOps
-from typing import Dict, Any
+from typing import Any, Dict
 
+from flask import Flask, jsonify, request
+from googlemaps import Client as GoogleMaps
+from PIL import Image, ImageOps
+
+from haversine import haversine
+from pennyme.locations import COUNTRIES
+from pennyme.github_update import push_to_github
 from slack import WebClient
 from slack.errors import SlackApiError
-from pull_request import push_to_github_and_open_pr
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
@@ -18,8 +23,10 @@ PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
 PATH_SERVER_LOCATION = os.path.join("..", "..", "images", "server_locations.json")
 SLACK_TOKEN = os.environ.get("SLACK_TOKEN")
 IMG_PORT = "http://37.120.179.15:8000/"
+GM_API_KEY = open("../../gpc_api_key.keypair", "r").read()
 
 client = WebClient(token=os.environ["SLACK_TOKEN"])
+gm_client = GoogleMaps(GM_API_KEY)
 
 with open("blocked_ips.json", "r") as infile:
     # NOTE: blocking an IP requires restart of app.py via waitress
@@ -28,21 +35,26 @@ with open("blocked_ips.json", "r") as infile:
 with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
     d = json.load(infile)
 MACHINE_NAMES = {
-    elem["properties"]["id"]:
-    f"{elem['properties']['name']} ({elem['properties']['area']})"
+    elem["properties"][
+        "id"
+    ]: f"{elem['properties']['name']} ({elem['properties']['area']})"
     for elem in d["features"]
 }
 
-with open('ip_comment_dict.json', 'r') as f:
+with open("ip_comment_dict.json", "r") as f:
     IP_COMMENT_DICT = json.load(f)
+
 
 def reload_server_data():
     # add server location IDs
     with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
         d = json.load(infile)
     for elem in d["features"]:
-        MACHINE_NAMES[elem["properties"]["id"]] = f"{elem['properties']['name']} ({elem['properties']['area']})"
+        MACHINE_NAMES[
+            elem["properties"]["id"]
+        ] = f"{elem['properties']['name']} ({elem['properties']['area']})"
     return MACHINE_NAMES
+
 
 @app.route("/add_comment", methods=["GET"])
 def add_comment():
@@ -55,7 +67,7 @@ def add_comment():
 
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
-        return jsonify("Blocked IP address")
+        return jsonify({"error": "User IP address is blocked"}), 403
 
     path_machine_comments = os.path.join(PATH_COMMENTS, f"{machine_id}.json")
     if os.path.exists(path_machine_comments):
@@ -75,7 +87,7 @@ def add_comment():
 
     save_comment(comment, ip_address, machine_id)
 
-    return jsonify({"response": 200})
+    return jsonify({"message": "Success!"}), 200
 
 
 def process_uploaded_image(image, img_path):
@@ -93,15 +105,16 @@ def process_uploaded_image(image, img_path):
     img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
     img.save(img_path, quality=95)
 
+
 @app.route("/upload_image", methods=["POST"])
 def upload_image():
     machine_id = str(request.args.get("id"))
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
-        return jsonify("Blocked IP address")
+        return jsonify({"error": "User IP address is blocked"}), 403
 
     if "image" not in request.files:
-        return "No image file", 400
+        return jsonify({"error": "No image file found"}), 400
 
     image = request.files["image"]
     img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
@@ -109,16 +122,16 @@ def upload_image():
 
     # send message to slack
     image_slack(machine_id, ip=ip_address)
-    
+
     return "Image uploaded successfully"
 
-def image_slack(
-        machine_id: int,
-        ip: str,
-        m_name: str = None,
-        img_slack_text: str = "Image uploaded for machine"
-    ):
 
+def image_slack(
+    machine_id: int,
+    ip: str,
+    m_name: str = None,
+    img_slack_text: str = "Image uploaded for machine",
+):
     if m_name is None:
         MACHINE_NAMES = reload_server_data()
         m_name = MACHINE_NAMES[int(machine_id)]
@@ -137,12 +150,12 @@ def image_slack(
                     "title": {
                         "type": "plain_text",
                         "text": "NEW Image!",
-                        "emoji": True
+                        "emoji": True,
                     },
                     "image_url": f"{IMG_PORT}{machine_id}.jpg",
-                    "alt_text": text
+                    "alt_text": text,
                 }
-            ]
+            ],
         )
     except SlackApiError as e:
         print("Error sending message: ", e)
@@ -151,11 +164,12 @@ def image_slack(
         raise e
 
 
-
 def message_slack(machine_id, comment_text, ip: str):
     MACHINE_NAMES = reload_server_data()
     m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
+    text = (
+        f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
+    )
     try:
         response = client.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"
@@ -165,14 +179,14 @@ def message_slack(machine_id, comment_text, ip: str):
         assert e.response["error"]
         raise e
 
+
 def save_comment(comment: str, ip: str, machine_id: int):
-    
     # Create dict hierarchy if needed
     if ip not in IP_COMMENT_DICT.keys():
         IP_COMMENT_DICT[ip] = {}
     if machine_id not in IP_COMMENT_DICT[ip].keys():
         IP_COMMENT_DICT[ip][machine_id] = {}
-    
+
     # Add comment
     IP_COMMENT_DICT[ip][machine_id][str(datetime.now())] = comment
 
@@ -180,41 +194,96 @@ def save_comment(comment: str, ip: str, machine_id: int):
     with open("ip_comment_dict.json", "w") as f:
         json.dump(IP_COMMENT_DICT, f, indent=4)
 
+
 @app.route("/create_machine", methods=["POST"])
 def create_machine():
     """
     Receives a comment and adds it to the json file
     """
-    machine_title = str(request.args.get("title"))
-    address = str(request.args.get("address"))
-    area = str(request.args.get("area"))
-    location = (float(request.args.get("lon_coord")), float(request.args.get("lat_coord")))
+    title = str(request.args.get("title")).strip()
+    address = str(request.args.get("address")).strip()
+    area = str(request.args.get("area")).strip()
+
+    # Identify area
+    area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
+    if score < 90:
+        return (
+            jsonify(
+                {
+                    "error": "Could not match country. Provide country or US state name in English"
+                }
+            ),
+            400,
+        )
+
+    location = (
+        float(request.args.get("lon_coord")),
+        float(request.args.get("lat_coord")),
+    )
+    # Verify that address matches coordinates
+    queries = [address, address + area, address + title]
+    for query in queries:
+        coordinates = gm_client.geocode(query)
+        try:
+            lat = coordinates[0]["geometry"]["location"]["lat"]
+            lng = coordinates[0]["geometry"]["location"]["lng"]
+            break
+        except IndexError:
+            continue
+    try:
+        lat, lng
+    except NameError:
+        return jsonify({"error": "Google Maps does not know this address"}), 400
+
+    dist = haversine((lat, lng), (location[1], location[0]))
+    if dist > 1:  # km
+        return (
+            jsonify(
+                {
+                    "error": f"Address {query} seems >1km away from coordinates ({lat}, {lng})"
+                }
+            ),
+            400,
+        )
+
+    out = gm_client.reverse_geocode(
+        [location[1], location[0]], result_type="street_address"
+    )
+
+    b = True
+    if out != []:
+        ad = out[0]["formatted_address"]
+        _, score = fuzzysearch.extract(ad, [address], limit=1)[0]
+        if score > 85:
+            # Prefer Google Maps address over user address
+            address = ad
+            b = False
+    elif b:
+        out = gm_client.reverse_geocode(
+            (location[1], location[0]), result_type="point_of_interest"
+        )
+        if out != []:
+            address = out[0]["formatted_address"]
+        else:
+            out = gm_client.reverse_geocode(
+                (location[1], location[0]), result_type="postal_code"
+            )
+            if out != []:
+                postal_code = out[0]["formatted_address"].split(" ")[0]
+                if postal_code not in address:
+                    address += out[0]["formatted_address"]
+
     try:
         multimachine = int(request.args.get("multimachine"))
     except ValueError:
         # just put the multimachine as a string, we need to correct it then
         multimachine = str(request.args.get("multimachine"))
-    
+
     paywall = True if request.args.get("paywall") == "true" else False
-
-    # set unique branch name
-    branch_name = f'new_machine_{round(time.time())}'
-
-    # load the current server locations file
-    with open("../data/server_locations.json", "r") as infile:
-        server_locations = json.load(infile)
-    # make new machine ID: one more than any machine in images / server_loc
-    existing_machines = [
-        item["properties"]["id"] for item in server_locations["features"]
-    ]
-    potential_new_machines = [
-        int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im
-    ]
-    new_machine_id = max(existing_machines + potential_new_machines) + 1
 
     # put properties into dictionary
     properties_dict = {
-        "name": machine_title,
+        "name": title,
         "active": True,
         "area": area,
         "address": address,
@@ -223,7 +292,7 @@ def create_machine():
         "internal_url": "null",
         "latitude": location[1],
         "longitude": location[0],
-        "id": new_machine_id,
+        "id": -1, # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
     # add multimachine or paywall only if not defaults
@@ -232,20 +301,14 @@ def create_machine():
     if paywall:
         properties_dict["paywall"] = paywall
     # add new item to json
-    server_locations["features"].append(
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": location
-            },
-            "properties":
-                properties_dict
-        }
-    )
-
-    commit_message = f'add new machine {new_machine_id} named {machine_title}'
-    push_to_github_and_open_pr(server_locations, branch_name, commit_message)
+    new_machine_entry = {
+        "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": location},
+        "properties": properties_dict,
+    }
+    # If pushing to new branch: set unique branch name
+    # branch_name = f"new_machine_{round(time.time())}"
+    new_machine_id = push_to_github(new_machine_entry)
 
     # Upload the image
     if "image" not in request.files:
@@ -260,11 +323,12 @@ def create_machine():
     image_slack(
         new_machine_id,
         ip=ip_address,
-        m_name=machine_title,
-        img_slack_text="New machine proposed:"
+        m_name=title,
+        img_slack_text="New machine proposed:",
     )
-    
-    return jsonify({"response": 200})
+
+    return jsonify({"message": "Success!"}), 200
+
 
 def create_app():
     return app
