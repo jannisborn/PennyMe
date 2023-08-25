@@ -160,6 +160,9 @@ struct RequestFormView: View {
             .padding()
             
             
+            // Enter all info
+            Text("\(submittedName)").foregroundColor(Color.red)
+            
             // Submit button
             Button(action: {
                 submitRequest()
@@ -171,9 +174,6 @@ struct RequestFormView: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             }.padding().disabled(isSubmitting)
-            
-            // Enter all info
-            Text("\(submittedName)").foregroundColor(Color.red)
             
             AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for adding this machine. We will review this request and the machine will be added shortly.")
                 .padding()
@@ -218,6 +218,7 @@ struct RequestFormView: View {
                 guard let imageData = image.jpegData(compressionQuality: 1.0) else {
                     print("Failed to convert image to data")
                     submittedName = "Something went wrong with your image"
+                    isSubmitting = false
                     return
                 }
                 // call flask method called create_machine
@@ -225,6 +226,7 @@ struct RequestFormView: View {
                 guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
                 ) else {
                     submittedName = "Something went wrong. Please try to re-enter the information"
+                    isSubmitting = false
                     return
                 }
                 var request = URLRequest(url: url)
@@ -247,10 +249,40 @@ struct RequestFormView: View {
                         print("Error: \(error)")
                         return
                     }
-                    DispatchQueue.main.async {
-                        self.showFinishedAlert = true
-                        self.presentationMode.wrappedValue.dismiss()
-                        isSubmitting = false
+                    // Check if a valid HTTP response was received
+                    guard let httpResponse = response as? HTTPURLResponse else {
+                        print("Invalid HTTP response")
+                        return
+                    }
+                    // Extract the status code from the HTTP response
+                    let statusCode = httpResponse.statusCode
+                    
+                    // Check if the status code indicates success (e.g., 200 OK)
+                    if 200 ..< 300 ~= statusCode {
+                        // everything worked, finish
+                        DispatchQueue.main.async {
+                            self.showFinishedAlert = true
+                            self.presentationMode.wrappedValue.dismiss()
+                            isSubmitting = false
+                        }
+                    }
+                    else {
+                        if let responseData = data {
+                            do {
+                                // Parse the JSON response
+                                if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
+                                    // Handle the JSON data here
+                                    if let answerString = json["error"] as? String {
+                                        print("Answer string: \(answerString)")
+                                        submittedName = answerString
+                                        isSubmitting = false
+                                        return
+                                    }
+                                }
+                            } catch {
+                                print("JSON parsing error: \(error)")
+                            }
+                        }
                     }
                 }
                 task.resume()
