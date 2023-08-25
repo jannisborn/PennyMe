@@ -11,7 +11,7 @@ import MapKit
 
 var FOUNDIMAGE : Bool = false
 
-let flaskURL = "http://37.120.179.15:5000/"
+let flaskURL = "http://37.120.179.15:6006/"
 let imageURL = "http://37.120.179.15:8000/"
 
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {

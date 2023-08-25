@@ -246,12 +246,14 @@ struct RequestFormView: View {
                 // Create a URLSessionDataTask to send the request
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                     if let error = error {
-                        print("Error: \(error)")
+                        submittedName = "Something went wrong. Please check your internet connection and try again"
+                        isSubmitting = false
                         return
                     }
                     // Check if a valid HTTP response was received
                     guard let httpResponse = response as? HTTPURLResponse else {
-                        print("Invalid HTTP response")
+                        submittedName = "Something went wrong. Please check your internet connection and try again"
+                        isSubmitting = false
                         return
                     }
                     // Extract the status code from the HTTP response
@@ -281,6 +283,8 @@ struct RequestFormView: View {
                                 }
                             } catch {
                                 print("JSON parsing error: \(error)")
+                                submittedName = "Something went wrong. Please check your internet connection and try again"
+                                isSubmitting = false
                             }
                         }
                     }
