@@ -3,6 +3,7 @@ import base64
 import json
 from datetime import datetime
 import time
+from pennyme.utils import get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
     github_infos = json.load(infile)
@@ -83,14 +84,8 @@ def push_to_github(machine_update_entry, branch_name=DATA_BRANCH):
     # the sha of the last commit is needed later for pushing
     latest_commit_sha = data["sha"]
 
-    # double check the machine ID and set to the max existing
-    increment_from_existing = (
-        max([item["properties"]["id"] for item in server_locations["features"]]) + 1
-    )
-    final_machine_id = max(
-        [machine_update_entry["properties"]["id"], increment_from_existing]
-    )
-    machine_update_entry["properties"]["id"] = final_machine_id
+    machine_id = get_next_free_machine_id("../data/all_locations.json", server_locations['features'])
+    machine_update_entry["properties"]["id"] = machine_id
 
     # Update the server_locations
     server_locations["features"].append(machine_update_entry)
@@ -103,7 +98,7 @@ def push_to_github(machine_update_entry, branch_name=DATA_BRANCH):
         json.dumps(server_locations, indent=4, ensure_ascii=False).encode("utf-8")
     ).decode("utf-8")
     # make commit message
-    commit_message = f"add new machine {final_machine_id} named {machine_update_entry['properties']['name']}"
+    commit_message = f"add new machine {machine_id} named {machine_update_entry['properties']['name']}"
 
     payload = {
         "message": commit_message,
@@ -127,7 +122,7 @@ def push_to_github(machine_update_entry, branch_name=DATA_BRANCH):
         open_pull_request(commit_message, branch_name)
 
     # tell the app.py what was the final machine ID
-    return final_machine_id
+    return machine_id
 
 
 def open_pull_request(commit_message, branch_name):
@@ -137,6 +132,7 @@ def open_pull_request(commit_message, branch_name):
         "body": "New machine submitted for review",
         "head": branch_name,
         "base": BASE_BRANCH,
+        "labels": ["data", "bot"]
     }
     response = requests.post(
         f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/pulls",

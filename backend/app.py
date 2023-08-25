@@ -281,13 +281,6 @@ def create_machine():
 
     paywall = True if request.args.get("paywall") == "true" else False
 
-    potential_new_machines = [
-        int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im
-    ]
-    # note: this is not the final id yet, we double check with the max in the server
-    # locations file
-    new_machine_id = max(potential_new_machines) + 1
-
     # put properties into dictionary
     properties_dict = {
         "name": title,
@@ -299,7 +292,7 @@ def create_machine():
         "internal_url": "null",
         "latitude": location[1],
         "longitude": location[0],
-        "id": new_machine_id,
+        "id": -1, # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
     # add multimachine or paywall only if not defaults
