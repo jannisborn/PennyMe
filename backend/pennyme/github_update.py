@@ -124,6 +124,14 @@ def push_to_github(machine_update_entry, branch_name=DATA_BRANCH):
     # tell the app.py what was the final machine ID
     return machine_id
 
+def add_pr_label(pr_id, labels):
+    url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues/{pr_id}/labels"
+    response = requests.post(url, headers=HEADERS, json={"labels": labels})
+    if response.status_code == 200:
+        print("Labels added successfully.")
+    else:
+        print("Failed to add labels.")
+
 
 def open_pull_request(commit_message, branch_name):
     # Open a pull request
@@ -131,14 +139,20 @@ def open_pull_request(commit_message, branch_name):
         "title": commit_message,
         "body": "New machine submitted for review",
         "head": branch_name,
-        "base": BASE_BRANCH,
-        "labels": ["data", "bot"]
+        "base": BASE_BRANCH
     }
     response = requests.post(
         f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/pulls",
         headers=HEADERS,
         json=payload,
     )
+    # Add label to PR if it was created successfully
+    if response.status_code == 201:
+        pr_id = response.json()["number"]
+        add_pr_label(pr_id, ['data', 'bot'])
+        return True
+    return False
+
 
 
 def get_latest_commit_sha(REPO_OWNER, REPO_NAME, branch):
