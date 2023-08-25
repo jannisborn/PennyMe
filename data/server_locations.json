@@ -3804,8 +3804,7 @@
                 "id": 730,
                 "last_updated": "2023-08-23",
                 "multimachine": 2
-              
-             }
+            }
         },
         {
             "type": "Feature",
@@ -3898,7 +3897,7 @@
                 "id": 5006,
                 "paywall": true,
                 "last_updated": "2023-08-23"
-             }
+            }
         },
         {
             "type": "Feature",
@@ -3950,7 +3949,7 @@
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [          
+                "coordinates": [
                     8.807630734199602,
                     53.07604407204777
                 ]
@@ -3998,8 +3997,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  10.98362286627801,
-                  50.26453700927211
+                    10.98362286627801,
+                    50.26453700927211
                 ]
             },
             "properties": {
@@ -4038,7 +4037,7 @@
                 "id": 6038,
                 "last_updated": "2023-08-25",
                 "paywall": true
-              }
+            }
         },
         {
             "type": "Feature",
@@ -4086,6 +4085,29 @@
                 "id": 6035,
                 "last_updated": "2023-08-25",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.545952089150688,
+                    47.39312459329
+                ]
+            },
+            "properties": {
+                "name": "Test",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 108, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39312459329,
+                "longitude": 8.545952089150688,
+                "id": 6039,
+                "last_updated": "2023-08-25"
             }
         }
     ]
