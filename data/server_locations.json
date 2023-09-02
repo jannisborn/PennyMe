@@ -577,10 +577,10 @@
             },
             "properties": {
                 "name": "Aquarium of Niagara",
-                "active": true,
+                "active": false,
                 "area": "New York",
                 "address": "701 Whirpool St, Niagara Falls",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3594",
                 "internal_url": "null",
                 "latitude": "43.09431",
@@ -1010,52 +1010,6 @@
                 "latitude": "43.3644194",
                 "longitude": "-73.6992083",
                 "id": 3020,
-                "last_updated": "2023-05-25"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    14.5091629,
-                    46.05211569999999
-                ]
-            },
-            "properties": {
-                "name": "Unique gift shop/Slovenska darila",
-                "active": false,
-                "area": "Slovenia",
-                "address": "Petkovkovo nabreje, Ljubljana",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=372591",
-                "internal_url": "null",
-                "latitude": "46.05211569999999",
-                "longitude": "14.5091629",
-                "id": 5908,
-                "last_updated": "2023-05-25"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    14.5091629,
-                    46.05211569999999
-                ]
-            },
-            "properties": {
-                "name": "Unique gift shop/Slovenska darila",
-                "active": false,
-                "area": "Slovenia",
-                "address": "Petkovkovo nabreje, Ljubljana",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=372896",
-                "internal_url": "null",
-                "latitude": "46.05211569999999",
-                "longitude": "14.5091629",
-                "id": 5909,
                 "last_updated": "2023-05-25"
             }
         },
@@ -3804,8 +3758,7 @@
                 "id": 730,
                 "last_updated": "2023-08-23",
                 "multimachine": 2
-              
-             }
+            }
         },
         {
             "type": "Feature",
@@ -3898,7 +3851,7 @@
                 "id": 5006,
                 "paywall": true,
                 "last_updated": "2023-08-23"
-             }
+            }
         },
         {
             "type": "Feature",
@@ -3950,7 +3903,7 @@
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [          
+                "coordinates": [
                     8.807630734199602,
                     53.07604407204777
                 ]
@@ -3998,8 +3951,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                  10.98362286627801,
-                  50.26453700927211
+                    10.98362286627801,
+                    50.26453700927211
                 ]
             },
             "properties": {
@@ -4038,7 +3991,7 @@
                 "id": 6038,
                 "last_updated": "2023-08-25",
                 "paywall": true
-              }
+            }
         },
         {
             "type": "Feature",
@@ -4086,6 +4039,215 @@
                 "id": 6035,
                 "last_updated": "2023-08-25",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.705067,
+                    40.443806
+                ]
+            },
+            "properties": {
+                "name": "Timpanogos Cave National Monument",
+                "active": false,
+                "area": "Utah",
+                "address": "2038 W. Alpine Loop Road, American Fork",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=366247",
+                "internal_url": "null",
+                "latitude": "40.443806",
+                "longitude": "-111.705067",
+                "id": 5397,
+                "last_updated": "2023-08-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.551913,
+                    48.093381
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hellabrunn Munich - Polar bears",
+                "active": true,
+                "area": "Germany",
+                "address": "Schlichtweg 11, 81543 München, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343393",
+                "internal_url": "null",
+                "latitude": "48.093381",
+                "longitude": "11.551913",
+                "id": 5166,
+                "last_updated": "2023-08-24",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.557955,
+                    48.098576
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hellabrunn München - Aquarium",
+                "active": true,
+                "area": "Germany",
+                "address": "Tierparkstraße 30, 81543 München, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.098576",
+                "longitude": "11.557955",
+                "id": 5167,
+                "last_updated": "2023-08-24",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.8888286,
+                    48.2906572
+                ]
+            },
+            "properties": {
+                "name": "Therme Erding",
+                "active": true,
+                "area": "Germany",
+                "address": "Thermenallee 1-5, 85435 Erding",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=58146",
+                "internal_url": "null",
+                "latitude": "48.2906572",
+                "longitude": "11.8888286",
+                "id": 483,
+                "last_updated": "2023-08-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0796112,
+                    53.9586547
+                ]
+            },
+            "properties": {
+                "name": "The Golden Fleece",
+                "active": false,
+                "area": "England",
+                "address": "16 Pavement, North Yorkshire",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=257460",
+                "internal_url": "null",
+                "latitude": "53.9586547",
+                "longitude": "-1.0796112",
+                "id": 1528,
+                "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.615175200528988,
+                    47.67563828758587
+                ]
+            },
+            "properties": {
+                "name": "Rheinfall gift shop (near parking)",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Schloss Laufen, 8447 Laufen-Uhwiesen, Switzerland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=76288",
+                "internal_url": "null",
+                "latitude": 47.67563828758587,
+                "longitude": 8.615175200528988,
+                "id": 6039,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.7395994110005988,
+                    52.608168837005145
+                ]
+            },
+            "properties": {
+                "name": "Britannia Pier",
+                "active": true,
+                "area": "United Kingdom",
+                "address": "Marine Parade Great Yarmouth, NR30 2EH",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 52.608168837005145,
+                "longitude": 1.7395994110005988,
+                "id": 6040,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0800339250176008,
+                    53.95753822152252
+                ]
+            },
+            "properties": {
+                "name": "The hole in wand",
+                "active": true,
+                "area": "United Kingdom",
+                "address": "10 Coppergate Walk, York YO1 9NT, UK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=411137",
+                "internal_url": "null",
+                "latitude": 53.95753822152252,
+                "longitude": -1.0800339250176008,
+                "id": 6041,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.61443231407488,
+                    47.67714341193487
+                ]
+            },
+            "properties": {
+                "name": "Rheinfall sidewalk (downstairs)",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Schloss Laufen, 8447 Laufen-Uhwiesen, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.67714341193487,
+                "longitude": 8.61443231407488,
+                "id": 6042,
+                "last_updated": "2023-09-03"
             }
         }
     ]
