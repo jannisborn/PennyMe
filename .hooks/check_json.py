@@ -14,4 +14,6 @@ try:
         data = json.load(f)
 except Exception as e:
     sys.exit(1)
+print('SUCCESS!')
 sys.exit(0)
+
