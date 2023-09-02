@@ -5,4 +5,4 @@ repos:
         name: Check JSON file
         entry: python .hooks/check_json.py
         language: system
-        types: [python]
+        files: '\.(json|py)$'
