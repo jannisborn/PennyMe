@@ -4249,6 +4249,53 @@
                 "id": 6042,
                 "last_updated": "2023-09-03"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.954746026600679,
+                    50.42910751377642
+                ]
+            },
+            "properties": {
+                "name": "Fichtelberg",
+                "active": true,
+                "area": "Germany",
+                "address": "Fichtelbergstraße 35, 09484 Oberwiesenthal, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.42910751377642,
+                "longitude": 12.954746026600679,
+                "id": 6043,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.985587894841527,
+                    51.3478081826263
+                ]
+            },
+            "properties": {
+                "name": "Grand Pier Weston Super Mare",
+                "active": true,
+                "area": "United Kingdom",
+                "address": "Weston-super-Mare BS23 1AL, UK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=102082",
+                "internal_url": "null",
+                "latitude": 51.3478081826263,
+                "longitude": -2.985587894841527,
+                "id": 6044,
+                "last_updated": "2023-09-03",
+                "paywall": true
+            }
         }
     ]
 }
