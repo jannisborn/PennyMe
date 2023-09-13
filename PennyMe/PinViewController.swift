@@ -276,7 +276,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     func uploadCommentWithTimeout(_ comment: String) {
         
-        let uploadTimeout: TimeInterval = 5
+        let uploadTimeout: TimeInterval = 10
         var task: URLSessionDataTask?
         
         // submit request to backend
