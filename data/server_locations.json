@@ -4884,6 +4884,52 @@
                 "id": 6058,
                 "last_updated": "2023-09-17"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.55117919999999,
+                    33.7706534
+                ]
+            },
+            "properties": {
+                "name": "Six Flags Over Georgia",
+                "active": false,
+                "area": "Georgia",
+                "address": "275 Riverside Parkway SW, Austell",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1907",
+                "internal_url": "null",
+                "latitude": "33.7706534",
+                "longitude": "-84.55117919999999",
+                "id": 1627,
+                "last_updated": "2023-09-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.726109,
+                    51.531662
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Adventure",
+                "active": false,
+                "area": "England",
+                "address": "Marine Parade, Town Centre,, ESSEX - Southend on Sea",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=79799",
+                "internal_url": "null",
+                "latitude": "51.531662",
+                "longitude": "0.726109",
+                "id": 1404,
+                "last_updated": "2023-09-17"
+            }
         }
     ]
 }
