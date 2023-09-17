@@ -48,6 +48,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
       }
     }
     
+    // Vars for the image/comment upload
+    private var activityIndicator: UIActivityIndicatorView?
+    private var loadingView: UIView?
+    private var loadingLabel: UILabel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
@@ -249,26 +254,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 self.commentTextField.attributedPlaceholder = NSAttributedString(
                     string: "Your comment will be shown soon!")
                 
-                // show alert that the comment was added
-                let alertController = UIAlertController(title: "Comment added!", message: "Please reopen the machine view to see your comment.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-                // submit request to backend
-                if let request = "/add_comment?comment=\(comment!)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-                    let urlEncodedStringRequest = flaskURL + request
-                    
-                    if let url = URL(string: urlEncodedStringRequest){
-                        let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
-                            if let error = error {
-                                print("Error: \(error)")
-                                return
-                            }
-                        }
-                        task.resume()
-                    }
-                }
+                self.showLoadingView(withMessage: "Processing the comment...")
+                self.uploadCommentWithTimeout(comment!)
+
+
             }
         }
 
@@ -284,6 +273,66 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         self.present(alertController, animated: true, completion: nil)
         
 
+    }
+    func uploadCommentWithTimeout(_ comment: String) {
+        
+        let uploadTimeout: TimeInterval = 10
+        var task: URLSessionDataTask?
+        
+        // submit request to backend
+        let requestString = "/add_comment?comment=\(comment)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let urlEncodedStringRequest = flaskURL + requestString!
+        if let url = URL(string: urlEncodedStringRequest){
+            let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+            // Create a URLSessionDataTask to send the request
+                guard let self = self else { return }
+                
+                // Hide the loading view first
+                DispatchQueue.main.async {
+                    self.hideLoadingView()
+                }
+                
+                // Cancel the task if it's still running
+                task?.cancel()
+                
+                if let error = error {
+                    print("Error: \(error)")
+                    DispatchQueue.main.async {
+                        self.handleResponse(type: "comment", success: false, error: error)
+                    }
+                    return
+                }
+                
+                // If the request is successful, display the success message
+                DispatchQueue.main.async {
+                    self.handleResponse(type: "comment", success: true, error: nil)
+                }
+            }
+            task.resume()
+            // Set up a timer to handle the upload timeout
+            var timeoutTimer: DispatchSourceTimer?
+            timeoutTimer = DispatchSource.makeTimerSource()
+            timeoutTimer?.schedule(deadline: .now() + uploadTimeout)
+            timeoutTimer?.setEventHandler { [weak self] in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.hideLoadingView() // Hide the loading view in case of timeout
+                    // Display a failure message or take appropriate action
+                    print("Upload timed out")
+                    // You can also show an alert to the user here
+                    
+                    // Cancel the task if it's still running
+                    task.cancel()
+                }
+                // Cancel the timer
+                timeoutTimer?.cancel()
+            }
+            timeoutTimer?.resume()
+        } else {
+        print("Invalid URL")
+        hideLoadingView()
+        }
     }
     
     func chooseImage() {
@@ -317,50 +366,149 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func showLoadingView(withMessage message: String) {
+        // Create the loading view
+        loadingView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
+        loadingView?.center = view.center
+        loadingView?.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+        loadingView?.layer.cornerRadius = 10
+        // Create the loading label
+        loadingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
+        loadingLabel?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingView!.bounds.midY - 30)
+        loadingLabel?.text = message
+        loadingLabel?.textColor = .white
+        loadingLabel?.textAlignment = .center
+        loadingLabel?.numberOfLines = 0
+        loadingView?.addSubview(loadingLabel!)
+        // Create and start animating the activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingView!.bounds.midY + 20)
+        activityIndicator?.startAnimating()
+        loadingView?.addSubview(activityIndicator!)
+        view.addSubview(loadingView!)
+    }
+    
+    func hideLoadingView() {
+        // Remove or hide the loading view (as in your original code)
+        loadingView?.removeFromSuperview()
+    }
+    
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-
-//         Convert the image to a data object
-            guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-                print("Failed to convert image to data")
-                return
-            }
         
-            dismiss(animated:true, completion: nil)
-            // show success alert
-            let alertController = UIAlertController(title: "Upload Successful", message: "Please reopen the machine view to see your image.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
+        showLoadingView(withMessage: "Processing the image...")
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        // Dismiss the image picker
+        dismiss(animated: true) {
+            // Call a function to upload the image with a timeout
+            self.uploadImageWithTimeout(image)
+        }
+    }
+        
 
-            // call flask method to upload the image
-            guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
+    func uploadImageWithTimeout(_ image: UIImage) {
+        let uploadTimeout: TimeInterval = 5
+        var task: URLSessionDataTask?
+        
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Failed to convert image to data")
+            hideLoadingView()
+            return
+        }
+    
+
+        // call flask method to upload the image
+        guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        // Add the image data to the request body
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        let body = NSMutableData()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+        body.append(imageData)
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        request.httpBody = body as Data
+        
+        // Create a URLSessionDataTask to send the request
+        task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            // Hide the loading view first
+            DispatchQueue.main.async {
+                self.hideLoadingView()
+            }
+            // Cancel the task if it's still running
+            task?.cancel()
+
+            if let error = error {
+                print("Error: \(error)")
+                DispatchQueue.main.async {
+                    self.handleResponse(type: "image", success: false, error: error)
+                }
                 return
             }
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-
-            // Add the image data to the request body
-            let boundary = UUID().uuidString
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            let body = NSMutableData()
-            body.append("--\(boundary)\r\n".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
-            body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
-            body.append(imageData)
-            body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-            request.httpBody = body as Data
-
-            // Create a URLSessionDataTask to send the request
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                    return
-                }
+            // If the request is successful, display the success message
+            DispatchQueue.main.async {
+                self.handleResponse(type: "image", success: true, error: nil)
             }
-            task.resume()
-
+        }
+        task?.resume()
+        // Set up a timer to handle the upload timeout
+        var timeoutTimer: DispatchSourceTimer?
+        timeoutTimer = DispatchSource.makeTimerSource()
+        timeoutTimer?.schedule(deadline: .now() + uploadTimeout)
+        timeoutTimer?.setEventHandler { [weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.hideLoadingView() // Hide the loading view in case of timeout
+                // Display a failure message or take appropriate action
+                print("Upload timed out")
+                // Cancel the task if it's still running
+                task?.cancel()
+            }
+            // Cancel the timer
+            timeoutTimer?.cancel()
+        }
+        timeoutTimer?.resume()
+    }
+    
+    private func handleResponse(type: String, success: Bool, error: Error?) {
+        activityIndicator?.stopAnimating()
+        loadingView?.removeFromSuperview()
+        if success {
+            showAlert(title: "Success", message: "Upload successful! Please reopen the machine view to see your \(type).")
+        } else {
+            var errorMessage = "An error occurred"
+            if let urlError = error as? URLError {
+                switch urlError.code {
+                case .timedOut:
+                    errorMessage = "Request timed out. Please check your internet connection and try again."
+                case .notConnectedToInternet:
+                    errorMessage = "No internet connection. Please connect to the internet and try again."
+                case .cancelled:
+                    errorMessage = "Request timed out. Please check your internet connection and try again."
+                default:
+                    errorMessage = "Network error: \(urlError.localizedDescription)"
+                }
+            } else {
+                errorMessage = "Unknown error: \(error?.localizedDescription ?? "No additional details")"
+            }
+            showAlert(title: "Error", message: errorMessage)
+        }
+    }
+    private func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 
 
@@ -384,7 +532,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 let data = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath!.absoluteString), options:.mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 currentStatusDict = jsonResult as! [[String:String]]
-//                print("Read json successfully for changing status", jsonResult)
                 // remove file
                 try fileManager.removeItem(atPath: jsonFilePath!.absoluteString)
             }
@@ -395,7 +542,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
         // update value
         currentStatusDict[0][machineid] = new_status
-//        print("after update value", currentStatusDict)
         
         // creating JSON out of the above array
         var jsonData: NSData!
@@ -416,7 +562,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             }
             let file = try FileHandle(forWritingTo: jsonFilePath!)
             file.write(jsonData as Data)
-//            print("JSON data was written to teh file successfully!")
         } catch let error as NSError {
             print("Couldn't write to file: \(error.localizedDescription)")
         }
