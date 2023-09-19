@@ -27,7 +27,7 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Customize your map! \n This version includes new options to display pins on the map. Up to now, pins where clustered together when zooming out. From now on, you will see *all* pins on the map by default. Please also note that retired machines are now hidden by default. Tap the Settings button and play with the new \"map options\".", preferredStyle: .alert)
+            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "This version includes various small usability improvements. Pop-ups should be more clear now. When you create a new machine (via long-tap on the map) the pop-ups are more informative.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }

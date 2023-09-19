@@ -58,7 +58,7 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
-        text = title! + locationName
+        
         // multimachine - add if exists
         if let multimachine_val = properties["multimachine"] as? Int {
             multimachine = multimachine_val
@@ -72,6 +72,7 @@ class Artwork: NSObject, MKAnnotation {
             paywall = false
         }
         
+        text = title! + locationName + id
         super.init()
     }
     

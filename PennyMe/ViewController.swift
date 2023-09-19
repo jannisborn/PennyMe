@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Contacts
+import SwiftUI
 
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
@@ -17,7 +18,7 @@ let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
 @available(iOS 13.0, *)
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var ownLocation: UIButton!
@@ -62,6 +63,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let satelliteButton = UIButton(frame: CGRect(x: 10, y: 510, width: 50, height: 50))
     @IBOutlet weak var mapType : UISegmentedControl!
 
+    // new machine annotation
+    var newMachineAnnotation: [MKAnnotation] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +88,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         navigationItem.searchController = searchController
         // Disable search bar if view is changed
         definesPresentationContext = true
-        
 
         // Check and enable localization (blue dot)
         checkLocationServices()
@@ -109,11 +111,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
         addMapTrackingButton()
         addSettingsButton()
         toggleMapTypeButton()
-    
+        
+        // long gesture recognizer
+        let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        PennyMap.addGestureRecognizer(lpgr)
+
         // Check whether version is new
         VersionManager.shared.showVersionInfoAlertIfNeeded()
     }
     
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        let location = gestureRecognizer.location(in: PennyMap)
+        let coordinate = PennyMap.convert(location, toCoordinateFrom: PennyMap)
+        let annotation = NewMachine(coordinate: coordinate)
+        PennyMap.addAnnotation(annotation)
+        if gestureRecognizer.state != UIGestureRecognizer.State.ended {
+            PennyMap.selectAnnotation(annotation, animated: true)
+        }
+        self.newMachineAnnotation.append(annotation)
+    }
+    
+    func removeNewMachinePin() -> Void {
+        if !newMachineAnnotation.isEmpty {
+            PennyMap.removeAnnotations(self.newMachineAnnotation)
+            self.newMachineAnnotation = []
+        }
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // each time the view appears, check colours of the pins
@@ -129,6 +156,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             SettingsViewController.clusterHasChanged = false
 
         }
+        // always remove pins for new machines if there are any
+        removeNewMachinePin()
         
     }
     
@@ -404,10 +433,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Implements the search itself
-    func filterContentForSearchText(_ searchText: String,
-                                    category: Artwork? = nil) {
-    filteredArtworks = artworks.filter { (artwork: Artwork) -> Bool in
-        return artwork.text.lowercased().contains(searchText.lowercased())
+    func filterContentForSearchText(_ searchText: String, category: Artwork? = nil) {
+        filteredArtworks = artworks.filter {
+            (artwork: Artwork) -> Bool in return artwork.text.lowercased().contains(searchText.lowercased())
         }
         filteredArtworks = filteredArtworks.sorted(by: {$0.title! < $1.title! })
         
@@ -468,12 +496,22 @@ extension ViewController: MKMapViewDelegate {
     }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {
-        guard let annotation = (sender.view as? MKAnnotationView)?.annotation as? Artwork else { return }
-
-        let selectedLocation = annotation.title
-        // set selected pin to pass it to detail VC
-        self.selectedPin = annotation
-        self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        guard let annotation = (sender.view as? MKAnnotationView)?.annotation  else {return}
+        // first option: it's a new machine pin - present form
+        if let newmachine = annotation as? NewMachine {
+            if #available(iOS 14.0, *) {
+                let swiftUIViewController = UIHostingController(rootView: RequestFormView(coordinate: newmachine.coordinate)
+                )
+                present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
+                
+            }
+        // second option: it's a regular machine
+        } else if let artworkAnnotation = annotation as? Artwork {
+            let selectedLocation = artworkAnnotation.title
+            // set selected pin to pass it to detail VC
+            self.selectedPin = artworkAnnotation
+            self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        } else {return}
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
@@ -666,7 +704,7 @@ extension ViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
     
-    // Display the penny pin options and execture the search only if a string is entered
+    // Display the penny pin options and execute the search only if a string is entered
     // Makes sure that list is not displayed if cancel is pressed
     if searchBar.text!.count > 0 {
         filterContentForSearchText(searchBar.text!)
@@ -689,19 +727,20 @@ extension ViewController: UISearchBarDelegate {
 // Table with search results
 @available(iOS 13.0, *)
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "location")
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let artwork: Artwork
         if isFiltering {
-          artwork = filteredArtworks[indexPath.row]
+            artwork = filteredArtworks[indexPath.row]
         } else {
-          artwork = artworks[indexPath.row]
+            artwork = artworks[indexPath.row]
         }
         cell.textLabel?.text = artwork.title
         cell.detailTextLabel?.text = artwork.locationName
+        // Set the custom color for the cell based on the artwork color
+        cell.backgroundColor = artwork.markerTintColor.withAlphaComponent(0.15)
         return cell
     }
     

@@ -11,7 +11,7 @@ import MapKit
 
 var FOUNDIMAGE : Bool = false
 
-let flaskURL = "http://37.120.179.15:5000/"
+let flaskURL = "http://37.120.179.15:6006/"
 let imageURL = "http://37.120.179.15:8000/"
 
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -186,7 +186,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
         else if indexPath.section == 4{
             //Open the website when you click on the link.
-            UIApplication.shared.open(URL(string: pinData.link)!)
+            if !pinData.link.contains("http") {
+                showConfirmationMessage(message: "Sorry! The machine is not available on pennycollector.com!", duration: 2)
+            } else {
+                UIApplication.shared.open(URL(string: pinData.link)!)
+            }
         }
         else if indexPath.section == 5{
             let mailtostring = String(
@@ -285,7 +289,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     func chooseImage() {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             // Create the alert controller
-            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload only images that are strictly related to penny machines. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload an image of the penny machine, not just an image of a coin. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
 
             // Create the OK action
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) in

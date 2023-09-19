@@ -6,8 +6,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    10.008550,
-                    53.597140
+                    10.00855,
+                    53.59714
                 ]
             },
             "properties": {
@@ -18,8 +18,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": "53.597140",
-                "longitude": "10.008550",
+                "latitude": "53.59714",
+                "longitude": "10.00855",
                 "id": 6003,
                 "last_updated": "2022-12-05"
             }
@@ -577,10 +577,10 @@
             },
             "properties": {
                 "name": "Aquarium of Niagara",
-                "active": true,
+                "active": false,
                 "area": "New York",
                 "address": "701 Whirpool St, Niagara Falls",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3594",
                 "internal_url": "null",
                 "latitude": "43.09431",
@@ -833,8 +833,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -119.214130,
-                    34.256210
+                    -119.21413,
+                    34.25621
                 ]
             },
             "properties": {
@@ -845,8 +845,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=27731",
                 "internal_url": "null",
-                "latitude": "34.256210",
-                "longitude": "-119.214130",
+                "latitude": "34.25621",
+                "longitude": "-119.21413",
                 "id": 4885,
                 "last_updated": "2023-05-15"
             }
@@ -856,7 +856,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -82.952720,
+                    -82.95272,
                     39.716177
                 ]
             },
@@ -869,7 +869,7 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=329168",
                 "internal_url": "null",
                 "latitude": "39.716177",
-                "longitude": "-82.952720",
+                "longitude": "-82.95272",
                 "id": 1942,
                 "last_updated": "2023-05-20"
             }
@@ -886,7 +886,7 @@
             "properties": {
                 "name": "The Pentagon Visitor Center",
                 "active": true,
-                "area": "Virgina",
+                "area": "Virginia",
                 "address": "The Pentagon, Arlington",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=104518",
@@ -1018,52 +1018,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    14.5091629,
-                    46.05211569999999
-                ]
-            },
-            "properties": {
-                "name": "Unique gift shop/Slovenska darila",
-                "active": false,
-                "area": "Slovenia",
-                "address": "Petkovkovo nabreje, Ljubljana",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=372591",
-                "internal_url": "null",
-                "latitude": "46.05211569999999",
-                "longitude": "14.5091629",
-                "id": 5908,
-                "last_updated": "2023-05-25"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    14.5091629,
-                    46.05211569999999
-                ]
-            },
-            "properties": {
-                "name": "Unique gift shop/Slovenska darila",
-                "active": false,
-                "area": "Slovenia",
-                "address": "Petkovkovo nabreje, Ljubljana",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=372896",
-                "internal_url": "null",
-                "latitude": "46.05211569999999",
-                "longitude": "14.5091629",
-                "id": 5909,
-                "last_updated": "2023-05-25"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -82.2485749,
                     35.4397021
                 ]
@@ -1093,10 +1047,10 @@
             },
             "properties": {
                 "name": "London Transport Museum",
-                "active": false,
+                "active": true,
                 "area": "England",
                 "address": "Covent Garden Piazza, London WC2E 7BB",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=208567",
                 "internal_url": "null",
                 "latitude": "51.5119054",
@@ -1479,7 +1433,7 @@
                 "type": "Point",
                 "coordinates": [
                     8.053941,
-                    46.659810
+                    46.65981
                 ]
             },
             "properties": {
@@ -1490,7 +1444,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=239193",
                 "internal_url": "null",
-                "latitude": "46.659810",
+                "latitude": "46.65981",
                 "longitude": "8.053941",
                 "id": 716,
                 "last_updated": "2023-07-16"
@@ -1555,7 +1509,7 @@
                 "name": "Golden Tours Waterloo Branch ",
                 "active": false,
                 "area": "England",
-                "address": "York Rd, Elizabeth House,Unit 31 Visitor Centre  , LONDON - Waterloo",
+                "address": "York Rd, Elizabeth House, Unit 31 Visitor Centre, London",
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=325503",
                 "internal_url": "null",
@@ -2164,6 +2118,2700 @@
                 "longitude": "-117.1940022",
                 "id": 4783,
                 "last_updated": "2023-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.025797,
+                    38.92101
+                ]
+            },
+            "properties": {
+                "name": "Crystal Reservoir Gift Shop Pikes Peak Mountain",
+                "active": false,
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=6650",
+                "internal_url": "null",
+                "latitude": "38.92101",
+                "longitude": "-105.025797",
+                "id": 1920,
+                "last_updated": "2023-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.042649,
+                    38.840653
+                ]
+            },
+            "properties": {
+                "name": "Summit House Gift Shop Pikes Peak Mountain",
+                "active": false,
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452",
+                "internal_url": "null",
+                "latitude": "38.840653",
+                "longitude": "-105.042649",
+                "id": 1922,
+                "last_updated": "2027-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.07302,
+                    38.8756
+                ]
+            },
+            "properties": {
+                "name": "Gift Shop at Glen Cove (Pikes Peak Mountain)",
+                "active": false,
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=6651",
+                "internal_url": "null",
+                "latitude": "38.8756",
+                "longitude": "-105.07302",
+                "id": 1921,
+                "last_updated": "2027-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.836092,
+                    47.930266
+                ]
+            },
+            "properties": {
+                "name": "Neusiedl am See",
+                "active": true,
+                "area": "Austria",
+                "address": "Seestrasse, 7100 Neusiedl am See, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "16.836092",
+                "longitude": "47.930266",
+                "id": 6012,
+                "last_updated": "2023-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.7185596,
+                    43.65341340000001
+                ]
+            },
+            "properties": {
+                "name": "Grand Teton National Park - Craig Thomas Discover & Visitor Center",
+                "active": true,
+                "area": "Wyoming",
+                "address": "1 Teton Park Rd, Moose, WY 83012, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=112303",
+                "internal_url": "null",
+                "latitude": "43.65341340000001",
+                "longitude": "-110.7185596",
+                "id": 3117,
+                "multimachine": 2,
+                "last_updated": "2023-07-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.579208,
+                    36.902983
+                ]
+            },
+            "properties": {
+                "name": "Cumbres Mall",
+                "active": true,
+                "area": "New Mexico",
+                "address": "493 Terrace Ave, Chama, NM 87520, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=137052",
+                "internal_url": "null",
+                "latitude": "36.902983",
+                "longitude": "-106.579208",
+                "id": 4919,
+                "last_updated": "2023-07-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.703436,
+                    44.975659
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone - Mammoth General Store",
+                "active": false,
+                "area": "Wyoming",
+                "address": "315A Grand Loop Rd, Yellowstone National Park, WY 82190, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=369286",
+                "internal_url": "null",
+                "latitude": "44.975659",
+                "longitude": "-110.703436",
+                "id": 3124,
+                "last_updated": "2023-07-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.099376,
+                    44.65901618
+                ]
+            },
+            "properties": {
+                "name": "Eagle's Store West Yellowstone",
+                "active": true,
+                "area": "Montana",
+                "address": "3 N Canyon St, West Yellowstone, MT 59758, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.65901618264455",
+                "longitude": "-111.0993760354300",
+                "id": 6013,
+                "last_updated": "2023-07-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.092422,
+                    46.7799618
+                ]
+            },
+            "properties": {
+                "name": "Lake Superior Maritime Visitor Center",
+                "active": true,
+                "area": "Montana",
+                "address": "600 Canal Park Dr, Duluth, MN 55802, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.77996181823699",
+                "longitude": "-92.0924220799564",
+                "id": 6014,
+                "last_updated": "2023-07-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.099136,
+                    44.656336
+                ]
+            },
+            "properties": {
+                "name": "Grizzly and Wolf Discovery Center",
+                "active": true,
+                "area": "Montana",
+                "address": "201 South Canyon Street, West Yellowstone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3315",
+                "internal_url": "null",
+                "latitude": "44.656336",
+                "longitude": "-111.099136",
+                "id": 2978,
+                "last_updated": "2023-07-24",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.8025109,
+                    43.0841472
+                ]
+            },
+            "properties": {
+                "name": "Truck Towne Plaza Center",
+                "active": false,
+                "area": "South Dakota",
+                "address": "47018 SD-46, Beresford",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=380713",
+                "internal_url": "null",
+                "latitude": "43.0841472",
+                "longitude": "-96.8025109",
+                "id": 5310,
+                "last_updated": "2023-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.900353,
+                    43.8211949
+                ]
+            },
+            "properties": {
+                "name": "Badlands Range Store",
+                "active": true,
+                "area": "South Dakota",
+                "address": "21190 SD-240, Philip, SD 57567, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.82119488255879",
+                "longitude": "-101.90035296542767",
+                "id": 6015,
+                "last_updated": "2023-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.43716,
+                    47.07348
+                ]
+            },
+            "properties": {
+                "name": "Schlossbergbahn (tunnel)",
+                "active": true,
+                "area": "Austria",
+                "address": "Kriegssteig, 8010 Graz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.07348",
+                "longitude": "15.43716",
+                "id": 6016,
+                "last_updated": "2023-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.424503,
+                    40.5022517
+                ]
+            },
+            "properties": {
+                "name": "Heber Valley Railroad",
+                "active": false,
+                "area": "Utah",
+                "address": "450 South 600 West, 84032 Heber City",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1674",
+                "internal_url": "null",
+                "latitude": "40.5022517",
+                "longitude": "-111.424503",
+                "id": 2066,
+                "last_updated": "2023-07-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.415502,
+                    37.8081529
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Ripley's Believe it or Not",
+                "active": true,
+                "area": "California",
+                "address": "175 Jefferson St, San Francisco, CA 94133, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=49407",
+                "internal_url": "null",
+                "latitude": "37.8081529",
+                "longitude": "-122.415502",
+                "id": 5253,
+                "paywall": true,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4157026,
+                    37.8068447
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Bay City Bike",
+                "active": false,
+                "area": "California",
+                "address": "2661 Taylor St, San Francisco, CA 94133, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=187494",
+                "internal_url": "null",
+                "latitude": "37.8068447",
+                "longitude": "-122.4157026",
+                "id": 4816,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4063975,
+                    37.7936544
+                ]
+            },
+            "properties": {
+                "name": "Chinatown - Chinatown Kite Shop ",
+                "active": true,
+                "area": "California",
+                "address": "717 Grant Ave, San Francisco, CA 94108, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262688",
+                "internal_url": "null",
+                "latitude": "37.7936544",
+                "longitude": "-122.4063975",
+                "id": 4795,
+                "multimachine": 2,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4063959,
+                    37.7950842
+                ]
+            },
+            "properties": {
+                "name": "'Only In Chinatown' (gift shop)",
+                "active": true,
+                "area": "California",
+                "address": "864 Grant Ave, San Francisco, CA 94108, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=916",
+                "internal_url": "null",
+                "latitude": "37.7950842",
+                "longitude": "-122.4063959",
+                "id": 4797,
+                "multimachine": 2,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4065965,
+                    37.7950301
+                ]
+            },
+            "properties": {
+                "name": "Chinatown - Heart of Shanghai (gift shop)",
+                "active": true,
+                "area": "California",
+                "address": "857 Grant Ave, San Francisco, CA 94108, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=154262",
+                "internal_url": "null",
+                "latitude": "37.7950301",
+                "longitude": "-122.4065965",
+                "id": 5251,
+                "multimachine": 5,
+                "last_updated": "2022-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1724633,
+                    36.1030054
+                ]
+            },
+            "properties": {
+                "name": "M&M's World",
+                "active": false,
+                "area": "Nevada",
+                "address": "3785 Las Vegas Boulevard South, Las Vegas",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2809",
+                "internal_url": "null",
+                "latitude": "36.1030054",
+                "longitude": "-115.1724633",
+                "id": 4515,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4159684,
+                    37.8093037
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Musee Mecanique Museum",
+                "active": true,
+                "area": "California",
+                "address": "Pier 45, San Francisco, CA 94133, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=632",
+                "internal_url": "null",
+                "latitude": "37.8093037",
+                "longitude": "-122.4159684",
+                "id": 4813,
+                "multimachine": 13,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.424503,
+                    40.5022517
+                ]
+            },
+            "properties": {
+                "name": "Heber Valley Railroad",
+                "active": false,
+                "area": "Utah",
+                "address": "450 South 600 West, Heber City",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1674",
+                "internal_url": "null",
+                "latitude": "40.5022517",
+                "longitude": "-111.424503",
+                "id": 2066,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.267962,
+                    29.933037
+                ]
+            },
+            "properties": {
+                "name": "Stuckey's",
+                "active": true,
+                "area": "Texas",
+                "address": "17498 Interstate 10 I-10, Exit, 838, Beaumont, TX 77705, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=342723",
+                "internal_url": "null",
+                "latitude": "29.933037",
+                "longitude": "-94.267962",
+                "id": 3659,
+                "last_updated": "2023-07-30",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.325406,
+                    39.5060124
+                ]
+            },
+            "properties": {
+                "name": "Tourist Trap Deep Creek Lake",
+                "active": true,
+                "area": "Maryland",
+                "address": "19895 Garrett Hwy, Oakland, MD 21550, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.5060124",
+                "longitude": "-79.325406",
+                "id": 6017,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.5558444,
+                    51.1480859
+                ]
+            },
+            "properties": {
+                "name": "Banff Gondola to Sulphur Mountain",
+                "active": true,
+                "area": "Canada",
+                "address": "100 Mountain Ave, Banff, AB T1L 1B2, Canada",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4260",
+                "internal_url": "null",
+                "latitude": "51.1480859",
+                "longitude": "-115.5558444",
+                "id": 4954,
+                "paywall": true,
+                "last_updated": "2023-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.2801847,
+                    43.3424366
+                ]
+            },
+            "properties": {
+                "name": "Michigan's Adventure Amusement Park",
+                "active": false,
+                "area": "Michigan",
+                "address": "4750 Whitehall Rd, Muskegon, MI 49445, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2799",
+                "internal_url": "null",
+                "latitude": "43.3424366",
+                "longitude": "-86.2801847",
+                "id": 2572,
+                "last_updated": "2023-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.5123912,
+                    51.4051002
+                ]
+            },
+            "properties": {
+                "name": "Thorpe Park",
+                "active": false,
+                "area": "England",
+                "address": "Staines Rd, Chertsey KT16 8PN, United Kingdom",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=14617",
+                "internal_url": "null",
+                "latitude": "51.4051002",
+                "longitude": "-0.5123912",
+                "id": 1563,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3951098,
+                    33.763382
+                ]
+            },
+            "properties": {
+                "name": "Georgia Aquarium",
+                "active": false,
+                "area": "Georgia",
+                "address": "225 Baker Street, Atlanta",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=13967",
+                "internal_url": "null",
+                "latitude": "33.763382",
+                "longitude": "-84.3951098",
+                "id": 1619,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.4459262,
+                    35.4307239
+                ]
+            },
+            "properties": {
+                "name": "Great Smoky Mountains Railroad Retail Store & Train Museum",
+                "active": true,
+                "area": "North Carolina",
+                "address": "100 Greenlee St, Bryson City, NC 28713, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=26517",
+                "internal_url": "null",
+                "latitude": "35.4307239",
+                "longitude": "-83.4459262",
+                "id": 4088,
+                "multimachine": 2,
+                "last_updated": "2023-08-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2425191,
+                    32.6735426
+                ]
+            },
+            "properties": {
+                "name": "Cabrillo National Monument",
+                "active": true,
+                "area": "California",
+                "address": "1800 Cabrillo Memorial Drive, San Diego, CA 92106, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52109",
+                "internal_url": "null",
+                "latitude": "32.6735426",
+                "longitude": "-117.2425191",
+                "multimachine": 2,
+                "paywall": true,
+                "id": 4773,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.086904,
+                    41.3874555
+                ]
+            },
+            "properties": {
+                "name": "USS Natilus / Submarine Force Museum",
+                "active": false,
+                "area": "Connecticut",
+                "address": "Naval Submarine Base New London, 1 Crystal Lake Rd, Groton, CT 06340, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1458",
+                "internal_url": "null",
+                "latitude": "41.3874555",
+                "longitude": "-72.086904",
+                "id": 1689,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.2345458,
+                    49.4184667
+                ]
+            },
+            "properties": {
+                "name": "Office de Tourisme de Honfleur",
+                "active": false,
+                "area": "France",
+                "address": "Quai Lepaulmier, 14600 Honfleur",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=109468",
+                "internal_url": "null",
+                "latitude": "49.4184667",
+                "longitude": "0.2345458",
+                "id": 86,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.0221934,
+                    35.0277544
+                ]
+            },
+            "properties": {
+                "name": "Meteor Crater, The Museum of Astrogeology",
+                "active": false,
+                "area": "Arizona",
+                "address": "Exit 233 East off I-40, Winslow",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=351",
+                "internal_url": "null",
+                "latitude": "35.0277544",
+                "longitude": "-111.0221934",
+                "id": 2737,
+                "multimachine": 2,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7060382,
+                    45.5180102
+                ]
+            },
+            "properties": {
+                "name": "Washington Park - International Rose Test Garden (Rose Garden Store)",
+                "active": false,
+                "area": "Oregon",
+                "address": "850 SW Rose Garden Way, Portland",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=62810",
+                "internal_url": "null",
+                "latitude": "45.5180102",
+                "longitude": "-122.7060382",
+                "id": 4384,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.6205992,
+                    54.967017
+                ]
+            },
+            "properties": {
+                "name": "Life Science Centre",
+                "active": false,
+                "area": "England",
+                "address": "Times Square, Newcastle upon Tyne, TYNE & WEAR - Newcastle",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=190120",
+                "internal_url": "null",
+                "latitude": "54.967017",
+                "longitude": "-1.6205992",
+                "id": 1571,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.6248366,
+                    54.96911559999999
+                ]
+            },
+            "properties": {
+                "name": "Discovery Museum",
+                "active": false,
+                "area": "England",
+                "address": "Blandford Square, TYNE & WEAR -  Newcastle",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4261",
+                "internal_url": "null",
+                "latitude": "54.96911559999999",
+                "longitude": "-1.6248366",
+                "id": 1569,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1578917,
+                    39.8106132
+                ]
+            },
+            "properties": {
+                "name": "Children's Museum of Indianapolis",
+                "active": true,
+                "area": "Indiana",
+                "address": "3000 North Meridian Street, Indianapolis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2186",
+                "internal_url": "null",
+                "latitude": "39.8106132",
+                "longitude": "-86.1578917",
+                "id": 2266,
+                "last_updated": "2023-08-05",
+                "multimachine": 3,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1978917,
+                    39.8906132
+                ]
+            },
+            "properties": {
+                "name": "Indiana trailor",
+                "active": false,
+                "area": "Indiana",
+                "address": "Trailor travelling through Indiana",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=17204",
+                "internal_url": "null",
+                "latitude": "39.8906132",
+                "longitude": "-86.1978917",
+                "id": 2250,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.15813267991254,
+                    39.81106757061918
+                ]
+            },
+            "properties": {
+                "name": "Colts traveling children museum - lobby",
+                "active": true,
+                "area": "Indiana",
+                "address": "3000 N Meridian St, Indianapolis, IN 46208, US",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 39.81106757061918,
+                "longitude": -86.15813267991254,
+                "id": 6018,
+                "last_updated": "2023-08-05",
+                "paywall": "false"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.0221934,
+                    35.0277544
+                ]
+            },
+            "properties": {
+                "name": "Meteor Crater, The Museum of Astrogeology",
+                "active": false,
+                "area": "Arizona",
+                "address": "Exit 233 East off I-40, Winslow",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=351",
+                "internal_url": "null",
+                "latitude": "35.0277544",
+                "longitude": "-111.0221934",
+                "id": 2737,
+                "last_updated": "2023-08-05",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.692751,
+                    52.130516
+                ]
+            },
+            "properties": {
+                "name": "Flughafen Münster Osnabrück (FMO) - 2",
+                "active": true,
+                "area": "Germany",
+                "address": "Airportallee 1, 48268 Greven",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.130516",
+                "longitude": "7.692751",
+                "id": 587,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.92549919999999,
+                    32.7909936
+                ]
+            },
+            "properties": {
+                "name": "South Carolina Aquarium",
+                "active": true,
+                "area": "South Carolina",
+                "address": "100 Aquarium Wharf, Charleston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3101",
+                "internal_url": "null",
+                "latitude": "32.7909936",
+                "longitude": "-79.92549919999999",
+                "id": 2184,
+                "multimachine": 2,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.142154,
+                    36.169548
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Crazy Ely Western Village",
+                "active": false,
+                "area": "Nevada",
+                "address": "321 Fremont Street, Las Vegas",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=388167",
+                "internal_url": "null",
+                "latitude": "36.169548",
+                "longitude": "-115.142154",
+                "id": 4497,
+                "last_updated": "2023-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5678459,
+                    35.7991683
+                ]
+            },
+            "properties": {
+                "name": "Three Bears General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "2861 Parkway, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318213",
+                "internal_url": "null",
+                "latitude": "35.7991683",
+                "longitude": "-83.5678459",
+                "id": 4282,
+                "last_updated": "2023-08-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.324981747460556,
+                    51.61623604176483
+                ]
+            },
+            "properties": {
+                "name": "Schiffshebewerk Henrichenburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Hebewerk 26, 45731 Waltrop ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 51.61623604176483,
+                "longitude": 7.324981747460556,
+                "id": 6019,
+                "last_updated": "2023-08-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.4771196,
+                    51.4950472
+                ]
+            },
+            "properties": {
+                "name": "Westfalenpark Dortmund",
+                "active": true,
+                "area": "Germany",
+                "address": "An der Buschmühle 3",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=197176",
+                "internal_url": "null",
+                "latitude": "51.4950472",
+                "longitude": "7.4771196",
+                "paywall": true,
+                "id": 477,
+                "last_updated": "2023-08-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.578492210556622,
+                    48.135996181736594
+                ]
+            },
+            "properties": {
+                "name": "Herrschaftszeiten – Das Paulaner im Tal",
+                "active": true,
+                "area": "Germany",
+                "address": "Tal 12, 80331 München",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 48.135996181736594,
+                "longitude": 11.578492210556622,
+                "id": 6020,
+                "last_updated": "2023-08-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.10995,
+                    51.24126
+                ]
+            },
+            "properties": {
+                "name": "Zoo Wuppertal",
+                "active": true,
+                "area": "Germany",
+                "address": "Hubertusallee 30",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=210558",
+                "internal_url": "null",
+                "latitude": "51.24126",
+                "longitude": "7.10995",
+                "id": 645,
+                "last_updated": "2023-08-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.112364262779767,
+                    51.2408963866181
+                ]
+            },
+            "properties": {
+                "name": "Zoo Wuppertal 2 - Original Souvenirs (penguins)",
+                "active": true,
+                "area": "Germany",
+                "address": "Hubertusallee 30, 42117 Wuppertal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 51.2408963866181,
+                "longitude": 7.112364262779767,
+                "id": 6021,
+                "last_updated": "2023-08-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.110161,
+                    51.54385
+                ]
+            },
+            "properties": {
+                "name": "Zoom Erlebniswelt",
+                "active": true,
+                "area": "Germany",
+                "address": "Bleckstraße 64, Gelsenkirchen, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=193091",
+                "internal_url": "null",
+                "latitude": "51.543850",
+                "longitude": "7.110161",
+                "id": 492,
+                "last_updated": "2023-08-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.91915319019523,
+                    52.26363095986876
+                ]
+            },
+            "properties": {
+                "name": "Beelitz-Heilstätten Baum",
+                "active": true,
+                "area": "Germany",
+                "address": "Str. nach Fichtenwalde 13, 14547 Beelitz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 52.26363095986876,
+                "longitude": 12.91915319019523,
+                "id": 6022,
+                "last_updated": "2023-08-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9443247,
+                    38.9562465
+                ]
+            },
+            "properties": {
+                "name": "Powder House Ski & Snowboard",
+                "active": false,
+                "area": "California",
+                "address": "4045 Lake Tahoe Boulevard, South Lake Tahoe",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=282551",
+                "internal_url": "null",
+                "latitude": "38.9562465",
+                "longitude": "-119.9443247",
+                "id": 4875,
+                "last_updated": "2023-08-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.8357137,
+                    41.8328916
+                ]
+            },
+            "properties": {
+                "name": "Brookfield Zoo",
+                "active": true,
+                "area": "Illinois",
+                "address": "8400 31st St, Brookfield, IL 60513, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2106",
+                "internal_url": "null",
+                "latitude": "41.8328916",
+                "longitude": "-87.8357137",
+                "id": 1203,
+                "multimachine": 9,
+                "last_updated": "2023-08-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.555183,
+                    35.788432
+                ]
+            },
+            "properties": {
+                "name": "Try My Nuts",
+                "active": false,
+                "area": "Tennessee",
+                "address": "100 Old Mill Ave, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318206",
+                "internal_url": "null",
+                "latitude": "35.788432",
+                "longitude": "-83.555183",
+                "id": 4285,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.485234,
+                    41.8961598
+                ]
+            },
+            "properties": {
+                "name": "Prudenzi Simone Souvenir Market Emporium",
+                "active": false,
+                "area": "Italy",
+                "address": "Via Magnanapoli 5",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259790",
+                "internal_url": "null",
+                "latitude": "41.8961598",
+                "longitude": "12.485234",
+                "id": 967,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.38173092744259,
+                    40.62166658801588
+                ]
+            },
+            "properties": {
+                "name": "Bethlehem Gem Shop",
+                "active": true,
+                "area": "Pennsylvania",
+                "address": "550 Main St, Bethlehem, PA 18018, US",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 40.62166658801588,
+                "longitude": -75.38173092744259,
+                "id": 6023,
+                "last_updated": "2023-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.118062,
+                    53.448537
+                ]
+            },
+            "properties": {
+                "name": "Dangast Souvenir shop",
+                "active": true,
+                "area": "Germany",
+                "address": "Edo-Wiemken-Straße 57, 26316 Varel, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329562",
+                "internal_url": "null",
+                "latitude": "53.448537",
+                "longitude": "8.118062",
+                "id": 5697,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.23549,
+                    39.696617
+                ]
+            },
+            "properties": {
+                "name": "Private Roller - Brad Ream/ Kay Harpold",
+                "active": true,
+                "area": " Indiana",
+                "address": "4919 South Catlin Road, Rockville, Indiana",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186392",
+                "internal_url": "null",
+                "latitude": "39.696617",
+                "longitude": "-87.235490",
+                "id": 5535,
+                "multimachine": 4,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.597611513206037,
+                    50.360884087346385
+                ]
+            },
+            "properties": {
+                "name": "Koblenz Souvenir Shop Firmungstraße",
+                "active": true,
+                "area": "Germany",
+                "address": "Corner Firmungstraße/Kornpfortstrasse, 56068 Koblenz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.360884087346385,
+                "longitude": 7.597611513206037,
+                "id": 6024,
+                "last_updated": "2023-08-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.488272,
+                    38.9776983
+                ]
+            },
+            "properties": {
+                "name": "A. L. Goodies General Store",
+                "active": true,
+                "area": "Maryland",
+                "address": "112 Main Street, Annapolis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2580",
+                "internal_url": "null",
+                "latitude": "38.9776983",
+                "longitude": "-76.488272",
+                "id": 3604,
+                "last_updated": "2023-08-10",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.316382173794873,
+                    47.596146276763385
+                ]
+            },
+            "properties": {
+                "name": "Walchensee",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Tanneneck 6, 82432 Kochel am See",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.596146276763385,
+                "longitude": 11.316382173794873,
+                "id": 6025,
+                "last_updated": "2023-08-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6660136,
+                    45.5083863
+                ]
+            },
+            "properties": {
+                "name": "Oregon Museum of Science & Industry (OMSI)",
+                "active": true,
+                "area": "Oregon",
+                "address": "1945 SE Water Avenue, Portland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3945",
+                "internal_url": "null",
+                "latitude": "45.5083863",
+                "longitude": "-122.6660136",
+                "id": 4382,
+                "multimachine": 2,
+                "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.869247,
+                    46.691724
+                ]
+            },
+            "properties": {
+                "name": "Interlaken Ost (landing pier)",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Brienzstrasse 30, 3800 Interlaken, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 46.691724,
+                "longitude": 7.869247,
+                "id": 6026,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.661378,
+                    42.496887
+                ]
+            },
+            "properties": {
+                "name": "National Mississippi River Museum & Aquarium",
+                "active": true,
+                "area": "Iowa",
+                "address": "350 East 3rd Street, Dubuque",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2208",
+                "internal_url": "null",
+                "latitude": "42.496887",
+                "longitude": "-90.661378",
+                "id": 2340,
+                "multimachine": 2,
+                "last_updated": "2023-08-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.993400722493528,
+                    53.55107655647828
+                ]
+            },
+            "properties": {
+                "name": "Lotto at townhall Hamburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Rathausmarkt 1 Kiosk III, Laden C, 20095 Hamburg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 53.55107655647828,
+                "longitude": 9.993400722493528,
+                "id": 6027,
+                "last_updated": "2023-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.303173,
+                    47.054107
+                ]
+            },
+            "properties": {
+                "name": "The Nine Towers/ Museggmauer ",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Museggstrasse 21 / Schirmertorweg, Lucerne (Luzern), 6004 Switzerland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186791",
+                "internal_url": "null",
+                "latitude": "47.054107",
+                "longitude": "8.303173",
+                "id": 721,
+                "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5190204762397,
+                    35.71046924802651
+                ]
+            },
+            "properties": {
+                "name": "Hollywood Star Cars",
+                "active": true,
+                "area": "Tennessee",
+                "address": "918 Parkway, Gatlinburg, TN 37738, United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.71046924802651,
+                "longitude": -83.5190204762397,
+                "id": 6030,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.5224,
+                    47.14105
+                ]
+            },
+            "properties": {
+                "name": "Central Plaza Souvenirs",
+                "active": true,
+                "area": "Liechtenstein",
+                "address": "Städtle 5, 9490 Vaduz, Liechtenstein",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=85426",
+                "internal_url": "null",
+                "latitude": "47.141050",
+                "longitude": "9.522400",
+                "id": 730,
+                "last_updated": "2023-08-23",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.41522770982236,
+                    19.379946215605646
+                ]
+            },
+            "properties": {
+                "name": "Cayman Turtle center",
+                "active": true,
+                "area": "Cayman Islands",
+                "address": "786 Northwest Point Road, West Bay Grand Cayman",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=31625",
+                "internal_url": "null",
+                "latitude": 19.379946215605646,
+                "longitude": -81.41522770982236,
+                "id": 6029,
+                "last_updated": "2023-08-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.302606,
+                    47.050732
+                ]
+            },
+            "properties": {
+                "name": "Harry's AG",
+                "active": false,
+                "area": "Switzerland",
+                "address": "Pfistergasse 10, 6003 Lucerne (Luzern), Switzerland",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=183775",
+                "internal_url": "null",
+                "latitude": "47.050732",
+                "longitude": "8.302606",
+                "id": 720,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.04514298027618661,
+                    38.64424058169028
+                ]
+            },
+            "properties": {
+                "name": "Calpe Spanish flag steps",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Pedro García Ortiz esquina, C. Puchalt, bajo, 03710 Calp, Alicante, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 38.64424058169028,
+                "longitude": 0.04514298027618661,
+                "id": 6028,
+                "last_updated": "2023-08-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.1816236,
+                    43.0555332
+                ]
+            },
+            "properties": {
+                "name": "Fanshawe Pioneer Village",
+                "active": true,
+                "area": "Canada",
+                "address": "1424 Clarke Rd , Ontario - London ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311515",
+                "internal_url": "null",
+                "latitude": "43.0555332",
+                "longitude": "-81.1816236",
+                "id": 5006,
+                "paywall": true,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51094316183755,
+                    35.717208675897886
+                ]
+            },
+            "properties": {
+                "name": "Ripley’s Mountain Coaster",
+                "active": true,
+                "area": "Tennessee",
+                "address": "386 Parkway, Gatlinburg, TN 37738, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.717208675897886,
+                "longitude": -83.51094316183755,
+                "id": 6031,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.878282,
+                    33.716508
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - East Visitor's Center",
+                "active": true,
+                "area": "South Carolina",
+                "address": "1325 Celebrity Circle, #34, Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19337",
+                "internal_url": "null",
+                "latitude": "33.716508",
+                "longitude": "-78.878282",
+                "id": 2211,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.807630734199602,
+                    53.07604407204777
+                ]
+            },
+            "properties": {
+                "name": "Ratskeller (town hall)",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Markt, 28195 Bremen, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 53.07604407204777,
+                "longitude": 8.807630734199602,
+                "id": 6032,
+                "last_updated": "2023-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.58340252422926,
+                    41.62047786549837
+                ]
+            },
+            "properties": {
+                "name": "Toledo Zoo - Arctic Encounter",
+                "active": true,
+                "area": "Ohio",
+                "address": "Toledo Zoo, 2 Hippo Way, Toledo, OH 43609",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "latitude": "41.62047786549837",
+                "longitude": "-83.58340252422926",
+                "id": 2014,
+                "last_updated": "2023-08-25",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.98362286627801,
+                    50.26453700927211
+                ]
+            },
+            "properties": {
+                "name": "Veste Coburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Gustav-Freytag-Weg 39, 96450 Coburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.26453700927211,
+                "longitude": 10.98362286627801,
+                "id": 6034,
+                "last_updated": "2023-08-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.58005165675876,
+                    41.6178601139826
+                ]
+            },
+            "properties": {
+                "name": "Toledo Zoo - Aquarium",
+                "active": true,
+                "area": "Ohio",
+                "address": "2 Hippo Way, Toledo, OH 43609",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "latitude": 41.6178601139826,
+                "longitude": -83.58005165675876,
+                "id": 6038,
+                "last_updated": "2023-08-25",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.58167902736798,
+                    41.61943698517184
+                ]
+            },
+            "properties": {
+                "name": "Toledo Zoo - Aviary",
+                "active": true,
+                "area": "Ohio",
+                "address": "2 Hippo Way, Toledo, OH 43609",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "latitude": 41.61943698517184,
+                "longitude": -83.58167902736798,
+                "id": 6036,
+                "last_updated": "2023-08-25",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.57957191012376,
+                    41.61995504860125
+                ]
+            },
+            "properties": {
+                "name": "Toledo Zoo - Reptile House",
+                "active": true,
+                "area": "Ohio",
+                "address": "Toledo Zoo, 2 Hippo Way, Toledo, OH 43609",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "latitude": 41.61995504860125,
+                "longitude": -83.57957191012376,
+                "id": 6035,
+                "last_updated": "2023-08-25",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.705067,
+                    40.443806
+                ]
+            },
+            "properties": {
+                "name": "Timpanogos Cave National Monument",
+                "active": false,
+                "area": "Utah",
+                "address": "2038 W. Alpine Loop Road, American Fork",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=366247",
+                "internal_url": "null",
+                "latitude": "40.443806",
+                "longitude": "-111.705067",
+                "id": 5397,
+                "last_updated": "2023-08-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.551913,
+                    48.093381
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hellabrunn Munich - Polar bears",
+                "active": true,
+                "area": "Germany",
+                "address": "Schlichtweg 11, 81543 München, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343393",
+                "internal_url": "null",
+                "latitude": "48.093381",
+                "longitude": "11.551913",
+                "id": 5166,
+                "last_updated": "2023-08-24",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.557955,
+                    48.098576
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hellabrunn München - Aquarium",
+                "active": true,
+                "area": "Germany",
+                "address": "Tierparkstraße 30, 81543 München, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.098576",
+                "longitude": "11.557955",
+                "id": 5167,
+                "last_updated": "2023-08-24",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.8888286,
+                    48.2906572
+                ]
+            },
+            "properties": {
+                "name": "Therme Erding",
+                "active": true,
+                "area": "Germany",
+                "address": "Thermenallee 1-5, 85435 Erding",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=58146",
+                "internal_url": "null",
+                "latitude": "48.2906572",
+                "longitude": "11.8888286",
+                "id": 483,
+                "last_updated": "2023-08-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0796112,
+                    53.9586547
+                ]
+            },
+            "properties": {
+                "name": "The Golden Fleece",
+                "active": false,
+                "area": "England",
+                "address": "16 Pavement, North Yorkshire",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=257460",
+                "internal_url": "null",
+                "latitude": "53.9586547",
+                "longitude": "-1.0796112",
+                "id": 1528,
+                "last_updated": "2023-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.615175200528988,
+                    47.67563828758587
+                ]
+            },
+            "properties": {
+                "name": "Rheinfall gift shop (near parking)",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Schloss Laufen, 8447 Laufen-Uhwiesen, Switzerland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=76288",
+                "internal_url": "null",
+                "latitude": 47.67563828758587,
+                "longitude": 8.615175200528988,
+                "id": 6039,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.7395994110005988,
+                    52.608168837005145
+                ]
+            },
+            "properties": {
+                "name": "Britannia Pier",
+                "active": true,
+                "area": "United Kingdom",
+                "address": "Marine Parade Great Yarmouth, NR30 2EH",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 52.608168837005145,
+                "longitude": 1.7395994110005988,
+                "id": 6040,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0800339250176008,
+                    53.95753822152252
+                ]
+            },
+            "properties": {
+                "name": "The hole in wand",
+                "active": true,
+                "area": "United Kingdom",
+                "address": "10 Coppergate Walk, York YO1 9NT, UK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=411137",
+                "internal_url": "null",
+                "latitude": 53.95753822152252,
+                "longitude": -1.0800339250176008,
+                "id": 6041,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.61443231407488,
+                    47.67714341193487
+                ]
+            },
+            "properties": {
+                "name": "Rheinfall sidewalk (downstairs)",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Schloss Laufen, 8447 Laufen-Uhwiesen, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.67714341193487,
+                "longitude": 8.61443231407488,
+                "id": 6042,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.954746026600679,
+                    50.42910751377642
+                ]
+            },
+            "properties": {
+                "name": "Fichtelberg",
+                "active": true,
+                "area": "Germany",
+                "address": "Fichtelbergstraße 35, 09484 Oberwiesenthal, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.42910751377642,
+                "longitude": 12.954746026600679,
+                "id": 6043,
+                "last_updated": "2023-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.985587894841527,
+                    51.3478081826263
+                ]
+            },
+            "properties": {
+                "name": "Grand Pier Weston Super Mare",
+                "active": true,
+                "area": "United Kingdom",
+                "address": "Weston-super-Mare BS23 1AL, UK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=102082",
+                "internal_url": "null",
+                "latitude": 51.3478081826263,
+                "longitude": -2.985587894841527,
+                "id": 6044,
+                "last_updated": "2023-09-03",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.083887439143576,
+                    50.930253335630724
+                ]
+            },
+            "properties": {
+                "name": "Porschdorf Lilienstein",
+                "active": true,
+                "area": "Germany",
+                "address": "Lilienstein 33, 01814 Bad Schandau, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.930253335630724,
+                "longitude": 14.083887439143576,
+                "id": 6045,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.050924504097644,
+                    50.92197286004282
+                ]
+            },
+            "properties": {
+                "name": "Königstein \"Festung Königstein (Gasthof Neue Schänke)\"",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Königstein 3a, 01824 Königstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.92197286004282,
+                "longitude": 14.050924504097644,
+                "id": 6046,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.057239497420777,
+                    50.91890652839281
+                ]
+            },
+            "properties": {
+                "name": "Königstein \"Festung Königstein\" (Automat 2)",
+                "active": true,
+                "area": "Germany",
+                "address": "Festung Königstein 21, 01824 Königstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.91890652839281,
+                "longitude": 14.057239497420777,
+                "id": 6047,
+                "last_updated": "2023-09-05",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.109619893277287,
+                    50.97963056791063
+                ]
+            },
+            "properties": {
+                "name": "Burg Hohnstein",
+                "active": true,
+                "area": "Germany",
+                "address": "Markt 5, 01848 Hohnstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.97963056791063,
+                "longitude": 14.109619893277287,
+                "id": 6048,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.9872308021719,
+                    40.00483971316751
+                ]
+            },
+            "properties": {
+                "name": "Ohio History Connection",
+                "active": true,
+                "area": "Ohio",
+                "address": "800 E 17th Ave, Columbus, OH 43211, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=402309",
+                "internal_url": "null",
+                "latitude": 40.00483971316751,
+                "longitude": -82.9872308021719,
+                "id": 6049,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -108.72819396232396,
+                    35.52961971021839
+                ]
+            },
+            "properties": {
+                "name": "El Rancho Hotel",
+                "active": true,
+                "area": "New Mexico",
+                "address": "1010 E Historic Hwy 66, Gallup, NM 87301, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.52961971021839,
+                "longitude": -108.72819396232396,
+                "id": 6050,
+                "last_updated": "2023-09-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.139184039532845,
+                    49.11327734801895
+                ]
+            },
+            "properties": {
+                "name": "Großer Arber",
+                "active": true,
+                "area": "Germany",
+                "address": "Arber-Steig 431/2, 94252 Bayerisch Eisenstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 49.11327734801895,
+                "longitude": 13.139184039532845,
+                "id": 6051,
+                "last_updated": "2023-09-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.142312599708982,
+                    49.12089497531686
+                ]
+            },
+            "properties": {
+                "name": "Arber Bergbahn",
+                "active": true,
+                "area": "Germany",
+                "address": "Talstation Arber-Bergbahn, Talstation Großer Arber 1, 94252 Bayerisch Eisenstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 49.12089497531686,
+                "longitude": 13.142312599708982,
+                "id": 6052,
+                "last_updated": "2023-09-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.158733718309648,
+                    49.09857008322101
+                ]
+            },
+            "properties": {
+                "name": "Großer Arbersee",
+                "active": true,
+                "area": "Germany",
+                "address": "Arbersee 42, 94252 Bayerisch Eisenstein",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 49.09857008322101,
+                "longitude": 13.158733718309648,
+                "id": 6053,
+                "last_updated": "2023-09-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.07622120663915138,
+                    51.50794327735578
+                ]
+            },
+            "properties": {
+                "name": "Tower of London - White Tower gift shop",
+                "active": true,
+                "area": "England",
+                "address": "HM Tower of, London EC3N 4AB, UK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93146",
+                "internal_url": "null",
+                "latitude": 51.50794327735578,
+                "longitude": -0.07622120663915138,
+                "id": 6054,
+                "last_updated": "2023-09-10",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1312887,
+                    51.51067150000001
+                ]
+            },
+            "properties": {
+                "name": "M&Ms World",
+                "active": true,
+                "area": "England",
+                "address": "1 Swiss Court Leicester Square, W1D 6AP, London, England",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=95848",
+                "internal_url": "null",
+                "latitude": "51.51067150000001",
+                "longitude": "-0.1312887",
+                "id": 1472,
+                "multimachine": 5,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1293572,
+                    51.5021585
+                ]
+            },
+            "properties": {
+                "name": "Winston Churchill War Rooms",
+                "active": true,
+                "area": "England",
+                "address": "Whitehall, King Charles St, London SW1A 2AQ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=324423",
+                "internal_url": "null",
+                "latitude": "51.5021585",
+                "longitude": "-0.1293572",
+                "id": 1500,
+                "paywall": true,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1632344,
+                    51.49940549999999
+                ]
+            },
+            "properties": {
+                "name": "Harrod's",
+                "active": true,
+                "area": "England",
+                "address": "87135 Brompton Rd, London SW1X 7XL",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=253475",
+                "internal_url": "null",
+                "latitude": "51.49940549999999",
+                "longitude": "-0.1632344",
+                "id": 1470,
+                "multimachine": 3,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1745235,
+                    51.4978095
+                ]
+            },
+            "properties": {
+                "name": "London Science Museum",
+                "active": true,
+                "area": "England",
+                "address": "Exhibition Rd, South Kensington, London SW7 2DD",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=61660",
+                "internal_url": "null",
+                "latitude": "51.4978095",
+                "longitude": "-0.1745235",
+                "id": 1482,
+                "multimachine": 7,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1763672,
+                    51.49671499999999
+                ]
+            },
+            "properties": {
+                "name": "The Natural History Museum",
+                "active": true,
+                "area": "England",
+                "address": "Cromwell Rd, South Kensington, London SW7 5BD",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=287311",
+                "internal_url": "null",
+                "latitude": "51.49671499999999",
+                "longitude": "-0.1763672",
+                "id": 1483,
+                "multimachine": 5,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.078883,
+                    51.508048
+                ]
+            },
+            "properties": {
+                "name": "Tower Of London Shop",
+                "active": true,
+                "area": "England",
+                "address": "5BT, Tower Place West, 50 Lower Thames St, London EC3R 6DT",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=267674",
+                "internal_url": "null",
+                "latitude": "51.508048",
+                "longitude": "-0.078883",
+                "id": 1487,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.075313,
+                    51.508312
+                ]
+            },
+            "properties": {
+                "name": "Fusilier Museum London",
+                "active": true,
+                "area": "England",
+                "address": "Tower of London, Tower Hill, London EC3N 4AB",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93146",
+                "internal_url": "null",
+                "latitude": "51.508312",
+                "longitude": "-0.075313",
+                "id": 1486,
+                "paywall": true,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.076241,
+                    51.507518
+                ]
+            },
+            "properties": {
+                "name": "Tower of London, Raven Gift Shop",
+                "active": true,
+                "area": "England",
+                "address": "35 Tower Hill, London EC3N 4DR",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=79810",
+                "internal_url": "null",
+                "latitude": "51.507518",
+                "longitude": "-0.076241",
+                "id": 1488,
+                "paywall": true,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.07535649999999999,
+                    51.5054564
+                ]
+            },
+            "properties": {
+                "name": "Tower Bridge Exhibition (upper walkway)",
+                "active": true,
+                "area": "England",
+                "address": "Tower Bridge Rd, London SE1 2UP",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3921",
+                "internal_url": "null",
+                "latitude": "51.5054564",
+                "longitude": "-0.07535649999999999",
+                "id": 1485,
+                "multimachine": 4,
+                "paywall": true,
+                "last_updated": "2023-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.08805251428291,
+                    49.23397443026755
+                ]
+            },
+            "properties": {
+                "name": "Wildpark Höllohe",
+                "active": true,
+                "area": "Germany",
+                "address": "Naturpark Höllohe 1, Höllohe 1, 93158 Teublitz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 49.23397443026755,
+                "longitude": 12.08805251428291,
+                "id": 6055,
+                "last_updated": "2023-09-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.8721871,
+                    50.2301183
+                ]
+            },
+            "properties": {
+                "name": "Therapeutic Spa Facility",
+                "active": false,
+                "area": "Czech",
+                "address": "Smetanovy sady 1145/1, Karlovy Vary",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=239152",
+                "internal_url": "null",
+                "latitude": "50.2301183",
+                "longitude": "12.8721871",
+                "id": 50,
+                "last_updated": "2023-09-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.5017156981939,
+                    34.72814483614568
+                ]
+            },
+            "properties": {
+                "name": "Old Plantation Restaurant",
+                "active": true,
+                "area": "Oklahoma ",
+                "address": "143 E Lake Dr, Medicine Park, OK 73557, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=409140",
+                "internal_url": "null",
+                "latitude": 34.72814483614568,
+                "longitude": -98.5017156981939,
+                "id": 6056,
+                "last_updated": "2023-09-15"
             }
         }
     ]
