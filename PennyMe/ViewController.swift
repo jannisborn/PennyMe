@@ -174,10 +174,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
 
         for artwork in artworks {
-            if (includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) == nil) {
+            if (includedStates.contains(artwork.status)) { // && (PennyMap.view(for: artwork) == nil) {
             //  Artwork should be visible but is currently not visible
                     PennyMap.addAnnotation(artwork)
-            } else if (!includedStates.contains(artwork.status)) && (PennyMap.view(for: artwork) != nil)  {
+            } else if (!includedStates.contains(artwork.status))  {
                 //  Artwork should not be visible but is currently not visible
                 PennyMap.removeAnnotation(artwork)
             }
@@ -333,7 +333,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         let fileManager = FileManager.default
         var isDirectory: ObjCBool = false
         if fileManager.fileExists(atPath: jsonFilePath!.absoluteString, isDirectory: &isDirectory) {
-//            print("file path exists, try load data")
             do{
                 let data = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath!.absoluteString), options:.mappedIfSafe)
                 
@@ -350,18 +349,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             let ids_in_dict = Array(statusDict[0].keys)
             // iterate over saved IDs and update status on map
             for id_machine in ids_in_dict{
-                let machine = artworks[pinIdDict[id_machine]!]
-                PennyMap.removeAnnotation(machine)
-                let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
-                machine.status = thisMachineStatus
-                // Only add the machine back to the map if it is supposed to be shown (according to settings)
-                let user_settings = UserDefaults.standard
-                let userdefault = thisMachineStatus+"Switch"
-                // get userdefault (use default if not set yet)
-                let shouldDisplayMachine = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
-                // add pin if necessary
-                if shouldDisplayMachine! {
-                    PennyMap.addAnnotation(machine)
+                if let pinId = pinIdDict[id_machine] {
+                    let machine = artworks[pinId]
+                    PennyMap.removeAnnotation(machine)
+                    let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
+                    machine.status = thisMachineStatus
+                    // Only add the machine back to the map if it is supposed to be shown (according to settings)
+                    let user_settings = UserDefaults.standard
+                    let userdefault = thisMachineStatus+"Switch"
+                    // get userdefault (use default if not set yet)
+                    let shouldDisplayMachine = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
+                    // add pin if necessary
+                    if shouldDisplayMachine! {
+                        PennyMap.addAnnotation(machine)
+                    }
+                } else {
+                    // Error reason: User has a local change of a machine not in list of artworks.
+                    // E.g., if server_locations.json is badly formatted (and user changed one of the server-locations-only-machines)
+                    // or if user has local change of a machine not anymore in all_locations.json
+                    print("id_machine \(id_machine) not found in pinIdDict")
                 }
             }
         }
@@ -395,9 +401,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         guard let json_url = URL(string: link_to_json) else { return }
         do{
             let serverJsonData = try Data(contentsOf: json_url, options:.mappedIfSafe)
-//            // print json for debugging
-//            let jsonResult = try JSONSerialization.jsonObject(with: serverJsonData, options: .mutableLeaves)
-//            print(jsonResult)
             let serverJsonAsMap = try MKGeoJSONDecoder()
               .decode(serverJsonData)
               .compactMap { $0 as? MKGeoJSONFeature }
