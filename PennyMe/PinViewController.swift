@@ -132,7 +132,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     func addPaywallButton() {
-        let labelFrame = titleLabel.frame
         paywallButton.isHidden = false
         paywallButton.addTarget(self, action: #selector(paywallButtonTapped), for: .touchUpInside)
         let paywallImage = UIImage(systemName: "dollarsign.circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
@@ -144,15 +143,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
 
     func addMultimachineButton() {
-        let labelFrame = titleLabel.frame
         multiButton.isHidden = false
-        multiButton.setTitle("\(self.pinData.multimachine)", for: .normal)
-        multiButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-        multiButton.tintColor = .black
-        // Add a border/frame to the button
-        multiButton.layer.borderWidth = 2.0
-        multiButton.layer.borderColor = UIColor.black.cgColor
-        multiButton.layer.cornerRadius = 10
+        let multiImage = UIImage(systemName: "\(self.pinData.multimachine).circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        multiButton.setImage(multiImage, for: .normal)
         let scale: CGFloat = 1.5
         multiButton.transform = CGAffineTransform(scaleX: scale, y: scale)
         multiButton.addTarget(self, action: #selector(multimachineButtonTapped), for: .touchUpInside)
@@ -161,7 +154,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @objc func paywallButtonTapped(sender: UIButton!) {
         let alertController = UIAlertController(
                 title: "Paywall!",
-                message: "You probably have to pay a fee for accessing this penny machine",
+                message: "You probably have to pay a fee to see this penny machine",
                 preferredStyle: .alert
             )
             let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
