@@ -14,6 +14,7 @@ var FOUNDIMAGE : Bool = false
 let flaskURL = "http://37.120.179.15:6006/"
 let imageURL = "http://37.120.179.15:8000/"
 
+@available(iOS 13.0, *)
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,6 +26,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var coordinateLabel: UILabel!
+    @IBOutlet weak var multiButton: UIButton!
+    @IBOutlet weak var paywallButton: UIButton!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -123,8 +126,59 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         self.imageview.isUserInteractionEnabled = true
         self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
+        paywallButton.isHidden = true
+        multiButton.isHidden = true
+        if self.pinData.paywall {
+            addPaywallButton()
+        }
+        if self.pinData.multimachine > 1 {
+            addMultimachineButton()
+        }
+    }
+    
+    func addPaywallButton() {
+        paywallButton.isHidden = false
+        paywallButton.addTarget(self, action: #selector(paywallButtonTapped), for: .touchUpInside)
+        let paywallImage = UIImage(systemName: "dollarsign.circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        paywallButton.setImage(paywallImage, for: .normal)
+        // Scale the button's image
+        let scale: CGFloat = 1.5
+        paywallButton.transform = CGAffineTransform(scaleX: scale, y: scale)
+        let buttonFrame = paywallButton.frame
     }
 
+    func addMultimachineButton() {
+        multiButton.isHidden = false
+        let multiImage = UIImage(systemName: "\(self.pinData.multimachine).circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        multiButton.setImage(multiImage, for: .normal)
+        let scale: CGFloat = 1.5
+        multiButton.transform = CGAffineTransform(scaleX: scale, y: scale)
+        multiButton.addTarget(self, action: #selector(multimachineButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func paywallButtonTapped(sender: UIButton!) {
+        let alertController = UIAlertController(
+                title: "Paywall!",
+                message: "You probably have to pay a fee to see this penny machine",
+                preferredStyle: .alert
+            )
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayAction)
+
+            present(alertController, animated: true, completion: nil)
+    }
+    @objc func multimachineButtonTapped(sender: UIButton!) {
+        let alertController = UIAlertController(
+                title: "Multi-machine!",
+                message: "There are \(self.pinData.multimachine) penny machines in this location",
+                preferredStyle: .alert
+            )
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayAction)
+
+            present(alertController, animated: true, completion: nil)
+    }
+    
     func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
         let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
         
@@ -211,6 +265,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             showConfirmationMessage(message: "Copied!", duration: 1.5)
         }
     }
+
     
     func showConfirmationMessage(message: String, duration: Double) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
