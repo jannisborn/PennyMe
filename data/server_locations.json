@@ -4932,7 +4932,6 @@
             }
         },
         {
-
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -4953,6 +4952,29 @@
                 "longitude": -98.5017156981939,
                 "id": 6056,
                 "last_updated": "2023-09-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.05254498126308,
+                    48.519801001456706
+                ]
+            },
+            "properties": {
+                "name": "Tübingen Burgsteige",
+                "active": true,
+                "area": "Germany",
+                "address": "Burgsteige 11, 72070 Tübingen, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 48.519801001456706,
+                "longitude": 9.05254498126308,
+                "id": 6059,
+                "last_updated": "2023-09-23"
             }
         }
     ]
