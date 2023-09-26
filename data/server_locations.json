@@ -4976,6 +4976,100 @@
                 "id": 6059,
                 "last_updated": "2023-09-23"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.136738,
+                    50.8168555
+                ]
+            },
+            "properties": {
+                "name": "Brighton Marine Palace and Pier",
+                "active": true,
+                "area": "England",
+                "address": "Madeira Drive, Brighton BN2 1TW, East Sussex, United Kingdom",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107276",
+                "internal_url": "null",
+                "latitude": "50.8168555",
+                "longitude": "-0.136738",
+                "id": 1388,
+                "multimachine": 2,
+                "last_updated": "2023-09-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.498101,
+                    34.008576
+                ]
+            },
+            "properties": {
+                "name": "Santa Monica Pier - Pacific Park",
+                "active": true,
+                "area": "California",
+                "address": "380 Santa Monica Pier, Santa Monica, CA 90401, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=525",
+                "internal_url": "null",
+                "latitude": "34.008576",
+                "longitude": "-118.498101",
+                "id": 4855,
+                "multimachine": 3,
+                "last_updated": "2023-09-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9998819,
+                    42.0140742
+                ]
+            },
+            "properties": {
+                "name": "Ulster Travel Plaza",
+                "active": false,
+                "area": "New York",
+                "address": "1-87 Southbound, Milepost 96, Lake Katrine",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=56123",
+                "internal_url": "null",
+                "latitude": "42.0140742",
+                "longitude": "-73.9998819",
+                "id": 3027,
+                "last_updated": "2023-09-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1361609,
+                    51.5001244
+                ]
+            },
+            "properties": {
+                "name": "The Guards Museum",
+                "active": false,
+                "area": "England",
+                "address": "Wellington Barracks, Birdcage Walk, Westminster, London",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=223327",
+                "internal_url": "null",
+                "latitude": "51.5001244",
+                "longitude": "-0.1361609",
+                "id": 1497,
+                "last_updated": "2023-09-25"
+            }
         }
     ]
 }
