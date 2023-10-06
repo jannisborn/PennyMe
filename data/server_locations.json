@@ -5189,6 +5189,78 @@
                 "id": 2891,
                 "last_updated": "2023-09-30"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.08708899999999,
+                    32.08063
+                ]
+            },
+            "properties": {
+                "name": "Bob's Your Uncle & Fannie's Your Aunt ",
+                "active": true,
+                "area": "Georgia",
+                "address": "305-307 East River Street, Savannah",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1872",
+                "internal_url": "null",
+                "latitude": "32.08063",
+                "longitude": "-81.08708899999999",
+                "id": 1658,
+                "last_updated": "2023-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.685067,
+                    44.654129
+                ]
+            },
+            "properties": {
+                "name": "Minnesota's Largest Candy Store",
+                "active": true,
+                "area": "Minnesota",
+                "address": "20430 Johnson Memorial Dr, Jordan, MN 55352, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=243435",
+                "internal_url": "null",
+                "latitude": "44.654129",
+                "longitude": "-93.685067",
+                "id": 3158,
+                "multimachine": 3,
+                "last_updated": "2023-10-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.976688281997262,
+                    53.543005183648816
+                ]
+            },
+            "properties": {
+                "name": "Cap San Diego",
+                "active": true,
+                "area": "Germany",
+                "address": "Überseebrücke, 20459 HAMBURG",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=74282",
+                "internal_url": "null",
+                "latitude": 53.543005183648816,
+                "longitude": 9.976688281997262,
+                "id": 6060,
+                "last_updated": "2023-10-06",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
