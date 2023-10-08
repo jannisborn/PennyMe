@@ -10,6 +10,7 @@ import argparse
 import json
 import os
 import logging
+import pandas as pd
 
 from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
 from pennyme.pennycollector import (
@@ -63,12 +64,18 @@ def location_differ(
     with open(server_json, "r") as f:
         server_data = json.load(f)
 
+
+    # Saving all machines which have no external link
+    no_link_list = []
+
     # Convert data to have links as keys
     device_dict = {}
     machine_idx = max([x["properties"]["id"] for x in device_data["features"]])
     for geojson in device_data["features"]:
         url = geojson["properties"]["external_url"]
-        if url not in device_dict.keys():
+        if url == 'null':
+            no_link_list.append(geojson['properties'])
+        elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
             device_dict[url].append(geojson)
@@ -78,7 +85,10 @@ def location_differ(
     server_dict = {}
     for geojson in server_data["features"]:
         url = geojson["properties"]["external_url"]
-        if url not in server_dict.keys():
+        print(url, type(url))
+        if url == 'null':
+            no_link_list.append(geojson['properties'])
+        elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
             # TODO: Could be improved in the future
@@ -90,6 +100,10 @@ def location_differ(
     server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
+
+    no_link = pd.DataFrame(no_link_list)
+    print(no_link)
+    exit()
 
     # Extract locations
     area_website = get_website(AREA_SITE)
@@ -103,7 +117,7 @@ def location_differ(
     for i, area in enumerate(areas):
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
-        logger.debug(f"Starting processing {area}")
+        logger.info(f"Starting processing {area}")
 
         # Scraping data for that area
         area_id = COUNTRY_TO_CODE[area]
