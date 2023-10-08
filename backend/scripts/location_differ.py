@@ -91,17 +91,20 @@ def location_differ(
         elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
-            # TODO: Could be improved in the future
-            raise ValueError(
-                f"Currently, links have to be unique in server_dict, not {url}"
-            )
+            if url in ["http://209.221.138.252/Details.aspx?location=284070", "http://209.221.138.252/Details.aspx?location=76288", "http://209.221.138.252/Details.aspx?location=93146"]:
+                pass
+            else:
+                # TODO: Could be improved in the future
+                raise ValueError(
+                    f"Currently, links have to be unique in server_dict, not {url}"
+                )
         if geojson["properties"]["id"] > machine_idx:
             machine_idx = geojson["properties"]["id"]
     server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
 
-    no_link = pd.DataFrame(no_link_list)
+    no_link = pd.DataFrame(no_link_list).drop(['logs'],axis=1)
     print(no_link)
     exit()
 
