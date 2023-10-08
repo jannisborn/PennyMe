@@ -2,9 +2,8 @@
 import logging
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
-
+import googlemaps
 import bs4
-from googlemaps import Client as GoogleMaps
 
 from .locations import COUNTRY_TO_CODE, remove_html_and
 
@@ -167,26 +166,24 @@ def get_prelim_geojson(
     return geojson
 
 
-def get_coordinates(title: str, subtitle: str, api_key: str) -> Tuple[float, float]:
+def get_coordinates(title: str, subtitle: str, api: googlemaps.client.Client) -> Tuple[float, float]:
     """
     Perform geolocationing for a title and a subtitle.
 
     Args:
         title (str): Title of the penny machine.
         subtitle (str): Subtitle of the penny machine.
-        api_key (str): API Key for Google Maps
+        api: google maps API object.
 
     Returns:
         Tuple[float, float]: Latitude and longitude
     """
 
-    gmaps = GoogleMaps(api_key)
-
     # Make GM request, default title and subtitle.
     queries = [title + ", " + subtitle, subtitle, title]
 
     for query in queries:
-        coordinates = gmaps.geocode(query)
+        coordinates = api.geocode(query)
 
         try:
             lat = coordinates[0]["geometry"]["location"]["lat"]

@@ -11,6 +11,7 @@ import json
 import os
 import logging
 import pandas as pd
+from googlemaps import Client as GoogleMaps
 
 from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
 from pennyme.pennycollector import (
@@ -54,8 +55,9 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 def location_differ(
     output_folder: str, device_json: str, server_json: str, api_key: str
 ):
+    today = f"{YEAR}-{MONTH:02d}-{DAY:02d}"
 
-    today = f"{YEAR}-{MONTH}-{DAY}"
+    gmaps = GoogleMaps(api_key)
 
     # Load existing json data
     with open(device_json, "r") as f:
@@ -63,7 +65,6 @@ def location_differ(
 
     with open(server_json, "r") as f:
         server_data = json.load(f)
-
 
     # Saving all machines which have no external link
     no_link_list = []
@@ -73,40 +74,33 @@ def location_differ(
     machine_idx = max([x["properties"]["id"] for x in device_data["features"]])
     for geojson in device_data["features"]:
         url = geojson["properties"]["external_url"]
-        if url == 'null':
-            no_link_list.append(geojson['properties'])
+        if url == "null":
+            no_link_list.append(geojson["properties"])
         elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
             device_dict[url].append(geojson)
 
-    device_keys = list(device_dict.keys())
-
     server_dict = {}
     for geojson in server_data["features"]:
         url = geojson["properties"]["external_url"]
         print(url, type(url))
-        if url == 'null':
-            no_link_list.append(geojson['properties'])
+        if url == "null":
+            no_link_list.append(geojson["properties"])
         elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
-            if url in ["http://209.221.138.252/Details.aspx?location=284070", "http://209.221.138.252/Details.aspx?location=76288", "http://209.221.138.252/Details.aspx?location=93146"]:
-                pass
-            else:
-                # TODO: Could be improved in the future
-                raise ValueError(
-                    f"Currently, links have to be unique in server_dict, not {url}"
-                )
+            logger.warning(f"Link already found before, machine will be ignored: {geojson['properties']}")
         if geojson["properties"]["id"] > machine_idx:
             machine_idx = geojson["properties"]["id"]
     server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
 
-    no_link = pd.DataFrame(no_link_list).drop(['logs'],axis=1)
+    # TODO: In these machines, I have to make a fuzzy search to verify that the new content does not relate to them
+    no_link = pd.DataFrame(no_link_list).drop(["logs"], axis=1)
+    # TODO: Fuzzy search of address and title separately
     print(no_link)
-    exit()
 
     # Extract locations
     area_website = get_website(AREA_SITE)
@@ -117,6 +111,8 @@ def location_differ(
 
     total_changes, new, depr = 0, 0, 0
     problem_data = {"type": "FeatureCollection", "features": []}
+    # TODO: make sure there are no duplicate entries in the server_locations afterwards
+    # TODO: Strip the title/adress etc
     for i, area in enumerate(areas):
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
@@ -129,7 +125,6 @@ def location_differ(
 
         # Extract the machine locations
         location_raw_list = get_location_list_from_location_website(website)
-
         changes = 0
         l = len(location_raw_list)
         for j, raw_location in enumerate(location_raw_list):
@@ -139,15 +134,10 @@ def location_differ(
             this_link = geojson["properties"]["external_url"]
             this_state = geojson["properties"]["status"]
             this_title = geojson["properties"]["name"]
-
             match = False
-            for keys, cur_dict, name in zip(
-                [server_keys, device_keys],
-                [server_dict, device_dict],
-                ["Server", "Device"],
-            ):
+            for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
+                keys = list(cur_dict.keys())
                 if this_link in keys:
-
                     cur_states = [
                         cur_dict[this_link][s]["properties"]["status"]
                         for s in range(len(cur_dict[this_link]))
@@ -261,7 +251,7 @@ def location_differ(
             lat, lng = get_coordinates(
                 title=geojson["properties"]["name"],
                 subtitle=geojson["properties"]["address"],
-                api_key=api_key,
+                api=gmaps
             )
 
             geojson["properties"]["latitude"] = str(lat)
@@ -289,6 +279,7 @@ def location_differ(
     )
 
     fn = "server_locations.json"
+    os.makedirs(output_folder, exist_ok=True)
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
         json.dump(server_data, f, ensure_ascii=False, indent=4)
 
