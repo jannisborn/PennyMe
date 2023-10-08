@@ -3,8 +3,8 @@ This is the main script for retrieving updates from the website. It does:
 - Retrieving all countries from website (and compare to existing countries)
 - Downloading data for each country in mhtml format
 - Converting mhtml to JSON (no GPS coordinates) and build one huge JSON
-- Comparing each entry in that JSON (ID=link) to the server_json and the device_json
-- Differentiably adding the content to the server_json
+- Comparing each entry in that JSON (ID=link) to the all_locations and the server_locations
+- Differentiably adding the content to the server_location
 """
 import argparse
 import json

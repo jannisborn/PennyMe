@@ -1,0 +1,8 @@
+repos:
+-   repo: local
+    hooks:
+    -   id: check-json
+        name: Check JSON file
+        entry: python .hooks/check_json.py
+        language: system
+        files: '\.(json|py)$'
