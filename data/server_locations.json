@@ -2850,30 +2850,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -111.0221934,
-                    35.0277544
-                ]
-            },
-            "properties": {
-                "name": "Meteor Crater, The Museum of Astrogeology",
-                "active": false,
-                "area": "Arizona",
-                "address": "Exit 233 East off I-40, Winslow",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=351",
-                "internal_url": "null",
-                "latitude": "35.0277544",
-                "longitude": "-111.0221934",
-                "id": 2737,
-                "multimachine": 2,
-                "last_updated": "2023-08-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -122.7060382,
                     45.5180102
                 ]
@@ -3579,29 +3555,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -83.55365379999999,
-                    35.78823879999999
-                ]
-            },
-            "properties": {
-                "name": "Old Mill Restaurant General Store",
-                "active": false,
-                "area": "Tennessee",
-                "address": "164 Old Mill Ave., Pigeon Forge",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
-                "internal_url": "null",
-                "latitude": "35.78823879999999",
-                "longitude": "-83.55365379999999",
-                "id": 4273,
-                "last_updated": "2023-08-20"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     7.869247,
                     46.691724
                 ]
@@ -4219,7 +4172,7 @@
                 "area": "Switzerland",
                 "address": "Schloss Laufen, 8447 Laufen-Uhwiesen, Switzerland",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=76288",
                 "internal_url": "null",
                 "latitude": 47.67714341193487,
                 "longitude": 8.61443231407488,
@@ -5237,6 +5190,170 @@
                 "last_updated": "2023-10-06",
                 "multimachine": 2,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.6978622,
+                    36.2176958
+                ]
+            },
+            "properties": {
+                "name": "Cooters Place Nashville",
+                "active": true,
+                "area": "Tennessee",
+                "address": "2613B McGavock Pk, Nashville, TN 37214, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=106375",
+                "internal_url": "null",
+                "latitude": "36.2176958",
+                "longitude": "-86.6978622",
+                "id": 4243,
+                "last_updated": "2023-10-07",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5628564,
+                    35.7940287
+                ]
+            },
+            "properties": {
+                "name": "Flyaway Indoor Skydiving",
+                "active": false,
+                "area": "Tennessee",
+                "address": "3106 Parkway, Pigeon Forge, TN 37863, United States",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=63286",
+                "internal_url": "null",
+                "latitude": "35.7940287",
+                "longitude": "-83.5628564",
+                "id": 4268,
+                "last_updated": "2023-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4748409,
+                    37.8077879
+                ]
+            },
+            "properties": {
+                "name": "Golden Gate Bridge Welcome Center",
+                "active": false,
+                "area": "California",
+                "address": "Golden Gate Bridge, South End, San Francisco",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=315090",
+                "internal_url": "null",
+                "latitude": "37.8077879",
+                "longitude": "-122.4748409",
+                "id": 4819,
+                "last_updated": "2023-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.788717,
+                    35.083583
+                ]
+            },
+            "properties": {
+                "name": "Fred Harvey Painted Desert Gift Shop",
+                "active": true,
+                "area": "Arizona",
+                "address": "1 Park Road (P.O..Box 2217) Interstate 40 (Exit 311), Petrified Forest (near Holbrook)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=321",
+                "internal_url": "null",
+                "latitude": "35.083583",
+                "longitude": "-109.788717",
+                "id": 2662,
+                "last_updated": "2023-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.023112,
+                    33.527177
+                ]
+            },
+            "properties": {
+                "name": "Georgia Visitor Information Center #2 - Augusta",
+                "active": true,
+                "area": "Georgia",
+                "address": "Westbound I-20 Mile Marker 201, Augusta, GA 30907, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=281811",
+                "internal_url": "null",
+                "latitude": "33.527177",
+                "longitude": "-82.023112",
+                "id": 1626,
+                "last_updated": "2023-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.236104,
+                    35.534666
+                ]
+            },
+            "properties": {
+                "name": "Cherokee Trading Post",
+                "active": true,
+                "area": "Oklahoma",
+                "address": "301 S Walbaum Road, Calumet",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3907",
+                "internal_url": "null",
+                "latitude": "35.534666",
+                "longitude": "-98.236104",
+                "id": 1785,
+                "multimachine": 2,
+                "last_updated": "2023-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.6681039,
+                    35.009078
+                ]
+            },
+            "properties": {
+                "name": "Clines Corners Retail Center (& Truckstop)",
+                "active": true,
+                "area": "New Mexico",
+                "address": "1 Yacht Club Drive, Clines Corners, NM 87070, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238213",
+                "internal_url": "null",
+                "latitude": "35.009078",
+                "longitude": "-105.6681039",
+                "id": 4923,
+                "multimachine": 2,
+                "last_updated": "2023-10-09"
             }
         }
     ]
