@@ -5308,7 +5308,7 @@
                 "last_updated": "2023-10-09"
             }
         },
-                {
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -5328,6 +5328,30 @@
                 "latitude": "35.534666",
                 "longitude": "-98.236104",
                 "id": 1785,
+                "multimachine": 2,
+                "last_updated": "2023-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.6681039,
+                    35.009078
+                ]
+            },
+            "properties": {
+                "name": "Clines Corners Retail Center (& Truckstop)",
+                "active": true,
+                "area": "New Mexico",
+                "address": "1 Yacht Club Drive, Clines Corners, NM 87070, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238213",
+                "internal_url": "null",
+                "latitude": "35.009078",
+                "longitude": "-105.6681039",
+                "id": 4923,
                 "multimachine": 2,
                 "last_updated": "2023-10-09"
             }
