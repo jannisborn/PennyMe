@@ -78,7 +78,7 @@ def location_differ(
     for i, geojson in enumerate(device_data["features"]):
         url = geojson["properties"]["external_url"]
         if url == "null":
-            entry = geojson['properties'].copy()
+            entry = geojson["properties"].copy()
             entry["source"] = "Device"
             entry["data_idx"] = i
             no_link_list.append(entry)
@@ -93,7 +93,7 @@ def location_differ(
     for i, geojson in enumerate(server_data["features"]):
         url = geojson["properties"]["external_url"]
         if url == "null":
-            entry = geojson['properties'].copy()
+            entry = geojson["properties"].copy()
             entry["source"] = "Server"
             entry["data_idx"] = i
             no_link_list.append(entry)
@@ -145,7 +145,7 @@ def location_differ(
             this_state = geojson["properties"]["status"]
             this_title = geojson["properties"]["name"]
             this_address = geojson["properties"]["address"]
-            this_update = geojson['temporary']['website_updated']
+            this_update = geojson["temporary"]["website_updated"]
             match = False
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
@@ -174,7 +174,7 @@ def location_differ(
                         break
 
                     # The state for an already documented machine has changed.
-                    cur_updates =  [
+                    cur_updates = [
                         cur_dict[this_link][s]["properties"]["last_updated"]
                         for s in range(len(cur_dict[this_link]))
                     ]
@@ -214,7 +214,7 @@ def location_differ(
                             idxs = [
                                 i
                                 for i, geojson in enumerate(server_data["features"])
-                                if geojson['properties']['external_url'] == this_link
+                                if geojson["properties"]["external_url"] == this_link
                             ]
                             # Retire all machines of that URL
                             for idx in idxs:
@@ -262,10 +262,12 @@ def location_differ(
                             idxs = [
                                 i
                                 for i, geojson in enumerate(server_data["features"])
-                                if geojson['properties']['external_url'] == this_link
+                                if geojson["properties"]["external_url"] == this_link
                             ]
-                            if len(idxs) >1:
-                                logger.warning(f"For {this_link} found {len(idxs)} machines: {idxs}")
+                            if len(idxs) > 1:
+                                logger.warning(
+                                    f"For {this_link} found {len(idxs)} machines: {idxs}"
+                                )
                             # Re-activate all machines of that URL
                             for idx in idxs:
                                 server_data["features"][idx]["properties"][
@@ -329,9 +331,7 @@ def location_differ(
                         server_data["features"][i]["properties"][
                             "external_url"
                         ] = this_link
-                        server_data["features"][i]["properties"][
-                            "last_updated"
-                        ] = today
+                        server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
                 match, score = fuzzysearch.extract(
@@ -363,9 +363,7 @@ def location_differ(
                         server_data["features"][i]["properties"][
                             "external_url"
                         ] = this_link
-                        server_data["features"][i]["properties"][
-                            "last_updated"
-                        ] = today
+                        server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
             logger.debug(
@@ -420,8 +418,9 @@ def location_differ(
         logger.error(
             f"Found {len(problem_data['features'])} problems that require manual intervention"
         )
-        pn = f"problems_{YEAR}_{MONTH}_{DAY}.json"
-        with open(os.path.join(output_folder, pn), "w", encoding="utf8") as f:
+        with open(
+            os.path.join(output_folder, "problems.json"), "w", encoding="utf8"
+        ) as f:
             json.dump(problem_data, f, ensure_ascii=False, indent=4)
 
 
