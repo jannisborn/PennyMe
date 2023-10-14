@@ -8,27 +8,30 @@ This is the main script for retrieving updates from the website. It does:
 """
 import argparse
 import json
-import os
 import logging
+import os
+from collections import Counter
+
 import pandas as pd
 from googlemaps import Client as GoogleMaps
+from haversine import haversine
+from thefuzz import process as fuzzysearch
 
-from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
+from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
-    AREA_SITE,
     AREA_PREFIX,
-    get_area_list_from_area_website,
-    validate_location_list,
-    get_prelim_geojson,
-    get_location_list_from_location_website,
+    AREA_SITE,
     DAY,
     MONTH,
-    YEAR,
     UNAVAILABLE_MACHINE_STATES,
+    YEAR,
+    get_area_list_from_area_website,
     get_coordinates,
+    get_location_list_from_location_website,
+    get_prelim_geojson,
+    validate_location_list,
 )
 from pennyme.webconfig import get_website
-from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -79,28 +82,27 @@ def location_differ(
         elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
-            device_dict[url].append(geojson)
+            raise ValueError(
+                f"Duplicate entry in all_locations must not occur (problem={url}) - {geojson}"
+            )
 
     server_dict = {}
     for geojson in server_data["features"]:
         url = geojson["properties"]["external_url"]
-        print(url, type(url))
         if url == "null":
             no_link_list.append(geojson["properties"])
         elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
-            logger.warning(f"Link already found before, machine will be ignored: {geojson['properties']}")
+            server_dict[url].append(geojson)
         if geojson["properties"]["id"] > machine_idx:
             machine_idx = geojson["properties"]["id"]
     server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
 
-    # TODO: In these machines, I have to make a fuzzy search to verify that the new content does not relate to them
+    # Required to later ensure that machines are not added twice.
     no_link = pd.DataFrame(no_link_list).drop(["logs"], axis=1)
-    # TODO: Fuzzy search of address and title separately
-    print(no_link)
 
     # Extract locations
     area_website = get_website(AREA_SITE)
@@ -111,8 +113,6 @@ def location_differ(
 
     total_changes, new, depr = 0, 0, 0
     problem_data = {"type": "FeatureCollection", "features": []}
-    # TODO: make sure there are no duplicate entries in the server_locations afterwards
-    # TODO: Strip the title/adress etc
     for i, area in enumerate(areas):
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
@@ -134,6 +134,7 @@ def location_differ(
             this_link = geojson["properties"]["external_url"]
             this_state = geojson["properties"]["status"]
             this_title = geojson["properties"]["name"]
+            this_address = geojson["properties"]["address"]
             match = False
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
@@ -143,8 +144,11 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
-                        # TODO: In the future we should be able to handle those
-                        raise ValueError(f"Multiple states for {cur_dict['this_link']}")
+                        problem_data["features"].append(geojson)
+                        logger.error(
+                            f"{this_link} used in multiple pins, requires manual handling: {cur_dict[this_link]}"
+                        )
+                        continue
                     cur_state = cur_states[0]
                     if this_state == cur_state:
                         # Existing machine with no update
@@ -169,8 +173,8 @@ def location_differ(
                             # Easy case, we just add this machine to server_dict
                             if len(device_dict[this_link]) > 1:
                                 logger.warning(
-                                    "A url linking to multiple machines retire"
-                                    f"d, maybe check manually: {device_dict[this_link]}"
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {device_dict[this_link]}"
                                 )
                             # Retire all machines of that URL (usually 1)
                             new_entry = device_dict[this_link]
@@ -178,6 +182,13 @@ def location_differ(
                                 entry["properties"]["status"] = "retired"
                                 entry["properties"]["active"] = False
                                 entry["properties"]["last_updated"] = today
+                                entry["properties"]["name"] = entry["properties"][
+                                    "name"
+                                ].strip()
+                                entry["properties"]["address"] = entry["properties"][
+                                    "address"
+                                ].strip()
+
                             server_data["features"].extend(new_entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
@@ -210,6 +221,12 @@ def location_differ(
                                 entry["properties"]["status"] = "unvisited"
                                 entry["properties"]["active"] = True
                                 entry["properties"]["last_updated"] = today
+                                entry["properties"]["name"] = entry["properties"][
+                                    "name"
+                                ].strip()
+                                entry["properties"]["address"] = entry["properties"][
+                                    "address"
+                                ].strip()
                             server_data["features"].extend(new_entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
@@ -237,8 +254,88 @@ def location_differ(
                 continue
 
             # This is a new machine since the key was not found in both dicts
+
             if this_state in UNAVAILABLE_MACHINE_STATES:
                 # Untracked machine that is not available, hence we can skip
+                continue
+
+            # Verify that machine is indeed new through fuzzy search
+            match, score = fuzzysearch.extract(
+                this_title, list(no_link["name"]), limit=1
+            )[0]
+            m_idx = list(no_link["name"]).index(match)
+
+            if (
+                score > 87
+                and geojson["properties"]["area"] == no_link.loc[m_idx]["area"]
+            ):
+                dist = haversine(
+                    (
+                        float(geojson["properties"]["latitude"]),
+                        float(geojson["properties"]["longitude"]),
+                    ),
+                    (
+                        float(no_link.loc[m_idx]["latitude"]),
+                        float(no_link.loc[m_idx]["longitude"]),
+                    ),
+                )
+                if dist > 1:
+                    geojson["properties"][
+                        "logs"
+                    ] = f"Distance {dist} km to {server_data['features'][idx]['properties']['id']}"
+                    problem_data["features"].append(geojson)
+                else:
+                    logger.info(
+                        f"Seeems that machine {this_title} already exists as: {match}"
+                    )
+                    # Identify which machine this is in server_data and then update it
+                    assert (
+                        server_data["features"][m_idx]["properties"]["external_url"]
+                        == "null"
+                    )
+                    server_data["features"][idx]["properties"][
+                        "external_url"
+                    ] = this_link
+                    server_data["features"][idx]["properties"]["last_updated"] = today
+                continue
+
+            match, score = fuzzysearch.extract(
+                this_address, list(no_link["address"]), limit=1
+            )[0]
+            m_idx = list(no_link["address"]).index(match)
+
+            if (
+                score >= 87
+                and geojson["properties"]["area"] == no_link.loc[m_idx]["area"]
+            ):
+                dist = haversine(
+                    (
+                        float(geojson["properties"]["latitude"]),
+                        float(geojson["properties"]["longitude"]),
+                    ),
+                    (
+                        float(no_link.loc[m_idx]["latitude"]),
+                        float(no_link.loc[m_idx]["longitude"]),
+                    ),
+                )
+                if dist > 1:
+                    geojson["properties"][
+                        "logs"
+                    ] = f"Distance {dist} km to {server_data['features'][idx]['properties']['id']}"
+                    problem_data["features"].append(geojson)
+                else:
+                    logger.info(
+                        f"Seeems that machine {this_title} at {this_address} already exists as: {match}"
+                    )
+                    idx = list(no_link["address"]).index(match)
+                    assert (
+                        server_data["features"][idx]["properties"]["external_url"]
+                        == "null"
+                    )
+                    server_data["features"][idx]["properties"][
+                        "external_url"
+                    ] = this_link
+                    server_data["features"][idx]["properties"]["last_updated"] = today
                 continue
 
             logger.debug(
@@ -251,7 +348,7 @@ def location_differ(
             lat, lng = get_coordinates(
                 title=geojson["properties"]["name"],
                 subtitle=geojson["properties"]["address"],
-                api=gmaps
+                api=gmaps,
             )
 
             geojson["properties"]["latitude"] = str(lat)
@@ -277,6 +374,12 @@ def location_differ(
         f"\n Result: {total_changes} changes, {new} new machines found"
         f" and {depr} machines retired"
     )
+    # Make sure that no machines occur twice in server_locations
+    ids = [entry["properties"]["id"] for entry in server_data["features"]]
+    counts = Counter(ids)
+    if len(ids) != len(counts):
+        dups = [(v, c) for v, c in counts.items() if c > 1]
+        raise ValueError(f"Identified duplicate machines: {dups}")
 
     fn = "server_locations.json"
     os.makedirs(output_folder, exist_ok=True)
@@ -287,9 +390,9 @@ def location_differ(
         logger.error(
             f"Found {len(problem_data['features'])} problems that require manual intervention"
         )
-    pn = f"problems_{YEAR}_{MONTH}_{DAY}.json"
-    with open(os.path.join(output_folder, pn), "w", encoding="utf8") as f:
-        json.dump(problem_data, f, ensure_ascii=False, indent=4)
+        pn = f"problems_{YEAR}_{MONTH}_{DAY}.json"
+        with open(os.path.join(output_folder, pn), "w", encoding="utf8") as f:
+            json.dump(problem_data, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":
