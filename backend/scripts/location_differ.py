@@ -78,9 +78,10 @@ def location_differ(
     for i, geojson in enumerate(device_data["features"]):
         url = geojson["properties"]["external_url"]
         if url == "null":
-            geojson["properties"]["source"] = "Device"
-            geojson["properties"]["data_idx"] = i
-            no_link_list.append(geojson["properties"])
+            entry = geojson['properties'].copy()
+            entry["source"] = "Device"
+            entry["data_idx"] = i
+            no_link_list.append(entry)
         elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
@@ -92,9 +93,10 @@ def location_differ(
     for i, geojson in enumerate(server_data["features"]):
         url = geojson["properties"]["external_url"]
         if url == "null":
-            geojson["properties"]["source"] = "Server"
-            geojson["properties"]["data_idx"] = i
-            no_link_list.append(geojson["properties"])
+            entry = geojson['properties'].copy()
+            entry["source"] = "Server"
+            entry["data_idx"] = i
+            no_link_list.append(entry)
         elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
