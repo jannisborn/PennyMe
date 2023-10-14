@@ -11,29 +11,39 @@ import MapKit
 
 var FOUNDIMAGE : Bool = false
 
-class PinViewController: UITableViewController {
+let flaskURL = "http://37.120.179.15:6006/"
+let imageURL = "http://37.120.179.15:8000/"
 
+@available(iOS 13.0, *)
+class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
     @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var coordinateLabel: UILabel!
+    @IBOutlet weak var multiButton: UIButton!
+    @IBOutlet weak var paywallButton: UIButton!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     
     enum StatusChoice : String {
-            case unvisited
-            case visited
-            case marked
-            case retired
-        }
+        case unvisited
+        case visited
+        case marked
+        case retired
+    }
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    var imagePicker = UIImagePickerController()
     
     var artwork: Artwork? {
       didSet {
@@ -41,9 +51,39 @@ class PinViewController: UITableViewController {
       }
     }
     
+    // Vars for the image/comment upload
+    private var activityIndicator: UIActivityIndicatorView?
+    private var loadingView: UIView?
+    private var loadingLabel: UILabel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        updatedLabel.numberOfLines = 0
+        updatedLabel.contentMode = .scaleToFill
+
+        loadComments(completionBlock:
+        {
+            (output) in
+            DispatchQueue.main.async {
+                self.updatedLabel.text = output
+                self.tableView.reloadData()
+            }
+        })
+        // textfield
+        commentTextField.attributedPlaceholder = NSAttributedString(
+            string: "Type your comment here")
+            
+        // submit button
+        submitButton.addTarget(self, action: #selector(addComment), for: .touchUpInside
+                               )
         // main command to ensure that the subviews are sorted
         statusPicker.layoutSubviews()
         
@@ -53,8 +93,10 @@ class PinViewController: UITableViewController {
         titleLabel.text = self.pinData.title!
         addressLabel.numberOfLines = 3
         addressLabel.text = self.pinData.locationName
-        updatedLabel.text = self.pinData.last_updated
         
+        coordinateLabel.text = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+        )
+                
         // default status
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
@@ -84,6 +126,95 @@ class PinViewController: UITableViewController {
         self.imageview.isUserInteractionEnabled = true
         self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
+        paywallButton.isHidden = true
+        multiButton.isHidden = true
+        if self.pinData.paywall {
+            addPaywallButton()
+        }
+        if self.pinData.multimachine > 1 {
+            addMultimachineButton()
+        }
+    }
+    
+    func addPaywallButton() {
+        paywallButton.isHidden = false
+        paywallButton.addTarget(self, action: #selector(paywallButtonTapped), for: .touchUpInside)
+        let paywallImage = UIImage(systemName: "dollarsign.circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        paywallButton.setImage(paywallImage, for: .normal)
+        // Scale the button's image
+        let scale: CGFloat = 1.5
+        paywallButton.transform = CGAffineTransform(scaleX: scale, y: scale)
+        let buttonFrame = paywallButton.frame
+    }
+
+    func addMultimachineButton() {
+        multiButton.isHidden = false
+        let multiImage = UIImage(systemName: "\(self.pinData.multimachine).circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        multiButton.setImage(multiImage, for: .normal)
+        let scale: CGFloat = 1.5
+        multiButton.transform = CGAffineTransform(scaleX: scale, y: scale)
+        multiButton.addTarget(self, action: #selector(multimachineButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func paywallButtonTapped(sender: UIButton!) {
+        let alertController = UIAlertController(
+                title: "Paywall!",
+                message: "You probably have to pay a fee to see this penny machine",
+                preferredStyle: .alert
+            )
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayAction)
+
+            present(alertController, animated: true, completion: nil)
+    }
+    @objc func multimachineButtonTapped(sender: UIButton!) {
+        let alertController = UIAlertController(
+                title: "Multi-machine!",
+                message: "There are \(self.pinData.multimachine) penny machines in this location",
+                preferredStyle: .alert
+            )
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayAction)
+
+            present(alertController, animated: true, completion: nil)
+    }
+    
+    func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
+        let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
+        
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        
+            if let url = URL(string: urlEncodedStringRequest){
+                let session = URLSession(configuration: config)
+                let task = session.dataTask(with: url) {[weak self](data, response, error) in
+                    guard let data = data else { return }
+                    let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    if let results_ = results as? Dictionary<String, String> {
+                        let sortedDates = results_.keys.sorted {$0 > $1}
+                        var displayString : String = ""
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        var isFirst = true
+                        for date in sortedDates {
+                            if let value = results_[date]{
+                                let dateStringArr = date.split(separator: " ")
+                                let dateString = dateStringArr.first ?? ""
+                                if isFirst==false {
+                                    displayString += "\n"
+                                }
+                                else{
+                                    isFirst = false
+                                }
+                                displayString += "\(dateString): \(value)"
+                            }
+                        }
+                        completionBlock(displayString ?? "No comments yet")
+                    }
+                }
+                task.resume()
+            }
         }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -92,11 +223,7 @@ class PinViewController: UITableViewController {
             self.performSegue(withIdentifier: "bigImage", sender: self)
         }
         else{
-            //open mailto url
-            let mailtostring = String(
-                "mailto:wnina@ethz.ch?subject=[PennyMe] - Picture of machine \(pinData.id)&body=Dear PennyMe developers,\n\n Please find enclosed a picture of the machine at \(pinData.title!) (ID=\(pinData.id)).\n<b>Details of machine</b>:\n**PLEASE FILL IN ANY IMPORTANT DETAILS HERE. NOTE: Please send a sharp picture in <b>landscape</b> orientation. The penny motives should be visible, otherwise sent multiple images**\n\nWith sending this mail, I grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.\n\n With best regards,"
-            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string: mailtostring)!)
+            chooseImage()
         }
     }
     
@@ -111,24 +238,47 @@ class PinViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-        {
-        // Website is section 4 of the table view currently
-        if indexPath.section == 4
-            {
-                //Open the website when you click on the link.
-                UIApplication.shared.openURL(URL(string: pinData.link)!)
+    {
+        if indexPath.section == 2 {
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+            self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
+        }
+        else if indexPath.section == 4{
+            //Open the website when you click on the link.
+            if !pinData.link.contains("http") {
+                showConfirmationMessage(message: "Sorry! The machine is not available on pennycollector.com!", duration: 2)
+            } else {
+                UIApplication.shared.open(URL(string: pinData.link)!)
             }
-            else if indexPath.section == 2 {
-                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-                self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
-            }
-        if indexPath.section == 5{
+        }
+        else if indexPath.section == 5{
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.openURL(URL(string:mailtostring )!)
-            }
+            UIApplication.shared.open(URL(string:mailtostring )!)
         }
+        else if indexPath.section == 6{
+            // Copy coordinate section
+
+            UIPasteboard.general.string = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+            )
+            showConfirmationMessage(message: "Copied!", duration: 1.5)
+        }
+    }
+
+    
+    func showConfirmationMessage(message: String, duration: Double) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.view.alpha = 0.7
+        alertController.view.layer.cornerRadius = 15
+        
+        present(alertController, animated: true, completion: nil)
+        
+        // Automatically dismiss the message after the specified duration
+        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+    }
 
     @objc func statusChanged(_ sender: UISegmentedControl) {
         let status = statusChoices[sender.selectedSegmentIndex]
@@ -144,6 +294,279 @@ class PinViewController: UITableViewController {
             statusPicker.tintColor = colForSegment
         }
     }
+    
+    @objc func addComment(){
+        
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Attention!", message: "Please be mindful. Your comment will be shown to all users of the app. Write as clear & concise as possible.", preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK, add comment!", style: .default) { (_) in
+            
+            var comment = self.commentTextField.text
+            if comment?.count ?? 0 > 0 {
+                self.commentTextField.text = ""
+                self.commentTextField.attributedPlaceholder = NSAttributedString(
+                    string: "Your comment will be shown soon!")
+                
+                self.showLoadingView(withMessage: "Processing the comment...")
+                self.uploadCommentWithTimeout(comment!)
+
+
+            }
+        }
+
+        // Create the cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        }
+
+        // Add the actions to the alert controller
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+        
+
+    }
+    func uploadCommentWithTimeout(_ comment: String) {
+        
+        let uploadTimeout: TimeInterval = 10
+        var task: URLSessionDataTask?
+        
+        // submit request to backend
+        let requestString = "/add_comment?comment=\(comment)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let urlEncodedStringRequest = flaskURL + requestString!
+        if let url = URL(string: urlEncodedStringRequest){
+            let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+            // Create a URLSessionDataTask to send the request
+                guard let self = self else { return }
+                
+                // Hide the loading view first
+                DispatchQueue.main.async {
+                    self.hideLoadingView()
+                }
+                
+                // Cancel the task if it's still running
+                task?.cancel()
+                
+                if let error = error {
+                    print("Error: \(error)")
+                    DispatchQueue.main.async {
+                        self.handleResponse(type: "comment", success: false, error: error)
+                    }
+                    return
+                }
+                
+                // If the request is successful, display the success message
+                DispatchQueue.main.async {
+                    self.handleResponse(type: "comment", success: true, error: nil)
+                }
+            }
+            task.resume()
+            // Set up a timer to handle the upload timeout
+            var timeoutTimer: DispatchSourceTimer?
+            timeoutTimer = DispatchSource.makeTimerSource()
+            timeoutTimer?.schedule(deadline: .now() + uploadTimeout)
+            timeoutTimer?.setEventHandler { [weak self] in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.hideLoadingView() // Hide the loading view in case of timeout
+                    // Display a failure message or take appropriate action
+                    print("Upload timed out")
+                    // You can also show an alert to the user here
+                    
+                    // Cancel the task if it's still running
+                    task.cancel()
+                }
+                // Cancel the timer
+                timeoutTimer?.cancel()
+            }
+            timeoutTimer?.resume()
+        } else {
+        print("Invalid URL")
+        hideLoadingView()
+        }
+    }
+    
+    func chooseImage() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            // Create the alert controller
+            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload an image of the penny machine, not just an image of a coin. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+
+            // Create the OK action
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                // Show the image picker
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+
+            // Create the cancel action
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            }
+
+            // Add the actions to the alert controller
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+
+            // Present the alert controller
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showLoadingView(withMessage message: String) {
+        // Create the loading view
+        loadingView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
+        loadingView?.center = view.center
+        loadingView?.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+        loadingView?.layer.cornerRadius = 10
+        // Create the loading label
+        loadingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
+        loadingLabel?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingView!.bounds.midY - 30)
+        loadingLabel?.text = message
+        loadingLabel?.textColor = .white
+        loadingLabel?.textAlignment = .center
+        loadingLabel?.numberOfLines = 0
+        loadingView?.addSubview(loadingLabel!)
+        // Create and start animating the activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingView!.bounds.midY + 20)
+        activityIndicator?.startAnimating()
+        loadingView?.addSubview(activityIndicator!)
+        view.addSubview(loadingView!)
+    }
+    
+    func hideLoadingView() {
+        // Remove or hide the loading view (as in your original code)
+        loadingView?.removeFromSuperview()
+    }
+    
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        showLoadingView(withMessage: "Processing the image...")
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        // Dismiss the image picker
+        dismiss(animated: true) {
+            // Call a function to upload the image with a timeout
+            self.uploadImageWithTimeout(image)
+        }
+    }
+        
+
+    func uploadImageWithTimeout(_ image: UIImage) {
+        let uploadTimeout: TimeInterval = 5
+        var task: URLSessionDataTask?
+        
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Failed to convert image to data")
+            hideLoadingView()
+            return
+        }
+    
+
+        // call flask method to upload the image
+        guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        // Add the image data to the request body
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        let body = NSMutableData()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+        body.append(imageData)
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        request.httpBody = body as Data
+        
+        // Create a URLSessionDataTask to send the request
+        task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            // Hide the loading view first
+            DispatchQueue.main.async {
+                self.hideLoadingView()
+            }
+            // Cancel the task if it's still running
+            task?.cancel()
+
+            if let error = error {
+                print("Error: \(error)")
+                DispatchQueue.main.async {
+                    self.handleResponse(type: "image", success: false, error: error)
+                }
+                return
+            }
+            // If the request is successful, display the success message
+            DispatchQueue.main.async {
+                self.handleResponse(type: "image", success: true, error: nil)
+            }
+        }
+        task?.resume()
+        // Set up a timer to handle the upload timeout
+        var timeoutTimer: DispatchSourceTimer?
+        timeoutTimer = DispatchSource.makeTimerSource()
+        timeoutTimer?.schedule(deadline: .now() + uploadTimeout)
+        timeoutTimer?.setEventHandler { [weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.hideLoadingView() // Hide the loading view in case of timeout
+                // Display a failure message or take appropriate action
+                print("Upload timed out")
+                // Cancel the task if it's still running
+                task?.cancel()
+            }
+            // Cancel the timer
+            timeoutTimer?.cancel()
+        }
+        timeoutTimer?.resume()
+    }
+    
+    private func handleResponse(type: String, success: Bool, error: Error?) {
+        activityIndicator?.stopAnimating()
+        loadingView?.removeFromSuperview()
+        if success {
+            showAlert(title: "Success", message: "Upload successful! Please reopen the machine view to see your \(type).")
+        } else {
+            var errorMessage = "An error occurred"
+            if let urlError = error as? URLError {
+                switch urlError.code {
+                case .timedOut:
+                    errorMessage = "Request timed out. Please check your internet connection and try again."
+                case .notConnectedToInternet:
+                    errorMessage = "No internet connection. Please connect to the internet and try again."
+                case .cancelled:
+                    errorMessage = "Request timed out. Please check your internet connection and try again."
+                default:
+                    errorMessage = "Network error: \(urlError.localizedDescription)"
+                }
+            } else {
+                errorMessage = "Unknown error: \(error?.localizedDescription ?? "No additional details")"
+            }
+            showAlert(title: "Error", message: errorMessage)
+        }
+    }
+    private func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+
     
     func saveStatusChange(machineid: String, new_status: String){
         // find directory in documents folder corresponding to app data
@@ -164,7 +587,6 @@ class PinViewController: UITableViewController {
                 let data = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath!.absoluteString), options:.mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 currentStatusDict = jsonResult as! [[String:String]]
-//                print("Read json successfully for changing status", jsonResult)
                 // remove file
                 try fileManager.removeItem(atPath: jsonFilePath!.absoluteString)
             }
@@ -175,7 +597,6 @@ class PinViewController: UITableViewController {
 
         // update value
         currentStatusDict[0][machineid] = new_status
-//        print("after update value", currentStatusDict)
         
         // creating JSON out of the above array
         var jsonData: NSData!
@@ -196,7 +617,6 @@ class PinViewController: UITableViewController {
             }
             let file = try FileHandle(forWritingTo: jsonFilePath!)
             file.write(jsonData as Data)
-//            print("JSON data was written to teh file successfully!")
         } catch let error as NSError {
             print("Couldn't write to file: \(error.localizedDescription)")
         }

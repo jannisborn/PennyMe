@@ -20,8 +20,10 @@ class Artwork: NSObject, MKAnnotation {
     let id: String
     let last_updated: String
     let text: String
+    let paywall: Bool
+    let multimachine: Int
     
-    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String) {
+    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
@@ -30,6 +32,8 @@ class Artwork: NSObject, MKAnnotation {
         self.id = String(id)
         self.last_updated = last_updated
         self.text = self.title! + self.locationName
+        self.multimachine = multimachine
+        self.paywall = paywall
         
         super.init()
     }
@@ -54,8 +58,21 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         coordinate = point.coordinate
-        text = title! + locationName
         
+        // multimachine - add if exists
+        if let multimachine_val = properties["multimachine"] as? Int {
+            multimachine = multimachine_val
+        } else {
+            multimachine = 1
+        }
+        // paywall - add if exists
+        if let paywall_val = properties["paywall"] as? Bool {
+            paywall = paywall_val
+        } else {
+            paywall = false
+        }
+        
+        text = title! + locationName + id
         super.init()
     }
     

@@ -17,6 +17,9 @@ class ZoomViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         
         self.bigImageView.image = image
         self.view.addSubview(bigImageView)
