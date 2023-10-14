@@ -16,6 +16,7 @@ DATE = datetime.today()
 YEAR, MONTH, DAY = DATE.year, str(DATE.month).zfill(2), str(DATE.day).zfill(2)
 UNAVAILABLE_MACHINE_STATES = ["Moved", "Gone", "Out of Order"]
 
+
 # StatesList
 def get_area_list_from_area_website(website) -> List[str]:
     """
@@ -94,7 +95,6 @@ def get_location_list_from_location_website(website) -> List[List[str]]:
     location_list = []
     ind = -1
     while ind < len(raw_locations) - 1:
-
         ind += 1
         content = str(raw_locations[ind])
         if ind % 5 == 0:
@@ -140,7 +140,7 @@ def get_prelim_geojson(
     # NOTE: This refers to the last update on the website. We dont exploit this
     # information atm, but it could be used to make inference faster.
     updated = raw_location[4].split('Center">')[1].split("</td>")[0]
-
+    month, day, year = updated.split("/")
     geojson = {
         "type": "Feature",
         "geometry": {
@@ -159,14 +159,16 @@ def get_prelim_geojson(
             "longitude": "N.A.",
             "id": -1,
         },
-        "temporary": {"website_updated": updated},
+        "temporary": {"website_updated": "20" + year + "-" + month + "-" + day},
     }
     if add_date:
         geojson["properties"].update({"last_updated": f"{YEAR}-{MONTH}-{DAY}"})
     return geojson
 
 
-def get_coordinates(title: str, subtitle: str, api: googlemaps.client.Client) -> Tuple[float, float]:
+def get_coordinates(
+    title: str, subtitle: str, api: googlemaps.client.Client
+) -> Tuple[float, float]:
     """
     Perform geolocationing for a title and a subtitle.
 
