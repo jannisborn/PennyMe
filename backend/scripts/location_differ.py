@@ -3,30 +3,35 @@ This is the main script for retrieving updates from the website. It does:
 - Retrieving all countries from website (and compare to existing countries)
 - Downloading data for each country in mhtml format
 - Converting mhtml to JSON (no GPS coordinates) and build one huge JSON
-- Comparing each entry in that JSON (ID=link) to the server_json and the device_json
-- Differentiably adding the content to the server_json
+- Comparing each entry in that JSON (ID=link) to the all_locations and the server_locations
+- Differentiably adding the content to the server_location
 """
 import argparse
 import json
-import os
 import logging
+import os
+from collections import Counter
 
-from pennyme.locations import COUNTRY_TO_CODE, parse_location_name
+import pandas as pd
+from googlemaps import Client as GoogleMaps
+from haversine import haversine
+from thefuzz import process as fuzzysearch
+
+from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
-    AREA_SITE,
     AREA_PREFIX,
-    get_area_list_from_area_website,
-    validate_location_list,
-    get_prelim_geojson,
-    get_location_list_from_location_website,
+    AREA_SITE,
     DAY,
     MONTH,
-    YEAR,
     UNAVAILABLE_MACHINE_STATES,
+    YEAR,
+    get_area_list_from_area_website,
     get_coordinates,
+    get_location_list_from_location_website,
+    get_prelim_geojson,
+    validate_location_list,
 )
 from pennyme.webconfig import get_website
-from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -53,8 +58,9 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 def location_differ(
     output_folder: str, device_json: str, server_json: str, api_key: str
 ):
+    today = f"{YEAR}-{MONTH:02d}-{DAY:02d}"
 
-    today = f"{YEAR}-{MONTH}-{DAY}"
+    gmaps = GoogleMaps(api_key)
 
     # Load existing json data
     with open(device_json, "r") as f:
@@ -63,33 +69,48 @@ def location_differ(
     with open(server_json, "r") as f:
         server_data = json.load(f)
 
+    # Saving all machines which have no external link
+    no_link_list = []
+
     # Convert data to have links as keys
     device_dict = {}
     machine_idx = max([x["properties"]["id"] for x in device_data["features"]])
-    for geojson in device_data["features"]:
+    for i, geojson in enumerate(device_data["features"]):
         url = geojson["properties"]["external_url"]
-        if url not in device_dict.keys():
+        if url == "null":
+            geojson["properties"]["source"] = "Device"
+            geojson["properties"]["data_idx"] = i
+            no_link_list.append(geojson["properties"])
+        elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
-            device_dict[url].append(geojson)
-
-    device_keys = list(device_dict.keys())
+            raise ValueError(
+                f"Duplicate entry in all_locations must not occur (problem={url}) - {geojson}"
+            )
 
     server_dict = {}
-    for geojson in server_data["features"]:
+    for i, geojson in enumerate(server_data["features"]):
         url = geojson["properties"]["external_url"]
-        if url not in server_dict.keys():
+        if url == "null":
+            geojson["properties"]["source"] = "Server"
+            geojson["properties"]["data_idx"] = i
+            no_link_list.append(geojson["properties"])
+        elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
-            # TODO: Could be improved in the future
-            raise ValueError(
-                f"Currently, links have to be unique in server_dict, not {url}"
-            )
+            server_dict[url].append(geojson)
         if geojson["properties"]["id"] > machine_idx:
             machine_idx = geojson["properties"]["id"]
     server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
+
+    # Required to later ensure that machines are not added twice.
+    no_link = pd.DataFrame(no_link_list).drop(["logs"], axis=1)
+    # If a machine w/o link exists in both dicts, we only keep the one from the server
+    no_link = no_link.sort_values(
+        by=["id", "source"], ascending=[True, False]
+    ).drop_duplicates(subset=["id"], keep="first")
 
     # Extract locations
     area_website = get_website(AREA_SITE)
@@ -103,7 +124,7 @@ def location_differ(
     for i, area in enumerate(areas):
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
-        logger.debug(f"Starting processing {area}")
+        logger.info(f"Starting processing {area}")
 
         # Scraping data for that area
         area_id = COUNTRY_TO_CODE[area]
@@ -112,7 +133,6 @@ def location_differ(
 
         # Extract the machine locations
         location_raw_list = get_location_list_from_location_website(website)
-
         changes = 0
         l = len(location_raw_list)
         for j, raw_location in enumerate(location_raw_list):
@@ -122,22 +142,21 @@ def location_differ(
             this_link = geojson["properties"]["external_url"]
             this_state = geojson["properties"]["status"]
             this_title = geojson["properties"]["name"]
-
+            this_address = geojson["properties"]["address"]
             match = False
-            for keys, cur_dict, name in zip(
-                [server_keys, device_keys],
-                [server_dict, device_dict],
-                ["Server", "Device"],
-            ):
+            for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
+                keys = list(cur_dict.keys())
                 if this_link in keys:
-
                     cur_states = [
                         cur_dict[this_link][s]["properties"]["status"]
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
-                        # TODO: In the future we should be able to handle those
-                        raise ValueError(f"Multiple states for {cur_dict['this_link']}")
+                        problem_data["features"].append(geojson)
+                        logger.error(
+                            f"{this_link} used in multiple pins, requires manual handling: {cur_dict[this_link]}"
+                        )
+                        continue
                     cur_state = cur_states[0]
                     if this_state == cur_state:
                         # Existing machine with no update
@@ -160,29 +179,35 @@ def location_differ(
                         # Machine is currently unavailable, update this in server dict
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            if len(device_dict[this_link]) > 1:
-                                logger.warning(
-                                    "A url linking to multiple machines retire"
-                                    f"d, maybe check manually: {device_dict[this_link]}"
-                                )
-                            # Retire all machines of that URL (usually 1)
-                            new_entry = device_dict[this_link]
-                            for entry in new_entry:
-                                entry["properties"]["status"] = "retired"
-                                entry["properties"]["active"] = False
-                                entry["properties"]["last_updated"] = today
-                            server_data["features"].extend(new_entry)
-                        elif name == "Server":
-                            # Machine is already documented in server_dict
-                            i = server_keys.index(this_link)
+                            assert len(device_dict[this_link]) == 1
                             # Retire machine
-                            server_data["features"][i]["properties"][
-                                "status"
-                            ] = "retired"
-                            server_data["features"][i]["properties"]["active"] = False
-                            server_data["features"][i]["properties"][
-                                "last_updated"
-                            ] = today
+                            device_dict[this_link]["properties"]["status"] = "retired"
+                            device_dict[this_link]["properties"]["active"] = False
+                            device_dict[this_link]["properties"]["last_updated"] = today
+                            server_data["features"].append(device_dict[this_link])
+                        elif name == "Server":
+                            if len(server_dict[this_link]) > 1:
+                                logger.warning(
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {server_dict[this_link]}"
+                                )
+                            # Extract all machines of that URL (usually 1)
+                            idxs = [
+                                i
+                                for i, link in enumerate(server_keys)
+                                if link == this_link
+                            ]
+                            # Retire all machines of that URL
+                            for idx in idxs:
+                                server_data["features"][i]["properties"][
+                                    "status"
+                                ] = "retired"
+                                server_data["features"][i]["properties"][
+                                    "active"
+                                ] = False
+                                server_data["features"][i]["properties"][
+                                    "last_updated"
+                                ] = today
                         changes += 1  # track that we changed this machine
                         depr += 1
                         match = True  # machine was found in existing dict
@@ -193,28 +218,44 @@ def location_differ(
                         # A machine documented as retired is available again
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            if len(device_dict[this_link]) > 1:
-                                logger.warning(
-                                    "A url linking to multiple machines became"
-                                    f"available check manually: {device_dict[this_link]}"
-                                )
-                            new_entry = device_dict[this_link]
-                            for entry in new_entry:
-                                entry["properties"]["status"] = "unvisited"
-                                entry["properties"]["active"] = True
-                                entry["properties"]["last_updated"] = today
-                            server_data["features"].extend(new_entry)
+                            entry = device_dict[this_link]
+                            assert len(entry) == 1
+                            entry["properties"]["status"] = "unvisited"
+                            entry["properties"]["active"] = True
+                            entry["properties"]["last_updated"] = today
+                            entry["properties"]["name"] = entry["properties"][
+                                "name"
+                            ].strip()
+                            entry["properties"]["address"] = entry["properties"][
+                                "address"
+                            ].strip()
+                            server_data["features"].extend(entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
-                            idx = server_keys.index(this_link)
-                            # Re-activate machine
-                            server_data["features"][idx]["properties"][
-                                "status"
-                            ] = "unvisited"
-                            server_data["features"][idx]["properties"]["active"] = True
-                            server_data["features"][i]["properties"][
-                                "last_updated"
-                            ] = today
+                            entry = server_dict[this_link]
+                            if len(entry) > 1:
+                                logger.warning(
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {entry}"
+                                )
+
+                            # Extract all machines of that URL (usually 1)
+                            idxs = [
+                                i
+                                for i, link in enumerate(server_keys)
+                                if link == this_link
+                            ]
+                            # Re-activate all machines of that URL
+                            for idx in idxs:
+                                server_data["features"][i]["properties"][
+                                    "status"
+                                ] = "unvisited"
+                                server_data["features"][i]["properties"][
+                                    "active"
+                                ] = True
+                                server_data["features"][i]["properties"][
+                                    "last_updated"
+                                ] = today
 
                         changes += 1  # track that we changed this machine
                         new += 1
@@ -230,9 +271,116 @@ def location_differ(
                 continue
 
             # This is a new machine since the key was not found in both dicts
+
             if this_state in UNAVAILABLE_MACHINE_STATES:
                 # Untracked machine that is not available, hence we can skip
                 continue
+
+            tdf = no_link[no_link.area == geojson["properties"]["area"]]
+            if len(tdf) > 0:
+                # Verify that machine is indeed new through fuzzy search
+                match, score = fuzzysearch.extract(
+                    this_title, list(tdf["name"]), limit=1
+                )[0]
+
+                if score > 87:
+                    # There is a match, we have to update the link
+                    # Extract the entry from original data
+                    m_idx = list(tdf["name"]).index(match)
+                    if tdf.loc[m_idx]["source"] == "Device":
+                        cur_data = device_data
+                    else:
+                        cur_data = server_data
+
+                    e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
+
+                    dist = haversine(
+                        (
+                            float(geojson["properties"]["latitude"]),
+                            float(geojson["properties"]["longitude"]),
+                        ),
+                        (
+                            float(tdf.loc[m_idx]["latitude"]),
+                            float(tdf.loc[m_idx]["longitude"]),
+                        ),
+                    )
+                    if dist > 1:
+                        geojson["properties"][
+                            "logs"
+                        ] = f"Distance {dist} km to {e_entry}"
+                        problem_data["features"].append(geojson)
+                    else:
+                        logger.info(
+                            f"Seeems that machine {this_title} already exists as: {match}"
+                        )
+                        # Update machine and save in dict
+                        assert e_entry["properties"]["external_url"] == "null"
+                        if tdf.loc[m_idx]["source"] == "Device":
+                            e_entry["properties"]["external_url"] = this_link
+                            e_entry["properties"]["last_updated"] = today
+                            server_data["features"].append(e_entry)
+                        else:
+                            # Machine is already in server_dict, just update content
+                            i = tdf.iloc[m_idx]["data_idx"]
+                            server_data["features"][i]["properties"][
+                                "external_url"
+                            ] = this_link
+                            server_data["features"][i]["properties"][
+                                "last_updated"
+                            ] = today
+                    continue
+
+                match, score = fuzzysearch.extract(
+                    this_address, list(tdf["address"]), limit=1
+                )[0]
+
+                if score >= 87:
+                    # There is a match, we have to update the link
+                    # Extract the entry from original data
+                    m_idx = list(tdf["address"]).index(match)
+                    if tdf.loc[m_idx]["source"] == "Device":
+                        cur_data = device_data
+                    else:
+                        cur_data = server_data
+
+                    e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
+
+                    dist = haversine(
+                        (
+                            float(geojson["properties"]["latitude"]),
+                            float(geojson["properties"]["longitude"]),
+                        ),
+                        (
+                            float(tdf.loc[m_idx]["latitude"]),
+                            float(tdf.loc[m_idx]["longitude"]),
+                        ),
+                    )
+                    if dist > 1:
+                        geojson["properties"][
+                            "logs"
+                        ] = f"Distance {dist} km to {e_entry}"
+                        problem_data["features"].append(geojson)
+                        problem_data["features"].append(geojson)
+                    else:
+                        logger.info(
+                            f"Seeems that machine {this_title} at {this_address} already exists as: {match}"
+                        )
+                        # Update machine and save in dict
+                        assert e_entry["properties"]["external_url"] == "null"
+                        if tdf.loc[m_idx]["source"] == "Device":
+                            e_entry["properties"]["external_url"] = this_link
+                            e_entry["properties"]["last_updated"] = today
+                            server_data["features"].append(e_entry)
+                        else:
+                            # Machine is already in server_dict, just update content
+                            i = tdf.iloc[m_idx]["data_idx"]
+                            server_data["features"][i]["properties"][
+                                "external_url"
+                            ] = this_link
+                            server_data["features"][i]["properties"][
+                                "last_updated"
+                            ] = today
+                    continue
 
             logger.debug(
                 f"{j}/{l}: Found machine to be added: {geojson['properties']['name']}"
@@ -244,7 +392,7 @@ def location_differ(
             lat, lng = get_coordinates(
                 title=geojson["properties"]["name"],
                 subtitle=geojson["properties"]["address"],
-                api_key=api_key,
+                api=gmaps,
             )
 
             geojson["properties"]["latitude"] = str(lat)
@@ -270,8 +418,15 @@ def location_differ(
         f"\n Result: {total_changes} changes, {new} new machines found"
         f" and {depr} machines retired"
     )
+    # Make sure that no machines occur twice in server_locations
+    ids = [entry["properties"]["id"] for entry in server_data["features"]]
+    counts = Counter(ids)
+    if len(ids) != len(counts):
+        dups = [(v, c) for v, c in counts.items() if c > 1]
+        raise ValueError(f"Identified duplicate machines: {dups}")
 
     fn = "server_locations.json"
+    os.makedirs(output_folder, exist_ok=True)
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
         json.dump(server_data, f, ensure_ascii=False, indent=4)
 

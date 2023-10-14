@@ -2317,7 +2317,7 @@
             "properties": {
                 "name": "Lake Superior Maritime Visitor Center",
                 "active": true,
-                "area": "Montana",
+                "area": "Minnesota",
                 "address": "600 Canal Park Dr, Duluth, MN 55802, United States",
                 "status": "unvisited",
                 "external_url": "null",
@@ -3322,29 +3322,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -83.55365379999999,
-                    35.78823879999999
-                ]
-            },
-            "properties": {
-                "name": "Old Mill Restaurant General Store",
-                "active": false,
-                "area": "Tennessee",
-                "address": "164 Old Mill Ave., Pigeon Forge",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
-                "internal_url": "null",
-                "latitude": "35.78823879999999",
-                "longitude": "-83.55365379999999",
-                "id": 4273,
-                "last_updated": "2023-08-14"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -83.555183,
                     35.788432
                 ]
@@ -3548,6 +3525,29 @@
                 "id": 4382,
                 "multimachine": 2,
                 "last_updated": "2023-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.55365379999999,
+                    35.78823879999999
+                ]
+            },
+            "properties": {
+                "name": "Old Mill Restaurant General Store",
+                "active": false,
+                "area": "Tennessee",
+                "address": "164 Old Mill Ave., Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2647",
+                "internal_url": "null",
+                "latitude": "35.78823879999999",
+                "longitude": "-83.55365379999999",
+                "id": 4273,
+                "last_updated": "2023-08-20"
             }
         },
         {
@@ -4123,7 +4123,7 @@
             "properties": {
                 "name": "Britannia Pier",
                 "active": true,
-                "area": "United Kingdom",
+                "area": "England",
                 "address": "Marine Parade Great Yarmouth, NR30 2EH",
                 "status": "unvisited",
                 "external_url": "null",
@@ -4146,7 +4146,7 @@
             "properties": {
                 "name": "The hole in wand",
                 "active": true,
-                "area": "United Kingdom",
+                "area": "England",
                 "address": "10 Coppergate Walk, York YO1 9NT, UK",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=411137",
@@ -4215,7 +4215,7 @@
             "properties": {
                 "name": "Grand Pier Weston Super Mare",
                 "active": true,
-                "area": "United Kingdom",
+                "area": "England",
                 "address": "Weston-super-Mare BS23 1AL, UK",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102082",
@@ -5180,7 +5180,7 @@
                 "name": "Cap San Diego",
                 "active": true,
                 "area": "Germany",
-                "address": "Überseebrücke, 20459 HAMBURG",
+                "address": "Überseebrücke, 20459 Hamburg, Germany",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=74282",
                 "internal_url": "null",
