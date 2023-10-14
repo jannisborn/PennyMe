@@ -58,7 +58,7 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 def location_differ(
     output_folder: str, device_json: str, server_json: str, api_key: str
 ):
-    today = f"{YEAR}-{MONTH:02d}-{DAY:02d}"
+    today = f"{YEAR}-{MONTH}-{DAY}"
 
     gmaps = GoogleMaps(api_key)
 
@@ -181,10 +181,11 @@ def location_differ(
                             # Easy case, we just add this machine to server_dict
                             assert len(device_dict[this_link]) == 1
                             # Retire machine
-                            device_dict[this_link]["properties"]["status"] = "retired"
-                            device_dict[this_link]["properties"]["active"] = False
-                            device_dict[this_link]["properties"]["last_updated"] = today
-                            server_data["features"].append(device_dict[this_link])
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["status"] = "retired"
+                            entry["properties"]["active"] = False
+                            entry["properties"]["last_updated"] = today
+                            server_data["features"].append(entry)
                         elif name == "Server":
                             if len(server_dict[this_link]) > 1:
                                 logger.warning(
@@ -199,13 +200,13 @@ def location_differ(
                             ]
                             # Retire all machines of that URL
                             for idx in idxs:
-                                server_data["features"][i]["properties"][
+                                server_data["features"][idx]["properties"][
                                     "status"
                                 ] = "retired"
-                                server_data["features"][i]["properties"][
+                                server_data["features"][idx]["properties"][
                                     "active"
                                 ] = False
-                                server_data["features"][i]["properties"][
+                                server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
                         changes += 1  # track that we changed this machine
@@ -218,8 +219,8 @@ def location_differ(
                         # A machine documented as retired is available again
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            entry = device_dict[this_link]
-                            assert len(entry) == 1
+                            assert len(device_dict[this_link]) == 1
+                            entry = device_dict[this_link][0]
                             entry["properties"]["status"] = "unvisited"
                             entry["properties"]["active"] = True
                             entry["properties"]["last_updated"] = today
@@ -229,7 +230,7 @@ def location_differ(
                             entry["properties"]["address"] = entry["properties"][
                                 "address"
                             ].strip()
-                            server_data["features"].extend(entry)
+                            server_data["features"].append(entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
                             entry = server_dict[this_link]
@@ -287,47 +288,30 @@ def location_differ(
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["name"]).index(match)
-                    if tdf.loc[m_idx]["source"] == "Device":
+                    if tdf.iloc[m_idx]["source"] == "Device":
                         cur_data = device_data
                     else:
                         cur_data = server_data
 
                     e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
-
-                    dist = haversine(
-                        (
-                            float(geojson["properties"]["latitude"]),
-                            float(geojson["properties"]["longitude"]),
-                        ),
-                        (
-                            float(tdf.loc[m_idx]["latitude"]),
-                            float(tdf.loc[m_idx]["longitude"]),
-                        ),
+                    logger.info(
+                        f"Seeems that machine {this_title} already exists as: {match}"
                     )
-                    if dist > 1:
-                        geojson["properties"][
-                            "logs"
-                        ] = f"Distance {dist} km to {e_entry}"
-                        problem_data["features"].append(geojson)
+                    # Update machine and save in dict
+                    assert e_entry["properties"]["external_url"] == "null"
+                    if tdf.iloc[m_idx]["source"] == "Device":
+                        e_entry["properties"]["external_url"] = this_link
+                        e_entry["properties"]["last_updated"] = today
+                        server_data["features"].append(e_entry)
                     else:
-                        logger.info(
-                            f"Seeems that machine {this_title} already exists as: {match}"
-                        )
-                        # Update machine and save in dict
-                        assert e_entry["properties"]["external_url"] == "null"
-                        if tdf.loc[m_idx]["source"] == "Device":
-                            e_entry["properties"]["external_url"] = this_link
-                            e_entry["properties"]["last_updated"] = today
-                            server_data["features"].append(e_entry)
-                        else:
-                            # Machine is already in server_dict, just update content
-                            i = tdf.iloc[m_idx]["data_idx"]
-                            server_data["features"][i]["properties"][
-                                "external_url"
-                            ] = this_link
-                            server_data["features"][i]["properties"][
-                                "last_updated"
-                            ] = today
+                        # Machine is already in server_dict, just update content
+                        i = tdf.iloc[m_idx]["data_idx"]
+                        server_data["features"][i]["properties"][
+                            "external_url"
+                        ] = this_link
+                        server_data["features"][i]["properties"][
+                            "last_updated"
+                        ] = today
                     continue
 
                 match, score = fuzzysearch.extract(
@@ -338,48 +322,30 @@ def location_differ(
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["address"]).index(match)
-                    if tdf.loc[m_idx]["source"] == "Device":
+                    if tdf.iloc[m_idx]["source"] == "Device":
                         cur_data = device_data
                     else:
                         cur_data = server_data
 
                     e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
-
-                    dist = haversine(
-                        (
-                            float(geojson["properties"]["latitude"]),
-                            float(geojson["properties"]["longitude"]),
-                        ),
-                        (
-                            float(tdf.loc[m_idx]["latitude"]),
-                            float(tdf.loc[m_idx]["longitude"]),
-                        ),
+                    logger.info(
+                        f"Seeems that machine {this_title} at {this_address} already exists as: {match}"
                     )
-                    if dist > 1:
-                        geojson["properties"][
-                            "logs"
-                        ] = f"Distance {dist} km to {e_entry}"
-                        problem_data["features"].append(geojson)
-                        problem_data["features"].append(geojson)
+                    # Update machine and save in dict
+                    assert e_entry["properties"]["external_url"] == "null"
+                    if tdf.iloc[m_idx]["source"] == "Device":
+                        e_entry["properties"]["external_url"] = this_link
+                        e_entry["properties"]["last_updated"] = today
+                        server_data["features"].append(e_entry)
                     else:
-                        logger.info(
-                            f"Seeems that machine {this_title} at {this_address} already exists as: {match}"
-                        )
-                        # Update machine and save in dict
-                        assert e_entry["properties"]["external_url"] == "null"
-                        if tdf.loc[m_idx]["source"] == "Device":
-                            e_entry["properties"]["external_url"] = this_link
-                            e_entry["properties"]["last_updated"] = today
-                            server_data["features"].append(e_entry)
-                        else:
-                            # Machine is already in server_dict, just update content
-                            i = tdf.iloc[m_idx]["data_idx"]
-                            server_data["features"][i]["properties"][
-                                "external_url"
-                            ] = this_link
-                            server_data["features"][i]["properties"][
-                                "last_updated"
-                            ] = today
+                        # Machine is already in server_dict, just update content
+                        i = tdf.iloc[m_idx]["data_idx"]
+                        server_data["features"][i]["properties"][
+                            "external_url"
+                        ] = this_link
+                        server_data["features"][i]["properties"][
+                            "last_updated"
+                        ] = today
                     continue
 
             logger.debug(
