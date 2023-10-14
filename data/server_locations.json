@@ -5378,6 +5378,198 @@
                 "id": 6061,
                 "last_updated": "2023-10-12"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.118516,
+                    19.48464
+                ]
+            },
+            "properties": {
+                "name": "Basilica of Our Lady of Guadalupe (right)",
+                "active": true,
+                "area": "Mexico",
+                "address": "Plaza de las Américas  1 Col. Villa de Guadalupe Gustavo A. Madero",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252277",
+                "internal_url": "null",
+                "latitude": "19.484640",
+                "longitude": "-99.118516",
+                "id": 3220,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.989792,
+                    47.589176
+                ]
+            },
+            "properties": {
+                "name": "Königssee (Machine 2)",
+                "active": true,
+                "area": "Germany",
+                "address": "Gewerbegebiet Seestraße, Seestraße 27, 83471 Schönau am Königssee, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39034",
+                "internal_url": "null",
+                "latitude": "47.589176",
+                "longitude": "12.989792",
+                "id": 526,
+                "last_updated": "2023-10-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.972804,
+                    47.544456
+                ]
+            },
+            "properties": {
+                "name": "Königssee - St. Bartholomä",
+                "active": true,
+                "area": "Germany",
+                "address": "Kessel-St Bartholomä 3, 83471 Schönau am Königssee, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39034",
+                "internal_url": "null",
+                "latitude": "47.544456",
+                "longitude": "12.972804",
+                "id": 527,
+                "paywall": true,
+                "last_updated": "2023-10-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.294622,
+                    48.85833
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 2 Machine 1 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858330",
+                "longitude": "2.294622",
+                "id": 5050,
+                "last_updated": "2022-01-11",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.294272,
+                    48.85838
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 2 Machine 2 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858380",
+                "longitude": "2.294272",
+                "id": 5051,
+                "last_updated": "2022-01-11",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.295138,
+                    48.858447
+                ]
+            },
+            "properties": {
+                "name": "Tour Eiffel - Floor 1 Machine 1 (Eiffel Tower)",
+                "active": true,
+                "area": "France",
+                "address": "Champ de Mars, 5 Avenue Anatole, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238469",
+                "internal_url": "null",
+                "latitude": "48.858447",
+                "longitude": "2.295138",
+                "id": 99,
+                "last_updated": "2022-01-11",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.682417,
+                    50.110283
+                ]
+            },
+            "properties": {
+                "name": "Römerplatz (Machine 1)",
+                "active": true,
+                "area": "Germany",
+                "address": "Römerberg 20-22, 60311 Frankfurt am Main",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=800",
+                "internal_url": "null",
+                "latitude": "50.110283",
+                "longitude": "8.682417",
+                "id": 485,
+                "last_updated": "2021-11-14",
+                "logs": {
+                    "2021-11-14": "Machine available at business hours of souvenir shops. Needs 1 Euro and 5 Cents."
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.410004528689658,
+                    48.24026598578018
+                ]
+            },
+            "properties": {
+                "name": "Donauturm (top)",
+                "active": true,
+                "area": "Austria",
+                "address": "Donautumstraße 4",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=35889",
+                "internal_url": "null",
+                "latitude": "48.24026598578018",
+                "longitude": "16.410004528689658",
+                "paywall": true,
+                "id": 1016,
+                "last_updated": "2022-11-06"
+            }
         }
     ]
 }
