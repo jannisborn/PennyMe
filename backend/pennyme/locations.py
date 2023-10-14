@@ -416,7 +416,6 @@ COUNTRIES = [
     "Turkmenistan",
     "Turks and Caicos Islands",
     "Tuvalu",
-    "UAE",
     "Uganda",
     "Ukraine",
     "United Arab Emirates",

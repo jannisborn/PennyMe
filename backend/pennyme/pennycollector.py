@@ -140,7 +140,7 @@ def get_prelim_geojson(
     # NOTE: This refers to the last update on the website. We dont exploit this
     # information atm, but it could be used to make inference faster.
     updated = raw_location[4].split('Center">')[1].split("</td>")[0]
-
+    month, day, year = updated.split('/')
     geojson = {
         "type": "Feature",
         "geometry": {
@@ -159,7 +159,7 @@ def get_prelim_geojson(
             "longitude": "N.A.",
             "id": -1,
         },
-        "temporary": {"website_updated": updated},
+        "temporary": {"website_updated": '20'+year+'-'+month+'-'+day},
     }
     if add_date:
         geojson["properties"].update({"last_updated": f"{YEAR}-{MONTH}-{DAY}"})
