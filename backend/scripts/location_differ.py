@@ -220,12 +220,6 @@ def location_differ(
                             # Easy case, we just add this machine to server_dict
                             entry = device_dict[this_link]
                             assert len(entry) == 1
-
-                            if len(entry) > 1:
-                                logger.warning(
-                                    "A url linking to multiple machines became"
-                                    f"available check manually: {entry}"
-                                )
                             entry["properties"]["status"] = "unvisited"
                             entry["properties"]["active"] = True
                             entry["properties"]["last_updated"] = today
