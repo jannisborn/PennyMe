@@ -145,6 +145,7 @@ def location_differ(
             this_state = geojson["properties"]["status"]
             this_title = geojson["properties"]["name"]
             this_address = geojson["properties"]["address"]
+            this_update = geojson['temporary']['website_updated']
             match = False
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
@@ -156,7 +157,7 @@ def location_differ(
                     if len(set(cur_states)) > 1:
                         problem_data["features"].append(geojson)
                         logger.error(
-                            f"{this_link} used in multiple pins, requires manual handling: {cur_dict[this_link]}"
+                            f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
                         )
                         continue
                     cur_state = cur_states[0]
@@ -173,6 +174,21 @@ def location_differ(
                         break
 
                     # The state for an already documented machine has changed.
+                    cur_updates =  [
+                        cur_dict[this_link][s]["properties"]["last_updated"]
+                        for s in range(len(cur_dict[this_link]))
+                    ]
+                    if len(set(cur_updates)) > 1:
+                        problem_data["features"].append(geojson)
+                        logger.error(
+                            f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
+                        )
+                        continue
+                    cur_updated = cur_updates[0]
+
+                    if this_update < cur_updated:
+                        # Our machine was updated more recently than the website
+                        continue
                     elif (
                         cur_state == "unvisited"
                         and this_state in UNAVAILABLE_MACHINE_STATES
@@ -197,8 +213,8 @@ def location_differ(
                             # Extract all machines of that URL (usually 1)
                             idxs = [
                                 i
-                                for i, link in enumerate(server_keys)
-                                if link == this_link
+                                for i, geojson in enumerate(server_data["features"])
+                                if geojson['properties']['external_url'] == this_link
                             ]
                             # Retire all machines of that URL
                             for idx in idxs:
@@ -245,18 +261,20 @@ def location_differ(
                             # Extract all machines of that URL (usually 1)
                             idxs = [
                                 i
-                                for i, link in enumerate(server_keys)
-                                if link == this_link
+                                for i, geojson in enumerate(server_data["features"])
+                                if geojson['properties']['external_url'] == this_link
                             ]
+                            if len(idxs) >1:
+                                logger.warning(f"For {this_link} found {len(idxs)} machines: {idxs}")
                             # Re-activate all machines of that URL
                             for idx in idxs:
-                                server_data["features"][i]["properties"][
+                                server_data["features"][idx]["properties"][
                                     "status"
                                 ] = "unvisited"
-                                server_data["features"][i]["properties"][
+                                server_data["features"][idx]["properties"][
                                     "active"
                                 ] = True
-                                server_data["features"][i]["properties"][
+                                server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
 
