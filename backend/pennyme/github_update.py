@@ -127,7 +127,7 @@ def commit_json_file(
     """
 
     # create a new branch if necessary
-    did_create_new_branch = create_new_branch(branch_name)
+    did_create_new_branch = create_new_branch(branch_name, headers=HEADERS)
 
     # Update the file on the newly created branch
     file_content_encoded = base64.b64encode(

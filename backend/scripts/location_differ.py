@@ -32,6 +32,7 @@ from pennyme.pennycollector import (
     validate_location_list,
 )
 from pennyme.webconfig import get_website
+from pennyme.github_update import load_latest_server_locations
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -52,6 +53,11 @@ parser.add_argument(
     type=str,
     help="Path to the json with the machine data stored on the server",
 )
+parser.add_argument(
+    "--load_from_github",
+    action="store_true",
+    help="load the latest server_locations file from the repo",
+)
 parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 
 
@@ -66,8 +72,15 @@ def location_differ(
     with open(device_json, "r") as f:
         device_data = json.load(f)
 
-    with open(server_json, "r") as f:
-        server_data = json.load(f)
+    # load server_locations from github or from data folder
+    if args.load_from_github:
+        server_data, _ = load_latest_server_locations()
+        # save the file locally to compare it later
+        with open(server_json, "w") as f:
+            json.dump(server_data, f)
+    else:
+        with open(server_json, "r") as f:
+            server_data = json.load(f)
 
     # Saving all machines which have no external link
     no_link_list = []
