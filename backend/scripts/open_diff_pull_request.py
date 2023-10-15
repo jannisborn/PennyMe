@@ -35,6 +35,7 @@ if __name__ == "__main__":
         branch_name=DATA_BRANCH
     )
     if old_server_locations != server_locations:
+        print("Detected change in server_locations.json - push to github")
         commit_json_file(
             server_locations,
             branch_name=DATA_BRANCH,
@@ -54,6 +55,7 @@ if __name__ == "__main__":
         branch_name=DATA_BRANCH, file="/data/problems.json"
     )
     if old_problems_json != problems_json:
+        print("Detected change in problems.json - push to github")
         commit_json_file(
             problems_json,
             branch_name=DATA_BRANCH,
