@@ -64,6 +64,8 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 def location_differ(
     output_folder: str, device_json: str, server_json: str, api_key: str
 ):
+    os.makedirs(output_folder, exist_ok=True)
+
     today = f"{YEAR}-{MONTH}-{DAY}"
 
     gmaps = GoogleMaps(api_key)
@@ -78,6 +80,11 @@ def location_differ(
         # save the file locally to compare it later
         with open(server_json, "w") as f:
             json.dump(server_data, f)
+        problems_old, _ = load_latest_server_locations(
+            file="/data/problems.json"
+        )
+        with open(os.path.join(output_folder, "old_problems.json"), "w") as f:
+            json.dump(problems_old, f)
     else:
         with open(server_json, "r") as f:
             server_data = json.load(f)
@@ -423,7 +430,6 @@ def location_differ(
         raise ValueError(f"Identified duplicate machines: {dups}")
 
     fn = "server_locations.json"
-    os.makedirs(output_folder, exist_ok=True)
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
         json.dump(server_data, f, ensure_ascii=False, indent=4)
 

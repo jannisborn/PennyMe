@@ -32,7 +32,7 @@ def check_branch_exists(branch_name):
     return branch_check_response.status_code == 200
 
 
-def get_latest_branch_url():
+def get_latest_branch_url(file=FILE_PATH):
     """
     Check whether the latest change is on the main or on the data branch
     Returns the respective URL as a string
@@ -44,9 +44,9 @@ def get_latest_branch_url():
     # if data branch exists, the url points to the branch
     repo_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}"
     if branch_exists:
-        file_url = f"{repo_url}/contents/{FILE_PATH}?ref={DATA_BRANCH}"
+        file_url = f"{repo_url}/contents/{file}?ref={DATA_BRANCH}"
     else:
-        file_url = f"{repo_url}/contents/{FILE_PATH}"
+        file_url = f"{repo_url}/contents/{file}"
     return file_url
 
 
@@ -69,7 +69,9 @@ def create_new_branch(branch_name, headers=HEADERS):
     return False
 
 
-def load_latest_server_locations(branch_name=DATA_BRANCH, headers=HEADERS):
+def load_latest_server_locations(
+    branch_name=DATA_BRANCH, headers=HEADERS, file=FILE_PATH
+):
     """
     Push the modified file to the github branch
     machine_update_entry: Dict, only the new machine entry that should
@@ -77,7 +79,7 @@ def load_latest_server_locations(branch_name=DATA_BRANCH, headers=HEADERS):
     """
 
     # Load latest version of the server_locations
-    file_url = get_latest_branch_url()
+    file_url = get_latest_branch_url(file=file)
     response = requests.get(file_url, headers=headers)
     data = response.json()
     current_content = data["content"]
@@ -119,7 +121,8 @@ def commit_json_file(
     branch_name,
     commit_message,
     latest_commit_sha,
-    headers=HEADERS
+    headers=HEADERS,
+    file_path=FILE_PATH
 ):
     """
     Commit the server locations dictionary to branch named <branch_name>
@@ -142,7 +145,7 @@ def commit_json_file(
         "sha": latest_commit_sha,
     }
     response = requests.put(
-        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents{FILE_PATH}",
+        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents{file_path}",
         headers=headers,
         json=payload,
     )
