@@ -20846,6 +20846,31 @@
                 "multimachine": 5,
                 "last_updated": "2021-04-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1000,
+                    1000
+                ]
+            },
+            "properties": {
+                "name": "last test",
+                "active": true,
+                "area": "Marsstate",
+                "address": "1 Mars street, Mars",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 1000,
+                "longitude": 1000,
+                "id": 6463,
+                "last_updated": "2023-10-15",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
