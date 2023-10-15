@@ -22,32 +22,45 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # load new server location and problem file
+    # general commit message
+    commit_message = "Updates from website "
+
+    # 1) server_locations.json
+    # load new server location
     with open(args.file, "r") as infile:
         server_locations = json.load(infile)
+
+    # get latest_commit_sha
+    old_server_locations, latest_commit_sha = load_latest_server_locations(
+        branch_name=DATA_BRANCH
+    )
+    if old_server_locations != server_locations:
+        commit_json_file(
+            server_locations,
+            branch_name=DATA_BRANCH,
+            commit_message=commit_message + "(server_locations)",
+            latest_commit_sha=latest_commit_sha,
+            headers=HEADER_LOCATION_DIFF
+        )
+    else:
+        print("No change between server locations")
+
+    # 2) Problems.json
     # load new problems json
     with open(args.problems_file, "r") as infile:
         problems_json = json.load(infile)
-
     # get latest_commit_sha
-    _, latest_commit_sha = load_latest_server_locations(
-        branch_name=DATA_BRANCH
+    old_problems_json, latest_commit_sha = load_latest_server_locations(
+        branch_name=DATA_BRANCH, file="/data/problems.json"
     )
-
-    commit_message = "Updates from website "
-
-    commit_json_file(
-        server_locations,
-        branch_name=DATA_BRANCH,
-        commit_message=commit_message + "(server_locations)",
-        latest_commit_sha=latest_commit_sha,
-        headers=HEADER_LOCATION_DIFF
-    )
-
-    commit_json_file(
-        problems_json,
-        branch_name=DATA_BRANCH,
-        commit_message=commit_message + "(problems json)",
-        latest_commit_sha=latest_commit_sha,
-        headers=HEADER_LOCATION_DIFF
-    )
+    if old_problems_json != problems_json:
+        commit_json_file(
+            problems_json,
+            branch_name=DATA_BRANCH,
+            commit_message=commit_message + "(problems json)",
+            latest_commit_sha=latest_commit_sha,
+            headers=HEADER_LOCATION_DIFF,
+            file_path="/data/problems.json"
+        )
+    else:
+        print("No change between problem jsons")

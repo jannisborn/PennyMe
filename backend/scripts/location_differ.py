@@ -78,13 +78,14 @@ def location_differ(
     if args.load_from_github:
         server_data, _ = load_latest_server_locations()
         # save the file locally to compare it later
-        with open(server_json, "w") as f:
-            json.dump(server_data, f)
+        with open(server_json, "w", encoding="utf8") as f:
+            json.dump(server_data, f, ensure_ascii=False, indent=4)
         problems_old, _ = load_latest_server_locations(
             file="/data/problems.json"
         )
-        with open(os.path.join(output_folder, "old_problems.json"), "w") as f:
-            json.dump(problems_old, f)
+        problems_out_path = os.path.join(output_folder, "old_problems.json")
+        with open(problems_out_path, "w", encoding="utf8") as f:
+            json.dump(problems_old, f, ensure_ascii=False, indent=4)
     else:
         with open(server_json, "r") as f:
             server_data = json.load(f)
