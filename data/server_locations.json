@@ -20846,6 +20846,167 @@
                 "multimachine": 5,
                 "last_updated": "2021-04-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2636106,
+                    37.7986414
+                ]
+            },
+            "properties": {
+                "name": "Oakland Museum of California",
+                "active": false,
+                "area": "California",
+                "address": "1000 Oak St., Oakland",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=197734",
+                "internal_url": "null",
+                "latitude": "37.7986414",
+                "longitude": "-122.2636106",
+                "id": 4714,
+                "last_updated": "2023-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3940461,
+                    44.9374447
+                ]
+            },
+            "properties": {
+                "name": "Chippewa Candy Shop",
+                "active": true,
+                "area": "Wisconsin",
+                "address": "322 N Bridge St. , Chippewa Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=415833",
+                "internal_url": "null",
+                "latitude": "44.9374447",
+                "longitude": "-91.3940461",
+                "id": 6464,
+                "last_updated": "2023-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.372179832208788,
+                    40.62573837838587
+                ]
+            },
+            "properties": {
+                "name": "Sorrento Centre",
+                "active": false,
+                "area": "Italy",
+                "address": "Crossroads between Via Fuoro & Torquato Tasso, Sorrento, Italy",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317220",
+                "internal_url": "null",
+                "latitude": "40.62573837838587",
+                "longitude": "14.372179832208788",
+                "id": 977,
+                "last_updated": "2023-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.832719,
+                    51.987706
+                ]
+            },
+            "properties": {
+                "name": "Airborne Museum at Hartenstein",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Utrechtseweg 232, 6862 AZ , Oosterbeek",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=415834",
+                "internal_url": "null",
+                "latitude": "51.987706",
+                "longitude": "5.832719",
+                "id": 6465,
+                "last_updated": "2023-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.312864266489445,
+                    48.18588918312767
+                ]
+            },
+            "properties": {
+                "name": "Schloss Schönbrunn",
+                "active": true,
+                "area": "Austria",
+                "address": "Schönbrunner Schloßstraße 47, 1130 Wien, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 48.18588918312767,
+                "longitude": 16.312864266489445,
+                "id": 6466,
+                "last_updated": "2023-10-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.552610329148134,
+                    43.39879117304113
+                ]
+            },
+            "properties": {
+                "name": "Grafidea",
+                "active": true,
+                "area": "Italy",
+                "address": "Via Leopardi, 3, 62019 Recanati MC, Italy",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 43.39879117304113,
+                "longitude": 13.552610329148134,
+                "id": 6467,
+                "last_updated": "2023-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.858686,
+                    47.660127
+                ]
+            },
+            "properties": {
+                "name": "Zur Burg gift shop",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Understadt 5, 8260 Stein Am Rhein, Switzerland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=294765",
+                "internal_url": "null",
+                "latitude": "47.660127",
+                "longitude": "8.858686",
+                "id": 728,
+                "last_updated": "2023-10-15"
+            }
         }
     ]
 }
