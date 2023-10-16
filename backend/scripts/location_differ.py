@@ -32,6 +32,7 @@ from pennyme.pennycollector import (
     validate_location_list,
 )
 from pennyme.webconfig import get_website
+from pennyme.github_update import load_latest_server_locations
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -52,12 +53,19 @@ parser.add_argument(
     type=str,
     help="Path to the json with the machine data stored on the server",
 )
+parser.add_argument(
+    "--load_from_github",
+    action="store_true",
+    help="load the latest server_locations file from the repo",
+)
 parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 
 
 def location_differ(
     output_folder: str, device_json: str, server_json: str, api_key: str
 ):
+    os.makedirs(output_folder, exist_ok=True)
+
     today = f"{YEAR}-{MONTH}-{DAY}"
 
     gmaps = GoogleMaps(api_key)
@@ -66,8 +74,21 @@ def location_differ(
     with open(device_json, "r") as f:
         device_data = json.load(f)
 
-    with open(server_json, "r") as f:
-        server_data = json.load(f)
+    # load server_locations from github or from data folder
+    if args.load_from_github:
+        server_data, _ = load_latest_server_locations()
+        # save the file locally to compare it later
+        with open(server_json, "w", encoding="utf8") as f:
+            json.dump(server_data, f, ensure_ascii=False, indent=4)
+        problems_old, _ = load_latest_server_locations(
+            file="/data/problems.json"
+        )
+        problems_out_path = os.path.join(output_folder, "old_problems.json")
+        with open(problems_out_path, "w", encoding="utf8") as f:
+            json.dump(problems_old, f, ensure_ascii=False, indent=4)
+    else:
+        with open(server_json, "r") as f:
+            server_data = json.load(f)
 
     # Saving all machines which have no external link
     no_link_list = []
@@ -155,6 +176,8 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
+                        geojson['properties']['id'] = -1
+                        geojson['properties']['last_updated'] = -1
                         problem_data["features"].append(geojson)
                         logger.error(
                             f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
@@ -179,6 +202,8 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_updates)) > 1:
+                        geojson['properties']['id'] = -1
+                        geojson['properties']['last_updated'] = -1
                         problem_data["features"].append(geojson)
                         logger.error(
                             f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
@@ -388,6 +413,8 @@ def location_differ(
             del geojson["temporary"]
 
             if (lat, lng) == (0, 0):
+                geojson['properties']['id'] = -1
+                geojson['properties']['last_updated'] = -1
                 problem_data["features"].append(geojson)
             else:
                 server_data["features"].append(geojson)
@@ -410,7 +437,6 @@ def location_differ(
         raise ValueError(f"Identified duplicate machines: {dups}")
 
     fn = "server_locations.json"
-    os.makedirs(output_folder, exist_ok=True)
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
         json.dump(server_data, f, ensure_ascii=False, indent=4)
 

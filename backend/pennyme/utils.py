@@ -22,10 +22,16 @@ def get_next_free_machine_id(
         all_locations = json.load(infile)
 
     # Identify IDs in existing data
-    all_ids = max([i["properties"]["id"] for i in all_locations["features"]])
-    server_ids = max([i["properties"]["id"] for i in server_locations])
+    all_ids = [i["properties"]["id"] for i in all_locations["features"]]
+    server_ids = [i["properties"]["id"] for i in server_locations]
 
     # identify picture IDs
-    pic_ids = max([int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im])
+    pic_ids = [
+        int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im
+    ]
 
-    return max(all_ids, server_ids, pic_ids) + 1
+    max_id_all = max(all_ids) if len(all_ids) > 0 else 0
+    max_id_server = max(server_ids) if len(server_ids) > 0 else 0
+    max_id_pics = max(pic_ids) if len(pic_ids) > 0 else 0
+
+    return max([max_id_all, max_id_server, max_id_pics]) + 1
