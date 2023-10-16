@@ -2573,7 +2573,7 @@
                 ]
             },
             "properties": {
-                "name": "M&M's World",
+                "name": "M&M's World Las Vegas",
                 "active": false,
                 "area": "Nevada",
                 "address": "3785 Las Vegas Boulevard South, Las Vegas",
@@ -21006,6 +21006,29 @@
                 "longitude": "8.858686",
                 "id": 728,
                 "last_updated": "2023-10-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9843631,
+                    40.7601775
+                ]
+            },
+            "properties": {
+                "name": "M&M's World New York",
+                "active": false,
+                "area": "New York",
+                "address": "1600 Broadway at 48th Street (Times Square), New York City (Manhattan)",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=21779",
+                "internal_url": "null",
+                "latitude": "40.7601775",
+                "longitude": "-73.9843631",
+                "id": 3049,
+                "last_updated": "2023-10-17"
             }
         }
     ]
