@@ -173,7 +173,7 @@ def open_pull_request(commit_message, branch_name, headers=HEADERS):
     # Open a pull request
     payload = {
         "title": commit_message,
-        "body": "New machine submitted for review",
+        "body": "Machine updates submitted for review",
         "head": branch_name,
         "base": BASE_BRANCH
     }

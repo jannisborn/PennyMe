@@ -176,6 +176,8 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
+                        geojson['properties']['id'] = -1
+                        geojson['properties']['last_updated'] = -1
                         problem_data["features"].append(geojson)
                         logger.error(
                             f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
@@ -200,6 +202,8 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_updates)) > 1:
+                        geojson['properties']['id'] = -1
+                        geojson['properties']['last_updated'] = -1
                         problem_data["features"].append(geojson)
                         logger.error(
                             f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
@@ -409,6 +413,8 @@ def location_differ(
             del geojson["temporary"]
 
             if (lat, lng) == (0, 0):
+                geojson['properties']['id'] = -1
+                geojson['properties']['last_updated'] = -1
                 problem_data["features"].append(geojson)
             else:
                 server_data["features"].append(geojson)
