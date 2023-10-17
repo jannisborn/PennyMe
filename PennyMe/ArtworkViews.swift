@@ -15,13 +15,6 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         
         willSet {
-            // define annotation view
-            var view: MKMarkerAnnotationView
-            let identifier = "marker"
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            
             // define subtitle subtitles
             let detailLabel = UILabel()
             detailLabel.numberOfLines = 0
@@ -33,10 +26,18 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
                 guard let newmachine = newValue as? NewMachine else {
                     return
                 }
+                // define annotation view
+                var view: MKMarkerAnnotationView
+                let identifier = "newmachine"
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                
                 // add callouts (only address as subtitle)
                 detailLabel.text = newmachine.text
                 detailCalloutAccessoryView = detailLabel
                 rightCalloutAccessoryView = nil
+                leftCalloutAccessoryView = nil
             }
             else {
                 guard let artwork = newValue as? Artwork else {
@@ -47,6 +48,13 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
                 if !clusterPins {
                     displayPriority = MKFeatureDisplayPriority.required
                 }
+                
+                // define annotation view
+                var view: MKMarkerAnnotationView
+                let identifier = artwork.title
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
                 
                 // Set marker color
                 markerTintColor = artwork.markerTintColor
