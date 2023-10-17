@@ -497,6 +497,14 @@ extension ViewController: MKMapViewDelegate {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.calloutTapped))
         view.addGestureRecognizer(gesture)
     }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if let gestureRecognizers = view.gestureRecognizers {
+            for gestureRecognizer in gestureRecognizers {
+                view.removeGestureRecognizer(gestureRecognizer)
+            }
+        }
+    }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {
         guard let annotation = (sender.view as? MKAnnotationView)?.annotation  else {return}
@@ -525,9 +533,6 @@ extension ViewController: MKMapViewDelegate {
             // This would open the directions
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             location.mapItem().openInMaps(launchOptions: launchOptions)
-        }
-        else {
-            self.performSegue(withIdentifier: "ShowPinViewController", sender: nil)
         }
     }
 }
