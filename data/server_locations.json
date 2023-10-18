@@ -14644,16 +14644,16 @@
             },
             "properties": {
                 "name": "Planet Vienna (gifts and souvenirs)",
-                "active": false,
+                "active": true,
                 "area": "Austria",
                 "address": "Kärntner Straße 30, 1010 Vienna",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=284508",
                 "internal_url": "null",
                 "latitude": "48.2048456",
                 "longitude": "16.3706312",
                 "id": 1021,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-18"
             }
         },
         {
@@ -20954,12 +20954,12 @@
                 "area": "Austria",
                 "address": "Schönbrunner Schloßstraße 47, 1130 Wien, Austria",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=415993",
                 "internal_url": "null",
                 "latitude": 48.18588918312767,
                 "longitude": 16.312864266489445,
                 "id": 6466,
-                "last_updated": "2023-10-15"
+                "last_updated": "2023-10-18"
             }
         },
         {
@@ -21053,6 +21053,144 @@
                 "id": 6468,
                 "last_updated": "2023-10-18",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.562205,
+                    40.5308589
+                ]
+            },
+            "properties": {
+                "name": "Manzanita Lake Camper Store",
+                "active": true,
+                "area": "California",
+                "address": "Manzanita Lake Campground, Lassen Volcanic National Park - Shingletown",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=415984",
+                "internal_url": "null",
+                "latitude": "40.5308589",
+                "longitude": "-121.562205",
+                "id": 6469,
+                "last_updated": "2023-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.491356,
+                    44.73359
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone - Canyon Village General Store",
+                "active": false,
+                "area": "Wyoming",
+                "address": "North or West Entrance Road, Yellowstone National Park",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=833",
+                "internal_url": "null",
+                "latitude": "44.73359",
+                "longitude": "-110.491356",
+                "id": 3122,
+                "last_updated": "2023-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    33.6203516,
+                    34.8723402
+                ]
+            },
+            "properties": {
+                "name": "Larnaca International Airport",
+                "active": false,
+                "area": "Cyprus",
+                "address": "Dromolaxia, Larnaca",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=298848",
+                "internal_url": "null",
+                "latitude": "34.8723402",
+                "longitude": "33.6203516",
+                "id": 5630,
+                "last_updated": "2023-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.5771433,
+                    51.4408985
+                ]
+            },
+            "properties": {
+                "name": "Het Arsenaal",
+                "active": false,
+                "area": "Netherlands",
+                "address": "Arsenaalsplein 7, Vlissingen",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=352649",
+                "internal_url": "null",
+                "latitude": "51.4408985",
+                "longitude": "3.5771433",
+                "id": 5876,
+                "last_updated": "2023-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.4694678,
+                    45.5905851
+                ]
+            },
+            "properties": {
+                "name": "Rasnov Citadel",
+                "active": false,
+                "area": "Romania",
+                "address": ", Rasnov",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=274424",
+                "internal_url": "null",
+                "latitude": "45.5905851",
+                "longitude": "25.4694678",
+                "id": 892,
+                "last_updated": "2023-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.1104449,
+                    39.9496287
+                ]
+            },
+            "properties": {
+                "name": "Talaiotic Menorca",
+                "active": true,
+                "area": "Spain",
+                "address": ", Menorca",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=415994",
+                "internal_url": "null",
+                "latitude": "39.9496287",
+                "longitude": "4.1104449",
+                "id": 6471,
+                "last_updated": "2023-10-18"
             }
         }
     ]
