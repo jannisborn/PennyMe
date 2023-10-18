@@ -15,25 +15,29 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         
         willSet {
+            // define subtitle subtitles
+            let detailLabel = UILabel()
+            detailLabel.numberOfLines = 0
+            detailLabel.font = detailLabel.font.withSize(12)
+            
             // 1
             let check = newValue?.title
             if check == "New Machine"{
                 guard let newmachine = newValue as? NewMachine else {
                     return
                 }
-                // Create view when marker is pressed
-                let identifier = "markerNewMachine"
+                // define annotation view
                 var view: MKMarkerAnnotationView
+                let identifier = "newmachine"
                 view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: 0, y: 0)
-                // Multiline subtitles
-                let detailLabel = UILabel()
-                detailLabel.numberOfLines = 0
-                detailLabel.font = detailLabel.font.withSize(12)
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                
+                // add callouts (only address as subtitle)
                 detailLabel.text = newmachine.text
                 detailCalloutAccessoryView = detailLabel
                 rightCalloutAccessoryView = nil
+                leftCalloutAccessoryView = nil
             }
             else {
                 guard let artwork = newValue as? Artwork else {
@@ -45,15 +49,15 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
                     displayPriority = MKFeatureDisplayPriority.required
                 }
                 
-                // Set marker color
-                markerTintColor = artwork.markerTintColor
-                
-                // Create view when marker is pressed
-                let identifier = "marker"
+                // define annotation view
                 var view: MKMarkerAnnotationView
+                let identifier = artwork.title
                 view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
+                
+                // Set marker color
+                markerTintColor = artwork.markerTintColor
                 
                 // Create right button
                 rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -65,24 +69,11 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
                 rightCalloutAccessoryView = mapsButton
                 
                 // Multiline subtitles
-                let detailLabel = UILabel()
-                detailLabel.numberOfLines = 0
-                detailLabel.font = detailLabel.font.withSize(12)
                 detailLabel.text = artwork.subtitle
                 detailCalloutAccessoryView = detailLabel
                 
-                // create left button
-                if artwork.paywall {
-                    let paywallImageView = UIImageView (
-                        frame: CGRect(origin: CGPoint.zero,
-                                      size: CGSize(width: 30, height: 30))
-                    )
-                    if #available(iOS 13.0, *) {
-                        let dollarImage = UIImage(systemName: "dollarsign", withConfiguration: UIImage.SymbolConfiguration(pointSize: 19, weight: .bold, scale: .large))?.withTintColor(.red, renderingMode: .alwaysOriginal)
-                        paywallImageView.image = dollarImage
-                    }
-                    leftCalloutAccessoryView = paywallImageView
-                }
+                // create left paywall image if required
+                leftCalloutAccessoryView = artwork.getPaywallSymbol()
             }
         }
     }

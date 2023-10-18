@@ -95,6 +95,23 @@ class Artwork: NSObject, MKAnnotation {
         return self.link
     }
     
+    func getPaywallSymbol() -> UIImageView? {
+        if self.paywall {
+            let paywallImageView = UIImageView (
+                frame: CGRect(origin: CGPoint.zero,
+                              size: CGSize(width: 30, height: 30))
+            )
+            if #available(iOS 13.0, *) {
+                let dollarImage = UIImage(systemName: "dollarsign", withConfiguration: UIImage.SymbolConfiguration(pointSize: 19, weight: .bold, scale: .large))?.withTintColor(.red, renderingMode: .alwaysOriginal)
+                paywallImageView.image = dollarImage
+            }
+            return paywallImageView
+        }
+        else {
+            return nil
+        }
+    }
+    
     var markerTintColor: UIColor  {
       switch status {
       case "unvisited":
