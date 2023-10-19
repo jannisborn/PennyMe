@@ -27,7 +27,7 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "This version adds two new features: Paywalls and Multimachines. If you have to pay a fee to see a machine (e.g., inside a museum) you will now see a dollar sign in the machine view. If multiple machines are available at the same location, it will also be indicated in the machine view. Finally, this version also include various bugfixes (e.g., submitting images, comments or machines should be improved)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Machine information is more up to date now! The app is now synced to pennylocator.com :) Information in this app should become more reliable with this update!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
