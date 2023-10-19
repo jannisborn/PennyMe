@@ -21160,7 +21160,7 @@
                 "name": "Rasnov Citadel",
                 "active": false,
                 "area": "Romania",
-                "address": ", Rasnov",
+                "address": "Râșnov 505400, Romania",
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=274424",
                 "internal_url": "null",
@@ -21175,22 +21175,45 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    4.1104449,
-                    39.9496287
+                    4.256464,
+                    39.878456
                 ]
             },
             "properties": {
-                "name": "Talaiotic Menorca",
+                "name": "Talaiotica Menorca",
                 "active": true,
                 "area": "Spain",
-                "address": ", Menorca",
+                "address": "Menorca Illes Balears ES, Plaça de la Biosfera, 5, 07703 Maó, Spain",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=415994",
                 "internal_url": "null",
-                "latitude": "39.9496287",
-                "longitude": "4.1104449",
+                "latitude": "39.878456",
+                "longitude": "4.256464",
                 "id": 6471,
-                "last_updated": "2023-10-18"
+                "last_updated": "2023-10-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.169509,
+                    37.640394
+                ]
+            },
+            "properties": {
+                "name": "Bryce Canyon National Park Visitor Center",
+                "active": true,
+                "area": "Utah",
+                "address": "UT-63, Bryce Canyon City, UT 84764, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=366528",
+                "internal_url": "null",
+                "latitude": "37.640394",
+                "longitude": " -112.169509",
+                "id": 5403,
+                "last_updated": "2023-10-19"
             }
         }
     ]
