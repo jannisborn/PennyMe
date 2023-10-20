@@ -15426,16 +15426,16 @@
             },
             "properties": {
                 "name": "Hard Rock Cafe",
-                "active": true,
+                "active": false,
                 "area": "France",
                 "address": ", Nizza",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=406319",
                 "internal_url": "null",
                 "latitude": "43.7101728",
                 "longitude": "7.261953200000001",
                 "id": 6307,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-20"
             }
         },
         {
@@ -21237,6 +21237,213 @@
                 "longitude": " -88.436396",
                 "id": 2428,
                 "last_updated": "2023-10-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.6750871,
+                    33.5959876
+                ]
+            },
+            "properties": {
+                "name": "Moulton Museum",
+                "active": true,
+                "area": "California",
+                "address": "25256 Cabot Rd, Laguna Hills",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416330",
+                "internal_url": "null",
+                "latitude": "33.5959876",
+                "longitude": "-117.6750871",
+                "id": 6472,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.93012,
+                    54.59728500000001
+                ]
+            },
+            "properties": {
+                "name": "RMS Titanic Museum",
+                "active": true,
+                "area": "Ireland",
+                "address": "Queen's Road 1 Olympic Way, Titanic Quarter, Belfast, Belfast",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416331",
+                "internal_url": "null",
+                "latitude": "54.59728500000001",
+                "longitude": "-5.93012",
+                "id": 6474,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.3770546,
+                    41.5547347
+                ]
+            },
+            "properties": {
+                "name": "Bom Jesus de Monte",
+                "active": true,
+                "area": "Portugal",
+                "address": "Estrada do Bom Jesus, 4715-056 Tenões, Portugália, Braga",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416219",
+                "internal_url": "null",
+                "latitude": "41.5547347",
+                "longitude": "-8.3770546",
+                "id": 6475,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4286444,
+                    40.2088385
+                ]
+            },
+            "properties": {
+                "name": "Arco Almedina gift shop",
+                "active": true,
+                "area": "Portugal",
+                "address": "R. do Arco Almedina / 3000-180 Coimbra, Coimbra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416217",
+                "internal_url": "null",
+                "latitude": "40.2088385",
+                "longitude": "-8.4286444",
+                "id": 6476,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.429182599999999,
+                    40.2075805
+                ]
+            },
+            "properties": {
+                "name": "Coimbra shopping street",
+                "active": true,
+                "area": "Portugal",
+                "address": "187 R. Ferreira Borges, Coimbra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416218",
+                "internal_url": "null",
+                "latitude": "40.2075805",
+                "longitude": "-8.429182599999999",
+                "id": 6477,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.1417668,
+                    38.7166568
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "active": true,
+                "area": "Portugal",
+                "address": ", Lisboa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416208",
+                "internal_url": "null",
+                "latitude": "38.7166568",
+                "longitude": "-9.1417668",
+                "id": 6478,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.1334762,
+                    38.7139092
+                ]
+            },
+            "properties": {
+                "name": "Castelo de S. Jorge",
+                "active": true,
+                "area": "Portugal",
+                "address": "R. de Santa Cruz do Castelo, 1100-129 Lisboa, Lisbon",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416226",
+                "internal_url": "null",
+                "latitude": "38.7139092",
+                "longitude": "-9.1334762",
+                "id": 6479,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.6137385,
+                    41.1457337
+                ]
+            },
+            "properties": {
+                "name": "Porto gift point (next to Torre dos Clérigos)",
+                "active": true,
+                "area": "Portugal",
+                "address": "Rua da Assunção 5, 4050-070 Porto, Porto",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416227",
+                "internal_url": "null",
+                "latitude": "41.1457337",
+                "longitude": "-8.6137385",
+                "id": 6480,
+                "last_updated": "2023-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.7064417,
+                    1.3187065
+                ]
+            },
+            "properties": {
+                "name": "Jurong Bird Park",
+                "active": false,
+                "area": "Singapore",
+                "address": "2 Jurong Hill, Jurong",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=106602",
+                "internal_url": "null",
+                "latitude": "1.3187065",
+                "longitude": "103.7064417",
+                "id": 3195,
+                "last_updated": "2023-10-20"
             }
         }
     ]
