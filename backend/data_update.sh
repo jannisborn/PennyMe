@@ -16,4 +16,6 @@ python /root/PennyMe/backend/scripts/location_differ.py --load_from_github -o /r
 # Check if there is a difference in at least one of the two files, if yes, open PR
 python /root/PennyMe/backend/scripts/open_diff_pull_request.py -f "$OUT_JSON_FILE" -p "$NEW_PROBLEMS_JSON_FILE"
 
-cp $NEW_PROBLEMS_JSON_FILE $OLD_PROBLEMS_JSON_FILE
+# Move the new files to make sure that they are not mistakenly used for the next commit if the location_differ fails
+mv $NEW_PROBLEMS_JSON_FILE "/root/PennyMe/debug_new_data/problems.json"
+mv $OUT_JSON_FILE "/root/PennyMe/debug_new_data/server_locations.json"
