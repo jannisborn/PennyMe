@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# source bashrc for environment variables
+. ~/.bashrc
 # Assuming the full path to your Conda executable
 . /root/miniconda3/etc/profile.d/conda.sh
 conda activate myenv
