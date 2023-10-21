@@ -3,7 +3,7 @@ import json
 
 from pennyme.github_update import (
     REPO_OWNER, REPO_NAME, DATA_BRANCH, HEADER_LOCATION_DIFF, commit_json_file,
-    load_latest_server_locations
+    load_latest_server_locations, get_pr_id, post_comment_to_pr
 )
 
 if __name__ == "__main__":
@@ -73,3 +73,9 @@ if __name__ == "__main__":
         )
     else:
         print("No change between problem jsons")
+
+
+    if old_server_locations==server_locations and old_problems_json==problems_json:
+        pr_id = get_pr_id(branch_name=DATA_BRANCH)
+        if pr_id:
+            post_comment_to_pr(pr_id=pr_id, comment="No website updates today!")
