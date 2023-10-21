@@ -10,7 +10,7 @@ from PIL import Image, ImageOps
 
 from haversine import haversine
 from pennyme.locations import COUNTRIES
-from pennyme.github_update import push_to_github
+from pennyme.github_update import push_newmachine_to_github
 from slack import WebClient
 from slack.errors import SlackApiError
 from thefuzz import process as fuzzysearch
@@ -308,7 +308,7 @@ def create_machine():
     }
     # If pushing to new branch: set unique branch name
     # branch_name = f"new_machine_{round(time.time())}"
-    new_machine_id = push_to_github(new_machine_entry)
+    new_machine_id = push_newmachine_to_github(new_machine_entry)
 
     # Upload the image
     if "image" not in request.files:
