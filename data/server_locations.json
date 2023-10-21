@@ -21631,6 +21631,29 @@
                 "paywall": true,
                 "last_updated": "2023-10-21"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546337241591138,
+                    47.391075650959955
+                ]
+            },
+            "properties": {
+                "name": "Test Machine",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 74, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.391075650959955,
+                "longitude": 8.546337241591138,
+                "id": 6484,
+                "last_updated": "2023-10-22"
+            }
         }
     ]
 }
