@@ -62,7 +62,7 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 
 
 def location_differ(
-    output_folder: str, device_json: str, server_json: str, api_key: str
+    output_folder: str, device_json: str, server_json: str, api_key: str, load_from_github:bool
 ):
     os.makedirs(output_folder, exist_ok=True)
 
@@ -75,7 +75,7 @@ def location_differ(
         device_data = json.load(f)
 
     # load server_locations from github or from data folder
-    if args.load_from_github:
+    if load_from_github:
         server_data, _ = load_latest_server_locations()
         # save the file locally to compare it later
         with open(server_json, "w", encoding="utf8") as f:
@@ -409,14 +409,16 @@ def location_differ(
             geojson["geometry"]["coordinates"] = [lng, lat]
             geojson["properties"]["last_updated"] = today
             geojson["properties"]["id"] = machine_idx
-            machine_idx += 1
             del geojson["temporary"]
 
             if (lat, lng) == (0, 0):
                 geojson['properties']['id'] = -1
                 geojson['properties']['last_updated'] = -1
+                changes -= 1
+                new -= 1
                 problem_data["features"].append(geojson)
             else:
+                machine_idx += 1
                 server_data["features"].append(geojson)
 
         logger.info(
@@ -457,4 +459,5 @@ if __name__ == "__main__":
         args.device_json,
         args.server_json,
         args.api_key,
+        args.load_from_github
     )
