@@ -11,6 +11,7 @@ import json
 import logging
 import os
 from collections import Counter
+from datetime import datetime
 
 import pandas as pd
 from googlemaps import Client as GoogleMaps
@@ -64,6 +65,9 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 def location_differ(
     output_folder: str, device_json: str, server_json: str, api_key: str, load_from_github:bool
 ):
+
+    start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logger.info(f"======Location differ joblog from {start_time}=======")
     os.makedirs(output_folder, exist_ok=True)
 
     today = f"{YEAR}-{MONTH}-{DAY}"
@@ -450,6 +454,9 @@ def location_differ(
             os.path.join(output_folder, "problems.json"), "w", encoding="utf8"
         ) as f:
             json.dump(problem_data, f, ensure_ascii=False, indent=4)
+
+    end_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logger.info(f"======Location differ completed at {end_time}=======")
 
 
 if __name__ == "__main__":
