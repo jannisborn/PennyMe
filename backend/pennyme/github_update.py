@@ -1,8 +1,10 @@
-import requests
 import base64
 import json
+import logging
 from datetime import datetime
-import time
+
+import requests
+
 from pennyme.utils import get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
@@ -21,6 +23,9 @@ HEADER_LOCATION_DIFF = {
     "accept": "application/vnd.github+json",
 }
 FILE_PATH = "/data/server_locations.json"
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def check_branch_exists(branch_name):
@@ -92,13 +97,12 @@ def load_latest_server_locations(
 
 
 def push_newmachine_to_github(machine_update_entry, branch_name=DATA_BRANCH):
-
     server_locations, latest_commit_sha = load_latest_server_locations(
         branch_name=DATA_BRANCH
     )
 
     machine_id = get_next_free_machine_id(
-        "../data/all_locations.json", server_locations['features']
+        "../data/all_locations.json", server_locations["features"]
     )
     machine_update_entry["properties"]["id"] = machine_id
 
@@ -106,12 +110,10 @@ def push_newmachine_to_github(machine_update_entry, branch_name=DATA_BRANCH):
     server_locations["features"].append(machine_update_entry)
 
     # make commit message
-    machine_name = machine_update_entry['properties']['name']
+    machine_name = machine_update_entry["properties"]["name"]
     commit_message = f"add new machine {machine_id} named {machine_name}"
 
-    commit_json_file(
-        server_locations, branch_name, commit_message, latest_commit_sha
-    )
+    commit_json_file(server_locations, branch_name, commit_message, latest_commit_sha)
 
     return machine_id
 
@@ -122,7 +124,8 @@ def commit_json_file(
     commit_message,
     latest_commit_sha,
     headers=HEADERS,
-    file_path=FILE_PATH
+    file_path=FILE_PATH,
+    body: str = "Machine updates submitted for review",
 ):
     """
     Commit the server locations dictionary to branch named <branch_name>
@@ -134,8 +137,7 @@ def commit_json_file(
 
     # Update the file on the newly created branch
     file_content_encoded = base64.b64encode(
-        json.dumps(server_locations, indent=4,
-                   ensure_ascii=False).encode("utf-8")
+        json.dumps(server_locations, indent=4, ensure_ascii=False).encode("utf-8")
     ).decode("utf-8")
 
     payload = {
@@ -155,9 +157,21 @@ def commit_json_file(
         print(response)
         return
 
-    # open a new pull request if the branch did not exist
-    if did_create_new_branch:
-        open_pull_request(commit_message, branch_name, headers=headers)
+    pr_id = get_pr_id(branch_name=branch_name)
+    if pr_id and did_create_new_branch:
+        logger.error(
+            f"Seems like a PR already exists even though branch was created just now "
+        )
+        post_comment_to_pr(pr_id=pr_id, comment=body)
+    elif pr_id:
+        # Seems like the PR already existed
+        post_comment_to_pr(pr_id=pr_id, comment=body)
+    elif did_create_new_branch:
+        # open a new pull request if the branch did not exist
+        open_pull_request(commit_message, branch_name, body=body, headers=headers)
+    elif not did_create_new_branch:
+        # Branch already existed but no PR was open
+        open_pull_request(commit_message, branch_name, body=body, headers=headers)
 
 
 def add_pr_label(pr_id, labels, headers=HEADERS):
@@ -169,13 +183,13 @@ def add_pr_label(pr_id, labels, headers=HEADERS):
         print("Failed to add labels.")
 
 
-def open_pull_request(commit_message, branch_name, headers=HEADERS):
+def open_pull_request(commit_message, branch_name, body: str, headers=HEADERS):
     # Open a pull request
     payload = {
         "title": commit_message,
-        "body": "Machine updates submitted for review",
+        "body": body,
         "head": branch_name,
-        "base": BASE_BRANCH
+        "base": BASE_BRANCH,
     }
     response = requests.post(
         f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/pulls",
@@ -185,7 +199,7 @@ def open_pull_request(commit_message, branch_name, headers=HEADERS):
     # Add label to PR if it was created successfully
     if response.status_code == 201:
         pr_id = response.json()["number"]
-        add_pr_label(pr_id, ['data', 'bot'], headers=headers)
+        add_pr_label(pr_id, ["data", "bot"], headers=headers)
         return True
     return False
 
@@ -197,44 +211,29 @@ def get_latest_commit_sha(REPO_OWNER, REPO_NAME, branch):
     return response.json()["object"]["sha"]
 
 
-# Example usage
-if __name__ == "__main__":
-    # branch_name = f'new_machine_{round(time.time())}'
-
-    machine_title, address, area, location = (
-        "last test",
-        "1 Mars street, Mars",
-        "Marsstate",
-        [1000, 1000],
-    )
-    multimachine = 2
-    paywall = True
-
-    # retrieve new ID
-    new_machine_id = 1
-    # design new item to be added to the machine
-    new_machine_entry = {
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": location
-        },
-        "properties":
-            {
-                "name": machine_title,
-                "active": True,
-                "area": area,
-                "address": address,
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "latitude": location[1],
-                "longitude": location[0],
-                "id": new_machine_id,
-                "last_updated": str(datetime.today()).split(" ")[0],
-                "multimachine": multimachine,
-                "paywall": paywall,
-            },
+def post_comment_to_pr(pr_id: int, comment: str, headers=HEADERS):
+    # Post a comment to a PR
+    payload = {
+        "body": comment,
     }
+    response = requests.post(
+        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues/{pr_id}/comments",
+        headers=headers,
+        json=payload,
+    )
+    return response.status_code == 201
 
-    push_newmachine_to_github(new_machine_entry)
+
+def get_pr_id(branch_name: str, headers=HEADERS):
+    # Get all open PRs
+    response = requests.get(
+        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/pulls",
+        headers=headers,
+    )
+    if response.status_code == 200:
+        prs = response.json()
+        # Find the PR that has `branch_name` as the head branch
+        for pr in prs:
+            if pr["head"]["ref"] == branch_name:
+                return pr["number"]
+    return None

@@ -3,7 +3,7 @@ import json
 
 from pennyme.github_update import (
     REPO_OWNER, REPO_NAME, DATA_BRANCH, HEADER_LOCATION_DIFF, commit_json_file,
-    load_latest_server_locations
+    load_latest_server_locations, get_pr_id, post_comment_to_pr
 )
 
 if __name__ == "__main__":
@@ -36,12 +36,14 @@ if __name__ == "__main__":
     )
     if old_server_locations != server_locations:
         print("Detected change in server_locations.json - push to github")
+        joblog = open('/root/PennyMe/new_data/cron.log', 'r').read()
         commit_json_file(
             server_locations,
             branch_name=DATA_BRANCH,
             commit_message=commit_message + "(server_locations)",
             latest_commit_sha=latest_commit_sha,
-            headers=HEADER_LOCATION_DIFF
+            headers=HEADER_LOCATION_DIFF,
+            body=joblog
         )
     else:
         print("No change between server locations")
@@ -54,15 +56,26 @@ if __name__ == "__main__":
     old_problems_json, latest_commit_sha = load_latest_server_locations(
         branch_name=DATA_BRANCH, file="/data/problems.json"
     )
+
     if old_problems_json != problems_json:
         print("Detected change in problems.json - push to github")
+
+        # Load the last logfile from the cronjob
+        joblog = open('/root/PennyMe/new_data/cron.log', 'r').read()
         commit_json_file(
             problems_json,
             branch_name=DATA_BRANCH,
             commit_message=commit_message + "(problems json)",
             latest_commit_sha=latest_commit_sha,
             headers=HEADER_LOCATION_DIFF,
-            file_path="/data/problems.json"
+            file_path="/data/problems.json",
+            body=joblog
         )
     else:
         print("No change between problem jsons")
+
+
+    if old_server_locations==server_locations and old_problems_json==problems_json:
+        pr_id = get_pr_id(branch_name=DATA_BRANCH)
+        if pr_id:
+            post_comment_to_pr(pr_id=pr_id, comment="No website updates today!")

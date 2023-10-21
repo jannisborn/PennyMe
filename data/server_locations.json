@@ -21445,6 +21445,192 @@
                 "id": 3195,
                 "last_updated": "2023-10-20"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5213552,
+                    35.7085227
+                ]
+            },
+            "properties": {
+                "name": "Bear Stop",
+                "active": false,
+                "area": "Tennessee",
+                "address": "1007 Parkway, Gatlinburg",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=337431",
+                "internal_url": "null",
+                "latitude": "35.7085227",
+                "longitude": "-83.5213552",
+                "id": 4198,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5176278,
+                    35.7078861
+                ]
+            },
+            "properties": {
+                "name": "Bear-Land General Store",
+                "active": true,
+                "area": "Tennessee",
+                "address": "305 Historic Nature Trl,, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416438",
+                "internal_url": "null",
+                "latitude": "35.7078861",
+                "longitude": "-83.5176278",
+                "id": 6481,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4634837,
+                    30.6711497
+                ]
+            },
+            "properties": {
+                "name": "Amelia Island - CornerCopia",
+                "active": false,
+                "area": "Florida",
+                "address": "210B Centre Street, Fernandina Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1824",
+                "internal_url": "null",
+                "latitude": "30.6711497",
+                "longitude": "-81.4634837",
+                "id": 3296,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46348739999999,
+                    30.6711291
+                ]
+            },
+            "properties": {
+                "name": "Amelia Island - Ship's Lantern",
+                "active": true,
+                "area": "Florida",
+                "address": "210 Centre St, Fernandina Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416400",
+                "internal_url": "null",
+                "latitude": "30.6711291",
+                "longitude": "-81.46348739999999",
+                "id": 6482,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1666351,
+                    25.7739808
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line 'Bliss' (Cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island 1922-2298 North Cruise Boulevard, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416371",
+                "internal_url": "null",
+                "latitude": "25.7739808",
+                "longitude": "-80.1666351",
+                "id": 6483,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.017679,
+                    26.883362
+                ]
+            },
+            "properties": {
+                "name": "Muscle Car City",
+                "active": false,
+                "area": "Florida",
+                "address": "10175 Tamiami Trail, Punta Gorda",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=342246",
+                "internal_url": "null",
+                "latitude": "26.883362",
+                "longitude": "-82.017679",
+                "id": 3439,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.21295599999999,
+                    29.66916
+                ]
+            },
+            "properties": {
+                "name": "Marineland Dolphin Adventure",
+                "active": false,
+                "area": "Florida",
+                "address": "9600 Oceanshore Blvd., St. Augustine",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=109860",
+                "internal_url": "null",
+                "latitude": "29.66916",
+                "longitude": "-81.21295599999999",
+                "id": 3449,
+                "last_updated": "2023-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.564497,
+                    28.408973
+                ]
+            },
+            "properties": {
+                "name": "Loro Parque gift shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Av. Loro Parque, Puerto de la Cruz, Tenerife",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=356156",
+                "internal_url": "null",
+                "latitude": "28.408973",
+                "longitude": "-16.564497",
+                "id": 5935,
+                "multimachine": 2,
+                "paywall": true,
+                "last_updated": "2023-10-21"
+            }
         }
     ]
 }
