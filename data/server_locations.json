@@ -21631,6 +21631,78 @@
                 "paywall": true,
                 "last_updated": "2023-10-21"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.4402149,
+                    40.1370678
+                ]
+            },
+            "properties": {
+                "name": "Six Flags Great Adventure & Safari",
+                "active": true,
+                "area": "New Jersey",
+                "address": "1 Six Flags Blvd, Jackson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3447",
+                "internal_url": "null",
+                "latitude": "40.1370678",
+                "longitude": "-74.4402149",
+                "id": 2395,
+                "paywall": true,
+                "multimachine": 2,
+                "last_updated": "2023-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7593249,
+                    33.3247302
+                ]
+            },
+            "properties": {
+                "name": "Oak Mt State Park - Petting Zoo",
+                "active": false,
+                "area": "Alabama",
+                "address": "200 Terrace Dr., Pelham",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=211495",
+                "internal_url": "null",
+                "latitude": "33.3247302",
+                "longitude": "-86.7593249",
+                "id": 1733,
+                "last_updated": "2023-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2966168,
+                    37.179808
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops - Outdoor World (mother store in Springfield)",
+                "active": true,
+                "area": "Missouri",
+                "address": "1935 S Campbell Ave, Springfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3183",
+                "internal_url": "null",
+                "latitude": "37.179808",
+                "longitude": "-93.2966168",
+                "id": 1116,
+                "multimachine": 2,
+                "last_updated": "2023-10-22"
+            }
         }
     ]
 }
