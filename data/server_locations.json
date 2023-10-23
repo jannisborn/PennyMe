@@ -6174,22 +6174,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -96.1249533,
-                    34.3853798
+                    -96.125426,
+                    34.385717
                 ]
             },
             "properties": {
                 "name": "Reba's Place Restaurant and Bar",
                 "active": true,
                 "area": "Oklahoma",
-                "address": "319 E Court St,, Atoka",
+                "address": "301 E Court St, Atoka",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=407740",
                 "internal_url": "null",
-                "latitude": "34.3853798",
-                "longitude": "-96.1249533",
+                "latitude": "34.3857170374416",
+                "longitude": "-96.12542597468598",
                 "id": 6076,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-23"
             }
         },
         {
@@ -21724,6 +21724,52 @@
                 "latitude": 35.22915576377668,
                 "longitude": -80.8674470650878,
                 "id": 6484,
+                "last_updated": "2023-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.238296,
+                    40.782902
+                ]
+            },
+            "properties": {
+                "name": "Basile / Angela Flowers & Gifts",
+                "active": true,
+                "area": "Italy",
+                "address": "Alberobello 70011, Via dell Indipendenza 1A Italy",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=292356",
+                "internal_url": "null",
+                "latitude": "40.782901655174776",
+                "longitude": "17.23829564639623",
+                "id": 898,
+                "last_updated": "2023-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.8216881,
+                    21.2657344
+                ]
+            },
+            "properties": {
+                "name": "Waikiki Aquarium",
+                "active": false,
+                "area": "Hawaii",
+                "address": "2777 Kalakaua Avenue, Oahu - Honolulu",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4534",
+                "internal_url": "null",
+                "latitude": "21.2657344",
+                "longitude": "-157.8216881",
+                "id": 3853,
                 "last_updated": "2023-10-23"
             }
         }
