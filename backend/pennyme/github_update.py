@@ -162,10 +162,10 @@ def commit_json_file(
         logger.error(
             f"Seems like a PR already exists even though branch was created just now "
         )
-        post_comment_to_pr(pr_id=pr_id, comment=body)
+        post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
     elif pr_id:
         # Seems like the PR already existed
-        post_comment_to_pr(pr_id=pr_id, comment=body)
+        post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
     elif did_create_new_branch:
         # open a new pull request if the branch did not exist
         open_pull_request(commit_message, branch_name, body=body, headers=headers)
