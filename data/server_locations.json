@@ -6174,22 +6174,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -96.1249533,
-                    34.3853798
+                    -96.125426,
+                    34.385717
                 ]
             },
             "properties": {
                 "name": "Reba's Place Restaurant and Bar",
                 "active": true,
                 "area": "Oklahoma",
-                "address": "319 E Court St,, Atoka",
+                "address": "301 E Court St, Atoka",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=407740",
                 "internal_url": "null",
-                "latitude": "34.3853798",
-                "longitude": "-96.1249533",
+                "latitude": "34.3857170374416",
+                "longitude": "-96.12542597468598",
                 "id": 6076,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-23"
             }
         },
         {
@@ -21702,6 +21702,167 @@
                 "id": 1116,
                 "multimachine": 2,
                 "last_updated": "2023-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.8674470650878,
+                    35.22915576377668
+                ]
+            },
+            "properties": {
+                "name": "Pinky’s Westside Grill",
+                "active": true,
+                "area": "North Carolina",
+                "address": "1600 W Morehead St, Charlotte, NC 28208",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.22915576377668,
+                "longitude": -80.8674470650878,
+                "id": 6484,
+                "last_updated": "2023-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.238296,
+                    40.782902
+                ]
+            },
+            "properties": {
+                "name": "Basile / Angela Flowers & Gifts",
+                "active": true,
+                "area": "Italy",
+                "address": "Alberobello 70011, Via dell Indipendenza 1A Italy",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=292356",
+                "internal_url": "null",
+                "latitude": "40.782901655174776",
+                "longitude": "17.23829564639623",
+                "id": 898,
+                "last_updated": "2023-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.8216881,
+                    21.2657344
+                ]
+            },
+            "properties": {
+                "name": "Waikiki Aquarium",
+                "active": false,
+                "area": "Hawaii",
+                "address": "2777 Kalakaua Avenue, Oahu - Honolulu",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4534",
+                "internal_url": "null",
+                "latitude": "21.2657344",
+                "longitude": "-157.8216881",
+                "id": 3853,
+                "last_updated": "2023-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.61126991,
+                    38.2674245
+                ]
+            },
+            "properties": {
+                "name": "El Pueblo History Museum",
+                "active": true,
+                "area": "Colorado",
+                "address": "301 N Union Ave, Pueblo, CO 81003",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.26742451297945",
+                "longitude": "-104.61126991869898",
+                "id": 6485,
+                "last_updated": "2023-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.519823,
+                    39.578334
+                ]
+            },
+            "properties": {
+                "name": "Hocking Hills Canopy Tours",
+                "active": false,
+                "area": "Ohio",
+                "address": "10714 Jackson Street, Rockbridge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=99234",
+                "internal_url": "null",
+                "latitude": "39.578334",
+                "longitude": "-82.519823",
+                "id": 2006,
+                "last_updated": "2023-10-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.3175,
+                    36.5027778
+                ]
+            },
+            "properties": {
+                "name": "Appalachian Caverns",
+                "active": true,
+                "area": "Tennessee",
+                "address": "420 Cave Hill Rd., Blountville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416551",
+                "internal_url": "null",
+                "latitude": "36.5027778",
+                "longitude": "-82.3175",
+                "id": 6486,
+                "last_updated": "2023-10-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.6700069,
+                    37.0828283
+                ]
+            },
+            "properties": {
+                "name": "Atomic City Family Fun Center",
+                "active": true,
+                "area": "Kentucky",
+                "address": "3801 Hinkleville Rd, Paducah ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416521",
+                "internal_url": "null",
+                "latitude": "37.0828283",
+                "longitude": "-88.6700069",
+                "id": 6487,
+                "last_updated": "2023-10-24"
             }
         }
     ]
