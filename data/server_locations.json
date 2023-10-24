@@ -21795,6 +21795,75 @@
                 "id": 6485,
                 "last_updated": "2023-10-23"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.519823,
+                    39.578334
+                ]
+            },
+            "properties": {
+                "name": "Hocking Hills Canopy Tours",
+                "active": false,
+                "area": "Ohio",
+                "address": "10714 Jackson Street, Rockbridge",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=99234",
+                "internal_url": "null",
+                "latitude": "39.578334",
+                "longitude": "-82.519823",
+                "id": 2006,
+                "last_updated": "2023-10-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.3175,
+                    36.5027778
+                ]
+            },
+            "properties": {
+                "name": "Appalachian Caverns",
+                "active": true,
+                "area": "Tennessee",
+                "address": "420 Cave Hill Rd., Blountville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416551",
+                "internal_url": "null",
+                "latitude": "36.5027778",
+                "longitude": "-82.3175",
+                "id": 6486,
+                "last_updated": "2023-10-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.6700069,
+                    37.0828283
+                ]
+            },
+            "properties": {
+                "name": "Atomic City Family Fun Center",
+                "active": true,
+                "area": "Kentucky",
+                "address": "3801 Hinkleville Rd, Paducah ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416521",
+                "internal_url": "null",
+                "latitude": "37.0828283",
+                "longitude": "-88.6700069",
+                "id": 6487,
+                "last_updated": "2023-10-24"
+            }
         }
     ]
 }
