@@ -78,4 +78,4 @@ if __name__ == "__main__":
     if old_server_locations==server_locations and old_problems_json==problems_json:
         pr_id = get_pr_id(branch_name=DATA_BRANCH)
         if pr_id:
-            post_comment_to_pr(pr_id=pr_id, comment="No website updates today!")
+            post_comment_to_pr(pr_id=pr_id, comment="No website updates today!", headers=HEADER_LOCATION_DIFF)
