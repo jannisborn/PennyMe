@@ -21910,6 +21910,100 @@
                 "id": 6488,
                 "last_updated": "2023-10-25"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.6050659,
+                    45.8513624
+                ]
+            },
+            "properties": {
+                "name": "Mission Point Resort - Admiral Daves Shipwreck Arcade",
+                "active": false,
+                "area": "Michigan",
+                "address": "One Lakeshore Drive, Mackinac Island",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=360872",
+                "internal_url": "null",
+                "latitude": "45.8513624",
+                "longitude": "-84.6050659",
+                "id": 5272,
+                "last_updated": "2023-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.68813639999999,
+                    30.6079091
+                ]
+            },
+            "properties": {
+                "name": "Inner Space Cavern",
+                "active": true,
+                "area": "Texas",
+                "address": "4200 S. Interstate 35 at Frontage Road, Georgetown",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2481",
+                "internal_url": "null",
+                "latitude": "30.6079091",
+                "longitude": "-97.68813639999999",
+                "id": 6489,
+                "last_updated": "2023-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.023120599999999,
+                    39.856734
+                ]
+            },
+            "properties": {
+                "name": "Ars Delicatum (Mazapanes)",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Cardenal Cisneros, 12, Toldeo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416618",
+                "internal_url": "null",
+                "latitude": "39.856734",
+                "longitude": "-4.023120599999999",
+                "id": 6490,
+                "last_updated": "2023-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.14178499930024,
+                    33.81133739615722
+                ]
+            },
+            "properties": {
+                "name": "Stone Mountain skyride",
+                "active": true,
+                "area": "Georgia",
+                "address": "1000 Robert E Lee Blvd, Stone Mountain, GA 30083, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 33.81133739615722,
+                "longitude": -84.14178499930024,
+                "id": 6491,
+                "last_updated": "2023-10-26",
+                "paywall": true,
+                "multimachine": 2
+            }
         }
     ]
 }

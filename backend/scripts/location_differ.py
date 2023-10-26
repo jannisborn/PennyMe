@@ -14,10 +14,10 @@ from collections import Counter
 from datetime import datetime
 
 import pandas as pd
+import requests
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
-from thefuzz import process as fuzzysearch
-
+from pennyme.github_update import load_latest_server_locations
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
     AREA_PREFIX,
@@ -33,7 +33,7 @@ from pennyme.pennycollector import (
     validate_location_list,
 )
 from pennyme.webconfig import get_website
-from pennyme.github_update import load_latest_server_locations
+from thefuzz import process as fuzzysearch
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -63,9 +63,12 @@ parser.add_argument("-a", "--api_key", type=str, help="Google Maps API key")
 
 
 def location_differ(
-    output_folder: str, device_json: str, server_json: str, api_key: str, load_from_github:bool
+    output_folder: str,
+    device_json: str,
+    server_json: str,
+    api_key: str,
+    load_from_github: bool,
 ):
-
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     logger.info(f"======Location differ joblog from {start_time}=======")
     os.makedirs(output_folder, exist_ok=True)
@@ -84,9 +87,7 @@ def location_differ(
         # save the file locally to compare it later
         with open(server_json, "w", encoding="utf8") as f:
             json.dump(server_data, f, ensure_ascii=False, indent=4)
-        problems_old, _ = load_latest_server_locations(
-            file="/data/problems.json"
-        )
+        problems_old, _ = load_latest_server_locations(file="/data/problems.json")
         problems_out_path = os.path.join(output_folder, "old_problems.json")
         with open(problems_out_path, "w", encoding="utf8") as f:
             json.dump(problems_old, f, ensure_ascii=False, indent=4)
@@ -128,7 +129,6 @@ def location_differ(
             server_dict[url].append(geojson)
         if geojson["properties"]["id"] > machine_idx:
             machine_idx = geojson["properties"]["id"]
-    server_keys = list(server_dict.keys())
     # Increas max idx by 1 to set it to the first free idx
     machine_idx += 1
 
@@ -147,6 +147,7 @@ def location_differ(
         raise ValueError(f"It seems there were new locations: {diff}")
 
     total_changes, new, depr = 0, 0, 0
+    validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
     for i, area in enumerate(areas):
         if area == " Private Rollers" or area == "_Collector Books_":
@@ -171,16 +172,33 @@ def location_differ(
             this_address = geojson["properties"]["address"]
             this_update = geojson["temporary"]["website_updated"]
             match = False
+
+            if this_state == "unvisited":
+                # Check whether weblink is accessible
+                resp = requests.get(this_link)
+                if resp.reason != "OK":
+                    # TODO: Improve this in the future and handle automatically
+                    logger.error(
+                        f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
+                    )
+                    geojson["properties"]["id"] = -1
+                    geojson["properties"]["last_updated"] = -1
+                    problem_data["features"].append(geojson)
+                    continue
+                else:
+                    validated_links.append(this_link)
+
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
+
                 if this_link in keys:
                     cur_states = [
                         cur_dict[this_link][s]["properties"]["status"]
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
-                        geojson['properties']['id'] = -1
-                        geojson['properties']['last_updated'] = -1
+                        geojson["properties"]["id"] = -1
+                        geojson["properties"]["last_updated"] = -1
                         problem_data["features"].append(geojson)
                         logger.error(
                             f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
@@ -205,8 +223,8 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_updates)) > 1:
-                        geojson['properties']['id'] = -1
-                        geojson['properties']['last_updated'] = -1
+                        geojson["properties"]["id"] = -1
+                        geojson["properties"]["last_updated"] = -1
                         problem_data["features"].append(geojson)
                         logger.error(
                             f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
@@ -217,7 +235,8 @@ def location_differ(
                     if this_update < cur_updated:
                         # Our machine was updated more recently than the website
                         continue
-                    elif (
+
+                    if (
                         cur_state == "unvisited"
                         and this_state in UNAVAILABLE_MACHINE_STATES
                     ):
@@ -322,9 +341,16 @@ def location_differ(
                 continue
 
             # This is a new machine since the key was not found in both dicts
-
             if this_state in UNAVAILABLE_MACHINE_STATES:
                 # Untracked machine that is not available, hence we can skip
+                continue
+
+            # Check whether we can indeed add/change this machine
+            resp = requests.get(this_link)
+            if resp.status_code != 200:
+                logger.debug(
+                    f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
+                )
                 continue
 
             tdf = no_link[no_link.area == geojson["properties"]["area"]]
@@ -415,20 +441,20 @@ def location_differ(
             del geojson["temporary"]
 
             if (lat, lng) == (0, 0):
-                geojson['properties']['id'] = -1
-                geojson['properties']['last_updated'] = -1
+                geojson["properties"]["id"] = -1
+                geojson["properties"]["last_updated"] = -1
                 changes -= 1
                 new -= 1
                 problem_data["features"].append(geojson)
             else:
                 machine_idx += 1
                 server_data["features"].append(geojson)
-
-        logger.info(
-            f"Location {area} ({i}/{len(areas)}): Changes in {changes}/"
-            f"{len(location_raw_list)} machines found."
-        )
-        total_changes += changes
+        if changes > 0:
+            logger.info(
+                f"Location {area} ({i}/{len(areas)}): Changes in {changes}/"
+                f"{len(location_raw_list)} machines found."
+            )
+            total_changes += changes
 
     logger.info(
         f"\n Result: {total_changes} changes, {new} new machines found"
@@ -440,6 +466,26 @@ def location_differ(
     if len(ids) != len(counts):
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
+
+    extra = 0
+    for data in [server_data["features"], device_data["features"]]:
+        for machine in data:
+            url = machine["properties"]["external_url"]
+
+            if url not in validated_links:
+                extra += 1
+                resp = requests.get(this_link)
+                if resp.reason != "OK":
+                    title = machine["properties"]["external_url"]
+                    area = machine["properties"]["area"]
+                    logger.error(
+                        f"Our machine {title} in {area} shown as available but {url} responds {resp.reason} ({resp.status_code})"
+                    )
+                    machine["properties"]["id"] = -1
+                    machine["properties"]["last_updated"] = -1
+                    problem_data["features"].append(machine)
+                else:
+                    validated_links.append(url)
 
     fn = "server_locations.json"
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
@@ -465,5 +511,5 @@ if __name__ == "__main__":
         args.device_json,
         args.server_json,
         args.api_key,
-        args.load_from_github
+        args.load_from_github,
     )
