@@ -173,11 +173,6 @@ def location_differ(
             this_update = geojson["temporary"]["website_updated"]
             match = False
 
-            resp = requests.get(this_link)
-            if resp.status_code != 200:
-                logger.error(f"Machine {this_title} in {area} seems unavailable: {this_link}")
-                continue
-
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
                 if this_link in keys:
@@ -223,6 +218,12 @@ def location_differ(
 
                     if this_update < cur_updated:
                         # Our machine was updated more recently than the website
+                        continue
+                    
+                    # Check whether we can indeed add/change this machine
+                    resp = requests.get(this_link)
+                    if resp.status_code != 200:
+                        logger.error(f"Machine {this_title} in {area} seems unavailable: {this_link}")
                         continue
                     elif (
                         cur_state == "unvisited"
