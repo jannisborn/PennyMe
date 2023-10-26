@@ -9,6 +9,7 @@ This is the main script for retrieving updates from the website. It does:
 import argparse
 import json
 import logging
+import requests
 import os
 from collections import Counter
 from datetime import datetime
@@ -171,6 +172,12 @@ def location_differ(
             this_address = geojson["properties"]["address"]
             this_update = geojson["temporary"]["website_updated"]
             match = False
+
+            resp = requests.get(this_link)
+            if resp.status_code != 200:
+                logger.error(f"Machine {this_title} in {area} seems unavailable: {this_link}")
+                continue
+
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
                 if this_link in keys:
@@ -423,12 +430,12 @@ def location_differ(
             else:
                 machine_idx += 1
                 server_data["features"].append(geojson)
-
-        logger.info(
-            f"Location {area} ({i}/{len(areas)}): Changes in {changes}/"
-            f"{len(location_raw_list)} machines found."
-        )
-        total_changes += changes
+        if changes > 0:
+            logger.info(
+                f"Location {area} ({i}/{len(areas)}): Changes in {changes}/"
+                f"{len(location_raw_list)} machines found."
+            )
+            total_changes += changes
 
     logger.info(
         f"\n Result: {total_changes} changes, {new} new machines found"
