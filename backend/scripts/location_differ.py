@@ -33,6 +33,7 @@ from pennyme.pennycollector import (
     validate_location_list,
 )
 from pennyme.webconfig import get_website
+from pennyme.utils import verify_remaining_machines
 from thefuzz import process as fuzzysearch
 
 logging.basicConfig(level=logging.INFO)
@@ -177,12 +178,12 @@ def location_differ(
                 # Check whether weblink is accessible
                 resp = requests.get(this_link)
                 if resp.reason != "OK":
-                    # TODO: Improve this in the future and handle automatically
-                    logger.error(
-                        f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
-                    )
+                    msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
+                    logger.error(msg)
                     geojson["properties"]["id"] = -1
                     geojson["properties"]["last_updated"] = -1
+                    geojson['problem'] = msg
+                    del geojson["temporary"]
                     problem_data["features"].append(geojson)
                     continue
                 else:
@@ -466,26 +467,9 @@ def location_differ(
     if len(ids) != len(counts):
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
-
-    extra = 0
-    for data in [server_data["features"], device_data["features"]]:
-        for machine in data:
-            url = machine["properties"]["external_url"]
-
-            if url not in validated_links:
-                extra += 1
-                resp = requests.get(this_link)
-                if resp.reason != "OK":
-                    title = machine["properties"]["external_url"]
-                    area = machine["properties"]["area"]
-                    logger.error(
-                        f"Our machine {title} in {area} shown as available but {url} responds {resp.reason} ({resp.status_code})"
-                    )
-                    machine["properties"]["id"] = -1
-                    machine["properties"]["last_updated"] = -1
-                    problem_data["features"].append(machine)
-                else:
-                    validated_links.append(url)
+    
+    problem_data = verify_remaining_machines(server_data, device_data, validated_links, problem_data)
+    
 
     fn = "server_locations.json"
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
