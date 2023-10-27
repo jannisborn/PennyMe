@@ -69,7 +69,7 @@ if __name__ == "__main__":
             latest_commit_sha=latest_commit_sha,
             headers=HEADER_LOCATION_DIFF,
             file_path="/data/problems.json",
-            body=joblog
+            body=joblog if old_server_locations == server_locations else "New problems require attention."
         )
     else:
         print("No change between problem jsons")

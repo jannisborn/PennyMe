@@ -14577,14 +14577,14 @@
                 "name": "Festung Kufstein Tirol",
                 "active": true,
                 "area": "Austria",
-                "address": ", Kufstein",
+                "address": "6330 Kufstein, Austria",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=404335",
                 "internal_url": "null",
                 "latitude": "47.5827218",
                 "longitude": "12.1698246",
-                "id": 6290,
-                "last_updated": "2023-10-14"
+                "id": 998,
+                "last_updated": "2023-10-27"
             }
         },
         {
@@ -14623,14 +14623,14 @@
                 "name": "Schloss Tratzberg",
                 "active": true,
                 "area": "Austria",
-                "address": ", Stans (Tirol, Austria)",
+                "address": "Tratzberg 1, 6200 Jenbach, Austria",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=404336",
                 "internal_url": "null",
                 "latitude": "47.3850406",
                 "longitude": "11.7430756",
-                "id": 6292,
-                "last_updated": "2023-10-14"
+                "id": 1011,
+                "last_updated": "2023-10-27"
             }
         },
         {
@@ -22056,25 +22056,305 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -82.68233311010748,
-                    41.48147039928859
+                    -82.6835206,
+                    41.482207
                 ]
             },
             "properties": {
-                "name": "Pagoda Gift Shop",
+                "name": "Cedar Point Amusement Park - Various machines",
                 "active": true,
                 "area": "Ohio",
                 "address": "1 Cedar Point Blvd, Sandusky, OH 44870, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3785",
                 "internal_url": "null",
-                "latitude": 41.48147039928859,
-                "longitude": -82.68233311010748,
-                "id": 6493,
-                "last_updated": "2023-10-27",
-                "multimachine": 3,
-                "paywall": true
+                "latitude": "41.482207",
+                "longitude": "-82.6835206",
+                "id": 5178,
+                "paywall": true,
+                "multimachine": 15,
+                "last_updated": "2023-10-27"
             }
-        }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -152.4052778,
+                    57.7908333
+                ]
+            },
+            "properties": {
+                "name": "Mack's Sport Shop & Alaskan Gifts",
+                "active": false,
+                "area": "Alaska",
+                "address": "212 Lower Mill Bay Road, Kodiak",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=214",
+                "internal_url": "null",
+                "latitude": "57.7908333",
+                "longitude": "-152.4052778",
+                "id": 1167,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.170696,
+                    44.981626
+                ]
+            },
+            "properties": {
+                "name": "Minnesota State Fair - Old Arcade building",
+                "active": true,
+                "area": "Minnesota",
+                "address": "Old Arcade Buolding, St. Paul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=339219",
+                "internal_url": "null",
+                "latitude": "44.981626",
+                "longitude": "-93.170696",
+                "id": 3182,
+                "multimachine": 2,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.167435,
+                    44.982409
+                ]
+            },
+            "properties": {
+                "name": "Minnesota State Fair - Anderson Windows Doors",
+                "active": true,
+                "area": "Minnesota",
+                "address": "Minnesota State Fair, St. Paul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=326058",
+                "internal_url": "null",
+                "latitude": "44.982409",
+                "longitude": "-93.167435",
+                "id": 3183,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.169522,
+                    44.981943
+                ]
+            },
+            "properties": {
+                "name": "Minnesota State Fair - I Love Minnesota Booth",
+                "active": true,
+                "area": "Minnesota",
+                "address": "1663 Dan Patch Ave, St. Paul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=249281",
+                "internal_url": "null",
+                "latitude": "44.981943",
+                "longitude": "-93.169522",
+                "id": 3179,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.171998,
+                    44.979088
+                ]
+            },
+            "properties": {
+                "name": "Minnesota State Fair - KARE 11 Barn",
+                "active": true,
+                "area": "Minnesota",
+                "address": "1260 Nelson Street, St. Paul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=31375",
+                "internal_url": "null",
+                "latitude": "44.979088",
+                "longitude": "-93.171998",
+                "id": 3180,
+                "multimachine": 2,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0896752,
+                    32.0812016
+                ]
+            },
+            "properties": {
+                "name": "True Grits Gifts & Cards",
+                "active": true,
+                "area": "Georgia",
+                "address": "107 E. River Street, Savannah",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=189339",
+                "internal_url": "null",
+                "latitude": "32.0812016",
+                "longitude": "-81.0896752",
+                "id": 1666,
+                "multimachine": 2,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.2298911,
+                    35.8032158
+                ]
+            },
+            "properties": {
+                "name": "Lexington Style Trimmings BBQ",
+                "active": false,
+                "area": "North Carolina",
+                "address": "1513 E. Center St. Ext., Lexington",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=59354",
+                "internal_url": "null",
+                "latitude": "35.8032158",
+                "longitude": "-80.2298911",
+                "id": 4118,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.6914472,
+                    -34.7725106
+                ]
+            },
+            "properties": {
+                "name": "The Big Merino",
+                "active": false,
+                "area": "Australia",
+                "address": "88 Hume St, NSW - Goulburn",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=993",
+                "internal_url": "null",
+                "latitude": "-34.7725106",
+                "longitude": "149.6914472",
+                "id": 2115,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.8131404,
+                    47.2184822
+                ]
+            },
+            "properties": {
+                "name": "Naturpark Herberstein",
+                "active": true,
+                "area": "Austria",
+                "address": "Buchberg 1, 8222 Buchberg bei Herberstein, Austria",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=388",
+                "internal_url": "null",
+                "latitude": "47.2184822",
+                "longitude": "15.8131404",
+                "id": 993,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.348214700000001,
+                    52.1518483
+                ]
+            },
+            "properties": {
+                "name": "Dierenpark (Zoo)",
+                "active": false,
+                "area": "Netherlands",
+                "address": "Barchman Wuytierslaan 224, Amersfoort",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=708",
+                "internal_url": "null",
+                "latitude": "52.1518483",
+                "longitude": "5.348214700000001",
+                "id": 152,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3842739,
+                    52.1474982
+                ]
+            },
+            "properties": {
+                "name": "Duinrell",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Duinrell 1, 2242 JP Wassenaar, Wassenaar",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245802",
+                "internal_url": "null",
+                "latitude": "52.1474982",
+                "longitude": "4.3842739",
+                "id": 246,
+                "multimachine": 2,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.9388387,
+                    51.6164016
+                ]
+            },
+            "properties": {
+                "name": "National Waterfront Museum",
+                "active": false,
+                "area": "Wales",
+                "address": "Oystermouth Road Maritime Quarter, Swansea",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=94025",
+                "internal_url": "null",
+                "latitude": "51.6164016",
+                "longitude": "-3.9388387",
+                "id": 18,
+                "last_updated": "2023-10-27"
+            }
+         }
     ]
 }
