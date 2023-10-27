@@ -22004,6 +22004,77 @@
                 "paywall": true,
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3949378,
+                    48.2162584
+                ]
+            },
+            "properties": {
+                "name": "Vienna Planetarium",
+                "active": true,
+                "area": "Austria",
+                "address": "Oswald-Thomas-Platz 1, 1020 Wien, Vienna (Wien)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416774",
+                "internal_url": "null",
+                "latitude": "48.2162584",
+                "longitude": "16.3949378",
+                "id": 6492,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.9646347,
+                    50.9312249
+                ]
+            },
+            "properties": {
+                "name": "Deutsches Sport & Olympia Museum ",
+                "active": false,
+                "area": "Germany",
+                "address": "Im Zollhafen 1 ",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=85717",
+                "internal_url": "null",
+                "latitude": "50.9312249",
+                "longitude": "6.9646347",
+                "id": 517,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.68233311010748,
+                    41.48147039928859
+                ]
+            },
+            "properties": {
+                "name": "Pagoda Gift Shop",
+                "active": true,
+                "area": "Ohio",
+                "address": "1 Cedar Point Blvd, Sandusky, OH 44870, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 41.48147039928859,
+                "longitude": -82.68233311010748,
+                "id": 6493,
+                "last_updated": "2023-10-27",
+                "multimachine": 3,
+                "paywall": true
+            }
         }
     ]
 }
