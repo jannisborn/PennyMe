@@ -8940,16 +8940,16 @@
             },
             "properties": {
                 "name": "D'Colores",
-                "active": true,
+                "active": false,
                 "area": "Colorado",
                 "address": "935 Manitou Ave, Manitou Springs",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398626",
                 "internal_url": "null",
                 "latitude": "38.8588217",
                 "longitude": "-104.9185894",
                 "id": 6142,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-28"
             }
         },
         {
@@ -22355,6 +22355,101 @@
                 "id": 18,
                 "last_updated": "2023-10-27"
             }
-         }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9179652,
+                    38.8589369
+                ]
+            },
+            "properties": {
+                "name": "Arcade Amusements - Skeeball Building",
+                "active": true,
+                "area": "Colorado",
+                "address": "930 Manitou Ave., Manitou Springs",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331833",
+                "internal_url": "null",
+                "latitude": "38.8589369",
+                "longitude": "-104.9179652",
+                "id": 1900,
+                "paywall": true,
+                "multimachine": 4,
+                "last_updated": "2023-10-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5183792,
+                    35.7106247
+                ]
+            },
+            "properties": {
+                "name": "Space Needle - Gatlinburg Arcade",
+                "active": true,
+                "area": "Tennessee",
+                "address": "115 Historic Nature Trail, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2166",
+                "internal_url": "null",
+                "latitude": "35.7106247",
+                "longitude": "-83.5183792",
+                "id": 4214,
+                "multimachine": 2,
+                "last_updated": "2023-10-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.0083122,
+                    51.4997693
+                ]
+            },
+            "properties": {
+                "name": "IFS Cloud Cable Car",
+                "active": false,
+                "area": "England",
+                "address": "Unit 1, Emirates Cable Car Terminal, London, England",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=198792",
+                "internal_url": "null",
+                "latitude": "51.4997693",
+                "longitude": "0.0083122",
+                "id": 1465,
+                "last_updated": "2023-10-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.52110259999999,
+                    35.7087578
+                ]
+            },
+            "properties": {
+                "name": "The Silver Galleon",
+                "active": false,
+                "area": "Tennessee",
+                "address": "1001 Parkway Suite #1, Gatlinburg",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2165",
+                "internal_url": "null",
+                "latitude": "35.7087578",
+                "longitude": "-83.52110259999999",
+                "id": 4218,
+                "last_updated": "2023-10-29"
+            }
+        }
     ]
 }
