@@ -471,8 +471,9 @@ def location_differ(
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
     
-    problem_data = verify_remaining_machines(
-        deepcopy(server_data), deepcopy(device_data), validated_links, problem_data)
+    # problem_data = verify_remaining_machines(
+    #     deepcopy(server_data), deepcopy(device_data), validated_links, problem_data
+    # )
     
 
     fn = "server_locations.json"
