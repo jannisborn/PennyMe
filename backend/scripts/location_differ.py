@@ -16,7 +16,6 @@ from datetime import datetime
 import pandas as pd
 import requests
 from googlemaps import Client as GoogleMaps
-from haversine import haversine
 from pennyme.github_update import load_latest_server_locations
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -92,6 +91,7 @@ def location_differ(
         problems_out_path = os.path.join(output_folder, "old_problems.json")
         with open(problems_out_path, "w", encoding="utf8") as f:
             json.dump(problems_old, f, ensure_ascii=False, indent=4)
+        problems_links = [entry['properties']['external_url'] for entry in problems_old['features']]
     else:
         with open(server_json, "r") as f:
             server_data = json.load(f)
@@ -179,7 +179,8 @@ def location_differ(
                 resp = requests.get(this_link)
                 if resp.reason != "OK":
                     msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
-                    logger.error(msg)
+                    if this_link not in problems_links:
+                        logger.error(msg)
                     geojson["properties"]["id"] = -1
                     geojson["properties"]["last_updated"] = -1
                     geojson['problem'] = msg
@@ -235,6 +236,7 @@ def location_differ(
 
                     if this_update < cur_updated:
                         # Our machine was updated more recently than the website
+                        match = True
                         continue
 
                     if (
@@ -468,7 +470,9 @@ def location_differ(
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
     
-    problem_data = verify_remaining_machines(server_data, device_data, validated_links, problem_data)
+    server_data = verify_remaining_machines(
+        server_data, device_data, validated_links
+    )
     
 
     fn = "server_locations.json"
