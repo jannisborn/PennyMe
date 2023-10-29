@@ -71,7 +71,7 @@ def verify_remaining_machines(
                 extra += 1
                 resp = requests.get(url)
                 if resp.reason != "OK":
-                    title = machine["properties"]["external_url"]
+                    title = machine["properties"]["title"]
                     area = machine["properties"]["area"]
                     msg = f"Our machine {title} in {area} shown as available but {url} responds {resp.reason} ({resp.status_code})"
                     logger.error(msg)
