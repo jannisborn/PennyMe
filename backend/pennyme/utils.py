@@ -64,6 +64,8 @@ def verify_remaining_machines(
     for data in [server_data["features"], device_data["features"]]:
         for machine in data:
             url = machine["properties"]["external_url"]
+            if url == 'null':
+                continue
 
             if url not in validated_links:
                 extra += 1
