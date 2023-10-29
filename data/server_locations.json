@@ -8940,10 +8940,10 @@
             },
             "properties": {
                 "name": "D'Colores",
-                "active": false,
+                "active": true,
                 "area": "Colorado",
                 "address": "935 Manitou Ave, Manitou Springs",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398626",
                 "internal_url": "null",
                 "latitude": "38.8588217",
@@ -22502,29 +22502,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -104.9185894,
-                    38.8588217
-                ]
-            },
-            "properties": {
-                "name": "D'Colores",
-                "active": true,
-                "area": "Colorado",
-                "address": "935 Manitou Ave, Manitou Springs",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=398626",
-                "internal_url": "null",
-                "latitude": "38.8588217",
-                "longitude": "-104.9185894",
-                "id": 6494,
-                "last_updated": "2023-10-29"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -118.3298082,
                     34.1018722
                 ]
@@ -22533,7 +22510,7 @@
                 "name": "Stars on Hollywood",
                 "active": true,
                 "area": "California",
-                "address": "6403 Hollywood Blvd , Hollywood",
+                "address": "6403 Hollywood Blvd, Hollywood",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
@@ -22556,7 +22533,7 @@
                 "name": "Capitol Reef National Park Visitor Center",
                 "active": true,
                 "area": "Utah",
-                "address": ", Capitol Reef National Park/ Torrey",
+                "address": "Capitol Reef National Park/ Torrey",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
@@ -23131,7 +23108,7 @@
                 "name": "Weymouth Sea LifeCentre",
                 "active": true,
                 "area": "England",
-                "address": ", DORSET - Weymouth",
+                "address": "Lodmoor Country Park, Weymouth DT4 7SX, United Kingdom",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",

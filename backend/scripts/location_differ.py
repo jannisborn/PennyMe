@@ -236,6 +236,7 @@ def location_differ(
 
                     if this_update < cur_updated:
                         # Our machine was updated more recently than the website
+                        match = True
                         continue
 
                     if (
