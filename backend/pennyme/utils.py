@@ -3,12 +3,14 @@ from typing import List, Dict, Any
 import os
 import requests
 import logging
+from pennyme.pennycollector import DAY, MONTH, YEAR
+from copy import deepcopy
 
 logger = logging.getLogger(__name__)
 
 
 PATH_IMAGES = os.path.join("..", "..", "images")
-
+TODAY = f"{YEAR}-{MONTH}-{DAY}"
 
 def get_next_free_machine_id(
     all_locations_path: str, server_locations: List[Dict]
@@ -44,43 +46,53 @@ def verify_remaining_machines(
     server_data: Dict[str, Any],
     device_data: Dict[str, Any],
     validated_links: List[str],
-    problem_data: Dict[str, Any],
-):
+) -> Dict[str, Any]:
     """
     Takes the final data of all machines and verifies that all links are sane.
-
 
     Args:
         server_data (Dict[str, Any]): Compiled data to be stored on server
         device_data (Dict[str, Any]): Compiled data to be stored on device
         validated_links (List[str]): Links that have already be verified (to
             save time).
-        problem_data (Dict[str, Any]): Dict with machines that produce problems
 
     Returns:
         problem_data: Updated problem dictionariy
     """
-    extra = 0
-    for data in [server_data["features"], device_data["features"]]:
-        for machine in data:
-            url = machine["properties"]["external_url"]
-            if url == 'null':
-                continue
+    id_to_entry = {}
+    for machine in deepcopy(device_data["features"]):
+        machine['properties']['source'] = 'Device'
+        id_to_entry[machine['properties']['id']] = machine
+    for machine in deepcopy(server_data['features']):
+        machine['properties']['source'] = 'Server'
+        id_to_entry[machine['properties']['id']] = machine
 
-            if url not in validated_links:
-                extra += 1
-                resp = requests.get(url)
-                if resp.reason != "OK":
-                    title = machine["properties"]["title"]
-                    area = machine["properties"]["area"]
-                    msg = f"Our machine {title} in {area} shown as available but {url} responds {resp.reason} ({resp.status_code})"
-                    logger.error(msg)
-                    machine["properties"]["id"] = -1
-                    machine["properties"]["last_updated"] = -1
-                    machine["problem"] = msg
-                    problem_data["features"].append(machine)
+    for mid, machine in id_to_entry.items():
+        url = machine["properties"]["external_url"]
+        source = machine['properties']['source']
+        status = machine['properties']['status']
+        if url == 'null':
+            continue
+        if url not in validated_links:
+            resp = requests.get(url)
+            if resp.reason != "OK":
+                title = machine["properties"]["name"]
+                area = machine["properties"]["area"]
+                msg = f"Our machine {title} in {area} from {source} shown as {status} but {url} responds {resp.reason} ({resp.status_code})"
+                logger.error(msg)
+                if source == 'Server':
+                    # Update entry in server_locations
+                    for updated_machine in server_data['features']:
+                        if updated_machine['properties']['external_url'] == url:
+                            updated_machine['properties']['external_url'] = 'null'
+                            updated_machine['properties']['last_updated'] = TODAY
                 else:
-                    validated_links.append(url)
-    if extra > 0:
-        logger.debug(f"Found {extra} machines in data that are not listed on website.")
-    return problem_data
+                    for updated_machine in device_data['features']:
+                        if updated_machine['properties']['external_url'] == url:
+                            server_machine = deepcopy(updated_machine)
+                            server_machine['properties']['external_url'] = 'null'
+                            server_machine['properties']['last_updated'] = TODAY
+                            server_data['features'].append(server_machine)
+            else:
+                validated_links.append(url)
+    return server_data

@@ -12,12 +12,10 @@ import logging
 import os
 from collections import Counter
 from datetime import datetime
-from copy import deepcopy
 
 import pandas as pd
 import requests
 from googlemaps import Client as GoogleMaps
-from haversine import haversine
 from pennyme.github_update import load_latest_server_locations
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -471,9 +469,9 @@ def location_differ(
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
     
-    # problem_data = verify_remaining_machines(
-    #     deepcopy(server_data), deepcopy(device_data), validated_links, problem_data
-    # )
+    server_data = verify_remaining_machines(
+        server_data, device_data, validated_links
+    )
     
 
     fn = "server_locations.json"
