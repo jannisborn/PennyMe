@@ -92,6 +92,7 @@ def location_differ(
         problems_out_path = os.path.join(output_folder, "old_problems.json")
         with open(problems_out_path, "w", encoding="utf8") as f:
             json.dump(problems_old, f, ensure_ascii=False, indent=4)
+        problems_links = [entry['external_url'] for entry in problems_old['features']]
     else:
         with open(server_json, "r") as f:
             server_data = json.load(f)
@@ -179,7 +180,8 @@ def location_differ(
                 resp = requests.get(this_link)
                 if resp.reason != "OK":
                     msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
-                    logger.error(msg)
+                    if this_link not in problems_links:
+                        logger.error(msg)
                     geojson["properties"]["id"] = -1
                     geojson["properties"]["last_updated"] = -1
                     geojson['problem'] = msg
