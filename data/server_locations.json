@@ -183,12 +183,12 @@
                 "area": "New Mexico",
                 "address": "I-25 exit 419, Springer, NM87747",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=333989",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "36.4500474",
                 "longitude": "-104.5928913",
                 "id": 4946,
-                "last_updated": "2023-03-20"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -866,12 +866,12 @@
                 "area": "Ohio",
                 "address": "80 Cherry St, Ashville, Ohio",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=329168",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "39.716177",
                 "longitude": "-82.95272",
                 "id": 1942,
-                "last_updated": "2023-05-20"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -1950,12 +1950,12 @@
                 "area": "Hawaii",
                 "address": "756016 Kuakini Highway, Hawai'i (Big Island) - Kailua-Kona",
                 "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=337890",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "19.6254406",
                 "longitude": "-155.9845063",
                 "id": 3828,
-                "last_updated": "2023-07-15"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -2833,16 +2833,16 @@
             },
             "properties": {
                 "name": "Office de Tourisme de Honfleur",
-                "active": false,
+                "active": true,
                 "area": "France",
                 "address": "Quai Lepaulmier, 14600 Honfleur",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=109468",
                 "internal_url": "null",
                 "latitude": "49.4184667",
                 "longitude": "0.2345458",
                 "id": 86,
-                "last_updated": "2023-08-05"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -3401,12 +3401,12 @@
                 "area": "Germany",
                 "address": "Edo-Wiemken-Straße 57, 26316 Varel, Germany",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=329562",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "53.448537",
                 "longitude": "8.118062",
                 "id": 5697,
-                "last_updated": "2023-08-16"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -16211,16 +16211,16 @@
             },
             "properties": {
                 "name": "Kiosk Em Katze Von Kolle",
-                "active": true,
+                "active": false,
                 "area": "Germany",
                 "address": "Gürzenichstraße 30-32, Koln (Cologne)",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=413311",
                 "internal_url": "null",
                 "latitude": "50.93603",
                 "longitude": "6.95939",
                 "id": 6332,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -22494,6 +22494,5207 @@
                 "latitude": "38.650815",
                 "longitude": "-121.1214351",
                 "id": 4623,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9185894,
+                    38.8588217
+                ]
+            },
+            "properties": {
+                "name": "D'Colores",
+                "active": true,
+                "area": "Colorado",
+                "address": "935 Manitou Ave, Manitou Springs",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=398626",
+                "internal_url": "null",
+                "latitude": "38.8588217",
+                "longitude": "-104.9185894",
+                "id": 6494,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3298082,
+                    34.1018722
+                ]
+            },
+            "properties": {
+                "name": "Stars on Hollywood",
+                "active": true,
+                "area": "California",
+                "address": "6403 Hollywood Blvd , Hollywood",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "34.1018722",
+                "longitude": "-118.3298082",
+                "id": 5241,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.2620493,
+                    38.2914642
+                ]
+            },
+            "properties": {
+                "name": "Capitol Reef National Park Visitor Center",
+                "active": true,
+                "area": "Utah",
+                "address": ", Capitol Reef National Park/ Torrey",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.2914642",
+                "longitude": "-111.2620493",
+                "id": 5405,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.7827091,
+                    44.3417584
+                ]
+            },
+            "properties": {
+                "name": "Lewies Burger & Brew",
+                "active": true,
+                "area": "South Dakota",
+                "address": "711 S Main Street, Lead",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.3417584",
+                "longitude": "-103.7827091",
+                "id": 5320,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.5936505,
+                    30.268996
+                ]
+            },
+            "properties": {
+                "name": "Souvenir City #2",
+                "active": true,
+                "area": "Alabama",
+                "address": "25241 Perdido Beach Blvd, Orange Beach",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "30.268996",
+                "longitude": "-87.5936505",
+                "id": 5966,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7757255,
+                    36.1614462
+                ]
+            },
+            "properties": {
+                "name": "Kid Rock's Big Ass Honky Tonk Rock N' Roll Steakhouse ",
+                "active": true,
+                "area": "Tennessee",
+                "address": "221 Broadway, Nashville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.1614462",
+                "longitude": "-86.7757255",
+                "id": 5343,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.5630202,
+                    42.7317464
+                ]
+            },
+            "properties": {
+                "name": "Michigan Historical Museum",
+                "active": true,
+                "area": "Michigan",
+                "address": "702 W Kalamazoo St, Lansing",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.7317464",
+                "longitude": "-84.5630202",
+                "id": 5270,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.4797105,
+                    44.23079569999999
+                ]
+            },
+            "properties": {
+                "name": "Waterfront Gifts & Apparel",
+                "active": true,
+                "area": "Canada",
+                "address": "248 Ontario St, Ontario - Kingston",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.23079569999999",
+                "longitude": "-76.4797105",
+                "id": 5623,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    168.8328022,
+                    -44.9384398
+                ]
+            },
+            "properties": {
+                "name": "Coachman's Hall",
+                "active": true,
+                "area": "New Zealand",
+                "address": "43 Buckingham street, Arrowtown",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-44.9384398",
+                "longitude": "168.8328022",
+                "id": 3866,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -43.1637671,
+                    -22.9508895
+                ]
+            },
+            "properties": {
+                "name": "Morro da Urca",
+                "active": true,
+                "area": "Brazil",
+                "address": "Praça General Tibúrcio, Praia Vermelha, Urca - Rio de Janeiro - RJ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-22.9508895",
+                "longitude": "-43.1637671",
+                "id": 5617,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    146.9773559,
+                    -41.4308853
+                ]
+            },
+            "properties": {
+                "name": "Tasmania Zoo",
+                "active": true,
+                "area": "Australia",
+                "address": "1166 Ecclestone Road, TAS - Riverside",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-41.4308853",
+                "longitude": "146.9773559",
+                "id": 2160,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    146.816321,
+                    -41.2017364
+                ]
+            },
+            "properties": {
+                "name": "Beaconsfield Mine & Heritage Centre",
+                "active": true,
+                "area": "Australia",
+                "address": "West Street , TAS - Beaconsfield",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-41.2017364",
+                "longitude": "146.816321",
+                "id": 2153,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    146.8239447,
+                    -41.1498251
+                ]
+            },
+            "properties": {
+                "name": "Seahorse World",
+                "active": true,
+                "area": "Australia",
+                "address": "1A Flinders Street, TAS - Beauty Point ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-41.1498251",
+                "longitude": "146.8239447",
+                "id": 2155,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.352954,
+                    -37.827191
+                ]
+            },
+            "properties": {
+                "name": "SkyHigh Mount Dandenong",
+                "active": true,
+                "area": "Australia",
+                "address": "26 Observatory Rd, VIC - Melbourne",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-37.827191",
+                "longitude": "145.352954",
+                "id": 2173,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.1484327,
+                    -35.2811355
+                ]
+            },
+            "properties": {
+                "name": "Australian War Memorial",
+                "active": true,
+                "area": "Australia",
+                "address": "Treloar Crescent,Campbell ACT , ACT - Canberra",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-35.2811355",
+                "longitude": "149.1484327",
+                "id": 2109,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.9109774,
+                    -32.7945231
+                ]
+            },
+            "properties": {
+                "name": "Oakdale Farm & Fauna World",
+                "active": true,
+                "area": "Australia",
+                "address": "3 Oakvale Drive, NSW - Salt Ash ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-32.7945231",
+                "longitude": "151.9109774",
+                "id": 2120,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    115.846674,
+                    -31.9442707
+                ]
+            },
+            "properties": {
+                "name": "Scitech Science Museum",
+                "active": true,
+                "area": "Australia",
+                "address": "Sutherland Street, West Perth, Western Australia - Perth",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-31.9442707",
+                "longitude": "115.846674",
+                "id": 2179,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.0702059,
+                    -30.8771778
+                ]
+            },
+            "properties": {
+                "name": "Trial Bay Gaol",
+                "active": true,
+                "area": "Australia",
+                "address": "1 Caldwell Street, NSW - South West Rocks ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-30.8771778",
+                "longitude": "153.0702059",
+                "id": 2122,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -50.9215132,
+                    -29.3938257
+                ]
+            },
+            "properties": {
+                "name": "Snowland",
+                "active": true,
+                "area": "Brazil",
+                "address": "RS-235, 9009, Gramado",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-29.3938257",
+                "longitude": "-50.9215132",
+                "id": 1268,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.3152531,
+                    -27.8635076
+                ]
+            },
+            "properties": {
+                "name": "Dreamworld Croc Country",
+                "active": true,
+                "area": "Australia",
+                "address": "Dreamworld Parkway, , QLD - Coomera",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-27.8635076",
+                "longitude": "153.3152531",
+                "id": 2139,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.018332,
+                    -27.473007
+                ]
+            },
+            "properties": {
+                "name": "Queensland Museum Science Center",
+                "active": true,
+                "area": "Australia",
+                "address": "Corner Grey & Melbourne Streets , QLD - Brisbane ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-27.473007",
+                "longitude": "153.018332",
+                "id": 2135,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    146.8230556,
+                    -19.2575
+                ]
+            },
+            "properties": {
+                "name": "Reef HQ",
+                "active": true,
+                "area": "Australia",
+                "address": "2-68 Flinders Street, Townsville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-19.2575",
+                "longitude": "146.8230556",
+                "id": 2162,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -17.1104787,
+                    28.0910304
+                ]
+            },
+            "properties": {
+                "name": "Isla La Gomera",
+                "active": true,
+                "area": "Spain",
+                "address": "Tienda Casa de Los Balcones (Artesanía La Gomera) +34 922 14 51 90 https://goo.gl/maps/gLXnMyLCxwLRasEh6, San Sebastian de la Gomera",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.0910304",
+                "longitude": "-17.1104787",
+                "id": 5943,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.5376926,
+                    37.13617
+                ]
+            },
+            "properties": {
+                "name": "Verandas Da Rocha ",
+                "active": true,
+                "area": "Portugal",
+                "address": "The pedestrian zone, Portimao (Algarve)",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.13617",
+                "longitude": "-8.5376926",
+                "id": 5891,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.148421,
+                    43.5600016
+                ]
+            },
+            "properties": {
+                "name": "Cudillero, Asturias",
+                "active": true,
+                "area": "Spain",
+                "address": "San José 85, Cudillero",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.5600016",
+                "longitude": "-6.148421",
+                "id": 5923,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.5808737,
+                    36.5880581
+                ]
+            },
+            "properties": {
+                "name": "Mariposa Rio ",
+                "active": true,
+                "area": "Spain",
+                "address": "El Mirador de la Stupa, Benalmadena - Malaga",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.5880581",
+                "longitude": "-4.5808737",
+                "id": 5917,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7033526,
+                    42.3408635
+                ]
+            },
+            "properties": {
+                "name": "Two souvenir shops",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle paloma, Burgos",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.3408635",
+                "longitude": "-3.7033526",
+                "id": 5920,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.4444962,
+                    50.6256499
+                ]
+            },
+            "properties": {
+                "name": "Weymouth Sea LifeCentre",
+                "active": true,
+                "area": "England",
+                "address": ", DORSET - Weymouth",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.6256499",
+                "longitude": "-2.4444962",
+                "id": 5637,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.9841633,
+                    43.3234631
+                ]
+            },
+            "properties": {
+                "name": "Souvenir Shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Narrika Kalea, San Sebastian",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.3234631",
+                "longitude": "-1.9841633",
+                "id": 5942,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.4174975,
+                    -1.3991067
+                ]
+            },
+            "properties": {
+                "name": "Cabellera de la Virgen",
+                "active": true,
+                "area": "Ecuador",
+                "address": "At thermal, Banos",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-1.3991067",
+                "longitude": "-78.4174975",
+                "id": 1607,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.1397769,
+                    42.41594600000001
+                ]
+            },
+            "properties": {
+                "name": "Museo de los Oficios Tradicionales",
+                "active": true,
+                "area": "Spain",
+                "address": "Plaza San Salvador 4, Huesca, Aínsa",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.41594600000001",
+                "longitude": "0.1397769",
+                "id": 5924,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1843392,
+                    41.3768439
+                ]
+            },
+            "properties": {
+                "name": "LAquarium de Barcelona",
+                "active": true,
+                "area": "Spain",
+                "address": "Moll d'Espanya del Port Vell, s/n, Barcelona",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.3768439",
+                "longitude": "2.1843392",
+                "id": 5914,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.8887932,
+                    50.8514963
+                ]
+            },
+            "properties": {
+                "name": "T Lepertje Kantel ",
+                "active": true,
+                "area": "Belgium",
+                "address": "Menenstraat 12 , Leper",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.8514963",
+                "longitude": "2.8887932",
+                "id": 5616,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.8367764,
+                    40.0016432
+                ]
+            },
+            "properties": {
+                "name": "Mirabel Souvenir Shop",
+                "active": true,
+                "area": "Spain",
+                "address": "C / DEs Mirador  / Muradeta 28, Ciutadella De Menorca",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.0016432",
+                "longitude": "3.8367764",
+                "id": 5922,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.5253361,
+                    51.8934271
+                ]
+            },
+            "properties": {
+                "name": "Feyenoord Fanshops",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Stadion de Kuip Van Zandvlietplein 15 3077 AA, Rotterdam ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.8934271",
+                "longitude": "4.5253361",
+                "id": 5871,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.198614799999999,
+                    51.4811135
+                ]
+            },
+            "properties": {
+                "name": "Jahrhunderthalle Bochum",
+                "active": true,
+                "area": "Germany",
+                "address": ", Bochum",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.4811135",
+                "longitude": "7.198614799999999",
+                "id": 5685,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.349283,
+                    50.1029156
+                ]
+            },
+            "properties": {
+                "name": "Geierlay hangbrug",
+                "active": true,
+                "area": "Germany",
+                "address": "Kastellaunerstrasse, Morsdorf",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.1029156",
+                "longitude": "7.349283",
+                "id": 5742,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.694109900000001,
+                    52.1307487
+                ]
+            },
+            "properties": {
+                "name": "Flughafen Münster Osnabrück (FMO)",
+                "active": true,
+                "area": "Germany",
+                "address": "Airportallee 1, Greven",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.1307487",
+                "longitude": "7.694109900000001",
+                "id": 5716,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.8522,
+                    47.99509
+                ]
+            },
+            "properties": {
+                "name": "Schwarzwaldmarie-Freiburg-Kuckucksuhren-Souvenirs",
+                "active": true,
+                "area": "Germany",
+                "address": "Münsterplatz 16, Freiburg im Breisgau",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.99509",
+                "longitude": "7.8522",
+                "id": 5708,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.978402399999998,
+                    49.19658459999999
+                ]
+            },
+            "properties": {
+                "name": "Trifels Castle ",
+                "active": true,
+                "area": "Germany",
+                "address": "K2, Annweiler am Trifels",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.19658459999999",
+                "longitude": "7.978402399999998",
+                "id": 5675,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.992891299999999,
+                    52.48568239999999
+                ]
+            },
+            "properties": {
+                "name": "Rieste",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Alfsee, Rieste",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.48568239999999",
+                "longitude": "7.992891299999999",
+                "id": 5756,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.1632444,
+                    52.10894159999999
+                ]
+            },
+            "properties": {
+                "name": "Bad Rothenfelde Gradierwerk",
+                "active": true,
+                "area": "Germany",
+                "address": ", Bad Rothenfelde",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.10894159999999",
+                "longitude": "8.1632444",
+                "id": 5676,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.4124117,
+                    48.46375159999999
+                ]
+            },
+            "properties": {
+                "name": "Tourist Info Cente",
+                "active": true,
+                "area": "Germany",
+                "address": "Marktplatz 64 72250 , Freudenstadt",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.46375159999999",
+                "longitude": "8.4124117",
+                "id": 5709,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.531329999999999,
+                    51.19381
+                ]
+            },
+            "properties": {
+                "name": "M & M Geschenkideen",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Waltenberg 16, 59955 Winterberg, Duitsland, Winterberg, Duitsland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.19381",
+                "longitude": "8.531329999999999",
+                "id": 5786,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.5790815,
+                    53.5412455
+                ]
+            },
+            "properties": {
+                "name": "Klimahaus",
+                "active": true,
+                "area": "Germany",
+                "address": "Obere Bürger 20, Bremerhaven",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.5412455",
+                "longitude": "8.5790815",
+                "id": 5688,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.6522205,
+                    54.3048043
+                ]
+            },
+            "properties": {
+                "name": "St. Peter Ording",
+                "active": true,
+                "area": "Germany",
+                "address": ", Schleswig-Holstein",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "54.3048043",
+                "longitude": "8.6522205",
+                "id": 5763,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.0896682,
+                    54.37601189999999
+                ]
+            },
+            "properties": {
+                "name": "Friedrichstadt / Northfrisia",
+                "active": true,
+                "area": "Germany",
+                "address": ", Friedrichstadt",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "54.37601189999999",
+                "longitude": "9.0896682",
+                "id": 5711,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.5344734,
+                    53.3004393
+                ]
+            },
+            "properties": {
+                "name": "Autobahntankstelle Ostetal-Nord A1",
+                "active": true,
+                "area": "Germany",
+                "address": "Zur Autobahn 1, Sittensen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.3004393",
+                "longitude": "9.5344734",
+                "id": 5767,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.74231,
+                    47.50075
+                ]
+            },
+            "properties": {
+                "name": "Bregenz",
+                "active": true,
+                "area": "Austria",
+                "address": "At the boatlanding on the lake shore, Bregenz - Lake Constance",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.50075",
+                "longitude": "9.74231",
+                "id": 5605,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.919338699999999,
+                    46.96762940000001
+                ]
+            },
+            "properties": {
+                "name": "Gargellen Schafberg Bahn",
+                "active": true,
+                "area": "Austria",
+                "address": "Gargellen 89,, Gargellen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.96762940000001",
+                "longitude": "9.919338699999999",
+                "id": 5606,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.2687956,
+                    51.3635639
+                ]
+            },
+            "properties": {
+                "name": "Whiskywelt Burg Scharfenstein",
+                "active": true,
+                "area": "Germany",
+                "address": "Scharfenstein 1, Leinefelde-Worbis",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.3635639",
+                "longitude": "10.2687956",
+                "id": 5733,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.5427374,
+                    51.5958759
+                ]
+            },
+            "properties": {
+                "name": "Salztal Paradies",
+                "active": true,
+                "area": "Germany",
+                "address": "Valley Road 28, Bad Sachsa",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.5958759",
+                "longitude": "10.5427374",
+                "id": 5677,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.2607249,
+                    47.4392719
+                ]
+            },
+            "properties": {
+                "name": "Lapisreich Shop",
+                "active": true,
+                "area": "Germany",
+                "address": "Obermarkt, Mittenwald",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.4392719",
+                "longitude": "11.2607249",
+                "id": 5741,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.5084703,
+                    47.3655921
+                ]
+            },
+            "properties": {
+                "name": "Hochseilpark Hinterglemm",
+                "active": true,
+                "area": "Austria",
+                "address": "Talschlussweg 367, 5754 Hinterglemm, Hinterglemm ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.3655921",
+                "longitude": "12.5084703",
+                "id": 5607,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.0420885,
+                    47.6114199
+                ]
+            },
+            "properties": {
+                "name": "The Eagle's Nest ",
+                "active": true,
+                "area": "Germany",
+                "address": "Kehlsteinhaus , Berchtesgaden ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.6114199",
+                "longitude": "13.0420885",
+                "id": 5680,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.104196,
+                    47.1186884
+                ]
+            },
+            "properties": {
+                "name": "Stubnerkogel Gipfelrestaurantt",
+                "active": true,
+                "area": "Austria",
+                "address": "Stubnerkogel, Bad Gastein",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.1186884",
+                "longitude": "13.104196",
+                "id": 5604,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.7522119,
+                    13.4776957
+                ]
+            },
+            "properties": {
+                "name": "Chamorro Village store",
+                "active": true,
+                "area": "Guam",
+                "address": "Marine Corps Dr., Santa Rita, Mariana Islands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "13.4776957",
+                "longitude": "144.7522119",
+                "id": 1742,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.5995437,
+                    49.39673140000001
+                ]
+            },
+            "properties": {
+                "name": "Zoo Jihlava",
+                "active": true,
+                "area": "Czech Republic",
+                "address": "Brezinovy sady 5642/10, Jihlava",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.39673140000001",
+                "longitude": "15.5995437",
+                "id": 5632,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.7182665,
+                    23.1455358
+                ]
+            },
+            "properties": {
+                "name": "Los Cabos International Airport ",
+                "active": true,
+                "area": "Mexico",
+                "address": "Los Cabos, Cabo San Lucas ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "23.1455358",
+                "longitude": "-109.7182665",
+                "id": 3217,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.5656081,
+                    28.2937645
+                ]
+            },
+            "properties": {
+                "name": "Tenerife-Parque Nacional del Teide - restaurante Bamby",
+                "active": true,
+                "area": "Spain",
+                "address": "Carretera General de las Cañadas, La Orotava, Santa Cruz de Tenerife",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.2937645",
+                "longitude": "-16.5656081",
+                "id": 327,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.519808,
+                    28.370131
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Disney Springs, Galactic Outpost",
+                "active": true,
+                "area": "Florida",
+                "address": "Disney Springs Shopping Area, Lake Buena Vista",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.370131",
+                "longitude": "-81.519808",
+                "id": 3355,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46588679999999,
+                    28.4729899
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios CityWalk - The Stand #1 (Was the Hub retired 1)",
+                "active": true,
+                "area": "Florida",
+                "address": "CityWalk, Orlando",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.4729899",
+                "longitude": "-81.46588679999999",
+                "id": 3416,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.47354589999999,
+                    28.4771981
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios Florida",
+                "active": true,
+                "area": "Florida",
+                "address": "1000 Universal Studios Plaza , Orlando",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.4771981",
+                "longitude": "-81.47354589999999",
+                "id": 3419,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4735259,
+                    28.4774032
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios Islands of Adventure",
+                "active": true,
+                "area": "Florida",
+                "address": "1000 Universal Studios Plaza , Orlando",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.4774032",
+                "longitude": "-81.4735259",
+                "id": 3420,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.468558,
+                    28.4793301
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios Islands of Adventure, Harry Potter Area",
+                "active": true,
+                "area": "Florida",
+                "address": " 1000 Universal Studios Plaza, Orlando",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.4793301",
+                "longitude": "-81.468558",
+                "id": 3421,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.0187796,
+                    28.8092772
+                ]
+            },
+            "properties": {
+                "name": "The Texas Zoo",
+                "active": true,
+                "area": "Texas",
+                "address": "110 Memorial Drive in Riverside Park, Victoria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.8092772",
+                "longitude": "-97.0187796",
+                "id": 3817,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.79372099999999,
+                    29.3089859
+                ]
+            },
+            "properties": {
+                "name": "Texas Seaport Museum/ELISSA",
+                "active": true,
+                "area": "Texas",
+                "address": "2200 Harborside Drive, Galveston",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "29.3089859",
+                "longitude": "-94.79372099999999",
+                "id": 3717,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4997253,
+                    29.4250394
+                ]
+            },
+            "properties": {
+                "name": "Los Pueblitos",
+                "active": true,
+                "area": "Texas",
+                "address": "220 Produce Row, San Antonio ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "29.4250394",
+                "longitude": "-98.4997253",
+                "id": 3784,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4998016,
+                    29.4250755
+                ]
+            },
+            "properties": {
+                "name": "Historic Marketplace",
+                "active": true,
+                "area": "Texas",
+                "address": "514 W Commerce St, San Antonio",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "29.4250755",
+                "longitude": "-98.4998016",
+                "id": 3781,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.06299369999999,
+                    29.4290145
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "active": true,
+                "area": "Texas",
+                "address": "6201 Gulf Fwy, Texas City",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "29.4290145",
+                "longitude": "-95.06299369999999",
+                "id": 3810,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6761509,
+                    30.634322
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees Gas Station",
+                "active": true,
+                "area": "Alabama",
+                "address": "20403 County Road 68, Robertsdale",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "30.634322",
+                "longitude": "-87.6761509",
+                "id": 1735,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.6624046,
+                    31.1416262
+                ]
+            },
+            "properties": {
+                "name": "Shanghai Disney Resort",
+                "active": true,
+                "area": "China",
+                "address": ", Shanghai",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "31.1416262",
+                "longitude": "121.6624046",
+                "id": 2948,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.14867269999999,
+                    32.6071036
+                ]
+            },
+            "properties": {
+                "name": "Islands Mercantile",
+                "active": true,
+                "area": "South Carolina",
+                "address": "544 Freshfields Drive (Freshfields Village), Kiawah Island (Johns Island)",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "32.6071036",
+                "longitude": "-80.14867269999999",
+                "id": 2203,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.9624873,
+                    32.7103256
+                ]
+            },
+            "properties": {
+                "name": "Estalagem Eira do Serrado",
+                "active": true,
+                "area": "Portugal",
+                "address": "Eira Do Serrado | Curral Das Freiras, 9000-421 Funchal, Funchal (madeira Island)",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "32.7103256",
+                "longitude": "-16.9624873",
+                "id": 666,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.3256816,
+                    32.7872403
+                ]
+            },
+            "properties": {
+                "name": "White Sands National Park",
+                "active": true,
+                "area": "New Mexico",
+                "address": "U.S. Highway 70/82 (P.O. Box 1086  Holloman AFB, NM), Alamogordo",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "32.7872403",
+                "longitude": "-106.3256816",
+                "id": 4901,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.0040619,
+                    33.6552063
+                ]
+            },
+            "properties": {
+                "name": "Huntington Beach Pier",
+                "active": true,
+                "area": "California",
+                "address": ", Huntington Beach ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "33.6552063",
+                "longitude": "-118.0040619",
+                "id": 4647,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.38744990000001,
+                    33.7598163
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe - Atlanta",
+                "active": true,
+                "area": "Georgia",
+                "address": "215 Peachtree St NE, Atlanta",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "33.7598163",
+                "longitude": "-84.38744990000001",
+                "id": 1620,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.0002265,
+                    33.8443038
+                ]
+            },
+            "properties": {
+                "name": "Knott's Berry Farm",
+                "active": true,
+                "area": "California",
+                "address": "8039 Beach Blvd, Buena Park",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "33.8443038",
+                "longitude": "-118.0002265",
+                "id": 4582,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.266674,
+                    33.882707
+                ]
+            },
+            "properties": {
+                "name": "March Field Air Museum",
+                "active": true,
+                "area": "California",
+                "address": "22550 Van Buren Blvd, Riverside",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "33.882707",
+                "longitude": "-117.266674",
+                "id": 4746,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.731053,
+                    33.968567
+                ]
+            },
+            "properties": {
+                "name": "Desert Caballeros Western Museum",
+                "active": true,
+                "area": "Arizona",
+                "address": "21 N Frontier St, Wickenburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "33.968567",
+                "longitude": "-112.731053",
+                "id": 2721,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    109.2784918,
+                    34.3841153
+                ]
+            },
+            "properties": {
+                "name": "Xian Tericotta Warriors Museum",
+                "active": true,
+                "area": "China",
+                "address": ", Xian",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "34.3841153",
+                "longitude": "109.2784918",
+                "id": 2952,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.2458632,
+                    34.4483742
+                ]
+            },
+            "properties": {
+                "name": "Treasures of Ojai",
+                "active": true,
+                "area": "California",
+                "address": "110 N Signal St, Ojai",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "34.4483742",
+                "longitude": "-119.2458632",
+                "id": 4717,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.06986789999999,
+                    34.4726221
+                ]
+            },
+            "properties": {
+                "name": "Gulog Rest Area/Welcome Center Georgia ",
+                "active": true,
+                "area": "Georgia",
+                "address": "Rest Area , Lavonia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "34.4726221",
+                "longitude": "-83.06986789999999",
+                "id": 1644,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.3455153,
+                    36.1259297
+                ]
+            },
+            "properties": {
+                "name": "St Michael's Cave",
+                "active": true,
+                "area": "Gibraltar",
+                "address": ", Gibraltar",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.1259297",
+                "longitude": "-5.3455153",
+                "id": 146,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.5152,
+                    36.59664
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Benalmádena",
+                "active": true,
+                "area": "Spain",
+                "address": "Puerto Marina, Avd del Puerto, s/n, 29630 Benalmadena Costa, Málaga, Spanija, Benalmádena",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.59664",
+                "longitude": "-4.5152",
+                "id": 288,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.5398204,
+                    36.5988652
+                ]
+            },
+            "properties": {
+                "name": "Teleferico Benalmedena",
+                "active": true,
+                "area": "Spain",
+                "address": ", Benalmedena - Malaga",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.5988652",
+                "longitude": "-4.5398204",
+                "id": 290,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1467421,
+                    36.6068898
+                ]
+            },
+            "properties": {
+                "name": "Stovepipe Wells General Store & The Nugget Gift Shop",
+                "active": true,
+                "area": "California",
+                "address": "Highway 190 Stovepipe Wells Village, Death Valley National Park",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.6068898",
+                "longitude": "-117.1467421",
+                "id": 4610,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.366012899999999,
+                    36.7582261
+                ]
+            },
+            "properties": {
+                "name": "Sabores de Grazalema shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Las Piedras, 22, Cádiz, Grazalema",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.7582261",
+                "longitude": "-5.366012899999999",
+                "id": 295,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.8018648,
+                    36.9317226
+                ]
+            },
+            "properties": {
+                "name": "Restaurante el kiosko (caminito del Rey)",
+                "active": true,
+                "area": "Spain",
+                "address": "Parque Ardales, Pantano El Chorro, s/n, 29550 Ardales, Málaga, Ardales",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.9317226",
+                "longitude": "-4.8018648",
+                "id": 270,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.4858141,
+                    36.9357176
+                ]
+            },
+            "properties": {
+                "name": "Glen Canyon Dam Visitor Center ",
+                "active": true,
+                "area": "Arizona",
+                "address": "Hwy 89 North, Page",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "36.9357176",
+                "longitude": "-111.4858141",
+                "id": 2659,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.2665353,
+                    37.0012828
+                ]
+            },
+            "properties": {
+                "name": "Trevelez",
+                "active": true,
+                "area": "Spain",
+                "address": "Main Plaza, Trevelez",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.0012828",
+                "longitude": "-3.2665353",
+                "id": 391,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4344467,
+                    37.0427289
+                ]
+            },
+            "properties": {
+                "name": "Donana National Park",
+                "active": true,
+                "area": "Spain",
+                "address": "Matalascanas, Huelva",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.0427289",
+                "longitude": "-6.4344467",
+                "id": 322,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.314199,
+                    37.126969
+                ]
+            },
+            "properties": {
+                "name": "ZooMarine",
+                "active": true,
+                "area": "Portugal",
+                "address": "8201-864 Albufeira,, Albufiera",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.126969",
+                "longitude": "-8.314199",
+                "id": 652,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.598843,
+                    37.17542
+                ]
+            },
+            "properties": {
+                "name": "Alcaiceria Gift Shop",
+                "active": true,
+                "area": "Spain",
+                "address": ", Granada",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.17542",
+                "longitude": "-3.598843",
+                "id": 314,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.599958,
+                    37.1756733
+                ]
+            },
+            "properties": {
+                "name": "Take Granada Souvenirs",
+                "active": true,
+                "area": "Spain",
+                "address": "Plaza Bib-rambia, Granada",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.1756733",
+                "longitude": "-3.599958",
+                "id": 319,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.5182237,
+                    37.2387626
+                ]
+            },
+            "properties": {
+                "name": "The American Revolution Museum at Yorktown",
+                "active": true,
+                "area": "Virginia",
+                "address": "200 Walter St, Yorktown",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.2387626",
+                "longitude": "-76.5182237",
+                "id": 4472,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.001627099999999,
+                    37.3777893
+                ]
+            },
+            "properties": {
+                "name": "Welcome / Tourist Center ",
+                "active": true,
+                "area": "Spain",
+                "address": ", Seville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.3777893",
+                "longitude": "-6.001627099999999",
+                "id": 381,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.9944247,
+                    37.3906143
+                ]
+            },
+            "properties": {
+                "name": "Vazquez - Outside the shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Sierpes , Seville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.3906143",
+                "longitude": "-5.9944247",
+                "id": 380,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.996263,
+                    37.397214
+                ]
+            },
+            "properties": {
+                "name": "Basílica menos del Gran Poder",
+                "active": true,
+                "area": "Spain",
+                "address": "Plaza de San Lorenzo, 13, Seville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.397214",
+                "longitude": "-5.996263",
+                "id": 371,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.999859400000001,
+                    37.4079699
+                ]
+            },
+            "properties": {
+                "name": "Isla Mágica",
+                "active": true,
+                "area": "Spain",
+                "address": "Avda. de los descubrimientos s/n, Seville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.4079699",
+                "longitude": "-5.999859400000001",
+                "id": 373,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.9339851,
+                    37.410168
+                ]
+            },
+            "properties": {
+                "name": "Color Espilaly",
+                "active": true,
+                "area": "Spain",
+                "address": ", Seville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.410168",
+                "longitude": "-5.9339851",
+                "id": 372,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.1409273,
+                    37.9611342
+                ]
+            },
+            "properties": {
+                "name": "Cave of the Lakes - Kalavryta",
+                "active": true,
+                "area": "Greece",
+                "address": "25007 Kastria, Kalavryta",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.9611342",
+                "longitude": "22.1409273",
+                "id": 1035,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.4688009,
+                    37.9901466
+                ]
+            },
+            "properties": {
+                "name": "Baeza Cathedral",
+                "active": true,
+                "area": "Spain",
+                "address": "Plaza Sta. María s/n, Jaen, Baeza",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.9901466",
+                "longitude": "-3.4688009",
+                "id": 326,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.3378788,
+                    38.3729416
+                ]
+            },
+            "properties": {
+                "name": "Marengo Cave National Landmark",
+                "active": true,
+                "area": "Indiana",
+                "address": "400 East State Road 64, Marengo",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.3729416",
+                "longitude": "-86.3378788",
+                "id": 2275,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1446154,
+                    38.5692069
+                ]
+            },
+            "properties": {
+                "name": "Terra Natura",
+                "active": true,
+                "area": "Spain",
+                "address": "Foia del Verdarer street, 1, Benidorm (Alicante)",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.5692069",
+                "longitude": "-0.1446154",
+                "id": 292,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.6198462,
+                    38.6165892
+                ]
+            },
+            "properties": {
+                "name": "Arches National Park Visitor Center",
+                "active": true,
+                "area": "Utah",
+                "address": "3015 S Hwy191, Moab",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.6165892",
+                "longitude": "-109.6198462",
+                "id": 2076,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1984499,
+                    38.6763199
+                ]
+            },
+            "properties": {
+                "name": "Guadalest",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle la Peña 2, El Castell de Guadalest",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.6763199",
+                "longitude": "-0.1984499",
+                "id": 306,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9179652,
+                    38.8589369
+                ]
+            },
+            "properties": {
+                "name": "Penny Arcade",
+                "active": true,
+                "area": "Colorado",
+                "address": "930 Manitou Ave, Manitou Springs",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.8589369",
+                "longitude": "-104.9179652",
+                "id": 1906,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0327373,
+                    38.895211
+                ]
+            },
+            "properties": {
+                "name": "White House Visitor's Center",
+                "active": true,
+                "area": "Washington DC",
+                "address": "1450 Pennsylvania Ave NW, Washington",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.895211",
+                "longitude": "-77.0327373",
+                "id": 3251,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.1433003,
+                    39.1693367
+                ]
+            },
+            "properties": {
+                "name": "North Lake Auto Parts",
+                "active": true,
+                "area": "California",
+                "address": "295 North Lake Blvd, North Lake Tahoe",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.1693367",
+                "longitude": "-120.1433003",
+                "id": 4709,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.607204,
+                    39.2863929
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe - Baltimore",
+                "active": true,
+                "area": "Maryland",
+                "address": "601 E Pratt St, Baltimore",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.2863929",
+                "longitude": "-76.607204",
+                "id": 3608,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.05643839999999,
+                    39.3883049
+                ]
+            },
+            "properties": {
+                "name": "Wolf Creek Habitat",
+                "active": true,
+                "area": "Indiana",
+                "address": "14099 Wolf Creek Rd, Brookville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.3883049",
+                "longitude": "-85.05643839999999",
+                "id": 2253,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.8048445,
+                    39.4292154
+                ]
+            },
+            "properties": {
+                "name": "Shepherdstown Visitor's Center",
+                "active": true,
+                "area": "West Virginia",
+                "address": "201 South Princess Street, Shepherdstown",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.4292154",
+                "longitude": "-77.8048445",
+                "id": 3905,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.35139,
+                    39.45427
+                ]
+            },
+            "properties": {
+                "name": "Museu de ls Cièncias Príncipe Felipe",
+                "active": true,
+                "area": "Spain",
+                "address": "Av Profesor López Piñero, 7, Valencia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.45427",
+                "longitude": "-0.35139",
+                "id": 394,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.1858296,
+                    39.4555713
+                ]
+            },
+            "properties": {
+                "name": "Santuari de Sant Salvador",
+                "active": true,
+                "area": "Spain",
+                "address": "Santuari de Sant Salvador, Crta. de Portocolón, s/n, 07200 Felanitx, Illes Balears, Felanitx",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.4555713",
+                "longitude": "3.1858296",
+                "id": 311,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.8986246,
+                    39.5616001
+                ]
+            },
+            "properties": {
+                "name": "Achillon - Korfu - Griechenland",
+                "active": true,
+                "area": "Greece",
+                "address": "Korfu - Achillon, Korfu - City",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.5616001",
+                "longitude": "19.8986246",
+                "id": 1036,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.6913107,
+                    39.6618305
+                ]
+            },
+            "properties": {
+                "name": "HMS Host at the Biden Welcome Center",
+                "active": true,
+                "area": "Delaware",
+                "address": "530 John F. Kennedy Memorial Highway, Newark",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.6618305",
+                "longitude": "-75.6913107",
+                "id": 2244,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.1962708,
+                    39.9719878
+                ]
+            },
+            "properties": {
+                "name": "Philadelphia Zoo",
+                "active": true,
+                "area": "Pennsylvania",
+                "address": "3400 West Girard Avenue, Philadelphia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "39.9719878",
+                "longitude": "-75.1962708",
+                "id": 4041,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.1299123,
+                    40.0784274
+                ]
+            },
+            "properties": {
+                "name": "Artesana shop",
+                "active": true,
+                "area": "Spain",
+                "address": "plaza mayor, Cuenca ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.0784274",
+                "longitude": "-2.1299123",
+                "id": 305,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.614024,
+                    40.321701
+                ]
+            },
+            "properties": {
+                "name": "Serra da Estrela (Centro Comercial)",
+                "active": true,
+                "area": "Portugal",
+                "address": "Centro Comercial da Torre, Alvoco da Serra, Loriga",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.321701",
+                "longitude": "-7.614024",
+                "id": 651,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3809242,
+                    40.43667749999999
+                ]
+            },
+            "properties": {
+                "name": "Bicycle Museum of America",
+                "active": true,
+                "area": "Ohio",
+                "address": "7 W Monroe St,, Bremen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.43667749999999",
+                "longitude": "-84.3809242",
+                "id": 1948,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.108806899999999,
+                    40.9429032
+                ]
+            },
+            "properties": {
+                "name": "Candles gift store",
+                "active": true,
+                "area": "Spain",
+                "address": ", Segovia ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.9429032",
+                "longitude": "-4.108806899999999",
+                "id": 366,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.1182684,
+                    40.94801959999999
+                ]
+            },
+            "properties": {
+                "name": "Tourist Information Center",
+                "active": true,
+                "area": "Spain",
+                "address": "Plaza del Azoguejo, 1, Segovia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.94801959999999",
+                "longitude": "-4.1182684",
+                "id": 369,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.666795,
+                    40.961001
+                ]
+            },
+            "properties": {
+                "name": "Mercatus gift shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Cardenal Pla y Deniel, Salamanca",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.961001",
+                "longitude": "-5.666795",
+                "id": 358,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.6661456,
+                    40.96209959999999
+                ]
+            },
+            "properties": {
+                "name": "Shopping Salamanca gift shop",
+                "active": true,
+                "area": "Spain",
+                "address": "40 Rua Mayor, Salamanca",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.96209959999999",
+                "longitude": "-5.6661456",
+                "id": 360,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.6641062,
+                    40.96414740000001
+                ]
+            },
+            "properties": {
+                "name": "Regalos Hispania gift shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Plaza del Poeta Iglesias, Salamanca",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.96414740000001",
+                "longitude": "-5.6641062",
+                "id": 359,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.663539699999999,
+                    40.9701039
+                ]
+            },
+            "properties": {
+                "name": "Lazarillo de Tormes Regalos gift shop",
+                "active": true,
+                "area": "Spain",
+                "address": "22 Libreros, Salamanca",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.9701039",
+                "longitude": "-5.663539699999999",
+                "id": 357,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.648571599999999,
+                    40.9721256
+                ]
+            },
+            "properties": {
+                "name": "Train Station ",
+                "active": true,
+                "area": "Spain",
+                "address": "Paseo de la Estación, Salamanca",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "40.9721256",
+                "longitude": "-5.648571599999999",
+                "id": 361,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.3201172,
+                    41.018104
+                ]
+            },
+            "properties": {
+                "name": "Strategic Air & Space Museum",
+                "active": true,
+                "area": "Nebraska",
+                "address": "28210 West Park Highway, Ashland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.018104",
+                "longitude": "-96.3201172",
+                "id": 4166,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.6109043,
+                    41.1380756
+                ]
+            },
+            "properties": {
+                "name": "Porto Càlem",
+                "active": true,
+                "area": "Portugal",
+                "address": "Avenida Diogo Leite, 344 Vila Nova de Gaia, Porto",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.1380756",
+                "longitude": "-8.6109043",
+                "id": 677,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.7823247,
+                    41.1934687
+                ]
+            },
+            "properties": {
+                "name": "Monasterio de piedra",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Afueras, s/n, Nuévalos, Zaragoza",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.1934687",
+                "longitude": "-1.7823247",
+                "id": 400,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.550678,
+                    41.2134298
+                ]
+            },
+            "properties": {
+                "name": "Miragica Terra di Giganti",
+                "active": true,
+                "area": "Italy",
+                "address": "via dei Portuali, Zona Asi",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.2134298",
+                "longitude": "16.550678",
+                "id": 934,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1526945,
+                    41.4144948
+                ]
+            },
+            "properties": {
+                "name": "Park Guell ",
+                "active": true,
+                "area": "Spain",
+                "address": ", Barcelona",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.4144948",
+                "longitude": "2.1526945",
+                "id": 282,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.3770546,
+                    41.5547347
+                ]
+            },
+            "properties": {
+                "name": "Bon Jesus",
+                "active": true,
+                "area": "Portugal",
+                "address": ", Braga",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.5547347",
+                "longitude": "-8.3770546",
+                "id": 656,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.4689988,
+                    41.7639927
+                ]
+            },
+            "properties": {
+                "name": "Turística 3",
+                "active": true,
+                "area": "Spain",
+                "address": ", Soria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.7639927",
+                "longitude": "-2.4689988",
+                "id": 382,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.60002089999999,
+                    42.0524541
+                ]
+            },
+            "properties": {
+                "name": "The Big Tomat'er",
+                "active": true,
+                "area": "Canada",
+                "address": "29 Erie Street South, Ontario - Leamington",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.0524541",
+                "longitude": "-82.60002089999999",
+                "id": 5004,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    27.5160873,
+                    42.5652706
+                ]
+            },
+            "properties": {
+                "name": "Burgas (Bourgas) International Airport",
+                "active": true,
+                "area": "Bulgaria",
+                "address": "8016 Burgas, Burgas",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.5652706",
+                "longitude": "27.5160873",
+                "id": 879,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.615536,
+                    42.807578
+                ]
+            },
+            "properties": {
+                "name": "Portomarin (Camino de Santiago)",
+                "active": true,
+                "area": "Spain",
+                "address": "Praza Conde Fenosa, Portomarin",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.807578",
+                "longitude": "-7.615536",
+                "id": 354,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.9355162,
+                    42.8228689
+                ]
+            },
+            "properties": {
+                "name": "Caffè Gelateria Il Sorriso",
+                "active": true,
+                "area": "Italy",
+                "address": "Lungomare Marconi, 242",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.8228689",
+                "longitude": "13.9355162",
+                "id": 897,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.5446412,
+                    42.88059620000001
+                ]
+            },
+            "properties": {
+                "name": "St. James Cathedral (Camino de Santiago)",
+                "active": true,
+                "area": "Spain",
+                "address": "Praza das Praterias, Santiago de Compostella",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.88059620000001",
+                "longitude": "-8.5446412",
+                "id": 365,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.5335956,
+                    42.8875876
+                ]
+            },
+            "properties": {
+                "name": "Santiago de Compostela Bus Stop",
+                "active": true,
+                "area": "Spain",
+                "address": ", A Coruña, Santiago de Compostela",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.8875876",
+                "longitude": "-8.5335956",
+                "id": 269,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0687075,
+                    43.0926264
+                ]
+            },
+            "properties": {
+                "name": "Bird Kingdom ",
+                "active": false,
+                "area": "Canada",
+                "address": "5651 River Road, Ontario - Niagra Falls",
+                "status": "retired",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.0926264",
+                "longitude": "-79.0687075",
+                "id": 5015,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0617473,
+                    43.1128183
+                ]
+            },
+            "properties": {
+                "name": "Souvenir City",
+                "active": true,
+                "area": "Canada",
+                "address": "4199 River Rd, Ontario - Niagara Falls",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.1128183",
+                "longitude": "-79.0617473",
+                "id": 5014,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.924246,
+                    43.2576478
+                ]
+            },
+            "properties": {
+                "name": "Tximeleta Souvenirs",
+                "active": true,
+                "area": "Spain",
+                "address": ", Bilboa",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.2576478",
+                "longitude": "-2.924246",
+                "id": 293,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.157225899999999,
+                    43.5540577
+                ]
+            },
+            "properties": {
+                "name": "As Catedrais Beach",
+                "active": true,
+                "area": "Spain",
+                "address": ", Ribadeo",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.5540577",
+                "longitude": "-7.157225899999999",
+                "id": 355,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.4933567,
+                    43.5866272
+                ]
+            },
+            "properties": {
+                "name": "Cité de l'Espace",
+                "active": true,
+                "area": "France",
+                "address": ", Toulouse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.5866272",
+                "longitude": "1.4933567",
+                "id": 119,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.4418039,
+                    43.6083156
+                ]
+            },
+            "properties": {
+                "name": "Cathédrale Saint-Sernin",
+                "active": true,
+                "area": "France",
+                "address": ", Toulouse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.6083156",
+                "longitude": "1.4418039",
+                "id": 118,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.6779485,
+                    43.6232074
+                ]
+            },
+            "properties": {
+                "name": "Belogradchik Rocks",
+                "active": true,
+                "area": "Bulgaria",
+                "address": ", Belogradchik",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.6232074",
+                "longitude": "22.6779485",
+                "id": 878,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.3605989,
+                    43.6601453
+                ]
+            },
+            "properties": {
+                "name": "Aéroscopia - Airbus History museum.",
+                "active": true,
+                "area": "France",
+                "address": ", Toulouse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "43.6601453",
+                "longitude": "1.3605989",
+                "id": 117,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.5136397,
+                    44.0902546
+                ]
+            },
+            "properties": {
+                "name": "Italia in Miniatura",
+                "active": true,
+                "area": "Italy",
+                "address": "Via Popilia, 239",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.0902546",
+                "longitude": "12.5136397",
+                "id": 980,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.2633986,
+                    44.33780480000001
+                ]
+            },
+            "properties": {
+                "name": "Mirabilandia Theme Park",
+                "active": true,
+                "area": "Italy",
+                "address": "Parco della Standiana S.r.l. Statale Adriatica SS 16",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.33780480000001",
+                "longitude": "12.2633986",
+                "id": 951,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8259479,
+                    44.4593593
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone - Old Faithful Lodge Gift Shop",
+                "active": true,
+                "area": "Wyoming",
+                "address": "West Entrance Road, Yellowstone National Park",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.4593593",
+                "longitude": "-110.8259479",
+                "id": 3126,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.682678,
+                    44.5876976
+                ]
+            },
+            "properties": {
+                "name": "Brockville Aquatarium",
+                "active": true,
+                "area": "Canada",
+                "address": "Tall Ships Landing, Ontario - Brockville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.5876976",
+                "longitude": "-75.682678",
+                "id": 4987,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.0551816,
+                    44.6288748
+                ]
+            },
+            "properties": {
+                "name": "Old Bayfront Bazaar ",
+                "active": true,
+                "area": "Oregon",
+                "address": "620 SW Bay Boulevard, Newport",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.6288748",
+                "longitude": "-124.0551816",
+                "id": 4376,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.4997358,
+                    45.473387
+                ]
+            },
+            "properties": {
+                "name": "Parque de la Prehistoria",
+                "active": true,
+                "area": "Italy",
+                "address": " Province of Cremona",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "45.473387",
+                "longitude": "9.4997358",
+                "id": 916,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.3671637,
+                    45.51490219999999
+                ]
+            },
+            "properties": {
+                "name": "Dracula Castle Transilvania",
+                "active": true,
+                "area": "Romania",
+                "address": "Str. General Traian Mosoiu, nr. 24, Bran",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "45.51490219999999",
+                "longitude": "25.3671637",
+                "id": 885,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.6469278,
+                    45.94189799999999
+                ]
+            },
+            "properties": {
+                "name": " Mohacs Tortenelmi Emlekhely",
+                "active": true,
+                "area": "Hungary",
+                "address": "Satorhely",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "45.94189799999999",
+                "longitude": "18.6469278",
+                "id": 852,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.4145688,
+                    46.3917989
+                ]
+            },
+            "properties": {
+                "name": "Hotel Weissenstein ",
+                "active": true,
+                "area": "Italy",
+                "address": "Pietralba 10",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.3917989",
+                "longitude": "11.4145688",
+                "id": 938,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.39477099999999,
+                    46.5407959
+                ]
+            },
+            "properties": {
+                "name": "Upper Peninsula Children's Museum",
+                "active": true,
+                "area": "Michigan",
+                "address": "123 W. Baraga Ave., Marquette",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.5407959",
+                "longitude": "-87.39477099999999",
+                "id": 2562,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.209125,
+                    46.719768
+                ]
+            },
+            "properties": {
+                "name": "Aareschlucht",
+                "active": true,
+                "area": "Switzerland",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.719768",
+                "longitude": "8.209125",
+                "id": 723,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.2015671,
+                    46.7388254
+                ]
+            },
+            "properties": {
+                "name": "Christmas Market",
+                "active": true,
+                "area": "Italy",
+                "address": "Walk along Passirio",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.7388254",
+                "longitude": "11.2015671",
+                "id": 931,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.452348,
+                    46.755972
+                ]
+            },
+            "properties": {
+                "name": "Burg Hochosterwitz",
+                "active": true,
+                "area": "Austria",
+                "address": "Hochosterwitz 1",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.755972",
+                "longitude": "14.452348",
+                "id": 999,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.256292,
+                    46.757892
+                ]
+            },
+            "properties": {
+                "name": "Keszthely Port (Molo)",
+                "active": true,
+                "area": "Hungary",
+                "address": "Keszthely, Kikötő (Balaton), 8360 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.757892",
+                "longitude": "17.256292",
+                "id": 849,
+                "last_updated": "2023-10-29",
+                "logs": {
+                    "2021-11-14": "Requires 2x 100 + 5 Hungarian forint."
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.8901768,
+                    46.891028
+                ]
+            },
+            "properties": {
+                "name": "Tihany Port",
+                "active": true,
+                "area": "Hungary",
+                "address": "Rév u. 1., 8237 Tihany, Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.891028",
+                "longitude": "17.8901768",
+                "id": 864,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.8895078,
+                    46.9139572
+                ]
+            },
+            "properties": {
+                "name": "Benedictine Abbey of Tihany",
+                "active": true,
+                "area": "Hungary",
+                "address": "I. András tér 1.",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "46.9139572",
+                "longitude": "17.8895078",
+                "id": 863,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.7691617,
+                    47.06920789999999
+                ]
+            },
+            "properties": {
+                "name": "Grossglockner strasse",
+                "active": true,
+                "area": "Austria",
+                "address": "Kaiser Franz Joseph Hohe ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.06920789999999",
+                "longitude": "12.7691617",
+                "id": 992,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.6946761,
+                    47.07418510000001
+                ]
+            },
+            "properties": {
+                "name": "Grossglockner",
+                "active": true,
+                "area": "Austria",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.07418510000001",
+                "longitude": "12.6946761",
+                "id": 1002,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.2138812,
+                    47.1576731
+                ]
+            },
+            "properties": {
+                "name": "Valluga Mountain",
+                "active": true,
+                "area": "Austria",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.1576731",
+                "longitude": "10.2138812",
+                "id": 1009,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.4001535,
+                    47.2862215
+                ]
+            },
+            "properties": {
+                "name": "Hungerburg Cable Car Station",
+                "active": true,
+                "area": "Austria",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.2862215",
+                "longitude": "11.4001535",
+                "id": 995,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.1889589,
+                    47.482932
+                ]
+            },
+            "properties": {
+                "name": "Burg Hohenwerfen /Werfen ",
+                "active": true,
+                "area": "Austria",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.482932",
+                "longitude": "13.1889589",
+                "id": 1029,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.5064417,
+                    47.5286719
+                ]
+            },
+            "properties": {
+                "name": "Gosausee",
+                "active": true,
+                "area": "Austria",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.5286719",
+                "longitude": "13.5064417",
+                "id": 989,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.963827,
+                    47.54141600000001
+                ]
+            },
+            "properties": {
+                "name": "Children's Railway Ticket Office",
+                "active": true,
+                "area": "Hungary",
+                "address": "MAV Zrt. Szechenyi-hegyi Gyermekvasut",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.54141600000001",
+                "longitude": "18.963827",
+                "id": 822,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.4619517,
+                    47.5739575
+                ]
+            },
+            "properties": {
+                "name": "Benediktinerstift Admont",
+                "active": true,
+                "area": "Austria",
+                "address": "Kichplatz 1",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.5739575",
+                "longitude": "14.4619517",
+                "id": 983,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.347578,
+                    47.5960091
+                ]
+            },
+            "properties": {
+                "name": "Gödöllo Royal Palace",
+                "active": true,
+                "area": "Hungary",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.5960091",
+                "longitude": "19.347578",
+                "id": 843,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.06284,
+                    47.598666
+                ]
+            },
+            "properties": {
+                "name": "Souvenir Shop",
+                "active": true,
+                "area": "Germany",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.598666",
+                "longitude": "11.062840",
+                "id": 579,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3320708,
+                    47.6062095
+                ]
+            },
+            "properties": {
+                "name": "Royal Caribbean International",
+                "active": true,
+                "area": "Washington",
+                "address": "Ovation of the Seas, Seattle",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.6062095",
+                "longitude": "-122.3320708",
+                "id": 5147,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.633908,
+                    47.686302
+                ]
+            },
+            "properties": {
+                "name": "Gyor Visitor Centre",
+                "active": true,
+                "area": "Hungary",
+                "address": "9021. Gyor, Baross street 21.",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.686302",
+                "longitude": "17.633908",
+                "id": 846,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.9108696,
+                    47.7903694
+                ]
+            },
+            "properties": {
+                "name": "Schneebergbahn Puchberg",
+                "active": true,
+                "area": "Austria",
+                "address": "Bahnhofplatz 1",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.7903694",
+                "longitude": "15.9108696",
+                "id": 1001,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.5919709,
+                    47.9975197
+                ]
+            },
+            "properties": {
+                "name": "Hollókoi Castle",
+                "active": true,
+                "area": "Hungary",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.9975197",
+                "longitude": "19.5919709",
+                "id": 848,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.761346,
+                    47.999857
+                ]
+            },
+            "properties": {
+                "name": "Szentkút, National Shrine",
+                "active": true,
+                "area": "Hungary",
+                "address": "Mátraverebély-Szentkút, Hungary, 3077",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "47.999857",
+                "longitude": "19.761346",
+                "id": 850,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.5912344,
+                    48.0430234
+                ]
+            },
+            "properties": {
+                "name": "Skyline Park",
+                "active": true,
+                "area": "Germany",
+                "address": "Im Hardtfeld 1 ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.0430234",
+                "longitude": "10.5912344",
+                "id": 415,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    20.6248704,
+                    48.1052185
+                ]
+            },
+            "properties": {
+                "name": "Anna Cave",
+                "active": true,
+                "area": "Hungary",
+                "address": "Hámor stny. 1.",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.1052185",
+                "longitude": "20.6248704",
+                "id": 851,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3371073,
+                    48.2749624
+                ]
+            },
+            "properties": {
+                "name": "Kahlenberg",
+                "active": true,
+                "area": "Austria",
+                "address": "Am Kahlenberg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.2749624",
+                "longitude": "16.3371073",
+                "id": 1018,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.4118932,
+                    48.4635735
+                ]
+            },
+            "properties": {
+                "name": "Freudenstadt Tourist Info",
+                "active": true,
+                "area": "Germany",
+                "address": "Market 64",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.4635735",
+                "longitude": "8.4118932",
+                "id": 486,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.2012738,
+                    48.5965029
+                ]
+            },
+            "properties": {
+                "name": "Berghotel Mummelsee",
+                "active": true,
+                "area": "Germany",
+                "address": "Schwarzwaldhochstraße 11",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.5965029",
+                "longitude": "8.2012738",
+                "id": 616,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.8345338,
+                    49.55898269999999
+                ]
+            },
+            "properties": {
+                "name": "Mettlach",
+                "active": true,
+                "area": "Germany",
+                "address": "Eichenlaub Strasse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.55898269999999",
+                "longitude": "6.8345338",
+                "id": 559,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.6680853,
+                    49.793716
+                ]
+            },
+            "properties": {
+                "name": "Frankenstein Castle",
+                "active": true,
+                "area": "Germany",
+                "address": "64367 Burg Frankenstein",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.793716",
+                "longitude": "8.6680853",
+                "id": 561,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.2200919,
+                    49.8390418
+                ]
+            },
+            "properties": {
+                "name": "Cabela's Canada",
+                "active": true,
+                "area": "Canada",
+                "address": " 580 Sterling Lyon  Pkwy, Manitoba - Winnipeg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.8390418",
+                "longitude": "-97.2200919",
+                "id": 4978,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.2300939,
+                    49.8702491
+                ]
+            },
+            "properties": {
+                "name": "Assiniboine Park Zoo",
+                "active": true,
+                "area": "Canada",
+                "address": "55 Pavilion Crescent , Manitoba - Winnipeg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.8702491",
+                "longitude": "-97.2300939",
+                "id": 4977,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.262952899999999,
+                    49.9429026
+                ]
+            },
+            "properties": {
+                "name": "Hahn Airport",
+                "active": true,
+                "area": "Germany",
+                "address": "55483 Hahn-Flughafen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.9429026",
+                "longitude": "7.262952899999999",
+                "id": 494,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.262952899999999,
+                    49.9429026
+                ]
+            },
+            "properties": {
+                "name": "Frankfurt Hahn Airport",
+                "active": true,
+                "area": "Germany",
+                "address": "Gebäude 667",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "49.9429026",
+                "longitude": "7.262952899999999",
+                "id": 548,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.2684152,
+                    50.0011965
+                ]
+            },
+            "properties": {
+                "name": "Römerpassage",
+                "active": true,
+                "area": "Germany",
+                "address": "Römerpassage",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.0011965",
+                "longitude": "8.2684152",
+                "id": 555,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.6949128,
+                    50.06910269999999
+                ]
+            },
+            "properties": {
+                "name": "Lands End ",
+                "active": true,
+                "area": "England",
+                "address": "Lands End, Sennen, Cornwall - Sennen,",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.06910269999999",
+                "longitude": "-5.6949128",
+                "id": 1354,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.1635849,
+                    50.158807
+                ]
+            },
+            "properties": {
+                "name": "Wild- und Freizeitpark Klotten/Cochem",
+                "active": true,
+                "area": "Germany",
+                "address": "Wildparkstraße 1",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.158807",
+                "longitude": "7.1635849",
+                "id": 537,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3805439,
+                    50.1925164
+                ]
+            },
+            "properties": {
+                "name": "Pace de Crocodile Rouge",
+                "active": true,
+                "area": "Belgium",
+                "address": "Lac de l'eau d'Heure, Boussu - lez - Walcourt",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.1925164",
+                "longitude": "4.3805439",
+                "id": 125,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.5905722,
+                    50.2327126
+                ]
+            },
+            "properties": {
+                "name": "Boppard",
+                "active": true,
+                "area": "Germany",
+                "address": "Rheinallee 40 ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.2327126",
+                "longitude": "7.5905722",
+                "id": 452,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.0619492,
+                    50.6355033
+                ]
+            },
+            "properties": {
+                "name": "Office du Tourisme (Lille)",
+                "active": true,
+                "area": "France",
+                "address": "Place Rihour, Lille",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.6355033",
+                "longitude": "3.0619492",
+                "id": 76,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.058654499999999,
+                    50.86154459999999
+                ]
+            },
+            "properties": {
+                "name": "Continium Discovery Center (former industrion)",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Museumplein 2, Kerkrade",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.86154459999999",
+                "longitude": "6.058654499999999",
+                "id": 199,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3389369,
+                    50.894085
+                ]
+            },
+            "properties": {
+                "name": "Mini Europe Amusement Park",
+                "active": true,
+                "area": "Belgium",
+                "address": "1020 Brussels, Belgium, Brussels",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.894085",
+                "longitude": "4.3389369",
+                "id": 134,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.5088071,
+                    51.1815843
+                ]
+            },
+            "properties": {
+                "name": "Winterberg Bobhaus",
+                "active": true,
+                "area": "Germany",
+                "address": "Kappe, 59955 Winterberg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.1815843",
+                "longitude": "8.5088071",
+                "id": 641,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.689738100000001,
+                    51.2068959
+                ]
+            },
+            "properties": {
+                "name": "CenterParcs Hochsauerland",
+                "active": true,
+                "area": "Germany",
+                "address": "Sonnenallee 1 ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.2068959",
+                "longitude": "8.689738100000001",
+                "id": 557,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.7568438,
+                    51.7186823
+                ]
+            },
+            "properties": {
+                "name": "Paderborn Zentrum/Domplatz",
+                "active": true,
+                "area": "Germany",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.7186823",
+                "longitude": "8.7568438",
+                "id": 590,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.748617,
+                    52.03892399999999
+                ]
+            },
+            "properties": {
+                "name": "Tropical Islands",
+                "active": true,
+                "area": "Germany",
+                "address": "",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.03892399999999",
+                "longitude": "13.748617",
+                "id": 540,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.683787050518983,
+                    52.09923103073813
+                ]
+            },
+            "properties": {
+                "name": "Brest (central bus station)",
+                "active": true,
+                "area": "Belarus",
+                "address": "Ordzhonikidze 12, Brest, Belarus",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.09923103073813",
+                "longitude": "23.683787050518983",
+                "id": 1190,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.766576599999999,
+                    52.1725307
+                ]
+            },
+            "properties": {
+                "name": "Schloss Marienburg",
+                "active": true,
+                "area": "Germany",
+                "address": "Marienberg1",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.1725307",
+                "longitude": "9.766576599999999",
+                "id": 505,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8901686,
+                    52.371561
+                ]
+            },
+            "properties": {
+                "name": "Amsterdam Experience ",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Nieuwezijds Voorburgwal 264, 1012 RS Amsterdam, Amsterdam",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.371561",
+                "longitude": "4.8901686",
+                "id": 156,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.9407854,
+                    52.8492196
+                ]
+            },
+            "properties": {
+                "name": "Schiffshebewerk Niederfinow",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Schiffshebewerk",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.8492196",
+                "longitude": "13.9407854",
+                "id": 573,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.1091409,
+                    52.9868
+                ]
+            },
+            "properties": {
+                "name": "Deutsches Panzer Museum",
+                "active": true,
+                "area": "Germany",
+                "address": "Hans-Krüger-Straße 33, ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.9868",
+                "longitude": "10.1091409",
+                "id": 566,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.0426,
+                    53.23624
+                ]
+            },
+            "properties": {
+                "name": "Wildpark Lüneburger Heide ",
+                "active": true,
+                "area": "Germany",
+                "address": "Wildpark 1",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.23624",
+                "longitude": "10.0426",
+                "id": 574,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.408975,
+                    53.24987609999999
+                ]
+            },
+            "properties": {
+                "name": "Hansestadt",
+                "active": true,
+                "area": "Germany",
+                "address": "Große Bäckerstr. 30",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.24987609999999",
+                "longitude": "10.408975",
+                "id": 545,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9929265,
+                    53.4013472
+                ]
+            },
+            "properties": {
+                "name": "Merseyside Maritime Museum",
+                "active": true,
+                "area": "England",
+                "address": "Albert Dock, Warehouse Block D, Merseyside - Liverpool",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.4013472",
+                "longitude": "-2.9929265",
+                "id": 1509,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.2990048,
+                    53.4726001
+                ]
+            },
+            "properties": {
+                "name": "Coronation Street Tour",
+                "active": true,
+                "area": "England",
+                "address": ", LANCASHIRE - Media City",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.4726001",
+                "longitude": "-2.2990048",
+                "id": 1453,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.3302169,
+                    53.73892859999999
+                ]
+            },
+            "properties": {
+                "name": "The Deep",
+                "active": true,
+                "area": "England",
+                "address": "Tower Street,, EAST YORKSHIRE - Hull",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.73892859999999",
+                "longitude": "-0.3302169",
+                "id": 1397,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.1394141,
+                    54.0922046
+                ]
+            },
+            "properties": {
+                "name": "U-Boot Denkmal",
+                "active": true,
+                "area": "Germany",
+                "address": "Strandstrasse 92",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "54.0922046",
+                "longitude": "12.1394141",
+                "id": 546,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.6829209,
+                    54.294201
+                ]
+            },
+            "properties": {
+                "name": "Schiffsbegrüßungsanlage (Ships Welcome Point)",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Kreishafen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "54.294201",
+                "longitude": "9.6829209",
+                "id": 602,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.1924219,
+                    54.41969779999999
+                ]
+            },
+            "properties": {
+                "name": "U11 - U-Boot - Submarine",
+                "active": true,
+                "area": "Germany",
+                "address": "Burgstaaken 87",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "54.41969779999999",
+                "longitude": "11.1924219",
+                "id": 484,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.5694428,
+                    54.5135621
+                ]
+            },
+            "properties": {
+                "name": "St. Petri Dom",
+                "active": true,
+                "area": "Germany",
+                "address": "Norderdomstraße 24837",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "54.5135621",
+                "longitude": "9.5694428",
+                "id": 613,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.870146,
+                    55.80007070000001
+                ]
+            },
+            "properties": {
+                "name": "Vikingar!",
+                "active": true,
+                "area": "Scotland",
+                "address": "Greenock Road, Largs",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "55.80007070000001",
+                "longitude": "-4.870146",
+                "id": 780,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    38.182853,
+                    55.8328848
+                ]
+            },
+            "properties": {
+                "name": "Monino Air Force Museum",
+                "active": true,
+                "area": "Russia",
+                "address": "Monino Airfield, Monino",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "55.8328848",
+                "longitude": "38.182853",
+                "id": 29,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.0868112,
+                    56.3041871
+                ]
+            },
+            "properties": {
+                "name": "The Scottish Deer Centre",
+                "active": true,
+                "area": "Scotland",
+                "address": "KY15 4NQ, Cupar, Fife",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "56.3041871",
+                "longitude": "-3.0868112",
+                "id": 738,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.8980438,
+                    57.0370298
+                ]
+            },
+            "properties": {
+                "name": "Ålborg Zoo",
+                "active": true,
+                "area": "Denmark",
+                "address": " Mølleparkvej 63, Ålborg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "57.0370298",
+                "longitude": "9.8980438",
+                "id": 981,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.225450599999999,
+                    57.47703319999999
+                ]
+            },
+            "properties": {
+                "name": "Inverness Museum and Art Gallery",
+                "active": true,
+                "area": "Scotland",
+                "address": "Castle Wynd, Inverness",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "57.47703319999999",
+                "longitude": "-4.225450599999999",
+                "id": 778,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -135.4628176,
+                    58.1292446
+                ]
+            },
+            "properties": {
+                "name": "Cabin Cache",
+                "active": true,
+                "area": "Alaska",
+                "address": "108 Cannery Rd, Hoonah",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "58.1292446",
+                "longitude": "-135.4628176",
+                "id": 1156,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.7444926,
+                    59.4364706
+                ]
+            },
+            "properties": {
+                "name": "Tourist Information Centre",
+                "active": true,
+                "area": "Estonia",
+                "address": "Kullasepe St, Tallinn",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "59.4364706",
+                "longitude": "24.7444926",
+                "id": 259,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.438626,
+                    60.121886
+                ]
+            },
+            "properties": {
+                "name": "Harbor Train Station (Alaska Railroad Station)",
+                "active": true,
+                "area": "Alaska",
+                "address": "North Waterfront, Seward",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "60.121886",
+                "longitude": "-149.438626",
+                "id": 1173,
+                "last_updated": "2023-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.0582827,
+                    37.513131
+                ]
+            },
+            "properties": {
+                "name": "COEX aquarium",
+                "active": true,
+                "area": "South Korea",
+                "address": "Yeongdongdae-ro 513 Basement 1, Seoul, Gangnam",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "37.513131",
+                "longitude": "127.0582827",
+                "id": 5911,
                 "last_updated": "2023-10-29"
             }
         }
