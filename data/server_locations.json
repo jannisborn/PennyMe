@@ -16481,8 +16481,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -5.3456982,
-                    36.1344529
+                    -5.351932,
+                    36.132827
                 ]
             },
             "properties": {
@@ -16493,8 +16493,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102201",
                 "internal_url": "null",
-                "latitude": "36.1344529",
-                "longitude": "-5.3456982",
+                "latitude": "36.132827",
+                "longitude": "-5.351932",
                 "id": 144,
                 "last_updated": "2023-10-31"
             }
@@ -27766,6 +27766,29 @@
                 "longitude": "-0.13084407",
                 "id": 291,
                 "last_updated": "2023-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.3456982,
+                    36.1344529
+                ]
+            },
+            "properties": {
+                "name": "Top of the Rock Cable Car Top",
+                "active": true,
+                "area": "Gibraltar",
+                "address": "Cable Car, Gibraltar",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=88233",
+                "internal_url": "null",
+                "latitude": "36.1344529",
+                "longitude": "-5.3456982",
+                "id": 147,
+                "last_updated": "2023-10-31"
             }
         }
     ]
