@@ -27721,6 +27721,52 @@
                 "id": 6494,
                 "last_updated": "2023-10-31"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.0551806,
+                    38.5395564
+                ]
+            },
+            "properties": {
+                "name": "Shore Fun Arcade",
+                "active": false,
+                "area": "Delaware",
+                "address": "PO Box 481, Bethany Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=362854",
+                "internal_url": "null",
+                "latitude": "38.5395564",
+                "longitude": "-75.0551806",
+                "id": 5324,
+                "last_updated": "2023-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.13084407,
+                    38.53439287
+                ]
+            },
+            "properties": {
+                "name": "Arte Vela Shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Major, 03501 Benidorm, Alicante, Spain",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=286566",
+                "internal_url": "null",
+                "latitude": "38.53439287",
+                "longitude": "-0.13084407",
+                "id": 291,
+                "last_updated": "2023-11-01"
+            }
         }
     ]
 }
