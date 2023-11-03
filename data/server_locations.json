@@ -16481,22 +16481,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -5.3456982,
-                    36.1344529
+                    -5.351932,
+                    36.132827
                 ]
             },
             "properties": {
-                "name": "Cable Car, (Cable Car Bottom Station)",
+                "name": "Top of the Rock - Cable Car",
                 "active": true,
                 "area": "Gibraltar",
                 "address": "Cable Car, Bottom Station, Gibraltar",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102201",
                 "internal_url": "null",
-                "latitude": "36.1344529",
-                "longitude": "-5.3456982",
+                "latitude": "36.132827",
+                "longitude": "-5.351932",
                 "id": 144,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-10-31"
             }
         },
         {
@@ -24394,16 +24394,16 @@
             },
             "properties": {
                 "name": "St Michael's Cave",
-                "active": true,
+                "active": false,
                 "area": "Gibraltar",
-                "address": ", Gibraltar",
-                "status": "unvisited",
+                "address": "Gibraltar",
+                "status": "retired",
                 "external_url": "null",
                 "internal_url": "null",
                 "latitude": "36.1259297",
                 "longitude": "-5.3455153",
                 "id": 146,
-                "last_updated": "2023-10-29"
+                "last_updated": "2023-10-31"
             }
         },
         {
@@ -27720,6 +27720,144 @@
                 "longitude": 10.150221161305177,
                 "id": 6494,
                 "last_updated": "2023-10-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.0551806,
+                    38.5395564
+                ]
+            },
+            "properties": {
+                "name": "Shore Fun Arcade",
+                "active": false,
+                "area": "Delaware",
+                "address": "PO Box 481, Bethany Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=362854",
+                "internal_url": "null",
+                "latitude": "38.5395564",
+                "longitude": "-75.0551806",
+                "id": 5324,
+                "last_updated": "2023-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.13084407,
+                    38.53439287
+                ]
+            },
+            "properties": {
+                "name": "Arte Vela Shop",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Major, 03501 Benidorm, Alicante, Spain",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=286566",
+                "internal_url": "null",
+                "latitude": "38.53439287",
+                "longitude": "-0.13084407",
+                "id": 291,
+                "last_updated": "2023-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.3456982,
+                    36.1344529
+                ]
+            },
+            "properties": {
+                "name": "Top of the Rock Cable Car Top",
+                "active": true,
+                "area": "Gibraltar",
+                "address": "Cable Car, Gibraltar",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=88233",
+                "internal_url": "null",
+                "latitude": "36.1344529",
+                "longitude": "-5.3456982",
+                "id": 147,
+                "last_updated": "2023-10-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.3032109,
+                    37.1750801
+                ]
+            },
+            "properties": {
+                "name": "Chimney Rock National Monument",
+                "active": false,
+                "area": "Colorado",
+                "address": "3179 State HWY 151, Chimney Rock",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=275122",
+                "internal_url": "null",
+                "latitude": "37.1750801",
+                "longitude": "-107.3032109",
+                "id": 1826,
+                "last_updated": "2023-11-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.882513,
+                    37.268136
+                ]
+            },
+            "properties": {
+                "name": "Durango and Silverton Narrow Gauge Railroad and Museum",
+                "active": false,
+                "area": "Colorado",
+                "address": "479 Main Avenue, Durango",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1047",
+                "internal_url": "null",
+                "latitude": "37.268136",
+                "longitude": "-107.882513",
+                "id": 1855,
+                "last_updated": "2023-11-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.6778902,
+                    43.3154347
+                ]
+            },
+            "properties": {
+                "name": "Euskal Souvenirs ",
+                "active": true,
+                "area": "Spain",
+                "address": "Calle Barrenkalea, 11, Gernika",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417091",
+                "internal_url": "null",
+                "latitude": "43.3154347",
+                "longitude": "-2.6778902",
+                "id": 6495,
+                "last_updated": "2023-11-03"
             }
         }
     ]
