@@ -27859,6 +27859,121 @@
                 "id": 6495,
                 "last_updated": "2023-11-03"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.14543,
+                    45.204304
+                ]
+            },
+            "properties": {
+                "name": "Evergreen Aviation & Space Museum",
+                "active": false,
+                "area": "Oregon",
+                "address": "500 NE Captain Michael King Smith Way , McMinnville",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3963",
+                "internal_url": "null",
+                "latitude": "45.204304",
+                "longitude": "-123.14543",
+                "id": 4373,
+                "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9648876,
+                    37.4846214
+                ]
+            },
+            "properties": {
+                "name": "Yosemite Beads R Us",
+                "active": true,
+                "area": "California",
+                "address": "5024 CA State Highway 140, Mariposa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417130",
+                "internal_url": "null",
+                "latitude": "37.4846214",
+                "longitude": "-119.9648876",
+                "id": 6496,
+                "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -156.6945017,
+                    20.9214228
+                ]
+            },
+            "properties": {
+                "name": "Whaler's Village",
+                "active": false,
+                "area": "Hawaii",
+                "address": "2435 Ka'anapali Parkway, Maui - Lahaina (Kaanapali)",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=285078",
+                "internal_url": "null",
+                "latitude": "20.9214228",
+                "longitude": "-156.6945017",
+                "id": 3839,
+                "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1235978,
+                    51.53160339999999
+                ]
+            },
+            "properties": {
+                "name": "King's Cross Railroad Station",
+                "active": true,
+                "area": "England",
+                "address": "Euston Rd, London - Camden",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417199",
+                "internal_url": "null",
+                "latitude": "51.53160339999999",
+                "longitude": "-0.1235978",
+                "id": 6497,
+                "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.2031715,
+                    36.3399356
+                ]
+            },
+            "properties": {
+                "name": "HollyToon",
+                "active": false,
+                "area": "Greece",
+                "address": "Ermou Street, Rhodes Island - Faliraki",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=255616",
+                "internal_url": "null",
+                "latitude": "36.3399356",
+                "longitude": "28.2031715",
+                "id": 1037,
+                "last_updated": "2023-11-05"
+            }
         }
     ]
 }
