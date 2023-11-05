@@ -1,12 +1,14 @@
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 import overpy
 from thefuzz import process as fuzzysearch
 from tqdm import tqdm
+import googlemaps
 
 from pennyme.locations import CODE_TO_USSTATE, COUNTRY_TO_CODE
 from pennyme.pennycollector import DAY, MONTH, YEAR
 from pennyme.webconfig import get_elongated_coin_title
+from pennyme.utils import get_next_free_machine_id
 
 AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia", "Madagascar"]
 TODAY = f"{YEAR}-{MONTH}-{DAY}"
@@ -28,7 +30,7 @@ def get_osm_machines() -> overpy.Result:
     return result
 
 
-def get_address(machine: overpy.Node) -> str:
+def get_address(machine: overpy.Node, gmaps: googlemaps.client.Client) -> str:
     street_out = gmaps.reverse_geocode(
         (machine.lat, machine.lon), result_type="street_address"
     )
@@ -81,7 +83,7 @@ def osm_to_geojson(result: overpy.Result) -> Dict[str, Any]:
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [str(machine.lon), str(machine.lat)],
+                "coordinates": [float(machine.lon), float(machine.lat)],
             },
             "properties": {
                 "name": title,
@@ -99,3 +101,13 @@ def osm_to_geojson(result: overpy.Result) -> Dict[str, Any]:
         }
         data.append(geojson)
     return data
+
+
+def prelim_to_final_entry(
+    entry: Dict[str, Any], server_data: List[Any], all_locations_path: str
+) -> Dict[str, Any]:
+    # Add date
+    entry["properties"]["last_updated"] = TODAY
+    machine_id = get_next_free_machine_id(all_locations_path, server_data["features"])
+    entry["properties"]["id"] = machine_id
+    return entry
