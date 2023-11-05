@@ -91,24 +91,26 @@ def location_differ(
         problems_out_path = os.path.join(output_folder, "old_problems.json")
         with open(problems_out_path, "w", encoding="utf8") as f:
             json.dump(problems_old, f, ensure_ascii=False, indent=4)
-        problems_links = [entry['properties']['external_url'] for entry in problems_old['features']]
+        problems_links = [
+            entry["properties"]["external_url"] for entry in problems_old["features"]
+        ]
     else:
         with open(server_json, "r") as f:
             server_data = json.load(f)
 
     # Saving all machines which have no external link
-    no_link_list = []
+    external_list = []
 
     # Convert data to have links as keys
     device_dict = {}
     machine_idx = max([x["properties"]["id"] for x in device_data["features"]])
     for i, geojson in enumerate(device_data["features"]):
         url = geojson["properties"]["external_url"]
-        if url == "null":
+        if url == "null" or "209.221.138.252" not in url:
             entry = geojson["properties"].copy()
             entry["source"] = "Device"
             entry["data_idx"] = i
-            no_link_list.append(entry)
+            external_list.append(entry)
         elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
@@ -119,11 +121,11 @@ def location_differ(
     server_dict = {}
     for i, geojson in enumerate(server_data["features"]):
         url = geojson["properties"]["external_url"]
-        if url == "null":
+        if url == "null" or "209.221.138.252" not in url:
             entry = geojson["properties"].copy()
             entry["source"] = "Server"
             entry["data_idx"] = i
-            no_link_list.append(entry)
+            external_list.append(entry)
         elif url not in server_dict.keys():
             server_dict[url] = [geojson]
         else:
@@ -134,9 +136,9 @@ def location_differ(
     machine_idx += 1
 
     # Required to later ensure that machines are not added twice.
-    no_link = pd.DataFrame(no_link_list).drop(["logs"], axis=1)
+    external = pd.DataFrame(external_list).drop(["logs"], axis=1)
     # If a machine w/o link exists in both dicts, we only keep the one from the server
-    no_link = no_link.sort_values(
+    external = external.sort_values(
         by=["id", "source"], ascending=[True, False]
     ).drop_duplicates(subset=["id"], keep="first")
 
@@ -183,7 +185,7 @@ def location_differ(
                         logger.error(msg)
                     geojson["properties"]["id"] = -1
                     geojson["properties"]["last_updated"] = -1
-                    geojson['problem'] = msg
+                    geojson["problem"] = msg
                     del geojson["temporary"]
                     problem_data["features"].append(geojson)
                     continue
@@ -356,7 +358,7 @@ def location_differ(
                 )
                 continue
 
-            tdf = no_link[no_link.area == geojson["properties"]["area"]]
+            tdf = external[external.area == geojson["properties"]["area"]]
             if len(tdf) > 0:
                 # Verify that machine is indeed new through fuzzy search
                 match, score = fuzzysearch.extract(
@@ -469,11 +471,8 @@ def location_differ(
     if len(ids) != len(counts):
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
-    
-    server_data = verify_remaining_machines(
-        server_data, device_data, validated_links
-    )
-    
+
+    server_data = verify_remaining_machines(server_data, device_data, validated_links)
 
     fn = "server_locations.json"
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
