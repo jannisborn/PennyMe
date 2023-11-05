@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SwiftUI
 
 var FOUNDIMAGE : Bool = false
 
@@ -92,7 +93,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         titleLabel.textAlignment = NSTextAlignment.center
         titleLabel.text = self.pinData.title!
         addressLabel.numberOfLines = 3
-        addressLabel.text = self.pinData.locationName
+        addressLabel.text = self.pinData.address
         
         coordinateLabel.text = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
         )
@@ -252,10 +253,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             }
         }
         else if indexPath.section == 5{
-            let mailtostring = String(
-                "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
-            ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-            UIApplication.shared.open(URL(string:mailtostring )!)
+            if #available(iOS 14.0, *) {
+                let swiftUIViewController = UIHostingController(rootView: MachineChangedForm(pinData: pinData
+                    )
+                )
+                present(swiftUIViewController, animated: true)
+                
+            }
         }
         else if indexPath.section == 6{
             // Copy coordinate section

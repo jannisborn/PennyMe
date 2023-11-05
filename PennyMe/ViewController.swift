@@ -511,7 +511,7 @@ extension ViewController: MKMapViewDelegate {
         // first option: it's a new machine pin - present form
         if let newmachine = annotation as? NewMachine {
             if #available(iOS 14.0, *) {
-                let swiftUIViewController = UIHostingController(rootView: RequestFormView(coordinate: newmachine.coordinate)
+                let swiftUIViewController = UIHostingController(rootView: NewMachineFormView(coordinate: newmachine.coordinate)
                 )
                 present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
                 
@@ -746,7 +746,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             artwork = artworks[indexPath.row]
         }
         cell.textLabel?.text = artwork.title
-        cell.detailTextLabel?.text = artwork.locationName
+        cell.detailTextLabel?.text = artwork.address
         // Set the custom color for the cell based on the artwork color
         cell.backgroundColor = artwork.markerTintColor.withAlphaComponent(0.15)
         return cell

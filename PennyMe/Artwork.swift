@@ -13,7 +13,8 @@ import Contacts
 
 class Artwork: NSObject, MKAnnotation {
     let title: String?
-    let locationName: String
+    let address: String
+    let area : String
     let link: String
     var status: String
     let coordinate: CLLocationCoordinate2D
@@ -23,17 +24,18 @@ class Artwork: NSObject, MKAnnotation {
     let paywall: Bool
     let multimachine: Int
     
-    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool) {
+    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, area: String) {
         self.title = title
-        self.locationName = locationName
+        self.address = address
         self.coordinate = coordinate
         self.link = link
         self.status = status
         self.id = String(id)
         self.last_updated = last_updated
-        self.text = self.title! + self.locationName
+        self.text = self.title! + self.address
         self.multimachine = multimachine
         self.paywall = paywall
+        self.area = area
         
         super.init()
     }
@@ -52,11 +54,12 @@ class Artwork: NSObject, MKAnnotation {
         }
         // Extract class variables
         title = properties["name"] as? String
-        locationName = (properties["address"] as? String)!
+        address = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
         status = (properties["status"] as? String)!
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
+        area = String((properties["area"] as? String)!)
         coordinate = point.coordinate
         
         // multimachine - add if exists
@@ -72,13 +75,13 @@ class Artwork: NSObject, MKAnnotation {
             paywall = false
         }
         
-        text = title! + locationName + id
+        text = title! + address + id
         super.init()
     }
     
     
     var subtitle: String? {
-        return locationName
+        return address
     }
     
     // To get directions in map
