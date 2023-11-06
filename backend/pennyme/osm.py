@@ -88,7 +88,7 @@ def osm_to_geojson(result: overpy.Result) -> Dict[str, Any]:
             "properties": {
                 "name": title,
                 "active": True,
-                "area": country,
+                "area": match,
                 "address": address,
                 "status": "unvisited",
                 "external_url": url,
