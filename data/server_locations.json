@@ -37773,7 +37773,7 @@
                 "id": 5758,
                 "multimachine": 3,
                 "last_updated": "2023-11-05"
-                }
+            }
         },
         {
             "type": "Feature",
@@ -38329,6 +38329,30 @@
                 "longitude": "-4.2212732",
                 "id": 744,
                 "last_updated": "2023-11-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9718335,
+                    40.767778
+                ]
+            },
+            "properties": {
+                "name": "Central Park Zoo and Wildlife Center",
+                "active": true,
+                "area": "New York",
+                "address": "5th Avenue at 64th Street, New York City (Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3614",
+                "internal_url": "null",
+                "latitude": "40.767778",
+                "longitude": "-73.9718335",
+                "id": 3042,
+                "multimachine": 3,
+                "last_updated": "2023-11-05"
             }
         }
     ]
