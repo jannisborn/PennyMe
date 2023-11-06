@@ -27994,7 +27994,7 @@
                 "internal_url": "null",
                 "latitude": "54.0807803",
                 "longitude": "13.9146423",
-                "id": 6498,
+                "id": 6939,
                 "last_updated": "2023-11-05"
             }
         },
@@ -28017,7 +28017,7 @@
                 "internal_url": "null",
                 "latitude": "54.0770600",
                 "longitude": "13.9091571",
-                "id": 6499,
+                "id": 6940,
                 "last_updated": "2023-11-05"
             }
         },
@@ -37773,6 +37773,30 @@
                 "id": 5758,
                 "multimachine": 3,
                 "last_updated": "2023-11-05"
+                }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.3431043,
+                    48.88670459999999
+                ]
+            },
+            "properties": {
+                "name": "The Basilica of Sacré-Cur de Montmartre",
+                "active": true,
+                "area": "France",
+                "address": "35 Rue du Chevalier de la Barre, 75018 , Paris ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417368",
+                "internal_url": "null",
+                "latitude": "48.88670459999999",
+                "longitude": "2.3431043",
+                "id": 6498,
+                "multimachine": 3,
+                "last_updated": "2023-11-06"
             }
         },
         {
@@ -37796,6 +37820,29 @@
                 "longitude": "14.1871655",
                 "id": 6924,
                 "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.9553752,
+                    35.3912701
+                ]
+            },
+            "properties": {
+                "name": "Japan Monkey Park",
+                "active": true,
+                "area": "Japan",
+                "address": "Kanrin-26 Inuyama, Aichi Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417345",
+                "internal_url": "null",
+                "latitude": "35.3912701",
+                "longitude": "136.9553752",
+                "id": 6499,
+                "last_updated": "2023-11-06"
             }
         },
         {
@@ -38259,6 +38306,29 @@
                 "longitude": "12.1395533",
                 "id": 6938,
                 "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.2212732,
+                    55.7754182
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Scotland, Museum of Rural Life",
+                "active": false,
+                "area": "Scotland",
+                "address": ", East Kilbride",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=232991",
+                "internal_url": "null",
+                "latitude": "55.7754182",
+                "longitude": "-4.2212732",
+                "id": 744,
+                "last_updated": "2023-11-06"
             }
         }
     ]
