@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 PATH_IMAGES = os.path.join("..", "..", "images")
 TODAY = f"{YEAR}-{MONTH}-{DAY}"
 
+
 def get_next_free_machine_id(
     all_locations_path: str, server_locations: List[Dict]
 ) -> int:
@@ -61,17 +62,17 @@ def verify_remaining_machines(
     """
     id_to_entry = {}
     for machine in deepcopy(device_data["features"]):
-        machine['properties']['source'] = 'Device'
-        id_to_entry[machine['properties']['id']] = machine
-    for machine in deepcopy(server_data['features']):
-        machine['properties']['source'] = 'Server'
-        id_to_entry[machine['properties']['id']] = machine
+        machine["properties"]["source"] = "Device"
+        id_to_entry[machine["properties"]["id"]] = machine
+    for machine in deepcopy(server_data["features"]):
+        machine["properties"]["source"] = "Server"
+        id_to_entry[machine["properties"]["id"]] = machine
 
     for mid, machine in id_to_entry.items():
         url = machine["properties"]["external_url"]
-        source = machine['properties']['source']
-        status = machine['properties']['status']
-        if url == 'null':
+        source = machine["properties"]["source"]
+        status = machine["properties"]["status"]
+        if url == "null":
             continue
         if url not in validated_links:
             resp = requests.get(url)
@@ -80,19 +81,19 @@ def verify_remaining_machines(
                 area = machine["properties"]["area"]
                 msg = f"Our machine {title} in {area} from {source} shown as {status} but {url} responds {resp.reason} ({resp.status_code})"
                 logger.error(msg)
-                if source == 'Server':
+                if source == "Server":
                     # Update entry in server_locations
-                    for updated_machine in server_data['features']:
-                        if updated_machine['properties']['external_url'] == url:
-                            updated_machine['properties']['external_url'] = 'null'
-                            updated_machine['properties']['last_updated'] = TODAY
+                    for updated_machine in server_data["features"]:
+                        if updated_machine["properties"]["external_url"] == url:
+                            updated_machine["properties"]["external_url"] = "null"
+                            updated_machine["properties"]["last_updated"] = TODAY
                 else:
-                    for updated_machine in device_data['features']:
-                        if updated_machine['properties']['external_url'] == url:
+                    for updated_machine in device_data["features"]:
+                        if updated_machine["properties"]["external_url"] == url:
                             server_machine = deepcopy(updated_machine)
-                            server_machine['properties']['external_url'] = 'null'
-                            server_machine['properties']['last_updated'] = TODAY
-                            server_data['features'].append(server_machine)
+                            server_machine["properties"]["external_url"] = "null"
+                            server_machine["properties"]["last_updated"] = TODAY
+                            server_data["features"].append(server_machine)
             else:
                 validated_links.append(url)
     return server_data

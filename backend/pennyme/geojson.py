@@ -5,10 +5,7 @@ from typing import Any, Dict
 DATE = datetime.today()
 
 
-def json_to_geojson(
-    input_filepath: str, output_filepath: str
-) -> Dict[str, Any]:
-
+def json_to_geojson(input_filepath: str, output_filepath: str) -> Dict[str, Any]:
     with open(input_filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
 

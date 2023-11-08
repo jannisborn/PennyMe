@@ -114,9 +114,12 @@ def push_newmachine_to_github(machine_update_entry, branch_name=DATA_BRANCH):
     commit_message = f"add new machine {machine_id} named {machine_name}"
 
     commit_json_file(
-        server_locations, branch_name, commit_message, latest_commit_sha,
-        body=f"New machine {machine_id} named {machine_name} submitted."
-        )
+        server_locations,
+        branch_name,
+        commit_message,
+        latest_commit_sha,
+        body=f"New machine {machine_id} named {machine_name} submitted.",
+    )
 
     return machine_id
 
