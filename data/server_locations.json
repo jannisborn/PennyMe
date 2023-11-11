@@ -31303,12 +31303,12 @@
                 "area": "Germany",
                 "address": "23769 Fehmarn, Germany",
                 "status": "unvisited",
-                "external_url": "http://elongated-coin.de/phpBB3/viewtopic.php?t=13708",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.5215365",
                 "longitude": "11.1589886",
                 "id": 6643,
-                "last_updated": "2023-11-05"
+                "last_updated": "2023-11-11"
             }
         },
         {
@@ -31809,12 +31809,12 @@
                 "area": "Germany",
                 "address": "Am Hafen W 17, 26427 Neuharlingersiel, Germany",
                 "status": "unvisited",
-                "external_url": "http://elongated-coin.de/phpBB3/viewtopic.php?t=2821",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "53.7016363",
                 "longitude": "7.7036852",
                 "id": 6665,
-                "last_updated": "2023-11-05"
+                "last_updated": "2023-11-11"
             }
         },
         {
@@ -38353,6 +38353,52 @@
                 "id": 3042,
                 "multimachine": 3,
                 "last_updated": "2023-11-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.91357409999999,
+                    35.4635101
+                ]
+            },
+            "properties": {
+                "name": "Raven Rock State Park",
+                "active": true,
+                "area": "North Carolina",
+                "address": "3009 Raven Rock Road, Lillington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417650",
+                "internal_url": "null",
+                "latitude": "35.4635101",
+                "longitude": "-78.91357409999999",
+                "id": 6941,
+                "last_updated": "2023-11-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.365121,
+                    37.0087402
+                ]
+            },
+            "properties": {
+                "name": "Bowling Green Corvette Plant",
+                "active": false,
+                "area": "Kentucky",
+                "address": "600 Corvette Drive, Bowling Green",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=16840",
+                "internal_url": "null",
+                "latitude": "37.0087402",
+                "longitude": "-86.365121",
+                "id": 3514,
+                "last_updated": "2023-11-11"
             }
         }
     ]
