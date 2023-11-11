@@ -16,7 +16,7 @@ from datetime import datetime
 import pandas as pd
 import requests
 from googlemaps import Client as GoogleMaps
-from pennyme.github_update import load_latest_server_locations
+from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
     AREA_PREFIX,
@@ -83,11 +83,11 @@ def location_differ(
 
     # load server_locations from github or from data folder
     if load_from_github:
-        server_data, _ = load_latest_server_locations()
+        server_data, _ = load_latest_json()
         # save the file locally to compare it later
         with open(server_json, "w", encoding="utf8") as f:
             json.dump(server_data, f, ensure_ascii=False, indent=4)
-        problems_old, _ = load_latest_server_locations(file="/data/problems.json")
+        problems_old, _ = load_latest_json(file="/data/problems.json")
         problems_out_path = os.path.join(output_folder, "old_problems.json")
         with open(problems_out_path, "w", encoding="utf8") as f:
             json.dump(problems_old, f, ensure_ascii=False, indent=4)

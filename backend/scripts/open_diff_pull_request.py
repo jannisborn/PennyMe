@@ -3,7 +3,7 @@ import json
 
 from pennyme.github_update import (
     REPO_OWNER, REPO_NAME, DATA_BRANCH, HEADER_LOCATION_DIFF, commit_json_file,
-    load_latest_server_locations, get_pr_id, post_comment_to_pr
+    load_latest_json, get_pr_id, post_comment_to_pr
 )
 
 if __name__ == "__main__":
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         server_locations = json.load(infile)
 
     # get latest_commit_sha
-    old_server_locations, latest_commit_sha = load_latest_server_locations(
+    old_server_locations, latest_commit_sha = load_latest_json(
         branch_name=DATA_BRANCH
     )
     if old_server_locations != server_locations:
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     with open(args.problems_file, "r") as infile:
         problems_json = json.load(infile)
     # get latest_commit_sha
-    old_problems_json, latest_commit_sha = load_latest_server_locations(
+    old_problems_json, latest_commit_sha = load_latest_json(
         branch_name=DATA_BRANCH, file="/data/problems.json"
     )
 
