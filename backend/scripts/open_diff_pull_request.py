@@ -31,9 +31,7 @@ if __name__ == "__main__":
         server_locations = json.load(infile)
 
     # get latest_commit_sha
-    old_server_locations, latest_commit_sha = load_latest_json(
-        branch_name=DATA_BRANCH
-    )
+    old_server_locations, latest_commit_sha = load_latest_json()
     if old_server_locations != server_locations:
         print("Detected change in server_locations.json - push to github")
         joblog = open('/root/PennyMe/new_data/cron.log', 'r').read()
@@ -53,9 +51,7 @@ if __name__ == "__main__":
     with open(args.problems_file, "r") as infile:
         problems_json = json.load(infile)
     # get latest_commit_sha
-    old_problems_json, latest_commit_sha = load_latest_json(
-        branch_name=DATA_BRANCH, file="/data/problems.json"
-    )
+    old_problems_json, latest_commit_sha = load_latest_json(file="/data/problems.json")
 
     if old_problems_json != problems_json:
         print("Detected change in problems.json - push to github")
