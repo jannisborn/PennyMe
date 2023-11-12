@@ -28722,7 +28722,7 @@
                 ]
             },
             "properties": {
-                "name": "Rvershagen Karls-Erlebnisdorf (machine 1)",
+                "name": "Rövershagen Karls-Erlebnisdorf (machine 1)",
                 "active": true,
                 "area": "Germany",
                 "address": "18182 Rostock, Germany",
@@ -38376,6 +38376,29 @@
                 "latitude": "34.4957262",
                 "longitude": "-85.6272192",
                 "id": 1712,
+                "last_updated": "2023-11-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5421346,
+                    48.132594
+                ]
+            },
+            "properties": {
+                "name": "Deutsches Museum",
+                "active": true,
+                "area": "Germany",
+                "address": "Am Bavariapark 5, 80339 München, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=282710",
+                "internal_url": "null",
+                "latitude": "48.132594",
+                "longitude": "11.5421346",
+                "id": 562,
                 "last_updated": "2023-11-12"
             }
         }
