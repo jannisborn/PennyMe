@@ -1,7 +1,7 @@
 import base64
 import json
 import logging
-from datetime import datetime
+from typing import Any, Dict, Tuple
 
 import requests
 
@@ -74,32 +74,41 @@ def create_new_branch(branch_name, headers=HEADERS):
     return False
 
 
-def load_latest_server_locations(
-    branch_name=DATA_BRANCH, headers=HEADERS, file=FILE_PATH
-):
+def load_latest_json(
+    headers: Dict[str, Any] = HEADERS, file: str = FILE_PATH
+) -> Tuple[Dict[str, Any], str]:
     """
-    Push the modified file to the github branch
-    machine_update_entry: Dict, only the new machine entry that should
-    be added to the server_locations json
+    Load a json file from the github repository. Automatically
+    detects whether the most up to date file is on the `main` or
+    on the `DATA_BRANCH` branch.
+
+    Args:
+        headers: Headers for the request
+        file: Path to the file to load, e.g., /data/server_locations.json
+
+    Returns:
+        The json file as a dictionary and the sha of the latest commit
     """
 
-    # Load latest version of the server_locations
+    # Load latest version of the file
     file_url = get_latest_branch_url(file=file)
     response = requests.get(file_url, headers=headers)
     data = response.json()
-    current_content = data["content"]
-    current_content_decoded = base64.b64decode(current_content).decode("utf-8")
-    server_locations = json.loads(current_content_decoded)
+
+    if data["encoding"] == "base64":
+        current_content_decoded = base64.b64decode(data["content"]).decode("utf-8")
+        content = json.loads(current_content_decoded)
+    else:
+        response = requests.get(data["download_url"])
+        content = response.json()
 
     # the sha of the last commit is needed later for pushing
     latest_commit_sha = data["sha"]
-    return server_locations, latest_commit_sha
+    return content, latest_commit_sha
 
 
 def push_newmachine_to_github(machine_update_entry, branch_name=DATA_BRANCH):
-    server_locations, latest_commit_sha = load_latest_server_locations(
-        branch_name=DATA_BRANCH
-    )
+    server_locations, latest_commit_sha = load_latest_json(branch_name=DATA_BRANCH)
 
     machine_id = get_next_free_machine_id(
         "../data/all_locations.json", server_locations["features"]
@@ -166,7 +175,7 @@ def commit_json_file(
     pr_id = get_pr_id(branch_name=branch_name)
     if pr_id and did_create_new_branch:
         logger.error(
-            f"Seems like a PR already exists even though branch was created just now "
+            "Seems like a PR already exists even though branch was created just now."
         )
         post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
     elif pr_id:
