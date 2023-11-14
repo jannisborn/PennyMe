@@ -1,14 +1,14 @@
 from typing import Any, Dict, List
 
+import googlemaps
 import overpy
 from thefuzz import process as fuzzysearch
 from tqdm import tqdm
-import googlemaps
 
 from pennyme.locations import CODE_TO_USSTATE, COUNTRY_TO_CODE
 from pennyme.pennycollector import DAY, MONTH, YEAR
-from pennyme.webconfig import get_elongated_coin_title
 from pennyme.utils import get_next_free_machine_id
+from pennyme.webconfig import get_elongated_coin_title
 
 AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia", "Madagascar"]
 TODAY = f"{YEAR}-{MONTH}-{DAY}"
@@ -19,7 +19,7 @@ def get_osm_machines() -> overpy.Result:
     api = overpy.Overpass()
 
     # Define the Overpass QL query
-    query = f"""
+    query = """
     node
     ["vending"="elongated_coin"]
     (-90, -180, 90, 180);
