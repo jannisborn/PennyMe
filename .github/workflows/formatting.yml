@@ -23,8 +23,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install isort black ruff
 
-    # - name: Check code formatting with isort
-    #   run: isort --profile black --check .
+    - name: Check code formatting with isort
+      run: isort --profile black --check backend
 
     - name: Check code formatting with black
       run: black --check .
