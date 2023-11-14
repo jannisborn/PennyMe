@@ -1,10 +1,12 @@
 import json
-from typing import List, Dict, Any
-import os
-import requests
 import logging
-from pennyme.pennycollector import DAY, MONTH, YEAR
+import os
 from copy import deepcopy
+from typing import Any, Dict, List
+
+import requests
+
+from pennyme.pennycollector import DAY, MONTH, YEAR
 
 logger = logging.getLogger(__name__)
 

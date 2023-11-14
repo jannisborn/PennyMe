@@ -16,6 +16,8 @@ from datetime import datetime
 import pandas as pd
 import requests
 from googlemaps import Client as GoogleMaps
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -31,9 +33,8 @@ from pennyme.pennycollector import (
     get_prelim_geojson,
     validate_location_list,
 )
-from pennyme.webconfig import get_website
 from pennyme.utils import verify_remaining_machines
-from thefuzz import process as fuzzysearch
+from pennyme.webconfig import get_website
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -164,7 +165,7 @@ def location_differ(
         # Extract the machine locations
         location_raw_list = get_location_list_from_location_website(website)
         changes = 0
-        l = len(location_raw_list)
+        length = len(location_raw_list)
         for j, raw_location in enumerate(location_raw_list):
             # Convert to preliminary geo-json (no ID and no GPS coordinates)
             geojson = get_prelim_geojson(raw_location, area, add_date=True)
@@ -426,7 +427,7 @@ def location_differ(
                     continue
 
             logger.debug(
-                f"{j}/{l}: Found machine to be added: {geojson['properties']['name']}"
+                f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
             )
             changes += 1
             new += 1

@@ -2,8 +2,9 @@
 import logging
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
-import googlemaps
+
 import bs4
+import googlemaps
 
 from .locations import COUNTRY_TO_CODE, remove_html_and
 
@@ -99,7 +100,7 @@ def get_location_list_from_location_website(website) -> List[List[str]]:
         content = str(raw_locations[ind])
         if ind % 5 == 0:
             if ind > 0:
-                location_list.append(location)
+                location_list.append(content)
             location = []
         location.append(content)
     return location_list
