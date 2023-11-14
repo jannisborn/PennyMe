@@ -1,8 +1,10 @@
 def parse_location_name(x: str) -> str:
+    """Parse the location name to remove special characters and spaces."""
     return x.lower().replace(". ", "_").replace(" ", "_")
 
 
-def remove_html_and(x):
+def remove_html_and(x: str) -> str:
+    """Remove html and replace &amp; with &."""
     return x.replace("&amp;", "&")
 
 
