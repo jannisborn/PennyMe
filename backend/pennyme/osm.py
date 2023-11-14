@@ -2,12 +2,13 @@ from typing import Any, Dict, List
 
 import googlemaps
 import overpy
+from thefuzz import process as fuzzysearch
+from tqdm import tqdm
+
 from pennyme.locations import CODE_TO_USSTATE, COUNTRY_TO_CODE
 from pennyme.pennycollector import DAY, MONTH, YEAR
 from pennyme.utils import get_next_free_machine_id
 from pennyme.webconfig import get_elongated_coin_title
-from thefuzz import process as fuzzysearch
-from tqdm import tqdm
 
 AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia", "Madagascar"]
 TODAY = f"{YEAR}-{MONTH}-{DAY}"

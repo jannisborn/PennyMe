@@ -5,10 +5,11 @@ from datetime import datetime
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import push_newmachine_to_github
 from pennyme.locations import COUNTRIES
 from pennyme.slack import image_slack, message_slack, process_uploaded_image
-from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
