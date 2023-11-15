@@ -38401,6 +38401,52 @@
                 "id": 562,
                 "last_updated": "2023-11-12"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.1795683,
+                    33.576903
+                ]
+            },
+            "properties": {
+                "name": "Bonham Visitor Center",
+                "active": true,
+                "area": "Texas",
+                "address": "327 N. Main St., Bonham",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417847",
+                "internal_url": "null",
+                "latitude": "33.576903",
+                "longitude": "-96.1795683",
+                "id": 6942,
+                "last_updated": "2023-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.698776,
+                    35.6618343
+                ]
+            },
+            "properties": {
+                "name": "Jump Shop Shibuya",
+                "active": true,
+                "area": "Japan",
+                "address": "6F Shibuya Parco 15-1 Udagawacho Shibuya-ku, Tokyo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417845",
+                "internal_url": "null",
+                "latitude": "35.6618343",
+                "longitude": "139.698776",
+                "id": 6943,
+                "last_updated": "2023-11-15"
+            }
         }
     ]
 }
