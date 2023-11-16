@@ -21466,7 +21466,8 @@
                 "latitude": "35.7078861",
                 "longitude": "-83.5176278",
                 "id": 6481,
-                "last_updated": "2023-10-21"
+                "multimachine": 2,
+                "last_updated": "2023-11-16"
             }
         },
         {
@@ -38492,6 +38493,30 @@
                 "latitude": "42.3471679",
                 "longitude": "-71.0825119",
                 "id": 6944,
+                "last_updated": "2023-11-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.6609253,
+                    40.2881143
+                ]
+            },
+            "properties": {
+                "name": "Hershey's Chocolate World",
+                "active": true,
+                "area": "Pennsylvania",
+                "address": "251 Park Blvd, Hershey, United States",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=194211",
+                "internal_url": "null",
+                "latitude": "40.2881143",
+                "longitude": "-76.6609253",
+                "id": 4000,
+                "multimachine": 3,
                 "last_updated": "2023-11-16"
             }
         }
