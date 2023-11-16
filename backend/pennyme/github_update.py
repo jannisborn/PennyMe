@@ -4,7 +4,6 @@ import logging
 from typing import Any, Dict, List, Tuple
 
 import requests
-
 from pennyme.utils import get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
@@ -356,6 +355,8 @@ def get_pr_id(
 
     Args:
         branch_name: Name of the branch to check.
+        owner: Owner of the repository. Defaults to REPO_OWNER.
+        repo: Name of the repository. Defaults to REPO_NAME.
         headers: Headers for the request.
 
     Returns:

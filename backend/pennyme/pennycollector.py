@@ -77,7 +77,9 @@ def get_raw_locations_from_location_website(website) -> List[bs4.element.Tag]:
     return location_raw_list[5:]
 
 
-def get_location_list_from_location_website(website) -> List[List[str]]:
+def get_location_list_from_location_website(
+    website: bs4.BeautifulSoup,
+) -> List[List[str]]:
     """
     Retrieves a list of locations from a website of any location, e.g.:
     http://209.221.138.252/Locations.aspx?area=42
@@ -93,15 +95,13 @@ def get_location_list_from_location_website(website) -> List[List[str]]:
 
     # 5 Tags always make up one location
     location_list = []
-    ind = -1
-    while ind < len(raw_locations) - 1:
-        ind += 1
-        content = str(raw_locations[ind])
-        if ind % 5 == 0:
-            if ind > 0:
-                location_list.append(content)
-            location = []
+    location = []  # Initialize the location list outside the loop
+    for ind, content in enumerate(raw_locations):
+        content = str(content)
         location.append(content)
+        if (ind + 1) % 5 == 0:  # Check if 5 tags have been added
+            location_list.append(location)
+            location = []  # Reset location for the next set of tags
     return location_list
 
 
