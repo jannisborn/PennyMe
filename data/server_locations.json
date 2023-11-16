@@ -9860,16 +9860,16 @@
             },
             "properties": {
                 "name": "Historic Lynchburg Home of Jack Daniels",
-                "active": true,
+                "active": false,
                 "area": "Tennessee",
                 "address": ", Lynchburg",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=389400",
                 "internal_url": "null",
                 "latitude": "37.4137536",
                 "longitude": "-79.14224639999999",
                 "id": 6167,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-11-16"
             }
         },
         {
@@ -38446,6 +38446,53 @@
                 "longitude": "139.698776",
                 "id": 6943,
                 "last_updated": "2023-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.9787982,
+                    53.5484126
+                ]
+            },
+            "properties": {
+                "name": "St. Michaelis Church",
+                "active": true,
+                "area": "Germany",
+                "address": "Englische Planke 1, Hamburg, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=5679",
+                "internal_url": "null",
+                "latitude": "53.5484126",
+                "longitude": "9.9787982",
+                "id": 501,
+                "multimachine": 2,
+                "last_updated": "2023-11-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.0825119,
+                    42.3471679
+                ]
+            },
+            "properties": {
+                "name": "View Boston (Formerly Skywalk Observatory)",
+                "active": true,
+                "area": "Massachusetts",
+                "address": "800 Boylston St, Boston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417859",
+                "internal_url": "null",
+                "latitude": "42.3471679",
+                "longitude": "-71.0825119",
+                "id": 6944,
+                "last_updated": "2023-11-16"
             }
         }
     ]
