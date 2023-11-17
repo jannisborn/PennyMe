@@ -9854,22 +9854,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -79.14224639999999,
-                    37.4137536
+                    -86.374488,
+                    35.281877
                 ]
             },
             "properties": {
                 "name": "Historic Lynchburg Home of Jack Daniels",
-                "active": false,
+                "active": true,
                 "area": "Tennessee",
-                "address": ", Lynchburg",
-                "status": "retired",
+                "address": "203 Main St, Lynchburg, TN 37352",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=389400",
                 "internal_url": "null",
-                "latitude": "37.4137536",
-                "longitude": "-79.14224639999999",
+                "latitude": "35.281877",
+                "longitude": "-86.374488",
                 "id": 6167,
-                "last_updated": "2023-11-16"
+                "last_updated": "2023-11-17"
             }
         },
         {
@@ -38525,21 +38525,21 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    4.349989,
-                    50.844993
+                    9.9707200,
+                    53.5555200
                 ]
             },
             "properties": {
-                "name": "Manneken Pis",
+                "name": "Hamburger Dom - machine 1 (Airwolf)",
                 "active": true,
-                "area": "Belgium",
-                "address": "on the corner Stoofstraat/Eikstraat, Brussels",
+                "area": "Germany",
+                "address": "Heiligengeistfeld, Hamburg",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=266834",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329822",
                 "internal_url": "null",
-                "latitude": "50.844993",
-                "longitude": "4.349989",
-                "id": 6945,
+                "latitude": "53.5555200",
+                "longitude": "9.9707200",
+                "id": 5719,
                 "last_updated": "2023-11-17"
             }
         },
@@ -38548,21 +38548,44 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    4.353771399999999,
-                    50.84664129999999
+                    9.971390445350947,
+                    53.55362744090604
                 ]
             },
             "properties": {
-                "name": "Belgian Souvenirs SA",
+                "name": "Hamburger Dom - machine 2",
                 "active": true,
-                "area": "Belgium",
-                "address": "Rue de la Colline 10, Brussels (Bruxelles)",
+                "area": "Germany",
+                "address": "Glacischaussee 1, Hamburg",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=309557",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329822",
                 "internal_url": "null",
-                "latitude": "50.84664129999999",
-                "longitude": "4.353771399999999",
-                "id": 6946,
+                "latitude": "53.55362744090604",
+                "longitude": "9.971390445350947",
+                "id": 6947,
+                "last_updated": "2023-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.9686603,
+                    53.553352
+                ]
+            },
+            "properties": {
+                "name": "Hamburger Dom - machine 3",
+                "active": true,
+                "area": "Germany",
+                "address": "Glacischaussee 1, Hamburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329822",
+                "internal_url": "null",
+                "latitude": "53.55335235064992",
+                "longitude": "9.96866032836667",
+                "id": 6948,
                 "last_updated": "2023-11-17"
             }
         }
