@@ -463,7 +463,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
 
     func uploadImageWithTimeout(_ image: UIImage) {
-        let uploadTimeout: TimeInterval = 5
+        let uploadTimeout: TimeInterval = 10
         var task: URLSessionDataTask?
         
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {

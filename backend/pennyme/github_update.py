@@ -148,7 +148,7 @@ def push_newmachine_to_github(
     Returns:
         The id of the new machine.
     """
-    server_locations, latest_commit_sha = load_latest_json(branch_name=branch_name)
+    server_locations, latest_commit_sha = load_latest_json()
 
     machine_id = get_next_free_machine_id(
         "../data/all_locations.json", server_locations["features"]
