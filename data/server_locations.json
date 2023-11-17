@@ -600,7 +600,7 @@
                 ]
             },
             "properties": {
-                "name": "Ripley's Believe It or Not ",
+                "name": "Ripley's Believe It or Not - Niagara Falls",
                 "active": true,
                 "area": "Canada",
                 "address": "4960 Clifton Hill, Ontario - Niagara Falls",
@@ -13148,7 +13148,7 @@
                 ]
             },
             "properties": {
-                "name": "Ripley's Believe it Or Not, Time Square",
+                "name": "Ripley's Believe it Or Not - Time Square",
                 "active": false,
                 "area": "New York",
                 "address": "Address 234 West 42nd Street, New York City",
@@ -18267,29 +18267,6 @@
                 "latitude": "52.1518483",
                 "longitude": "5.3482147",
                 "id": 153,
-                "last_updated": "2023-10-14"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    4.8919088,
-                    52.3717501
-                ]
-            },
-            "properties": {
-                "name": "Boswijk Bazar Souvenirs & Gifts",
-                "active": false,
-                "area": "Netherlands",
-                "address": "Kalverstraat 32, Amsterdam",
-                "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=245472",
-                "internal_url": "null",
-                "latitude": "52.3717501",
-                "longitude": "4.8919088",
-                "id": 159,
                 "last_updated": "2023-10-14"
             }
         },
@@ -27180,7 +27157,7 @@
                 ]
             },
             "properties": {
-                "name": "Amsterdam Experience ",
+                "name": "Amsterdam Experience",
                 "active": true,
                 "area": "Netherlands",
                 "address": "Nieuwezijds Voorburgwal 264, 1012 RS Amsterdam, Amsterdam",
@@ -38518,6 +38495,76 @@
                 "id": 4000,
                 "multimachine": 3,
                 "last_updated": "2023-11-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8779414,
+                    33.7157371
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - Ripley's Aquarium of Myrtle Beach",
+                "active": false,
+                "area": "South Carolina",
+                "address": "1110 Celeberity Circle, Myrtle Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93330",
+                "internal_url": "null",
+                "latitude": "33.7157371",
+                "longitude": "-78.8779414",
+                "id": 5301,
+                "last_updated": "2023-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8937184,
+                    52.37247
+                ]
+            },
+            "properties": {
+                "name": "Ripley's Believe it or Not! - Amsterdam",
+                "active": true,
+                "area": "Netherlands",
+                "address": "Dam 21, Amsterdam",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=299401",
+                "internal_url": "null",
+                "latitude": "52.37247",
+                "longitude": "4.8937184",
+                "id": 165,
+                "paywall": true,
+                "last_updated": "2023-11-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.895366,
+                    52.374995
+                ]
+            },
+            "properties": {
+                "name": "Bazar Souvenirs & Gifts",
+                "active": true,
+                "area": "Netherlands",
+                "address": "60 Damrak, Amsterdam",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245444",
+                "internal_url": "null",
+                "latitude": "52.374995",
+                "longitude": "4.895366",
+                "id": 157,
+                "last_updated": "2023-11-17"
             }
         }
     ]
