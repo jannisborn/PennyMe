@@ -95,6 +95,11 @@ def location_differ(
         problems_links = [
             entry["properties"]["external_url"] for entry in problems_old["features"]
         ]
+        skip_json, _ = load_latest_json(file="/data/skip.json")
+        skip_links = [
+            entry["properties"]["external_url"] for entry in skip_json["features"]
+        ]
+
     else:
         with open(server_json, "r") as f:
             server_data = json.load(f)
@@ -176,6 +181,8 @@ def location_differ(
             this_address = geojson["properties"]["address"]
             this_update = geojson["temporary"]["website_updated"]
             match = False
+            if this_link in skip_links:
+                continue
 
             if this_state == "unvisited":
                 # Check whether weblink is accessible
