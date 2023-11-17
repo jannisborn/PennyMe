@@ -2,10 +2,10 @@ import json
 import os
 from typing import Dict
 
-from flask import FileStorage
 from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
+from werkzeug.datastructures import FileStorage
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 IMG_PORT = "http://37.120.179.15:8000/"
