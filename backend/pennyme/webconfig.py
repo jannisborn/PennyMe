@@ -1,9 +1,20 @@
-import requests
-from bs4 import BeautifulSoup
 from typing import List
 
+import requests
+from bs4 import BeautifulSoup
 
-def get_website(url: str):
+
+def get_website(url: str) -> BeautifulSoup:
+    """
+    Get the website of a url.
+
+    Args:
+        url: URL to get the website from.
+
+    Returns:
+        The website as a BeautifulSoup object.
+    """
+
     mhtml = requests.get(url).content
     unicode_str = mhtml.decode("utf8")
     encoded_str = unicode_str.encode("ascii", "ignore")
@@ -14,6 +25,12 @@ def get_website(url: str):
 def get_elongated_coin_title(url: str) -> str:
     """
     Get the title of a url pointing to a forum entry on elongated-coin.de.
+
+    Args:
+        url: URL to get the title from.
+
+    Returns:
+        The title of the forum entry.
     """
 
     mhtml = requests.get(url).content
@@ -28,6 +45,12 @@ def get_elongated_coin_title(url: str) -> str:
 def get_elongated_coin_comments(url: str) -> List[str]:
     """
     Extract comments/posts from an elongated-coin.de site.
+
+    Args:
+        url: URL to get the comments from.
+
+    Returns:
+        List of comments.
     """
     mhtml = requests.get(url).content
     unicode_str = mhtml.decode("utf8")

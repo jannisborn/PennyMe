@@ -1,10 +1,12 @@
 import json
-from typing import List, Dict, Any
-import os
-import requests
 import logging
-from pennyme.pennycollector import DAY, MONTH, YEAR
+import os
 from copy import deepcopy
+from typing import Any, Dict, List
+
+import requests
+
+from pennyme.pennycollector import DAY, MONTH, YEAR
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +22,11 @@ def get_next_free_machine_id(
     Returns the next available machine ID based on all_locations and server_locations
 
     Args:
-        all_locations_path (str): Path to all_locations.json
-        server_locations (List[Dict]): List of read-in server_locations.json content
+        all_locations_path: Path to all_locations.json
+        server_locations: List of read-in server_locations.json content
 
     Returns:
-        int: Next ID
+        ID of next available machine.
     """
     with open(all_locations_path, "r") as infile:
         all_locations = json.load(infile)
@@ -52,13 +54,12 @@ def verify_remaining_machines(
     Takes the final data of all machines and verifies that all links are sane.
 
     Args:
-        server_data (Dict[str, Any]): Compiled data to be stored on server
-        device_data (Dict[str, Any]): Compiled data to be stored on device
-        validated_links (List[str]): Links that have already be verified (to
-            save time).
+        server_data: Compiled data to be stored on server
+        device_data: Compiled data to be stored on device
+        validated_links: Links that have already be verified (to save time).
 
     Returns:
-        problem_data: Updated problem dictionariy
+        Updated problem dictionary.
     """
     id_to_entry = {}
     for machine in deepcopy(device_data["features"]):

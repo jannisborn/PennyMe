@@ -1,0 +1,32 @@
+{
+    "editor.rulers": [
+        88
+    ],
+    "python.languageServer": "None",
+    "editor.formatOnSave": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.inlineSuggest.enabled": true,
+    "security.workspace.trust.enabled": false,
+    "autoDocstring.docstringFormat": "google-notypes",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "terminal.integrated.inheritEnv": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "git.openRepositoryInParentFolders": "never",
+    "editor.fontLigatures": false,
+}

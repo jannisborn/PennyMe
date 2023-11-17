@@ -1,7 +1,7 @@
 import base64
 import json
 import logging
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, List, Tuple
 
 import requests
 
@@ -28,7 +28,16 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def check_branch_exists(branch_name):
+def check_branch_exists(branch_name: str) -> bool:
+    """
+    Check whether a branch exists in the repository.
+
+    Args:
+        branch_name: Name of the branch to check.
+
+    Returns:
+        True if the branch exists, False otherwise.
+    """
     # Check if the desired branch exists
     branch_check_url = (
         f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/branches/{branch_name}"
@@ -37,30 +46,49 @@ def check_branch_exists(branch_name):
     return branch_check_response.status_code == 200
 
 
-def get_latest_branch_url(file=FILE_PATH):
+def get_latest_branch_url(file: str = FILE_PATH, branch: str = DATA_BRANCH) -> str:
     """
-    Check whether the latest change is on the main or on the data branch
-    Returns the respective URL as a string
-    Note: We would need to change this function if we want to search for the branch with
-    the latest commit.
+    Check whether the latest change for a file is on `main` or on the given branch.
+    Returns the respective URL as a string.
+
+    NOTE: We would need to change this function if we want to search for the
+        branch with the latest commit. It just compares `main` and the given
+        branch.
+
+    Args:
+        file: Path to file to compare to. Defaults to `/data/server_locations.json`.
+        branch: Branch to check. Defaults to `machine_updates`.
+
+    Returns:
+        The URL to the latest version of the file.
     """
-    # check if the branch already exists:
-    branch_exists = check_branch_exists(DATA_BRANCH)
+
+    branch_exists = check_branch_exists(branch)
     # if data branch exists, the url points to the branch
     repo_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}"
     if branch_exists:
-        file_url = f"{repo_url}/contents/{file}?ref={DATA_BRANCH}"
+        file_url = f"{repo_url}/contents/{file}?ref={branch}"
     else:
         file_url = f"{repo_url}/contents/{file}"
     return file_url
 
 
-def create_new_branch(branch_name, headers=HEADERS):
+def create_new_branch(branch_name: str, headers: Dict[str, Any] = HEADERS) -> bool:
+    """
+    Create a new branch with the given name.
+
+    Args:
+        branch_name: Name of the branch to create.
+        headers: Headers for the request.
+
+    Returns:
+        True if the branch was created, False otherwise.
+    """
     # create a new branch if it does not exist yet
     if not check_branch_exists(branch_name):
         payload = {
             "ref": f"refs/heads/{branch_name}",
-            "sha": get_latest_commit_sha(REPO_OWNER, REPO_NAME, BASE_BRANCH),
+            "sha": get_latest_commit_sha(BASE_BRANCH),
         }
         response = requests.post(
             f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/git/refs",
@@ -83,11 +111,11 @@ def load_latest_json(
     on the `DATA_BRANCH` branch.
 
     Args:
-        headers: Headers for the request
-        file: Path to the file to load, e.g., /data/server_locations.json
+        headers: Headers for the request.
+        file: Path to the file to load, e.g.,  `/data/server_locations.json`.
 
     Returns:
-        The json file as a dictionary and the sha of the latest commit
+        The json file as a dictionary and the sha of the latest commit.
     """
 
     # Load latest version of the file
@@ -107,8 +135,20 @@ def load_latest_json(
     return content, latest_commit_sha
 
 
-def push_newmachine_to_github(machine_update_entry, branch_name=DATA_BRANCH):
-    server_locations, latest_commit_sha = load_latest_json(branch_name=DATA_BRANCH)
+def push_newmachine_to_github(
+    machine_update_entry: Dict[str, Any], branch_name: str = DATA_BRANCH
+) -> int:
+    """
+    Push a new machine to the github repository.
+
+    Args:
+        machine_update_entry: A geojson entry for the new machine.
+        branch_name: Name of the branch to push to. Defaults to `machine_updates`.
+
+    Returns:
+        The id of the new machine.
+    """
+    server_locations, latest_commit_sha = load_latest_json(branch_name=branch_name)
 
     machine_id = get_next_free_machine_id(
         "../data/all_locations.json", server_locations["features"]
@@ -134,17 +174,26 @@ def push_newmachine_to_github(machine_update_entry, branch_name=DATA_BRANCH):
 
 
 def commit_json_file(
-    server_locations,
-    branch_name,
-    commit_message,
-    latest_commit_sha,
-    headers=HEADERS,
-    file_path=FILE_PATH,
+    server_locations: Dict,
+    branch_name: str,
+    commit_message: str,
+    latest_commit_sha: str,
+    headers: Dict[str, Any] = HEADERS,
+    file_path: str = FILE_PATH,
     body: str = "Machine updates submitted for review",
 ):
     """
-    Commit the server locations dictionary to branch named <branch_name>
-    with the desired commit message
+    Commit the server locations dictionary to a branch with the desired
+        commit message.
+
+    Args:
+        server_locations: The server locations dictionary.
+        branch_name: Name of the branch to commit to.
+        commit_message: The commit message.
+        latest_commit_sha: The sha of the latest commit.
+        headers: Headers for the request.
+        file_path: Path to the file to commit to, defaults to `/data/server_locations.json`.
+        body: Content for commit message. Defaults to "Machine updates submitted for review".
     """
 
     # create a new branch if necessary
@@ -189,7 +238,15 @@ def commit_json_file(
         open_pull_request(commit_message, branch_name, body=body, headers=headers)
 
 
-def add_pr_label(pr_id, labels, headers=HEADERS):
+def add_pr_label(pr_id: int, labels: List[str], headers: Dict[str, Any] = HEADERS):
+    """
+    Add one or multiple labels to a pull request.
+
+    Args:
+        pr_id: The id of the pull request.
+        labels: A list of labels to add.
+        headers: Headers for the request.
+    """
     url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues/{pr_id}/labels"
     response = requests.post(url, headers=headers, json={"labels": labels})
     if response.status_code == 200:
@@ -198,7 +255,21 @@ def add_pr_label(pr_id, labels, headers=HEADERS):
         print("Failed to add labels.")
 
 
-def open_pull_request(commit_message, branch_name, body: str, headers=HEADERS):
+def open_pull_request(
+    commit_message: str, branch_name: str, body: str, headers: Dict[str, Any] = HEADERS
+) -> bool:
+    """
+    Open a pull request with the given commit message and branch name.
+
+    Args:
+        commit_message: The commit message.
+        branch_name: Name of the branch to commit to.
+        body: Content for commit message. Can be arbitrary HTML.
+        headers: Headers for the request.
+
+    Returns:
+        True if the pull request was created successfully, False otherwise.
+    """
     # Open a pull request
     payload = {
         "title": commit_message,
@@ -219,30 +290,82 @@ def open_pull_request(commit_message, branch_name, body: str, headers=HEADERS):
     return False
 
 
-def get_latest_commit_sha(REPO_OWNER, REPO_NAME, branch):
+def get_latest_commit_sha(
+    branch: str,
+    owner: str = REPO_OWNER,
+    repo: str = REPO_NAME,
+) -> str:
+    """
+    Get the sha of the latest commit on a branch.
+
+    Args:
+        branch: Name of the branch to check.
+        owner: Owner of the repository. Defaults to REPO_OWNER.
+        repo: Name of the repository. Defaults to REPO_NAME.
+
+    Returns:
+        The sha of the latest commit.
+    """
+
     response = requests.get(
-        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/git/refs/heads/{branch}"
+        f"https://api.github.com/repos/{owner}/{repo}/git/refs/heads/{branch}"
     )
     return response.json()["object"]["sha"]
 
 
-def post_comment_to_pr(pr_id: int, comment: str, headers=HEADERS):
+def post_comment_to_pr(
+    pr_id: int,
+    comment: str,
+    owner: str = REPO_OWNER,
+    repo: str = REPO_NAME,
+    headers: Dict[str, Any] = HEADERS,
+) -> bool:
+    """
+    Post a comment to a pull request.
+
+    Args:
+        pr_id: The id of the pull request.
+        comment: The comment to post.
+        owner: Owner of the repository. Defaults to REPO_OWNER.
+        repo: Name of the repository. Defaults to REPO_NAME.
+        headers: Headers for the request.
+
+    Returns:
+        True if the comment was posted successfully, False otherwise.
+    """
     # Post a comment to a PR
     payload = {
         "body": comment,
     }
     response = requests.post(
-        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues/{pr_id}/comments",
+        f"https://api.github.com/repos/{owner}/{repo}/issues/{pr_id}/comments",
         headers=headers,
         json=payload,
     )
     return response.status_code == 201
 
 
-def get_pr_id(branch_name: str, headers=HEADERS):
+def get_pr_id(
+    branch_name: str,
+    owner: str = REPO_NAME,
+    repo: str = REPO_NAME,
+    headers: Dict[str, Any] = HEADERS,
+):
+    """
+    Get the id of the pull request that has `branch_name` as the head branch.
+
+    Args:
+        branch_name: Name of the branch to check.
+        owner: Owner of the repository. Defaults to REPO_OWNER.
+        repo: Name of the repository. Defaults to REPO_NAME.
+        headers: Headers for the request.
+
+    Returns:
+        The id of the pull request if it exists, None otherwise.
+    """
     # Get all open PRs
     response = requests.get(
-        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/pulls",
+        f"https://api.github.com/repos/{owner}/{repo}/pulls",
         headers=headers,
     )
     if response.status_code == 200:

@@ -2,8 +2,9 @@
 import logging
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
-import googlemaps
+
 import bs4
+import googlemaps
 
 from .locations import COUNTRY_TO_CODE, remove_html_and
 
@@ -17,7 +18,6 @@ YEAR, MONTH, DAY = DATE.year, str(DATE.month).zfill(2), str(DATE.day).zfill(2)
 UNAVAILABLE_MACHINE_STATES = ["Moved", "Gone", "Out of Order"]
 
 
-# StatesList
 def get_area_list_from_area_website(website) -> List[str]:
     """
     Get a list with areas from the overall area website.
@@ -26,7 +26,7 @@ def get_area_list_from_area_website(website) -> List[str]:
         website: AREA_SITE website.
 
     Returns:
-        List[str]: A list of areas.
+        List: A list of areas.
     """
 
     unparsed_locs = website.find("table", id="StatesList")
@@ -68,7 +68,7 @@ def get_raw_locations_from_location_website(website) -> List[bs4.element.Tag]:
         website: The bs4 website content.
 
     Returns:
-         List[bs4.element.Tag]: List of bs4 tags
+        List of bs4 tags
     """
     location_raw_table = website.find("table", attrs={"border": "1"})
     location_raw_list = list(location_raw_table.find_all("td"))
@@ -77,7 +77,9 @@ def get_raw_locations_from_location_website(website) -> List[bs4.element.Tag]:
     return location_raw_list[5:]
 
 
-def get_location_list_from_location_website(website) -> List[List[str]]:
+def get_location_list_from_location_website(
+    website: bs4.BeautifulSoup,
+) -> List[List[str]]:
     """
     Retrieves a list of locations from a website of any location, e.g.:
     http://209.221.138.252/Locations.aspx?area=42
@@ -86,22 +88,20 @@ def get_location_list_from_location_website(website) -> List[List[str]]:
         website: The bs4 website content.
 
     Returns:
-        List[List[str]]: List of locations, each represented as a list of strings,
+        List of locations, each represented as a list of strings,
             one per column.
     """
     raw_locations = get_raw_locations_from_location_website(website)
 
     # 5 Tags always make up one location
     location_list = []
-    ind = -1
-    while ind < len(raw_locations) - 1:
-        ind += 1
-        content = str(raw_locations[ind])
-        if ind % 5 == 0:
-            if ind > 0:
-                location_list.append(location)
-            location = []
+    location = []  # Initialize the location list outside the loop
+    for ind, content in enumerate(raw_locations):
+        content = str(content)
         location.append(content)
+        if (ind + 1) % 5 == 0:  # Check if 5 tags have been added
+            location_list.append(location)
+            location = []  # Reset location for the next set of tags
     return location_list
 
 
@@ -113,9 +113,9 @@ def get_prelim_geojson(
     file.
 
     Args:
-        raw_location (List[str]): raw webcontent from pennylocator.com about a location.
-        country (str): Name of the country/area
-        add_date (bool, optional): Whether the date will be added as last_changed.
+        raw_location: raw webcontent from pennylocator.com about a location.
+        country: Name of the country/area
+        add_date: Whether the date will be added as last_changed.
             Defaults to False.
     Returns:
         Dict: Containing the GeoJson.
@@ -173,8 +173,8 @@ def get_coordinates(
     Perform geolocationing for a title and a subtitle.
 
     Args:
-        title (str): Title of the penny machine.
-        subtitle (str): Subtitle of the penny machine.
+        title: Title of the penny machine.
+        subtitle: Subtitle of the penny machine.
         api: google maps API object.
 
     Returns:
