@@ -38525,8 +38525,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.9707200,
-                    53.5555200
+                    9.97072,
+                    53.55552
                 ]
             },
             "properties": {
@@ -38587,6 +38587,29 @@
                 "longitude": "9.96866032836667",
                 "id": 6948,
                 "last_updated": "2023-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546404210224951,
+                    47.39086315098618
+                ]
+            },
+            "properties": {
+                "name": "Bl",
+                "active": true,
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 68, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39086315098618,
+                "longitude": 8.546404210224951,
+                "id": 6949,
+                "last_updated": "2023-11-18"
             }
         }
     ]
