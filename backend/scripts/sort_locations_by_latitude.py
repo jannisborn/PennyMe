@@ -1,18 +1,14 @@
 import argparse
 import json
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "-i", "--input_filepath", type=str, help="Input geojson-file for sorting"
 )
-parser.add_argument(
-    "-o", "--output_filepath", type=str, help="Output file for sorting"
-)
+parser.add_argument("-o", "--output_filepath", type=str, help="Output file for sorting")
 
 
 def main(input_filepath: str, output_filepath: str):
-
     with open(input_filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
 

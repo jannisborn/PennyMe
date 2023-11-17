@@ -5,19 +5,15 @@ This script does:
 2. Searches the location name on a map and saves the geographic coordinates
 3. Saves data to .json
 """
-#%%
-import json
 import os
 import sys
 
 import requests
 from bs4 import BeautifulSoup
-import os
+from country_mapper import COUNTRY_TO_CODE
 from googlemaps import Client as GoogleMaps
 
 sys.path.append(".")
-from country_mapper import COUNTRY_TO_CODE
-
 
 WEB_PREFIX = "http://209.221.138.252/"
 API_KEY = open("../../gpc_api_key.keypair", "r").read()
@@ -29,7 +25,6 @@ os.makedirs(root, exist_ok=True)
 
 
 for COUNTRY, CODE in COUNTRY_TO_CODE.items():
-
     area = COUNTRY.lower().replace(" ", "_")
     url = "http://209.221.138.252/Locations.aspx?area=" + str(CODE)
     mhtml = requests.get(url).content

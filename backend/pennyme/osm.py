@@ -1,25 +1,32 @@
 from typing import Any, Dict, List
 
+import googlemaps
 import overpy
 from thefuzz import process as fuzzysearch
 from tqdm import tqdm
-import googlemaps
 
 from pennyme.locations import CODE_TO_USSTATE, COUNTRY_TO_CODE
 from pennyme.pennycollector import DAY, MONTH, YEAR
-from pennyme.webconfig import get_elongated_coin_title
 from pennyme.utils import get_next_free_machine_id
+from pennyme.webconfig import get_elongated_coin_title
 
 AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia", "Madagascar"]
 TODAY = f"{YEAR}-{MONTH}-{DAY}"
 
 
 def get_osm_machines() -> overpy.Result:
+    """
+    Retrieve all Penny machines available in Open street map.
+
+    Returns:
+        overpy.Result object with nodes containing the machines.
+    """
+
     # Create an Overpass API instance
     api = overpy.Overpass()
 
     # Define the Overpass QL query
-    query = f"""
+    query = """
     node
     ["vending"="elongated_coin"]
     (-90, -180, 90, 180);
@@ -31,6 +38,19 @@ def get_osm_machines() -> overpy.Result:
 
 
 def get_address(machine: overpy.Node, gmaps: googlemaps.client.Client) -> str:
+    """
+    Get the address of a machine from coordinates via the Google Maps API.
+
+    Args:
+        machine: Overpy node object containing the machine.
+        gmaps: Google Maps API client.
+
+    Raises:
+        ValueError: If the address could not be found.
+
+    Returns:
+        Address of the machine.
+    """
     street_out = gmaps.reverse_geocode(
         (machine.lat, machine.lon), result_type="street_address"
     )
@@ -53,6 +73,18 @@ def get_address(machine: overpy.Node, gmaps: googlemaps.client.Client) -> str:
 
 
 def osm_to_geojson(result: overpy.Result) -> Dict[str, Any]:
+    """
+    Convert the Overpy result to a (preliminary) GeoJSON object.
+
+    Args:
+        result: An Overpy result object.
+
+    Raises:
+        ValueError: If the country could not be extracted from the address.
+
+    Returns:
+        A GeoJSON object.
+    """
     data = []
     for i, machine in enumerate(tqdm(result.nodes, total=len(result.nodes))):
         # This involves GM API
@@ -106,6 +138,18 @@ def osm_to_geojson(result: overpy.Result) -> Dict[str, Any]:
 def prelim_to_final_entry(
     entry: Dict[str, Any], server_data: List[Any], all_locations_path: str
 ) -> Dict[str, Any]:
+    """
+    Convert a preliminary geojson entry to a final one, adding date and
+        machine id.
+
+    Args:
+        entry: A preliminary geojson entry.
+        server_data: The latest version of the `server_locations.json`.
+        all_locations_path: A path to the `all_locations.json` file.
+
+    Returns:
+        A final geojson entry.
+    """
     # Add date
     entry["properties"]["last_updated"] = TODAY
     machine_id = get_next_free_machine_id(all_locations_path, server_data["features"])

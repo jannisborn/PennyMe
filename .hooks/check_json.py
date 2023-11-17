@@ -7,14 +7,14 @@ try:
     with open(os.path.join(root_dir, "data", "server_locations.json"), "r") as f:
         data = json.load(f)
 except Exception as e:
-    print('FAILURE!', e)
+    print("FAILURE!", e)
     sys.exit(1)
 
 try:
     with open(os.path.join(root_dir, "data", "all_locations.json"), "r") as f:
         data = json.load(f)
 except Exception as e:
+    print(f"Failure with {e}")
     sys.exit(1)
-print('SUCCESS!')
+print("SUCCESS!")
 sys.exit(0)
-
