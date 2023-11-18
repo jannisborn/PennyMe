@@ -27,7 +27,7 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Machine information is more up to date now! The app is now synced to pennylocator.com :) Information in this app should become more reliable with this update!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Plenty of new machines and some bugfixes", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
