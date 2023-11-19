@@ -24,7 +24,8 @@ with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
 MACHINE_NAMES = {
     elem["properties"][
         "id"
-    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) Status={elem['properties']['status']}"
+    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) "
+    + f"Status={elem['properties']['status']} at: {elem['properties']['external_url']}"
     for elem in d["features"]
 }
 
@@ -41,9 +42,10 @@ def reload_server_data() -> Dict[str, str]:
     with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
         d = json.load(infile)
     for elem in d["features"]:
-        MACHINE_NAMES[
-            elem["properties"]["id"]
-        ] = f"{elem['properties']['name']} ({elem['properties']['area']})"
+        MACHINE_NAMES[elem["properties"]["id"]] = (
+            f"{elem['properties']['name']} ({elem['properties']['area']})"
+            + f"Status={elem['properties']['status']} at: {elem['properties']['external_url']}"
+        )
     return MACHINE_NAMES
 
 
