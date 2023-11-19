@@ -1507,16 +1507,16 @@
             },
             "properties": {
                 "name": "Golden Tours Waterloo Branch ",
-                "active": false,
+                "active": true,
                 "area": "England",
                 "address": "York Rd, Elizabeth House, Unit 31 Visitor Centre, London",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=325503",
                 "internal_url": "null",
                 "latitude": "51.5032484",
                 "longitude": "-0.1153282",
                 "id": 1490,
-                "last_updated": "2023-07-16"
+                "last_updated": "2023-11-19"
             }
         },
         {
@@ -10453,7 +10453,7 @@
                 "type": "Point",
                 "coordinates": [
                     -82.0532488,
-                    29.216200
+                    29.2162
                 ]
             },
             "properties": {
@@ -39157,12 +39157,12 @@
                 "area": "North Carolina",
                 "address": "3027 Lisburn St, Mint Hill, NC 28227, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417951",
                 "internal_url": "null",
                 "latitude": 35.17827654153432,
                 "longitude": -80.65244675242843,
                 "id": 6965,
-                "last_updated": "2023-11-18"
+                "last_updated": "2023-11-19"
             }
         },
         {
@@ -39224,16 +39224,62 @@
             },
             "properties": {
                 "name": "Paultons Family Theme Park",
-                "active": false,
+                "active": true,
                 "area": "England",
                 "address": "Romsey, Hampshire - Southampton, England, United Kingdom",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=107480",
                 "internal_url": "null",
                 "latitude": "50.9481718",
                 "longitude": "-1.5537028",
                 "id": 1419,
-                "last_updated": "2023-11-18"
+                "last_updated": "2023-11-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -155.0727822,
+                    19.6542357
+                ]
+            },
+            "properties": {
+                "name": "Pana'ewa Rainforest Zoo & Gardens",
+                "active": true,
+                "area": "Hawaii",
+                "address": "800 Stainback Hwy, Hawaii ( Big Island ) - Hilo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=417949",
+                "internal_url": "null",
+                "latitude": "19.6542357",
+                "longitude": "-155.0727822",
+                "id": 6966,
+                "last_updated": "2023-11-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.708537,
+                    52.19415430000001
+                ]
+            },
+            "properties": {
+                "name": "Shakespeares Birthplace",
+                "active": false,
+                "area": "England",
+                "address": "Henley Street, WARWICKSHIRE - Stratford Upon Avon",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39563",
+                "internal_url": "null",
+                "latitude": "52.19415430000001",
+                "longitude": "-1.708537",
+                "id": 1579,
+                "last_updated": "2023-11-19"
             }
         }
     ]
