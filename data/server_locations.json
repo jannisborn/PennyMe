@@ -39164,6 +39164,77 @@
                 "id": 6965,
                 "last_updated": "2023-11-18"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.8902357,
+                    37.3314903
+                ]
+            },
+            "properties": {
+                "name": "The Tech Museum of Innovation",
+                "active": true,
+                "area": "California",
+                "address": "201 South Market Street, San Jose",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=29121",
+                "internal_url": "null",
+                "latitude": "37.3314903",
+                "longitude": "-121.8902357",
+                "id": 4826,
+                "multimachine": 2,
+                "last_updated": "2023-11-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.6762443,
+                    41.9644132
+                ]
+            },
+            "properties": {
+                "name": "Cabela's in Dundee, Michigan",
+                "active": true,
+                "area": "Michigan",
+                "address": "110 Cabela Blvd. East, Dundee",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3037",
+                "internal_url": "null",
+                "latitude": "41.9644132",
+                "longitude": "-83.6762443",
+                "id": 2511,
+                "multimachine": 2,
+                "last_updated": "2023-11-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5537028,
+                    50.9481718
+                ]
+            },
+            "properties": {
+                "name": "Paultons Family Theme Park",
+                "active": false,
+                "area": "England",
+                "address": "Romsey, Hampshire - Southampton, England, United Kingdom",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107480",
+                "internal_url": "null",
+                "latitude": "50.9481718",
+                "longitude": "-1.5537028",
+                "id": 1419,
+                "last_updated": "2023-11-18"
+            }
         }
     ]
 }
