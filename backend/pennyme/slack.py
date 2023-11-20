@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from typing import Dict
 
@@ -6,6 +7,8 @@ from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
 from werkzeug.datastructures import FileStorage
+
+logger = logging.getLogger(__name__)
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 IMG_PORT = "http://37.120.179.15:8000/"
@@ -90,6 +93,9 @@ def image_slack(
     """
     if m_name is None:
         MACHINE_NAMES = reload_server_data()
+        if int(machine_id) not in MACHINE_NAMES.keys():
+            logger.error(f"Posting image, but ID {machine_id} not found in server data")
+            return
         m_name = MACHINE_NAMES[int(machine_id)]
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     try:
@@ -133,6 +139,9 @@ def message_slack(machine_id: str, comment_text: str, ip: str):
         e: SlackApiError, if the message could not be sent.
     """
     MACHINE_NAMES = reload_server_data()
+    if int(machine_id) not in MACHINE_NAMES.keys():
+        logger.error(f"Messaging slack: {comment_text} but ID {machine_id} not found.")
+
     m_name = MACHINE_NAMES[int(machine_id)]
     text = (
         f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
