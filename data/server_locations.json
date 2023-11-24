@@ -39352,6 +39352,121 @@
                 "multimachine": 3,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.4207052,
+                    34.1765115
+                ]
+            },
+            "properties": {
+                "name": "Chick-fil-a",
+                "active": true,
+                "area": "Georgia",
+                "address": "6114 Hickory Flat Hwy, Canton,",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418134",
+                "internal_url": "null",
+                "latitude": "34.1765115",
+                "longitude": "-84.4207052",
+                "id": 6969,
+                "last_updated": "2023-11-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.39238,
+                    36.67324
+                ]
+            },
+            "properties": {
+                "name": "Shandong Museum",
+                "active": true,
+                "area": "China",
+                "address": "11899 Jingshi E. Road, Lixia District, Jinan, Shandong, China, Jinan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418147",
+                "internal_url": "null",
+                "latitude": "36.67324",
+                "longitude": "117.39238",
+                "id": 6970,
+                "last_updated": "2023-11-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.8786302,
+                    36.6566133
+                ]
+            },
+            "properties": {
+                "name": "Crossland Tower",
+                "active": true,
+                "area": "Japan",
+                "address": "10 Washigashima, Oyabe, Toyama",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418140",
+                "internal_url": "null",
+                "latitude": "36.6566133",
+                "longitude": "136.8786302",
+                "id": 6971,
+                "last_updated": "2023-11-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    137.3444938,
+                    36.7740842
+                ]
+            },
+            "properties": {
+                "name": "Hotaruika Museum (Firefly Squid Museum)",
+                "active": true,
+                "area": "Japan",
+                "address": "410 Nakagawara Namerikawa, Toyama",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418139",
+                "internal_url": "null",
+                "latitude": "36.7740842",
+                "longitude": "137.3444938",
+                "id": 6972,
+                "last_updated": "2023-11-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.6921545,
+                    40.41799839999999
+                ]
+            },
+            "properties": {
+                "name": "Museo Naval de Madrid",
+                "active": false,
+                "area": "Spain",
+                "address": "Paseo del Prado, 5, Madrid",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=247718",
+                "internal_url": "null",
+                "latitude": "40.41799839999999",
+                "longitude": "-3.6921545",
+                "id": 340,
+                "last_updated": "2023-11-24"
+            }
         }
     ]
 }
