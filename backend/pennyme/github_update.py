@@ -1,7 +1,7 @@
 import base64
 import json
 import logging
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import requests
 
@@ -21,6 +21,10 @@ HEADERS = {
 HEADER_LOCATION_DIFF = {
     "Authorization": f"token {github_infos['token_jab']}",
     "accept": "application/vnd.github+json",
+}
+TOKEN_TO_REVIEWER = {
+    f"token {github_infos['token_jab']}": "NinaWie",
+    f"token {github_infos['token']}": "jannisborn",
 }
 FILE_PATH = "/data/server_locations.json"
 
@@ -168,6 +172,7 @@ def push_newmachine_to_github(
         commit_message,
         latest_commit_sha,
         body=f"New machine {machine_id} named {machine_name} submitted.",
+        reviewer=TOKEN_TO_REVIEWER[HEADERS["Authorization"]],
     )
 
     return machine_id
@@ -181,6 +186,7 @@ def commit_json_file(
     headers: Dict[str, Any] = HEADERS,
     file_path: str = FILE_PATH,
     body: str = "Machine updates submitted for review",
+    reviewer: Optional[str] = None,
 ):
     """
     Commit the server locations dictionary to a branch with the desired
@@ -194,6 +200,7 @@ def commit_json_file(
         headers: Headers for the request.
         file_path: Path to the file to commit to, defaults to `/data/server_locations.json`.
         body: Content for commit message. Defaults to "Machine updates submitted for review".
+        reviewer: GitHub username of the reviewer. Defaults to None.
     """
 
     # create a new branch if necessary
@@ -232,10 +239,37 @@ def commit_json_file(
         post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
     elif did_create_new_branch:
         # open a new pull request if the branch did not exist
-        open_pull_request(commit_message, branch_name, body=body, headers=headers)
+        open_pull_request(
+            commit_message, branch_name, body=body, reviewer=reviewer, headers=headers
+        )
+
     elif not did_create_new_branch:
         # Branch already existed but no PR was open
-        open_pull_request(commit_message, branch_name, body=body, headers=headers)
+        open_pull_request(
+            commit_message, branch_name, body=body, reviewer=reviewer, headers=headers
+        )
+
+
+def request_review(
+    pr_id: int, reviewer: str, headers: Dict[str, Any] = HEADERS
+) -> None:
+    """
+    Request a review for a pull request.
+
+    Args:
+        pr_id: The pull request id.
+        reviewer: GitHub username of the reviewer.
+        headers: Headers for the request.
+    """
+    response = requests.post(
+        f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/pulls/{pr_id}/requested_reviewers",
+        headers=headers,
+        json={"reviewers": [reviewer]},
+    )
+    if response.status_code == 200:
+        print(f"Reviewer {reviewer} added.")
+    else:
+        print(f"Failed to add reviewer {reviewer}.")
 
 
 def add_pr_label(pr_id: int, labels: List[str], headers: Dict[str, Any] = HEADERS):
@@ -256,7 +290,11 @@ def add_pr_label(pr_id: int, labels: List[str], headers: Dict[str, Any] = HEADER
 
 
 def open_pull_request(
-    commit_message: str, branch_name: str, body: str, headers: Dict[str, Any] = HEADERS
+    commit_message: str,
+    branch_name: str,
+    body: str,
+    headers: Dict[str, Any] = HEADERS,
+    reviewer: Optional[str] = None,
 ) -> bool:
     """
     Open a pull request with the given commit message and branch name.
@@ -266,6 +304,7 @@ def open_pull_request(
         branch_name: Name of the branch to commit to.
         body: Content for commit message. Can be arbitrary HTML.
         headers: Headers for the request.
+        reviewer: GitHub username of the reviewer. Defaults to None.
 
     Returns:
         True if the pull request was created successfully, False otherwise.
@@ -286,6 +325,8 @@ def open_pull_request(
     if response.status_code == 201:
         pr_id = response.json()["number"]
         add_pr_label(pr_id, ["data", "bot"], headers=headers)
+        if reviewer:
+            request_review(pr_id, reviewer, headers=headers)
         return True
     return False
 
