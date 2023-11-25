@@ -347,7 +347,7 @@ def post_comment_to_pr(
 
 def get_pr_id(
     branch_name: str,
-    owner: str = REPO_NAME,
+    owner: str = REPO_OWNER,
     repo: str = REPO_NAME,
     headers: Dict[str, Any] = HEADERS,
 ):
