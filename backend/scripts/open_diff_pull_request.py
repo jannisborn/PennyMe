@@ -4,6 +4,7 @@ import json
 from pennyme.github_update import (
     DATA_BRANCH,
     HEADER_LOCATION_DIFF,
+    TOKEN_TO_REVIEWER,
     commit_json_file,
     get_pr_id,
     load_latest_json,
@@ -43,6 +44,7 @@ if __name__ == "__main__":
             latest_commit_sha=latest_commit_sha,
             headers=HEADER_LOCATION_DIFF,
             body=joblog,
+            reviewer=TOKEN_TO_REVIEWER[HEADER_LOCATION_DIFF["Authorization"]],
         )
     else:
         print("No change between server locations")
@@ -66,6 +68,7 @@ if __name__ == "__main__":
             latest_commit_sha=latest_commit_sha,
             headers=HEADER_LOCATION_DIFF,
             file_path="/data/problems.json",
+            reviewer=TOKEN_TO_REVIEWER[HEADER_LOCATION_DIFF["Authorization"]],
             body=joblog
             if old_server_locations == server_locations
             else "New problems require attention.",
