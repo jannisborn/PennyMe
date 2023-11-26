@@ -13448,16 +13448,16 @@
             },
             "properties": {
                 "name": "Mass Street Soda",
-                "active": true,
+                "active": false,
                 "area": "Kansas",
                 "address": "1103 Massachusetts, Lawrence",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=410459",
                 "internal_url": "null",
                 "latitude": "42.7070354",
                 "longitude": "-71.1631137",
                 "id": 6259,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-11-26"
             }
         },
         {
@@ -26997,16 +26997,17 @@
             },
             "properties": {
                 "name": "Mini Europe Amusement Park",
-                "active": true,
+                "active": false,
                 "area": "Belgium",
                 "address": "1020 Brussels, Belgium, Brussels",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "null",
                 "internal_url": "null",
                 "latitude": "50.894085",
                 "longitude": "4.3389369",
                 "id": 134,
-                "last_updated": "2023-10-29"
+                "last_updated": "2023-11-26",
+                "paywall": true
             }
         },
         {
@@ -39468,6 +39469,78 @@
                 "longitude": "-3.6921545",
                 "id": 340,
                 "last_updated": "2023-11-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.15943,
+                    39.9533113
+                ]
+            },
+            "properties": {
+                "name": "Reading Terminal Market",
+                "active": false,
+                "area": "Pennsylvania",
+                "address": "12th & Arch Streets, Philadelphia",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4018",
+                "internal_url": "null",
+                "latitude": "39.9533113",
+                "longitude": "-75.15943",
+                "id": 4043,
+                "last_updated": "2023-11-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.7812546,
+                    41.6179312
+                ]
+            },
+            "properties": {
+                "name": "Iowa 80 Truck Stop",
+                "active": true,
+                "area": "Iowa",
+                "address": "755 W Iowa 80 RD, Walcott",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2205",
+                "internal_url": "null",
+                "latitude": "41.6179312",
+                "longitude": "-90.7812546",
+                "id": 2348,
+                "last_updated": "2023-11-26",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.341546999999999,
+                    50.894941
+                ]
+            },
+            "properties": {
+                "name": "Atomium ",
+                "active": true,
+                "area": "Belgium",
+                "address": "Square de l'Atomium, Brussels",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=78274",
+                "internal_url": "null",
+                "latitude": "50.894941",
+                "longitude": "4.341546999999999",
+                "id": 131,
+                "multimachine": 2,
+                "paywall": true,
+                "last_updated": "2023-11-25"
             }
         }
     ]
