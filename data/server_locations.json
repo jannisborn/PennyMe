@@ -37700,13 +37700,13 @@
                 "area": "France",
                 "address": "35 Rue du Chevalier de la Barre, 75018 , Paris ",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=417368",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "48.88670459999999",
                 "longitude": "2.3431043",
                 "id": 6498,
                 "multimachine": 3,
-                "last_updated": "2023-11-06"
+                "last_updated": "2023-11-28"
             }
         },
         {
@@ -39862,6 +39862,52 @@
                 "latitude": "40.3360659",
                 "longitude": "-75.905644",
                 "id": 4057,
+                "last_updated": "2023-11-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.7581415,
+                    39.3178043
+                ]
+            },
+            "properties": {
+                "name": "Harpers Ferry National Historical Park",
+                "active": true,
+                "area": "West Virginia",
+                "address": "171 Shoreline Dr (visitor center), Harpers Ferry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418365",
+                "internal_url": "null",
+                "latitude": "39.3178043",
+                "longitude": "-77.7581415",
+                "id": 6984,
+                "last_updated": "2023-11-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.4391643,
+                    48.5644863
+                ]
+            },
+            "properties": {
+                "name": "Victoria Butterfly Gardens",
+                "active": true,
+                "area": "Canada",
+                "address": "1461 Benvenuto Ave , BC - Brentwood Bay",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311520",
+                "internal_url": "null",
+                "latitude": "48.5644863",
+                "longitude": "-123.4391643",
+                "id": 4965,
                 "last_updated": "2023-11-28"
             }
         }
