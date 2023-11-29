@@ -37700,13 +37700,13 @@
                 "area": "France",
                 "address": "35 Rue du Chevalier de la Barre, 75018 , Paris ",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=417368",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "48.88670459999999",
                 "longitude": "2.3431043",
                 "id": 6498,
                 "multimachine": 3,
-                "last_updated": "2023-11-06"
+                "last_updated": "2023-11-28"
             }
         },
         {
@@ -39679,6 +39679,260 @@
                 "longitude": "-83.5271166",
                 "id": 6977,
                 "last_updated": "2023-11-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.97072,
+                    53.55552
+                ]
+            },
+            "properties": {
+                "name": "Hamburger Dom - machine 1 (Airwolf)",
+                "active": true,
+                "area": "Germany",
+                "address": "Heiligengeistfeld, Hamburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329822",
+                "internal_url": "null",
+                "latitude": "53.5555200",
+                "longitude": "9.97072",
+                "id": 5719,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.971390445350947,
+                    53.55362744090604
+                ]
+            },
+            "properties": {
+                "name": "Hamburger Dom - machine 2",
+                "active": true,
+                "area": "Germany",
+                "address": "Glacischaussee 1, Hamburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329822",
+                "internal_url": "null",
+                "latitude": "53.55362744090604",
+                "longitude": "9.971390445350947",
+                "id": 6978,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.9686603,
+                    53.553352
+                ]
+            },
+            "properties": {
+                "name": "Hamburger Dom - machine 3",
+                "active": true,
+                "area": "Germany",
+                "address": "Glacischaussee 1, Hamburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329822",
+                "internal_url": "null",
+                "latitude": "53.55335235064992",
+                "longitude": "9.96866032836667",
+                "id": 6979,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.2247713,
+                    39.7518642
+                ]
+            },
+            "properties": {
+                "name": "Colorado School of Mines, Mines Museum of Earth Science",
+                "active": true,
+                "area": "Colorado",
+                "address": "1310 Maple St., Golden",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418289",
+                "internal_url": "null",
+                "latitude": "39.7518642",
+                "longitude": "-105.2247713",
+                "id": 6980,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.005226199999999999,
+                    51.4810058
+                ]
+            },
+            "properties": {
+                "name": "National Maritime Museum",
+                "active": true,
+                "area": "England",
+                "address": "Romney Rd, LONDON - Greenwich",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418304",
+                "internal_url": "null",
+                "latitude": "51.4810058",
+                "longitude": "-0.005226199999999999",
+                "id": 6981,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0037013,
+                    51.4811073
+                ]
+            },
+            "properties": {
+                "name": "Queen's House",
+                "active": true,
+                "area": "England",
+                "address": "Romney Rd, LONDON - Greenwich",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418305",
+                "internal_url": "null",
+                "latitude": "51.4811073",
+                "longitude": "-0.0037013",
+                "id": 6982,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1905666,
+                    55.9469995
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Scotland",
+                "active": true,
+                "area": "Scotland",
+                "address": "Chambers St, Edinburgh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418306",
+                "internal_url": "null",
+                "latitude": "55.9469995",
+                "longitude": "-3.1905666",
+                "id": 6983,
+                "last_updated": "2023-11-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.905644,
+                    40.3360659
+                ]
+            },
+            "properties": {
+                "name": "The Pagoda at Mt Penn",
+                "active": false,
+                "area": "Pennsylvania",
+                "address": "98 Duryea Drive, Reading",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=60490",
+                "internal_url": "null",
+                "latitude": "40.3360659",
+                "longitude": "-75.905644",
+                "id": 4057,
+                "last_updated": "2023-11-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.7581415,
+                    39.3178043
+                ]
+            },
+            "properties": {
+                "name": "Harpers Ferry National Historical Park",
+                "active": true,
+                "area": "West Virginia",
+                "address": "171 Shoreline Dr (visitor center), Harpers Ferry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418365",
+                "internal_url": "null",
+                "latitude": "39.3178043",
+                "longitude": "-77.7581415",
+                "id": 6984,
+                "last_updated": "2023-11-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.4391643,
+                    48.5644863
+                ]
+            },
+            "properties": {
+                "name": "Victoria Butterfly Gardens",
+                "active": true,
+                "area": "Canada",
+                "address": "1461 Benvenuto Ave , BC - Brentwood Bay",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311520",
+                "internal_url": "null",
+                "latitude": "48.5644863",
+                "longitude": "-123.4391643",
+                "id": 4965,
+                "last_updated": "2023-11-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.77287,
+                    33.920239
+                ]
+            },
+            "properties": {
+                "name": "Cabazon Dinosaurs",
+                "active": true,
+                "area": "California",
+                "address": "50900 Seminole Drive, Cabazon",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1432",
+                "internal_url": "null",
+                "latitude": "33.920239",
+                "longitude": "-116.77287",
+                "id": 4583,
+                "paywall": true,
+                "last_updated": "2023-11-29"
             }
         }
     ]
