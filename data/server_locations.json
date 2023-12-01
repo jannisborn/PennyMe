@@ -39934,6 +39934,52 @@
                 "paywall": true,
                 "last_updated": "2023-11-29"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.2298292,
+                    45.2803067
+                ]
+            },
+            "properties": {
+                "name": "Castle Farms",
+                "active": true,
+                "area": "Michigan",
+                "address": "5052 M66 North, Charlevoix",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418411",
+                "internal_url": "null",
+                "latitude": "45.2803067",
+                "longitude": "-85.2298292",
+                "id": 6985,
+                "last_updated": "2023-11-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.213893,
+                    45.2726291
+                ]
+            },
+            "properties": {
+                "name": "Hungry Ducks Farm",
+                "active": true,
+                "area": "Michigan",
+                "address": "4580 M66 North, Charlevoix",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418412",
+                "internal_url": "null",
+                "latitude": "45.2726291",
+                "longitude": "-85.213893",
+                "id": 6986,
+                "last_updated": "2023-11-30"
+            }
         }
     ]
 }
