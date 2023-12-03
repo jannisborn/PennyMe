@@ -14,10 +14,7 @@ from collections import Counter
 from datetime import datetime
 
 import pandas as pd
-import requests
 from googlemaps import Client as GoogleMaps
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -34,7 +31,8 @@ from pennyme.pennycollector import (
     validate_location_list,
 )
 from pennyme.utils import verify_remaining_machines
-from pennyme.webconfig import get_website
+from pennyme.webconfig import get_website, safely_test_link
+from thefuzz import process as fuzzysearch
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -186,8 +184,11 @@ def location_differ(
 
             if this_state == "unvisited":
                 # Check whether weblink is accessible
-                resp = requests.get(this_link)
-                if resp.reason != "OK":
+                resp = safely_test_link(this_link)
+                if not resp:
+                    # Log message already captured in safely_test_link
+                    pass
+                elif resp.reason != "OK":
                     msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
                     if this_link not in problems_links:
                         logger.error(msg)
@@ -253,7 +254,7 @@ def location_differ(
                         cur_state == "unvisited"
                         and this_state in UNAVAILABLE_MACHINE_STATES
                     ):
-                        logger.debug(f"{this_title} is currently unavailable")
+                        logger.info(f"{this_title} is currently unavailable")
                         # Machine is currently unavailable, update this in server dict
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
@@ -293,7 +294,7 @@ def location_differ(
                         break  # to not change a machine found in both dicts twice
 
                     elif cur_state == "retired" and this_state == "unvisited":
-                        logger.debug(f"{this_title} is available again")
+                        logger.info(f"{this_title} is available again")
                         # A machine documented as retired is available again
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
@@ -359,9 +360,13 @@ def location_differ(
                 continue
 
             # Check whether we can indeed add/change this machine
-            resp = requests.get(this_link)
+            resp = safely_test_link(this_link)
+            if not resp:
+                logger.warning(
+                    f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
+                )
             if resp.status_code != 200:
-                logger.debug(
+                logger.warning(
                     f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
                 )
                 continue
@@ -433,7 +438,7 @@ def location_differ(
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
-            logger.debug(
+            logger.info(
                 f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
             )
             changes += 1
