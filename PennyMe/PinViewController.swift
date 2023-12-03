@@ -18,20 +18,24 @@ let imageURL = "http://37.120.179.15:8000/"
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var updatedLabel: UILabel!
+    @IBOutlet weak var updatedLabel: UILabel! // this is actually the comment label
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var multiButton: UIButton!
     @IBOutlet weak var paywallButton: UIButton!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var machineStatusLabel: UILabel!
+    @IBOutlet weak var lastUpdatedLabel: UILabel!
+    @IBOutlet weak var coordinateLabel: UILabel!
+    @IBOutlet weak var machineStatusButton: UIButton!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
+    let machineStatusColors: [String:UIColor] = ["active": UIColor(red: 0.1, green: 0.6, blue: 0.3, alpha: 0.5), "out-of-order": .gray, "retired": .gray]
     
     enum StatusChoice : String {
         case unvisited
@@ -92,9 +96,18 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         titleLabel.textAlignment = NSTextAlignment.center
         titleLabel.text = self.pinData.title!
         addressLabel.numberOfLines = 3
-        addressLabel.text = self.pinData.locationName
+        addressLabel.text = "Address: \(self.pinData.locationName)"
+        lastUpdatedLabel.text = "Last updated: \(self.pinData.last_updated)"
         
-        coordinateLabel.text = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+        // get machine status
+        machineStatusButton.setTitle("Machine \(self.pinData.machineStatus)", for: .normal)
+        if #available(iOS 15.0, *) {
+            print(self.pinData.machineStatus)
+            machineStatusButton.configuration?.baseBackgroundColor = machineStatusColors[self.pinData.machineStatus] ?? .green
+            machineStatusButton.configuration?.baseForegroundColor = .black
+        }
+        
+        coordinateLabel.text = String(format : "Coordinates: %f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
         )
                 
         // default status
@@ -239,11 +252,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if indexPath.section == 2 {
+        if (indexPath.section == 3) && (indexPath.row == 0) {
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
         }
-        else if indexPath.section == 4{
+        else if indexPath.section == 5{
             //Open the website when you click on the link.
             if !pinData.link.contains("http") {
                 showConfirmationMessage(message: "Sorry! No external link available. The machine got created through this app.", duration: 2.5)
@@ -251,13 +264,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 UIApplication.shared.open(URL(string: pinData.link)!)
             }
         }
-        else if indexPath.section == 5{
+        else if indexPath.section == 6{
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
             UIApplication.shared.open(URL(string:mailtostring )!)
         }
-        else if indexPath.section == 6{
+        else if (indexPath.section ==  3) && (indexPath.row == 1) {
             // Copy coordinate section
 
             UIPasteboard.general.string = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
