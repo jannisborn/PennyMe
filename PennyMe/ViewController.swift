@@ -38,6 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var artworks: [Artwork] = []
     var pinIdDict : [String:Int] = [:]
     var selectedPin: Artwork?
+    var lastDataLoad: Date?
     
     let default_switches: [String: Bool] = [
         "unvisitedSwitch": true,
@@ -143,6 +144,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        //  Check whether reload has to be triggered
+        if shouldReloadData() {
+            artworks = Artwork.artworks()
+            pinIdDict = [:]
+            loadInitialData()
+        }
         // each time the view appears, check colours of the pins
         check_json_dict()
         // check whether some setting has changed, if yes, reload all data on the map
@@ -160,6 +168,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         removeNewMachinePin()
         
     }
+
     
     func addAnnotationsIteratively() {
         let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch", ]
@@ -424,6 +433,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                     pinIdDict[pin.id] = artworks.count - 1
                 }
             }
+            lastDataLoad = Date()
         }
         catch{
             print("Error in loading updates from server", error)
@@ -558,7 +568,6 @@ extension ViewController: CLLocationManagerDelegate {
         let lonCurrent = location.coordinate.longitude // 168.823 // 8.5490 // here are we!
         let latCurrent =  location.coordinate.latitude // -44.9408  // 47.3899
         let (pennyCounter, minDist, closestID, foundIndices) = getCandidates(artworks: artworks, curLat: latCurrent, curLon: lonCurrent, radius:radius)
-//        print("Found", pennyCounter, "machines, the closest is", minDist, closestID, artworks[closestID].title)
         // check whether we have found any new machines
         let doPush = determinePush(currentNearby: foundIndices)
         if doPush && (pennyCounter > 0){
@@ -702,6 +711,16 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // called if authorization has changed
         checkLocationAuthorization()
+    }
+    // Function to check if a certain time period has passed since the last successful load
+    func shouldReloadData() -> Bool {
+        let reloadTimeInterval: TimeInterval = 7 * 24 * 60 * 60 // One week in seconds
+        if let lastTimestamp = lastDataLoad {
+            // Calculate the time difference between now and the last successful load
+            let timeSinceLastLoad = Date().timeIntervalSince(lastTimestamp)
+            return timeSinceLastLoad >= reloadTimeInterval // Check if the time period has passed
+        }
+        return true
     }
 }
 
