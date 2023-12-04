@@ -1,7 +1,11 @@
-from typing import List
+import logging
+import time
+from typing import List, Union
 
 import requests
 from bs4 import BeautifulSoup
+
+logger = logging.getLogger(__name__)
 
 
 def get_website(url: str) -> BeautifulSoup:
@@ -72,3 +76,22 @@ def get_elongated_coin_comments(url: str) -> List[str]:
                 )
                 comments.append(c)
     return comments
+
+
+def safely_test_link(link: str) -> Union[bool, requests.models.Response]:
+    """
+    Test if a link is valid.
+
+    Args:
+        link: Link to test.
+
+    Returns:
+        True if the link is valid, False otherwise.
+    """
+    try:
+        response = requests.get(link)
+        return response
+    except requests.exceptions.RequestException as e:
+        logger.warning(f"Exception encountered when testing link '{link}': {e}")
+        time.sleep(10)
+        return False
