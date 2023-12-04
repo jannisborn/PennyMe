@@ -10223,21 +10223,22 @@
                 "type": "Point",
                 "coordinates": [
                     -86.9844129,
-                    30.40116159999999
+                    30.4011615
                 ]
             },
             "properties": {
                 "name": "Gulf Breeze Zoo",
-                "active": false,
+                "active": true,
                 "area": "Florida",
-                "address": "5701 Gulf Breeze Parkway (Highway 98) , Gulf Breeze",
-                "status": "retired",
+                "address": "5701 Gulf Breeze Parkway (Highway 98), Gulf Breeze",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1571",
                 "internal_url": "null",
-                "latitude": "30.40116159999999",
+                "latitude": "30.4011615",
                 "longitude": "-86.9844129",
                 "id": 3311,
-                "last_updated": "2023-10-14"
+                "multimachine": 2,
+                "last_updated": "2023-12-04"
             }
         },
         {
@@ -39979,6 +39980,29 @@
                 "longitude": "-85.213893",
                 "id": 6986,
                 "last_updated": "2023-11-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.1350768,
+                    26.0830897
+                ]
+            },
+            "properties": {
+                "name": "Santa Ana National Wildlife Refuge",
+                "active": false,
+                "area": "Texas",
+                "address": "3325 Green Jay Rd, Alamo",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=341637",
+                "internal_url": "null",
+                "latitude": "26.0830897",
+                "longitude": "-98.1350768",
+                "id": 3637,
+                "last_updated": "2023-12-04"
             }
         }
     ]
