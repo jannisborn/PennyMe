@@ -1,4 +1,5 @@
 import logging
+import time
 from typing import List, Union
 
 import requests
@@ -92,4 +93,5 @@ def safely_test_link(link: str) -> Union[bool, requests.models.Response]:
         return response
     except requests.exceptions.RequestException as e:
         logger.warning(f"Exception encountered when testing link '{link}': {e}")
+        time.sleep(10)
         return False
