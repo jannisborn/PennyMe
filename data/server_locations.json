@@ -8756,16 +8756,16 @@
             },
             "properties": {
                 "name": "Colorado Candy Company",
-                "active": false,
+                "active": true,
                 "area": "Colorado",
                 "address": "814 S College Ave, Fort Collins",
-                "status": "retired",
+                "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=319528",
                 "internal_url": "null",
                 "latitude": "40.5760754",
                 "longitude": "-105.0767936",
                 "id": 1862,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-05"
             }
         },
         {
@@ -39979,6 +39979,144 @@
                 "longitude": "-98.1350768",
                 "id": 3637,
                 "last_updated": "2023-12-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7581863,
+                    45.4347343
+                ]
+            },
+            "properties": {
+                "name": "Costco",
+                "active": true,
+                "area": "Oregon",
+                "address": "7850 SW Dartmouth St., Tigard",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418535",
+                "internal_url": "null",
+                "latitude": "45.4347343",
+                "longitude": "-122.7581863",
+                "id": 6987,
+                "last_updated": "2023-12-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2194401,
+                    34.2397414
+                ]
+            },
+            "properties": {
+                "name": "Lake Arrowhead Tattoo",
+                "active": true,
+                "area": "California",
+                "address": "26744 CA-189, , Blue Jay",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418466",
+                "internal_url": "null",
+                "latitude": "34.2397414",
+                "longitude": "-117.2194401",
+                "id": 6988,
+                "last_updated": "2023-12-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.9844129,
+                    30.40116159999999
+                ]
+            },
+            "properties": {
+                "name": "Gulf Breeze Zoo",
+                "active": false,
+                "area": "Florida",
+                "address": "5701 Gulf Breeze Parkway (Highway 98) , Gulf Breeze",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1571",
+                "internal_url": "null",
+                "latitude": "30.40116159999999",
+                "longitude": "-86.9844129",
+                "id": 3311,
+                "last_updated": "2023-12-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.9011873,
+                    47.0353254
+                ]
+            },
+            "properties": {
+                "name": "Washington State Capitol Campus - Olympia, Lacey, Tumwater Visitor Center",
+                "active": false,
+                "area": "Washington",
+                "address": "103 Sid Snyder Avenue SW, Olympia",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105594",
+                "internal_url": "null",
+                "latitude": "47.0353254",
+                "longitude": "-122.9011873",
+                "id": 5122,
+                "last_updated": "2023-12-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.9046353,
+                    47.0369433
+                ]
+            },
+            "properties": {
+                "name": "Washington State Capitol Campus - Temple of Justice Building",
+                "active": false,
+                "area": "Washington",
+                "address": "415 12th Avenue SW, Olympia",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105595",
+                "internal_url": "null",
+                "latitude": "47.0369433",
+                "longitude": "-122.9046353",
+                "id": 5123,
+                "last_updated": "2023-12-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.105201399999999,
+                    56.8198915
+                ]
+            },
+            "properties": {
+                "name": "Nevis Range, Fort William",
+                "active": false,
+                "area": "Scotland",
+                "address": "A82, Torlundy., Fort William",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=32880",
+                "internal_url": "null",
+                "latitude": "56.8198915",
+                "longitude": "-5.105201399999999",
+                "id": 762,
+                "last_updated": "2023-12-05"
             }
         }
     ]
