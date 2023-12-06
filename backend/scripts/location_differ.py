@@ -10,7 +10,7 @@ import argparse
 import json
 import logging
 import os
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime
 
 import pandas as pd
@@ -108,9 +108,13 @@ def location_differ(
 
     # Convert data to have links as keys
     device_dict = {}
+    country_to_titles = defaultdict(list)
     machine_idx = max([x["properties"]["id"] for x in device_data["features"]])
     for i, geojson in enumerate(device_data["features"]):
         url = geojson["properties"]["external_url"]
+        country_to_titles[geojson["properties"]["area"]].append(
+            geojson["properties"]["name"]
+        )
         if url == "null" or "209.221.138.252" not in url:
             entry = geojson["properties"].copy()
             entry["source"] = "Device"
@@ -125,6 +129,9 @@ def location_differ(
 
     server_dict = {}
     for i, geojson in enumerate(server_data["features"]):
+        country_to_titles[geojson["properties"]["area"]].append(
+            geojson["properties"]["name"]
+        )
         url = geojson["properties"]["external_url"]
         if url == "null" or "209.221.138.252" not in url:
             entry = geojson["properties"].copy()
@@ -360,16 +367,26 @@ def location_differ(
                 # Untracked machine that is not available, hence we can skip
                 continue
 
+            # Check whether machine is not a duplication of an existing, sane machine
+            if this_title in country_to_titles[area]:
+                logger.debug(
+                    f"Machine {this_title} in {area}, fetched from {this_link} seems to be a duplicate"
+                )
+                continue
+
             # Check whether we can indeed add/change this machine
             resp = safely_test_link(this_link)
-            if not resp:
-                logger.warning(
+            if isinstance(resp, bool) and not resp:
+                logger.info(
                     f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
                 )
-            if resp.status_code != 200:
-                logger.warning(
+                problem_data["features"].append(geojson)
+                continue
+            elif resp.status_code != 200:
+                logger.info(
                     f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
                 )
+                problem_data["features"].append(geojson)
                 continue
 
             tdf = external[external.area == geojson["properties"]["area"]]
