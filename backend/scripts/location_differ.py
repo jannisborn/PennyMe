@@ -15,8 +15,6 @@ from datetime import datetime
 
 import pandas as pd
 from googlemaps import Client as GoogleMaps
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -34,6 +32,7 @@ from pennyme.pennycollector import (
 )
 from pennyme.utils import verify_remaining_machines
 from pennyme.webconfig import get_website, safely_test_link
+from thefuzz import process as fuzzysearch
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -369,21 +368,24 @@ def location_differ(
 
             # Check whether machine is not a duplication of an existing, sane machine
             if this_title in country_to_titles[area]:
-                logger.warning(
+                logger.debug(
                     f"Machine {this_title} in {area}, fetched from {this_link} seems to be a duplicate"
                 )
                 continue
 
             # Check whether we can indeed add/change this machine
             resp = safely_test_link(this_link)
-            if not resp:
-                logger.warning(
+            if isinstance(resp, bool) and not resp:
+                logger.info(
                     f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
                 )
-            if resp.status_code != 200:
-                logger.warning(
+                problem_data["features"].append(geojson)
+                continue
+            elif resp.status_code != 200:
+                logger.info(
                     f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
                 )
+                problem_data["features"].append(geojson)
                 continue
 
             tdf = external[external.area == geojson["properties"]["area"]]
