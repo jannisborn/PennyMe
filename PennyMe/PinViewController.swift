@@ -35,7 +35,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
-    let machineStatusColors: [String:UIColor] = ["active": UIColor(red: 0.1, green: 0.6, blue: 0.3, alpha: 0.5), "out-of-order": .gray, "retired": .gray]
+    let machineStatusColors: [String:UIColor] = ["active": .white, "out-of-order": .gray, "retired": .gray]
     
     enum StatusChoice : String {
         case unvisited
@@ -102,15 +102,20 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         // get machine status
         machineStatusButton.setTitle("Machine \(self.pinData.machineStatus)", for: .normal)
         if #available(iOS 15.0, *) {
-            print(self.pinData.machineStatus)
-            machineStatusButton.configuration?.baseBackgroundColor = machineStatusColors[self.pinData.machineStatus] ?? .green
+            machineStatusButton.configuration?.baseBackgroundColor = (machineStatusColors[self.pinData.machineStatus] ?? .white).withAlphaComponent(0.15)
             machineStatusButton.configuration?.baseForegroundColor = .black
         }
+        else {
+            machineStatusButton.backgroundColor = machineStatusColors[self.pinData.machineStatus] ?? .white
+            machineStatusButton.setTitleColor(.black, for: .normal)
+            machineStatusButton.alpha = 0.15
+        }
+        machineStatusButton.addTarget(self, action: #selector(statusButtonTapped), for: .touchUpInside)
         
         coordinateLabel.text = String(format : "Coordinates: %f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
         )
                 
-        // default status
+        // default status - if it's retired/out-of-order and there is no user-selected status, this is set to unvisited
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
@@ -170,20 +175,18 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     @objc func paywallButtonTapped(sender: UIButton!) {
-        let alertController = UIAlertController(
-                title: "Paywall!",
-                message: "You probably have to pay a fee to see this penny machine",
-                preferredStyle: .alert
-            )
-            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-            alertController.addAction(okayAction)
-
-            present(alertController, animated: true, completion: nil)
+        showSimpleAlert(title: "Paywall!", text: "You probably have to pay a fee to see this penny machine")
     }
     @objc func multimachineButtonTapped(sender: UIButton!) {
+        showSimpleAlert(title: "Multi-machine!", text: "There are \(self.pinData.multimachine) penny machines in this location")
+    }
+    @objc func statusButtonTapped(sender: UIButton!) {
+        showSimpleAlert(title: "Machine status", text: "Machine can be active, out-of-order (temporarily unavailable) or retisred (permamently unavailable). Post a comment if the machine status has changed.")
+    }
+    func showSimpleAlert(title: String, text: String) {
         let alertController = UIAlertController(
-                title: "Multi-machine!",
-                message: "There are \(self.pinData.multimachine) penny machines in this location",
+                title: title,
+                message: text,
                 preferredStyle: .alert
             )
             let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
