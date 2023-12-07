@@ -56,9 +56,9 @@ class Artwork: NSObject, MKAnnotation {
         title = properties["name"] as? String
         locationName = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
-        status = (properties["status"] as? String) ?? "unvisited"
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
+        // machine is per default active and unvisited
         machineStatus = "active"
         if let statusTemp = properties["active"] as? Bool {
             if !statusTemp {
@@ -67,6 +67,11 @@ class Artwork: NSObject, MKAnnotation {
         }
         if let statusTemp = properties["active"] as? String {
             machineStatus = statusTemp
+        }
+        // the status is not read from the dictionary, but is set to unvisited unless the machine is not active
+        status = "unvisited"
+        if machineStatus != "active" {
+            status = "retired"
         }
                 
         coordinate = point.coordinate
