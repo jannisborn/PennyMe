@@ -35,7 +35,6 @@ from pennyme.pennycollector import (
 from pennyme.utils import verify_remaining_machines
 from pennyme.webconfig import get_website, safely_test_link
 
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
