@@ -130,7 +130,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             statusPicker.tintColor = colForSegment
         }
         // color all the other segments with alpha=0.2
-        for (num, col) in zip([0, 1, 2, 3], statusColors){
+        for (num, col) in zip([0, 1, 2], statusColors){
             let subView = statusPicker.subviews[num] as UIView
             subView.layer.backgroundColor = col.cgColor
             subView.layer.zPosition = -1
