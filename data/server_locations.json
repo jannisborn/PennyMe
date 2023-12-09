@@ -40395,6 +40395,55 @@
                 "id": 5601,
                 "last_updated": "2023-12-08"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3981424,
+                    25.6111542
+                ]
+            },
+            "properties": {
+                "name": "Zoo Miami (Miami-Dade Zoological Park and Gardens)",
+                "active": true,
+                "area": "Florida",
+                "address": "12400 SW 152nd St, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=256262",
+                "internal_url": "null",
+                "latitude": "25.6111542",
+                "longitude": "-80.3981424",
+                "id": 3396,
+                "multimachine": 5,
+                "paywall": true,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.765277,
+                    25.7569444
+                ]
+            },
+            "properties": {
+                "name": "Shark Valley Visitor Center",
+                "active": false,
+                "area": "Florida",
+                "address": "36000 SW 8th Street Miami, Florida 33194, Everglades National Park",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=378449",
+                "internal_url": "null",
+                "latitude": "25.7569444",
+                "longitude": "-80.765277",
+                "id": 5351,
+                "type": "token",
+                "last_updated": "2023-12-08"
+            }
         }
     ]
 }
