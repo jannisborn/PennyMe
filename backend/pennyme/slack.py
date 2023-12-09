@@ -145,9 +145,9 @@ def message_slack(machine_id: str, comment_text: str, ip: str):
         logger.error(f"Messaging slack: {comment_text} but ID {machine_id} not found.")
 
     m_name = MACHINE_NAMES[int(machine_id)]
-    text = (
-        f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
-    )
+    prefix = m_name.split("Status=")[0]
+    postfix = "Status=" + m_name.split("Status=")[-1]
+    text = f"New comment for machine {machine_id} - {prefix}: {comment_text} (from {ip}. Machine: {postfix}"
     try:
         CLIENT.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"

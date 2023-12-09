@@ -377,15 +377,17 @@ def location_differ(
             # Check whether we can indeed add/change this machine
             resp = safely_test_link(this_link)
             if isinstance(resp, bool) and not resp:
-                logger.info(
-                    f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
-                )
+                if this_link not in problems_links:
+                    logger.info(
+                        f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
+                    )
                 problem_data["features"].append(geojson)
                 continue
             elif resp.status_code != 200:
-                logger.info(
-                    f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
-                )
+                if this_link not in problems_links:
+                    logger.info(
+                        f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
+                    )
                 problem_data["features"].append(geojson)
                 continue
 
@@ -456,12 +458,6 @@ def location_differ(
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
-            logger.info(
-                f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
-            )
-            changes += 1
-            new += 1
-
             # Find the coordinates of the new machine
             lat, lng = get_coordinates(
                 title=geojson["properties"]["name"],
@@ -479,10 +475,13 @@ def location_differ(
             if (lat, lng) == (0, 0):
                 geojson["properties"]["id"] = -1
                 geojson["properties"]["last_updated"] = -1
-                changes -= 1
-                new -= 1
                 problem_data["features"].append(geojson)
             else:
+                logger.info(
+                    f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
+                )
+                changes += 1
+                new += 1
                 machine_idx += 1
                 server_data["features"].append(geojson)
         if changes > 0:
