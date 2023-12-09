@@ -115,7 +115,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         coordinateLabel.text = String(format : "Coordinates: %f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
         )
                 
-        // default status - if it's retired/out-of-order and there is no user-selected status, this is set to unvisited
+        // user status - set segment according to user default
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
