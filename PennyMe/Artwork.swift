@@ -59,20 +59,12 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         // machine is per default active and unvisited
-        machineStatus = "active"
-        if let statusTemp = properties["active"] as? Bool {
-            if !statusTemp {
-                machineStatus = "retired"
-            }
-        }
-        if let statusTemp = properties["active"] as? String {
+        machineStatus = "available"
+        if let statusTemp = properties["machine_status"] as? String {
             machineStatus = statusTemp
         }
-        // the status is not read from the dictionary, but is set to unvisited unless the machine is not active
+        // the user status is unvisited by default
         status = "unvisited"
-        if machineStatus != "active" {
-            status = "retired"
-        }
                 
         coordinate = point.coordinate
         
@@ -130,18 +122,21 @@ class Artwork: NSObject, MKAnnotation {
     }
     
     var markerTintColor: UIColor  {
-      switch status {
-      case "unvisited":
-        return .red
-      case "visited":
-        return .green
-      case "marked":
-        return .yellow
-      case "retired":
-        return .gray
-      default:
-        return .black
-      }
+        if (machineStatus != "available") && (status == "unvisited") {
+            return .gray
+        }
+        else if status == "unvisited" {
+            return .red
+        }
+        else if status == "visited" {
+            return .green
+        }
+        else if status == "marked" {
+            return .yellow
+        }
+        else {
+            return .black
+        }
     }
 }
 
