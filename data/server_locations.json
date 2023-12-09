@@ -5714,20 +5714,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -90.0618846,
-                    29.9433573
+                    -90.061,
+                    29.9433
                 ]
             },
             "properties": {
-                "name": "Norwegian Cruise Line 'Breakaway' cruise ship",
+                "name": "Norwegian Cruise Line - Breakaway (cruise ship)",
                 "active": true,
                 "area": "Louisiana",
                 "address": "1100 Port of New Orleans Place, New Orleans",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398771",
                 "internal_url": "null",
-                "latitude": "29.9433573",
-                "longitude": "-90.0618846",
+                "latitude": "29.9433",
+                "longitude": "-90.061",
                 "id": 6067,
                 "last_updated": "2023-10-14"
             }
@@ -10291,12 +10291,12 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.16894529999999,
+                    -80.168,
                     25.7748146
                 ]
             },
             "properties": {
-                "name": "Norwegian Cruise Line 'Epic' cruise ship",
+                "name": "Norwegian Cruise Line - Epic (cruise ship)",
                 "active": false,
                 "area": "Florida",
                 "address": "South America Way, Dodge Island, Miami",
@@ -10304,7 +10304,7 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=311318",
                 "internal_url": "null",
                 "latitude": "25.7748146",
-                "longitude": "-80.16894529999999",
+                "longitude": "-80.168",
                 "id": 3386,
                 "last_updated": "2023-10-14"
             }
@@ -10314,20 +10314,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.1776631,
-                    25.7774706
+                    -80.175,
+                    25.777
                 ]
             },
             "properties": {
-                "name": "Norwegian Cruise Line 'Star' ship",
+                "name": "Norwegian Cruise Line - Star (cruise ship)",
                 "active": true,
                 "area": "Florida",
                 "address": "South America Way, Dodge Island, Miami",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412507",
                 "internal_url": "null",
-                "latitude": "25.7774706",
-                "longitude": "-80.1776631",
+                "latitude": "25.777",
+                "longitude": "-80.175",
                 "id": 6177,
                 "last_updated": "2023-10-14"
             }
@@ -21480,7 +21480,7 @@
                 ]
             },
             "properties": {
-                "name": "Norwegian Cruise Line 'Bliss' (Cruise ship)",
+                "name": "Norwegian Cruise Line - Bliss (cruise ship)",
                 "active": true,
                 "area": "Florida",
                 "address": "South America Way, Dodge Island 1922-2298 North Cruise Boulevard, Miami",
@@ -40164,6 +40164,285 @@
                 "longitude": "-87.61014899999999",
                 "id": 1731,
                 "last_updated": "2023-12-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3502,
+                    47.61163
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Pearl (cruise ship Seattle)",
+                "active": true,
+                "area": "Washington",
+                "address": "Pier 66/ Bell Street Terminal, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=112646",
+                "internal_url": "null",
+                "latitude": "47.61163",
+                "longitude": "-122.3502",
+                "id": 5137,
+                "last_updated": "2022-08-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.169,
+                    25.7748146
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Escape (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=248668",
+                "internal_url": "null",
+                "latitude": "25.7748146",
+                "longitude": "-80.169",
+                "id": 3387,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.164,
+                    25.775
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Getaway (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=204376",
+                "internal_url": "null",
+                "latitude": "25.775",
+                "longitude": "-80.164",
+                "id": 3389,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1688,
+                    25.7748146
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Jewel (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=253006",
+                "internal_url": "null",
+                "latitude": "25.7748146",
+                "longitude": "-80.1688",
+                "id": 3391,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.16885,
+                    25.7748
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Sky (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "Port of Miami; Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=226448",
+                "internal_url": "null",
+                "latitude": "25.7748",
+                "longitude": "-80.16885",
+                "id": 3393,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1689,
+                    25.77481
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Sun (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311321",
+                "internal_url": "null",
+                "latitude": "25.77481",
+                "longitude": "-80.1689",
+                "id": 3395,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.1661338,
+                    38.6827047
+                ]
+            },
+            "properties": {
+                "name": "The Folsom City Zoo Sanctuary",
+                "active": false,
+                "area": "California",
+                "address": "403 Stafford Street, Folsom",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=45922",
+                "internal_url": "null",
+                "latitude": "38.6827047",
+                "longitude": "-121.1661338",
+                "id": 5239,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.3797528,
+                    38.6393037
+                ]
+            },
+            "properties": {
+                "name": "Powerhouse Science Center (Discovery Museum's Science & Space Center)",
+                "active": false,
+                "area": "California",
+                "address": "3615 Auburn Blvd, Sacramento",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=11377",
+                "internal_url": "null",
+                "latitude": "38.6393037",
+                "longitude": "-121.3797528",
+                "id": 4757,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.7377325,
+                    36.0160655
+                ]
+            },
+            "properties": {
+                "name": "Hoover Dam High Scaler Café ",
+                "active": false,
+                "area": "Nevada",
+                "address": "Hoover Dam Access Road, Hoover Dam",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=214103",
+                "internal_url": "null",
+                "latitude": "36.0160655",
+                "longitude": "-114.7377325",
+                "id": 4483,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.2077747,
+                    -33.857439
+                ]
+            },
+            "properties": {
+                "name": "BridgeClimb",
+                "active": true,
+                "area": "Australia",
+                "address": "3 Cumberland St, The Rocks NSW, NSW - Sydney",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "-33.857439",
+                "longitude": "151.2077747",
+                "id": 5601,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3981424,
+                    25.6111542
+                ]
+            },
+            "properties": {
+                "name": "Zoo Miami (Miami-Dade Zoological Park and Gardens)",
+                "active": true,
+                "area": "Florida",
+                "address": "12400 SW 152nd St, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=256262",
+                "internal_url": "null",
+                "latitude": "25.6111542",
+                "longitude": "-80.3981424",
+                "id": 3396,
+                "multimachine": 5,
+                "paywall": true,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.765277,
+                    25.7569444
+                ]
+            },
+            "properties": {
+                "name": "Shark Valley Visitor Center",
+                "active": false,
+                "area": "Florida",
+                "address": "36000 SW 8th Street Miami, Florida 33194, Everglades National Park",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=378449",
+                "internal_url": "null",
+                "latitude": "25.7569444",
+                "longitude": "-80.765277",
+                "id": 5351,
+                "type": "token",
+                "last_updated": "2023-12-08"
             }
         }
     ]
