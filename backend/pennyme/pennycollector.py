@@ -166,6 +166,25 @@ def get_prelim_geojson(
     return geojson
 
 
+def prelim_to_problem_json(geojson=Dict[str, Any], msg: str = "") -> Dict[str, Any]:
+    """
+    Receives a preliminary geo-json object and strips of all attributes to make
+    it compatible with the format in `problems.json`.
+
+    Args:
+        Dict: Preliminary geojson object
+
+    Returns:
+        Stripped geojson object
+    """
+    geojson["properties"]["id"] = -1
+    geojson["properties"]["last_updated"] = -1
+    geojson["problem"] = msg
+    if "temporary" in geojson.keys():
+        del geojson["temporary"]
+    return geojson
+
+
 def get_coordinates(
     title: str, subtitle: str, api: googlemaps.client.Client
 ) -> Tuple[float, float]:
