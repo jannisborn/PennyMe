@@ -5719,7 +5719,7 @@
                 ]
             },
             "properties": {
-                "name": "Norwegian Cruise Line - Breakaway (cruise ship)",
+                "name": "Norwegian Cruise Line - Breakaway (cruise ship NOLA)",
                 "active": true,
                 "area": "Louisiana",
                 "address": "1100 Port of New Orleans Place, New Orleans",
@@ -40535,6 +40535,52 @@
                 "longitude": "-80.172",
                 "id": 3392,
                 "last_updated": "2023-12-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.176525,
+                    25.779883
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Gem (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=340992",
+                "internal_url": "null",
+                "latitude": "25.779883",
+                "longitude": " -80.176525",
+                "id": 3388,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.176702,
+                    25.780286
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Breakaway (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=385364",
+                "internal_url": "null",
+                "latitude": "25.780286",
+                "longitude": "-80.176702",
+                "id": 5356,
+                "last_updated": "2023-12-10"
             }
         }
     ]
