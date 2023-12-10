@@ -5719,7 +5719,7 @@
                 ]
             },
             "properties": {
-                "name": "Norwegian Cruise Line - Breakaway (cruise ship)",
+                "name": "Norwegian Cruise Line - Breakaway (cruise ship NOLA)",
                 "active": true,
                 "area": "Louisiana",
                 "address": "1100 Port of New Orleans Place, New Orleans",
@@ -40194,8 +40194,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.169,
-                    25.7748146
+                    -80.173,
+                    25.778
                 ]
             },
             "properties": {
@@ -40206,8 +40206,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=248668",
                 "internal_url": "null",
-                "latitude": "25.7748146",
-                "longitude": "-80.169",
+                "latitude": "25.778",
+                "longitude": "-80.173",
                 "id": 3387,
                 "last_updated": "2021-04-05"
             }
@@ -40240,8 +40240,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.1688,
-                    25.7748146
+                    -80.170114,
+                    25.776993
                 ]
             },
             "properties": {
@@ -40252,8 +40252,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=253006",
                 "internal_url": "null",
-                "latitude": "25.7748146",
-                "longitude": "-80.1688",
+                "latitude": "25.776993",
+                "longitude": "-80.170114",
                 "id": 3391,
                 "last_updated": "2021-04-05"
             }
@@ -40263,8 +40263,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.16885,
-                    25.7748
+                    -80.174,
+                    25.776993
                 ]
             },
             "properties": {
@@ -40275,8 +40275,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=226448",
                 "internal_url": "null",
-                "latitude": "25.7748",
-                "longitude": "-80.16885",
+                "latitude": "25.776993",
+                "longitude": "-80.174",
                 "id": 3393,
                 "last_updated": "2021-04-05"
             }
@@ -40286,8 +40286,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.1689,
-                    25.77481
+                    -80.174,
+                    25.7769
                 ]
             },
             "properties": {
@@ -40298,8 +40298,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=311321",
                 "internal_url": "null",
-                "latitude": "25.77481",
-                "longitude": "-80.1689",
+                "latitude": "25.7769",
+                "longitude": "-80.174",
                 "id": 3395,
                 "last_updated": "2021-04-05"
             }
@@ -40443,6 +40443,144 @@
                 "id": 5351,
                 "type": "token",
                 "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.07105961928818,
+                    29.941865920450606
+                ]
+            },
+            "properties": {
+                "name": "National WWII Museum - US Freedom Pavillion",
+                "active": true,
+                "area": "Louisiana",
+                "address": "945 Magazine St, New Orleans, LA 70130",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=275019",
+                "internal_url": "null",
+                "latitude": 29.941865920450606,
+                "longitude": -90.07105961928818,
+                "id": 6990,
+                "last_updated": "2023-12-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.07053169999999,
+                    29.9430711
+                ]
+            },
+            "properties": {
+                "name": "National WWII Museum - Louisiana Memorial Pavillon",
+                "active": true,
+                "area": "Louisiana",
+                "address": "945 Magazine St, New Orleans, LA 70130",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=275019",
+                "internal_url": "null",
+                "latitude": "29.9430711",
+                "longitude": "-90.07053169999999",
+                "id": 3589,
+                "last_updated": "2023-12-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.17424,
+                    25.7775797
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Spirit (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311320",
+                "internal_url": "null",
+                "latitude": "25.7775797",
+                "longitude": "-80.17424",
+                "id": 3394,
+                "last_updated": "2023-12-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.172,
+                    25.777
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Pearl (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=324795",
+                "internal_url": "null",
+                "latitude": "25.777",
+                "longitude": "-80.172",
+                "id": 3392,
+                "last_updated": "2023-12-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.176525,
+                    25.779883
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Gem (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=340992",
+                "internal_url": "null",
+                "latitude": "25.779883",
+                "longitude": " -80.176525",
+                "id": 3388,
+                "last_updated": "2023-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.176702,
+                    25.780286
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Breakaway (cruise ship)",
+                "active": true,
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=385364",
+                "internal_url": "null",
+                "latitude": "25.780286",
+                "longitude": "-80.176702",
+                "id": 5356,
+                "last_updated": "2023-12-10"
             }
         }
     ]

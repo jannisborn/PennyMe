@@ -134,7 +134,7 @@ def get_prelim_geojson(
     state = remove_html_and(raw_location[2].split('Center">')[1].split("</td>")[0])
     if state not in UNAVAILABLE_MACHINE_STATES:
         # States like 1p, 4p and everything else
-        state = "unvisited"
+        state = "available"
     link = WEBSITE_ROOT + raw_location[3].split('href="')[1].split('"><')[0]
 
     # NOTE: This refers to the last update on the website. We dont exploit this
@@ -149,20 +149,39 @@ def get_prelim_geojson(
         },
         "properties": {
             "name": title,
-            "active": True,
             "area": country,
             "address": subtitle,
-            "status": state,
+            "status": "unvisited",
             "external_url": link,
             "internal_url": "null",
             "latitude": "N.A.",
             "longitude": "N.A.",
+            "machine_status": state,
             "id": -1,
         },
         "temporary": {"website_updated": "20" + year + "-" + month + "-" + day},
     }
     if add_date:
         geojson["properties"].update({"last_updated": f"{YEAR}-{MONTH}-{DAY}"})
+    return geojson
+
+
+def prelim_to_problem_json(geojson=Dict[str, Any], msg: str = "") -> Dict[str, Any]:
+    """
+    Receives a preliminary geo-json object and strips of all attributes to make
+    it compatible with the format in `problems.json`.
+
+    Args:
+        Dict: Preliminary geojson object
+
+    Returns:
+        Stripped geojson object
+    """
+    geojson["properties"]["id"] = -1
+    geojson["properties"]["last_updated"] = -1
+    geojson["problem"] = msg
+    if "temporary" in geojson.keys():
+        del geojson["temporary"]
     return geojson
 
 

@@ -72,7 +72,7 @@ def verify_remaining_machines(
     for mid, machine in id_to_entry.items():
         url = machine["properties"]["external_url"]
         source = machine["properties"]["source"]
-        status = machine["properties"]["status"]
+        status = machine["properties"]["machine_status"]
         if url == "null":
             continue
         if url not in validated_links:

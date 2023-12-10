@@ -30,6 +30,7 @@ from pennyme.pennycollector import (
     get_coordinates,
     get_location_list_from_location_website,
     get_prelim_geojson,
+    prelim_to_problem_json,
     validate_location_list,
 )
 from pennyme.utils import verify_remaining_machines
@@ -182,7 +183,7 @@ def location_differ(
             geojson = get_prelim_geojson(raw_location, area, add_date=True)
 
             this_link = geojson["properties"]["external_url"]
-            this_state = geojson["properties"]["status"]
+            this_state = geojson["properties"]["machine_status"]
             this_title = geojson["properties"]["name"]
             this_address = geojson["properties"]["address"]
             this_update = geojson["temporary"]["website_updated"]
@@ -190,7 +191,7 @@ def location_differ(
             if this_link in skip_links:
                 continue
 
-            if this_state == "unvisited":
+            if this_state == "available":
                 # Check whether weblink is accessible
                 resp = safely_test_link(this_link)
                 if not resp:
@@ -200,11 +201,9 @@ def location_differ(
                     msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
                     if this_link not in problems_links:
                         logger.error(msg)
-                    geojson["properties"]["id"] = -1
-                    geojson["properties"]["last_updated"] = -1
-                    geojson["problem"] = msg
-                    del geojson["temporary"]
-                    problem_data["features"].append(geojson)
+                    problem_data["features"].append(
+                        prelim_to_problem_json(geojson, msg)
+                    )
                     continue
                 else:
                     validated_links.append(this_link)
@@ -214,15 +213,14 @@ def location_differ(
 
                 if this_link in keys:
                     cur_states = [
-                        cur_dict[this_link][s]["properties"]["status"]
+                        cur_dict[this_link][s]["properties"]["machine_status"]
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
-                        geojson["properties"]["id"] = -1
-                        geojson["properties"]["last_updated"] = -1
-                        problem_data["features"].append(geojson)
-                        logger.error(
-                            f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
+                        msg = f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
+                        logger.error(msg)
+                        problem_data["features"].append(
+                            prelim_to_problem_json(geojson, msg)
                         )
                         continue
                     cur_state = cur_states[0]
@@ -244,11 +242,10 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_updates)) > 1:
-                        geojson["properties"]["id"] = -1
-                        geojson["properties"]["last_updated"] = -1
-                        problem_data["features"].append(geojson)
-                        logger.error(
-                            f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
+                        msg = f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
+                        logger.error(msg)
+                        problem_data["features"].append(
+                            prelim_to_problem_json(geojson, msg)
                         )
                         continue
                     cur_updated = cur_updates[0]
@@ -259,7 +256,7 @@ def location_differ(
                         break
 
                     if (
-                        cur_state == "unvisited"
+                        cur_state == "available"
                         and this_state in UNAVAILABLE_MACHINE_STATES
                     ):
                         logger.info(f"{this_title} is currently unavailable")
@@ -269,8 +266,8 @@ def location_differ(
                             assert len(device_dict[this_link]) == 1
                             # Retire machine
                             entry = device_dict[this_link][0]
-                            entry["properties"]["status"] = "retired"
-                            entry["properties"]["active"] = False
+                            # TODO: We should recognize here whether it is retired or out-of-order
+                            entry["properties"]["machine_status"] = "retired"
                             entry["properties"]["last_updated"] = today
                             server_data["features"].append(entry)
                         elif name == "Server":
@@ -287,12 +284,10 @@ def location_differ(
                             ]
                             # Retire all machines of that URL
                             for idx in idxs:
+                                # TODO: We should recognize here whether it is retired or out-of-order
                                 server_data["features"][idx]["properties"][
                                     "status"
                                 ] = "retired"
-                                server_data["features"][idx]["properties"][
-                                    "active"
-                                ] = False
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
@@ -301,15 +296,14 @@ def location_differ(
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
 
-                    elif cur_state == "retired" and this_state == "unvisited":
+                    elif cur_state == "retired" and this_state == "available":
                         logger.info(f"{this_title} is available again")
                         # A machine documented as retired is available again
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
                             assert len(device_dict[this_link]) == 1
                             entry = device_dict[this_link][0]
-                            entry["properties"]["status"] = "unvisited"
-                            entry["properties"]["active"] = True
+                            entry["properties"]["status"] = "available"
                             entry["properties"]["last_updated"] = today
                             entry["properties"]["name"] = entry["properties"][
                                 "name"
@@ -341,10 +335,7 @@ def location_differ(
                             for idx in idxs:
                                 server_data["features"][idx]["properties"][
                                     "status"
-                                ] = "unvisited"
-                                server_data["features"][idx]["properties"][
-                                    "active"
-                                ] = True
+                                ] = "available"
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
@@ -377,18 +368,16 @@ def location_differ(
             # Check whether we can indeed add/change this machine
             resp = safely_test_link(this_link)
             if isinstance(resp, bool) and not resp:
+                msg = f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
                 if this_link not in problems_links:
-                    logger.info(
-                        f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link}"
-                    )
-                problem_data["features"].append(geojson)
+                    logger.info(msg)
+                problem_data["features"].append(prelim_to_problem_json(geojson, msg))
                 continue
             elif resp.status_code != 200:
+                msg = f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
                 if this_link not in problems_links:
-                    logger.info(
-                        f"To-be-added-machine {this_title} in {area} seems unavailable: {this_link} with {resp.reason} ({resp.status_code})"
-                    )
-                problem_data["features"].append(geojson)
+                    logger.info(msg)
+                problem_data["features"].append(prelim_to_problem_json(geojson, msg))
                 continue
 
             tdf = external[external.area == geojson["properties"]["area"]]
@@ -473,9 +462,8 @@ def location_differ(
             del geojson["temporary"]
 
             if (lat, lng) == (0, 0):
-                geojson["properties"]["id"] = -1
-                geojson["properties"]["last_updated"] = -1
-                problem_data["features"].append(geojson)
+                msg = f"{geojson['properties']['name']} could not find coordinates for {geojson['properties']['address']}"
+                problem_data["features"].append(prelim_to_problem_json(geojson, msg))
             else:
                 logger.info(
                     f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
