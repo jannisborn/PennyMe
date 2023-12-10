@@ -28,7 +28,7 @@ MACHINE_NAMES = {
     elem["properties"][
         "id"
     ]: f"{elem['properties']['name']} ({elem['properties']['area']}) "
-    + f"Status={elem['properties']['status']} at: {elem['properties']['external_url']}"
+    + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
     for elem in d["features"]
 }
 
@@ -47,7 +47,7 @@ def reload_server_data() -> Dict[str, str]:
     for elem in d["features"]:
         MACHINE_NAMES[elem["properties"]["id"]] = (
             f"{elem['properties']['name']} ({elem['properties']['area']})"
-            + f"Status={elem['properties']['status']} at: {elem['properties']['external_url']}"
+            + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
         )
     return MACHINE_NAMES
 
