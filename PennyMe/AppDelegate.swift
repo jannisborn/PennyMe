@@ -5,7 +5,7 @@
 //  Created by Jannis Born on 11.08.19.
 //  Copyright © 2019 Jannis Born. All rights reserved.
 //
-
+import Siren
 import UIKit
 
 @UIApplicationMain
@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Override point for customization after application launch.
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         UNUserNotificationCenter.current().delegate = self
+        Siren.shared.wail() // Line 2
         
         return true
     }
