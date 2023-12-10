@@ -22,8 +22,9 @@ class Artwork: NSObject, MKAnnotation {
     let text: String
     let paywall: Bool
     let multimachine: Int
+    var machineStatus: String
     
-    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool) {
+    init(title: String, locationName: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
@@ -34,6 +35,7 @@ class Artwork: NSObject, MKAnnotation {
         self.text = self.title! + self.locationName
         self.multimachine = multimachine
         self.paywall = paywall
+        self.machineStatus = machineStatus
         
         super.init()
     }
@@ -54,9 +56,16 @@ class Artwork: NSObject, MKAnnotation {
         title = properties["name"] as? String
         locationName = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
-        status = (properties["status"] as? String)!
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
+        // machine is per default active and unvisited
+        machineStatus = "available"
+        if let statusTemp = properties["machine_status"] as? String {
+            machineStatus = statusTemp
+        }
+        // the user status is unvisited by default
+        status = "unvisited"
+                
         coordinate = point.coordinate
         
         // multimachine - add if exists
@@ -113,18 +122,21 @@ class Artwork: NSObject, MKAnnotation {
     }
     
     var markerTintColor: UIColor  {
-      switch status {
-      case "unvisited":
-        return .red
-      case "visited":
-        return .green
-      case "marked":
-        return .yellow
-      case "retired":
-        return .gray
-      default:
-        return .black
-      }
+        if (machineStatus != "available") && (status == "unvisited") {
+            return .gray
+        }
+        else if status == "unvisited" {
+            return .red
+        }
+        else if status == "visited" {
+            return .green
+        }
+        else if status == "marked" {
+            return .yellow
+        }
+        else {
+            return .black
+        }
     }
 }
 

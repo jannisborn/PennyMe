@@ -18,20 +18,24 @@ let imageURL = "http://37.120.179.15:8000/"
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var updatedLabel: UILabel!
+    @IBOutlet weak var updatedLabel: UILabel! // this is actually the comment label
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var multiButton: UIButton!
     @IBOutlet weak var paywallButton: UIButton!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var machineStatusLabel: UILabel!
+    @IBOutlet weak var lastUpdatedLabel: UILabel!
+    @IBOutlet weak var coordinateLabel: UILabel!
+    @IBOutlet weak var machineStatusButton: UIButton!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
+    let machineStatusColors: [String:UIColor] = ["active": .white, "out-of-order": .gray, "retired": .gray]
     
     enum StatusChoice : String {
         case unvisited
@@ -92,12 +96,26 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         titleLabel.textAlignment = NSTextAlignment.center
         titleLabel.text = self.pinData.title!
         addressLabel.numberOfLines = 3
-        addressLabel.text = self.pinData.locationName
+        addressLabel.text = "Address: \(self.pinData.locationName)"
+        lastUpdatedLabel.text = "Last updated: \(self.pinData.last_updated)"
         
-        coordinateLabel.text = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+        // get machine status
+        machineStatusButton.setTitle("Machine \(self.pinData.machineStatus)", for: .normal)
+        if #available(iOS 15.0, *) {
+            machineStatusButton.configuration?.baseBackgroundColor = (machineStatusColors[self.pinData.machineStatus] ?? .white).withAlphaComponent(0.15)
+            machineStatusButton.configuration?.baseForegroundColor = .black
+        }
+        else {
+            machineStatusButton.backgroundColor = machineStatusColors[self.pinData.machineStatus] ?? .white
+            machineStatusButton.setTitleColor(.black, for: .normal)
+            machineStatusButton.alpha = 0.15
+        }
+        machineStatusButton.addTarget(self, action: #selector(statusButtonTapped), for: .touchUpInside)
+        
+        coordinateLabel.text = String(format : "Coordinates: %f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
         )
                 
-        // default status
+        // user status - set segment according to user default
         statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
         
         statusPicker.addTarget(self, action: #selector(PinViewController.statusChanged(_:)), for: .valueChanged)
@@ -112,7 +130,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             statusPicker.tintColor = colForSegment
         }
         // color all the other segments with alpha=0.2
-        for (num, col) in zip([0, 1, 2, 3], statusColors){
+        for (num, col) in zip([0, 1, 2], statusColors){
             let subView = statusPicker.subviews[num] as UIView
             subView.layer.backgroundColor = col.cgColor
             subView.layer.zPosition = -1
@@ -157,20 +175,18 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     @objc func paywallButtonTapped(sender: UIButton!) {
-        let alertController = UIAlertController(
-                title: "Paywall!",
-                message: "You probably have to pay a fee to see this penny machine",
-                preferredStyle: .alert
-            )
-            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-            alertController.addAction(okayAction)
-
-            present(alertController, animated: true, completion: nil)
+        showSimpleAlert(title: "Paywall!", text: "You probably have to pay a fee to see this penny machine")
     }
     @objc func multimachineButtonTapped(sender: UIButton!) {
+        showSimpleAlert(title: "Multi-machine!", text: "There are \(self.pinData.multimachine) penny machines in this location")
+    }
+    @objc func statusButtonTapped(sender: UIButton!) {
+        showSimpleAlert(title: "Machine status", text: "Machine can be available, out-of-order (temporarily unavailable) or retired (permamently unavailable). Post a comment if the machine status has changed.")
+    }
+    func showSimpleAlert(title: String, text: String) {
         let alertController = UIAlertController(
-                title: "Multi-machine!",
-                message: "There are \(self.pinData.multimachine) penny machines in this location",
+                title: title,
+                message: text,
                 preferredStyle: .alert
             )
             let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
@@ -239,11 +255,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if indexPath.section == 2 {
+        if (indexPath.section == 3) && (indexPath.row == 0) {
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
         }
-        else if indexPath.section == 4{
+        else if indexPath.section == 5{
             //Open the website when you click on the link.
             if !pinData.link.contains("http") {
                 showConfirmationMessage(message: "Sorry! No external link available. The machine got created through this app.", duration: 2.5)
@@ -251,13 +267,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 UIApplication.shared.open(URL(string: pinData.link)!)
             }
         }
-        else if indexPath.section == 5{
+        else if indexPath.section == 6{
             let mailtostring = String(
                 "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
             ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
             UIApplication.shared.open(URL(string:mailtostring )!)
         }
-        else if indexPath.section == 6{
+        else if (indexPath.section ==  3) && (indexPath.row == 1) {
             // Copy coordinate section
 
             UIPasteboard.general.string = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
