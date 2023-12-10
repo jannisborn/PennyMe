@@ -134,7 +134,7 @@ def get_prelim_geojson(
     state = remove_html_and(raw_location[2].split('Center">')[1].split("</td>")[0])
     if state not in UNAVAILABLE_MACHINE_STATES:
         # States like 1p, 4p and everything else
-        state = "unvisited"
+        state = "available"
     link = WEBSITE_ROOT + raw_location[3].split('href="')[1].split('"><')[0]
 
     # NOTE: This refers to the last update on the website. We dont exploit this
@@ -149,14 +149,14 @@ def get_prelim_geojson(
         },
         "properties": {
             "name": title,
-            "active": True,
             "area": country,
             "address": subtitle,
-            "status": state,
+            "status": "unvisited",
             "external_url": link,
             "internal_url": "null",
             "latitude": "N.A.",
             "longitude": "N.A.",
+            "machine_status": state,
             "id": -1,
         },
         "temporary": {"website_updated": "20" + year + "-" + month + "-" + day},

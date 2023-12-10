@@ -27,7 +27,7 @@ with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
 MACHINE_NAMES = {
     elem["properties"][
         "id"
-    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) Status={elem['properties']['status']}"
+    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) Status={elem['properties']['machine_status']}"
     for elem in d["features"]
 }
 
@@ -198,7 +198,6 @@ def create_machine():
     # put properties into dictionary
     properties_dict = {
         "name": title,
-        "active": True,
         "area": area,
         "address": address,
         "status": "unvisited",
@@ -206,6 +205,7 @@ def create_machine():
         "internal_url": "null",
         "latitude": location[1],
         "longitude": location[0],
+        "machine_status": "available",
         "id": -1,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
