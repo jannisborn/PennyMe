@@ -16261,13 +16261,13 @@
                 "area": "Germany",
                 "address": "Schloss Lichtenstein 1, Lichtenstein",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=411920",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "48.4062556",
                 "longitude": "9.2580075",
                 "machine_status": "available",
                 "id": 6337,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-11"
             }
         },
         {
@@ -40693,6 +40693,138 @@
                 "machine_status": "available",
                 "id": 3390,
                 "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.4702662,
+                    48.5889017
+                ]
+            },
+            "properties": {
+                "name": "Burg Teck",
+                "area": "Germany",
+                "address": "Teckstraße 100",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.5889017",
+                "longitude": "9.4702662",
+                "machine_status": "available",
+                "id": 589,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.3619937,
+                    52.1046945
+                ]
+            },
+            "properties": {
+                "name": "Hameln Marketing und Tourismus",
+                "area": "Germany",
+                "address": "Deisterallee 1",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.1046945",
+                "longitude": "9.3619937",
+                "machine_status": "available",
+                "id": 503,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.049851,
+                    52.3996869
+                ]
+            },
+            "properties": {
+                "name": "Souvenir Shop",
+                "area": "Germany",
+                "address": "Brandenburger Straße 7 14467",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.3996869",
+                "longitude": "13.049851",
+                "machine_status": "available",
+                "id": 596,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.6201558,
+                    52.73172270000001
+                ]
+            },
+            "properties": {
+                "name": "Otter-Zentrum Hankensbüttel",
+                "area": "Germany",
+                "address": "Sudendorfallee 1",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.73172270000001",
+                "longitude": "10.6201558",
+                "machine_status": "available",
+                "id": 504,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.955155999999999,
+                    53.544993
+                ]
+            },
+            "properties": {
+                "name": "U-434",
+                "area": "Germany",
+                "address": "St. Pauli Fischmarkt 10",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.544993",
+                "longitude": "9.955155999999999",
+                "machine_status": "available",
+                "id": 502,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.160416,
+                    53.9619988
+                ]
+            },
+            "properties": {
+                "name": "Heringsdorf (Usedom Island)",
+                "area": "Germany",
+                "address": "Strandpromenade",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.9619988",
+                "longitude": "14.160416",
+                "machine_status": "available",
+                "id": 512,
+                "last_updated": "2023-12-11"
             }
         }
     ]
