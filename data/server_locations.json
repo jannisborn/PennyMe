@@ -751,6 +751,7 @@
                 "latitude": "42.9371231",
                 "longitude": "-78.85160909999999",
                 "paywall": true,
+                "multimachine": 3,
                 "machine_status": "available",
                 "id": 2997,
                 "last_updated": "2023-04-05"
@@ -5714,29 +5715,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -90.061,
-                    29.9433
-                ]
-            },
-            "properties": {
-                "name": "Norwegian Cruise Line - Breakaway (cruise ship NOLA)",
-                "area": "Louisiana",
-                "address": "1100 Port of New Orleans Place, New Orleans",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=398771",
-                "internal_url": "null",
-                "latitude": "29.9433",
-                "longitude": "-90.061",
-                "machine_status": "available",
-                "id": 6067,
-                "last_updated": "2023-10-14"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -92.6433172,
                     32.5303391
                 ]
@@ -10281,9 +10259,9 @@
                 "internal_url": "null",
                 "latitude": "27.8001832",
                 "longitude": "-82.7994263",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6176,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-11"
             }
         },
         {
@@ -40519,29 +40497,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.172,
-                    25.777
-                ]
-            },
-            "properties": {
-                "name": "Norwegian Cruise Line - Pearl (cruise ship)",
-                "area": "Florida",
-                "address": "South America Way, Dodge Island, Miami",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=324795",
-                "internal_url": "null",
-                "latitude": "25.777",
-                "longitude": "-80.172",
-                "machine_status": "available",
-                "id": 3392,
-                "last_updated": "2023-12-09"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -80.176525,
                     25.779883
                 ]
@@ -40581,6 +40536,163 @@
                 "machine_status": "available",
                 "id": 5356,
                 "last_updated": "2023-12-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9561765,
+                    39.7185816
+                ]
+            },
+            "properties": {
+                "name": "Candy Cane Lane",
+                "area": "Colorado",
+                "address": "679 South High Street, Denver",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350960",
+                "internal_url": "null",
+                "latitude": "39.7185816",
+                "longitude": "-104.9561765",
+                "machine_status": "retired",
+                "id": 1842,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.80521329999999,
+                    45.0551129
+                ]
+            },
+            "properties": {
+                "name": "Smth + Trade Mercantile",
+                "area": "Minnesota",
+                "address": "229 Main St S, Stillwater",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418627",
+                "internal_url": "null",
+                "latitude": "45.0551129",
+                "longitude": "-92.80521329999999",
+                "machine_status": "available",
+                "id": 6991,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4922309,
+                    41.8902102
+                ]
+            },
+            "properties": {
+                "name": "The News Kiosk in front of the Colosseum",
+                "area": "Italy",
+                "address": "right outside of metro, Rome",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418674",
+                "internal_url": "null",
+                "latitude": "41.8902102",
+                "longitude": "12.4922309",
+                "machine_status": "available",
+                "id": 6992,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.473238,
+                    41.9002177
+                ]
+            },
+            "properties": {
+                "name": "Edicola il Messaggero (Newspaper kiosk)",
+                "area": "Italy",
+                "address": "Via Agonale 3 @ Piazza Navona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=62691",
+                "internal_url": "null",
+                "latitude": "41.9002177",
+                "longitude": "12.473238",
+                "machine_status": "retired",
+                "id": 961,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.2142445,
+                    25.0172507
+                ]
+            },
+            "properties": {
+                "name": "Xpark Aquarium",
+                "area": "Taiwan",
+                "address": "No.105, Chunde Road, Zhongli District, Taoyuan City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=418667",
+                "internal_url": "null",
+                "latitude": "25.0172507",
+                "longitude": "121.2142445",
+                "machine_status": "available",
+                "id": 6993,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.53594,
+                    48.750293
+                ]
+            },
+            "properties": {
+                "name": "Baumwipfelpad Sommerberg (Schwarzwald)",
+                "area": "Germany",
+                "address": "Peter-Liebig-Weg 16, 75323 Bad Wildbad, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.750293",
+                "longitude": "8.53594",
+                "machine_status": "available",
+                "id": 416,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1735,
+                    25.778
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Jade (cruise ship)",
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311319",
+                "internal_url": "null",
+                "latitude": "25.778",
+                "longitude": "-80.1735",
+                "machine_status": "available",
+                "id": 3390,
+                "last_updated": "2021-04-05"
             }
         }
     ]

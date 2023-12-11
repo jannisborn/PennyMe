@@ -10,6 +10,7 @@
                     50.844993
                 ]
             },
+            "reason": "Token machine",
             "properties": {
                 "name": "Manneken Pis",
                 "active": true,
@@ -33,6 +34,7 @@
                     50.84664129999999
                 ]
             },
+            "reason": "Token machine",
             "properties": {
                 "name": "Belgian Souvenirs SA",
                 "active": true,
@@ -56,6 +58,7 @@
                     38.851242
                 ]
             },
+            "reason": "Token machine",
             "properties": {
                 "name": "Regan National Airport",
                 "active": true,
@@ -68,6 +71,76 @@
                 "longitude": "-77.04023149999999",
                 "id": 6968,
                 "last_updated": "2023-11-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.16894529999999,
+                    25.7748146
+                ]
+            },
+            "reason": "Duplicate of ID 3395",
+            "properties": {
+                "name": "Norwegian Sun",
+                "area": "Florida",
+                "address": ", Port of Miami",
+                "external_url": "http://209.221.138.252/Details.aspx?location=200253",
+                "internal_url": "null",
+                "latitude": "25.7748146",
+                "longitude": "-80.16894529999999",
+                "machine_status": "available",
+                "id": 3438,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.16894529999999,
+                    25.7748146
+                ]
+            },
+            "reason": "Duplicate of ID 5137",
+            "properties": {
+                "name": "Norwegian Cruise Line 'Pearl' ship",
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "external_url": "http://209.221.138.252/Details.aspx?location=324795",
+                "internal_url": "null",
+                "latitude": "25.7748146",
+                "longitude": "-80.16894529999999",
+                "machine_status": "available",
+                "id": 3392,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.061,
+                    29.9433
+                ]
+            },
+            "reason": "Duplicate of ID 5356",
+            "properties": {
+                "name": "Norwegian Cruise Line - Breakaway (cruise ship NOLA)",
+                "area": "Louisiana",
+                "address": "1100 Port of New Orleans Place, New Orleans",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=398771",
+                "internal_url": "null",
+                "latitude": "29.9433",
+                "longitude": "-90.061",
+                "machine_status": "available",
+                "id": 6067,
+                "last_updated": "2023-10-14"
             }
         }
     ]

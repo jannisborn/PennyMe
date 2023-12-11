@@ -286,7 +286,7 @@ def location_differ(
                             for idx in idxs:
                                 # TODO: We should recognize here whether it is retired or out-of-order
                                 server_data["features"][idx]["properties"][
-                                    "status"
+                                    "machine_status"
                                 ] = "retired"
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
@@ -303,7 +303,7 @@ def location_differ(
                             # Easy case, we just add this machine to server_dict
                             assert len(device_dict[this_link]) == 1
                             entry = device_dict[this_link][0]
-                            entry["properties"]["status"] = "available"
+                            entry["properties"]["machine_status"] = "available"
                             entry["properties"]["last_updated"] = today
                             entry["properties"]["name"] = entry["properties"][
                                 "name"
@@ -334,7 +334,7 @@ def location_differ(
                             # Re-activate all machines of that URL
                             for idx in idxs:
                                 server_data["features"][idx]["properties"][
-                                    "status"
+                                    "machine_status"
                                 ] = "available"
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
