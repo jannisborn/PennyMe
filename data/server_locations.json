@@ -751,6 +751,7 @@
                 "latitude": "42.9371231",
                 "longitude": "-78.85160909999999",
                 "paywall": true,
+                "multimachine": 3,
                 "machine_status": "available",
                 "id": 2997,
                 "last_updated": "2023-04-05"
@@ -5706,29 +5707,6 @@
                 "longitude": "-90.06292119999999",
                 "machine_status": "retired",
                 "id": 3582,
-                "last_updated": "2023-10-14"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -90.061,
-                    29.9433
-                ]
-            },
-            "properties": {
-                "name": "Norwegian Cruise Line - Breakaway (cruise ship NOLA)",
-                "area": "Louisiana",
-                "address": "1100 Port of New Orleans Place, New Orleans",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=398771",
-                "internal_url": "null",
-                "latitude": "29.9433",
-                "longitude": "-90.061",
-                "machine_status": "available",
-                "id": 6067,
                 "last_updated": "2023-10-14"
             }
         },
@@ -40519,29 +40497,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.172,
-                    25.777
-                ]
-            },
-            "properties": {
-                "name": "Norwegian Cruise Line - Pearl (cruise ship)",
-                "area": "Florida",
-                "address": "South America Way, Dodge Island, Miami",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=324795",
-                "internal_url": "null",
-                "latitude": "25.777",
-                "longitude": "-80.172",
-                "machine_status": "available",
-                "id": 3392,
-                "last_updated": "2023-12-09"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -80.176525,
                     25.779883
                 ]
@@ -40701,21 +40656,43 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    8.535948000000001,
+                    8.53594,
                     48.750293
                 ]
             },
             "properties": {
-                "name": "Baumwipfelpad,  Sommerberg",
+                "name": "Baumwipfelpad Sommerberg (Schwarzwald)",
                 "area": "Germany",
-                "address": "Peter-Liebig-Weg 16",
+                "address": "Peter-Liebig-Weg 16, 75323 Bad Wildbad, Germany",
                 "external_url": "null",
                 "internal_url": "null",
                 "latitude": "48.750293",
-                "longitude": "8.535948000000001",
+                "longitude": "8.53594",
                 "machine_status": "available",
                 "id": 416,
                 "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1735,
+                    25.778
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Jade (cruise ship)",
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311319",
+                "internal_url": "null",
+                "latitude": "25.778",
+                "longitude": "-80.1735",
+                "machine_status": "available",
+                "id": 3390,
+                "last_updated": "2021-04-05"
             }
         }
     ]
