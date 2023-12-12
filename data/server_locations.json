@@ -18174,9 +18174,9 @@
                 "internal_url": "null",
                 "latitude": "23.1455358",
                 "longitude": "-109.7182665",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6391,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-12"
             }
         },
         {
@@ -40825,6 +40825,74 @@
                 "machine_status": "available",
                 "id": 512,
                 "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.17854249999999,
+                    37.3651388
+                ]
+            },
+            "properties": {
+                "name": "Sea Quest Lynchburg",
+                "area": "Virginia",
+                "address": "3405 Candlers Mountain Road, Lynchburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=330162",
+                "internal_url": "null",
+                "latitude": "37.3651388",
+                "longitude": "-79.17854249999999",
+                "machine_status": "retired",
+                "id": 4427,
+                "last_updated": "2023-12-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.443623,
+                    25.16874
+                ]
+            },
+            "properties": {
+                "name": "Tamsui Old Street ",
+                "area": "Taiwan",
+                "address": "No. 59, Gongming St, New Taipei City - Tamsui",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419001",
+                "internal_url": "null",
+                "latitude": "25.16874",
+                "longitude": "121.443623",
+                "machine_status": "available",
+                "id": 6994,
+                "last_updated": "2023-12-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.1470117,
+                    37.5504483
+                ]
+            },
+            "properties": {
+                "name": "Yehliu Ocean World",
+                "area": "Taiwan",
+                "address": "No. 167-3, Gangdong Road, New Taipei City - Wanli District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419003",
+                "internal_url": "null",
+                "latitude": "37.5504483",
+                "longitude": "127.1470117",
+                "machine_status": "available",
+                "id": 6995,
+                "last_updated": "2023-12-12"
             }
         }
     ]
