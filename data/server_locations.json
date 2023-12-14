@@ -40997,6 +40997,75 @@
                 "id": 6999,
                 "last_updated": "2023-12-13"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.1061662,
+                    33.2867658
+                ]
+            },
+            "properties": {
+                "name": "Los Hermanos Restaurant & Lounge",
+                "area": "Arizona",
+                "address": "835 US-60, Superior ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419065",
+                "internal_url": "null",
+                "latitude": "33.2867658",
+                "longitude": "-111.1061662",
+                "machine_status": "available",
+                "id": 7000,
+                "last_updated": "2023-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9773245,
+                    41.0786592
+                ]
+            },
+            "properties": {
+                "name": "SeaQuest Aquarium Utah",
+                "area": "Utah",
+                "address": "1201 N. Hillfield Rd., Layton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262838",
+                "internal_url": "null",
+                "latitude": "41.0786592",
+                "longitude": "-111.9773245",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2068,
+                "last_updated": "2023-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.503955500000001,
+                    51.9716579
+                ]
+            },
+            "properties": {
+                "name": "Burg Hülhoff",
+                "area": "Germany",
+                "address": "Schonebeck 6, Havixbeck ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419062",
+                "internal_url": "null",
+                "latitude": "51.9716579",
+                "longitude": "7.503955500000001",
+                "machine_status": "available",
+                "id": 7001,
+                "last_updated": "2023-12-14"
+            }
         }
     ]
 }
