@@ -16261,13 +16261,13 @@
                 "area": "Germany",
                 "address": "Schloss Lichtenstein 1, Lichtenstein",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=411920",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "48.4062556",
                 "longitude": "9.2580075",
                 "machine_status": "available",
                 "id": 6337,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-11"
             }
         },
         {
@@ -18174,9 +18174,9 @@
                 "internal_url": "null",
                 "latitude": "23.1455358",
                 "longitude": "-109.7182665",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6391,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-12"
             }
         },
         {
@@ -40693,6 +40693,298 @@
                 "machine_status": "available",
                 "id": 3390,
                 "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.4702662,
+                    48.5889017
+                ]
+            },
+            "properties": {
+                "name": "Burg Teck",
+                "area": "Germany",
+                "address": "Teckstraße 100",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "48.5889017",
+                "longitude": "9.4702662",
+                "machine_status": "available",
+                "id": 589,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.3619937,
+                    52.1046945
+                ]
+            },
+            "properties": {
+                "name": "Hameln Marketing und Tourismus",
+                "area": "Germany",
+                "address": "Deisterallee 1",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.1046945",
+                "longitude": "9.3619937",
+                "machine_status": "available",
+                "id": 503,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.049851,
+                    52.3996869
+                ]
+            },
+            "properties": {
+                "name": "Souvenir Shop",
+                "area": "Germany",
+                "address": "Brandenburger Straße 7 14467",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.3996869",
+                "longitude": "13.049851",
+                "machine_status": "available",
+                "id": 596,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.6201558,
+                    52.73172270000001
+                ]
+            },
+            "properties": {
+                "name": "Otter-Zentrum Hankensbüttel",
+                "area": "Germany",
+                "address": "Sudendorfallee 1",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.73172270000001",
+                "longitude": "10.6201558",
+                "machine_status": "available",
+                "id": 504,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.955155999999999,
+                    53.544993
+                ]
+            },
+            "properties": {
+                "name": "U-434",
+                "area": "Germany",
+                "address": "St. Pauli Fischmarkt 10",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.544993",
+                "longitude": "9.955155999999999",
+                "machine_status": "available",
+                "id": 502,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.160416,
+                    53.9619988
+                ]
+            },
+            "properties": {
+                "name": "Heringsdorf (Usedom Island)",
+                "area": "Germany",
+                "address": "Strandpromenade",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.9619988",
+                "longitude": "14.160416",
+                "machine_status": "available",
+                "id": 512,
+                "last_updated": "2023-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.17854249999999,
+                    37.3651388
+                ]
+            },
+            "properties": {
+                "name": "Sea Quest Lynchburg",
+                "area": "Virginia",
+                "address": "3405 Candlers Mountain Road, Lynchburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=330162",
+                "internal_url": "null",
+                "latitude": "37.3651388",
+                "longitude": "-79.17854249999999",
+                "machine_status": "retired",
+                "id": 4427,
+                "last_updated": "2023-12-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.443623,
+                    25.16874
+                ]
+            },
+            "properties": {
+                "name": "Tamsui Old Street ",
+                "area": "Taiwan",
+                "address": "No. 59, Gongming St, New Taipei City - Tamsui",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419001",
+                "internal_url": "null",
+                "latitude": "25.16874",
+                "longitude": "121.443623",
+                "machine_status": "available",
+                "id": 6994,
+                "last_updated": "2023-12-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.1470117,
+                    37.5504483
+                ]
+            },
+            "properties": {
+                "name": "Yehliu Ocean World",
+                "area": "Taiwan",
+                "address": "No. 167-3, Gangdong Road, New Taipei City - Wanli District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419003",
+                "internal_url": "null",
+                "latitude": "37.5504483",
+                "longitude": "127.1470117",
+                "machine_status": "available",
+                "id": 6995,
+                "last_updated": "2023-12-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.06166219416926,
+                    29.95758564851048
+                ]
+            },
+            "properties": {
+                "name": "Café du Monde 2 (on the Right)",
+                "area": "Louisiana",
+                "address": "810 Decatur St, New Orleans, LA 70116, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2331",
+                "internal_url": "null",
+                "latitude": 29.95758564851048,
+                "longitude": -90.06166219416926,
+                "machine_status": "available",
+                "id": 6996,
+                "last_updated": "2023-12-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.09469419999999,
+                    46.7831521
+                ]
+            },
+            "properties": {
+                "name": "On Point",
+                "area": "Minnesota",
+                "address": "337 Canal Park Dr, Duluth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419042",
+                "internal_url": "null",
+                "latitude": "46.7831521",
+                "longitude": "-92.09469419999999",
+                "machine_status": "available",
+                "id": 6997,
+                "last_updated": "2023-12-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.7985672,
+                    25.1400236
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Marine Science and Technology",
+                "area": "Taiwan",
+                "address": "No. 367, Beining Rd, Keelung - Zhongzheng District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419041",
+                "internal_url": "null",
+                "latitude": "25.1400236",
+                "longitude": "121.7985672",
+                "machine_status": "available",
+                "id": 6998,
+                "last_updated": "2023-12-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5880029,
+                    24.9681043
+                ]
+            },
+            "properties": {
+                "name": "Maokong Gondola - in front of Kuang Ting Tea Garden",
+                "area": "Taiwan",
+                "address": "No. 16, Lane 38, Section 3, Zhinan Rd, Taipei City - Wenshan District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419040",
+                "internal_url": "null",
+                "latitude": "24.9681043",
+                "longitude": "121.5880029",
+                "machine_status": "available",
+                "id": 6999,
+                "last_updated": "2023-12-13"
             }
         }
     ]
