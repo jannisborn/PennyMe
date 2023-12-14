@@ -35,7 +35,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
-    let machineStatusColors: [String:UIColor] = ["active": .white, "out-of-order": .gray, "retired": .gray]
+    let machineStatusColors: [String:UIColor] = ["available": .white, "out-of-order": .gray, "retired": .gray]
     
     enum StatusChoice : String {
         case unvisited
