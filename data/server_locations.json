@@ -41066,6 +41066,31 @@
                 "id": 7001,
                 "last_updated": "2023-12-14"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.1313766,
+                    29.9237134
+                ]
+            },
+            "properties": {
+                "name": "Audubon Zoo",
+                "area": "Louisiana",
+                "address": "6500 Magazine Street, New Orleans",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2333",
+                "internal_url": "null",
+                "latitude": "29.9237134",
+                "longitude": "-90.1313766",
+                "machine_status": "available",
+                "status": "unvisited",
+                "paywall": true,
+                "multimachine": 5,
+                "id": 3583,
+                "last_updated": "2021-04-05"
+            }
         }
     ]
 }
