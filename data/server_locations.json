@@ -24160,19 +24160,19 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -118.0002265,
-                    33.8443038
+                    -118.0,
+                    33.842885
                 ]
             },
             "properties": {
-                "name": "Knott's Berry Farm",
+                "name": "Knott's Berry Farm - Machine 2",
                 "area": "California",
                 "address": "8039 Beach Blvd, Buena Park",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=374543",
                 "internal_url": "null",
-                "latitude": "33.8443038",
-                "longitude": "-118.0002265",
+                "latitude": "33.842885",
+                "longitude": "-118.0",
                 "machine_status": "available",
                 "id": 4582,
                 "last_updated": "2023-10-29"
@@ -40996,6 +40996,100 @@
                 "machine_status": "available",
                 "id": 6999,
                 "last_updated": "2023-12-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.1061662,
+                    33.2867658
+                ]
+            },
+            "properties": {
+                "name": "Los Hermanos Restaurant & Lounge",
+                "area": "Arizona",
+                "address": "835 US-60, Superior ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419065",
+                "internal_url": "null",
+                "latitude": "33.2867658",
+                "longitude": "-111.1061662",
+                "machine_status": "available",
+                "id": 7000,
+                "last_updated": "2023-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9773245,
+                    41.0786592
+                ]
+            },
+            "properties": {
+                "name": "SeaQuest Aquarium Utah",
+                "area": "Utah",
+                "address": "1201 N. Hillfield Rd., Layton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262838",
+                "internal_url": "null",
+                "latitude": "41.0786592",
+                "longitude": "-111.9773245",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2068,
+                "last_updated": "2023-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.503955500000001,
+                    51.9716579
+                ]
+            },
+            "properties": {
+                "name": "Burg Hülshoff",
+                "area": "Germany",
+                "address": "Schonebeck 6, 48239 Havixbeck",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419062",
+                "internal_url": "null",
+                "latitude": "51.9716579",
+                "longitude": "7.503955500000001",
+                "machine_status": "available",
+                "id": 7001,
+                "last_updated": "2023-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.1313766,
+                    29.9237134
+                ]
+            },
+            "properties": {
+                "name": "Audubon Zoo",
+                "area": "Louisiana",
+                "address": "6500 Magazine Street, New Orleans",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2333",
+                "internal_url": "null",
+                "latitude": "29.9237134",
+                "longitude": "-90.1313766",
+                "machine_status": "available",
+                "status": "unvisited",
+                "paywall": true,
+                "multimachine": 5,
+                "id": 3583,
+                "last_updated": "2023-12-15"
             }
         }
     ]
