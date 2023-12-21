@@ -41276,6 +41276,75 @@
                 "multimachine": 2,
                 "last_updated": "2023-12-18"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.9556927,
+                    26.4546952
+                ]
+            },
+            "properties": {
+                "name": "Shipwreck",
+                "area": "Florida",
+                "address": "237 Old San Carlos Blvd, Ft. Myers Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1814",
+                "internal_url": "null",
+                "latitude": "26.4546952",
+                "longitude": "-81.9556927",
+                "machine_status": "available",
+                "id": 7008,
+                "last_updated": "2023-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.1959485,
+                    33.8007274
+                ]
+            },
+            "properties": {
+                "name": "Texas Best Smokehouse Travel Center",
+                "area": "Texas",
+                "address": "101 US 287, Henrietta",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419262",
+                "internal_url": "null",
+                "latitude": "33.8007274",
+                "longitude": "-98.1959485",
+                "machine_status": "available",
+                "id": 7009,
+                "last_updated": "2023-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.0388401,
+                    22.31241
+                ]
+            },
+            "properties": {
+                "name": "Tokyo Disneyland - World of Frozen area",
+                "area": "China",
+                "address": "Lantau Island,  Penny's Bay, Hong Kong",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419275",
+                "internal_url": "null",
+                "latitude": "22.31241",
+                "longitude": "114.0388401",
+                "machine_status": "available",
+                "id": 7010,
+                "last_updated": "2023-12-20"
+            }
         }
     ]
 }
