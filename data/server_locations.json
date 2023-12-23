@@ -8115,12 +8115,12 @@
                 "name": "Donner Memorial State Park - Museum",
                 "area": "California",
                 "address": "12593 Donner Pass Rd, Truckee",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=315132",
                 "internal_url": "null",
                 "latitude": "39.32413390000001",
                 "longitude": "-120.2321081",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6126,
                 "last_updated": "2023-10-14"
             }
@@ -41414,6 +41414,29 @@
                 "machine_status": "available",
                 "id": 7012,
                 "last_updated": "2023-12-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.9165321,
+                    52.3660003
+                ]
+            },
+            "properties": {
+                "name": "Artis Royal Zoo",
+                "area": "Netherlands",
+                "address": "Plantage Kerklaan 38-40, Amsterdam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=334704",
+                "internal_url": "null",
+                "latitude": "52.3660003",
+                "longitude": "4.9165321",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 5860,
+                "last_updated": "2023-12-23"
             }
         }
     ]
