@@ -138,42 +138,42 @@ def process_machine_entry(
         title: The title of the machine.
         address: The address of the machine.
     """
-    try:
-        # Optional waiting if cron job is running
-        if isbusy():
-            message_slack_raw(
-                ip=ip_address,
-                text="Found conflicting cron job, waiting for it to finish...",
-            )
-            counter = 0
-            while isbusy() and counter < 60:
-                time.sleep(300)  # Retry every 5min
-                counter += 1
-            if counter == 60:
-                message_slack_raw(
-                    ip=ip_address,
-                    text="Timeout of 5h reached, cron job still runs, aborting...",
-                )
-                return
-
-        # Cron job has finished, we can add machine
-        new_machine_id = push_newmachine_to_github(new_machine_entry)
-
-        # Upload the image
-        process_uploaded_image(image_path)
-
-        # Send message to slack
-        image_slack(
-            new_machine_id,
-            ip=ip_address,
-            m_name=title,
-            img_slack_text="New machine proposed:",
-        )
-    except Exception as e:
+    # try:
+    # Optional waiting if cron job is running
+    if isbusy():
         message_slack_raw(
             ip=ip_address,
-            text=f"Error when processing machine entry: {title}, {address} ({e})",
+            text="Found conflicting cron job, waiting for it to finish...",
         )
+        counter = 0
+        while isbusy() and counter < 60:
+            time.sleep(300)  # Retry every 5min
+            counter += 1
+        if counter == 60:
+            message_slack_raw(
+                ip=ip_address,
+                text="Timeout of 5h reached, cron job still runs, aborting...",
+            )
+            return
+
+    # Cron job has finished, we can add machine
+    new_machine_id = push_newmachine_to_github(new_machine_entry)
+
+    # Upload the image
+    process_uploaded_image(image_path)
+
+    # Send message to slack
+    image_slack(
+        new_machine_id,
+        ip=ip_address,
+        m_name=title,
+        img_slack_text="New machine proposed:",
+    )
+    # except Exception as e:
+    #     message_slack_raw(
+    #         ip=ip_address,
+    #         text=f"Error when processing machine entry: {title}, {address} ({e})",
+    #     )
 
 
 @app.route("/create_machine", methods=["POST"])

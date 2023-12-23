@@ -6,7 +6,6 @@ from typing import Dict
 from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
-from werkzeug.datastructures import FileStorage
 
 logger = logging.getLogger(__name__)
 
