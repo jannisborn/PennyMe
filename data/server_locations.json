@@ -41438,6 +41438,29 @@
                 "id": 5860,
                 "last_updated": "2023-12-23"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.638464019242982,
+                    51.990683049611384
+                ]
+            },
+            "properties": {
+                "name": "Test Machine",
+                "area": "Germany",
+                "address": "Kemperweg 20, 48157 Münster, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 51.990683049611384,
+                "longitude": 7.638464019242982,
+                "machine_status": "available",
+                "id": 7014,
+                "last_updated": "2023-12-23"
+            }
         }
     ]
 }
