@@ -74,6 +74,10 @@ def location_differ(
     logger.info(f"======Location differ joblog from {start_time}=======")
     os.makedirs(output_folder, exist_ok=True)
 
+    # Create empty file to indicate that the job is running
+    with open(os.path.join(output_folder, "running.tmp", "w")) as file:
+        pass
+
     today = f"{YEAR}-{MONTH}-{DAY}"
 
     gmaps = GoogleMaps(api_key)
@@ -506,6 +510,7 @@ def location_differ(
             json.dump(problem_data, f, ensure_ascii=False, indent=4)
 
     end_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     logger.info(f"======Location differ completed at {end_time}=======")
 
 

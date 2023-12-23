@@ -1,15 +1,24 @@
 import json
 import os
+import time
 from datetime import datetime
+from threading import Thread
+from typing import Any, Dict
 
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from thefuzz import process as fuzzysearch
+from werkzeug.datastructures import FileStorage
 
-from pennyme.github_update import push_newmachine_to_github
+from pennyme.github_update import isbusy, push_newmachine_to_github
 from pennyme.locations import COUNTRIES
-from pennyme.slack import image_slack, message_slack, process_uploaded_image
+from pennyme.slack import (
+    image_slack,
+    message_slack,
+    message_slack_raw,
+    process_uploaded_image,
+)
 
 app = Flask(__name__)
 
@@ -109,6 +118,71 @@ def save_comment(comment: str, ip: str, machine_id: int):
     # Resave the file
     with open("ip_comment_dict.json", "w") as f:
         json.dump(IP_COMMENT_DICT, f, indent=4)
+
+
+def process_machine_entry(
+    new_machine_entry: Dict[str, Any],
+    image: FileStorage,
+    ip_address: str,
+    title: str,
+    address: str,
+):
+    """
+    Process a new machine entry (upload image, send message to slack, etc.)
+    Typically executed from a thread to avoid clash with cron job
+
+    Args:
+        new_machine_entry: The new machine entry to process.
+        image: The image to save, obtained via Flask's request.files["image"].
+        ip_address: The IP address of the user.
+        title: The title of the machine.
+        address: The address of the machine.
+    """
+    try:
+        # Optional waiting if cron job is running
+        if isbusy():
+            message_slack_raw(
+                ip=ip_address,
+                text="Found conflicting cron job, waiting for it to finish...",
+            )
+            counter = 0
+            while isbusy() and counter < 60:
+                time.sleep(300)  # Retry every 5min
+                counter += 1
+            if counter == 60:
+                message_slack_raw(
+                    ip=ip_address,
+                    text="Timeout of 5h reached, cron job still runs, aborting...",
+                )
+                return
+
+        # Cron job has finished, we can add machine
+        new_machine_id = push_newmachine_to_github(new_machine_entry)
+
+        # Upload the image
+        if image:
+            img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+            process_uploaded_image(image, img_path)
+
+            # Send message to slack
+            image_slack(
+                new_machine_id,
+                ip=ip_address,
+                m_name=title,
+                img_slack_text="New machine proposed:",
+            )
+        else:
+            message_slack(
+                new_machine_id,
+                ip=ip_address,
+                m_name=title,
+                img_slack_text="Picture missing for machine!",
+            )
+    except Exception as e:
+        message_slack_raw(
+            ip=ip_address,
+            text=f"Error when processing machine entry: {title}, {address} ({e})",
+        )
 
 
 @app.route("/create_machine", methods=["POST"])
@@ -220,26 +294,18 @@ def create_machine():
         "geometry": {"type": "Point", "coordinates": location},
         "properties": properties_dict,
     }
-    # If pushing to new branch: set unique branch name
-    # branch_name = f"new_machine_{round(time.time())}"
-    new_machine_id = push_newmachine_to_github(new_machine_entry)
-
-    # Upload the image
-    if "image" not in request.files:
-        return "No image file", 400
-    image = request.files["image"]
     ip_address = request.remote_addr
-    # crop and save the image
-    img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
-    process_uploaded_image(image, img_path)
-
-    # send message to slack
-    image_slack(
-        new_machine_id,
-        ip=ip_address,
-        m_name=title,
-        img_slack_text="New machine proposed:",
+    image = request.files.get("image", None)
+    message_slack_raw(
+        ip=ip_address, text=f"New machine proposed: {title}, {address} ({area})"
     )
+
+    # Create and start the thread
+    thread = Thread(
+        target=process_machine_entry,
+        args=(new_machine_entry, image, ip_address, title, address),
+    )
+    thread.start()
 
     return jsonify({"message": "Success!"}), 200
 
