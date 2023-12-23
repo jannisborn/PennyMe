@@ -52,18 +52,14 @@ def reload_server_data() -> Dict[str, str]:
     return MACHINE_NAMES
 
 
-def process_uploaded_image(image: FileStorage, img_path: str, basewidth: int = 1000):
+def process_uploaded_image(img_path: str, basewidth: int = 1000):
     """
-    Optimizes an image for size/quality and saves it to the server.
+    Optimizes an image for size/quality and re-saves it to the server.
 
     Args:
-        image: The image to save, obtained via Flask's request.files["image"].
         img_path: The path to save the image to.
         basewidth: width of rescaled image, defaults to 1000. Used to be 400.
     """
-    image.save(img_path)
-
-    # optimize file size
     img = Image.open(img_path)
     img = ImageOps.exif_transpose(img)
     wpercent = basewidth / float(img.size[0])

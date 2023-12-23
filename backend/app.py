@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import uuid
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -9,7 +10,6 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from thefuzz import process as fuzzysearch
-from werkzeug.datastructures import FileStorage
 
 from pennyme.github_update import isbusy, push_newmachine_to_github
 from pennyme.locations import COUNTRIES
@@ -87,9 +87,9 @@ def upload_image():
     if "image" not in request.files:
         return jsonify({"error": "No image file found"}), 400
 
-    image = request.files["image"]
     img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
-    process_uploaded_image(image, img_path)
+    request.files["image"].save(img_path)
+    process_uploaded_image(img_path)
 
     # send message to slack
     image_slack(machine_id, ip=ip_address)
@@ -122,7 +122,7 @@ def save_comment(comment: str, ip: str, machine_id: int):
 
 def process_machine_entry(
     new_machine_entry: Dict[str, Any],
-    image: FileStorage,
+    image_path: str,
     ip_address: str,
     title: str,
     address: str,
@@ -133,7 +133,7 @@ def process_machine_entry(
 
     Args:
         new_machine_entry: The new machine entry to process.
-        image: The image to save, obtained via Flask's request.files["image"].
+        image_path: Temporary path to the image.
         ip_address: The IP address of the user.
         title: The title of the machine.
         address: The address of the machine.
@@ -160,24 +160,15 @@ def process_machine_entry(
         new_machine_id = push_newmachine_to_github(new_machine_entry)
 
         # Upload the image
-        if image:
-            img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
-            process_uploaded_image(image, img_path)
+        process_uploaded_image(image_path)
 
-            # Send message to slack
-            image_slack(
-                new_machine_id,
-                ip=ip_address,
-                m_name=title,
-                img_slack_text="New machine proposed:",
-            )
-        else:
-            message_slack(
-                new_machine_id,
-                ip=ip_address,
-                m_name=title,
-                img_slack_text="Picture missing for machine!",
-            )
+        # Send message to slack
+        image_slack(
+            new_machine_id,
+            ip=ip_address,
+            m_name=title,
+            img_slack_text="New machine proposed:",
+        )
     except Exception as e:
         message_slack_raw(
             ip=ip_address,
@@ -295,7 +286,9 @@ def create_machine():
         "properties": properties_dict,
     }
     ip_address = request.remote_addr
-    image = request.files.get("image", None)
+    tmp_path = os.path.join(PATH_IMAGES, f"tmp_image_{str(uuid.uuid4())}.jpg")
+    request.files["image"].save(tmp_path)
+
     message_slack_raw(
         ip=ip_address, text=f"New machine proposed: {title}, {address} ({area})"
     )
@@ -303,7 +296,7 @@ def create_machine():
     # Create and start the thread
     thread = Thread(
         target=process_machine_entry,
-        args=(new_machine_entry, image, ip_address, title, address),
+        args=(new_machine_entry, tmp_path, ip_address, title, address),
     )
     thread.start()
 
