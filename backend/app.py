@@ -9,6 +9,8 @@ from typing import Any, Dict
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import isbusy, push_newmachine_to_github
 from pennyme.locations import COUNTRIES
 from pennyme.slack import (
@@ -17,7 +19,6 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
-from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
