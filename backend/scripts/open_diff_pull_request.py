@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 
 from pennyme.github_update import (
     DATA_BRANCH,
@@ -84,3 +85,7 @@ if __name__ == "__main__":
                 comment="No website updates today!",
                 headers=HEADER_LOCATION_DIFF,
             )
+
+    # Remove the running file to indicate that the job is done
+    os.remove(os.path.join(os.path.dirname(args.file), "running.tmp"))
+    print("Done")

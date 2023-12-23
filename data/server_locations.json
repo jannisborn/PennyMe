@@ -8115,12 +8115,12 @@
                 "name": "Donner Memorial State Park - Museum",
                 "area": "California",
                 "address": "12593 Donner Pass Rd, Truckee",
-                "status": "unvisited",
+                "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=315132",
                 "internal_url": "null",
                 "latitude": "39.32413390000001",
                 "longitude": "-120.2321081",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6126,
                 "last_updated": "2023-10-14"
             }
@@ -9523,9 +9523,9 @@
                 "internal_url": "null",
                 "latitude": "36.642321",
                 "longitude": "-93.2466481",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5325,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-22"
             }
         },
         {
@@ -13387,9 +13387,9 @@
                 "internal_url": "null",
                 "latitude": "37.7538033",
                 "longitude": "-100.0217447",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3926,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-21"
             }
         },
         {
@@ -41344,6 +41344,99 @@
                 "machine_status": "available",
                 "id": 7010,
                 "last_updated": "2023-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.12628030915306,
+                    34.69220822848988
+                ]
+            },
+            "properties": {
+                "name": "Candy Edcentures",
+                "area": "North Carolina",
+                "address": "650 W Corbett Ave, Swansboro, NC 28584, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 34.69220822848988,
+                "longitude": -77.12628030915306,
+                "machine_status": "available",
+                "id": 7011,
+                "last_updated": "2023-12-23",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.29229889999999,
+                    37.2089572
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Springfield",
+                "area": "Missouri",
+                "address": "3284 N Beaver Road, Springfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419302",
+                "internal_url": "null",
+                "latitude": "37.2089572",
+                "longitude": "-93.29229889999999",
+                "machine_status": "available",
+                "id": 7013,
+                "last_updated": "2023-12-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.6564371,
+                    33.32305760000001
+                ]
+            },
+            "properties": {
+                "name": "Pillow's Funtrackers",
+                "area": "New Mexico",
+                "address": "101 Carrizo Canyon Rd, Ruidoso",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419305",
+                "internal_url": "null",
+                "latitude": "33.32305760000001",
+                "longitude": "-105.6564371",
+                "machine_status": "available",
+                "id": 7012,
+                "last_updated": "2023-12-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.9165321,
+                    52.3660003
+                ]
+            },
+            "properties": {
+                "name": "Artis Royal Zoo",
+                "area": "Netherlands",
+                "address": "Plantage Kerklaan 38-40, Amsterdam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=334704",
+                "internal_url": "null",
+                "latitude": "52.3660003",
+                "longitude": "4.9165321",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 5860,
+                "last_updated": "2023-12-23"
             }
         }
     ]

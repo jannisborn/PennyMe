@@ -1,6 +1,7 @@
 import base64
 import json
 import logging
+import os
 from typing import Any, Dict, List, Optional, Tuple
 
 import requests
@@ -416,3 +417,16 @@ def get_pr_id(
             if pr["head"]["ref"] == branch_name:
                 return pr["number"]
     return None
+
+
+def isbusy() -> bool:
+    """
+    Check whether the cronjob is running.
+
+    Returns:
+        True if the cronjob is running, False otherwise.
+    """
+    # pennyme package directory
+    current_script_dir = os.path.dirname(os.path.abspath(__file__))
+    running_tmp_path = os.path.join(current_script_dir, "../../new_data/running.tmp")
+    return os.path.exists(running_tmp_path)

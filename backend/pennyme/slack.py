@@ -148,6 +148,18 @@ def message_slack(machine_id: str, comment_text: str, ip: str):
     prefix = m_name.split("Status=")[0]
     postfix = "Status=" + m_name.split("Status=")[-1]
     text = f"New comment for machine {machine_id} - {prefix}: {comment_text} (from {ip}. Machine: {postfix}"
+
+    message_slack_raw(text, ip)
+
+
+def message_slack_raw(text: str, ip: str):
+    """
+    Send a message to Slack, unspecific to a machine.
+
+    Args:
+        text: The message to send.
+        ip: The IP address of the user.
+    """
     try:
         CLIENT.chat_postMessage(
             channel="#pennyme_uploads", text=text, username="PennyMe"
