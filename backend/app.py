@@ -1,7 +1,7 @@
 import json
 import os
+import random
 import time
-import uuid
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -9,8 +9,6 @@ from typing import Any, Dict
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import isbusy, push_newmachine_to_github
 from pennyme.locations import COUNTRIES
 from pennyme.slack import (
@@ -19,6 +17,7 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
@@ -286,7 +285,8 @@ def create_machine():
         "properties": properties_dict,
     }
     ip_address = request.remote_addr
-    tmp_path = os.path.join(PATH_IMAGES, f"tmp_image_{str(uuid.uuid4())}.jpg")
+
+    tmp_path = os.path.join(PATH_IMAGES, f"{random.randint(-(2**16), -1)}.jpg")
     request.files["image"].save(tmp_path)
 
     message_slack_raw(
