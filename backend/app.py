@@ -121,7 +121,7 @@ def save_comment(comment: str, ip: str, machine_id: int):
 
 def process_machine_entry(
     new_machine_entry: Dict[str, Any],
-    image_path: str,
+    tmp_img_path: str,
     ip_address: str,
     title: str,
     address: str,
@@ -132,47 +132,51 @@ def process_machine_entry(
 
     Args:
         new_machine_entry: The new machine entry to process.
-        image_path: Temporary path to the image.
+        tmp_img_path: Temporary path to the image.
         ip_address: The IP address of the user.
         title: The title of the machine.
         address: The address of the machine.
     """
-    # try:
-    # Optional waiting if cron job is running
-    if isbusy():
-        message_slack_raw(
-            ip=ip_address,
-            text="Found conflicting cron job, waiting for it to finish...",
-        )
-        counter = 0
-        while isbusy() and counter < 60:
-            time.sleep(300)  # Retry every 5min
-            counter += 1
-        if counter == 60:
+    try:
+        # Optional waiting if cron job is running
+        if isbusy():
             message_slack_raw(
                 ip=ip_address,
-                text="Timeout of 5h reached, cron job still runs, aborting...",
+                text="Found conflicting cron job, waiting for it to finish...",
             )
-            return
+            counter = 0
+            while isbusy() and counter < 60:
+                time.sleep(300)  # Retry every 5min
+                counter += 1
+            if counter == 60:
+                message_slack_raw(
+                    ip=ip_address,
+                    text="Timeout of 5h reached, cron job still runs, aborting...",
+                )
+                return
 
-    # Cron job has finished, we can add machine
-    new_machine_id = push_newmachine_to_github(new_machine_entry)
+        # Cron job has finished, we can add machine
+        new_machine_id = push_newmachine_to_github(new_machine_entry)
 
-    # Upload the image
-    process_uploaded_image(image_path)
+        # Move the image file from temporary to permanent path
+        img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+        os.rename(tmp_img_path, img_path)
 
-    # Send message to slack
-    image_slack(
-        new_machine_id,
-        ip=ip_address,
-        m_name=title,
-        img_slack_text="New machine proposed:",
-    )
-    # except Exception as e:
-    #     message_slack_raw(
-    #         ip=ip_address,
-    #         text=f"Error when processing machine entry: {title}, {address} ({e})",
-    #     )
+        # Upload the image
+        process_uploaded_image(img_path)
+
+        # Send message to slack
+        image_slack(
+            new_machine_id,
+            ip=ip_address,
+            m_name=title,
+            img_slack_text="New machine proposed:",
+        )
+    except Exception as e:
+        message_slack_raw(
+            ip=ip_address,
+            text=f"Error when processing machine entry: {title}, {address} ({e})",
+        )
 
 
 @app.route("/create_machine", methods=["POST"])
