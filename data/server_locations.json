@@ -11679,7 +11679,7 @@
             "properties": {
                 "name": "Las Vegas North Premium Outlets - Simon Guest Services",
                 "area": "Nevada",
-                "address": "875 South Grand Central Parkway suite 1690, Las Vegas ",
+                "address": "875 South Grand Central Parkway suite 1690, Las Vegas",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=390820",
                 "internal_url": "null",
@@ -11687,6 +11687,7 @@
                 "longitude": "-115.1592392",
                 "machine_status": "available",
                 "id": 6221,
+                "paywall": true,
                 "last_updated": "2023-10-14"
             }
         },
@@ -41356,7 +41357,7 @@
                 ]
             },
             "properties": {
-                "name": "Candy Edcentures",
+                "name": "Candy Edventures",
                 "area": "North Carolina",
                 "address": "650 W Corbett Ave, Swansboro, NC 28584, USA",
                 "status": "unvisited",
@@ -41437,6 +41438,53 @@
                 "status": "retired",
                 "id": 5860,
                 "last_updated": "2023-12-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.0692442,
+                    26.666953
+                ]
+            },
+            "properties": {
+                "name": "Palm Beach Zoo at Dreher Park",
+                "area": "Florida",
+                "address": "1301 Summitt Boulevard, West Palm Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1509",
+                "internal_url": "null",
+                "latitude": "26.666953",
+                "longitude": "-80.0692442",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3475,
+                "multimachine": 2,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3080192,
+                    37.6737554
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Richmond",
+                "area": "Kentucky",
+                "address": "1013 Buc-ee's Blvd, Richmond",
+                "external_url": "http://209.221.138.252/Details.aspx?location=377603",
+                "internal_url": "null",
+                "latitude": "37.6737554",
+                "longitude": "-84.3080192",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5502,
+                "last_updated": "2023-12-24"
             }
         }
     ]
