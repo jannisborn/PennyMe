@@ -41486,6 +41486,52 @@
                 "id": 5502,
                 "last_updated": "2023-12-24"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.13624709999999,
+                    39.4465319
+                ]
+            },
+            "properties": {
+                "name": "Family Touch Primitive Treasures and Cafe'",
+                "area": "Indiana",
+                "address": "36 Duck Creek, Metamora",
+                "external_url": "http://209.221.138.252/Details.aspx?location=241664",
+                "internal_url": "null",
+                "latitude": "39.4465319",
+                "longitude": "-85.13624709999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2277,
+                "last_updated": "2023-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.535612,
+                    41.6619602
+                ]
+            },
+            "properties": {
+                "name": "University of Iowa Museum of Natural History",
+                "area": "Iowa",
+                "address": "17 N Clinton St, Iowa City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419331",
+                "internal_url": "null",
+                "latitude": "41.6619602",
+                "longitude": "-91.535612",
+                "machine_status": "available",
+                "id": 7014,
+                "last_updated": "2023-12-24"
+            }
         }
     ]
 }
