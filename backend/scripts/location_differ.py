@@ -75,7 +75,7 @@ def location_differ(
     os.makedirs(output_folder, exist_ok=True)
 
     # Create empty file to indicate that the job is running
-    with open(os.path.join(output_folder, "running.tmp", "w")) as file:
+    with open(os.path.join(output_folder, "running.tmp"), "w") as _:
         pass
 
     today = f"{YEAR}-{MONTH}-{DAY}"
