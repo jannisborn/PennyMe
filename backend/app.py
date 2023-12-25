@@ -1,32 +1,31 @@
 import json
 import os
+import random
 import time
 from datetime import datetime
+from threading import Thread
 from typing import Any, Dict
 
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
-from PIL import Image, ImageOps
-
 from haversine import haversine
-from pennyme.locations import COUNTRIES
-from pennyme.github_update import push_newmachine_to_github
-from slack import WebClient
-from slack.errors import SlackApiError
 from thefuzz import process as fuzzysearch
+
+from pennyme.github_update import isbusy, push_newmachine_to_github
+from pennyme.locations import COUNTRIES
+from pennyme.slack import (
+    image_slack,
+    message_slack,
+    message_slack_raw,
+    process_uploaded_image,
+)
 
 app = Flask(__name__)
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
 PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
-PATH_SERVER_LOCATION = os.path.join("..", "..", "images", "server_locations.json")
-SLACK_TOKEN = os.environ.get("SLACK_TOKEN")
-IMG_PORT = "http://37.120.179.15:8000/"
-GM_API_KEY = open("../../gpc_api_key.keypair", "r").read()
-
-client = WebClient(token=os.environ["SLACK_TOKEN"])
-gm_client = GoogleMaps(GM_API_KEY)
+GM_CLIENT = GoogleMaps(open("../../gpc_api_key.keypair", "r").read())
 
 with open("blocked_ips.json", "r") as infile:
     # NOTE: blocking an IP requires restart of app.py via waitress
@@ -37,7 +36,7 @@ with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
 MACHINE_NAMES = {
     elem["properties"][
         "id"
-    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) Status={elem['properties']['status']}"
+    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) Status={elem['properties']['machine_status']}"
     for elem in d["features"]
 }
 
@@ -45,22 +44,9 @@ with open("ip_comment_dict.json", "r") as f:
     IP_COMMENT_DICT = json.load(f)
 
 
-def reload_server_data():
-    # add server location IDs
-    with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
-        d = json.load(infile)
-    for elem in d["features"]:
-        MACHINE_NAMES[
-            elem["properties"]["id"]
-        ] = f"{elem['properties']['name']} ({elem['properties']['area']})"
-    return MACHINE_NAMES
-
-
 @app.route("/add_comment", methods=["GET"])
 def add_comment():
-    """
-    Receives a comment and adds it to the json file
-    """
+    """Receives a comment and adds it to the json file."""
 
     comment = str(request.args.get("comment"))
     machine_id = str(request.args.get("id"))
@@ -90,24 +76,9 @@ def add_comment():
     return jsonify({"message": "Success!"}), 200
 
 
-def process_uploaded_image(image, img_path):
-    image.save(img_path)
-
-    # optimize file size
-    img = Image.open(img_path)
-    img = ImageOps.exif_transpose(img)
-    basewidth = 400
-    wpercent = basewidth / float(img.size[0])
-    if wpercent > 1:
-        return "Image uploaded successfully, no resize necessary"
-    # resize
-    hsize = int((float(img.size[1]) * float(wpercent)))
-    img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
-    img.save(img_path, quality=95)
-
-
 @app.route("/upload_image", methods=["POST"])
 def upload_image():
+    """Receives an image and saves it to the server."""
     machine_id = str(request.args.get("id"))
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
@@ -116,9 +87,9 @@ def upload_image():
     if "image" not in request.files:
         return jsonify({"error": "No image file found"}), 400
 
-    image = request.files["image"]
     img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
-    process_uploaded_image(image, img_path)
+    request.files["image"].save(img_path)
+    process_uploaded_image(img_path)
 
     # send message to slack
     image_slack(machine_id, ip=ip_address)
@@ -126,61 +97,15 @@ def upload_image():
     return "Image uploaded successfully"
 
 
-def image_slack(
-    machine_id: int,
-    ip: str,
-    m_name: str = None,
-    img_slack_text: str = "Image uploaded for machine",
-):
-    if m_name is None:
-        MACHINE_NAMES = reload_server_data()
-        m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
-    try:
-        response = client.chat_postMessage(
-            channel="#pennyme_uploads", text=text, username="PennyMe"
-        )
-        response = client.chat_postMessage(
-            channel="#pennyme_uploads",
-            text=text,
-            username="PennyMe",
-            blocks=[
-                {
-                    "type": "image",
-                    "title": {
-                        "type": "plain_text",
-                        "text": "NEW Image!",
-                        "emoji": True,
-                    },
-                    "image_url": f"{IMG_PORT}{machine_id}.jpg",
-                    "alt_text": text,
-                }
-            ],
-        )
-    except SlackApiError as e:
-        print("Error sending message: ", e)
-        assert e.response["ok"] is False
-        assert e.response["error"]
-        raise e
-
-
-def message_slack(machine_id, comment_text, ip: str):
-    MACHINE_NAMES = reload_server_data()
-    m_name = MACHINE_NAMES[int(machine_id)]
-    text = (
-        f"New comment for machine {machine_id} - {m_name}: {comment_text} (from {ip})"
-    )
-    try:
-        response = client.chat_postMessage(
-            channel="#pennyme_uploads", text=text, username="PennyMe"
-        )
-    except SlackApiError as e:
-        assert e.response["ok"] is False
-        assert e.response["error"]
-        raise e
-
-
 def save_comment(comment: str, ip: str, machine_id: int):
+    """
+    Saves a comment to the json file.
+
+    Args:
+        comment: The comment to save.
+        ip: The IP address of the user.
+        machine_id: The ID of the machine.
+    """
     # Create dict hierarchy if needed
     if ip not in IP_COMMENT_DICT.keys():
         IP_COMMENT_DICT[ip] = {}
@@ -195,11 +120,69 @@ def save_comment(comment: str, ip: str, machine_id: int):
         json.dump(IP_COMMENT_DICT, f, indent=4)
 
 
+def process_machine_entry(
+    new_machine_entry: Dict[str, Any],
+    tmp_img_path: str,
+    ip_address: str,
+    title: str,
+    address: str,
+):
+    """
+    Process a new machine entry (upload image, send message to slack, etc.)
+    Typically executed from a thread to avoid clash with cron job
+
+    Args:
+        new_machine_entry: The new machine entry to process.
+        tmp_img_path: Temporary path to the image.
+        ip_address: The IP address of the user.
+        title: The title of the machine.
+        address: The address of the machine.
+    """
+    try:
+        # Optional waiting if cron job is running
+        if isbusy():
+            message_slack_raw(
+                ip=ip_address,
+                text="Found conflicting cron job, waiting for it to finish...",
+            )
+            counter = 0
+            while isbusy() and counter < 60:
+                time.sleep(300)  # Retry every 5min
+                counter += 1
+            if counter == 60:
+                message_slack_raw(
+                    ip=ip_address,
+                    text="Timeout of 5h reached, cron job still runs, aborting...",
+                )
+                return
+
+        # Cron job has finished, we can add machine
+        new_machine_id = push_newmachine_to_github(new_machine_entry)
+
+        # Move the image file from temporary to permanent path
+        img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+        os.rename(tmp_img_path, img_path)
+
+        # Upload the image
+        process_uploaded_image(img_path)
+
+        # Send message to slack
+        image_slack(
+            new_machine_id,
+            ip=ip_address,
+            m_name=title,
+            img_slack_text="New machine proposed:",
+        )
+    except Exception as e:
+        message_slack_raw(
+            ip=ip_address,
+            text=f"Error when processing machine entry: {title}, {address} ({e})",
+        )
+
+
 @app.route("/create_machine", methods=["POST"])
 def create_machine():
-    """
-    Receives a comment and adds it to the json file
-    """
+    """Receives a comment and adds it to the json file."""
     title = str(request.args.get("title")).strip()
     address = str(request.args.get("address")).strip()
     area = str(request.args.get("area")).strip()
@@ -223,7 +206,7 @@ def create_machine():
     # Verify that address matches coordinates
     queries = [address, address + area, address + title]
     for query in queries:
-        coordinates = gm_client.geocode(query)
+        coordinates = GM_CLIENT.geocode(query)
         try:
             lat = coordinates[0]["geometry"]["location"]["lat"]
             lng = coordinates[0]["geometry"]["location"]["lng"]
@@ -246,7 +229,7 @@ def create_machine():
             400,
         )
 
-    out = gm_client.reverse_geocode(
+    out = GM_CLIENT.reverse_geocode(
         [location[1], location[0]], result_type="street_address"
     )
 
@@ -259,13 +242,13 @@ def create_machine():
             address = ad
             b = False
     elif b:
-        out = gm_client.reverse_geocode(
+        out = GM_CLIENT.reverse_geocode(
             (location[1], location[0]), result_type="point_of_interest"
         )
         if out != []:
             address = out[0]["formatted_address"]
         else:
-            out = gm_client.reverse_geocode(
+            out = GM_CLIENT.reverse_geocode(
                 (location[1], location[0]), result_type="postal_code"
             )
             if out != []:
@@ -284,7 +267,6 @@ def create_machine():
     # put properties into dictionary
     properties_dict = {
         "name": title,
-        "active": True,
         "area": area,
         "address": address,
         "status": "unvisited",
@@ -292,6 +274,7 @@ def create_machine():
         "internal_url": "null",
         "latitude": location[1],
         "longitude": location[0],
+        "machine_status": "available",
         "id": -1,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
@@ -306,26 +289,21 @@ def create_machine():
         "geometry": {"type": "Point", "coordinates": location},
         "properties": properties_dict,
     }
-    # If pushing to new branch: set unique branch name
-    # branch_name = f"new_machine_{round(time.time())}"
-    new_machine_id = push_newmachine_to_github(new_machine_entry)
-
-    # Upload the image
-    if "image" not in request.files:
-        return "No image file", 400
-    image = request.files["image"]
     ip_address = request.remote_addr
-    # crop and save the image
-    img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
-    process_uploaded_image(image, img_path)
 
-    # send message to slack
-    image_slack(
-        new_machine_id,
-        ip=ip_address,
-        m_name=title,
-        img_slack_text="New machine proposed:",
+    tmp_path = os.path.join(PATH_IMAGES, f"{random.randint(-(2**16), -1)}.jpg")
+    request.files["image"].save(tmp_path)
+
+    message_slack_raw(
+        ip=ip_address, text=f"New machine proposed: {title}, {address} ({area})"
     )
+
+    # Create and start the thread
+    thread = Thread(
+        target=process_machine_entry,
+        args=(new_machine_entry, tmp_path, ip_address, title, address),
+    )
+    thread.start()
 
     return jsonify({"message": "Success!"}), 200
 

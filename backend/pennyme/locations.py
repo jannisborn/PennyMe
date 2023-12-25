@@ -1,8 +1,10 @@
 def parse_location_name(x: str) -> str:
+    """Parse the location name to remove special characters and spaces."""
     return x.lower().replace(". ", "_").replace(" ", "_")
 
 
-def remove_html_and(x):
+def remove_html_and(x: str) -> str:
+    """Remove html and replace &amp; with &."""
     return x.replace("&amp;", "&")
 
 
@@ -135,6 +137,8 @@ COUNTRY_TO_CODE = {
     "Sweeded": 149,
     "_Collector Books_": 132,
 }
+
+AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia"]
 
 COUNTRIES = [
     "Afghanistan",
@@ -441,3 +445,67 @@ COUNTRIES = [
     "Zimbabwe",
     "Åland Islands",
 ]
+
+
+USSTATE_TO_CODE = {
+    "Alabama": "AL",
+    "Alaska": "AK",
+    "Arizona": "AZ",
+    "Arkansas": "AR",
+    "California": "CA",
+    "Colorado": "CO",
+    "Connecticut": "CT",
+    "Delaware": "DE",
+    "Florida": "FL",
+    "Georgia": "GA",
+    "Hawaii": "HI",
+    "Idaho": "ID",
+    "Illinois": "IL",
+    "Indiana": "IN",
+    "Iowa": "IA",
+    "Kansas": "KS",
+    "Kentucky": "KY",
+    "Louisiana": "LA",
+    "Maine": "ME",
+    "Maryland": "MD",
+    "Massachusetts": "MA",
+    "Michigan": "MI",
+    "Minnesota": "MN",
+    "Mississippi": "MS",
+    "Missouri": "MO",
+    "Montana": "MT",
+    "Nebraska": "NE",
+    "Nevada": "NV",
+    "New Hampshire": "NH",
+    "New Jersey": "NJ",
+    "New Mexico": "NM",
+    "New York": "NY",
+    "North Carolina": "NC",
+    "North Dakota": "ND",
+    "Ohio": "OH",
+    "Oklahoma": "OK",
+    "Oregon": "OR",
+    "Pennsylvania": "PA",
+    "Rhode Island": "RI",
+    "South Carolina": "SC",
+    "South Dakota": "SD",
+    "Tennessee": "TN",
+    "Texas": "TX",
+    "Utah": "UT",
+    "Vermont": "VT",
+    "Virginia": "VA",
+    "Washington": "WA",
+    "West Virginia": "WV",
+    "Wisconsin": "WI",
+    "Wyoming": "WY",
+    "District of Columbia": "DC",
+    "American Samoa": "AS",
+    "Guam": "GU",
+    "Northern Mariana Islands": "MP",
+    "Puerto Rico": "PR",
+    "United States Minor Outlying Islands": "UM",
+    "U.S. Virgin Islands": "VI",
+}
+
+# invert the dictionary
+CODE_TO_USSTATE = dict(map(reversed, USSTATE_TO_CODE.items()))

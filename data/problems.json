@@ -11,32 +11,7 @@
                 ]
             },
             "properties": {
-                "name": "Mack's Sport Shop & Alaskan Gifts",
-                "active": true,
-                "area": "Alaska",
-                "address": "212 Lower Mill Bay Road, Kodiak",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=214",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Mack's Sport Shop & Alaskan Gifts in Alaska shown as available but http://209.221.138.252/Details.aspx?location=214 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
                 "name": "Insectarium",
-                "active": true,
                 "area": "Pennsylvania",
                 "address": "8046 Frankford Avenue, Philadelphia",
                 "status": "unvisited",
@@ -44,34 +19,11 @@
                 "internal_url": "null",
                 "latitude": "N.A.",
                 "longitude": "N.A.",
+                "machine_status": "available",
                 "id": -1,
                 "last_updated": -1
             },
-            "problem": "Machine Insectarium in Pennsylvania shown as available but http://209.221.138.252/Details.aspx?location=204156 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Minnesota State Fair - Old Arcade building",
-                "active": true,
-                "area": "Minnesota",
-                "address": "Old Arcade building, St. Paul",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=257684",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Minnesota State Fair - Old Arcade building in Minnesota shown as available but http://209.221.138.252/Details.aspx?location=257684 responds Internal Server Error (500)"
+            "problem": "To-be-added-machine Insectarium in Pennsylvania seems unavailable: http://209.221.138.252/Details.aspx?location=204156 with Internal Server Error (500)"
         },
         {
             "type": "Feature",
@@ -84,7 +36,6 @@
             },
             "properties": {
                 "name": "True Grits Gift & Cards",
-                "active": true,
                 "area": "Georgia",
                 "address": "107 E. River Street, Savannah",
                 "status": "unvisited",
@@ -92,10 +43,11 @@
                 "internal_url": "null",
                 "latitude": "N.A.",
                 "longitude": "N.A.",
+                "machine_status": "available",
                 "id": -1,
                 "last_updated": -1
             },
-            "problem": "Machine True Grits Gift & Cards in Georgia shown as available but http://209.221.138.252/Details.aspx?location=1860 responds Internal Server Error (500)"
+            "problem": "To-be-added-machine True Grits Gift & Cards in Georgia seems unavailable: http://209.221.138.252/Details.aspx?location=1860 with Internal Server Error (500)"
         },
         {
             "type": "Feature",
@@ -108,7 +60,6 @@
             },
             "properties": {
                 "name": "Unknown Location ",
-                "active": true,
                 "area": "Idaho",
                 "address": ", Arco",
                 "status": "unvisited",
@@ -116,201 +67,11 @@
                 "internal_url": "null",
                 "latitude": "0",
                 "longitude": "0",
-                "id": -1,
-                "last_updated": -1
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Exploration Place",
-                "active": true,
-                "area": "Kansas",
-                "address": "300 North McLean Boulevard, Wichita",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=2240",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
+                "machine_status": "available",
                 "id": -1,
                 "last_updated": -1
             },
-            "problem": "Machine Exploration Place in Kansas shown as available but http://209.221.138.252/Details.aspx?location=2240 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Lexington Style Trimmings BBQ    ",
-                "active": true,
-                "area": "North Carolina",
-                "address": "1513 E. Center St. Ext., Lexington",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=59354",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Lexington Style Trimmings BBQ     in North Carolina shown as available but http://209.221.138.252/Details.aspx?location=59354 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Maggie Mountaineer Crafts",
-                "active": true,
-                "area": "North Carolina",
-                "address": "2394 Soco Rd, Maggie Valley",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=3684",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Maggie Mountaineer Crafts in North Carolina shown as available but http://209.221.138.252/Details.aspx?location=3684 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "The Big Merino ",
-                "active": true,
-                "area": "Australia",
-                "address": "88 Hume St, NSW - Goulburn",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=993",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine The Big Merino  in Australia shown as available but http://209.221.138.252/Details.aspx?location=993 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Naturpark Herberstein",
-                "active": true,
-                "area": "Austria",
-                "address": ", Herberstein",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=388",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Naturpark Herberstein in Austria shown as available but http://209.221.138.252/Details.aspx?location=388 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Festung Kufstein Tirol",
-                "active": true,
-                "area": "Austria",
-                "address": ", Kufstein",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=394",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Festung Kufstein Tirol in Austria shown as available but http://209.221.138.252/Details.aspx?location=394 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Schloss Tratzberg",
-                "active": true,
-                "area": "Austria",
-                "address": ", Stans (Tirol, Austria)",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=398",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Schloss Tratzberg in Austria shown as available but http://209.221.138.252/Details.aspx?location=398 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Sea Life Centre",
-                "active": true,
-                "area": "England",
-                "address": "Central Promenade, Blackpool, Lancashire",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=3232",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Sea Life Centre in England shown as available but http://209.221.138.252/Details.aspx?location=3232 responds Internal Server Error (500)"
+            "problem": "Unknown Location  could not find coordinates for , Arco"
         },
         {
             "type": "Feature",
@@ -323,7 +84,6 @@
             },
             "properties": {
                 "name": "Sunderland Football Stadium",
-                "active": true,
                 "area": "England",
                 "address": ", TYNE & WEAR - Sunderland",
                 "status": "unvisited",
@@ -331,10 +91,11 @@
                 "internal_url": "null",
                 "latitude": "N.A.",
                 "longitude": "N.A.",
+                "machine_status": "available",
                 "id": -1,
                 "last_updated": -1
             },
-            "problem": "Machine Sunderland Football Stadium in England shown as available but http://209.221.138.252/Details.aspx?location=4284 responds Internal Server Error (500)"
+            "problem": "To-be-added-machine Sunderland Football Stadium in England seems unavailable: http://209.221.138.252/Details.aspx?location=4284 with Internal Server Error (500)"
         },
         {
             "type": "Feature",
@@ -347,7 +108,6 @@
             },
             "properties": {
                 "name": "Six Flags Mexico",
-                "active": true,
                 "area": "Mexico",
                 "address": "Carretera Picacho Ajusco Km 1.5, Mexico City",
                 "status": "unvisited",
@@ -355,82 +115,11 @@
                 "internal_url": "null",
                 "latitude": "N.A.",
                 "longitude": "N.A.",
+                "machine_status": "available",
                 "id": -1,
                 "last_updated": -1
             },
-            "problem": "Machine Six Flags Mexico in Mexico shown as available but http://209.221.138.252/Details.aspx?location=713 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Dierenpark (ZOO)",
-                "active": true,
-                "area": "Netherlands",
-                "address": "Barchman Wuytierslaan 224 , Amersfoort",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=708",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Dierenpark (ZOO) in Netherlands shown as available but http://209.221.138.252/Details.aspx?location=708 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Duinrell",
-                "active": true,
-                "area": "Netherlands",
-                "address": "Duinrell 1 , Wassenaar",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=621",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine Duinrell in Netherlands shown as available but http://209.221.138.252/Details.aspx?location=621 responds Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "National Waterfront Museum",
-                "active": true,
-                "area": "Wales",
-                "address": "Oystermouth Road Maritime Quarter, SOUTH WALES - Swansea",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=94025",
-                "internal_url": "null",
-                "latitude": "N.A.",
-                "longitude": "N.A.",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "Machine National Waterfront Museum in Wales shown as available but http://209.221.138.252/Details.aspx?location=94025 responds Internal Server Error (500)"
+            "problem": "To-be-added-machine Six Flags Mexico in Mexico seems unavailable: http://209.221.138.252/Details.aspx?location=713 with Internal Server Error (500)"
         }
     ]
 }

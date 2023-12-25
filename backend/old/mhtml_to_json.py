@@ -5,22 +5,14 @@ This script does:
 2. Searches the location name on a map and saves the geographic coordinates
 3. Saves data to .json
 """
-#%%
-import json
+import glob
 import os
 import sys
 
-import requests
-from bs4 import BeautifulSoup
-import os
-
-
 sys.path.append(".")
-import glob
 
 root = "latest_dump"
 for file in glob.glob(os.path.join(root, "*.mhtml")):
-
     area = file.split("/")[-1].split(".")[0]
     with open(file, "r") as f:
         data = f.read()
