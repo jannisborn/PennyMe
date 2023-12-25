@@ -41457,11 +41457,11 @@
                 "internal_url": "null",
                 "latitude": "26.666953",
                 "longitude": "-80.0692442",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3475,
                 "multimachine": 2,
-                "last_updated": "2021-04-05"
+                "last_updated": "2023-12-25"
             }
         },
         {
@@ -41553,6 +41553,75 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1796,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3222017,
+                    26.7127391
+                ]
+            },
+            "properties": {
+                "name": "Lion Country Safari",
+                "area": "Florida",
+                "address": "2003 Lion Country Safari Road, Loxahatchee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1711",
+                "internal_url": "null",
+                "latitude": "26.7127391",
+                "longitude": "-80.3222017",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3379,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1754312,
+                    36.0987973
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino - Food Court",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419397",
+                "internal_url": "null",
+                "latitude": "36.0987973",
+                "longitude": "-115.1754312",
+                "machine_status": "available",
+                "id": 7015,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.259235,
+                    36.0786159
+                ]
+            },
+            "properties": {
+                "name": "Opportunity Village, Las Vegas",
+                "area": "Nevada",
+                "address": "6050 W. Buffalo Dr, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=369525",
+                "internal_url": "null",
+                "latitude": "36.0786159",
+                "longitude": "-115.259235",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5426,
                 "last_updated": "2023-12-25"
             }
         }
