@@ -25,7 +25,7 @@ class Artwork: NSObject, MKAnnotation {
     let multimachine: Int
     var machineStatus: String
     
-    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String) {
+    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String) {
         self.title = title
         self.address = address
         self.coordinate = coordinate

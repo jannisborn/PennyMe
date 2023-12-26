@@ -11,38 +11,70 @@ import SwiftUI
 import MapKit
 import Combine
 
-//// Code for picking coordinates on a map - did not work yet, only showing a map
-//let regionInMeters: Double = 10000
-//@available(iOS 14.0, *)
-//struct MapView: View {
-////    @Binding var selectedLocation: CLLocationCoordinate2D?
-//    @State var region: MKCoordinateRegion
-//    
-//    init(selectedLocation: CLLocationCoordinate2D?) {
-//        if let location = PennyMe.locationManager.location?.coordinate{
-//            let regionTemp = MKCoordinateRegion.init(
-//                center:location,
-//                latitudinalMeters: regionInMeters,
-//                longitudinalMeters: regionInMeters
-//            )
-//            _region = State(initialValue: regionTemp)
-//        } else { // goes to Uetliberg otherwise
-//            let location = CLLocationCoordinate2D(
-//                latitude: 47.349586,
-//                longitude: 8.491197
-//            )
-//            let regionTemp = MKCoordinateRegion.init(
-//                center:location,
-//                latitudinalMeters: regionInMeters,
-//                longitudinalMeters: regionInMeters
-//            )
-//            _region = State(initialValue: regionTemp)
-//        }
-//    }
-//    var body: some View {
-//        Map(coordinateRegion: $region)
-//    }
-//}
+import SwiftUI
+import MapKit
+import CoreLocation
+
+// variable defining how large the shown region is when changing coordinates
+let regionInMeters: Double = 100
+
+@available(iOS 14.0, *)
+struct MapView: View {
+    @State private var region: MKCoordinateRegion
+    @State private var showDoneAlert = false
+    @Binding private var centerCoordinate: CLLocationCoordinate2D
+    @Environment(\.presentationMode) private var presentationMode
+    
+    init(centerCoordinate: Binding<CLLocationCoordinate2D>, initialCenter: CLLocationCoordinate2D) {
+            _centerCoordinate = centerCoordinate
+            let regionTemp = MKCoordinateRegion(
+                center: initialCenter,
+                latitudinalMeters: regionInMeters,
+                longitudinalMeters: regionInMeters
+            )
+            _region = State(initialValue: regionTemp)
+    }
+    
+    var body: some View {
+        let markers = [Marker(location: MapMarker(coordinate: centerCoordinate,
+                                                  tint: .red))]
+        ZStack {
+            // add map
+            Map(coordinateRegion: $region, showsUserLocation: true,
+                annotationItems: markers) { marker in
+                marker.location
+            }.edgesIgnoringSafeArea(.all)
+            .onChange(of: region.center) { newCenter in
+                        centerCoordinate = newCenter
+                    }
+            // add finished button
+            VStack{
+                Spacer()
+                Button("Finished") {
+                    showDoneAlert.toggle()
+                }
+                .padding(20)
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+                .padding(20)
+                .alert(isPresented: $showDoneAlert) {
+                    Alert(
+                        title: Text("Is this where the machine is located? Press yes to finish or no to continue editing."),
+                        primaryButton: .default(Text("Yes")) {
+                            showDoneAlert = false
+                            self.presentationMode.wrappedValue.dismiss()
+                        },
+                        secondaryButton: .cancel(Text("No")) {
+                            showDoneAlert = false
+                            
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
     
 
 @available(iOS 14.0, *)
@@ -62,7 +94,7 @@ struct MachineChangedForm: View {
     
     // to select the location on the map
     @State private var showMap = false
-    @State private var selectedLocation: CLLocationCoordinate2D?
+    @State private var selectedLocation: CLLocationCoordinate2D
     @State private var isMapPresented = false
     
     @State private var showFinishedAlert = false
@@ -78,6 +110,7 @@ struct MachineChangedForm: View {
         pinDataStored = pinData
         _name = State(initialValue: pinData.title!)
         coords = pinData.coordinate
+        _selectedLocation = State(initialValue: coords)
         _address = State(initialValue: pinData.address)
         _area = State(initialValue: pinData.area)
         _paywall = State(initialValue: pinData.paywall)
@@ -85,9 +118,16 @@ struct MachineChangedForm: View {
         
         let lonLatConverted = "\(coords.latitude)° N, \(coords.longitude)° O".replacingOccurrences(of: ".", with: ",")
         _lonLat = State(initialValue: lonLatConverted)
-        // TODO: Change once we have out of order in the json file
-        if pinData.status == "retired" {
-            _selectedSegment = State(initialValue: 2)
+
+        switch pinData.machineStatus {
+            case "available":
+                _selectedSegment = State(initialValue: 0)
+            case "out-of-order":
+                _selectedSegment = State(initialValue: 1)
+            case "retired":
+                _selectedSegment = State(initialValue: 2)
+            default:
+                _selectedSegment = State(initialValue: 0)
         }
         // Observe keyboard frame changes
         keyboardObserver = NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
@@ -149,31 +189,19 @@ struct MachineChangedForm: View {
                 .pickerStyle(SegmentedPickerStyle())
             }.padding()
             // show map
-//            Button(action: {
-//                                isMapPresented = true
-//                            }) {
-//                                Text("Select Location on Map")
-//                            }
-//                            .sheet(isPresented: $isMapPresented) {
-//                                MapView(selectedLocation: selectedLocation ?? nil)
-//                            }
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text("To change longitude and latitude, go to Maps, tap on a location, and copy the coordinates here").foregroundColor(Color.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                HStack {
-                    TextField("Coordinates", text: $lonLat).textFieldStyle(RoundedBorderTextFieldStyle())
-                    Button(action: {
-                        goToMaps()
-                    }) {
-                        Text("Maps")
-                            .padding(10)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
-                            .cornerRadius(10)
-                    }
+            Button(action: {
+                    isMapPresented = true
+                }) {
+                    Text("Change location on map")
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray)
+                        .cornerRadius(10)
                 }
-            }.padding()
+                .sheet(isPresented: $isMapPresented) {
+                    MapView(centerCoordinate: $selectedLocation, initialCenter: coords)
+                }.padding()
             
             // Submit button
             if isLoading {
@@ -214,27 +242,6 @@ struct MachineChangedForm: View {
         pinDataStored.mapItem().openInMaps()
     }
     
-    private func convertCoordsBack(matchedSubstring: String) -> (Double, Double) {
-        let components = matchedSubstring.split(separator: " ").map(String.init)
-        if components.count > 2 {
-            let latitudeString = components[0]
-            let longitudeString = components[2]
-            
-            // Clean up the strings by removing commas and the "°" symbol
-            let cleanLatitudeString = latitudeString.replacingOccurrences(of: ",", with: ".").replacingOccurrences(of: "°", with: "")
-            let cleanLongitudeString = longitudeString.replacingOccurrences(of: ",", with: ".").replacingOccurrences(of: "°", with: "")
-            print(cleanLatitudeString, cleanLongitudeString)
-            if let latitude = Double(cleanLatitudeString), let longitude = Double(cleanLongitudeString) {
-                return (latitude, longitude)
-            } else {
-                return (0, 0)
-            }
-        }
-        else {
-            return (0, 0)
-        }
-    }
-    
     // Function to handle the submission of the request
     private func submitRequest() {
         isLoading = true
@@ -245,27 +252,14 @@ struct MachineChangedForm: View {
             return
         }
         
-        // check if the coordinates are okay
-        let pattern = #"(\d+,\d+° N, \d+,\d+° O)"#
-        let wrongPatternMessage = "Please make sure that the coordinates are in the required format (e.g., 47,2384° N, 8,4568° O)."
-        var lat_coord: Double = 0
-        var lon_coord: Double = 0
-        if let range = lonLat.range(of: pattern, options: .regularExpression) {
-            let matchedSubstring = lonLat[range]
-            (lat_coord, lon_coord) = convertCoordsBack(matchedSubstring: String(matchedSubstring))
-            if lat_coord == 0 {
-                finishLoading(message:wrongPatternMessage)
-                return
-            }
-        }
-        else {
-            finishLoading(message: wrongPatternMessage)
-            return
-        }
+        let lat_coord = selectedLocation.latitude
+        let lon_coord = selectedLocation.longitude
+        print("OLD", coords, "new", lat_coord, lon_coord)
         let statusNew = statusDict[selectedSegment]!
         
         // prepare URL
         let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)& title=\(name)&address=\(address)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+        
         guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
         ) else {
             finishLoading(message: "Something went wrong. Please try to re-enter the information")
@@ -317,4 +311,16 @@ struct MachineChangedForm: View {
         }
         task.resume()
     }
+}
+
+// helper methods - make locations equatable
+extension CLLocationCoordinate2D: Equatable {}
+public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+    return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+}
+// make marker identifiable
+@available(iOS 14.0, *)
+struct Marker: Identifiable {
+    let id = UUID()
+    var location: MapMarker
 }
