@@ -11679,7 +11679,7 @@
             "properties": {
                 "name": "Las Vegas North Premium Outlets - Simon Guest Services",
                 "area": "Nevada",
-                "address": "875 South Grand Central Parkway suite 1690, Las Vegas ",
+                "address": "875 South Grand Central Parkway suite 1690, Las Vegas",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=390820",
                 "internal_url": "null",
@@ -11687,6 +11687,7 @@
                 "longitude": "-115.1592392",
                 "machine_status": "available",
                 "id": 6221,
+                "paywall": true,
                 "last_updated": "2023-10-14"
             }
         },
@@ -41356,7 +41357,7 @@
                 ]
             },
             "properties": {
-                "name": "Candy Edcentures",
+                "name": "Candy Edventures",
                 "area": "North Carolina",
                 "address": "650 W Corbett Ave, Swansboro, NC 28584, USA",
                 "status": "unvisited",
@@ -41437,6 +41438,191 @@
                 "status": "retired",
                 "id": 5860,
                 "last_updated": "2023-12-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.0692442,
+                    26.666953
+                ]
+            },
+            "properties": {
+                "name": "Palm Beach Zoo at Dreher Park",
+                "area": "Florida",
+                "address": "1301 Summitt Boulevard, West Palm Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1509",
+                "internal_url": "null",
+                "latitude": "26.666953",
+                "longitude": "-80.0692442",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3475,
+                "multimachine": 2,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3080192,
+                    37.6737554
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Richmond",
+                "area": "Kentucky",
+                "address": "1013 Buc-ee's Blvd, Richmond",
+                "external_url": "http://209.221.138.252/Details.aspx?location=377603",
+                "internal_url": "null",
+                "latitude": "37.6737554",
+                "longitude": "-84.3080192",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5502,
+                "last_updated": "2023-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.13624709999999,
+                    39.4465319
+                ]
+            },
+            "properties": {
+                "name": "Family Touch Primitive Treasures and Cafe'",
+                "area": "Indiana",
+                "address": "36 Duck Creek, Metamora",
+                "external_url": "http://209.221.138.252/Details.aspx?location=241664",
+                "internal_url": "null",
+                "latitude": "39.4465319",
+                "longitude": "-85.13624709999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2277,
+                "last_updated": "2023-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.535612,
+                    41.6619602
+                ]
+            },
+            "properties": {
+                "name": "University of Iowa Museum of Natural History",
+                "area": "Iowa",
+                "address": "17 N Clinton St, Iowa City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419331",
+                "internal_url": "null",
+                "latitude": "41.6619602",
+                "longitude": "-91.535612",
+                "machine_status": "available",
+                "id": 7014,
+                "last_updated": "2023-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.6896972,
+                    30.570877
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops Oklahoma City",
+                "area": "Oklahoma",
+                "address": "200 Bass Pro Drive, Oklahoma City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3897",
+                "internal_url": "null",
+                "latitude": "30.570877",
+                "longitude": "-97.6896972",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1796,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3222017,
+                    26.7127391
+                ]
+            },
+            "properties": {
+                "name": "Lion Country Safari",
+                "area": "Florida",
+                "address": "2003 Lion Country Safari Road, Loxahatchee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1711",
+                "internal_url": "null",
+                "latitude": "26.7127391",
+                "longitude": "-80.3222017",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3379,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1754312,
+                    36.0987973
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino - Food Court",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419397",
+                "internal_url": "null",
+                "latitude": "36.0987973",
+                "longitude": "-115.1754312",
+                "machine_status": "available",
+                "id": 7015,
+                "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.259235,
+                    36.0786159
+                ]
+            },
+            "properties": {
+                "name": "Opportunity Village, Las Vegas",
+                "area": "Nevada",
+                "address": "6050 W. Buffalo Dr, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=369525",
+                "internal_url": "null",
+                "latitude": "36.0786159",
+                "longitude": "-115.259235",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5426,
+                "last_updated": "2023-12-25"
             }
         }
     ]
