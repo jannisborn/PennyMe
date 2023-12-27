@@ -9,9 +9,13 @@ from typing import Any, Dict
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
-from thefuzz import process as fuzzysearch
-
-from pennyme.github_update import isbusy, push_newmachine_to_github
+from pennyme.github_update import (
+    DATA_BRANCH,
+    commit_json_file,
+    isbusy,
+    load_latest_json,
+    push_newmachine_to_github,
+)
 from pennyme.locations import COUNTRIES
 from pennyme.slack import (
     image_slack,
@@ -19,6 +23,8 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
+from pennyme.utils import find_machine_in_database
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
@@ -30,15 +36,6 @@ GM_CLIENT = GoogleMaps(open("../../gpc_api_key.keypair", "r").read())
 with open("blocked_ips.json", "r") as infile:
     # NOTE: blocking an IP requires restart of app.py via waitress
     blocked_ips = json.load(infile)
-
-with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
-    d = json.load(infile)
-MACHINE_NAMES = {
-    elem["properties"][
-        "id"
-    ]: f"{elem['properties']['name']} ({elem['properties']['area']}) Status={elem['properties']['machine_status']}"
-    for elem in d["features"]
-}
 
 with open("ip_comment_dict.json", "r") as f:
     IP_COMMENT_DICT = json.load(f)
@@ -180,6 +177,24 @@ def process_machine_entry(
         )
 
 
+def verify_machine_location(address, area, title):
+    # Verify that address matches coordinates
+    queries = [address, address + area, address + title]
+    found_coords = False
+    for query in queries:
+        coordinates = GM_CLIENT.geocode(query)
+        try:
+            lat = coordinates[0]["geometry"]["location"]["lat"]
+            lng = coordinates[0]["geometry"]["location"]["lng"]
+            found_coords = True
+            break
+        except IndexError:
+            continue
+    if not found_coords:
+        return False, None, None
+    return found_coords, (lat, lng)
+
+
 @app.route("/create_machine", methods=["POST"])
 def create_machine():
     """Receives a comment and adds it to the json file."""
@@ -204,18 +219,8 @@ def create_machine():
         float(request.args.get("lat_coord")),
     )
     # Verify that address matches coordinates
-    queries = [address, address + area, address + title]
-    for query in queries:
-        coordinates = GM_CLIENT.geocode(query)
-        try:
-            lat = coordinates[0]["geometry"]["location"]["lat"]
-            lng = coordinates[0]["geometry"]["location"]["lng"]
-            break
-        except IndexError:
-            continue
-    try:
-        lat, lng
-    except NameError:
+    found_coords, (lat, lng) = verify_machine_location(address, area, title)
+    if not found_coords:
         return jsonify({"error": "Google Maps does not know this address"}), 400
 
     dist = haversine((lat, lng), (location[1], location[0]))
@@ -223,7 +228,7 @@ def create_machine():
         return (
             jsonify(
                 {
-                    "error": f"Address {query} seems >1km away from coordinates ({lat}, {lng})"
+                    "error": f"Address {address} seems >1km away from coordinates ({location[1]}, {location[0]})"
                 }
             ),
             400,
@@ -304,6 +309,133 @@ def create_machine():
         args=(new_machine_entry, tmp_path, ip_address, title, address),
     )
     thread.start()
+
+    return jsonify({"message": "Success!"}), 200
+
+
+@app.route("/change_machine", methods=["POST"])
+def change_machine():
+    """
+    Receives a request for change of a machine and opens a PR
+    """
+    machine_id = int(request.args.get("id"))
+    title = str(request.args.get("title")).strip()
+    address = str(request.args.get("address")).strip()
+    area = str(request.args.get("area")).strip()
+    status = str(request.args.get("status")).strip()
+    latitude = float(request.args.get("lat_coord"))
+    longitude = float(request.args.get("lon_coord"))
+
+    # Find existing machine data
+    # load server locations from git -> we need it later anyways
+    server_locations, latest_commit_sha = load_latest_json()
+    (
+        existing_machine_infos,
+        index_in_server_locations,
+    ) = find_machine_in_database(machine_id, server_locations["features"])
+
+    # Start new dictionary
+    updated_machine_entry = existing_machine_infos.copy()
+    updated_machine_entry["properties"]["last_updated"]: str(datetime.today()).split(
+        " "
+    )[0]
+    change_message = "Changed"
+
+    # Case 1: status was changed:
+    if status != existing_machine_infos["properties"]["machine_status"]:
+        updated_machine_entry["properties"]["machine_status"] = status
+        change_message += " status"
+
+    # Case 2: if area was changed -> match to available areas
+    if area != existing_machine_infos["properties"]["area"]:
+        # Identify area
+        area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
+        if score < 90:
+            return (
+                jsonify(
+                    {
+                        "error": "Could not match country. Provide country or US state name in English"
+                    }
+                ),
+                400,
+            )
+        updated_machine_entry["properties"]["area"] = area
+        change_message += " area"
+
+    # Case 3: Title changed
+    if title != existing_machine_infos["properties"]["name"]:
+        updated_machine_entry["properties"]["name"] = title
+        change_message += " title"
+
+    # Case 4: multimachine changed
+    try:
+        multimachine = int(request.args.get("multimachine"))
+    except ValueError:
+        # just put the multimachine as a string, we need to correct it then
+        multimachine = "TODO" + str(request.args.get("multimachine"))
+    if multimachine != 1:
+        updated_machine_entry["properties"]["multimachine"] = multimachine
+        change_message += " multimachine"
+
+    # Case 5: paywall reported
+    if request.args.get("paywall") == "true":
+        updated_machine_entry["properties"]["paywall"] = True
+        change_message += " paywall"
+
+    # Case 6: address and / or location changed --> check for their correspondence
+    (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
+    old_address = existing_machine_infos["properties"]["address"]
+    # both changed -> do the check as if it was a new machine
+    # location changed, but address not --> take coordinates as given,
+    # but assure that not super far from address? TODO: round?
+    if latitude != lat_old or longitude != lng_old or address != old_address:
+        # Verify that address matches coordinates
+        found_coords, (lat, lng) = verify_machine_location(address, area, title)
+        # if address was changed but is not found
+        if (not found_coords) and address != old_address:
+            return jsonify({"error": "Google Maps does not know this address"}), 400
+
+        dist = haversine((lat, lng), (latitude, longitude))
+        if dist > 1:  # km
+            return (
+                jsonify(
+                    {
+                        "error": f"Address {address} seems >1km away from coordinates ({latitude}, {longitude}). Please make sure that coordinates and address are aligned."
+                    }
+                ),
+                400,
+            )
+        # if distance is fine, just change the entries
+        updated_machine_entry["properties"]["address"] = address
+        # TODO: potentially use found_coords if only address was changed, but not the location
+        updated_machine_entry["properties"]["latitude"] = str(latitude)
+        updated_machine_entry["properties"]["latitude"] = str(longitude)
+        updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
+        change_message += " location/address"
+
+    # replace or append to server_locations
+    if index_in_server_locations > 0:
+        server_locations["features"][index_in_server_locations] = updated_machine_entry
+    else:
+        server_locations["features"].append(updated_machine_entry)
+
+    # push to github
+    commit_message = (
+        f"request change to machine {machine_id} named {title}. {change_message}"
+    )
+    commit_json_file(
+        server_locations,
+        DATA_BRANCH,
+        commit_message,
+        latest_commit_sha,
+        body=f"Request to change machine {machine_id} named {title}. {change_message}",
+    )
+
+    ip_address = request.remote_addr
+    message_slack_raw(
+        ip=ip_address,
+        text=f"Request to change machine {machine_id} proposed: {change_message}",
+    )
 
     return jsonify({"message": "Success!"}), 200
 

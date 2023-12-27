@@ -14,6 +14,46 @@ logger = logging.getLogger(__name__)
 PATH_IMAGES = os.path.join("..", "..", "images")
 TODAY = f"{YEAR}-{MONTH}-{DAY}"
 
+THIS_PATH = os.path.abspath(__file__)
+PATH_MACHINES = os.path.join(
+    os.path.dirname(THIS_PATH), "..", "..", "data", "all_locations.json"
+)
+with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
+    ALL_LOCATIONS = json.load(infile)
+
+
+def find_machine_in_database(
+    machine_id: int, server_locations: List[Dict]
+) -> (dict, int):
+    """
+    Returns the machine information either from server_locations (if available) or
+    from all_locations, as well as a boolean indicating where the entry is located
+
+    Args:
+        machine_id: ID of machine to search for
+        server_locations: List of read-in server_locations.json content
+
+    Returns:
+        existing_machine_entry (dict): feature of machine
+        index_in_server_locations (int): index if found in the server locations json,
+                else -1
+    """
+    existing_machine_entry = None
+    index_in_server_locations = -1
+    # search in server locations
+    for i, machine_entry in enumerate(server_locations):
+        if machine_entry["properties"]["id"] == machine_id:
+            existing_machine_entry = machine_entry
+            index_in_server_locations = i
+            break
+    # search in all_locations
+    if index_in_server_locations < 0:
+        for machine_entry in ALL_LOCATIONS["features"]:
+            if machine_entry["properties"]["id"] == machine_id:
+                existing_machine_entry = machine_entry
+                break
+    return existing_machine_entry, index_in_server_locations
+
 
 def get_next_free_machine_id(
     all_locations_path: str, server_locations: List[Dict]
