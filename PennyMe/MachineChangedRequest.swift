@@ -261,7 +261,7 @@ struct MachineChangedForm: View {
         
         let lat_coord = selectedLocation.latitude
         let lon_coord = selectedLocation.longitude
-        print("OLD", coords, "new", lat_coord, lon_coord)
+
         let statusNew = statusDict[selectedSegment]!
         
         // prepare URL

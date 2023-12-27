@@ -361,12 +361,12 @@ def change_machine():
                 400,
             )
         updated_machine_entry["properties"]["area"] = area
-        change_message += " area"
+        change_message += " area,"
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
         updated_machine_entry["properties"]["name"] = title
-        change_message += " title"
+        change_message += " title,"
 
     # Case 4: multimachine changed
     try:
@@ -376,40 +376,40 @@ def change_machine():
         multimachine = "TODO" + str(request.args.get("multimachine"))
     if multimachine != 1:
         updated_machine_entry["properties"]["multimachine"] = multimachine
-        change_message += " multimachine"
+        change_message += " multimachine,"
 
     # Case 5: paywall reported
     paywall_new = True if request.args.get("paywall") == "true" else False
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
         updated_machine_entry["properties"]["paywall"] = paywall_new
-        change_message += " paywall"
+        change_message += " paywall,"
 
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
-    # both changed -> do the check as if it was a new machine
-    # location changed, but address not --> take coordinates as given,
-    # but assure that not super far from address? TODO: round?
+    # if address or coordinates were changed, compare them and return warning if needed
     address_okay = True
     if latitude != lat_old or longitude != lng_old or address != old_address:
         # Verify that address matches coordinates
         found_coords, (lat, lng) = verify_machine_location(address, area, title)
-        # if address was changed but is not found
+        # if address was changed but is not found (error only if address was changed)
         if (not found_coords) and address != old_address:
             return jsonify({"error": "Google Maps does not know this address"}), 400
 
         dist = haversine((lat, lng), (latitude, longitude))
         if dist > 1:  # km
-            address_okay = False
+            address_okay = False  # triggers warning
 
-        # if distance is fine, just change the entries
+        # adapt dictionary entries
         updated_machine_entry["properties"]["address"] = address
-        # TODO: potentially use found_coords if only address was changed, but not the location
         updated_machine_entry["properties"]["latitude"] = str(latitude)
         updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
-        change_message += " location/address"
+        if address != old_address:
+            change_message += " address,"
+        if latitude != lat_old or longitude != lng_old:
+            change_message += " location,"
 
     # replace or append to server_locations
     if index_in_server_locations > 0:
@@ -419,14 +419,14 @@ def change_machine():
 
     # push to github
     commit_message = (
-        f"request change to machine {machine_id} named {title}. {change_message}"
+        f"request change to machine {machine_id} named {title}. {change_message[:-1]}"
     )
     commit_json_file(
         server_locations,
         DATA_BRANCH,
         commit_message,
         latest_commit_sha,
-        body=f"Request to change machine {machine_id} named {title}. {change_message}",
+        body=f"Request to change machine {machine_id} named {title}. {change_message[:-1]}",
     )
 
     ip_address = request.remote_addr
