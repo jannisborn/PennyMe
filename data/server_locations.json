@@ -41647,6 +41647,31 @@
                 "id": 711,
                 "last_updated": "2023-12-27"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543281563480207,
+                    47.37036676142182
+                ]
+            },
+            "properties": {
+                "name": "Wasserkirche (Zürich) test",
+                "area": "Switzerland",
+                "address": "Limmatquai 34, 8001 Zurich, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=103894",
+                "internal_url": "null",
+                "latitude": "47.37036676142182",
+                "longitude": "8.543281563480207",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 712,
+                "last_updated": "2023-12-27",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
