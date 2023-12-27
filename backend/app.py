@@ -178,7 +178,7 @@ def process_machine_entry(
         )
 
 
-def verify_machine_location(address, area, title):
+def verify_machine_location(address: str, area: str, title: str) -> (bool, tuple):
     # Verify that address matches coordinates
     queries = [address, address + area, address + title]
     found_coords = False
@@ -192,7 +192,7 @@ def verify_machine_location(address, area, title):
         except IndexError:
             continue
     if not found_coords:
-        return False, None, None
+        return False, (None, None)
     return found_coords, (lat, lng)
 
 
