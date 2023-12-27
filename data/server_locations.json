@@ -41648,6 +41648,29 @@
                 "last_updated": "2021-12-18",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.54636876093761,
+                    47.39096309922289
+                ]
+            },
+            "properties": {
+                "name": "Test new machine",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 68, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39096309922289,
+                "longitude": 8.54636876093761,
+                "machine_status": "available",
+                "id": 7016,
+                "last_updated": "2023-12-27"
+            }
         }
     ]
 }
