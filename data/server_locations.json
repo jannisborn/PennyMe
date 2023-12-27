@@ -2093,9 +2093,9 @@
                 "internal_url": "null",
                 "latitude": "37.4164584",
                 "longitude": "-88.88853370000001",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 5451,
-                "last_updated": "2023-12-27"
+                "last_updated": "2023-07-22"
             }
         },
         {
@@ -14586,7 +14586,8 @@
                 "longitude": "16.3706312",
                 "machine_status": "available",
                 "id": 1021,
-                "last_updated": "2023-10-18"
+                "last_updated": "2023-12-27",
+                "paywall": true
             }
         },
         {
@@ -41623,6 +41624,145 @@
                 "status": "unvisited",
                 "id": 5426,
                 "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543108991556437,
+                    47.37108311595344
+                ]
+            },
+            "properties": {
+                "name": "Wasserkirche (Zürich)",
+                "area": "Switzerland",
+                "address": "Teddy's Souvenir shop, Limmatquai 36, 8001 Zurich, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=103894",
+                "internal_url": "null",
+                "latitude": "47.37108311595344",
+                "longitude": "8.543108991556437",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 712,
+                "last_updated": "2023-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.1171498,
+                    25.1304426
+                ]
+            },
+            "properties": {
+                "name": "Atlantis",
+                "area": "United Arab Emirates",
+                "address": "The Palm, Dubai",
+                "external_url": "http://209.221.138.252/Details.aspx?location=195659",
+                "internal_url": "null",
+                "latitude": "25.1304426",
+                "longitude": "55.1171498",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3483,
+                "last_updated": "2023-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.91638499999999,
+                    34.4408226
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees Calhoun Travel",
+                "area": "Georgia",
+                "address": "601 Union Grove Rd SE, Adairsville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=371558",
+                "internal_url": "null",
+                "latitude": "34.4408226",
+                "longitude": "-84.91638499999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5387,
+                "last_updated": "2023-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3528868,
+                    48.1976502
+                ]
+            },
+            "properties": {
+                "name": "Haus Des Meeres test",
+                "area": "Austria",
+                "address": "Fritz-Grünbaum-Platz 1, 1060 Vienna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319586",
+                "internal_url": "null",
+                "paywall": true,
+                "latitude": "48.1976502",
+                "longitude": "16.3528868",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1013,
+                "last_updated": "2023-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.393286,
+                    48.211074
+                ]
+            },
+            "properties": {
+                "name": "Kunsthaus Wien (Hundertwasser museum) test",
+                "area": "Austria",
+                "address": "Untere Weißgerberstraße 13, 1030 Vienna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=285978",
+                "internal_url": "null",
+                "latitude": "48.211074",
+                "longitude": "16.393286",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1020,
+                "last_updated": "2023-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3725838,
+                    48.2091447
+                ]
+            },
+            "properties": {
+                "name": "Stephansdom (world of souveni",
+                "area": "Austria",
+                "address": "Stephansplatz 8, 1010 Vienna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=162309",
+                "internal_url": "null",
+                "latitude": "48.2091447",
+                "longitude": "16.3725838",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1027,
+                "last_updated": "2023-12-27"
             }
         }
     ]
