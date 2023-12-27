@@ -41704,7 +41704,7 @@
                 ]
             },
             "properties": {
-                "name": "Haus Des Meeres",
+                "name": "Haus Des Meeres test",
                 "area": "Austria",
                 "address": "Fritz-Grünbaum-Platz 1, 1060 Vienna",
                 "external_url": "http://209.221.138.252/Details.aspx?location=319586",
@@ -41712,9 +41712,33 @@
                 "paywall": true,
                 "latitude": "48.1976502",
                 "longitude": "16.3528868",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1013,
+                "last_updated": "2023-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3718284,
+                    48.1982453
+                ]
+            },
+            "properties": {
+                "name": "Karlskirche (St. Charles Church) - test",
+                "area": "Austria",
+                "address": "Kreuzherrengasse 1, 1040 Vienna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=280629",
+                "internal_url": "null",
+                "paywall": true,
+                "latitude": "48.1982453",
+                "longitude": "16.3718284",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1019,
                 "last_updated": "2023-12-27"
             }
         }
