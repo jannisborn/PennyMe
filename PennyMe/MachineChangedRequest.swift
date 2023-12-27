@@ -157,17 +157,20 @@ struct MachineChangedForm: View {
             .padding(3)
             
             // Display coordinates and make button to select them on map
+            let rounded_lat = String(format: "%.4f", selectedLocation.latitude)
+            let rounded_lon = String(format: "%.4f", selectedLocation.longitude)
+            //(selectedLocation.longitude * 1000).rounded() / 1000)
             VStack(alignment: .leading, spacing: 5) {
-                Text("Machine coordinates: \(selectedLocation.latitude), \(selectedLocation.longitude)").padding(3)
+                Text("Lat/lon: \(rounded_lat), \(rounded_lon)").padding(3)
                 Button(action: {
                     isMapPresented = true
                 }) {
                     Text("Change location on map")
-                        .padding(3)
-                        .foregroundColor(Color.white)
+                        .padding()
+                        .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity)
-                        .background(Color.gray)
-                        .cornerRadius(5)
+                        .background(Color.yellow)
+                        .cornerRadius(10)
                 }
                 .sheet(isPresented: $isMapPresented) {
                     MapView(centerCoordinate: $selectedLocation, initialCenter: coords)
