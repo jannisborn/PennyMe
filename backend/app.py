@@ -9,6 +9,8 @@ from typing import Any, Dict
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import (
     DATA_BRANCH,
     commit_json_file,
@@ -24,7 +26,6 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database
-from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 
@@ -336,7 +337,7 @@ def change_machine():
 
     # Start new dictionary
     updated_machine_entry = existing_machine_infos.copy()
-    updated_machine_entry["properties"]["last_updated"]: str(datetime.today()).split(
+    updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
         " "
     )[0]
     change_message = "Changed"
@@ -409,7 +410,7 @@ def change_machine():
         updated_machine_entry["properties"]["address"] = address
         # TODO: potentially use found_coords if only address was changed, but not the location
         updated_machine_entry["properties"]["latitude"] = str(latitude)
-        updated_machine_entry["properties"]["latitude"] = str(longitude)
+        updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         change_message += " location/address"
 

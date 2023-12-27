@@ -60,12 +60,12 @@ struct MapView: View {
                 .padding(20)
                 .alert(isPresented: $showDoneAlert) {
                     Alert(
-                        title: Text("Is this where the machine is located? Press yes to finish or no to continue editing."),
-                        primaryButton: .default(Text("Yes")) {
+                        title: Text("Is this where the machine is located?"),
+                        primaryButton: .default(Text("Save")) {
                             showDoneAlert = false
                             self.presentationMode.wrappedValue.dismiss()
                         },
-                        secondaryButton: .cancel(Text("No")) {
+                        secondaryButton: .cancel(Text("Continue editing")) {
                             showDoneAlert = false
                             
                         }
@@ -83,7 +83,7 @@ struct MachineChangedForm: View {
     var coords: CLLocationCoordinate2D
     var pinDataStored: Artwork
     
-    let statusDict = [0: "active", 1: "out_of_order", 2: "retired"]
+    let statusDict = [0: "available", 1: "out-of-order", 2: "retired"]
     @State private var name: String = ""
     @State private var address: String = ""
     @State private var area: String = ""
@@ -146,7 +146,7 @@ struct MachineChangedForm: View {
                 TextField("Machine title", text: $name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            .padding()
+            .padding(3)
             
             // adress input field
             VStack(alignment: .leading, spacing: 5) {
@@ -154,7 +154,25 @@ struct MachineChangedForm: View {
                 TextField("Address", text: $address)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            .padding()
+            .padding(3)
+            
+            // Display coordinates and make button to select them on map
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Machine coordinates: \(selectedLocation.latitude), \(selectedLocation.longitude)").padding(3)
+                Button(action: {
+                    isMapPresented = true
+                }) {
+                    Text("Change location on map")
+                        .padding(3)
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray)
+                        .cornerRadius(5)
+                }
+                .sheet(isPresented: $isMapPresented) {
+                    MapView(centerCoordinate: $selectedLocation, initialCenter: coords)
+                }.padding(3)
+            }.padding(3)
             
             // Area input field
             VStack(alignment: .leading, spacing: 5) {
@@ -162,7 +180,7 @@ struct MachineChangedForm: View {
                 TextField("Area", text: $area)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            .padding()
+            .padding(3)
             
             // Multimachine input field
             VStack(alignment: .leading, spacing: 5) {
@@ -170,38 +188,24 @@ struct MachineChangedForm: View {
                 TextField("Number of machines", text: $multimachine)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            .padding()
+            .padding(3)
             
             // Paywall checkbox
             Toggle(isOn: $paywall) {
                             Text("Is there a fee / paywall?").foregroundColor(Color.gray)
                         }
-                        .padding()
+                        .padding(3)
             
             // Status segment control
             VStack(alignment: .leading, spacing: 5) {
                 Text("Machine status").foregroundColor(Color.gray)
                 Picker(selection: $selectedSegment, label: Text("Machine status")) {
-                    Text("Active").tag(0)
+                    Text("Available").tag(0)
                     Text("Out-of-order").tag(1)
-                    Text("Removed").tag(2)
+                    Text("Retired").tag(2)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-            }.padding()
-            // show map
-            Button(action: {
-                    isMapPresented = true
-                }) {
-                    Text("Change location on map")
-                        .padding()
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.gray)
-                        .cornerRadius(10)
-                }
-                .sheet(isPresented: $isMapPresented) {
-                    MapView(centerCoordinate: $selectedLocation, initialCenter: coords)
-                }.padding()
+            }.padding(3)
             
             // Submit button
             if isLoading {
@@ -217,7 +221,7 @@ struct MachineChangedForm: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                }.padding().disabled(isLoading)
+                }.padding(3).disabled(isLoading)
             }
             
             AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for suggesting this change. We will review this request shortly. Note that it can take up to a few days until the machine is updated.")
@@ -258,7 +262,7 @@ struct MachineChangedForm: View {
         let statusNew = statusDict[selectedSegment]!
         
         // prepare URL
-        let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)& title=\(name)&address=\(address)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+        let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)&title=\(name)&address=\(address)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
         
         guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
         ) else {
