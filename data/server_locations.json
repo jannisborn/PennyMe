@@ -24207,8 +24207,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -112.731053,
-                    33.968567
+                    -112.73098008456577,
+                    33.968425368052976
                 ]
             },
             "properties": {
@@ -24218,11 +24218,11 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": "33.968567",
-                "longitude": "-112.731053",
+                "latitude": "33.968425368052976",
+                "longitude": "-112.73098008456577",
                 "machine_status": "available",
                 "id": 2721,
-                "last_updated": "2023-10-29"
+                "last_updated": "2023-12-27"
             }
         },
         {
@@ -41671,29 +41671,6 @@
                 "last_updated": "2023-12-27",
                 "multimachine": 2,
                 "paywall": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -98.13685819999999,
-                    18.9371685
-                ]
-            },
-            "properties": {
-                "name": "African Safari",
-                "area": "Mexico",
-                "address": "Carretera a Valsequillo KM 16.5, Puebla",
-                "external_url": "http://209.221.138.252/Details.aspx?location=21207",
-                "internal_url": "null",
-                "latitude": "18.9371685",
-                "longitude": "-98.13685819999999",
-                "machine_status": "retired",
-                "status": "unvisited",
-                "id": 3234,
-                "last_updated": "2023-12-27"
             }
         }
     ]
