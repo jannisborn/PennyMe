@@ -391,6 +391,7 @@ def change_machine():
     # both changed -> do the check as if it was a new machine
     # location changed, but address not --> take coordinates as given,
     # but assure that not super far from address? TODO: round?
+    address_okay = True
     if latitude != lat_old or longitude != lng_old or address != old_address:
         # Verify that address matches coordinates
         found_coords, (lat, lng) = verify_machine_location(address, area, title)
@@ -400,14 +401,8 @@ def change_machine():
 
         dist = haversine((lat, lng), (latitude, longitude))
         if dist > 1:  # km
-            return (
-                jsonify(
-                    {
-                        "error": f"Address {address} seems >1km away from coordinates ({latitude}, {longitude}). Please make sure that coordinates and address are aligned."
-                    }
-                ),
-                400,
-            )
+            address_okay = False
+
         # if distance is fine, just change the entries
         updated_machine_entry["properties"]["address"] = address
         # TODO: potentially use found_coords if only address was changed, but not the location
@@ -439,7 +434,15 @@ def change_machine():
         ip=ip_address,
         text=f"Request to change machine {machine_id} proposed: {change_message}",
     )
-
+    if not address_okay:
+        return (
+            jsonify(
+                {
+                    "error": f"Change request submitted successfully. However, the address ({address}) seems >1km away from coordinates ({latitude}, {longitude}). Consider adjusting your edits such that coordinates and address are aligned."
+                }
+            ),
+            300,
+        )
     return jsonify({"message": "Success!"}), 200
 
 
