@@ -345,7 +345,7 @@ def change_machine():
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
         updated_machine_entry["properties"]["machine_status"] = status
-        change_message += " status"
+        change_message += " status,"
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
