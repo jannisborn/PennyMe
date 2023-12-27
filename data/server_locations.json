@@ -41654,22 +41654,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    8.54636876093761,
-                    47.39096309922289
+                    16.401221,
+                    48.214271
                 ]
             },
             "properties": {
-                "name": "Test new machine",
-                "area": "Switzerland",
-                "address": "Möhrlistrasse 68, 8006 Zürich, Switzerland",
-                "status": "unvisited",
+                "name": "Prater TEST",
+                "area": "Austria",
+                "address": "Strasse des Ersten Mai 111, 1020 Vienna",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.39096309922289,
-                "longitude": 8.54636876093761,
-                "machine_status": "available",
-                "id": 7016,
-                "last_updated": "2023-12-27"
+                "latitude": "48.214271",
+                "longitude": "16.401221",
+                "machine_status": "out_of_order",
+                "status": "unvisited",
+                "id": 5168,
+                "last_updated": "2022-10-05"
             }
         }
     ]
