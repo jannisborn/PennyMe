@@ -20337,9 +20337,9 @@
                 "internal_url": "null",
                 "latitude": "24.8687221",
                 "longitude": "121.8325081",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2376,
-                "last_updated": "2023-10-14"
+                "last_updated": "2023-12-28"
             }
         },
         {
@@ -41110,10 +41110,10 @@
                 "internal_url": "null",
                 "latitude": "36.1137861",
                 "longitude": "-115.1637638",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5975,
-                "last_updated": "2023-12-18"
+                "last_updated": "2023-12-28"
             }
         },
         {
@@ -41647,6 +41647,99 @@
                 "id": 1311,
                 "multimachine": 2,
                 "last_updated": "2023-12-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543325,
+                    47.370296
+                ]
+            },
+            "properties": {
+                "name": "Wasserkirche (Zürich)",
+                "area": "Switzerland",
+                "address": "Teddy's Souvenir shop, Limmatquai 34, 8001 Zurich, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=103894",
+                "internal_url": "null",
+                "latitude": "47.370296",
+                "longitude": "8.543325",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 712,
+                "last_updated": "2023-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3528868,
+                    48.1976502
+                ]
+            },
+            "properties": {
+                "name": "Haus Des Meeres",
+                "area": "Austria",
+                "address": "Fritz-Grünbaum-Platz 1, 1060 Vienna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319586",
+                "internal_url": "null",
+                "paywall": true,
+                "latitude": "48.1976502",
+                "longitude": "16.3528868",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1013,
+                "last_updated": "2023-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.36613,
+                    47.6829155
+                ]
+            },
+            "properties": {
+                "name": "Market Street Pizza",
+                "area": "Washington",
+                "address": "2721 N Market St, Spokane",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419494",
+                "internal_url": "null",
+                "latitude": "47.6829155",
+                "longitude": "-117.36613",
+                "machine_status": "available",
+                "id": 7016,
+                "last_updated": "2023-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -13.7929929,
+                    29.0223682
+                ]
+            },
+            "properties": {
+                "name": "Timanfaya Visitor's Centre",
+                "area": "Spain",
+                "address": "Carretera LZ-67 La Santa Km 9,6, Yaiza",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419471",
+                "internal_url": "null",
+                "latitude": "29.0223682",
+                "longitude": "-13.7929929",
+                "machine_status": "available",
+                "id": 7017,
+                "last_updated": "2023-12-28"
             }
         }
     ]
