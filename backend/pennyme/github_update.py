@@ -4,8 +4,8 @@ import logging
 import os
 from typing import Any, Dict, List, Optional, Tuple
 
+import pandas as pd
 import requests
-
 from pennyme.utils import get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
@@ -105,6 +105,19 @@ def create_new_branch(branch_name: str, headers: Dict[str, Any] = HEADERS) -> bo
             return False
         return True
     return False
+
+
+def get_latest_commit_time():
+    branch_exists = check_branch_exists(DATA_BRANCH)
+    url_base = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/commits/"
+    if branch_exists:
+        api_url = url_base + DATA_BRANCH
+    else:
+        api_url = url_base + "main"
+
+    response = requests.get(api_url, headers=HEADERS)
+    date_last_updated = response.json()["commit"]["author"]["date"]
+    return pd.to_datetime(date_last_updated)
 
 
 def load_latest_json(

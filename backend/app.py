@@ -14,6 +14,7 @@ from thefuzz import process as fuzzysearch
 from pennyme.github_update import (
     DATA_BRANCH,
     commit_json_file,
+    get_latest_commit_time,
     isbusy,
     load_latest_json,
     push_newmachine_to_github,
@@ -327,8 +328,7 @@ def change_machine():
     latitude = float(request.args.get("lat_coord"))
     longitude = float(request.args.get("lon_coord"))
 
-    # Find existing machine data
-    # load server locations from git -> we need it later anyways
+    # Load server locations and find existing machine info
     server_locations, latest_commit_sha = load_latest_json()
     (
         existing_machine_infos,
@@ -411,29 +411,14 @@ def change_machine():
         if latitude != lat_old or longitude != lng_old:
             change_message += " location,"
 
-    # replace or append to server_locations
-    if index_in_server_locations > 0:
-        server_locations["features"][index_in_server_locations] = updated_machine_entry
-    else:
-        server_locations["features"].append(updated_machine_entry)
+    # process machine change in thread
+    thread = Thread(
+        target=process_machine_change,
+        args=(updated_machine_entry, request.remote_addr, change_message),
+    )
+    thread.start()
 
-    # push to github
-    commit_message = (
-        f"request change to machine {machine_id} named {title}. {change_message[:-1]}"
-    )
-    commit_json_file(
-        server_locations,
-        DATA_BRANCH,
-        commit_message,
-        latest_commit_sha,
-        body=f"Request to change machine {machine_id} named {title}. {change_message[:-1]}",
-    )
-
-    ip_address = request.remote_addr
-    message_slack_raw(
-        ip=ip_address,
-        text=f"Request to change machine {machine_id} proposed: {change_message}",
-    )
+    # return warning if the address and coordinates do not correspond
     if not address_okay:
         return (
             jsonify(
@@ -444,6 +429,62 @@ def change_machine():
             300,
         )
     return jsonify({"message": "Success!"}), 200
+
+
+def process_machine_change(
+    updated_machine_entry: dict,
+    ip_address: str,
+    change_message: str,
+    wait_buffer_min: int = 5,
+):
+    time_of_last_commit = get_latest_commit_time()
+    # wait for 5 minutes per default after last commit
+    time_to_wait = time_of_last_commit.timestamp() + wait_buffer_min * 60 - time.time()
+
+    if time_to_wait > 0:
+        time.sleep(time_to_wait)
+    try:
+        machine_id = updated_machine_entry["properties"]["id"]
+        title = updated_machine_entry["properties"]["name"]
+
+        # Reload the server locations to make sure that we have the correct file
+        server_locations, latest_commit_sha = load_latest_json()
+        (
+            existing_machine_infos,
+            index_in_server_locations,
+        ) = find_machine_in_database(machine_id, server_locations["features"])
+
+        # replace or append to server_locations
+        if index_in_server_locations > 0:
+            server_locations["features"][
+                index_in_server_locations
+            ] = updated_machine_entry
+        else:
+            server_locations["features"].append(updated_machine_entry)
+
+        # push to github
+        commit_message = (
+            f"Request change to machine {machine_id} named {title}"
+            + change_message[:-1]
+        )
+        commit_json_file(
+            server_locations,
+            DATA_BRANCH,
+            commit_message,
+            latest_commit_sha,
+            body=commit_message,
+        )
+
+        message_slack_raw(
+            ip=ip_address,
+            text=commit_message,
+        )
+
+    except Exception as e:
+        message_slack_raw(
+            ip=ip_address,
+            text=f"Error when processing machine change request: {machine_id} ({e})",
+        )
 
 
 def create_app():
