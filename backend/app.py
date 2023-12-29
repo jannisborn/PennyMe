@@ -330,7 +330,7 @@ def create_machine():
 @app.route("/change_machine", methods=["POST"])
 def change_machine():
     """
-    Receives a request for change of a machine and opens a PR
+    Receives a request for change of a machine and commits to the `DATA_BRANCH`.
     """
     machine_id = int(request.args.get("id"))
     title = str(request.args.get("title")).strip()
