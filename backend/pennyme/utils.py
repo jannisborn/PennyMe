@@ -2,7 +2,7 @@ import json
 import logging
 import os
 from copy import deepcopy
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import requests
 

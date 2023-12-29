@@ -2,12 +2,14 @@ import base64
 import json
 import logging
 import os
+import time
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import requests
 
-from pennyme.utils import get_next_free_machine_id
+from pennyme.slack import message_slack_raw
+from pennyme.utils import find_machine_in_database, get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
     github_infos = json.load(infile)
@@ -197,6 +199,71 @@ def push_newmachine_to_github(
     )
 
     return machine_id
+
+
+def process_machine_change(
+    updated_machine_entry: dict,
+    ip_address: str,
+    change_message: str,
+    wait_buffer_min: int = 5,
+):
+    """
+    Process a machine change request by modifying the server locations file
+
+    Args:
+        updated_machine_entry: Dictionary with user provided machine information
+        ip_address: IP address of user
+        change_message: commit message describing which fields were changed
+        wait_buffer_min: Time to wait between edits. Defaults to 5.
+    """
+    time_of_last_commit = get_latest_commit_time()
+    # wait for 5 minutes per default after last commit
+    time_to_wait = time_of_last_commit.timestamp() + wait_buffer_min * 60 - time.time()
+
+    if time_to_wait > 0:
+        time.sleep(time_to_wait)
+    try:
+        machine_id = updated_machine_entry["properties"]["id"]
+        title = updated_machine_entry["properties"]["name"]
+
+        # Reload the server locations to make sure that we have the correct file
+        server_locations, latest_commit_sha = load_latest_json()
+        (
+            existing_machine_infos,
+            index_in_server_locations,
+        ) = find_machine_in_database(machine_id, server_locations["features"])
+
+        # replace or append to server_locations
+        if index_in_server_locations > 0:
+            server_locations["features"][
+                index_in_server_locations
+            ] = updated_machine_entry
+        else:
+            server_locations["features"].append(updated_machine_entry)
+
+        # push to github
+        commit_message = (
+            f"Request change to machine {machine_id} named {title}"
+            + change_message[:-1]
+        )
+        commit_json_file(
+            server_locations,
+            DATA_BRANCH,
+            commit_message,
+            latest_commit_sha,
+            body=commit_message,
+        )
+
+        message_slack_raw(
+            ip=ip_address,
+            text=commit_message,
+        )
+
+    except Exception as e:
+        message_slack_raw(
+            ip=ip_address,
+            text=f"Error when processing machine change request: {machine_id} ({e})",
+        )
 
 
 def commit_json_file(
