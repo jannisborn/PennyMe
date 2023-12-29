@@ -392,7 +392,7 @@ def change_machine():
         change_message += " multimachine,"
 
     # Case 5: paywall reported
-    paywall_new = True if request.args.get("paywall") == "true" else False
+    paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
         updated_machine_entry["properties"]["paywall"] = paywall_new
