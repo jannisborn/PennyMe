@@ -6,6 +6,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import requests
+
 from pennyme.utils import get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
