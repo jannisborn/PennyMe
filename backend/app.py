@@ -12,9 +12,9 @@ from haversine import haversine
 from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import (
-    process_machine_change,
     isbusy,
     load_latest_json,
+    process_machine_change,
     push_newmachine_to_github,
 )
 from pennyme.locations import COUNTRIES
