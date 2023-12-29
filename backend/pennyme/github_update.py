@@ -108,7 +108,13 @@ def create_new_branch(branch_name: str, headers: Dict[str, Any] = HEADERS) -> bo
     return False
 
 
-def get_latest_commit_time():
+def get_latest_commit_time() -> pd.Timestamp:
+    """
+    Get the time point of the latest commit to either DATA_BRANCH or main
+
+    Returns:
+        pd.Timestamp: Datetime of last commit
+    """
     branch_exists = check_branch_exists(DATA_BRANCH)
     url_base = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/commits/"
     if branch_exists:

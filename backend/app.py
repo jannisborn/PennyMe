@@ -179,7 +179,19 @@ def process_machine_entry(
         )
 
 
-def verify_machine_location(address: str, area: str, title: str) -> (bool, tuple):
+def address_to_coordinates(address: str, area: str, title: str) -> (bool, tuple):
+    """
+    Geocode address (inputting address, area and title) and return coordinates if found
+
+    Args:
+        address: str with the machine address
+        area: str of the area
+        title: machine title
+
+    Returns:
+        bool: True if coordinates were found, else False
+        tuple: (latitude, longitude) if found, else (None, None)
+    """
     # Verify that address matches coordinates
     queries = [address, address + area, address + title]
     found_coords = False
@@ -221,7 +233,7 @@ def create_machine():
         float(request.args.get("lat_coord")),
     )
     # Verify that address matches coordinates
-    found_coords, (lat, lng) = verify_machine_location(address, area, title)
+    found_coords, (lat, lng) = address_to_coordinates(address, area, title)
     if not found_coords:
         return jsonify({"error": "Google Maps does not know this address"}), 400
 
@@ -370,12 +382,13 @@ def change_machine():
 
     # Case 4: multimachine changed
     try:
-        multimachine = int(request.args.get("multimachine"))
+        multimachine_new = int(request.args.get("multimachine"))
     except ValueError:
         # just put the multimachine as a string, we need to correct it then
-        multimachine = "TODO" + str(request.args.get("multimachine"))
-    if multimachine != 1:
-        updated_machine_entry["properties"]["multimachine"] = multimachine
+        multimachine_new = "TODO" + str(request.args.get("multimachine"))
+    multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
+    if multimachine_new != multimachine_old:
+        updated_machine_entry["properties"]["multimachine"] = multimachine_new
         change_message += " multimachine,"
 
     # Case 5: paywall reported
@@ -392,7 +405,7 @@ def change_machine():
     address_okay = True
     if latitude != lat_old or longitude != lng_old or address != old_address:
         # Verify that address matches coordinates
-        found_coords, (lat, lng) = verify_machine_location(address, area, title)
+        found_coords, (lat, lng) = address_to_coordinates(address, area, title)
         # if address was changed but is not found (error only if address was changed)
         if (not found_coords) and address != old_address:
             return jsonify({"error": "Google Maps does not know this address"}), 400
