@@ -24,6 +24,7 @@ struct MapView: View {
     @State private var showDoneAlert = false
     @Binding private var centerCoordinate: CLLocationCoordinate2D
     @Environment(\.presentationMode) private var presentationMode
+    let initalCenterCoords: CLLocationCoordinate2D
     
     init(centerCoordinate: Binding<CLLocationCoordinate2D>, initialCenter: CLLocationCoordinate2D) {
             _centerCoordinate = centerCoordinate
@@ -33,6 +34,7 @@ struct MapView: View {
                 longitudinalMeters: regionInMeters
             )
             _region = State(initialValue: regionTemp)
+            initalCenterCoords = initialCenter
     }
     
     var body: some View {
@@ -60,7 +62,7 @@ struct MapView: View {
                 .padding(20)
                 .alert(isPresented: $showDoneAlert) {
                     Alert(
-                        title: Text("Is this where the machine is located?"),
+                        title: Text("Moved pin location successfully from (\(initalCenterCoords.latitude), \(initalCenterCoords.longitude)) to (\(centerCoordinate.latitude), \(centerCoordinate.longitude))."),
                         primaryButton: .default(Text("Save")) {
                             showDoneAlert = false
                             self.presentationMode.wrappedValue.dismiss()
