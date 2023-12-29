@@ -24,7 +24,7 @@ with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
 
 def find_machine_in_database(
     machine_id: int, server_locations: List[Dict]
-) -> (dict, int):
+) -> Tuple[Dict[str, Any], int]:
     """
     Returns the machine information either from server_locations (if available) or
     from all_locations, as well as a boolean indicating where the entry is located
