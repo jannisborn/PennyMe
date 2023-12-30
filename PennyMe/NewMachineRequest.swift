@@ -79,7 +79,7 @@ struct ConfirmationMessageView: View {
 }
 
 @available(iOS 14.0, *)
-struct RequestFormView: View {
+struct NewMachineFormView: View {
     let coords: CLLocationCoordinate2D
     // Properties to hold user input
     @State private var name: String = ""

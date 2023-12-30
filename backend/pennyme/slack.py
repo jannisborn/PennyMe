@@ -7,6 +7,8 @@ from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
 
+from pennyme.utils import ALL_LOCATIONS
+
 logger = logging.getLogger(__name__)
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
@@ -16,19 +18,13 @@ THIS_PATH = os.path.abspath(__file__)
 PATH_SERVER_LOCATION = os.path.join(
     os.path.dirname(THIS_PATH), "..", "..", "..", "images", "server_locations.json"
 )
-PATH_MACHINES = os.path.join(
-    os.path.dirname(THIS_PATH), "..", "..", "data", "all_locations.json"
-)
 
-
-with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
-    d = json.load(infile)
 MACHINE_NAMES = {
     elem["properties"][
         "id"
     ]: f"{elem['properties']['name']} ({elem['properties']['area']}) "
     + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
-    for elem in d["features"]
+    for elem in ALL_LOCATIONS["features"]
 }
 
 
