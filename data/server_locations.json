@@ -41659,9 +41659,9 @@
                 ]
             },
             "properties": {
-                "name": "Broadway at the Beach - Wonder Works ",
+                "name": "Broadway at the Beach - Wonder Works",
                 "area": "South Carolina",
-                "address": "1325 Celebrity Circle , Myrtle Beach",
+                "address": "1325 Celebrity Circle, Myrtle Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=213698",
                 "internal_url": "null",
                 "latitude": "33.7168203",
@@ -41670,6 +41670,53 @@
                 "status": "unvisited",
                 "id": 2215,
                 "last_updated": "2023-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.637616,
+                    30.15827
+                ]
+            },
+            "properties": {
+                "name": "Longhorn Truck & Car Plaza",
+                "area": "Louisiana",
+                "address": "2374 HWY 109 South, Vinton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331528",
+                "internal_url": "null",
+                "latitude": "30.15827",
+                "longitude": "-93.637616",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3600,
+                "last_updated": "2024-01-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0347812,
+                    47.5021827
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Bastion, Hilton Hotel",
+                "area": "Hungary",
+                "address": "Budapest, Szentháromság tér, 1014 Hungary",
+                "external_url": "http://209.221.138.252/Details.aspx?location=205104",
+                "internal_url": "null",
+                "latitude": "47.5021827",
+                "longitude": "19.0347812",
+                "machine_status": "available",
+                "status": "unvisited",
+                "multimachine": 2,
+                "id": 826,
+                "last_updated": "2024-01-01"
             }
         }
     ]
