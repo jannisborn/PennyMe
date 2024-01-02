@@ -41925,6 +41925,52 @@
                 "id": 3902,
                 "last_updated": "2021-04-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.0553447,
+                    53.81190849999999
+                ]
+            },
+            "properties": {
+                "name": "Peter Rabbit Explore and Play",
+                "area": "England",
+                "address": "91 Promenade, , Blackpool ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419765",
+                "internal_url": "null",
+                "latitude": "53.81190849999999",
+                "longitude": "-3.0553447",
+                "machine_status": "available",
+                "id": 7024,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.280687,
+                    51.722921
+                ]
+            },
+            "properties": {
+                "name": "Willows Activity Farm",
+                "area": "England",
+                "address": "Coursers Road, London Colney,, HERTFORDSHIRE - St Albans",
+                "external_url": "http://209.221.138.252/Details.aspx?location=296278",
+                "internal_url": "null",
+                "latitude": "51.722921",
+                "longitude": "-0.280687",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1425,
+                "last_updated": "2024-01-02"
+            }
         }
     ]
 }
