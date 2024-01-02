@@ -7652,9 +7652,9 @@
                 ]
             },
             "properties": {
-                "name": "Oddyssea",
+                "name": "Jupiter & Main",
                 "area": "California",
-                "address": "617 Main Street, Half Moon Bay",
+                "address": "432 Main Street Unit B, Half Moon Bay, CA , 94019",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=200909",
                 "internal_url": "null",
@@ -41901,6 +41901,29 @@
                 "machine_status": "available",
                 "id": 7023,
                 "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.06791,
+                    37.474715
+                ]
+            },
+            "properties": {
+                "name": "Bluestone Travel Plaza",
+                "area": "West Virginia",
+                "address": "Milepost 18 Northbound on I-77 (West Virginia Turnpike), Princeton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=972",
+                "internal_url": "null",
+                "latitude": "37.474715",
+                "longitude": "-81.06791",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3902,
+                "last_updated": "2021-04-05"
             }
         }
     ]
