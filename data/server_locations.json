@@ -5208,13 +5208,13 @@
                 "area": "Tennessee",
                 "address": "3106 Parkway, Pigeon Forge, TN 37863, United States",
                 "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=63286",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "35.7940287",
                 "longitude": "-83.5628564",
                 "machine_status": "retired",
                 "id": 4268,
-                "last_updated": "2023-10-09"
+                "last_updated": "2024-01-02"
             }
         },
         {
@@ -9661,9 +9661,9 @@
                 "internal_url": "null",
                 "latitude": "37.9779385",
                 "longitude": "-91.7215746",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6162,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-02"
             }
         },
         {
@@ -10972,9 +10972,9 @@
                 "internal_url": "null",
                 "latitude": "29.4253459",
                 "longitude": "-98.4984139",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6196,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-02"
             }
         },
         {
@@ -13066,9 +13066,9 @@
                 "internal_url": "null",
                 "latitude": "40.7143028",
                 "longitude": "-73.990866",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3043,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-02"
             }
         },
         {
@@ -20337,9 +20337,9 @@
                 "internal_url": "null",
                 "latitude": "24.8687221",
                 "longitude": "121.8325081",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2376,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-02"
             }
         },
         {
@@ -41110,10 +41110,10 @@
                 "internal_url": "null",
                 "latitude": "36.1137861",
                 "longitude": "-115.1637638",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5975,
-                "last_updated": "2023-12-18"
+                "last_updated": "2024-01-02"
             }
         },
         {
@@ -41717,6 +41717,190 @@
                 "multimachine": 2,
                 "id": 826,
                 "last_updated": "2024-01-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.6884047,
+                    40.4221593
+                ]
+            },
+            "properties": {
+                "name": "Colorado Model Railroad Museum",
+                "area": "Colorado",
+                "address": "680 10th Street, Greeley",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419577",
+                "internal_url": "null",
+                "latitude": "40.4221593",
+                "longitude": "-104.6884047",
+                "machine_status": "available",
+                "id": 7016,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0715651,
+                    40.8089829
+                ]
+            },
+            "properties": {
+                "name": "American Dream - Legoland Discovery Center",
+                "area": "New Jersey",
+                "address": "1 American Dream Wy, East Rutherford, NJ 07073, East Rutherford",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419558",
+                "internal_url": "null",
+                "latitude": "40.8089829",
+                "longitude": "-74.0715651",
+                "machine_status": "available",
+                "id": 7017,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.36613,
+                    47.6829155
+                ]
+            },
+            "properties": {
+                "name": "Market Street Pizza",
+                "area": "Washington",
+                "address": "2721 N Market St, Spokane",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419494",
+                "internal_url": "null",
+                "latitude": "47.6829155",
+                "longitude": "-117.36613",
+                "machine_status": "available",
+                "id": 7018,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.7606937,
+                    47.2837814
+                ]
+            },
+            "properties": {
+                "name": "Tauern Spa",
+                "area": "Austria",
+                "address": "Tauern Spa Platz 1, Kaprun",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419695",
+                "internal_url": "null",
+                "latitude": "47.2837814",
+                "longitude": "12.7606937",
+                "machine_status": "available",
+                "id": 7019,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.2956165,
+                    52.5209319
+                ]
+            },
+            "properties": {
+                "name": "Charlottenburg Palace Gift Shop",
+                "area": "Germany",
+                "address": "Spandauer Damm 10-22, Berlin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419559",
+                "internal_url": "null",
+                "latitude": "52.5209319",
+                "longitude": "13.2956165",
+                "machine_status": "available",
+                "id": 7020,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    133.8085531,
+                    34.3116712
+                ]
+            },
+            "properties": {
+                "name": "Gold Tower",
+                "area": "Japan",
+                "address": "1-8-1 Hama Utazucho Ayauta-gun, Kagawa Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419684",
+                "internal_url": "null",
+                "latitude": "34.3116712",
+                "longitude": "133.8085531",
+                "machine_status": "available",
+                "id": 7021,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.015256,
+                    52.24797599999999
+                ]
+            },
+            "properties": {
+                "name": "Warsaw Royal Castle shop",
+                "area": "Poland",
+                "address": "plac Zamkowy 4, , Warszawa, Polonia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419686",
+                "internal_url": "null",
+                "latitude": "52.24797599999999",
+                "longitude": "21.015256",
+                "machine_status": "available",
+                "id": 7022,
+                "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -13.7929929,
+                    29.0223682
+                ]
+            },
+            "properties": {
+                "name": "Timanfaya Visitor's Centre",
+                "area": "Spain",
+                "address": "Carretera LZ-67 La Santa Km 9,6, Yaiza",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=419471",
+                "internal_url": "null",
+                "latitude": "29.0223682",
+                "longitude": "-13.7929929",
+                "machine_status": "available",
+                "id": 7023,
+                "last_updated": "2024-01-02"
             }
         }
     ]
