@@ -19343,14 +19343,14 @@
                 "name": "National Galleries of Scotland",
                 "area": "Scotland",
                 "address": "The Mound, Edinburgh",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=262458",
+                "status": "retired",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "55.950902",
                 "longitude": "-3.1956862",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 756,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-04"
             }
         },
         {
@@ -27484,9 +27484,9 @@
             "properties": {
                 "name": "Inverness Museum and Art Gallery",
                 "area": "Scotland",
-                "address": "Castle Wynd, Inverness",
+                "address": "Castle Wynd, Inverness, IV2 3EQ",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262458",
                 "internal_url": "null",
                 "latitude": "57.47703319999999",
                 "longitude": "-4.225450599999999",
@@ -41970,6 +41970,52 @@
                 "status": "unvisited",
                 "id": 1425,
                 "last_updated": "2024-01-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.4147936,
+                    38.7871306
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Missouri",
+                "address": "St Louis Mills Mall, Hazelwood",
+                "external_url": "http://209.221.138.252/Details.aspx?location=25576",
+                "internal_url": "null",
+                "latitude": "38.7871306",
+                "longitude": "-90.4147936",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 1091,
+                "last_updated": "2024-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3763838,
+                    40.5909948
+                ]
+            },
+            "properties": {
+                "name": "Turtle Bay Exploration Park Museum Store (Next to Sundial Bridge)",
+                "area": "California",
+                "address": "844 Sundial Bridge Dr, Redding",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1242",
+                "internal_url": "null",
+                "latitude": "40.5909948",
+                "longitude": "-122.3763838",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 4744,
+                "last_updated": "2024-01-04"
             }
         }
     ]
