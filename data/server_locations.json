@@ -7654,7 +7654,7 @@
             "properties": {
                 "name": "Jupiter & Main",
                 "area": "California",
-                "address": "432 Main Street Unit B, Half Moon Bay, CA , 94019",
+                "address": "432 Main Street Unit B, Half Moon Bay, CA, 94019",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=200909",
                 "internal_url": "null",
@@ -42039,6 +42039,29 @@
                 "machine_status": "available",
                 "id": 7025,
                 "last_updated": "2024-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0074818,
+                    29.2261314
+                ]
+            },
+            "properties": {
+                "name": "Joyland Amusement Center",
+                "area": "Florida",
+                "address": "49 Boardwalk underthe Slingshot, near Atlantic & Auditorium Blvd, Daytona Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=25215",
+                "internal_url": "null",
+                "latitude": "29.2261314",
+                "longitude": "-81.0074818",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3281,
+                "last_updated": "2024-01-05"
             }
         }
     ]
