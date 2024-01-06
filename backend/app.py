@@ -12,8 +12,6 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -29,6 +27,7 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -350,8 +349,8 @@ def change_machine():
 
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
-        updated_machine_entry["properties"]["machine_status"] = status
         msg += f"\tStatus from: {updated_machine_entry['properties']['machine_status']} to: {status}\n"
+        updated_machine_entry["properties"]["machine_status"] = status
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
