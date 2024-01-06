@@ -11,8 +11,6 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import (
     get_latest_commit_time,
     isbusy,
@@ -28,6 +26,7 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -353,7 +352,7 @@ def change_machine():
 
     msg = " - Changed:\n"
 
-    latest_commit = get_latest_commit_time("main").date()
+    latest_commit = get_latest_commit_time("main")
     latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
     if latest_change.date() >= latest_commit.date():
         msg += "Machine with pending changes is getting changed *AGAIN*:\n"
