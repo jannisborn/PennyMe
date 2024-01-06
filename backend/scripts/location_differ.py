@@ -173,6 +173,8 @@ def location_differ(
     for i, area in enumerate(areas):
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
+        if i > 5:
+            break
 
         # Scraping data for that area
         area_id = COUNTRY_TO_CODE[area]

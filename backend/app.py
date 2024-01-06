@@ -447,6 +447,10 @@ def trigger_location_differ():
 
 
 def run_location_differ():
+    f = open("/root/PennyMe/new_data/cron.log", "w")
+    sys.stdout = f
+    sys.stderr = f
+
     old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
     new_json_file = "/root/PennyMe/new_data/server_locations.json"
     new_problems_json_file = "/root/PennyMe/new_data/problems.json"
@@ -471,6 +475,8 @@ def run_location_differ():
     )
     os.rename(new_json_file, os.path.join(debug_path, os.path.basename(new_json_file)))
 
+    f.close()
+
 
 def worker():
     """
@@ -491,11 +497,6 @@ Thread(target=worker, daemon=True).start()
 def create_app():
     logger.remove()
     logger.add(sys.stderr, level="DEBUG")  # Add stderr handler
-
-    @app.route("/")
-    def hello_world():
-        logger.debug("Hello, world!")
-        return "Hello, World!"
 
     return app
 
