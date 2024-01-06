@@ -2,6 +2,7 @@ import json
 import os
 import queue
 import random
+import sys
 import time
 from datetime import datetime
 from threading import Thread
@@ -11,6 +12,7 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from loguru import logger
 from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import (
@@ -356,7 +358,7 @@ def change_machine():
     latest_commit = get_latest_commit_time("main")
     latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
     if latest_change.date() >= latest_commit.date():
-        msg += "Machine with pending changes is getting changed *AGAIN*:\n"
+        msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:\n"
 
     # Start new dictionary
     updated_machine_entry = existing_machine_infos.copy()
@@ -468,6 +470,14 @@ Thread(target=worker, daemon=True).start()
 
 
 def create_app():
+    logger.remove()
+    logger.add(sys.stderr, level="DEBUG")  # Add stderr handler
+
+    @app.route("/")
+    def hello_world():
+        logger.debug("Hello, world!")
+        return "Hello, World!"
+
     return app
 
 
