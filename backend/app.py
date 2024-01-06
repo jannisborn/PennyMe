@@ -12,6 +12,10 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -27,7 +31,6 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database
-from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -432,6 +435,41 @@ def change_machine():
             300,
         )
     return jsonify({"message": "Success!"}), 200
+
+
+@app.route("/trigger_location_differ", methods=["POST"])
+def trigger_location_differ():
+    """
+    Triggers the location differ script.
+    """
+    request_queue.put((run_location_differ, ()))
+    return jsonify({"message": "Success!"}), 200
+
+
+def run_location_differ():
+    old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
+    new_json_file = "/root/PennyMe/new_data/server_locations.json"
+    new_problems_json_file = "/root/PennyMe/new_data/problems.json"
+    debug_path = "/root/PennyMe/debug_new_data"
+
+    # Make sure all preceding jobs are finished
+    wait()
+
+    location_differ(
+        output_folder="/root/PennyMe/new_data",
+        device_json="/root/PennyMe/data/all_locations.json",
+        server_json=old_json_file,
+        api_key=os.getenv("GCLOUD_KEY"),
+        load_from_github=True,
+    )
+    open_differ_pr(locations_path=new_json_file, problems_path=new_problems_json_file)
+
+    # Move files
+    os.rename(
+        new_problems_json_file,
+        os.path.join(debug_path, os.path.basename(new_problems_json_file)),
+    )
+    os.rename(new_json_file, os.path.join(debug_path, os.path.basename(new_json_file)))
 
 
 def worker():

@@ -33,7 +33,8 @@ from pennyme.pennycollector import (
     prelim_to_problem_json,
     validate_location_list,
 )
-from pennyme.utils import verify_remaining_machines
+
+# from pennyme.utils import verify_remaining_machines
 from pennyme.webconfig import get_website, safely_test_link
 
 logging.basicConfig(level=logging.INFO)
@@ -494,7 +495,7 @@ def location_differ(
         dups = [(v, c) for v, c in counts.items() if c > 1]
         raise ValueError(f"Identified duplicate machines: {dups}")
 
-    server_data = verify_remaining_machines(server_data, device_data, validated_links)
+    # server_data = verify_remaining_machines(server_data, device_data, validated_links)
 
     fn = "server_locations.json"
     with open(os.path.join(output_folder, fn), "w", encoding="utf8") as f:
