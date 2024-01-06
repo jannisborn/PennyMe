@@ -7,7 +7,6 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 import requests
 from loguru import logger
-
 from pennyme.slack import message_slack_raw
 from pennyme.utils import find_machine_in_database, get_next_free_machine_id
 
@@ -211,20 +210,45 @@ def push_newmachine_to_github(
     return machine_id
 
 
-def wait(t: int = 5):
+def wait(time_to_wait: int = 5, check_cronjob: bool = True):
     """
-    Wait for t minutes after last commit
+    Wait until time_to_wait minutes have passed after last commit and cron job is not running.
 
     Args:
-        t: Waiting time in minutes. Defaults to 5.
+        time_to_wait: Waiting time in minutes. Defaults to 5.
+        check_cronjob: If True, also checks whether the cron job is running.
     """
-    # wait for 5 minutes per default after last commit
-    time_of_last_commit = get_latest_commit_time()
-    time_to_wait = time_of_last_commit.timestamp() + t * 60 - time.time()
-    while time_to_wait > 0:
-        time.sleep(time_to_wait)
+
+    cronruns = check_cronjob
+    t = time_to_wait
+
+    while cronruns or time_to_wait > 0:
+        if check_cronjob:
+            # Optional waiting if cron job is running
+            cronruns = isbusy()
+            if cronruns:
+                message_slack_raw(
+                    text="Found conflicting cron job, waiting for it to finish...",
+                )
+                counter = 0
+                while isbusy() and counter < 60:
+                    time.sleep(300)  # Retry every 5min
+                    counter += 1
+                if counter == 60:
+                    message_slack_raw(
+                        text="Timeout of 5h reached, cron job still runs, aborting...",
+                    )
+                    return
+                # Should be done by now
+                cronruns = isbusy()
+
+        # wait for 5 minutes per default after last commit
         time_of_last_commit = get_latest_commit_time()
         time_to_wait = time_of_last_commit.timestamp() + t * 60 - time.time()
+        while time_to_wait > 0:
+            time.sleep(time_to_wait)
+            time_of_last_commit = get_latest_commit_time()
+            time_to_wait = time_of_last_commit.timestamp() + t * 60 - time.time()
 
 
 def process_machine_change(
@@ -276,15 +300,11 @@ def process_machine_change(
             body=commit_message,
         )
 
-        message_slack_raw(
-            ip=ip_address,
-            text=commit_message,
-        )
+        message_slack_raw(text=commit_message)
 
     except Exception as e:
         message_slack_raw(
-            ip=ip_address,
-            text=f"Error when processing machine change request: {machine_id} ({e})",
+            text=f"Error when processing machine change request: {machine_id} ({e})"
         )
 
 

@@ -3,7 +3,6 @@ import os
 import queue
 import random
 import sys
-import time
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -17,10 +16,10 @@ from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import (
     get_latest_commit_time,
-    isbusy,
     load_latest_json,
     process_machine_change,
     push_newmachine_to_github,
+    wait,
 )
 from pennyme.locations import COUNTRIES
 from pennyme.slack import (
@@ -142,25 +141,11 @@ def process_machine_entry(
         title: The title of the machine.
         address: The address of the machine.
     """
-    try:
-        # Optional waiting if cron job is running
-        if isbusy():
-            message_slack_raw(
-                ip=ip_address,
-                text="Found conflicting cron job, waiting for it to finish...",
-            )
-            counter = 0
-            while isbusy() and counter < 60:
-                time.sleep(300)  # Retry every 5min
-                counter += 1
-            if counter == 60:
-                message_slack_raw(
-                    ip=ip_address,
-                    text="Timeout of 5h reached, cron job still runs, aborting...",
-                )
-                return
 
-        # Cron job has finished, we can add machine
+    try:
+        # Wait for cron job to finish and until 5 min passed since last commit
+        wait()
+        # We can add machine
         new_machine_id = push_newmachine_to_github(new_machine_entry)
 
         # Move the image file from temporary to permanent path
@@ -179,7 +164,6 @@ def process_machine_entry(
         )
     except Exception as e:
         message_slack_raw(
-            ip=ip_address,
             text=f"Error when processing machine entry: {title}, {address} ({e})",
         )
 
@@ -318,9 +302,7 @@ def create_machine():
     tmp_path = os.path.join(PATH_IMAGES, f"{random.randint(-(2**16), -1)}.jpg")
     request.files["image"].save(tmp_path)
 
-    message_slack_raw(
-        ip=ip_address, text=f"New machine proposed: {title}, {address} ({area})"
-    )
+    message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
     # Add to queue
     request_queue.put(
         (
@@ -391,8 +373,8 @@ def change_machine():
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
-        updated_machine_entry["properties"]["name"] = title
         msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
+        updated_machine_entry["properties"]["name"] = title
 
     # Case 4: multimachine changed
     try:
