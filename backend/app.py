@@ -1,5 +1,4 @@
 import json
-import logging
 import os
 import queue
 import random
@@ -11,6 +10,7 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from loguru import logger
 from scripts.location_differ import location_differ
 from scripts.open_diff_pull_request import open_differ_pr
 from thefuzz import process as fuzzysearch
@@ -445,29 +445,19 @@ def trigger_location_differ():
     return jsonify({"message": "Success!"}), 200
 
 
-def setup_logging():
+def setup_logger():
     log_file = "/root/PennyMe/new_data/cron.log"
 
-    # Create a custom logger
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)  # Adjust the level as needed
-
-    # Create handlers
-    f_handler = logging.FileHandler(log_file)
-    f_handler.setLevel(logging.INFO)  # Adjust the level as needed
-
-    # Create formatters and add it to handlers
-    f_format = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    f_handler.setFormatter(f_format)
-
-    # Add handlers to the logger
-    logger.addHandler(f_handler)
+    # Configure Loguru logger
+    logger.add(
+        log_file, rotation="10 MB", level="INFO", format="{time} {level} {message}"
+    )
 
 
 def run_location_differ():
     import sys
 
-    setup_logging()
+    setup_logger()
 
     old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
     new_json_file = "/root/PennyMe/new_data/server_locations.json"

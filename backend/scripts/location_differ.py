@@ -8,13 +8,13 @@ This is the main script for retrieving updates from the website. It does:
 """
 import argparse
 import json
-import logging
 import os
 from collections import Counter, defaultdict
 from datetime import datetime
 
 import pandas as pd
 from googlemaps import Client as GoogleMaps
+from loguru import logger
 from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import load_latest_json
@@ -36,9 +36,6 @@ from pennyme.pennycollector import (
 
 # from pennyme.utils import verify_remaining_machines
 from pennyme.webconfig import get_website, safely_test_link
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
