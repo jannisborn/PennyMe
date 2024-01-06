@@ -2,6 +2,7 @@ import json
 import os
 import queue
 import random
+from contextlib import contextmanager
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -445,45 +446,56 @@ def trigger_location_differ():
     return jsonify({"message": "Success!"}), 200
 
 
-def setup_logger():
+def setup_locdiffer_logger():
     log_file = "/root/PennyMe/new_data/cron.log"
 
     # Configure Loguru logger
     logger.add(
-        log_file, rotation="10 MB", level="INFO", format="{time} {level} {message}"
+        log_file,
+        rotation="10 MB",
+        level="INFO",
+        format="{time:YYYY-MM-DD HH:mm:ss} {level} {message}",
     )
+
+
+@contextmanager
+def temporary_logging_to_file():
+    handler_id = setup_locdiffer_logger()
+    try:
+        yield
+    finally:
+        logger.remove(handler_id)
 
 
 def run_location_differ():
-    import sys
+    with temporary_logging_to_file():
+        old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
+        new_json_file = "/root/PennyMe/new_data/server_locations.json"
+        new_problems_json_file = "/root/PennyMe/new_data/problems.json"
+        debug_path = "/root/PennyMe/debug_new_data"
 
-    setup_logger()
+        # Make sure all preceding jobs are finished
+        wait()
 
-    old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
-    new_json_file = "/root/PennyMe/new_data/server_locations.json"
-    new_problems_json_file = "/root/PennyMe/new_data/problems.json"
-    debug_path = "/root/PennyMe/debug_new_data"
+        location_differ(
+            output_folder="/root/PennyMe/new_data",
+            device_json="/root/PennyMe/data/all_locations.json",
+            server_json=old_json_file,
+            api_key=os.getenv("GCLOUD_KEY"),
+            load_from_github=True,
+        )
+        open_differ_pr(
+            locations_path=new_json_file, problems_path=new_problems_json_file
+        )
 
-    # Make sure all preceding jobs are finished
-    wait()
-
-    location_differ(
-        output_folder="/root/PennyMe/new_data",
-        device_json="/root/PennyMe/data/all_locations.json",
-        server_json=old_json_file,
-        api_key=os.getenv("GCLOUD_KEY"),
-        load_from_github=True,
-    )
-    open_differ_pr(locations_path=new_json_file, problems_path=new_problems_json_file)
-
-    # Move files
-    os.rename(
-        new_problems_json_file,
-        os.path.join(debug_path, os.path.basename(new_problems_json_file)),
-    )
-    os.rename(new_json_file, os.path.join(debug_path, os.path.basename(new_json_file)))
-
-    sys.stdout = sys.__stdout__
+        # Move files
+        os.rename(
+            new_problems_json_file,
+            os.path.join(debug_path, os.path.basename(new_problems_json_file)),
+        )
+        os.rename(
+            new_json_file, os.path.join(debug_path, os.path.basename(new_json_file))
+        )
 
 
 def worker():

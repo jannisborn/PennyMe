@@ -90,7 +90,6 @@ def get_location_list_from_location_website(
             one per column.
     """
     raw_locations = get_raw_locations_from_location_website(website)
-    logger.warning("DEBUG MESSGAGE")
 
     # 5 Tags always make up one location
     location_list = []
@@ -216,5 +215,4 @@ def get_coordinates(
     except NameError:
         logger.error(f"Geolocation failed for: {title}\t sub: {subtitle}")
         lat, lng = 0, 0
-    logger.info("Found location!")
     return lat, lng
