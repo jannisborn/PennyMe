@@ -42227,6 +42227,32 @@
                 "id": 712,
                 "last_updated": "2024-01-06"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.856078543961587,
+                    46.68619661276094
+                ]
+            },
+            "properties": {
+                "name": "Interlaken",
+                "area": "Switzerland",
+                "address": "Höheweg 35, Interlaken, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27700",
+                "internal_url": "null",
+                "latitude": "46.68619661276094",
+                "longitude": "7.856078543961587",
+                "logs": {
+                    "2021-11-14": "Requires 2 CHF + 20 Rappen."
+                },
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 719,
+                "last_updated": "2024-01-06"
+            }
         }
     ]
 }
