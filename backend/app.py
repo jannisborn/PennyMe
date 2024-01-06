@@ -1,5 +1,6 @@
 import json
 import os
+import queue
 import random
 import time
 from datetime import datetime
@@ -27,6 +28,8 @@ from pennyme.slack import (
 from pennyme.utils import find_machine_in_database
 
 app = Flask(__name__)
+request_queue = queue.Queue()
+
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
@@ -337,6 +340,7 @@ def change_machine():
     status = str(request.args.get("status")).strip()
     latitude = float(request.args.get("lat_coord"))
     longitude = float(request.args.get("lon_coord"))
+    ip = request.remote_addr
 
     # Load server locations and find existing machine info
     server_locations, latest_commit_sha = load_latest_json()
@@ -350,12 +354,12 @@ def change_machine():
     updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
         " "
     )[0]
-    change_message = "Changed"
+    msg = " - Changed"
 
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
         updated_machine_entry["properties"]["machine_status"] = status
-        change_message += " status,"
+        msg += " status,"
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
@@ -371,12 +375,12 @@ def change_machine():
                 400,
             )
         updated_machine_entry["properties"]["area"] = area
-        change_message += " area,"
+        msg += " area,"
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
         updated_machine_entry["properties"]["name"] = title
-        change_message += " title,"
+        msg += " title,"
 
     # Case 4: multimachine changed
     try:
@@ -387,14 +391,14 @@ def change_machine():
     multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
     if multimachine_new != multimachine_old:
         updated_machine_entry["properties"]["multimachine"] = multimachine_new
-        change_message += " multimachine,"
+        msg += " multimachine,"
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
         updated_machine_entry["properties"]["paywall"] = paywall_new
-        change_message += " paywall,"
+        msg += " paywall,"
 
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
@@ -418,16 +422,11 @@ def change_machine():
         updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
-            change_message += " address,"
+            msg += " address,"
         if latitude != lat_old or longitude != lng_old:
-            change_message += " location,"
+            msg += " location,"
 
-    # process machine change in thread
-    thread = Thread(
-        target=process_machine_change,
-        args=(updated_machine_entry, request.remote_addr, change_message),
-    )
-    thread.start()
+    request_queue.put((updated_machine_entry, ip, msg))
 
     # return warning if the address and coordinates do not correspond
     if not address_okay:
@@ -440,6 +439,22 @@ def change_machine():
             300,
         )
     return jsonify({"message": "Success!"}), 200
+
+
+def worker():
+    """
+    Worker thread that processes the machine change requests.
+    """
+    while True:
+        args = request_queue.get()
+        try:
+            process_machine_change(*args)
+        finally:
+            request_queue.task_done()
+
+
+# Start the worker thread
+Thread(target=worker, daemon=True).start()
 
 
 def create_app():
