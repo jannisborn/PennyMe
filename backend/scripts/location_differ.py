@@ -15,6 +15,8 @@ from datetime import datetime
 
 import pandas as pd
 from googlemaps import Client as GoogleMaps
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -34,7 +36,6 @@ from pennyme.pennycollector import (
 
 # from pennyme.utils import verify_remaining_machines
 from pennyme.webconfig import get_website, safely_test_link
-from thefuzz import process as fuzzysearch
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -167,10 +168,9 @@ def location_differ(
         raise ValueError(f"It seems there were new locations: {diff}")
 
     total_changes, new, depr = 0, 0, 0
-    validated_links = []
+    # validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
     for i, area in enumerate(areas):
-        print(f"Print processing area {area} ({i}/{len(areas)})")
         logger.warning(f"Logger processing area {area} ({i}/{len(areas)})")
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
@@ -199,22 +199,22 @@ def location_differ(
             if this_link in skip_links:
                 continue
 
-            if this_state == "available":
-                # Check whether weblink is accessible
-                resp = safely_test_link(this_link)
-                if not resp:
-                    # Log message already captured in safely_test_link
-                    pass
-                elif resp.reason != "OK":
-                    msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
-                    if this_link not in problems_links:
-                        logger.error(msg)
-                    problem_data["features"].append(
-                        prelim_to_problem_json(geojson, msg)
-                    )
-                    continue
-                else:
-                    validated_links.append(this_link)
+            # if this_state == "available":
+            #     # Check whether weblink is accessible
+            #     resp = safely_test_link(this_link)
+            #     if not resp:
+            #         # Log message already captured in safely_test_link
+            #         pass
+            #     elif resp.reason != "OK":
+            #         msg = f"Machine {this_title} in {area} shown as available but {this_link} responds {resp.reason} ({resp.status_code})"
+            #         if this_link not in problems_links:
+            #             logger.error(msg)
+            #         problem_data["features"].append(
+            #             prelim_to_problem_json(geojson, msg)
+            #         )
+            #         continue
+            #     else:
+            #         validated_links.append(this_link)
 
             for cur_dict, name in zip([server_dict, device_dict], ["Server", "Device"]):
                 keys = list(cur_dict.keys())
