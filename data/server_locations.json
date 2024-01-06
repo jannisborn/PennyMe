@@ -3538,7 +3538,7 @@
                 ]
             },
             "properties": {
-                "name": "Interlaken Ost (landingpier)",
+                "name": "Interlaken Ost (landing pier)",
                 "area": "Switzerland",
                 "address": "Brienzstrasse 30, 3800 Interlaken, Switzerland",
                 "status": "unvisited",
@@ -3548,8 +3548,7 @@
                 "longitude": 7.869247,
                 "machine_status": "available",
                 "id": 6026,
-                "last_updated": "2024-01-06",
-                "paywall": true
+                "last_updated": "2023-08-20"
             }
         },
         {
@@ -42275,6 +42274,29 @@
                 "longitude": 8.546462988796621,
                 "machine_status": "available",
                 "id": 7028,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546686078578531,
+                    47.39028753818404
+                ]
+            },
+            "properties": {
+                "name": "Vielleicht",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39028753818404,
+                "longitude": 8.546686078578531,
+                "machine_status": "available",
+                "id": 7029,
                 "last_updated": "2024-01-06"
             }
         }
