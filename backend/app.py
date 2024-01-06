@@ -448,14 +448,18 @@ def trigger_location_differ():
 
 def setup_locdiffer_logger():
     log_file = "/root/PennyMe/new_data/cron.log"
+    # Remove cron.log if it exists
+    if os.path.exists(log_file):
+        os.remove(log_file)
 
     # Configure Loguru logger
-    logger.add(
+    handler_id = logger.add(
         log_file,
         rotation="10 MB",
         level="INFO",
         format="{time:YYYY-MM-DD HH:mm:ss} {level} {message}",
     )
+    return handler_id
 
 
 @contextmanager
