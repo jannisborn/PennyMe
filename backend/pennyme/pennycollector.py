@@ -1,14 +1,12 @@
 """Utils to parse pennycollector.com"""
-import logging
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
 
 import bs4
 import googlemaps
+from loguru import logger
 
 from .locations import COUNTRY_TO_CODE, remove_html_and
-
-logger = logging.getLogger(__name__)
 
 WEBSITE_ROOT = "http://209.221.138.252/"
 AREA_PREFIX = WEBSITE_ROOT + "Locations.aspx?area="

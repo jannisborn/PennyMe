@@ -1,11 +1,9 @@
-import logging
 import time
 from typing import List, Union
 
 import requests
 from bs4 import BeautifulSoup
-
-logger = logging.getLogger(__name__)
+from loguru import logger
 
 
 def get_website(url: str) -> BeautifulSoup:

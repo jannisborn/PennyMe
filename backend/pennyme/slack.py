@@ -1,15 +1,13 @@
 import json
-import logging
 import os
 from typing import Dict
 
+from loguru import logger
 from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
 
 from pennyme.utils import ALL_LOCATIONS
-
-logger = logging.getLogger(__name__)
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 IMG_PORT = "http://37.120.179.15:8000/"
