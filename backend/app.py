@@ -7,12 +7,14 @@ from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
 
+import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import (
+    get_latest_commit_time,
     isbusy,
     load_latest_json,
     process_machine_change,
@@ -349,17 +351,23 @@ def change_machine():
         index_in_server_locations,
     ) = find_machine_in_database(machine_id, server_locations["features"])
 
+    msg = " - Changed:\n"
+
+    latest_commit = get_latest_commit_time("main").date()
+    latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
+    if latest_change.date() >= latest_commit.date():
+        msg += "Machine with pending changes is getting changed *AGAIN*:\n"
+
     # Start new dictionary
     updated_machine_entry = existing_machine_infos.copy()
     updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
         " "
     )[0]
-    msg = " - Changed"
 
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
         updated_machine_entry["properties"]["machine_status"] = status
-        msg += " status,"
+        msg += f" status to: {status}\n"
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
@@ -375,12 +383,12 @@ def change_machine():
                 400,
             )
         updated_machine_entry["properties"]["area"] = area
-        msg += " area,"
+        msg += f" area to: {area} \n"
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
         updated_machine_entry["properties"]["name"] = title
-        msg += " title,"
+        msg += f" title to {title}\n"
 
     # Case 4: multimachine changed
     try:
@@ -391,14 +399,14 @@ def change_machine():
     multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
     if multimachine_new != multimachine_old:
         updated_machine_entry["properties"]["multimachine"] = multimachine_new
-        msg += " multimachine,"
+        msg += f" multimachine to {multimachine_new}\n"
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
         updated_machine_entry["properties"]["paywall"] = paywall_new
-        msg += " paywall,"
+        msg += f" paywall to: {paywall_new}\n"
 
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
@@ -422,9 +430,9 @@ def change_machine():
         updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
-            msg += " address,"
+            msg += f" address to: {address}\n"
         if latitude != lat_old or longitude != lng_old:
-            msg += " location,"
+            msg += f" location to: {latitude}, {longitude}."
 
     request_queue.put((updated_machine_entry, ip, msg))
 

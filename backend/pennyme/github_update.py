@@ -1,12 +1,12 @@
 import base64
 import json
-import logging
 import os
 import time
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import requests
+from loguru import logger
 
 from pennyme.slack import message_slack_raw
 from pennyme.utils import find_machine_in_database, get_next_free_machine_id
@@ -31,9 +31,6 @@ TOKEN_TO_REVIEWER = {
     f"token {github_infos['token']}": "jannisborn",
 }
 FILE_PATH = "/data/server_locations.json"
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 def check_branch_exists(branch_name: str) -> bool:
@@ -103,28 +100,41 @@ def create_new_branch(branch_name: str, headers: Dict[str, Any] = HEADERS) -> bo
             headers=headers,
             json=payload,
         )
-        if response.status_code != 201:
-            print("Failed to create a new branch.")
+        if response.status_code not in [200, 201, 202, 204]:
+            logger.error(
+                f"Failed to create a new branch, code {response.status_code} with message {response.json()}"
+            )
             return False
         return True
     return False
 
 
-def get_latest_commit_time() -> pd.Timestamp:
+def get_latest_commit_time(
+    infer_branch: bool = True, branch: Optional[str] = None
+) -> pd.Timestamp:
     """
     Get the time point of the latest commit to either DATA_BRANCH or main
+
+    Args:
+        infer_branch: If True, returns latest commit time of DATA_BRANCH if it exists,
+            otherwise of main. If False, an arbitrary branch has to be given.
+        branch: Name of the branch to check. Defaults to None
 
     Returns:
         pd.Timestamp: Datetime of last commit
     """
-    branch_exists = check_branch_exists(DATA_BRANCH)
-    url_base = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/commits/"
-    if branch_exists:
-        api_url = url_base + DATA_BRANCH
-    else:
-        api_url = url_base + "main"
+    if not infer_branch and not branch:
+        raise ValueError(
+            "Either infer_branch has to be True or branch has to be given."
+        )
 
-    response = requests.get(api_url, headers=HEADERS)
+    url_base = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/commits/"
+    if infer_branch:
+        url = url_base + (DATA_BRANCH if check_branch_exists(DATA_BRANCH) else "main")
+    else:
+        url = url_base + branch
+
+    response = requests.get(url, headers=HEADERS)
     date_last_updated = response.json()["commit"]["author"]["date"]
     return pd.to_datetime(date_last_updated)
 
@@ -201,6 +211,22 @@ def push_newmachine_to_github(
     return machine_id
 
 
+def wait(t: int = 5):
+    """
+    Wait for t minutes after last commit
+
+    Args:
+        t: Waiting time in minutes. Defaults to 5.
+    """
+    # wait for 5 minutes per default after last commit
+    time_of_last_commit = get_latest_commit_time()
+    time_to_wait = time_of_last_commit.timestamp() + t * 60 - time.time()
+    while time_to_wait > 0:
+        time.sleep(time_to_wait)
+        time_of_last_commit = get_latest_commit_time()
+        time_to_wait = time_of_last_commit.timestamp() + t * 60 - time.time()
+
+
 def process_machine_change(
     updated_machine_entry: dict,
     ip_address: str,
@@ -216,12 +242,8 @@ def process_machine_change(
         change_message: commit message describing which fields were changed
         wait_buffer_min: Time to wait between edits. Defaults to 5.
     """
-    time_of_last_commit = get_latest_commit_time()
-    # wait for 5 minutes per default after last commit
-    time_to_wait = time_of_last_commit.timestamp() + wait_buffer_min * 60 - time.time()
+    wait(wait_buffer_min)
 
-    if time_to_wait > 0:
-        time.sleep(time_to_wait)
     try:
         machine_id = updated_machine_entry["properties"]["id"]
         title = updated_machine_entry["properties"]["name"]
@@ -312,8 +334,9 @@ def commit_json_file(
     )
 
     if response.status_code != 200:
-        print("Failed to update the file.")
-        print(response)
+        logger.error(
+            f"Failed to update file with code {response.status_code}: {response.json()}"
+        )
         return
 
     pr_id = get_pr_id(branch_name=branch_name)
@@ -354,10 +377,12 @@ def request_review(
         headers=headers,
         json={"reviewers": [reviewer]},
     )
-    if response.status_code == 200:
-        print(f"Reviewer {reviewer} added.")
+    if response.status_code in [200, 201, 202, 204]:
+        logger.info(f"Reviewer {reviewer} added.")
     else:
-        print(f"Failed to add reviewer {reviewer}.")
+        logger.warning(
+            f"Failed to add reviewer {reviewer}, code {response.status_code}."
+        )
 
 
 def add_pr_label(pr_id: int, labels: List[str], headers: Dict[str, Any] = HEADERS):
@@ -372,9 +397,11 @@ def add_pr_label(pr_id: int, labels: List[str], headers: Dict[str, Any] = HEADER
     url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues/{pr_id}/labels"
     response = requests.post(url, headers=headers, json={"labels": labels})
     if response.status_code == 200:
-        print("Labels added successfully.")
+        logger.info("Labels added successfully.")
     else:
-        print("Failed to add labels.")
+        logger.warning(
+            f"Failed to add labels, code {response.status_code} with message {response.json()}"
+        )
 
 
 def open_pull_request(
