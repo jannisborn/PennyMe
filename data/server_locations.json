@@ -42419,6 +42419,30 @@
                 "id": 440,
                 "last_updated": "2024-01-06"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546211826205852,
+                    47.39106733680117
+                ]
+            },
+            "properties": {
+                "name": "Test",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 78, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39106733680117,
+                "longitude": 8.546211826205852,
+                "machine_status": "available",
+                "id": 7033,
+                "last_updated": "2024-01-06",
+                "paywall": true
+            }
         }
     ]
 }
