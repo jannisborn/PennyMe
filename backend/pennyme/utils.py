@@ -1,10 +1,13 @@
 import json
 import os
+import sys
+from contextlib import contextmanager
 from copy import deepcopy
 from typing import Any, Dict, List, Tuple
 
 import requests
 from loguru import logger
+
 from pennyme.pennycollector import DAY, MONTH, YEAR
 
 PATH_IMAGES = os.path.join("..", "..", "images")
@@ -134,3 +137,29 @@ def verify_remaining_machines(
             else:
                 validated_links.append(url)
     return server_data
+
+
+@contextmanager
+def setup_locdiffer_logger():
+    log_file = "/root/PennyMe/new_data/cron.log"
+    # Remove cron.log if it exists
+    if os.path.exists(log_file):
+        os.remove(log_file)
+
+    # Configure Loguru logger
+    handler_id = logger.add(
+        log_file,
+        rotation="10 MB",
+        level="INFO",
+        format="{time:YYYY-MM-DD HH:mm:ss} {level} {message}",
+    )
+    # Optionally, remove the default stderr handler to prevent logging to the terminal
+    default_handler_id = logger.add(
+        sys.stderr, level="INFO", format="{time} {level} {message}", enqueue=True
+    )
+    logger.remove(default_handler_id)
+    try:
+        yield
+    finally:
+        # Remove the file handler after the job is done, restoring default logging behavior
+        logger.remove(handler_id)

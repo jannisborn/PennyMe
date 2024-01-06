@@ -2,8 +2,6 @@ import json
 import os
 import queue
 import random
-import sys
-from contextlib import contextmanager
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -13,6 +11,10 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -27,10 +29,7 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
-from pennyme.utils import find_machine_in_database
-from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
-from thefuzz import process as fuzzysearch
+from pennyme.utils import find_machine_in_database, setup_locdiffer_logger
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -444,32 +443,6 @@ def trigger_location_differ():
     """
     request_queue.put((run_location_differ, ()))
     return jsonify({"message": "Success!"}), 200
-
-
-@contextmanager
-def setup_locdiffer_logger():
-    log_file = "/root/PennyMe/new_data/cron.log"
-    # Remove cron.log if it exists
-    if os.path.exists(log_file):
-        os.remove(log_file)
-
-    # Configure Loguru logger
-    handler_id = logger.add(
-        log_file,
-        rotation="10 MB",
-        level="INFO",
-        format="{time:YYYY-MM-DD HH:mm:ss} {level} {message}",
-    )
-    # Optionally, remove the default stderr handler to prevent logging to the terminal
-    default_handler_id = logger.add(
-        sys.stderr, level="INFO", format="{time} {level} {message}", enqueue=True
-    )
-    logger.remove(default_handler_id)
-    try:
-        yield
-    finally:
-        # Remove the file handler after the job is done, restoring default logging behavior
-        logger.remove(handler_id)
 
 
 def run_location_differ():
