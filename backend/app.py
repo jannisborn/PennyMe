@@ -11,6 +11,8 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from thefuzz import process as fuzzysearch
+
 from pennyme.github_update import (
     get_latest_commit_time,
     isbusy,
@@ -26,7 +28,6 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database
-from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -318,13 +319,13 @@ def create_machine():
     message_slack_raw(
         ip=ip_address, text=f"New machine proposed: {title}, {address} ({area})"
     )
-
-    # Create and start the thread
-    thread = Thread(
-        target=process_machine_entry,
-        args=(new_machine_entry, tmp_path, ip_address, title, address),
+    # Add to queue
+    request_queue.put(
+        (
+            process_machine_entry,
+            (new_machine_entry, tmp_path, ip_address, title, address),
+        )
     )
-    thread.start()
 
     return jsonify({"message": "Success!"}), 200
 
@@ -366,7 +367,7 @@ def change_machine():
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
         updated_machine_entry["properties"]["machine_status"] = status
-        msg += f" status to: {status}\n"
+        msg += f"\tStatus from: {updated_machine_entry['properties']['machine_status']} to: {status}\n"
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
@@ -382,12 +383,14 @@ def change_machine():
                 400,
             )
         updated_machine_entry["properties"]["area"] = area
-        msg += f" area to: {area} \n"
+        msg += (
+            f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
+        )
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
         updated_machine_entry["properties"]["name"] = title
-        msg += f" title to {title}\n"
+        msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
 
     # Case 4: multimachine changed
     try:
@@ -398,14 +401,14 @@ def change_machine():
     multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
     if multimachine_new != multimachine_old:
         updated_machine_entry["properties"]["multimachine"] = multimachine_new
-        msg += f" multimachine to {multimachine_new}\n"
+        msg += f"\tMultimachine from: {multimachine_old} to: {multimachine_new}\n"
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
         updated_machine_entry["properties"]["paywall"] = paywall_new
-        msg += f" paywall to: {paywall_new}\n"
+        msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
 
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
@@ -429,11 +432,11 @@ def change_machine():
         updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
-            msg += f" address to: {address}\n"
+            msg += f"\tAddress from {old_address} to: {address}\n"
         if latitude != lat_old or longitude != lng_old:
-            msg += f" location to: {latitude}, {longitude}."
+            msg += f"\t Location from {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
-    request_queue.put((updated_machine_entry, ip, msg))
+    request_queue.put((process_machine_change, (updated_machine_entry, ip, msg)))
 
     # return warning if the address and coordinates do not correspond
     if not address_okay:
@@ -453,9 +456,9 @@ def worker():
     Worker thread that processes the machine change requests.
     """
     while True:
-        args = request_queue.get()
+        function, args = request_queue.get()
         try:
-            process_machine_change(*args)
+            function(*args)
         finally:
             request_queue.task_done()
 
