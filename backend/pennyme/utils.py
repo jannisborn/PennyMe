@@ -142,7 +142,7 @@ def verify_remaining_machines(
 
 
 @contextmanager
-def redirect_stdout_stderr_to_logger():
+def redirect_stdout_stderr_to_logger(logger):
     class StreamToLogger(object):
         def __init__(self, logger, level):
             self.logger = logger
