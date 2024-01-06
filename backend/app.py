@@ -12,10 +12,6 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
-from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -31,6 +27,9 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -449,7 +448,6 @@ def trigger_location_differ():
 def run_location_differ():
     f = open("/root/PennyMe/new_data/cron.log", "w")
     sys.stdout = f
-    sys.stderr = f
 
     old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
     new_json_file = "/root/PennyMe/new_data/server_locations.json"

@@ -171,6 +171,7 @@ def location_differ(
     validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
     for i, area in enumerate(areas):
+        print(f"Processing area {area} ({i}/{len(areas)})")
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
         if i > 5:
