@@ -1417,15 +1417,16 @@
             "properties": {
                 "name": "Mount First",
                 "area": "Switzerland",
-                "address": "",
+                "address": "Grindelwald First",
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=272929",
                 "internal_url": "null",
                 "latitude": "46.660467",
                 "longitude": "8.053718",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 718,
-                "last_updated": "2023-07-15"
+                "last_updated": "2024-01-06",
+                "paywall": true
             }
         },
         {
@@ -1446,9 +1447,10 @@
                 "internal_url": "null",
                 "latitude": "46.65981",
                 "longitude": "8.053941",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 716,
-                "last_updated": "2023-07-16"
+                "last_updated": "2024-01-06",
+                "multimachine": 2
             }
         },
         {
@@ -15560,8 +15562,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.3766049,
-                    52.5116245
+                    13.376320638266378,
+                    52.51161032589525
                 ]
             },
             "properties": {
@@ -15571,11 +15573,12 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=83319",
                 "internal_url": "null",
-                "latitude": "52.5116245",
-                "longitude": "13.3766049",
+                "latitude": "52.51161032589525",
+                "longitude": "13.376320638266378",
                 "machine_status": "retired",
                 "id": 423,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-06",
+                "paywall": true
             }
         },
         {
@@ -41050,8 +41053,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.503955500000001,
-                    51.9716579
+                    7.503870830072088,
+                    51.971593568040646
                 ]
             },
             "properties": {
@@ -41061,11 +41064,12 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=419062",
                 "internal_url": "null",
-                "latitude": "51.9716579",
-                "longitude": "7.503955500000001",
+                "latitude": "51.971593568040646",
+                "longitude": "7.503870830072088",
                 "machine_status": "available",
                 "id": 7001,
-                "last_updated": "2023-12-14"
+                "last_updated": "2024-01-06",
+                "paywall": true
             }
         },
         {
@@ -42108,6 +42112,359 @@
                 "machine_status": "available",
                 "id": 7027,
                 "last_updated": "2024-01-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4660947,
+                    37.7698646
+                ]
+            },
+            "properties": {
+                "name": "Golden Gate Park - California Academy of Sciences",
+                "area": "California",
+                "address": "55 Music Concourse Dr, (Golden Gate Park), San Francisco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=653",
+                "internal_url": "null",
+                "latitude": "37.7698646",
+                "longitude": "-122.4660947",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4820,
+                "last_updated": "2024-01-06",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2766383,
+                    37.7737674
+                ]
+            },
+            "properties": {
+                "name": "Pacific Pinball Museum",
+                "area": "California",
+                "address": "1510 Webster Street, Alameda",
+                "external_url": "http://209.221.138.252/Details.aspx?location=214255",
+                "internal_url": "null",
+                "latitude": "37.7737674",
+                "longitude": "-122.2766383",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4549,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2603667,
+                    37.8087083
+                ]
+            },
+            "properties": {
+                "name": "Children's Fairyland",
+                "area": "California",
+                "address": "699 Bellevue Ave., Oakland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1279",
+                "internal_url": "null",
+                "latitude": "37.8087083",
+                "longitude": "-122.2603667",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4713,
+                "last_updated": "2024-01-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.491602063971897,
+                    47.34956730207685
+                ]
+            },
+            "properties": {
+                "name": "Ütliberg Kulm",
+                "area": "Switzerland",
+                "address": "Ütliberg Kulm, 8143 Zurich, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=76235",
+                "internal_url": "null",
+                "latitude": "47.34956730207685",
+                "longitude": "8.491602063971897",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 711,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543325,
+                    47.370296
+                ]
+            },
+            "properties": {
+                "name": "Wasserkirche (Zürich)",
+                "area": "Switzerland",
+                "address": "Teddy's Souvenir shop, Limmatquai 34, 8001 Zurich, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=103894",
+                "internal_url": "null",
+                "latitude": "47.370296",
+                "longitude": "8.543325",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 712,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.856078543961587,
+                    46.68619661276094
+                ]
+            },
+            "properties": {
+                "name": "Interlaken",
+                "area": "Switzerland",
+                "address": "Höheweg 35, Interlaken, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27700",
+                "internal_url": "null",
+                "latitude": "46.68619661276094",
+                "longitude": "7.856078543961587",
+                "logs": {
+                    "2021-11-14": "Requires 2 CHF + 20 Rappen."
+                },
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 719,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546462988796621,
+                    47.390249819935086
+                ]
+            },
+            "properties": {
+                "name": "F",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 59, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.390249819935086,
+                "longitude": 8.546462988796621,
+                "machine_status": "available",
+                "id": 7028,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.54504526523521,
+                    47.39206331903891
+                ]
+            },
+            "properties": {
+                "name": "Testlauf",
+                "area": "Switzerland",
+                "address": "Langmauerstraße, 8006 Zurich",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39206331903891,
+                "longitude": 8.54504526523521,
+                "machine_status": "available",
+                "id": 7030,
+                "last_updated": "2024-01-06",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.9535734,
+                    50.9366938
+                ]
+            },
+            "properties": {
+                "name": "1.FC Köln Fanshop",
+                "area": "Germany",
+                "address": "Schildergasse 60-68, Cologne",
+                "external_url": "http://209.221.138.252/Details.aspx?location=214091",
+                "internal_url": "null",
+                "latitude": "50.9366938",
+                "longitude": "6.9535734",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 518,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.54669581895549,
+                    47.39029696771509
+                ]
+            },
+            "properties": {
+                "name": "First",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39029696771509,
+                "longitude": 8.54669581895549,
+                "machine_status": "available",
+                "id": 7031,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3785761,
+                    52.5088745
+                ]
+            },
+            "properties": {
+                "name": "In between",
+                "area": "Germany",
+                "address": "Leipziger Platz 7, 10117 Berlin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=234302",
+                "internal_url": "null",
+                "latitude": "52.5088745",
+                "longitude": "13.3785761",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 428,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546744568567636,
+                    47.39039597806691
+                ]
+            },
+            "properties": {
+                "name": "Second",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39039597806691,
+                "longitude": 8.546744568567636,
+                "machine_status": "available",
+                "id": 7032,
+                "last_updated": "2024-01-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3815918,
+                    52.5168889
+                ]
+            },
+            "properties": {
+                "name": "Madame Tussauds",
+                "area": "Germany",
+                "address": "Unter Den Linden 74,",
+                "external_url": "http://209.221.138.252/Details.aspx?location=91118",
+                "internal_url": "null",
+                "latitude": "52.5168889",
+                "longitude": "13.3815918",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 440,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546211826205852,
+                    47.39106733680117
+                ]
+            },
+            "properties": {
+                "name": "Test",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 78, 8006 Zürich, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.39106733680117,
+                "longitude": 8.546211826205852,
+                "machine_status": "available",
+                "id": 7033,
+                "last_updated": "2024-01-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546715975993243,
+                    47.390261397118174
+                ]
+            },
+            "properties": {
+                "name": "Jannis",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.390261397118174,
+                "longitude": 8.546715975993243,
+                "machine_status": "available",
+                "id": 7034,
+                "last_updated": "2024-01-06"
             }
         }
     ]
