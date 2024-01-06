@@ -15,8 +15,6 @@ from datetime import datetime
 
 import pandas as pd
 from googlemaps import Client as GoogleMaps
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
 from pennyme.pennycollector import (
@@ -36,6 +34,7 @@ from pennyme.pennycollector import (
 
 # from pennyme.utils import verify_remaining_machines
 from pennyme.webconfig import get_website, safely_test_link
+from thefuzz import process as fuzzysearch
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -171,7 +170,8 @@ def location_differ(
     validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
     for i, area in enumerate(areas):
-        print(f"Processing area {area} ({i}/{len(areas)})")
+        print(f"Print processing area {area} ({i}/{len(areas)})")
+        logger.warning(f"Logger processing area {area} ({i}/{len(areas)})")
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
         if i > 5:

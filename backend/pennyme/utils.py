@@ -1,11 +1,12 @@
 import json
 import logging
 import os
+import sys
+from contextlib import contextmanager
 from copy import deepcopy
 from typing import Any, Dict, List, Tuple
 
 import requests
-
 from pennyme.pennycollector import DAY, MONTH, YEAR
 
 logger = logging.getLogger(__name__)
@@ -138,3 +139,27 @@ def verify_remaining_machines(
             else:
                 validated_links.append(url)
     return server_data
+
+
+@contextmanager
+def redirect_stdout_stderr_to_logger():
+    class StreamToLogger(object):
+        def __init__(self, logger, level):
+            self.logger = logger
+            self.level = level
+
+        def write(self, message):
+            if message.rstrip() != "":
+                self.logger.log(self.level, message.rstrip())
+
+        def flush(self):
+            pass
+
+    old_stdout, old_stderr = sys.stdout, sys.stderr
+    sys.stdout = StreamToLogger(logger, logging.INFO)
+    sys.stderr = StreamToLogger(logger, logging.ERROR)
+
+    try:
+        yield
+    finally:
+        sys.stdout, sys.stderr = old_stdout, old_stderr
