@@ -3,6 +3,7 @@ import json
 import os
 
 from loguru import logger
+
 from pennyme.github_update import (
     DATA_BRANCH,
     HEADER_LOCATION_DIFF,
