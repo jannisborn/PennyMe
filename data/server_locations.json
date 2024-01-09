@@ -1677,9 +1677,9 @@
                 "latitude": "44.9410879",
                 "longitude": "-123.0430662",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4390,
-                "last_updated": "2023-07-15"
+                "last_updated": "2024-01-06"
             }
         },
         {
@@ -8051,9 +8051,9 @@
                 "internal_url": "null",
                 "latitude": "37.33230210000001",
                 "longitude": "-121.8897436",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6125,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-06"
             }
         },
         {
@@ -42108,6 +42108,98 @@
                 "machine_status": "available",
                 "id": 7027,
                 "last_updated": "2024-01-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.9674035,
+                    48.3235588
+                ]
+            },
+            "properties": {
+                "name": "Hohenzollern Castle",
+                "area": "Germany",
+                "address": " Burg Hohenzollern, Hechingen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420188",
+                "internal_url": "null",
+                "latitude": "48.3235588",
+                "longitude": "8.9674035",
+                "machine_status": "available",
+                "id": 7028,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0211187,
+                    39.8573595
+                ]
+            },
+            "properties": {
+                "name": "Regalos Torres",
+                "area": "Spain",
+                "address": "Cta. de los Capuchinos, 12, 45001 Toledo, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420135",
+                "internal_url": "null",
+                "latitude": "39.8573595",
+                "longitude": "-4.0211187",
+                "machine_status": "available",
+                "id": 7029,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.2505253,
+                    35.3111827
+                ]
+            },
+            "properties": {
+                "name": "WaterCity Waterpark",
+                "area": "Greece",
+                "address": "Anopolis, Crete",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "35.3111827",
+                "longitude": "25.2505253",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 1033,
+                "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.13853139999999,
+                    38.8427256
+                ]
+            },
+            "properties": {
+                "name": "Mothman Museum",
+                "area": "West Virginia",
+                "address": "400 Main St,, Point Pleasent",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420295",
+                "internal_url": "null",
+                "latitude": "38.8427256",
+                "longitude": "-82.13853139999999",
+                "machine_status": "available",
+                "id": 7030,
+                "last_updated": "2024-01-06"
             }
         }
     ]
