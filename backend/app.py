@@ -447,6 +447,9 @@ def trigger_location_differ():
 
 
 def run_location_differ():
+    """
+    Run the location differ script to fetch latest updates from website.
+    """
     with setup_locdiffer_logger():
         old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
         new_json_file = "/root/PennyMe/new_data/server_locations.json"
