@@ -1,15 +1,13 @@
 import json
-import logging
 import os
 from typing import Dict
 
+from loguru import logger
 from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
 
 from pennyme.utils import ALL_LOCATIONS
-
-logger = logging.getLogger(__name__)
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 IMG_PORT = "http://37.120.179.15:8000/"
@@ -140,16 +138,15 @@ def message_slack(machine_id: str, comment_text: str, ip: str):
     postfix = "Status=" + m_name.split("Status=")[-1]
     text = f"New comment for machine {machine_id} - {prefix}: {comment_text} (from {ip}. Machine: {postfix}"
 
-    message_slack_raw(text, ip)
+    message_slack_raw(text)
 
 
-def message_slack_raw(text: str, ip: str):
+def message_slack_raw(text: str, *args, **kwargs):
     """
     Send a message to Slack, unspecific to a machine.
 
     Args:
         text: The message to send.
-        ip: The IP address of the user.
     """
     try:
         CLIENT.chat_postMessage(

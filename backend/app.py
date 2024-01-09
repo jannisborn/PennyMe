@@ -1,21 +1,27 @@
 import json
 import os
+import queue
 import random
-import time
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
 
+import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
+from loguru import logger
 from thefuzz import process as fuzzysearch
 
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
+
 from pennyme.github_update import (
-    isbusy,
+    get_latest_commit_time,
     load_latest_json,
     process_machine_change,
     push_newmachine_to_github,
+    wait,
 )
 from pennyme.locations import COUNTRIES
 from pennyme.slack import (
@@ -24,9 +30,11 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
-from pennyme.utils import find_machine_in_database
+from pennyme.utils import find_machine_in_database, setup_locdiffer_logger
 
 app = Flask(__name__)
+request_queue = queue.Queue()
+
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
@@ -135,25 +143,11 @@ def process_machine_entry(
         title: The title of the machine.
         address: The address of the machine.
     """
-    try:
-        # Optional waiting if cron job is running
-        if isbusy():
-            message_slack_raw(
-                ip=ip_address,
-                text="Found conflicting cron job, waiting for it to finish...",
-            )
-            counter = 0
-            while isbusy() and counter < 60:
-                time.sleep(300)  # Retry every 5min
-                counter += 1
-            if counter == 60:
-                message_slack_raw(
-                    ip=ip_address,
-                    text="Timeout of 5h reached, cron job still runs, aborting...",
-                )
-                return
 
-        # Cron job has finished, we can add machine
+    try:
+        # Wait for cron job to finish and until 5 min passed since last commit
+        wait()
+        # We can add machine
         new_machine_id = push_newmachine_to_github(new_machine_entry)
 
         # Move the image file from temporary to permanent path
@@ -172,7 +166,6 @@ def process_machine_entry(
         )
     except Exception as e:
         message_slack_raw(
-            ip=ip_address,
             text=f"Error when processing machine entry: {title}, {address} ({e})",
         )
 
@@ -311,16 +304,14 @@ def create_machine():
     tmp_path = os.path.join(PATH_IMAGES, f"{random.randint(-(2**16), -1)}.jpg")
     request.files["image"].save(tmp_path)
 
-    message_slack_raw(
-        ip=ip_address, text=f"New machine proposed: {title}, {address} ({area})"
+    message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
+    # Add to queue
+    request_queue.put(
+        (
+            process_machine_entry,
+            (new_machine_entry, tmp_path, ip_address, title, address),
+        )
     )
-
-    # Create and start the thread
-    thread = Thread(
-        target=process_machine_entry,
-        args=(new_machine_entry, tmp_path, ip_address, title, address),
-    )
-    thread.start()
 
     return jsonify({"message": "Success!"}), 200
 
@@ -337,6 +328,7 @@ def change_machine():
     status = str(request.args.get("status")).strip()
     latitude = float(request.args.get("lat_coord"))
     longitude = float(request.args.get("lon_coord"))
+    ip = request.remote_addr
 
     # Load server locations and find existing machine info
     server_locations, latest_commit_sha = load_latest_json()
@@ -345,17 +337,23 @@ def change_machine():
         index_in_server_locations,
     ) = find_machine_in_database(machine_id, server_locations["features"])
 
+    msg = " - Changed:\n"
+
+    latest_commit = get_latest_commit_time("main")
+    latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
+    if latest_change.date() >= latest_commit.date():
+        msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:\n"
+
     # Start new dictionary
     updated_machine_entry = existing_machine_infos.copy()
     updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
         " "
     )[0]
-    change_message = "Changed"
 
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
+        msg += f"\tStatus from: {updated_machine_entry['properties']['machine_status']} to: {status}\n"
         updated_machine_entry["properties"]["machine_status"] = status
-        change_message += " status,"
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
@@ -371,12 +369,14 @@ def change_machine():
                 400,
             )
         updated_machine_entry["properties"]["area"] = area
-        change_message += " area,"
+        msg += (
+            f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
+        )
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
+        msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
         updated_machine_entry["properties"]["name"] = title
-        change_message += " title,"
 
     # Case 4: multimachine changed
     try:
@@ -387,14 +387,14 @@ def change_machine():
     multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
     if multimachine_new != multimachine_old:
         updated_machine_entry["properties"]["multimachine"] = multimachine_new
-        change_message += " multimachine,"
+        msg += f"\tMultimachine from: {multimachine_old} to: {multimachine_new}\n"
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
         updated_machine_entry["properties"]["paywall"] = paywall_new
-        change_message += " paywall,"
+        msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
 
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
@@ -418,16 +418,11 @@ def change_machine():
         updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
-            change_message += " address,"
+            msg += f"\tAddress from {old_address} to: {address}\n"
         if latitude != lat_old or longitude != lng_old:
-            change_message += " location,"
+            msg += f"\t Location from {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
-    # process machine change in thread
-    thread = Thread(
-        target=process_machine_change,
-        args=(updated_machine_entry, request.remote_addr, change_message),
-    )
-    thread.start()
+    request_queue.put((process_machine_change, (updated_machine_entry, ip, msg)))
 
     # return warning if the address and coordinates do not correspond
     if not address_okay:
@@ -442,7 +437,67 @@ def change_machine():
     return jsonify({"message": "Success!"}), 200
 
 
+@app.route("/trigger_location_differ", methods=["POST"])
+def trigger_location_differ():
+    """
+    Triggers the location differ script.
+    """
+    request_queue.put((run_location_differ, ()))
+    return jsonify({"message": "Success!"}), 200
+
+
+def run_location_differ():
+    """
+    Run the location differ script to fetch latest updates from website.
+    """
+    with setup_locdiffer_logger():
+        old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
+        new_json_file = "/root/PennyMe/new_data/server_locations.json"
+        new_problems_json_file = "/root/PennyMe/new_data/problems.json"
+        debug_path = "/root/PennyMe/debug_new_data"
+
+        # Make sure all preceding jobs are finished
+        wait()
+
+        location_differ(
+            output_folder="/root/PennyMe/new_data",
+            device_json="/root/PennyMe/data/all_locations.json",
+            server_json=old_json_file,
+            api_key=os.getenv("GCLOUD_KEY"),
+            load_from_github=True,
+        )
+        open_differ_pr(
+            locations_path=new_json_file, problems_path=new_problems_json_file
+        )
+
+        # Move files
+        os.rename(
+            new_problems_json_file,
+            os.path.join(debug_path, os.path.basename(new_problems_json_file)),
+        )
+        os.rename(
+            new_json_file, os.path.join(debug_path, os.path.basename(new_json_file))
+        )
+
+
+def worker():
+    """
+    Worker thread that processes the machine change requests.
+    """
+    while True:
+        function, args = request_queue.get()
+        try:
+            function(*args)
+        finally:
+            request_queue.task_done()
+
+
+# Start the worker thread
+Thread(target=worker, daemon=True).start()
+
+
 def create_app():
+    logger.remove()
     return app
 
 

@@ -2,6 +2,8 @@ import argparse
 import json
 import os
 
+from loguru import logger
+
 from pennyme.github_update import (
     DATA_BRANCH,
     HEADER_LOCATION_DIFF,
@@ -12,31 +14,31 @@ from pennyme.github_update import (
     post_comment_to_pr,
 )
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-f", "--file", type=str, default="/root/PennyMe/new_data/server_locations.json"
-    )
-    parser.add_argument(
-        "-p",
-        "--problems_file",
-        type=str,
-        default="/root/PennyMe/new_data/problems.json",
-    )
-    args = parser.parse_args()
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-f", "--file", type=str, default="/root/PennyMe/new_data/server_locations.json"
+)
+parser.add_argument(
+    "-p",
+    "--problems_file",
+    type=str,
+    default="/root/PennyMe/new_data/problems.json",
+)
 
+
+def open_differ_pr(locations_path: str, problems_path: str):
     # general commit message
     commit_message = "Updates from website "
 
     # 1) server_locations.json
     # load new server location
-    with open(args.file, "r") as infile:
+    with open(locations_path, "r") as infile:
         server_locations = json.load(infile)
 
     # get latest_commit_sha
     old_server_locations, latest_commit_sha = load_latest_json()
     if old_server_locations != server_locations:
-        print("Detected change in server_locations.json - push to github")
+        logger.info("Detected change in server_locations.json - push to github")
         joblog = open("/root/PennyMe/new_data/cron.log", "r").read()
         commit_json_file(
             server_locations,
@@ -48,17 +50,17 @@ if __name__ == "__main__":
             reviewer=TOKEN_TO_REVIEWER[HEADER_LOCATION_DIFF["Authorization"]],
         )
     else:
-        print("No change between server locations")
+        logger.info("No change between server locations")
 
     # 2) Problems.json
     # load new problems json
-    with open(args.problems_file, "r") as infile:
+    with open(problems_path, "r") as infile:
         problems_json = json.load(infile)
     # get latest_commit_sha
     old_problems_json, latest_commit_sha = load_latest_json(file="/data/problems.json")
 
     if old_problems_json != problems_json:
-        print("Detected change in problems.json - push to github")
+        logger.info("Detected change in problems.json - push to github")
 
         # Load the last logfile from the cronjob
         joblog = open("/root/PennyMe/new_data/cron.log", "r").read()
@@ -75,7 +77,7 @@ if __name__ == "__main__":
             else "New problems require attention.",
         )
     else:
-        print("No change between problem jsons")
+        logger.info("No change between problem jsons")
 
     if old_server_locations == server_locations and old_problems_json == problems_json:
         pr_id = get_pr_id(branch_name=DATA_BRANCH)
@@ -87,5 +89,10 @@ if __name__ == "__main__":
             )
 
     # Remove the running file to indicate that the job is done
-    os.remove(os.path.join(os.path.dirname(args.file), "running.tmp"))
-    print("Done")
+    os.remove(os.path.join(os.path.dirname(locations_path), "running.tmp"))
+    logger.info("Done")
+
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    open_differ_pr(locations_path=args.file, problems_path=args.problems_file)
