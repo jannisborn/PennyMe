@@ -182,7 +182,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         showSimpleAlert(title: "Multi-machine!", text: "There are \(self.pinData.multimachine) penny machines in this location. \nPress the 'Report Change' button to update the number of machines.")
     }
     @objc func statusButtonTapped(sender: UIButton!) {
-        showSimpleAlert(title: "Machine status", text: "Machine can be available, out-of-order (temporarily unavailable) or retired (permamently unavailable).\nPress the 'Report Change' button to update the machine status.")
+        showSimpleAlert(title: "Machine status", text: "Machine can be available, out-of-order (temporarily unavailable) or retired (permanently unavailable).\nPress the 'Report Change' button to update the machine status.")
     }
     func showSimpleAlert(title: String, text: String) {
         let alertController = UIAlertController(
