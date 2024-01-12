@@ -42362,6 +42362,76 @@
                 "id": 1621,
                 "last_updated": "2024-01-09"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4891711,
+                    29.4252393
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Texas",
+                "address": "111 W Crockett St, San Antonio",
+                "external_url": "http://209.221.138.252/Details.aspx?location=368823",
+                "internal_url": "null",
+                "latitude": "29.4252393",
+                "longitude": "-98.4891711",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5382,
+                "multimachine": 2,
+                "last_updated": "2024-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.5797806,
+                    35.1232056
+                ]
+            },
+            "properties": {
+                "name": "Doc Burnstein's Ice Cream Lab",
+                "area": "California",
+                "address": "114 W Branch St, Arroyo Grande",
+                "external_url": "http://209.221.138.252/Details.aspx?location=378",
+                "internal_url": "null",
+                "latitude": "35.1232056",
+                "longitude": "-120.5797806",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4565,
+                "last_updated": "2024-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.7856034,
+                    36.2536466
+                ]
+            },
+            "properties": {
+                "name": "Pfeiffer Big Sur State Park, Lodge",
+                "area": "California",
+                "address": "47225 Highway One, Big Sur",
+                "external_url": "http://209.221.138.252/Details.aspx?location=71552",
+                "internal_url": "null",
+                "latitude": "36.2536466",
+                "longitude": "-121.7856034",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4579,
+                "last_updated": "2024-01-12"
+            }
         }
     ]
 }
