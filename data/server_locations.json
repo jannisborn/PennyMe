@@ -278,9 +278,9 @@
                 "internal_url": "null",
                 "latitude": "32.1802194",
                 "longitude": "-110.7362959",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2714,
-                "last_updated": "2023-03-26"
+                "last_updated": "2024-01-09"
             }
         },
         {
@@ -42453,6 +42453,29 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 743,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -131.6435809,
+                    55.3425263
+                ]
+            },
+            "properties": {
+                "name": "Tongass Historical Museum",
+                "area": "Alaska",
+                "address": "629 Dock Street, Ketchikan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420546",
+                "internal_url": "null",
+                "latitude": "55.3425263",
+                "longitude": "-131.6435809",
+                "machine_status": "available",
+                "id": 7036,
                 "last_updated": "2024-01-09"
             }
         }
