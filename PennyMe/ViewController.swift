@@ -183,10 +183,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
 
         for artwork in artworks {
-            if (includedStates.contains(artwork.status)) { // && (PennyMap.view(for: artwork) == nil) {
-            //  Artwork should be visible but is currently not visible
+            if (includedStates.contains(artwork.status) && (artwork.machineStatus ==
+                                                           "available")) 
+                || (includedStates.contains("retired")) {
+                //  Artwork should be visible but is currently not visible
                     PennyMap.addAnnotation(artwork)
-            } else if (!includedStates.contains(artwork.status))  {
+            } else {
                 //  Artwork should not be visible but is currently not visible
                 PennyMap.removeAnnotation(artwork)
             }
