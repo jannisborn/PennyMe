@@ -278,9 +278,9 @@
                 "internal_url": "null",
                 "latitude": "32.1802194",
                 "longitude": "-110.7362959",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2714,
-                "last_updated": "2023-03-26"
+                "last_updated": "2024-01-09"
             }
         },
         {
@@ -42200,6 +42200,283 @@
                 "machine_status": "available",
                 "id": 7030,
                 "last_updated": "2024-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.1536111,
+                    32.6655556
+                ]
+            },
+            "properties": {
+                "name": "Sparky's  Burgers & BBQ",
+                "area": "Minnesota",
+                "address": "115 Franklin st, Hatch",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420376",
+                "internal_url": "null",
+                "latitude": "32.6655556",
+                "longitude": "-107.1536111",
+                "machine_status": "available",
+                "id": 7031,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.1296397,
+                    43.4800165
+                ]
+            },
+            "properties": {
+                "name": "Shalom Wildlife Sanctuary",
+                "area": "Wisconsin",
+                "address": "1901 Shalom Dr. , West Bend ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=323364",
+                "internal_url": "null",
+                "latitude": "43.4800165",
+                "longitude": "-88.1296397",
+                "machine_status": "available",
+                "id": 7032,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.270242,
+                    47.37498710000001
+                ]
+            },
+            "properties": {
+                "name": "Heini Klopfer Skiflugschanze",
+                "area": "Germany",
+                "address": " 87561, Birgsautal, Oberstdorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420364",
+                "internal_url": "null",
+                "latitude": "47.37498710000001",
+                "longitude": "10.270242",
+                "machine_status": "available",
+                "id": 7033,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.2917671,
+                    47.4056461
+                ]
+            },
+            "properties": {
+                "name": "ORLEN-Arena Oberstdorf",
+                "area": "Germany",
+                "address": "Am Faltenbach 27 87561, Oberstdorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420367",
+                "internal_url": "null",
+                "latitude": "47.4056461",
+                "longitude": "10.2917671",
+                "machine_status": "available",
+                "id": 7034,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.8831062,
+                    40.2865954
+                ]
+            },
+            "properties": {
+                "name": "Pennsylvania Farm Show",
+                "area": "Pennsylvania",
+                "address": "2300 N Cameron St, Harrisburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=334194",
+                "internal_url": "null",
+                "latitude": "40.2865954",
+                "longitude": "-76.8831062",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3996,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.4916459,
+                    33.4568207
+                ]
+            },
+            "properties": {
+                "name": "Gold Field Ghost Town (Bar G Hat Shop)",
+                "area": "Arizona",
+                "address": "4650 North Mammoth Mine Road, Apache Junction",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420483",
+                "internal_url": "null",
+                "latitude": "33.4568207",
+                "longitude": "-111.4916459",
+                "machine_status": "available",
+                "id": 7035,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.36304419999999,
+                    33.8533433
+                ]
+            },
+            "properties": {
+                "name": "Legoland® Discovery Center ",
+                "area": "Georgia",
+                "address": "3500 Peachtree Rd. NE/ Phipps Plaza, Atlanta",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107775",
+                "internal_url": "null",
+                "latitude": "33.8533433",
+                "longitude": "-84.36304419999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1621,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4891711,
+                    29.4252393
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Texas",
+                "address": "111 W Crockett St, San Antonio",
+                "external_url": "http://209.221.138.252/Details.aspx?location=368823",
+                "internal_url": "null",
+                "latitude": "29.4252393",
+                "longitude": "-98.4891711",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5382,
+                "multimachine": 2,
+                "last_updated": "2024-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.5797806,
+                    35.1232056
+                ]
+            },
+            "properties": {
+                "name": "Doc Burnstein's Ice Cream Lab",
+                "area": "California",
+                "address": "114 W Branch St, Arroyo Grande",
+                "external_url": "http://209.221.138.252/Details.aspx?location=378",
+                "internal_url": "null",
+                "latitude": "35.1232056",
+                "longitude": "-120.5797806",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4565,
+                "last_updated": "2024-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.7856034,
+                    36.2536466
+                ]
+            },
+            "properties": {
+                "name": "Pfeiffer Big Sur State Park, Lodge",
+                "area": "California",
+                "address": "47225 Highway One, Big Sur",
+                "external_url": "http://209.221.138.252/Details.aspx?location=71552",
+                "internal_url": "null",
+                "latitude": "36.2536466",
+                "longitude": "-121.7856034",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4579,
+                "last_updated": "2024-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.4618386,
+                    56.070315
+                ]
+            },
+            "properties": {
+                "name": "Dunfermline Carnegie Library",
+                "area": "Scotland",
+                "address": "1 Abbot Street,, Dunfermline",
+                "external_url": "http://209.221.138.252/Details.aspx?location=294060",
+                "internal_url": "null",
+                "latitude": "56.070315",
+                "longitude": "-3.4618386",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 743,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -131.6435809,
+                    55.3425263
+                ]
+            },
+            "properties": {
+                "name": "Tongass Historical Museum",
+                "area": "Alaska",
+                "address": "629 Dock Street, Ketchikan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420546",
+                "internal_url": "null",
+                "latitude": "55.3425263",
+                "longitude": "-131.6435809",
+                "machine_status": "available",
+                "id": 7036,
+                "last_updated": "2024-01-09"
             }
         }
     ]
