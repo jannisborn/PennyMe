@@ -263,7 +263,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         else if indexPath.section == 5{
             //Open the website when you click on the link.
             if !pinData.link.contains("http") {
-                showConfirmationMessage(message: "Sorry! No external link available. The machine got created through this app.", duration: 2.5)
+                showConfirmationMessage(message: "No external link available. The machine was probably created through this app.", duration: 2.5)
             } else {
                 UIApplication.shared.open(URL(string: pinData.link)!)
             }
@@ -323,8 +323,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     @objc func addComment(){
         
-        // Create the alert controller
-        let alertController = UIAlertController(title: "Attention!", message: "Please be mindful. Your comment will be shown to all users of the app. Write as clear & concise as possible.", preferredStyle: .alert)
+        let uploadTimeout: TimeInterval = 10
+        let alertController = UIAlertController(
+            title: "Attention!",
+            message: "Please be mindful. Your comment will be shown to all users of the app. Write as clear & concise as possible.",
+            preferredStyle: .alert
+        )
 
         // Create the OK action
         let okAction = UIAlertAction(title: "OK, add comment!", style: .default) { (_) in
@@ -335,8 +339,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 self.commentTextField.attributedPlaceholder = NSAttributedString(
                     string: "Your comment will be shown soon!")
                 
-                self.showLoadingView(withMessage: "Processing the comment...")
-                self.uploadCommentWithTimeout(comment!)
+                let loadingMessage = "Processing comment...\nPlease wait up to \(Int(uploadTimeout)) seconds!"
+                self.showLoadingView(withMessage: loadingMessage)
+                self.uploadCommentWithTimeout(comment!, timeout:uploadTimeout)
 
 
             }
@@ -355,9 +360,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
 
     }
-    func uploadCommentWithTimeout(_ comment: String) {
+    func uploadCommentWithTimeout(_ comment: String, timeout: TimeInterval) {
         
-        let uploadTimeout: TimeInterval = 10
         var task: URLSessionDataTask?
         
         // submit request to backend
@@ -393,7 +397,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             // Set up a timer to handle the upload timeout
             var timeoutTimer: DispatchSourceTimer?
             timeoutTimer = DispatchSource.makeTimerSource()
-            timeoutTimer?.schedule(deadline: .now() + uploadTimeout)
+            timeoutTimer?.schedule(deadline: .now() + timeout)
             timeoutTimer?.setEventHandler { [weak self] in
                 guard let self = self else { return }
                 
@@ -450,24 +454,47 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     func showLoadingView(withMessage message: String) {
         // Create the loading view
-        loadingView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
-        loadingView?.center = view.center
+        let loadingViewFrame = CGRect(x: 0, y: 0, width: 250, height: 150)
+        loadingView = UIView(frame: loadingViewFrame)
         loadingView?.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
         loadingView?.layer.cornerRadius = 10
+
+        // Calculate required height for the label
+        let labelWidth: CGFloat = 230
+        let maxSize = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
+        let messageString = NSString(string: message)
+        let options: NSStringDrawingOptions = [.usesLineFragmentOrigin, .usesFontLeading]
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]
+        let labelRect = messageString.boundingRect(with: maxSize, options: options, attributes: attributes, context: nil)
+        
         // Create the loading label
-        loadingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
-        loadingLabel?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingView!.bounds.midY - 30)
+        loadingLabel = UILabel(frame: CGRect(x: 10, y: 10, width: labelWidth, height: labelRect.height))
         loadingLabel?.text = message
         loadingLabel?.textColor = .white
         loadingLabel?.textAlignment = .center
         loadingLabel?.numberOfLines = 0
+        loadingLabel?.lineBreakMode = .byWordWrapping
         loadingView?.addSubview(loadingLabel!)
+
+        // Adjust the loading view frame based on label size
+        let totalHeight = labelRect.height + 70 // Extra space for activity indicator and padding
+        loadingView?.frame = CGRect(x: 0, y: 0, width: labelWidth + 20, height: totalHeight)
+
         // Create and start animating the activity indicator
         activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
-        activityIndicator?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingView!.bounds.midY + 20)
+        activityIndicator?.center = CGPoint(x: loadingView!.bounds.midX, y: loadingLabel!.frame.maxY + 30)
         activityIndicator?.startAnimating()
         loadingView?.addSubview(activityIndicator!)
-        view.addSubview(loadingView!)
+        
+        // Add the loading view to the table view's superview
+        if let superview = self.tableView.superview {
+            superview.addSubview(loadingView!)
+
+            // Center the loading view in the superview
+            loadingView?.center = superview.center
+        }
+
+//        view.addSubview(loadingView!)
     }
     
     func hideLoadingView() {
@@ -478,18 +505,19 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        showLoadingView(withMessage: "Processing the image...")
+        let uploadTimeout: TimeInterval = 25
+        let loadingMessage = "Processing image...\nPlease wait up to \(Int(uploadTimeout)) seconds"
+        showLoadingView(withMessage: loadingMessage)
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         // Dismiss the image picker
         dismiss(animated: true) {
             // Call a function to upload the image with a timeout
-            self.uploadImageWithTimeout(image)
+            self.uploadImageWithTimeout(image, timeout: uploadTimeout)
         }
     }
         
 
-    func uploadImageWithTimeout(_ image: UIImage) {
-        let uploadTimeout: TimeInterval = 10
+    func uploadImageWithTimeout(_ image: UIImage, timeout: TimeInterval) {
         var task: URLSessionDataTask?
         
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {
@@ -544,7 +572,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         // Set up a timer to handle the upload timeout
         var timeoutTimer: DispatchSourceTimer?
         timeoutTimer = DispatchSource.makeTimerSource()
-        timeoutTimer?.schedule(deadline: .now() + uploadTimeout)
+        timeoutTimer?.schedule(deadline: .now() + timeout)
         timeoutTimer?.setEventHandler { [weak self] in
             guard let self = self else { return }
             

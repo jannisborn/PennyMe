@@ -13,7 +13,14 @@ AREA_PREFIX = WEBSITE_ROOT + "Locations.aspx?area="
 AREA_SITE = WEBSITE_ROOT + "AreaList.aspx"
 DATE = datetime.today()
 YEAR, MONTH, DAY = DATE.year, str(DATE.month).zfill(2), str(DATE.day).zfill(2)
-UNAVAILABLE_MACHINE_STATES = ["Moved", "Gone", "Out of Order"]
+REMOVED_STATES = ["Moved", "Gone"]
+TEMPORARY_UNAVAIALBLE_STATES = ["Out of Order"]
+UNAVAILABLE_STATES = REMOVED_STATES + TEMPORARY_UNAVAIALBLE_STATES
+UNAVAILABLE_MAPPER = {
+    "Out of Order": "out-of-order",
+    "Moved": "retired",
+    "Gone": "retired",
+}
 
 
 def get_area_list_from_area_website(website) -> List[str]:
@@ -130,7 +137,7 @@ def get_prelim_geojson(
     subtitle = subtitle + ", " + city
 
     state = remove_html_and(raw_location[2].split('Center">')[1].split("</td>")[0])
-    if state not in UNAVAILABLE_MACHINE_STATES:
+    if state not in UNAVAILABLE_STATES:
         # States like 1p, 4p and everything else
         state = "available"
     link = WEBSITE_ROOT + raw_location[3].split('href="')[1].split('"><')[0]

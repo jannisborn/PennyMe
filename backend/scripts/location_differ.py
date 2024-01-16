@@ -24,7 +24,10 @@ from pennyme.pennycollector import (
     AREA_SITE,
     DAY,
     MONTH,
-    UNAVAILABLE_MACHINE_STATES,
+    REMOVED_STATES,
+    TEMPORARY_UNAVAIALBLE_STATES,
+    UNAVAILABLE_MAPPER,
+    UNAVAILABLE_STATES,
     YEAR,
     get_area_list_from_area_website,
     get_coordinates,
@@ -229,11 +232,15 @@ def location_differ(
                         # Existing machine with no update
                         match = True
                         break
-                    elif (
-                        this_state in UNAVAILABLE_MACHINE_STATES
-                        and cur_state == "retired"
-                    ):
+                    elif this_state in REMOVED_STATES and cur_state == "retired":
                         # Machine moved/gone before and after
+                        match = True
+                        break
+                    elif (
+                        this_state in TEMPORARY_UNAVAIALBLE_STATES
+                        and cur_state == "out-of-order"
+                    ):
+                        # Machine temporarily unavailable before and after
                         match = True
                         break
 
@@ -256,10 +263,7 @@ def location_differ(
                         match = True
                         break
 
-                    if (
-                        cur_state == "available"
-                        and this_state in UNAVAILABLE_MACHINE_STATES
-                    ):
+                    if cur_state == "available" and this_state in UNAVAILABLE_STATES:
                         logger.info(f"{this_title} is currently unavailable")
                         # Machine is currently unavailable, update this in server dict
                         if name == "Device":
@@ -267,8 +271,9 @@ def location_differ(
                             assert len(device_dict[this_link]) == 1
                             # Retire machine
                             entry = device_dict[this_link][0]
-                            # TODO: We should recognize here whether it is retired or out-of-order
-                            entry["properties"]["machine_status"] = "retired"
+                            entry["properties"]["machine_status"] = UNAVAILABLE_MAPPER[
+                                this_state
+                            ]
                             entry["properties"]["last_updated"] = today
                             server_data["features"].append(entry)
                         elif name == "Server":
@@ -285,10 +290,9 @@ def location_differ(
                             ]
                             # Retire all machines of that URL
                             for idx in idxs:
-                                # TODO: We should recognize here whether it is retired or out-of-order
                                 server_data["features"][idx]["properties"][
                                     "machine_status"
-                                ] = "retired"
+                                ] = UNAVAILABLE_MAPPER[this_state]
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
@@ -297,7 +301,10 @@ def location_differ(
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
 
-                    elif cur_state == "retired" and this_state == "available":
+                    elif (
+                        cur_state in ["retired", "out-of-order"]
+                        and this_state == "available"
+                    ):
                         logger.info(f"{this_title} is available again")
                         # A machine documented as retired is available again
                         if name == "Device":
@@ -346,6 +353,106 @@ def location_differ(
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
 
+                    elif (
+                        cur_state == "retired"
+                        and this_state in TEMPORARY_UNAVAIALBLE_STATES
+                    ):
+                        # Machine shown as retired even though it is only temporarily unavailable
+                        logger.info(f"{this_title} is only temporarily unavailable")
+                        if name == "Device":
+                            # Easy case, we just add this machine to server_dict
+                            assert len(device_dict[this_link]) == 1
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["machine_status"] = "out-of-order"
+                            entry["properties"]["last_updated"] = today
+                            entry["properties"]["name"] = entry["properties"][
+                                "name"
+                            ].strip()
+                            entry["properties"]["address"] = entry["properties"][
+                                "address"
+                            ].strip()
+                            server_data["features"].append(entry)
+                        elif name == "Server":
+                            # Machine is already documented in server_dict
+                            entry = server_dict[this_link]
+                            if len(entry) > 1:
+                                logger.warning(
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {entry}"
+                                )
+
+                            # Extract all machines of that URL (usually 1)
+                            idxs = [
+                                i
+                                for i, geojson in enumerate(server_data["features"])
+                                if geojson["properties"]["external_url"] == this_link
+                            ]
+                            if len(idxs) > 1:
+                                logger.warning(
+                                    f"For {this_link} found {len(idxs)} machines: {idxs}"
+                                )
+                            # Re-activate all machines of that URL
+                            for idx in idxs:
+                                server_data["features"][idx]["properties"][
+                                    "machine_status"
+                                ] = "out-of-order"
+                                server_data["features"][idx]["properties"][
+                                    "last_updated"
+                                ] = today
+
+                        changes += 1  # track that we changed this machine
+                        match = True  # machine was found in existing dict
+                        break  # to not change a machine found in both dicts twice
+
+                    elif cur_state == "out-of-order" and this_state in REMOVED_STATES:
+                        # Machine shown as out-of-order even though it is removed
+                        logger.info(f"{this_title} got permanently removed")
+                        if name == "Device":
+                            # Easy case, we just add this machine to server_dict
+                            assert len(device_dict[this_link]) == 1
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["machine_status"] = UNAVAILABLE_MAPPER[
+                                this_state
+                            ]
+                            entry["properties"]["last_updated"] = today
+                            entry["properties"]["name"] = entry["properties"][
+                                "name"
+                            ].strip()
+                            entry["properties"]["address"] = entry["properties"][
+                                "address"
+                            ].strip()
+                            server_data["features"].append(entry)
+                        elif name == "Server":
+                            # Machine is already documented in server_dict
+                            entry = server_dict[this_link]
+                            if len(entry) > 1:
+                                logger.warning(
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {entry}"
+                                )
+
+                            # Extract all machines of that URL (usually 1)
+                            idxs = [
+                                i
+                                for i, geojson in enumerate(server_data["features"])
+                                if geojson["properties"]["external_url"] == this_link
+                            ]
+                            if len(idxs) > 1:
+                                logger.warning(
+                                    f"For {this_link} found {len(idxs)} machines: {idxs}"
+                                )
+                            # Re-activate all machines of that URL
+                            for idx in idxs:
+                                server_data["features"][idx]["properties"][
+                                    "machine_status"
+                                ] = UNAVAILABLE_MAPPER[this_state]
+                                server_data["features"][idx]["properties"][
+                                    "last_updated"
+                                ] = today
+
+                        changes += 1  # track that we changed this machine
+                        match = True  # machine was found in existing dict
+                        break  # to not change a machine found in both dicts twice
                     else:
                         raise ValueError(
                             f"Unknown state combinations: {cur_state}, {this_state}"
@@ -355,7 +462,7 @@ def location_differ(
                 continue
 
             # This is a new machine since the key was not found in both dicts
-            if this_state in UNAVAILABLE_MACHINE_STATES:
+            if this_state in UNAVAILABLE_STATES:
                 # Untracked machine that is not available, hence we can skip
                 continue
 
