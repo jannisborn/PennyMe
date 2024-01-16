@@ -392,7 +392,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         let artworkData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
         
         do {
-          // 2
           let features = try MKGeoJSONDecoder()
             .decode(artworkData!)
             .compactMap { $0 as? MKGeoJSONFeature }
@@ -406,39 +405,67 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
           print("Unexpected error: \(error).")
         }
         
+        // Load json file from server
+        load_server_locations()
+    }
+    
+    func load_server_locations(){
         // load from server
         let link_to_json = "http://37.120.179.15:8000/server_locations.json"
         guard let json_url = URL(string: link_to_json) else { return }
-        do{
-            let serverJsonData = try Data(contentsOf: json_url, options:.mappedIfSafe)
-            let serverJsonAsMap = try MKGeoJSONDecoder()
-              .decode(serverJsonData)
-              .compactMap { $0 as? MKGeoJSONFeature }
-            // transform to Artwork objects
-            let pinsFromServer = serverJsonAsMap.compactMap(Artwork.init)
-            var pinsFromServerList: [Artwork] = []
-            pinsFromServerList.append(contentsOf: pinsFromServer)
-            
-            // update pins
-            for pin in pinsFromServerList{
-                // Case 1: pin already exists
-                let pinIndex = pinIdDict[pin.id]
-                if (pinIndex != nil){
-                    // overwrite the pin in the list
-                    artworks[pinIndex!] = pin
-                }
-                // Case 2: pin is new
-                else{
-                    // add to list and to dictionary
-                    artworks.append(pin)
-                    pinIdDict[pin.id] = artworks.count - 1
+        DispatchQueue.global().async { [weak self] in
+            if let serverJsonData = try? Data(contentsOf: json_url) {
+                // transform to Artwork objects
+                DispatchQueue.main.async {
+                    do{
+                        let serverJsonAsMap = try MKGeoJSONDecoder()
+                            .decode(serverJsonData)
+                            .compactMap { $0 as? MKGeoJSONFeature }
+                        let pinsFromServer = serverJsonAsMap.compactMap(Artwork.init)
+                        var pinsFromServerList: [Artwork] = []
+                        pinsFromServerList.append(contentsOf: pinsFromServer)
+
+                        // update pins
+                        for pin in pinsFromServerList{
+                            // Case 1: pin already exists
+                            let pinIndex = self?.pinIdDict[pin.id]
+                            if (pinIndex != nil){
+                                // overwrite the pin in the list
+                                self?.artworks[pinIndex!] = pin
+                            }
+                            // Case 2: pin is new
+                            else{
+                                // add to list and to dictionary
+                                self?.artworks.append(pin)
+                                self?.pinIdDict[pin.id] = (self?.artworks.count ?? 0) - 1
+                            }
+                        }
+                        // reload all pins
+                        if let artworks = self?.artworks{
+                            self?.PennyMap.removeAnnotations(artworks)
+                        }
+                        self?.addAnnotationsIteratively()
+                        // check colours of the pins with user annotations
+                        self?.check_json_dict()
+                        self?.lastDataLoad = Date()
+                    } catch {
+                        // this is an error on our side
+                        print("Error in decoding the server locations json file")
+                    }
                 }
             }
-            lastDataLoad = Date()
+            else {
+                DispatchQueue.main.async {
+                    self?.showServerNotLoadedAlert()
+                }
+            }
         }
-        catch{
-            print("Error in loading updates from server", error)
-        }
+    }
+    private func showServerNotLoadedAlert() {
+        let alertController = UIAlertController(title:"Offline mode", message:"The pin information is outdated since the latest data could not be loaded. Check your internet connection.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // Search bar functionalities
