@@ -4456,9 +4456,9 @@
                 "latitude": "51.51067150000001",
                 "longitude": "-0.1312887",
                 "multimachine": 5,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1472,
-                "last_updated": "2023-09-05"
+                "last_updated": "2024-01-17"
             }
         },
         {
@@ -42523,6 +42523,98 @@
                 "machine_status": "available",
                 "id": 7038,
                 "last_updated": "2024-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.5205504,
+                    47.62500559999999
+                ]
+            },
+            "properties": {
+                "name": "Millstream Bainbridge",
+                "area": "Oregon",
+                "address": "122 Winslow Way E, Bainbridge",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420685",
+                "internal_url": "null",
+                "latitude": "47.62500559999999",
+                "longitude": "-122.5205504",
+                "machine_status": "available",
+                "id": 7039,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.170041,
+                    36.1232913
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino 24/7 Gift Shop & Food store (Near the Food",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=366383",
+                "internal_url": "null",
+                "latitude": "36.1232913",
+                "longitude": "-115.170041",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5422,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9888338,
+                    40.7564269
+                ]
+            },
+            "properties": {
+                "name": "Madame Tussauds",
+                "area": "New York",
+                "address": "234 West 42nd Street, between 7th and 8th , New York City (Manhattan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=53012",
+                "internal_url": "null",
+                "latitude": "40.7564269",
+                "longitude": "-73.9888338",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3050,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.2201492,
+                    51.5085554
+                ]
+            },
+            "properties": {
+                "name": "KidZania",
+                "area": "England",
+                "address": "Westfield Mall, LONDON - Shepherd's Bush",
+                "external_url": "http://209.221.138.252/Details.aspx?location=246787",
+                "internal_url": "null",
+                "latitude": "51.5085554",
+                "longitude": "-0.2201492",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1481,
+                "last_updated": "2024-01-17"
             }
         }
     ]
