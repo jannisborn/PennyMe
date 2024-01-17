@@ -13,7 +13,6 @@ class VersionManager {
     
     func shouldShowVersionInfo() -> Bool {
         if let lastVersion = userDefaults.string(forKey: lastVersionKey) {
-            print(lastVersion)
             if lastVersion != currentVersion {
                 userDefaults.set(currentVersion, forKey: lastVersionKey)
                 return true

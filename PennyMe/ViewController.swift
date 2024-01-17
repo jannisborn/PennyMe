@@ -37,9 +37,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     // Array for annotation database
     var artworks: [Artwork] = []
     var pinIdDict : [String:Int] = [:]
+    var isVisible : [String:Bool] = [:]
     var selectedPin: Artwork?
+    var isLoadingServerLocations: Bool = false
     var lastDataLoad: Date?
     
+    // variables to handle the toggles on the Settings screen
+    var includedStates : [String] = []
+    let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch"]
     let default_switches: [String: Bool] = [
         "unvisitedSwitch": true,
         "visitedSwitch": true,
@@ -102,6 +107,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             forAnnotationViewWithReuseIdentifier:MKMapViewDefaultAnnotationViewReuseIdentifier
         )
 
+        // check settings toggles
+        updateIncludedStates()
+        
+        // load data
         loadInitialData()
         addAnnotationsIteratively()
 
@@ -146,20 +155,27 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         super.viewWillAppear(animated)
 
         //  Check whether reload has to be triggered
-        if shouldReloadData() {
+        // only triggered if it's not already running
+        if shouldReloadData() && (!isLoadingServerLocations) {
+            PennyMap.removeAnnotations(artworks)
             artworks = Artwork.artworks()
+            isVisible = [:]
             pinIdDict = [:]
             loadInitialData()
+            addAnnotationsIteratively()
         }
         // each time the view appears, check colours of the pins
         check_json_dict()
         // check whether some setting has changed, if yes, reload all data on the map
         if SettingsViewController.hasChanged {
+            updateIncludedStates()
             addAnnotationsIteratively()
             SettingsViewController.hasChanged = false
         }
         if SettingsViewController.clusterHasChanged {
+            // reload all annotations in that case
             PennyMap.removeAnnotations(artworks)
+            isVisible = [:]
             addAnnotationsIteratively()
             SettingsViewController.clusterHasChanged = false
 
@@ -169,10 +185,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         
     }
 
-    
-    func addAnnotationsIteratively() {
-        let relevantUserDefauls : [String] = ["unvisitedSwitch", "visitedSwitch", "markedSwitch", "retiredSwitch", ]
-        var includedStates : [String] = []
+    func updateIncludedStates() {
+        includedStates = []
         for userdefault in relevantUserDefauls {
             let user_settings = UserDefaults.standard
             let value = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
@@ -181,18 +195,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 includedStates.append(partStr)
             }
         }
-
+    }
+    
+    func addAnnotationsIteratively() {
         for artwork in artworks {
-            if (includedStates.contains(artwork.status) && (artwork.machineStatus == "available")) 
-                || (includedStates.contains("retired") && (artwork.machineStatus != "available")) {
-                //  Artwork should be visible
-                    PennyMap.addAnnotation(artwork)
-            } else {
-                //  Artwork should not be visible
+            // check if this machine should be visible based on the status
+            let shouldBeShown = checkMachineShouldBeVisible(status: artwork.status, machineStatus: artwork.machineStatus)
+            if (!(isVisible[artwork.id] ?? false)) && shouldBeShown {
+                PennyMap.addAnnotation(artwork)
+                isVisible[artwork.id] = true
+            } else if (isVisible[artwork.id] ?? false) && !shouldBeShown {
                 PennyMap.removeAnnotation(artwork)
+                isVisible[artwork.id] = false
             }
         }
-        
     }
     
     func setDelegates(){
@@ -273,8 +289,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
             checkLocationAuthorization()
-        } else {
-            // Show alert to tell user to turn on location services
         }
     }
 
@@ -331,6 +345,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
     }
     
+    
+    func checkMachineShouldBeVisible(status: String, machineStatus: String) -> Bool {
+        //checks based on the status and the current user defaults whether a machine should be visible
+        // should be shown if available and status toggle is on, or if not available and retired toggle is on
+        return ((includedStates.contains(status) && (machineStatus == "available")) || (includedStates.contains("retired") && (machineStatus != "available")))
+    }
+    
     func check_json_dict(){
         // initialize empty status dictionary
         var statusDict = [[String: String]()]
@@ -361,17 +382,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             for id_machine in ids_in_dict{
                 if let pinId = pinIdDict[id_machine] {
                     let machine = artworks[pinId]
+                    let personalStatus = statusDict[0][machine.id] ?? "unvisited"
+                    machine.status = personalStatus
+                    // check if machine should be displayed based on settings
+                    let shouldDisplayMachine = checkMachineShouldBeVisible(status: personalStatus, machineStatus: machine.machineStatus)
+                    
+                    // remove machine in any case because we need the new pin colour
                     PennyMap.removeAnnotation(machine)
-                    let thisMachineStatus = statusDict[0][machine.id] ?? "unvisited"
-                    machine.status = thisMachineStatus
-                    // Only add the machine back to the map if it is supposed to be shown (according to settings)
-                    let user_settings = UserDefaults.standard
-                    let userdefault = thisMachineStatus+"Switch"
-                    // get userdefault (use default if not set yet)
-                    let shouldDisplayMachine = (user_settings.value(forKey: userdefault) as? Bool ?? default_switches[userdefault])
-                    // add pin if necessary
-                    if shouldDisplayMachine! {
+                    isVisible[id_machine] = false
+                    // add pin if it should be shown and is not shown at the moment
+                    if shouldDisplayMachine {
                         PennyMap.addAnnotation(machine)
+                        isVisible[id_machine] = true
                     }
                 } else {
                     // Error reason: User has a local change of a machine not in list of artworks.
@@ -406,26 +428,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
         
         // Load json file from server
-        load_server_locations()
+        loadServerLocations()
     }
     
-    func load_server_locations(){
+    func loadServerLocations(){
+        isLoadingServerLocations = true
         // load from server
         let link_to_json = "http://37.120.179.15:8000/server_locations.json"
-        guard let json_url = URL(string: link_to_json) else { return }
+        guard let jsonURL = URL(string: link_to_json) else { return }
+        
         DispatchQueue.global().async { [weak self] in
-            if let serverJsonData = try? Data(contentsOf: json_url) {
-                // transform to Artwork objects
-                DispatchQueue.main.async {
-                    do{
-                        let serverJsonAsMap = try MKGeoJSONDecoder()
-                            .decode(serverJsonData)
-                            .compactMap { $0 as? MKGeoJSONFeature }
-                        let pinsFromServer = serverJsonAsMap.compactMap(Artwork.init)
-                        var pinsFromServerList: [Artwork] = []
-                        pinsFromServerList.append(contentsOf: pinsFromServer)
-
-                        // update pins
+          if let serverJsonData = try? Data(contentsOf: jsonURL) {
+                do{
+                    let serverJsonAsMap = try MKGeoJSONDecoder()
+                        .decode(serverJsonData)
+                        .compactMap { $0 as? MKGeoJSONFeature }
+                    let pinsFromServer = serverJsonAsMap.compactMap(Artwork.init)
+                    var pinsFromServerList: [Artwork] = []
+                    pinsFromServerList.append(contentsOf: pinsFromServer)
+                
+                    DispatchQueue.main.async {
+                        // remove all artworks
+                        self?.PennyMap.removeAnnotations(self?.artworks ?? [])
+                        
+                        // update artwork list
                         for pin in pinsFromServerList{
                             // Case 1: pin already exists
                             let pinIndex = self?.pinIdDict[pin.id]
@@ -440,21 +466,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                                 self?.pinIdDict[pin.id] = (self?.artworks.count ?? 0) - 1
                             }
                         }
-                        // reload all pins
-                        if let artworks = self?.artworks{
-                            self?.PennyMap.removeAnnotations(artworks)
-                        }
+                        // re-add annotations here
+                        self?.isVisible = [:]
                         self?.addAnnotationsIteratively()
                         // check colours of the pins with user annotations
                         self?.check_json_dict()
+                        //                        }
                         self?.lastDataLoad = Date()
-                    } catch {
-                        // this is an error on our side
-                        print("Error in decoding the server locations json file")
+                        self?.isLoadingServerLocations = false
                     }
+                } catch {
+                    self?.isLoadingServerLocations = false
+                    // this is an error on our side
+                    print("Error in decoding the server locations json file")
                 }
+                
             }
             else {
+                self?.isLoadingServerLocations = false
                 DispatchQueue.main.async {
                     self?.showServerNotLoadedAlert()
                 }
