@@ -16818,9 +16818,9 @@
                 "internal_url": "null",
                 "latitude": "52.69956819999999",
                 "longitude": "-8.811922599999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 683,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-17"
             }
         },
         {
@@ -42661,6 +42661,52 @@
                 "status": "unvisited",
                 "id": 1593,
                 "last_updated": "2024-01-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3816315,
+                    27.6073599
+                ]
+            },
+            "properties": {
+                "name": "McKee Botanical Garden",
+                "area": "Florida",
+                "address": "350 US-1, Vero Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420775",
+                "internal_url": "null",
+                "latitude": "27.6073599",
+                "longitude": "-80.3816315",
+                "machine_status": "available",
+                "id": 7040,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.0552927,
+                    53.79233
+                ]
+            },
+            "properties": {
+                "name": "Blackpool Pleasure Beach",
+                "area": "England",
+                "address": "525 Ocean Boulevard, LANCASHIRE - Blackpool",
+                "external_url": "http://209.221.138.252/Details.aspx?location=261808",
+                "internal_url": "null",
+                "latitude": "53.79233",
+                "longitude": "-3.0552927",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1437,
+                "last_updated": "2024-01-17"
             }
         }
     ]
