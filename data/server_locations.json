@@ -4456,7 +4456,7 @@
                 "latitude": "51.51067150000001",
                 "longitude": "-0.1312887",
                 "multimachine": 5,
-                "machine_status": "retired",
+                "machine_status": "out-of-order",
                 "id": 1472,
                 "last_updated": "2024-01-17"
             }
@@ -42516,36 +42516,13 @@
                 "area": "Washington",
                 "address": "66 Winslow Way W, Bainbridge Island, WA 98110, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420685",
                 "internal_url": "null",
                 "latitude": 47.62499720590904,
                 "longitude": -122.52059546740021,
                 "machine_status": "available",
                 "id": 7038,
                 "last_updated": "2024-01-15"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -122.5205504,
-                    47.62500559999999
-                ]
-            },
-            "properties": {
-                "name": "Millstream Bainbridge",
-                "area": "Oregon",
-                "address": "122 Winslow Way E, Bainbridge",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=420685",
-                "internal_url": "null",
-                "latitude": "47.62500559999999",
-                "longitude": "-122.5205504",
-                "machine_status": "available",
-                "id": 7039,
-                "last_updated": "2024-01-17"
             }
         },
         {
