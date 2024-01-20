@@ -799,10 +799,10 @@
                 "internal_url": "null",
                 "latitude": "47.676427",
                 "longitude": "8.614899",
-                "multimachine": 3,
+                "multimachine": 1,
                 "machine_status": "available",
                 "id": 726,
-                "last_updated": "2023-04-28"
+                "last_updated": "2024-01-18"
             }
         },
         {
@@ -4456,9 +4456,9 @@
                 "latitude": "51.51067150000001",
                 "longitude": "-0.1312887",
                 "multimachine": 5,
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 1472,
-                "last_updated": "2023-09-05"
+                "last_updated": "2024-01-17"
             }
         },
         {
@@ -16818,9 +16818,9 @@
                 "internal_url": "null",
                 "latitude": "52.69956819999999",
                 "longitude": "-8.811922599999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 683,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-17"
             }
         },
         {
@@ -27606,9 +27606,9 @@
                 "latitude": "35.8073317",
                 "longitude": "-83.5750242",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4263,
-                "last_updated": "2023-10-23"
+                "last_updated": "2024-01-09"
             }
         },
         {
@@ -42477,6 +42477,236 @@
                 "machine_status": "available",
                 "id": 7036,
                 "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.4990759,
+                    40.7493555
+                ]
+            },
+            "properties": {
+                "name": "Arredi e Paramenti Sacri Articoli Religiosi",
+                "area": "Italy",
+                "address": "Via Roma, 25, 80045 Pompei NA, Italy, Pompei",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420669",
+                "internal_url": "null",
+                "latitude": "40.7493555",
+                "longitude": "14.4990759",
+                "machine_status": "available",
+                "id": 7037,
+                "last_updated": "2024-01-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.52059546740021,
+                    47.62499720590904
+                ]
+            },
+            "properties": {
+                "name": "Millspring Bainbridge",
+                "area": "Washington",
+                "address": "66 Winslow Way W, Bainbridge Island, WA 98110, USA",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420685",
+                "internal_url": "null",
+                "latitude": 47.62499720590904,
+                "longitude": -122.52059546740021,
+                "machine_status": "available",
+                "id": 7038,
+                "last_updated": "2024-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.170041,
+                    36.1232913
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino 24/7 Gift Shop & Food store (Near the Food",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=366383",
+                "internal_url": "null",
+                "latitude": "36.1232913",
+                "longitude": "-115.170041",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5422,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9888338,
+                    40.7564269
+                ]
+            },
+            "properties": {
+                "name": "Madame Tussauds",
+                "area": "New York",
+                "address": "234 West 42nd Street, between 7th and 8th , New York City (Manhattan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=53012",
+                "internal_url": "null",
+                "latitude": "40.7564269",
+                "longitude": "-73.9888338",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3050,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.2201492,
+                    51.5085554
+                ]
+            },
+            "properties": {
+                "name": "KidZania",
+                "area": "England",
+                "address": "Westfield Mall, LONDON - Shepherd's Bush",
+                "external_url": "http://209.221.138.252/Details.aspx?location=246787",
+                "internal_url": "null",
+                "latitude": "51.5085554",
+                "longitude": "-0.2201492",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1481,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.747687850776408,
+                    46.02375700437996
+                ]
+            },
+            "properties": {
+                "name": "Zermatt Train Station",
+                "area": "Switzerland",
+                "address": "Zermatt Bahnhof",
+                "external_url": "http://209.221.138.252/Details.aspx?location=98743",
+                "internal_url": "null",
+                "latitude": "46.02375700437996",
+                "longitude": "7.747687850776408",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 729,
+                "last_updated": "2024-01-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.08653899999999999,
+                    51.0695523
+                ]
+            },
+            "properties": {
+                "name": "Wakehurst Place",
+                "area": "England",
+                "address": "Ardingly, Haywards Heath, West Sussex , WEST SUSSEX - Ardingly",
+                "external_url": "http://209.221.138.252/Details.aspx?location=251858",
+                "internal_url": "null",
+                "latitude": "51.0695523",
+                "longitude": "-0.08653899999999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1593,
+                "last_updated": "2024-01-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3816315,
+                    27.6073599
+                ]
+            },
+            "properties": {
+                "name": "McKee Botanical Garden",
+                "area": "Florida",
+                "address": "350 US-1, Vero Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=420775",
+                "internal_url": "null",
+                "latitude": "27.6073599",
+                "longitude": "-80.3816315",
+                "machine_status": "available",
+                "id": 7040,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.0552927,
+                    53.79233
+                ]
+            },
+            "properties": {
+                "name": "Blackpool Pleasure Beach",
+                "area": "England",
+                "address": "525 Ocean Boulevard, LANCASHIRE - Blackpool",
+                "external_url": "http://209.221.138.252/Details.aspx?location=261808",
+                "internal_url": "null",
+                "latitude": "53.79233",
+                "longitude": "-3.0552927",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1437,
+                "last_updated": "2024-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1449737,
+                    36.1700472
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Golden Nugget Hotel Casino",
+                "area": "Nevada",
+                "address": "129 Fremont Street, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=10479",
+                "internal_url": "null",
+                "latitude": "36.1700472",
+                "longitude": "-115.1449737",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4499,
+                "last_updated": "2024-01-19"
             }
         }
     ]
