@@ -1147,9 +1147,9 @@
                 "internal_url": "null",
                 "latitude": "34.1025381",
                 "longitude": "-118.339455",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4639,
-                "last_updated": "2023-06-09"
+                "last_updated": "2024-01-17"
             }
         },
         {
@@ -7355,7 +7355,7 @@
             "properties": {
                 "name": "Liberty Bell Center",
                 "area": "Pennsylvania",
-                "address": ", Philadelphia ",
+                "address": "101 S Independence Mall W, Philadelphia, PA 19106",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=411247",
                 "internal_url": "null",
@@ -7363,7 +7363,8 @@
                 "longitude": "-75.15015559999999",
                 "machine_status": "available",
                 "id": 6107,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-28",
+                "multimachine": 1
             }
         },
         {
@@ -13089,9 +13090,9 @@
                 "internal_url": "null",
                 "latitude": "40.7484405",
                 "longitude": "-73.98566439999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6254,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-17"
             }
         },
         {
@@ -42848,6 +42849,76 @@
                 "id": 3365,
                 "last_updated": "2024-01-23",
                 "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.1599383,
+                    46.80454719999999
+                ]
+            },
+            "properties": {
+                "name": "Legacy Toys",
+                "area": "Minnesota",
+                "address": "1600 Miller Trunk Hwy, Duluth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258539",
+                "internal_url": "null",
+                "latitude": "46.80454719999999",
+                "longitude": "-92.1599383",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3148,
+                "last_updated": "2024-01-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.7985082,
+                    29.3061047
+                ]
+            },
+            "properties": {
+                "name": "Galveston Railroad Museum",
+                "area": "Texas",
+                "address": "123 25th Street (Rosenberg) at the Strand, Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2416",
+                "internal_url": "null",
+                "latitude": "29.3061047",
+                "longitude": "-94.7985082",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3706,
+                "last_updated": "2024-01-27",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.79372099999999,
+                    29.3089859
+                ]
+            },
+            "properties": {
+                "name": "Texas Seaport Museum",
+                "area": "Texas",
+                "address": "2202 Avenue K (Pier 21, Number 8), Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2437",
+                "internal_url": "null",
+                "latitude": "29.3089859",
+                "longitude": "-94.79372099999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3716,
+                "last_updated": "2024-01-27"
             }
         }
     ]
