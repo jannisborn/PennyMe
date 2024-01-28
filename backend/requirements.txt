@@ -11,7 +11,7 @@ haversine
 overpy
 geopandas
 ruff
-black
-isort
+black>=24.1.1
+isort>=5.9.3
 pre-commit
 loguru
