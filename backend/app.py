@@ -11,11 +11,6 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
-from thefuzz import process as fuzzysearch
-
-from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
-
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -31,6 +26,9 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database, setup_locdiffer_logger
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -382,8 +380,9 @@ def change_machine():
     try:
         multimachine_new = int(request.args.get("multimachine"))
     except ValueError:
-        # just put the multimachine as a string, we need to correct it then
-        multimachine_new = "TODO" + str(request.args.get("multimachine"))
+        return jsonify({"error": "Multimachine must be 1 (default) or larger"}), 400
+    if multimachine_new < 1:
+        return jsonify({"error": "Multimachine must be 1 (default) or larger"}), 400
     multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
     if multimachine_new != multimachine_old:
         updated_machine_entry["properties"]["multimachine"] = multimachine_new
