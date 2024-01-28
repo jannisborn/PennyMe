@@ -1,4 +1,5 @@
 """Utils to parse pennycollector.com"""
+
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
 
