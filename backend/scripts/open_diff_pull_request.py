@@ -72,9 +72,11 @@ def open_differ_pr(locations_path: str, problems_path: str):
             headers=HEADER_LOCATION_DIFF,
             file_path="/data/problems.json",
             reviewer=TOKEN_TO_REVIEWER[HEADER_LOCATION_DIFF["Authorization"]],
-            body=joblog
-            if old_server_locations == server_locations
-            else "New problems require attention.",
+            body=(
+                joblog
+                if old_server_locations == server_locations
+                else "New problems require attention."
+            ),
         )
     else:
         logger.info("No change between problem jsons")

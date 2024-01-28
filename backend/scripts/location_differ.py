@@ -6,6 +6,7 @@ This is the main script for retrieving updates from the website. It does:
 - Comparing each entry in that JSON (ID=link) to the all_locations and the server_locations
 - Differentiably adding the content to the server_location
 """
+
 import argparse
 import json
 import os

@@ -5,6 +5,7 @@ This script does:
 2. Searches the location name on a map and saves the geographic coordinates
 3. Saves data to .json
 """
+
 import os
 import sys
 
