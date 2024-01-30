@@ -10329,9 +10329,9 @@
                 "internal_url": "null",
                 "latitude": "26.1415188",
                 "longitude": "-81.79049239999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3398,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-01-28"
             }
         },
         {
@@ -42919,6 +42919,76 @@
                 "status": "unvisited",
                 "id": 3716,
                 "last_updated": "2024-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.336985,
+                    34.105593
+                ]
+            },
+            "properties": {
+                "name": "Highland Market (was Famous Market)",
+                "area": "California",
+                "address": "6818 Hollywood Boulevard, Hollywood",
+                "external_url": "http://209.221.138.252/Details.aspx?location=70543",
+                "internal_url": "null",
+                "latitude": "34.105593",
+                "longitude": "-118.336985",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4640,
+                "last_updated": "2024-01-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.837301799999999,
+                    54.4697418
+                ]
+            },
+            "properties": {
+                "name": "Tabak Witt",
+                "area": "Germany",
+                "address": "Kieler Str 56, Eckernförde",
+                "external_url": "http://209.221.138.252/Details.aspx?location=342314",
+                "internal_url": "null",
+                "latitude": "54.4697418",
+                "longitude": "9.837301799999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5702,
+                "last_updated": "2024-01-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.29617379999999,
+                    37.18170790000001
+                ]
+            },
+            "properties": {
+                "name": "Wonders of Wildlife/ American National Fish",
+                "area": "Missouri",
+                "address": "500 West Sunshine, Springfield",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3180",
+                "internal_url": "null",
+                "latitude": "37.18170790000001",
+                "longitude": "-93.29617379999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1118,
+                "last_updated": "2024-01-30",
+                "multimachine": 2
             }
         }
     ]
