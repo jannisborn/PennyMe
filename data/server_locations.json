@@ -1977,9 +1977,9 @@
                 "internal_url": "null",
                 "latitude": "45.40294129999999",
                 "longitude": "-84.6127355",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2536,
-                "last_updated": "2023-07-15"
+                "last_updated": "2024-01-28"
             }
         },
         {
@@ -43035,6 +43035,52 @@
                 "status": "unvisited",
                 "id": 5655,
                 "last_updated": "2024-02-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.72663899999999,
+                    45.77832
+                ]
+            },
+            "properties": {
+                "name": "Pharaohs Family Fun Center",
+                "area": "Michigan",
+                "address": "328 S Huron Ave,, Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=421373",
+                "internal_url": "null",
+                "latitude": "45.77832",
+                "longitude": "-84.72663899999999",
+                "machine_status": "available",
+                "id": 7041,
+                "last_updated": "2024-01-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.4521097,
+                    46.5509853
+                ]
+            },
+            "properties": {
+                "name": "All Things Michigan In Westwood Mall",
+                "area": "Michigan",
+                "address": "3020 US-41 W, Marquette ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=421356",
+                "internal_url": "null",
+                "latitude": "46.5509853",
+                "longitude": "-87.4521097",
+                "machine_status": "available",
+                "id": 7042,
+                "last_updated": "2024-01-28"
             }
         }
     ]
