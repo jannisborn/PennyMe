@@ -3,11 +3,10 @@ import os
 from typing import Dict
 
 from loguru import logger
+from pennyme.utils import ALL_LOCATIONS
 from PIL import Image, ImageOps
 from slack import WebClient
 from slack.errors import SlackApiError
-
-from pennyme.utils import ALL_LOCATIONS
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 IMG_PORT = "http://37.120.179.15:8000/"
@@ -91,9 +90,6 @@ def image_slack(
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     try:
         CLIENT.chat_postMessage(
-            channel="#pennyme_uploads", text=text, username="PennyMe"
-        )
-        CLIENT.chat_postMessage(
             channel="#pennyme_uploads",
             text=text,
             username="PennyMe",
@@ -102,7 +98,7 @@ def image_slack(
                     "type": "image",
                     "title": {
                         "type": "plain_text",
-                        "text": "NEW Image!",
+                        "text": text,
                         "emoji": True,
                     },
                     "image_url": f"{IMG_PORT}{machine_id}.jpg",

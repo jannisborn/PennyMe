@@ -423,6 +423,12 @@ def change_machine():
         if latitude != lat_old or longitude != lng_old:
             msg += f"\t Location from {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
+    if "from:" not in msg:
+        msg = f"{message_slack_raw} - Submitted change is identical to what is already in pending PR"
+        message_slack_raw(msg)
+
+        return jsonify({"message": "Success!"}), 200
+
     request_queue.put((process_machine_change, (updated_machine_entry, ip, msg)))
 
     # return warning if the address and coordinates do not correspond

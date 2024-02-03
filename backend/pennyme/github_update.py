@@ -7,7 +7,6 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 import requests
 from loguru import logger
-
 from pennyme.slack import message_slack_raw
 from pennyme.utils import find_machine_in_database, get_next_free_machine_id
 
@@ -289,10 +288,7 @@ def process_machine_change(
             server_locations["features"].append(updated_machine_entry)
 
         # push to github
-        commit_message = (
-            f"Request change to machine {machine_id} named {title}"
-            + change_message[:-1]
-        )
+        commit_message = f'Change {machine_id} "{title}"' + change_message[:-1]
         commit_json_file(
             server_locations,
             DATA_BRANCH,
