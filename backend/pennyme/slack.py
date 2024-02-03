@@ -91,9 +91,6 @@ def image_slack(
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     try:
         CLIENT.chat_postMessage(
-            channel="#pennyme_uploads", text=text, username="PennyMe"
-        )
-        CLIENT.chat_postMessage(
             channel="#pennyme_uploads",
             text=text,
             username="PennyMe",
@@ -102,7 +99,7 @@ def image_slack(
                     "type": "image",
                     "title": {
                         "type": "plain_text",
-                        "text": "NEW Image!",
+                        "text": text,
                         "emoji": True,
                     },
                     "image_url": f"{IMG_PORT}{machine_id}.jpg",
