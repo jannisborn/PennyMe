@@ -266,8 +266,11 @@ struct MachineChangedForm: View {
 
         let statusNew = statusDict[selectedSegment]!
         
+        let addressCleaned = address.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+        let titleCleaned = name.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+        
         // prepare URL
-        let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)&title=\(name)&address=\(address)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+        let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)&title=\(titleCleaned)&address=\(addressCleaned)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
         
         guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
         ) else {
