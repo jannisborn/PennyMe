@@ -419,12 +419,12 @@ def change_machine():
         updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
-            msg += f"\tAddress from {old_address} to: {address}\n"
+            msg += f"\tAddress from: {old_address} to: {address}\n"
         if latitude != lat_old or longitude != lng_old:
-            msg += f"\t Location from {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
+            msg += f"\t Location from: {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
-    if "from:" not in msg:
-        msg = f"{message_slack_raw} - Submitted change is identical to what is already in pending PR"
+    if "from" not in msg:
+        msg = f"{machine_id} - Submitted change is identical to what is already in pending PR"
         message_slack_raw(msg)
 
         return jsonify({"message": "Success!"}), 200
