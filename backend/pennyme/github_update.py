@@ -289,7 +289,9 @@ def process_machine_change(
             server_locations["features"].append(updated_machine_entry)
 
         # push to github
-        commit_message = f'Change {machine_id} "{title}"' + change_message[:-1]
+        commit_message = f'Change {machine_id} "{title}"' + change_message[:-1].replace(
+            "\n", "\t"
+        )
         commit_json_file(
             server_locations,
             DATA_BRANCH,

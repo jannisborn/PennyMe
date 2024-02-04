@@ -337,7 +337,7 @@ def change_machine():
         index_in_server_locations,
     ) = find_machine_in_database(machine_id, server_locations["features"])
 
-    msg = " - Changed:\n"
+    msg = ":\n"
 
     latest_commit = get_latest_commit_time("main")
     latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
