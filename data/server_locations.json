@@ -27653,9 +27653,9 @@
                 "internal_url": "null",
                 "latitude": "38.5395564",
                 "longitude": "-75.0551806",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5324,
-                "last_updated": "2023-11-01"
+                "last_updated": "2024-02-04"
             }
         },
         {
@@ -27791,9 +27791,9 @@
                 "internal_url": "null",
                 "latitude": "45.204304",
                 "longitude": "-123.14543",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4373,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-02-04"
             }
         },
         {
@@ -43265,6 +43265,148 @@
                 "status": "unvisited",
                 "id": 3280,
                 "last_updated": "2024-02-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.6621659,
+                    35.0776932
+                ]
+            },
+            "properties": {
+                "name": "ABQ BioPark Zoo (Was Rio Grande Zoo)",
+                "area": "New Mexico",
+                "address": "903 10 St. SW, Albuquerque",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3505",
+                "internal_url": "null",
+                "latitude": "35.0776932",
+                "longitude": "-106.6621659",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4903,
+                "last_updated": "2024-02-03",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.419389,
+                    38.8026097
+                ]
+            },
+            "properties": {
+                "name": "Nevada Collector Books",
+                "area": "_Collector Books_",
+                "address": "Location unknown, Nevada",
+                "external_url": "http://209.221.138.252/Details.aspx?location=106107",
+                "internal_url": "null",
+                "latitude": "38.8026097",
+                "longitude": "-116.419389",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5578,
+                "last_updated": "2024-02-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1958333,
+                    32.7536111
+                ]
+            },
+            "properties": {
+                "name": "Old Town - Old Town Market",
+                "area": "California",
+                "address": "Corner of Twiggs St. and San Diego Avenue, San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1163",
+                "internal_url": "null",
+                "latitude": "32.7536111",
+                "longitude": "-117.1958333",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4782,
+                "last_updated": "2024-02-04",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.195797,
+                    32.753128
+                ]
+            },
+            "properties": {
+                "name": "Old Town - Kacha Inka's Art",
+                "area": "California",
+                "address": "2493 San Diego Avenue, San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=67921",
+                "internal_url": "null",
+                "latitude": "32.753128",
+                "longitude": "-117.195797",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4779,
+                "last_updated": "2024-02-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.35017719999999,
+                    34.9733918
+                ]
+            },
+            "properties": {
+                "name": "Rock City Gardens",
+                "area": "Georgia",
+                "address": "1400 Patten Road, Lookout Mountain",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1877",
+                "internal_url": "null",
+                "latitude": "34.9733918",
+                "longitude": "-85.35017719999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1646,
+                "last_updated": "2024-02-04",
+                "multimachine": 2,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3135877,
+                    29.8977805
+                ]
+            },
+            "properties": {
+                "name": "City Gate Plaza (Bet Bulding 4 & 6)",
+                "area": "Florida",
+                "address": "corner of St. George Street and Orange St, St. Augustine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1562",
+                "internal_url": "null",
+                "latitude": "29.8977805",
+                "longitude": "-81.3135877",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3445,
+                "last_updated": "2024-02-04"
             }
         }
     ]

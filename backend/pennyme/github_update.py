@@ -293,9 +293,10 @@ def process_machine_change(
         commit_json_file(
             server_locations,
             DATA_BRANCH,
-            commit_message,
+            commit_message.replace("\n", "\t"),
             latest_commit_sha,
             body=commit_message,
+            post_comment=False,
         )
 
         message_slack_raw(text=commit_message)
@@ -315,6 +316,7 @@ def commit_json_file(
     file_path: str = FILE_PATH,
     body: str = "Machine updates submitted for review",
     reviewer: Optional[str] = None,
+    post_comment: bool = True,
 ):
     """
     Commit the server locations dictionary to a branch with the desired
@@ -329,6 +331,7 @@ def commit_json_file(
         file_path: Path to the file to commit to, defaults to `/data/server_locations.json`.
         body: Content for commit message. Defaults to "Machine updates submitted for review".
         reviewer: GitHub username of the reviewer. Defaults to None.
+        post_comment: Whether to post a comment to the existing PR. Defaults to True.
     """
 
     # create a new branch if necessary
@@ -362,8 +365,9 @@ def commit_json_file(
         logger.error(
             "Seems like a PR already exists even though branch was created just now."
         )
-        post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
-    elif pr_id:
+        if post_comment:
+            post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
+    elif pr_id and post_comment:
         # Seems like the PR already existed
         post_comment_to_pr(pr_id=pr_id, comment=body, headers=headers)
     elif did_create_new_branch:
