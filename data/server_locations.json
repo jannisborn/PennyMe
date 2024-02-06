@@ -43408,6 +43408,32 @@
                 "id": 3445,
                 "last_updated": "2024-02-04"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.791195,
+                    47.199183
+                ]
+            },
+            "properties": {
+                "name": "Alpamare Pfäffikon",
+                "area": "Switzerland",
+                "address": "Gwattstrasse 12, 8808 Pfäffikon",
+                "external_url": "http://209.221.138.252/Details.aspx?location=303431",
+                "internal_url": "null",
+                "latitude": "47.199183",
+                "longitude": "8.791195",
+                "logs": {
+                    "2021-11-14": "Could not find machine before the entrance anymore. Checked both levels, but it might have been move inside the waterpark."
+                },
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 725,
+                "last_updated": "2024-02-06"
+            }
         }
     ]
 }
