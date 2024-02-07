@@ -266,9 +266,9 @@ struct MachineChangedForm: View {
 
         let statusNew = statusDict[selectedSegment]!
         
-        let addressCleaned = address.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-        let titleCleaned = name.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-        let areaCleaned = area.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+        let addressCleaned = address.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
+        let titleCleaned = name.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
+        let areaCleaned = area.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
         
         // prepare URL
         let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)&title=\(titleCleaned)&address=\(addressCleaned)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(areaCleaned)"

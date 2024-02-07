@@ -214,9 +214,9 @@ struct NewMachineFormView: View {
                     finishLoading(message: "Something went wrong with your image")
                     return
                 }
-                let addressCleaned = address.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-                let titleCleaned = name.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-                let areaCleaned = area.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+                let addressCleaned = address.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
+                let titleCleaned = name.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
+                let areaCleaned = area.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
                 
                 // call flask method called create_machine
                 let urlString = flaskURL+"/create_machine?title=\(titleCleaned)&address=\(addressCleaned)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(areaCleaned)"
