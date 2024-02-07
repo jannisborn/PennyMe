@@ -323,7 +323,9 @@ def change_machine():
     """
     machine_id = int(request.args.get("id"))
     title = str(request.args.get("title")).strip()
-    address = str(request.args.get("address")).strip()
+    # address = str(request.args.get("address")).strip()
+    # hot fix: for now, just use the part between the address and the lat_coord argument
+    address = str(request.query_string).split("address=")[1].split("&lat_coord=")[0]
     area = str(request.args.get("area")).strip()
     status = str(request.args.get("status")).strip()
     latitude = float(request.args.get("lat_coord"))

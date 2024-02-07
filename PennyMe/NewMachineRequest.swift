@@ -214,8 +214,12 @@ struct NewMachineFormView: View {
                     finishLoading(message: "Something went wrong with your image")
                     return
                 }
+                let addressCleaned = address.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+                let titleCleaned = name.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+                let areaCleaned = area.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
+                
                 // call flask method called create_machine
-                let urlString = flaskURL+"/create_machine?title=\(name)&address=\(address)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(area)"
+                let urlString = flaskURL+"/create_machine?title=\(titleCleaned)&address=\(addressCleaned)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(areaCleaned)"
                 guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
                 ) else {
                     finishLoading(message: "Something went wrong. Please try to re-enter the information")
