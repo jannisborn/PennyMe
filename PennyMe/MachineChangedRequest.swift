@@ -266,19 +266,20 @@ struct MachineChangedForm: View {
 
         let statusNew = statusDict[selectedSegment]!
         
-        let addressCleaned = address.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
-        let titleCleaned = name.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
-        let areaCleaned = area.replacingOccurrences(of: "?", with: "%3f").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d").replacingOccurrences(of: "&", with: "%26")
-        
-        // prepare URL
-        let urlString = flaskURL+"/change_machine?id=\(pinDataStored.id)&title=\(titleCleaned)&address=\(addressCleaned)&lat_coord=\(lat_coord)&lon_coord=\(lon_coord)&status=\(statusNew)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(areaCleaned)"
-        
-        guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
-        ) else {
-            finishLoading(message: "Something went wrong. Please try to re-enter the information")
-            return
-        }
-        var request = URLRequest(url: url)
+        var urlComponents = URLComponents(string: flaskURL)!
+        urlComponents.path = "/change_machine"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "id", value: pinDataStored.id),
+            URLQueryItem(name: "title", value: name),
+            URLQueryItem(name: "address", value: address),
+            URLQueryItem(name: "area", value: area),
+            URLQueryItem(name: "multimachine", value: multimachine),
+            URLQueryItem(name:"paywall", value: String(paywall)),
+            URLQueryItem(name: "lon_coord", value: "\(lon_coord)"),
+            URLQueryItem(name: "lat_coord", value: "\(lat_coord)"),
+        ]
+        var request = URLRequest(url: urlComponents.url!)
+     
         request.httpMethod = "POST"
         
         // Create a URLSessionDataTask to send the request
