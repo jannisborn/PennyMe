@@ -214,18 +214,19 @@ struct NewMachineFormView: View {
                     finishLoading(message: "Something went wrong with your image")
                     return
                 }
-                let addressCleaned = address.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-                let titleCleaned = name.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-                let areaCleaned = area.replacingOccurrences(of: "?", with: "%26").replacingOccurrences(of: "+", with: "%2b").replacingOccurrences(of: "=", with: "%3d")
-                
-                // call flask method called create_machine
-                let urlString = flaskURL+"/create_machine?title=\(titleCleaned)&address=\(addressCleaned)&lat_coord=\(coords.latitude)&lon_coord=\(coords.longitude)&multimachine=\(multimachine)&paywall=\(paywall)&area=\(areaCleaned)"
-                guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "None"
-                ) else {
-                    finishLoading(message: "Something went wrong. Please try to re-enter the information")
-                    return
-                }
-                var request = URLRequest(url: url)
+                var urlComponents = URLComponents(string: flaskURL)!
+                urlComponents.path = "/create_machine"
+                urlComponents.queryItems = [
+                    URLQueryItem(name: "title", value: name),
+                    URLQueryItem(name: "address", value: address),
+                    URLQueryItem(name: "area", value: area),
+                    URLQueryItem(name: "multimachine", value: multimachine),
+                    URLQueryItem(name:"paywall", value: String(paywall)),
+                    URLQueryItem(name: "lon_coord", value: "\(coords.longitude)"),
+                    URLQueryItem(name: "lat_coord", value: "\(coords.latitude)"),
+                ]
+                urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+                var request = URLRequest(url: urlComponents.url!)
                 request.httpMethod = "POST"
                 
                 // Add the image data to the request body
