@@ -277,7 +277,9 @@ struct MachineChangedForm: View {
             URLQueryItem(name:"paywall", value: String(paywall)),
             URLQueryItem(name: "lon_coord", value: "\(lon_coord)"),
             URLQueryItem(name: "lat_coord", value: "\(lat_coord)"),
+            URLQueryItem(name: "status", value: statusNew),
         ]
+        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         var request = URLRequest(url: urlComponents.url!)
      
         request.httpMethod = "POST"

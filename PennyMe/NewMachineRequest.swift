@@ -225,6 +225,7 @@ struct NewMachineFormView: View {
                     URLQueryItem(name: "lon_coord", value: "\(coords.longitude)"),
                     URLQueryItem(name: "lat_coord", value: "\(coords.latitude)"),
                 ]
+                urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
                 var request = URLRequest(url: urlComponents.url!)
                 request.httpMethod = "POST"
                 
