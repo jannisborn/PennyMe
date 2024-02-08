@@ -215,7 +215,7 @@ struct NewMachineFormView: View {
                     return
                 }
                 var urlComponents = URLComponents(string: flaskURL)!
-                urlComponents.path = "/change_machine"
+                urlComponents.path = "/create_machine"
                 urlComponents.queryItems = [
                     URLQueryItem(name: "title", value: name),
                     URLQueryItem(name: "address", value: address),
