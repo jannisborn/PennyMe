@@ -43687,6 +43687,75 @@
                 "id": 735,
                 "last_updated": "2024-02-11"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.3495377,
+                    30.5209662
+                ]
+            },
+            "properties": {
+                "name": "Jellystone Park",
+                "area": "Louisiana",
+                "address": "46049 Highway 445, Robert",
+                "external_url": "http://209.221.138.252/Details.aspx?location=66577",
+                "internal_url": "null",
+                "latitude": "30.5209662",
+                "longitude": "-90.3495377",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3594,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.39884529999999,
+                    42.9042355
+                ]
+            },
+            "properties": {
+                "name": "JoDeans Famous Steak and Buffet ",
+                "area": "South Dakota",
+                "address": "2809 Broadway Ave , Yankton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=327134",
+                "internal_url": "null",
+                "latitude": "42.9042355",
+                "longitude": "-97.39884529999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1322,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.48735490000001,
+                    29.4250424
+                ]
+            },
+            "properties": {
+                "name": "IMAX at Rivercenter",
+                "area": "Texas",
+                "address": "217 Alamo Plaza, Suite 300, San Antonio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2597",
+                "internal_url": "null",
+                "latitude": "29.4250424",
+                "longitude": "-98.48735490000001",
+                "machine_status": "available",
+                "id": 7044,
+                "last_updated": "2024-02-08"
+            }
         }
     ]
 }
