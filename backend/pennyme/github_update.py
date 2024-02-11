@@ -272,6 +272,8 @@ def process_machine_change(
     try:
         machine_id = updated_machine_entry["properties"]["id"]
         title = updated_machine_entry["properties"]["name"]
+        area = updated_machine_entry["properties"]["area"]
+        url = updated_machine_entry["properties"]["external_url"]
 
         # Reload the server locations to make sure that we have the correct file
         server_locations, latest_commit_sha = load_latest_json()
@@ -298,8 +300,10 @@ def process_machine_change(
             body=commit_message,
             post_comment=False,
         )
-
-        message_slack_raw(text=commit_message)
+        slack_message = (
+            f'Change {machine_id} "{title}" ({area}) at {url}' + change_message[:-1]
+        )
+        message_slack_raw(text=slack_message)
 
     except Exception as e:
         message_slack_raw(
