@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 import requests
 from loguru import logger
+
 from pennyme.slack import message_slack_raw
 from pennyme.utils import find_machine_in_database, get_next_free_machine_id
 
