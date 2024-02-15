@@ -21795,9 +21795,9 @@
                 "internal_url": "null",
                 "latitude": "48.8867111",
                 "longitude": "2.3430302",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5658,
-                "last_updated": "2023-10-24"
+                "last_updated": "2024-02-08"
             }
         },
         {
@@ -44035,6 +44035,98 @@
                 "longitude": "-81.7053978",
                 "machine_status": "available",
                 "id": 7047,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.4808973,
+                    41.53726450000001
+                ]
+            },
+            "properties": {
+                "name": "Green River Chamber & Visitor Center",
+                "area": "Wyoming",
+                "address": "1155 West Flaming Gorge Way, Green River ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422207",
+                "internal_url": "null",
+                "latitude": "41.53726450000001",
+                "longitude": "-109.4808973",
+                "machine_status": "available",
+                "id": 7048,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.967926,
+                    56.4569239
+                ]
+            },
+            "properties": {
+                "name": "RRS Discover Dundee",
+                "area": "Scotland",
+                "address": "Discovery Quay, Dundee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=32595",
+                "internal_url": "null",
+                "latitude": "56.4569239",
+                "longitude": "-2.967926",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 742,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1979204,
+                    55.9519811
+                ]
+            },
+            "properties": {
+                "name": "Kingdom of Sweets",
+                "area": "Scotland",
+                "address": "85 Prince Street, Edinburgh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343819",
+                "internal_url": "null",
+                "latitude": "55.9519811",
+                "longitude": "-3.1979204",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5903,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.5984075,
+                    57.31588739999999
+                ]
+            },
+            "properties": {
+                "name": "Grantown East Highland Heritage & Cultural Centre",
+                "area": "Scotland",
+                "address": ", Grantown-on-Spey (East Railway Station)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=330533",
+                "internal_url": "null",
+                "latitude": "57.31588739999999",
+                "longitude": "-3.5984075",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5904,
                 "last_updated": "2024-02-08"
             }
         }
