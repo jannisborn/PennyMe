@@ -4928,9 +4928,9 @@
                 "latitude": "34.008576",
                 "longitude": "-118.498101",
                 "multimachine": 3,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4855,
-                "last_updated": "2023-09-25"
+                "last_updated": "2024-02-12"
             }
         },
         {
@@ -14909,7 +14909,7 @@
                 "longitude": "14.3950837",
                 "machine_status": "available",
                 "id": 51,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-02-15"
             }
         },
         {
@@ -21795,9 +21795,9 @@
                 "internal_url": "null",
                 "latitude": "48.8867111",
                 "longitude": "2.3430302",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5658,
-                "last_updated": "2023-10-24"
+                "last_updated": "2024-02-08"
             }
         },
         {
@@ -23922,9 +23922,9 @@
                 "internal_url": "null",
                 "latitude": "29.3089859",
                 "longitude": "-94.79372099999999",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 3717,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-02-14"
             }
         },
         {
@@ -25072,9 +25072,9 @@
                 "internal_url": "null",
                 "latitude": "39.6618305",
                 "longitude": "-75.6913107",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 2244,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-02-16"
             }
         },
         {
@@ -41297,9 +41297,9 @@
                 "internal_url": "null",
                 "latitude": "26.4546952",
                 "longitude": "-81.9556927",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7008,
-                "last_updated": "2023-12-20"
+                "last_updated": "2024-02-16"
             }
         },
         {
@@ -43686,6 +43686,496 @@
                 "status": "unvisited",
                 "id": 735,
                 "last_updated": "2024-02-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.3495377,
+                    30.5209662
+                ]
+            },
+            "properties": {
+                "name": "Jellystone Park",
+                "area": "Louisiana",
+                "address": "46049 Highway 445, Robert",
+                "external_url": "http://209.221.138.252/Details.aspx?location=66577",
+                "internal_url": "null",
+                "latitude": "30.5209662",
+                "longitude": "-90.3495377",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3594,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.39884529999999,
+                    42.9042355
+                ]
+            },
+            "properties": {
+                "name": "JoDeans Famous Steak and Buffet ",
+                "area": "South Dakota",
+                "address": "2809 Broadway Ave , Yankton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=327134",
+                "internal_url": "null",
+                "latitude": "42.9042355",
+                "longitude": "-97.39884529999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1322,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.48735490000001,
+                    29.4250424
+                ]
+            },
+            "properties": {
+                "name": "IMAX at Rivercenter",
+                "area": "Texas",
+                "address": "217 Alamo Plaza, Suite 300, San Antonio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2597",
+                "internal_url": "null",
+                "latitude": "29.4250424",
+                "longitude": "-98.48735490000001",
+                "machine_status": "available",
+                "id": 7044,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.63967149999999,
+                    38.198887
+                ]
+            },
+            "properties": {
+                "name": "Dogpatch Arcade",
+                "area": "Missouri",
+                "address": "1482 Bagnell Dam Blvd, Lake Ozark",
+                "external_url": "http://209.221.138.252/Details.aspx?location=361862",
+                "internal_url": "null",
+                "latitude": "38.198887",
+                "longitude": "-92.63967149999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5330,
+                "last_updated": "2024-02-12",
+                "multimachine": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.0144261,
+                    30.6818034
+                ]
+            },
+            "properties": {
+                "name": "USS Alabama Battleship Memorial Park",
+                "area": "Alabama",
+                "address": "2703 Battleship Parkway, Mobile",
+                "external_url": "http://209.221.138.252/Details.aspx?location=190",
+                "internal_url": "null",
+                "latitude": "30.6818034",
+                "longitude": "-88.0144261",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1727,
+                "last_updated": "2024-02-12",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.884516999999999,
+                    53.0907124
+                ]
+            },
+            "properties": {
+                "name": "Botanika",
+                "area": "Germany",
+                "address": "Mitten im Bremer Rhododendron-Park, Deliusweg 40,, Bremen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422010",
+                "internal_url": "null",
+                "latitude": "53.0907124",
+                "longitude": "8.884516999999999",
+                "machine_status": "available",
+                "id": 7045,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.5830659,
+                    41.7905726
+                ]
+            },
+            "properties": {
+                "name": "Museum of Science & Industry, The (MSI)",
+                "area": "Illinois",
+                "address": "57th Street & Lake Shore Drive, Chicago",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2082",
+                "internal_url": "null",
+                "latitude": "41.7905726",
+                "longitude": "-87.5830659",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1212,
+                "last_updated": "2024-02-13",
+                "multimachine": 4,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.4208485,
+                    50.0904308
+                ]
+            },
+            "properties": {
+                "name": "Spanish Synagogue",
+                "area": "Czech",
+                "address": "Vezenská 1, Prague",
+                "external_url": "http://209.221.138.252/Details.aspx?location=255261",
+                "internal_url": "null",
+                "latitude": "50.0904308",
+                "longitude": "14.4208485",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 53,
+                "last_updated": "2024-02-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.614038,
+                    41.8675726
+                ]
+            },
+            "properties": {
+                "name": "John G. Shedd Aquarium",
+                "area": "Illinois",
+                "address": "1200 South Lake Shore Drive, Chicago",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2088",
+                "internal_url": "null",
+                "latitude": "41.8675726",
+                "longitude": "-87.614038",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1210,
+                "last_updated": "2024-02-13",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9236622,
+                    33.8091327
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Star Trader Gift Shop",
+                "area": "California",
+                "address": "Downtown Disney,, Anaheim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=387498",
+                "internal_url": "null",
+                "latitude": "33.8091327",
+                "longitude": "-117.9236622",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5984,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9235987,
+                    33.8093148
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Tortilla Jo's restaurant (Was Monorail Entrance)",
+                "area": "California",
+                "address": "1510 South Disneyland Drive, Anaheim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=203609",
+                "internal_url": "null",
+                "latitude": "33.8093148",
+                "longitude": "-117.9235987",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4558,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3408736,
+                    47.6100454
+                ]
+            },
+            "properties": {
+                "name": "Simply Seattle Gift Shop ",
+                "area": "Washington",
+                "address": "1600 1st Avenue, Seattle",
+                "external_url": "http://209.221.138.252/Details.aspx?location=271549",
+                "internal_url": "null",
+                "latitude": "47.6100454",
+                "longitude": "-122.3408736",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5152,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.123149,
+                    52.0198428
+                ]
+            },
+            "properties": {
+                "name": "Jimmys Farm ",
+                "area": "England",
+                "address": "pannington hall lane , SUFFOLK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422073",
+                "internal_url": "null",
+                "latitude": "52.0198428",
+                "longitude": "1.123149",
+                "machine_status": "available",
+                "id": 7046,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.699707099999999,
+                    40.6560765
+                ]
+            },
+            "properties": {
+                "name": "Del Olmo book store",
+                "area": "Spain",
+                "address": "Calle de los Reyes Católicos, 5, Avila",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231723",
+                "internal_url": "null",
+                "latitude": "40.6560765",
+                "longitude": "-4.699707099999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 272,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.7053978,
+                    28.4198212
+                ]
+            },
+            "properties": {
+                "name": "Showcase of Citrus ",
+                "area": "Florida",
+                "address": "5010 US Highway 27, Clermont ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422163",
+                "internal_url": "null",
+                "latitude": "28.4198212",
+                "longitude": "-81.7053978",
+                "machine_status": "available",
+                "id": 7047,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.4808973,
+                    41.53726450000001
+                ]
+            },
+            "properties": {
+                "name": "Green River Chamber & Visitor Center",
+                "area": "Wyoming",
+                "address": "1155 West Flaming Gorge Way, Green River ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422207",
+                "internal_url": "null",
+                "latitude": "41.53726450000001",
+                "longitude": "-109.4808973",
+                "machine_status": "available",
+                "id": 7048,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.967926,
+                    56.4569239
+                ]
+            },
+            "properties": {
+                "name": "RRS Discover Dundee",
+                "area": "Scotland",
+                "address": "Discovery Quay, Dundee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=32595",
+                "internal_url": "null",
+                "latitude": "56.4569239",
+                "longitude": "-2.967926",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 742,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1979204,
+                    55.9519811
+                ]
+            },
+            "properties": {
+                "name": "Kingdom of Sweets",
+                "area": "Scotland",
+                "address": "85 Prince Street, Edinburgh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343819",
+                "internal_url": "null",
+                "latitude": "55.9519811",
+                "longitude": "-3.1979204",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5903,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.5984075,
+                    57.31588739999999
+                ]
+            },
+            "properties": {
+                "name": "Grantown East Highland Heritage & Cultural Centre",
+                "area": "Scotland",
+                "address": ", Grantown-on-Spey (East Railway Station)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=330533",
+                "internal_url": "null",
+                "latitude": "57.31588739999999",
+                "longitude": "-3.5984075",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5904,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3555013,
+                    34.0637249
+                ]
+            },
+            "properties": {
+                "name": "George C. Page Museum, La Brea Tar Pits",
+                "area": "California",
+                "address": "5801 Wilshire Boulevard, Los Angeles - La Brea",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1317",
+                "internal_url": "null",
+                "latitude": "34.0637249",
+                "longitude": "-118.3555013",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4674,
+                "last_updated": "2024-02-16",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0198679,
+                    38.88816010000001
+                ]
+            },
+            "properties": {
+                "name": "Smithsonian National Air and Space Museum",
+                "area": "Washington DC",
+                "address": "600 Independence Avenue, S.W., Washington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=990",
+                "internal_url": "null",
+                "latitude": "38.88816010000001",
+                "longitude": "-77.0198679",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3244,
+                "last_updated": "2024-02-16",
+                "multimachine": 4
             }
         }
     ]
