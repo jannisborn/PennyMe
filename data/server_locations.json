@@ -44247,6 +44247,75 @@
                 "last_updated": "2024-02-17",
                 "multimachine": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.4825932,
+                    27.8532013
+                ]
+            },
+            "properties": {
+                "name": "MacDill Inn",
+                "area": "Florida",
+                "address": "7637 Bayshore Blvd, Bldg #350, McDill AFB",
+                "external_url": "http://209.221.138.252/Details.aspx?location=384788",
+                "internal_url": "null",
+                "latitude": "27.8532013",
+                "longitude": "-82.4825932",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5354,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.2743927,
+                    47.1307408
+                ]
+            },
+            "properties": {
+                "name": "Moses Lake Museum & Art Center",
+                "area": "Washington",
+                "address": "401 S. Balsam St., Moses Lake",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422323",
+                "internal_url": "null",
+                "latitude": "47.1307408",
+                "longitude": "-119.2743927",
+                "machine_status": "available",
+                "id": 7049,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3080629,
+                    51.05769480000001
+                ]
+            },
+            "properties": {
+                "name": "Portsmouth D-Day Museum",
+                "area": "England",
+                "address": "Museum Road, HAMPSHIRE - Portsmouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=51288",
+                "internal_url": "null",
+                "latitude": "51.05769480000001",
+                "longitude": "-1.3080629",
+                "machine_status": "available",
+                "id": 7050,
+                "last_updated": "2024-02-08"
+            }
         }
     ]
 }
