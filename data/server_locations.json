@@ -1193,9 +1193,9 @@
                 "internal_url": "null",
                 "latitude": "34.7921982",
                 "longitude": "-109.8912094",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2634,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-02-21"
             }
         },
         {
@@ -39446,9 +39446,9 @@
                 "internal_url": "null",
                 "latitude": "39.9533113",
                 "longitude": "-75.15943",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4043,
-                "last_updated": "2023-11-26"
+                "last_updated": "2024-02-21"
             }
         },
         {
@@ -43940,10 +43940,10 @@
                 "internal_url": "null",
                 "latitude": "33.8093148",
                 "longitude": "-117.9235987",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4558,
-                "last_updated": "2024-02-08"
+                "last_updated": "2024-02-21"
             }
         },
         {
@@ -44385,6 +44385,52 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3584,
+                "last_updated": "2024-02-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1275862,
+                    51.5072178
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe Rock Shop",
+                "area": "England",
+                "address": "225-229 Piccadilly, Criterion Building, LONDON - Piccadilly",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422556",
+                "internal_url": "null",
+                "latitude": "51.5072178",
+                "longitude": "-0.1275862",
+                "machine_status": "available",
+                "id": 7051,
+                "last_updated": "2024-02-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.589591500000001,
+                    51.9478734
+                ]
+            },
+            "properties": {
+                "name": "Allwetterzoo Münster (Westf)",
+                "area": "Germany",
+                "address": "Sentruper Straße 315, Münster ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422387",
+                "internal_url": "null",
+                "latitude": "51.9478734",
+                "longitude": "7.589591500000001",
+                "machine_status": "available",
+                "id": 7052,
                 "last_updated": "2024-02-21"
             }
         }
