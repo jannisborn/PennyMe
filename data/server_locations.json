@@ -2526,7 +2526,7 @@
                 ]
             },
             "properties": {
-                "name": "'Only In Chinatown' (gift shop)",
+                "name": "Only In Chinatown (gift shop)",
                 "area": "California",
                 "address": "864 Grant Ave, San Francisco, CA 94108, United States",
                 "status": "unvisited",
@@ -2537,7 +2537,7 @@
                 "multimachine": 2,
                 "machine_status": "available",
                 "id": 4797,
-                "last_updated": "2023-07-30"
+                "last_updated": "2024-02-17"
             }
         },
         {
@@ -24888,9 +24888,9 @@
                 "internal_url": "null",
                 "latitude": "38.895211",
                 "longitude": "-77.0327373",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 3251,
-                "last_updated": "2023-11-18"
+                "last_updated": "2024-02-17"
             }
         },
         {
@@ -39979,9 +39979,9 @@
                 "internal_url": "null",
                 "latitude": "45.4347343",
                 "longitude": "-122.7581863",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6987,
-                "last_updated": "2023-12-05"
+                "last_updated": "2024-02-17"
             }
         },
         {
@@ -43956,7 +43956,7 @@
                 ]
             },
             "properties": {
-                "name": "Simply Seattle Gift Shop ",
+                "name": "Simply Seattle Gift Shop",
                 "area": "Washington",
                 "address": "1600 1st Avenue, Seattle",
                 "external_url": "http://209.221.138.252/Details.aspx?location=271549",
@@ -43966,7 +43966,7 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5152,
-                "last_updated": "2024-02-08"
+                "last_updated": "2024-02-17"
             }
         },
         {
@@ -44176,6 +44176,193 @@
                 "id": 3244,
                 "last_updated": "2024-02-16",
                 "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.019163,
+                    44.9275013
+                ]
+            },
+            "properties": {
+                "name": "Mo's Seafood Restaurant",
+                "area": "Oregon",
+                "address": "860 SW 51st Street, Lincoln City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3964",
+                "internal_url": "null",
+                "latitude": "44.9275013",
+                "longitude": "-124.019163",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4369,
+                "last_updated": "2024-02-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.993503,
+                    37.387691
+                ]
+            },
+            "properties": {
+                "name": "Monedas Souvenirs",
+                "area": "Spain",
+                "address": "Seville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=187334",
+                "internal_url": "null",
+                "latitude": "37.387691",
+                "longitude": "-5.993503",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 375,
+                "last_updated": "2024-02-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.9048253,
+                    47.0357351
+                ]
+            },
+            "properties": {
+                "name": "Washington State Capitol Campus - Legislative Gift Center",
+                "area": "Washington",
+                "address": "416 Sid Snyder Avenue SW #110, Olympia",
+                "external_url": "http://209.221.138.252/Details.aspx?location=180322",
+                "internal_url": "null",
+                "latitude": "47.0357351",
+                "longitude": "-122.9048253",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5121,
+                "last_updated": "2024-02-17",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.4825932,
+                    27.8532013
+                ]
+            },
+            "properties": {
+                "name": "MacDill Inn",
+                "area": "Florida",
+                "address": "7637 Bayshore Blvd, Bldg #350, McDill AFB",
+                "external_url": "http://209.221.138.252/Details.aspx?location=384788",
+                "internal_url": "null",
+                "latitude": "27.8532013",
+                "longitude": "-82.4825932",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5354,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.2743927,
+                    47.1307408
+                ]
+            },
+            "properties": {
+                "name": "Moses Lake Museum & Art Center",
+                "area": "Washington",
+                "address": "401 S. Balsam St., Moses Lake",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422323",
+                "internal_url": "null",
+                "latitude": "47.1307408",
+                "longitude": "-119.2743927",
+                "machine_status": "available",
+                "id": 7049,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3080629,
+                    51.05769480000001
+                ]
+            },
+            "properties": {
+                "name": "Portsmouth D-Day Museum",
+                "area": "England",
+                "address": "Museum Road, HAMPSHIRE - Portsmouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=51288",
+                "internal_url": "null",
+                "latitude": "51.05769480000001",
+                "longitude": "-1.3080629",
+                "machine_status": "available",
+                "id": 7050,
+                "last_updated": "2024-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.0472528,
+                    44.61765279999999
+                ]
+            },
+            "properties": {
+                "name": "Oregon Coast Aquarium",
+                "area": "Oregon",
+                "address": "2820 SE Ferry Slip Road, Newport",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3956",
+                "internal_url": "null",
+                "latitude": "44.61765279999999",
+                "longitude": "-124.0472528",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4377,
+                "last_updated": "2024-02-18",
+                "multimachine": 6
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0260654,
+                    38.8912662
+                ]
+            },
+            "properties": {
+                "name": "Smithsonian National Museum of Natural History",
+                "area": "Washington DC",
+                "address": "10th Street & Constitution Avenue, N.W., MRC 189, Washington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=994",
+                "internal_url": "null",
+                "latitude": "38.8912662",
+                "longitude": "-77.0260654",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3246,
+                "last_updated": "2024-02-19",
+                "multimachine": 2
             }
         }
     ]
