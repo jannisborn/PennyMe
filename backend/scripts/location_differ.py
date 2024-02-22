@@ -496,7 +496,7 @@ def location_differ(
                     this_title, list(tdf["name"]), limit=1
                 )[0]
 
-                if score > 87:
+                if score > 82:
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["name"]).index(match)
@@ -528,7 +528,7 @@ def location_differ(
                     this_address, list(tdf["address"]), limit=1
                 )[0]
 
-                if score >= 87:
+                if score >= 82:
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["address"]).index(match)
