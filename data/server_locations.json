@@ -44457,6 +44457,30 @@
                 "id": 2528,
                 "last_updated": "2024-02-23"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.998835,
+                    34.891576
+                ]
+            },
+            "properties": {
+                "name": "Barstow Station",
+                "area": "California",
+                "address": "1611 East Main Street, Barstow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=101980",
+                "internal_url": "null",
+                "latitude": "34.891576",
+                "longitude": "-116.998835",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4575,
+                "last_updated": "2024-02-23",
+                "multimachine": 2
+            }
         }
     ]
 }
