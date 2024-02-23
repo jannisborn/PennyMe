@@ -13412,9 +13412,9 @@
                 "internal_url": "null",
                 "latitude": "42.7070354",
                 "longitude": "-71.1631137",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6259,
-                "last_updated": "2024-02-23"
+                "last_updated": "2023-11-26"
             }
         },
         {
@@ -18839,13 +18839,13 @@
                 "area": "Portugal",
                 "address": "R. Dom Carlos I 27, Funchal, Madeira",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=403148",
                 "internal_url": "null",
                 "latitude": "32.6478538",
                 "longitude": "-16.9025536",
                 "machine_status": "available",
                 "id": 6411,
-                "last_updated": "2024-02-23"
+                "last_updated": "2023-10-14"
             }
         },
         {
@@ -22515,13 +22515,13 @@
                 "area": "Tennessee",
                 "address": "221 Broadway, Nashville",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=2144",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "36.1614462",
                 "longitude": "-86.7757255",
                 "machine_status": "available",
                 "id": 5343,
-                "last_updated": "2024-02-23"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -23021,13 +23021,13 @@
                 "area": "England",
                 "address": "Lodmoor Country Park, Weymouth DT4 7SX, United Kingdom",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422720",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "50.6256499",
                 "longitude": "-2.4444962",
                 "machine_status": "available",
                 "id": 5637,
-                "last_updated": "2024-02-23"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -23251,13 +23251,13 @@
                 "area": "Germany",
                 "address": "Airportallee 1, Greven",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422387",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "52.1307487",
                 "longitude": "7.6941099",
                 "machine_status": "available",
                 "id": 5716,
-                "last_updated": "2024-02-23"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -27280,13 +27280,13 @@
                 "area": "England",
                 "address": "Tower Street, EAST YORKSHIRE - Hull",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422838",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "53.73892859999999",
                 "longitude": "-0.3302169",
                 "machine_status": "available",
                 "id": 1397,
-                "last_updated": "2024-02-23"
+                "last_updated": "2023-10-29"
             }
         },
         {
@@ -44195,10 +44195,10 @@
                 "internal_url": "null",
                 "latitude": "44.9275013",
                 "longitude": "-124.019163",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 4369,
-                "last_updated": "2024-02-23"
+                "last_updated": "2024-02-17"
             }
         },
         {
@@ -44480,190 +44480,6 @@
                 "id": 4575,
                 "last_updated": "2024-02-23",
                 "multimachine": 2
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -2.5305216,
-                    53.0272407
-                ]
-            },
-            "properties": {
-                "name": "Hack Green Secret Nuclear Bunker",
-                "area": "England",
-                "address": "Off Whitchurch Road, CHESHIRE - Nantwich",
-                "external_url": "http://209.221.138.252/Details.aspx?location=19803",
-                "internal_url": "null",
-                "latitude": "53.0272407",
-                "longitude": "-2.5305216",
-                "machine_status": "retired",
-                "status": "unvisited",
-                "id": 1342,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -0.1165546,
-                    51.5025528
-                ]
-            },
-            "properties": {
-                "name": "AP Food Express ",
-                "area": "England",
-                "address": "30 York Road, LONDON - Embankment",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=293568",
-                "internal_url": "null",
-                "latitude": "51.5025528",
-                "longitude": "-0.1165546",
-                "machine_status": "available",
-                "id": 7052,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -0.0128442,
-                    51.53831839999999
-                ]
-            },
-            "properties": {
-                "name": "ArcelorMittal Orbit",
-                "area": "England",
-                "address": "Queen Elizabeth Olympic Park, LONDON - Stratford",
-                "external_url": "http://209.221.138.252/Details.aspx?location=246427",
-                "internal_url": "null",
-                "latitude": "51.53831839999999",
-                "longitude": "-0.0128442",
-                "machine_status": "retired",
-                "status": "unvisited",
-                "id": 1484,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    1.7362237,
-                    52.598591
-                ]
-            },
-            "properties": {
-                "name": "Merrivale Model Village",
-                "area": "England",
-                "address": "Marine Parade,  NR30 3JG, NORFOLK - Great Yarmouth",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422691",
-                "internal_url": "null",
-                "latitude": "52.598591",
-                "longitude": "1.7362237",
-                "machine_status": "available",
-                "id": 7053,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -2.2009213,
-                    54.3018763
-                ]
-            },
-            "properties": {
-                "name": "Wensleydale Creamery Visitor Centre",
-                "area": "England",
-                "address": "Gayle Lane, NORTH YORKSHIRE - Hawes",
-                "external_url": "http://209.221.138.252/Details.aspx?location=101904",
-                "internal_url": "null",
-                "latitude": "54.3018763",
-                "longitude": "-2.2009213",
-                "machine_status": "retired",
-                "status": "unvisited",
-                "id": 1521,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -0.0638419,
-                    51.2410146
-                ]
-            },
-            "properties": {
-                "name": "Godstone Farm",
-                "area": "England",
-                "address": "Tilburstow Hill Road, Surrey - Godstone",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422693",
-                "internal_url": "null",
-                "latitude": "51.2410146",
-                "longitude": "-0.0638419",
-                "machine_status": "available",
-                "id": 7054,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -1.387941,
-                    54.913899
-                ]
-            },
-            "properties": {
-                "name": "Sunderland Football Club",
-                "area": "England",
-                "address": "Stadium Of Light, Sunderland, TYNE & WEAR - Sunderland",
-                "external_url": "http://209.221.138.252/Details.aspx?location=234629",
-                "internal_url": "null",
-                "latitude": "54.913899",
-                "longitude": "-1.387941",
-                "machine_status": "retired",
-                "status": "unvisited",
-                "id": 1573,
-                "last_updated": "2024-02-23"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    7.421907999999999,
-                    43.7351765
-                ]
-            },
-            "properties": {
-                "name": "La Collection Automobiles de S.A.S. le Prince de Monaco",
-                "area": "Principality of Monaco",
-                "address": "54 Route de la Piscine, Monaco",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422729",
-                "internal_url": "null",
-                "latitude": "43.7351765",
-                "longitude": "7.421907999999999",
-                "machine_status": "available",
-                "id": 7055,
-                "last_updated": "2024-02-23"
             }
         }
     ]
