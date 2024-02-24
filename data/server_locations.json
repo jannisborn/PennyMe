@@ -44504,6 +44504,30 @@
                 "id": 7052,
                 "last_updated": "2024-02-24"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.503208,
+                    37.7348216
+                ]
+            },
+            "properties": {
+                "name": "San Francisco Zoo",
+                "area": "California",
+                "address": "Sloat Blvd., San Francisco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=77176",
+                "internal_url": "null",
+                "latitude": "37.7348216",
+                "longitude": "-122.503208",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4822,
+                "last_updated": "2024-02-24",
+                "multimachine": 5
+            }
         }
     ]
 }
