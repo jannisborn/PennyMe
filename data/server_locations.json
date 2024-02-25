@@ -23021,13 +23021,13 @@
                 "area": "England",
                 "address": "Lodmoor Country Park, Weymouth DT4 7SX, United Kingdom",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422720",
                 "internal_url": "null",
                 "latitude": "50.6256499",
                 "longitude": "-2.4444962",
                 "machine_status": "available",
                 "id": 5637,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -23504,13 +23504,13 @@
                 "area": "Austria",
                 "address": "At the boatlanding on the lake shore, Bregenz - Lake Constance",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422954",
                 "internal_url": "null",
                 "latitude": "47.50075",
                 "longitude": "9.74231",
                 "machine_status": "available",
                 "id": 5605,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -44825,6 +44825,75 @@
                 "machine_status": "available",
                 "status": "retired",
                 "id": 2286,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.6563596,
+                    54.6405449
+                ]
+            },
+            "properties": {
+                "name": "Oasis, Centre Parcs",
+                "area": "England",
+                "address": "Withnell Forest, CUMBRIA - Penrith",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4267",
+                "internal_url": "null",
+                "latitude": "54.6405449",
+                "longitude": "-2.6563596",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1361,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0759493,
+                    51.50811239999999
+                ]
+            },
+            "properties": {
+                "name": "Tower Of London",
+                "area": "England",
+                "address": "Tower Hill, LONDON - Tower Hill",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423068",
+                "internal_url": "null",
+                "latitude": "51.50811239999999",
+                "longitude": "-0.0759493",
+                "machine_status": "available",
+                "id": 7061,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5291035,
+                    52.65243710000001
+                ]
+            },
+            "properties": {
+                "name": "Twycross Zoo (East Midland Zoological Society)",
+                "area": "England",
+                "address": "Burton Road, WARWICKSHIRE - Atherstone",
+                "external_url": "http://209.221.138.252/Details.aspx?location=99172",
+                "internal_url": "null",
+                "latitude": "52.65243710000001",
+                "longitude": "-1.5291035",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1576,
                 "last_updated": "2024-02-25"
             }
         }
