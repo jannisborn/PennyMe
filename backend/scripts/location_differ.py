@@ -491,7 +491,7 @@ def location_differ(
 
             tdf = external[external.area == geojson["properties"]["area"]]
             if len(tdf) > 0:
-                # TODO: Potentially doing this check with a LLM is better 
+                # TODO: Potentially doing this check with a LLM is better
                 # Verify that machine is indeed new through fuzzy search
                 match, score = fuzzysearch.extract(
                     this_title, list(tdf["name"]), limit=1
