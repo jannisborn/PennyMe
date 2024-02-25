@@ -4993,7 +4993,7 @@
                 "area": "Germany",
                 "address": "Sentruper Str. 315, 48161 Münster",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422387",
                 "internal_url": "null",
                 "latitude": "51.945210",
                 "longitude": "7.591164",
@@ -5017,7 +5017,7 @@
                 "area": "Germany",
                 "address": "Sentruper Str. 315, 48161 Münster",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422387",
                 "internal_url": "null",
                 "latitude": "51.947808",
                 "longitude": "7.58916",
@@ -5041,7 +5041,7 @@
                 "area": "Germany",
                 "address": "Sentruper Str. 315, 48161 Münster",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422387",
                 "internal_url": "null",
                 "latitude": "51.947808",
                 "longitude": "7.588147",
@@ -6924,9 +6924,9 @@
                 "internal_url": "null",
                 "latitude": "45.9930402",
                 "longitude": "-123.9288242",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6096,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-02-22"
             }
         },
         {
@@ -13412,9 +13412,9 @@
                 "internal_url": "null",
                 "latitude": "42.7070354",
                 "longitude": "-71.1631137",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6259,
-                "last_updated": "2023-11-26"
+                "last_updated": "2024-02-24"
             }
         },
         {
@@ -18839,13 +18839,13 @@
                 "area": "Portugal",
                 "address": "R. Dom Carlos I 27, Funchal, Madeira",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=403148",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "32.6478538",
                 "longitude": "-16.9025536",
                 "machine_status": "available",
                 "id": 6411,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-02-24"
             }
         },
         {
@@ -23027,7 +23027,7 @@
                 "longitude": "-2.4444962",
                 "machine_status": "available",
                 "id": 5637,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-02-24"
             }
         },
         {
@@ -23510,7 +23510,7 @@
                 "longitude": "9.74231",
                 "machine_status": "available",
                 "id": 5605,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-02-24"
             }
         },
         {
@@ -23638,9 +23638,9 @@
                 ]
             },
             "properties": {
-                "name": "The Eagle's Nest ",
+                "name": "The Eagle's Nest",
                 "area": "Germany",
-                "address": "Kehlsteinhaus , Berchtesgaden ",
+                "address": "Kehlsteinhaus, Berchtesgaden",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
@@ -44195,10 +44195,10 @@
                 "internal_url": "null",
                 "latitude": "44.9275013",
                 "longitude": "-124.019163",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4369,
-                "last_updated": "2024-02-17"
+                "last_updated": "2024-02-24"
             }
         },
         {
@@ -44409,6 +44409,423 @@
                 "machine_status": "available",
                 "id": 7051,
                 "last_updated": "2024-02-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -159.3437585,
+                    21.9788489
+                ]
+            },
+            "properties": {
+                "name": "Lihue Airport",
+                "area": "Hawaii",
+                "address": "3901 Mokulele Loop, Lihue, Hawai 96766",
+                "external_url": "http://209.221.138.252/Details.aspx?location=42129",
+                "internal_url": "null",
+                "latitude": "21.9788489",
+                "longitude": "-159.3437585",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3833,
+                "last_updated": "2024-02-23",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.73863639999999,
+                    42.8828788
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Michigan",
+                "address": "3000 44th St, Grandville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=188251",
+                "internal_url": "null",
+                "latitude": "42.8828788",
+                "longitude": "-85.73863639999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2528,
+                "last_updated": "2024-02-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.998835,
+                    34.891576
+                ]
+            },
+            "properties": {
+                "name": "Barstow Station",
+                "area": "California",
+                "address": "1611 East Main Street, Barstow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=101980",
+                "internal_url": "null",
+                "latitude": "34.891576",
+                "longitude": "-116.998835",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4575,
+                "last_updated": "2024-02-23",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.026508286029147805,
+                    53.561166661531004
+                ]
+            },
+            "properties": {
+                "name": "Cleethorpes Pier",
+                "area": "England",
+                "address": "168 Promenade, Cleethorpes DN35 8SF, UK",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 53.561166661531004,
+                "longitude": -0.026508286029147805,
+                "machine_status": "available",
+                "id": 7052,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.503208,
+                    37.7348216
+                ]
+            },
+            "properties": {
+                "name": "San Francisco Zoo",
+                "area": "California",
+                "address": "Sloat Blvd., San Francisco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=77176",
+                "internal_url": "null",
+                "latitude": "37.7348216",
+                "longitude": "-122.503208",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4822,
+                "last_updated": "2024-02-24",
+                "multimachine": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.35017719999999,
+                    34.9733918
+                ]
+            },
+            "properties": {
+                "name": "Rock City Gardens Corn Maze",
+                "area": "Tennessee",
+                "address": ", Chattanooga",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2144",
+                "internal_url": "null",
+                "latitude": "34.9733918",
+                "longitude": "-85.35017719999999",
+                "machine_status": "available",
+                "id": 7053,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.5305216,
+                    53.0272407
+                ]
+            },
+            "properties": {
+                "name": "Hack Green Secret Nuclear Bunker",
+                "area": "England",
+                "address": "Off Whitchurch Road, CHESHIRE - Nantwich",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19803",
+                "internal_url": "null",
+                "latitude": "53.0272407",
+                "longitude": "-2.5305216",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1342,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1165546,
+                    51.5025528
+                ]
+            },
+            "properties": {
+                "name": "AP Food Express ",
+                "area": "England",
+                "address": "30 York Road, LONDON - Embankment",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=293568",
+                "internal_url": "null",
+                "latitude": "51.5025528",
+                "longitude": "-0.1165546",
+                "machine_status": "available",
+                "id": 7054,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0128442,
+                    51.53831839999999
+                ]
+            },
+            "properties": {
+                "name": "ArcelorMittal Orbit",
+                "area": "England",
+                "address": "Queen Elizabeth Olympic Park, LONDON - Stratford",
+                "external_url": "http://209.221.138.252/Details.aspx?location=246427",
+                "internal_url": "null",
+                "latitude": "51.53831839999999",
+                "longitude": "-0.0128442",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1484,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1136621,
+                    51.5048541
+                ]
+            },
+            "properties": {
+                "name": "AP Foods on the Embankment.",
+                "area": "England",
+                "address": "York Street, LONDON - Waterloo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422838",
+                "internal_url": "null",
+                "latitude": "51.5048541",
+                "longitude": "-0.1136621",
+                "machine_status": "available",
+                "id": 7055,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9953805,
+                    53.4052285
+                ]
+            },
+            "properties": {
+                "name": "British Music Experience",
+                "area": "England",
+                "address": "Cunard Building, Canada Blvd, MERSEYSIDE - Liverpool",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422924",
+                "internal_url": "null",
+                "latitude": "53.4052285",
+                "longitude": "-2.9953805",
+                "machine_status": "available",
+                "id": 7056,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.7362237,
+                    52.598591
+                ]
+            },
+            "properties": {
+                "name": "Merrivale Model Village",
+                "area": "England",
+                "address": "Marine Parade,  NR30 3JG, NORFOLK - Great Yarmouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422691",
+                "internal_url": "null",
+                "latitude": "52.598591",
+                "longitude": "1.7362237",
+                "machine_status": "available",
+                "id": 7057,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.2009213,
+                    54.3018763
+                ]
+            },
+            "properties": {
+                "name": "Wensleydale Creamery Visitor Centre",
+                "area": "England",
+                "address": "Gayle Lane, NORTH YORKSHIRE - Hawes",
+                "external_url": "http://209.221.138.252/Details.aspx?location=101904",
+                "internal_url": "null",
+                "latitude": "54.3018763",
+                "longitude": "-2.2009213",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1521,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.4924936,
+                    52.6386096
+                ]
+            },
+            "properties": {
+                "name": "Ironbridge Gorge - Enginuity Museum",
+                "area": "England",
+                "address": "10 Wellington Rd, Coalbrookdale, Telford, SHROPSHIRE - Ironbridge",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4274",
+                "internal_url": "null",
+                "latitude": "52.6386096",
+                "longitude": "-2.4924936",
+                "machine_status": "available",
+                "id": 7058,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0638419,
+                    51.2410146
+                ]
+            },
+            "properties": {
+                "name": "Godstone Farm",
+                "area": "England",
+                "address": "Tilburstow Hill Road, Surrey - Godstone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422693",
+                "internal_url": "null",
+                "latitude": "51.2410146",
+                "longitude": "-0.0638419",
+                "machine_status": "available",
+                "id": 7059,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.387941,
+                    54.913899
+                ]
+            },
+            "properties": {
+                "name": "Sunderland Football Club",
+                "area": "England",
+                "address": "Stadium Of Light, Sunderland, TYNE & WEAR - Sunderland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=234629",
+                "internal_url": "null",
+                "latitude": "54.913899",
+                "longitude": "-1.387941",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1573,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.421907999999999,
+                    43.7351765
+                ]
+            },
+            "properties": {
+                "name": "La Collection Automobiles de S.A.S. le Prince de Monaco",
+                "area": "Principality of Monaco",
+                "address": "54 Route de la Piscine, Monaco",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422729",
+                "internal_url": "null",
+                "latitude": "43.7351765",
+                "longitude": "7.421907999999999",
+                "machine_status": "available",
+                "id": 7060,
+                "last_updated": "2024-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.9368657,
+                    39.98879220000001
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Indiana",
+                "address": "13725 Cabela Pkwy, Noblesville, IN 46060, USA",
+                "external_url": "http://209.221.138.252/Details.aspx?location=269611",
+                "internal_url": "null",
+                "latitude": "39.98879220000001",
+                "longitude": "-85.9368657",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 2286,
+                "last_updated": "2024-02-25"
             }
         }
     ]
