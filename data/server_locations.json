@@ -39564,9 +39564,9 @@
                 "internal_url": "null",
                 "latitude": "42.6369097",
                 "longitude": "-82.8439121",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2502,
-                "last_updated": "2023-11-26"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -45147,6 +45147,29 @@
                 "longitude": "120.1323961",
                 "machine_status": "available",
                 "id": 7069,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.84594,
+                    30.198561
+                ]
+            },
+            "properties": {
+                "name": "Casa Loma",
+                "area": "Florida",
+                "address": "13615 Front Beach Rd., Panama City Beach ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423504",
+                "internal_url": "null",
+                "latitude": "30.198561",
+                "longitude": "-85.84594",
+                "machine_status": "available",
+                "id": 7070,
                 "last_updated": "2024-02-25"
             }
         }
