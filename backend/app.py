@@ -424,10 +424,15 @@ def change_machine():
             msg += f"\t Location from: {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
     if "from" not in msg:
-        msg = f"{machine_id} - Submitted change is identical to what is already in pending PR"
+        msg = f"{machine_id} - Submitted change is identical to the state of the DB (either in pending PR or in main)"
         message_slack_raw(msg)
 
         return jsonify({"message": "Success!"}), 200
+
+    area = updated_machine_entry["properties"]["area"]
+    url = updated_machine_entry["properties"]["external_url"]
+    slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
+    message_slack_raw(text=slack_message)
 
     request_queue.put((process_machine_change, (updated_machine_entry, ip, msg)))
 
@@ -495,6 +500,10 @@ def worker():
         function, args = request_queue.get()
         try:
             function(*args)
+        except Exception as e:
+            message_slack_raw(
+                f"Exception in Queue function {function} with args {args}:\n {e}"
+            )
         finally:
             request_queue.task_done()
 

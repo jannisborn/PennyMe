@@ -9156,9 +9156,9 @@
                 "internal_url": "null",
                 "latitude": "32.7905278",
                 "longitude": "-79.9253279",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6148,
-                "last_updated": "2024-01-17"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -23021,13 +23021,13 @@
                 "area": "England",
                 "address": "Lodmoor Country Park, Weymouth DT4 7SX, United Kingdom",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422720",
                 "internal_url": "null",
                 "latitude": "50.6256499",
                 "longitude": "-2.4444962",
                 "machine_status": "available",
                 "id": 5637,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -23504,13 +23504,13 @@
                 "area": "Austria",
                 "address": "At the boatlanding on the lake shore, Bregenz - Lake Constance",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=422954",
                 "internal_url": "null",
                 "latitude": "47.50075",
                 "longitude": "9.74231",
                 "machine_status": "available",
                 "id": 5605,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -39564,9 +39564,9 @@
                 "internal_url": "null",
                 "latitude": "42.6369097",
                 "longitude": "-82.8439121",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2502,
-                "last_updated": "2023-11-26"
+                "last_updated": "2024-02-25"
             }
         },
         {
@@ -44826,6 +44826,443 @@
                 "status": "retired",
                 "id": 2286,
                 "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.6563596,
+                    54.6405449
+                ]
+            },
+            "properties": {
+                "name": "Oasis, Centre Parcs",
+                "area": "England",
+                "address": "Withnell Forest, CUMBRIA - Penrith",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4267",
+                "internal_url": "null",
+                "latitude": "54.6405449",
+                "longitude": "-2.6563596",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1361,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0759493,
+                    51.50811239999999
+                ]
+            },
+            "properties": {
+                "name": "Tower Of London",
+                "area": "England",
+                "address": "Tower Hill, LONDON - Tower Hill",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423068",
+                "internal_url": "null",
+                "latitude": "51.50811239999999",
+                "longitude": "-0.0759493",
+                "machine_status": "available",
+                "id": 7061,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5291035,
+                    52.65243710000001
+                ]
+            },
+            "properties": {
+                "name": "Twycross Zoo (East Midland Zoological Society)",
+                "area": "England",
+                "address": "Burton Road, WARWICKSHIRE - Atherstone",
+                "external_url": "http://209.221.138.252/Details.aspx?location=99172",
+                "internal_url": "null",
+                "latitude": "52.65243710000001",
+                "longitude": "-1.5291035",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1576,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.2940493,
+                    39.2512168
+                ]
+            },
+            "properties": {
+                "name": "National Mining Hall of Fame and Museum",
+                "area": "Colorado",
+                "address": "120 West 9th (PO Box 981), Leadville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1031",
+                "internal_url": "null",
+                "latitude": "39.2512168",
+                "longitude": "-106.2940493",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1894,
+                "last_updated": "2024-02-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.217477,
+                    22.286721
+                ]
+            },
+            "properties": {
+                "name": "Cityplaza",
+                "area": "Hong Kong",
+                "address": "18 Taikoo Shing Road, Taikoo Shing, Hong Kong",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423201",
+                "internal_url": "null",
+                "latitude": "22.286721",
+                "longitude": "114.217477",
+                "machine_status": "available",
+                "id": 7062,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.4178867,
+                    50.06442639999999
+                ]
+            },
+            "properties": {
+                "name": "Bazilika sv. Petra a Pavla ",
+                "area": "Czech Republic",
+                "address": "Vyehrade, Prague ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423337",
+                "internal_url": "null",
+                "latitude": "50.06442639999999",
+                "longitude": "14.4178867",
+                "machine_status": "available",
+                "id": 7063,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.4170518,
+                    50.0788688
+                ]
+            },
+            "properties": {
+                "name": "U Fleku",
+                "area": "Czech Republic",
+                "address": ", Prague",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423349",
+                "internal_url": "null",
+                "latitude": "50.0788688",
+                "longitude": "14.4170518",
+                "machine_status": "available",
+                "id": 7064,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0356006,
+                    53.1764037
+                ]
+            },
+            "properties": {
+                "name": "Rufford Abbey Country Park",
+                "area": "England",
+                "address": "Ollerton, NOTTINGHAMSHIRE - Ollerton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=254763",
+                "internal_url": "null",
+                "latitude": "53.1764037",
+                "longitude": "-1.0356006",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1540,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.422662000000001,
+                    43.7309432
+                ]
+            },
+            "properties": {
+                "name": "François Grimaldi - Il Malizia",
+                "area": "Principality of Monaco",
+                "address": "21 Rue Comte Félix Gastaldi, Monaco",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423335",
+                "internal_url": "null",
+                "latitude": "43.7309432",
+                "longitude": "7.422662000000001",
+                "machine_status": "available",
+                "id": 7065,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.4205976,
+                    43.730532
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs Shop Monaco",
+                "area": "Principality of Monaco",
+                "address": "1 Place du Palais, Monaco",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423336",
+                "internal_url": "null",
+                "latitude": "43.730532",
+                "longitude": "7.4205976",
+                "machine_status": "available",
+                "id": 7066,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.4407537,
+                    25.1696076
+                ]
+            },
+            "properties": {
+                "name": "Tourist Shop on Huanhe Road",
+                "area": "Taiwan",
+                "address": "Huanhe Road , New Taipei City - Tamsui District",
+                "external_url": "http://209.221.138.252/Details.aspx?location=256912",
+                "internal_url": "null",
+                "latitude": "25.1696076",
+                "longitude": "121.4407537",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2364,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1597835,
+                    23.0034467
+                ]
+            },
+            "properties": {
+                "name": "Anping Tree House / Former Tait & Co. Merchant House",
+                "area": "Taiwan",
+                "address": "No. 104, Gubao St, Anping District, Tainan City, 708, Tainan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423308",
+                "internal_url": "null",
+                "latitude": "23.0034467",
+                "longitude": "120.1597835",
+                "machine_status": "available",
+                "id": 7067,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2025232,
+                    22.9917925
+                ]
+            },
+            "properties": {
+                "name": "Hayashi Department Store",
+                "area": "Taiwan",
+                "address": "No. 63, Section 2, Zhongyi Rd, West Central District, Tainan City, 700, Tainan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423315",
+                "internal_url": "null",
+                "latitude": "22.9917925",
+                "longitude": "120.2025232",
+                "machine_status": "available",
+                "id": 7068,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1323961,
+                    23.018464
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop located near Sicao Green Tunnel ",
+                "area": "Taiwan",
+                "address": "No. 360, Dazhong Rd, Annan District, Tainan City, 70, Tainan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423309",
+                "internal_url": "null",
+                "latitude": "23.018464",
+                "longitude": "120.1323961",
+                "machine_status": "available",
+                "id": 7069,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.84594,
+                    30.198561
+                ]
+            },
+            "properties": {
+                "name": "Casa Loma",
+                "area": "Florida",
+                "address": "13615 Front Beach Rd., Panama City Beach ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423504",
+                "internal_url": "null",
+                "latitude": "30.198561",
+                "longitude": "-85.84594",
+                "machine_status": "available",
+                "id": 7070,
+                "last_updated": "2024-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.4369773,
+                    52.5215584
+                ]
+            },
+            "properties": {
+                "name": "Bataviawerf",
+                "area": "Netherlands",
+                "address": "Oostvaardersdijk 1, Lelystad",
+                "external_url": "http://209.221.138.252/Details.aspx?location=265301",
+                "internal_url": "null",
+                "latitude": "52.5215584",
+                "longitude": "5.4369773",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 208,
+                "last_updated": "2024-02-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.038198753360998,
+                    46.75413435722217
+                ]
+            },
+            "properties": {
+                "name": "Brienz Lake Quai",
+                "area": "Switzerland",
+                "address": "Quai 1, 3855 Brienz, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 46.75413435722217,
+                "longitude": 8.038198753360998,
+                "machine_status": "available",
+                "id": 7071,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543325,
+                    47.370296
+                ]
+            },
+            "properties": {
+                "name": "Wasserkirche (Zürich)",
+                "area": "Switzerland",
+                "address": "Teddy's Souvenir shop, Limmatquai 34, 8001 Zurich, Switzerland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=103894",
+                "internal_url": "null",
+                "latitude": "47.370296",
+                "longitude": "8.543325",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 712,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1130718,
+                    51.4996102
+                ]
+            },
+            "properties": {
+                "name": "Westminster Souvenirs",
+                "area": "England",
+                "address": "248A Westminster Bridge Road, London - Westminster",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3919",
+                "internal_url": "null",
+                "latitude": "51.4996102",
+                "longitude": "-0.1130718",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1499,
+                "last_updated": "2024-03-03"
             }
         }
     ]

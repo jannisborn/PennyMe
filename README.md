@@ -15,11 +15,13 @@ This app makes it easier than ever to find the next coin machine - anywhere you 
 
 PennyMe is an app to help with the collection of pressed pennies. Those neat coins that you can imprint with a picture of a tourist attraction if you turn the crank of the machine.
 
-PennyMe displays all machines worldwide on a map and displays detailed information about a machine upon selection.
+PennyMe displays all machines worldwide and displays detailed information about a machine upon selection.
 
 Tick off machines you visited to keep track of your collected pennies. Or mark a machine for a later visit.
 
 PennyMe also helps you to easily navigate to any machine. And it shows its address, a picture of the machine and other details.
+
+PennyMe relies on user contributions! Add new machines or report if anything has changed!
 
 
 
