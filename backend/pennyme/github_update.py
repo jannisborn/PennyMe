@@ -284,9 +284,9 @@ def process_machine_change(
 
         # replace or append to server_locations
         if index_in_server_locations > 0:
-            server_locations["features"][index_in_server_locations] = (
-                updated_machine_entry
-            )
+            server_locations["features"][
+                index_in_server_locations
+            ] = updated_machine_entry
         else:
             server_locations["features"].append(updated_machine_entry)
 

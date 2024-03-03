@@ -10,7 +10,7 @@ thefuzz
 haversine
 overpy
 geopandas
-ruff
+ruff==0.1.6
 black>=24.1.1
 isort>=5.9.3
 pre-commit
