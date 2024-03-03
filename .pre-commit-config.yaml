@@ -8,14 +8,14 @@ repos:
         files: '\.(json|py)$'
 - repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.1.5
+  rev: v0.3.0
   hooks:
     # Run the linter.
     - id: ruff
     # Run the formatter.
     - id: ruff-format
 -   repo: https://github.com/ambv/black
-    rev: stable
+    rev: 24.2.0
     hooks:
     - id: black
       language_version: python3.8
