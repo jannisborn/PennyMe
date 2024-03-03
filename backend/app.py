@@ -429,6 +429,11 @@ def change_machine():
 
         return jsonify({"message": "Success!"}), 200
 
+    area = updated_machine_entry["properties"]["area"]
+    url = updated_machine_entry["properties"]["external_url"]
+    slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
+    message_slack_raw(text=slack_message)
+
     request_queue.put((process_machine_change, (updated_machine_entry, ip, msg)))
 
     # return warning if the address and coordinates do not correspond
