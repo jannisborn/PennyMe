@@ -703,9 +703,9 @@
                 "internal_url": "null",
                 "latitude": "43.08636007824847",
                 "longitude": "-79.06797163069787",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3064,
-                "last_updated": "2023-04-05"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -5935,9 +5935,9 @@
                 "internal_url": "null",
                 "latitude": "61.21867760000001",
                 "longitude": "-149.8916467",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1148,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -23619,13 +23619,13 @@
                 "area": "Austria",
                 "address": "Talschlussweg 367, 5754 Hinterglemm, Hinterglemm ",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424039",
                 "internal_url": "null",
                 "latitude": "47.3655921",
                 "longitude": "12.5084703",
                 "machine_status": "available",
                 "id": 5607,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -44074,14 +44074,14 @@
                 "name": "RRS Discover Dundee",
                 "area": "Scotland",
                 "address": "Discovery Quay, Dundee",
-                "external_url": "http://209.221.138.252/Details.aspx?location=32595",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "56.4569239",
                 "longitude": "-2.967926",
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 742,
-                "last_updated": "2024-02-08"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -45427,6 +45427,282 @@
                 "id": 4048,
                 "last_updated": "2024-03-04",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.4036502,
+                    42.6007437
+                ]
+            },
+            "properties": {
+                "name": "Timber Ridge Lodge & Waterpark",
+                "area": "Wisconsin",
+                "address": "7020 Grand Geneva Way, Lake Geneva ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=323824",
+                "internal_url": "null",
+                "latitude": "42.6007437",
+                "longitude": "-88.4036502",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2429,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.622011,
+                    51.4637269
+                ]
+            },
+            "properties": {
+                "name": "Bristol Zoo Gardens",
+                "area": "England",
+                "address": "Clifton Down Road, AVON - Bristol",
+                "external_url": "http://209.221.138.252/Details.aspx?location=188837",
+                "internal_url": "null",
+                "latitude": "51.4637269",
+                "longitude": "-2.622011",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1324,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.7166366,
+                    51.5329097
+                ]
+            },
+            "properties": {
+                "name": "Adventure Island",
+                "area": "England",
+                "address": "Sunken Gardens, Western Esplanade, ESSEX - Southend on Sea",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4280",
+                "internal_url": "null",
+                "latitude": "51.5329097",
+                "longitude": "0.7166366",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1403,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9971892,
+                    53.4045933
+                ]
+            },
+            "properties": {
+                "name": "The U-Boat Story",
+                "area": "England",
+                "address": "Woodside Ferry Terminal, Mersey Ferries, MERSEYSIDE - Birkenhead",
+                "external_url": "http://209.221.138.252/Details.aspx?location=62971",
+                "internal_url": "null",
+                "latitude": "53.4045933",
+                "longitude": "-2.9971892",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1501,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9971892,
+                    53.4045933
+                ]
+            },
+            "properties": {
+                "name": "Woodside Ferry Terminal - Mersey Ferries",
+                "area": "England",
+                "address": "Woodside Ferry Terminal, Mersey Ferries, MERSEYSIDE - Birkenhead",
+                "external_url": "http://209.221.138.252/Details.aspx?location=43111",
+                "internal_url": "null",
+                "latitude": "53.4045933",
+                "longitude": "-2.9971892",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1502,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.7560463,
+                    53.7910952
+                ]
+            },
+            "properties": {
+                "name": "National Media Museum",
+                "area": "England",
+                "address": "Little Horton Lane, WEST YORKSHIRE - Bradford ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=26766",
+                "internal_url": "null",
+                "latitude": "53.7910952",
+                "longitude": "-1.7560463",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1595,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5310005,
+                    53.7916146
+                ]
+            },
+            "properties": {
+                "name": "The Royal Armouries Museum, ",
+                "area": "England",
+                "address": "Armouries Drive, WEST YORKSHIRE - Leeds",
+                "external_url": "http://209.221.138.252/Details.aspx?location=100148",
+                "internal_url": "null",
+                "latitude": "53.7916146",
+                "longitude": "-1.5310005",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1598,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.685321399999999,
+                    55.4258895
+                ]
+            },
+            "properties": {
+                "name": "Haven Holiday Camp ",
+                "area": "Scotland",
+                "address": "Dunure Road  Ayr, Craig Tara",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4183",
+                "internal_url": "null",
+                "latitude": "55.4258895",
+                "longitude": "-4.685321399999999",
+                "machine_status": "available",
+                "id": 7072,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1744158,
+                    55.9505439
+                ]
+            },
+            "properties": {
+                "name": "Dynamic Earth",
+                "area": "Scotland",
+                "address": "Holyrood Road, Edinburgh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4187",
+                "internal_url": "null",
+                "latitude": "55.9505439",
+                "longitude": "-3.1744158",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 748,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.3706589,
+                    55.8784364
+                ]
+            },
+            "properties": {
+                "name": "Snow Factor (Was SNO!Zone)",
+                "area": "Scotland",
+                "address": "Kings Inch Road, Breahead, Renfrew., Glasgow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=90250",
+                "internal_url": "null",
+                "latitude": "55.8784364",
+                "longitude": "-4.3706589",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 773,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.9778389,
+                    57.1072235
+                ]
+            },
+            "properties": {
+                "name": "Highland Wildlife Park",
+                "area": "Scotland",
+                "address": "Kincraig, Kingussie",
+                "external_url": "http://209.221.138.252/Details.aspx?location=97035",
+                "internal_url": "null",
+                "latitude": "57.1072235",
+                "longitude": "-3.9778389",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 779,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.491626,
+                    53.323314
+                ]
+            },
+            "properties": {
+                "name": "Seaquarium Rhyl",
+                "area": "Wales",
+                "address": "East Parade, NORTH WALES - Rhyl",
+                "external_url": "http://209.221.138.252/Details.aspx?location=32871",
+                "internal_url": "null",
+                "latitude": "53.323314",
+                "longitude": "-3.491626",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 10,
+                "last_updated": "2024-03-03"
             }
         }
     ]
