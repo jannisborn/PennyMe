@@ -23619,7 +23619,7 @@
                 "area": "Austria",
                 "address": "Talschlussweg 367, 5754 Hinterglemm, Hinterglemm ",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424039",
                 "internal_url": "null",
                 "latitude": "47.3655921",
                 "longitude": "12.5084703",
@@ -40396,9 +40396,9 @@
                 "longitude": "-80.3981424",
                 "multimachine": 5,
                 "paywall": true,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3396,
-                "last_updated": "2023-12-08"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -45726,6 +45726,52 @@
                 "status": "unvisited",
                 "id": 2166,
                 "last_updated": "2024-03-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.80763890000001,
+                    35.3292194
+                ]
+            },
+            "properties": {
+                "name": "The Hub",
+                "area": "North Carolina",
+                "address": "664 Rodney Orr Bypss, Robbinsville ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=342181",
+                "internal_url": "null",
+                "latitude": "35.3292194",
+                "longitude": "-83.80763890000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4150,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.7927235,
+                    57.4912436
+                ]
+            },
+            "properties": {
+                "name": "Peterhead Prison Museum",
+                "area": "Scotland",
+                "address": "South Road, , Peterhead",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424183",
+                "internal_url": "null",
+                "latitude": "57.4912436",
+                "longitude": "-1.7927235",
+                "machine_status": "available",
+                "id": 7073,
+                "last_updated": "2024-03-03"
             }
         }
     ]
