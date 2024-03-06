@@ -15,6 +15,7 @@ from datetime import datetime
 
 import pandas as pd
 from googlemaps import Client as GoogleMaps
+from haversine import haversine
 from loguru import logger
 from thefuzz import process as fuzzysearch
 
@@ -491,13 +492,12 @@ def location_differ(
 
             tdf = external[external.area == geojson["properties"]["area"]]
             if len(tdf) > 0:
-                # TODO: Potentially doing this check with a LLM is better
                 # Verify that machine is indeed new through fuzzy search
                 match, score = fuzzysearch.extract(
                     this_title, list(tdf["name"]), limit=1
                 )[0]
 
-                if score > 82:
+                if score > 92:
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["name"]).index(match)
@@ -529,7 +529,7 @@ def location_differ(
                     this_address, list(tdf["address"]), limit=1
                 )[0]
 
-                if score >= 82:
+                if score >= 92:
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["address"]).index(match)
@@ -541,6 +541,44 @@ def location_differ(
                     e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
                     logger.info(
                         f"Seeems that machine {this_title} at {this_address} already exists as: {match}"
+                    )
+                    # Update machine and save in dict
+                    assert e_entry["properties"]["external_url"] == "null"
+                    if tdf.iloc[m_idx]["source"] == "Device":
+                        e_entry["properties"]["external_url"] = this_link
+                        e_entry["properties"]["last_updated"] = today
+                        server_data["features"].append(e_entry)
+                    else:
+                        # Machine is already in server_dict, just update content
+                        i = tdf.iloc[m_idx]["data_idx"]
+                        server_data["features"][i]["properties"][
+                            "external_url"
+                        ] = this_link
+                        server_data["features"][i]["properties"]["last_updated"] = today
+                    continue
+
+                # Check whether distance to existing machine is below threshold
+                lat, lng = get_coordinates(
+                    title=geojson["properties"]["name"],
+                    subtitle=geojson["properties"]["address"],
+                    api=gmaps,
+                )
+                dists = [
+                    haversine((lat, lng), (float(e["latitude"]), float(e["longitude"])))
+                    for e in tdf
+                ]
+                if min(dists) < 100:
+                    # There is a match, we have to update the link
+                    # Extract the entry from original data
+                    m_idx = dists.index(min(dists))
+                    if tdf.iloc[m_idx]["source"] == "Device":
+                        cur_data = device_data
+                    else:
+                        cur_data = server_data
+
+                    e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
+                    logger.info(
+                        f"Distance match - Seeems that machine {this_title} at {this_address} already exists as: {match}"
                     )
                     # Update machine and save in dict
                     assert e_entry["properties"]["external_url"] == "null"
