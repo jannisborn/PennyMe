@@ -19349,7 +19349,7 @@
                 "internal_url": "null",
                 "latitude": "55.950902",
                 "longitude": "-3.1956862",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 756,
                 "last_updated": "2024-03-03"
             }
@@ -45956,6 +45956,52 @@
                 "status": "unvisited",
                 "id": 1596,
                 "last_updated": "2024-03-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.6427949,
+                    36.2571855
+                ]
+            },
+            "properties": {
+                "name": "Mount Charleston Visitor Center",
+                "area": "Nevada",
+                "address": "Mt Charleston, Mount Charleston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424548",
+                "internal_url": "null",
+                "latitude": "36.2571855",
+                "longitude": "-115.6427949",
+                "machine_status": "available",
+                "id": 7077,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4678193,
+                    28.4743207
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios Florida",
+                "area": "Florida",
+                "address": "1000 Universal Studios Plaza , Orlando",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.4743207",
+                "longitude": "-81.4678193",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5361,
+                "last_updated": "2024-03-03"
             }
         }
     ]
