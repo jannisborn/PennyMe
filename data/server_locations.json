@@ -5258,9 +5258,9 @@
                 "internal_url": "null",
                 "latitude": "35.083583",
                 "longitude": "-109.788717",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2662,
-                "last_updated": "2023-10-09"
+                "last_updated": "2024-03-09"
             }
         },
         {
@@ -19345,13 +19345,13 @@
                 "area": "Scotland",
                 "address": "The Mound, Edinburgh",
                 "status": "retired",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424528",
                 "internal_url": "null",
                 "latitude": "55.950902",
                 "longitude": "-3.1956862",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 756,
-                "last_updated": "2024-01-04"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -43008,10 +43008,10 @@
                 "internal_url": "null",
                 "latitude": "28.4271295",
                 "longitude": "-81.4757332",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3422,
-                "last_updated": "2024-02-02"
+                "last_updated": "2024-03-03"
             }
         },
         {
@@ -43429,10 +43429,10 @@
                 "logs": {
                     "2021-11-14": "Could not find machine before the entrance anymore. Checked both levels, but it might have been move inside the waterpark."
                 },
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 725,
-                "last_updated": "2024-02-06"
+                "last_updated": "2024-03-09"
             }
         },
         {
@@ -44147,10 +44147,10 @@
                 "internal_url": "null",
                 "latitude": "34.0637249",
                 "longitude": "-118.3555013",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4674,
-                "last_updated": "2024-02-16",
+                "last_updated": "2024-03-03",
                 "multimachine": 2
             }
         },
@@ -45795,6 +45795,237 @@
                 "status": "unvisited",
                 "id": 5432,
                 "last_updated": "2024-03-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.7392512,
+                    30.2726451
+                ]
+            },
+            "properties": {
+                "name": "Capitol Visitor's Center",
+                "area": "Texas",
+                "address": "112 E 11th St., Austin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1764",
+                "internal_url": "null",
+                "latitude": "30.2726451",
+                "longitude": "-97.7392512",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3650,
+                "last_updated": "2024-03-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1443012,
+                    36.0536965
+                ]
+            },
+            "properties": {
+                "name": "Maswik Lodge Store",
+                "area": "Arizona",
+                "address": "202 South Village Loop Drive, Grand Canyon National Park",
+                "external_url": "http://209.221.138.252/Details.aspx?location=286838",
+                "internal_url": "null",
+                "latitude": "36.0536965",
+                "longitude": "-112.1443012",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2626,
+                "last_updated": "2024-03-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.4439984,
+                    35.0893254
+                ]
+            },
+            "properties": {
+                "name": "Faulker County History Museum",
+                "area": "Arkansas",
+                "address": "801 Locust St, Conway",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=40401",
+                "internal_url": "null",
+                "latitude": "35.0893254",
+                "longitude": "-92.4439984",
+                "machine_status": "available",
+                "id": 7074,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.7105795,
+                    3.1421073
+                ]
+            },
+            "properties": {
+                "name": "Berjaya Times Square Theme Park ",
+                "area": "Malaysia",
+                "address": "No. 09-103,  7th Floor, Berjaya Times Square, 1, Jln Imbi, Kuala Lumpur",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424322",
+                "internal_url": "null",
+                "latitude": "3.1421073",
+                "longitude": "101.7105795",
+                "machine_status": "available",
+                "id": 7075,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3925876,
+                    33.7625488
+                ]
+            },
+            "properties": {
+                "name": "World of Coca-Cola",
+                "area": "Georgia",
+                "address": "121 Baker Street NW, Atlanta",
+                "external_url": "http://209.221.138.252/Details.aspx?location=72071",
+                "internal_url": "null",
+                "latitude": "33.7625488",
+                "longitude": "-84.3925876",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1623,
+                "last_updated": "2024-03-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1209868016424,
+                    36.05336350691331
+                ]
+            },
+            "properties": {
+                "name": "General store",
+                "area": "Arizona",
+                "address": "1 Market Plaza Rd, Grand Canyon Village, AZ 86023, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.05336350691331,
+                "longitude": -112.1209868016424,
+                "machine_status": "available",
+                "id": 7076,
+                "last_updated": "2024-03-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.8550204,
+                    53.7200819
+                ]
+            },
+            "properties": {
+                "name": "EUREKA! The National Children's Museum",
+                "area": "England",
+                "address": "Discovery Road, WEST YORKSHIRE - Halifax",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93147",
+                "internal_url": "null",
+                "latitude": "53.7200819",
+                "longitude": "-1.8550204",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1596,
+                "last_updated": "2024-03-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.6427949,
+                    36.2571855
+                ]
+            },
+            "properties": {
+                "name": "Mount Charleston Visitor Center",
+                "area": "Nevada",
+                "address": "Mt Charleston, Mount Charleston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424548",
+                "internal_url": "null",
+                "latitude": "36.2571855",
+                "longitude": "-115.6427949",
+                "machine_status": "available",
+                "id": 7077,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4678193,
+                    28.4743207
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios Florida",
+                "area": "Florida",
+                "address": "1000 Universal Studios Plaza , Orlando",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "28.4743207",
+                "longitude": "-81.4678193",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5361,
+                "last_updated": "2024-03-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.1596603,
+                    34.890274
+                ]
+            },
+            "properties": {
+                "name": "Jim Gray's Petrified Wood Co.",
+                "area": "Arizona",
+                "address": "147 US Highway 180, Holbrook",
+                "external_url": "http://209.221.138.252/Details.aspx?location=339",
+                "internal_url": "null",
+                "latitude": "34.890274",
+                "longitude": "-110.1596603",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2636,
+                "last_updated": "2024-03-10",
+                "multimachine": 2
             }
         }
     ]
