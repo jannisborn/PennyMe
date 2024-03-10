@@ -446,7 +446,7 @@ def open_pull_request(
     """
     # Open a pull request
     payload = {
-        "title": commit_message,
+        "title": "Machine updates",
         "body": body,
         "head": branch_name,
         "base": BASE_BRANCH,
