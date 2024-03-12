@@ -2,6 +2,7 @@ import json
 import os
 import queue
 import random
+import traceback
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -501,8 +502,9 @@ def worker():
         try:
             function(*args)
         except Exception as e:
+            trace = traceback.format_exc()
             message_slack_raw(
-                f"Exception in Queue function {function} with args {args}:\n {e}"
+                f"Exception in Queue function {function} with args {args}:\n {e}\n Full traceback: {trace}"
             )
         finally:
             request_queue.task_done()

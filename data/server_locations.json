@@ -43421,7 +43421,7 @@
             "properties": {
                 "name": "Alpamare Pfäffikon",
                 "area": "Switzerland",
-                "address": "Gwattstrasse 12, 8808 Pfäffikon",
+                "address": "Gwattstrasse 12, 8808 Pfäffikon, Switzerland",
                 "external_url": "http://209.221.138.252/Details.aspx?location=303431",
                 "internal_url": "null",
                 "latitude": "47.199183",
@@ -43432,7 +43432,7 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 725,
-                "last_updated": "2024-03-09"
+                "last_updated": "2024-03-12"
             }
         },
         {
@@ -46049,6 +46049,144 @@
                 "status": "unvisited",
                 "id": 3566,
                 "last_updated": "2024-03-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5322601,
+                    25.0107236
+                ]
+            },
+            "properties": {
+                "name": "Treasure Hill Artist Village",
+                "area": "Taiwan",
+                "address": "No. 1, Alley 16, Lane 230, Section 3, Tingzhou Road,, Taipei",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424715",
+                "internal_url": "null",
+                "latitude": "25.0107236",
+                "longitude": "121.5322601",
+                "machine_status": "available",
+                "id": 7078,
+                "last_updated": "2024-03-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.7759664,
+                    24.8310132
+                ]
+            },
+            "properties": {
+                "name": "Jiaoxi Hot Springs Park",
+                "area": "Taiwan",
+                "address": "No. 60 , Yilan County - Jiaoxi Township",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331397",
+                "internal_url": "null",
+                "latitude": "24.8310132",
+                "longitude": "121.7759664",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2375,
+                "last_updated": "2024-03-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.86968710951791,
+                    32.377037706976
+                ]
+            },
+            "properties": {
+                "name": "Kilgore College East Texas Oil Museum",
+                "area": "Texas",
+                "address": "1301 S Henderson Blvd, Kilgore, TX 75662, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 32.377037706976,
+                "longitude": -94.86968710951791,
+                "machine_status": "available",
+                "id": 7079,
+                "last_updated": "2024-03-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.65261081635325,
+                    39.68323466768144
+                ]
+            },
+            "properties": {
+                "name": "Cabela’s Christiana, DE",
+                "area": "Delaware",
+                "address": "1100 Christiana Mall #1410, Newark, DE 19702",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 39.68323466768144,
+                "longitude": -75.65261081635325,
+                "machine_status": "available",
+                "id": 7080,
+                "last_updated": "2024-03-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.01797594048259,
+                    29.547785940629495
+                ]
+            },
+            "properties": {
+                "name": "Landry’s - Kemah",
+                "area": "Texas",
+                "address": "1b Waterfront Dr, Kemah, TX 77565, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 29.547785940629495,
+                "longitude": -95.01797594048259,
+                "machine_status": "retired",
+                "id": 7081,
+                "last_updated": "2024-03-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.01942520539558,
+                    29.547946499253847
+                ]
+            },
+            "properties": {
+                "name": "Joe’s Crab Shack - Kemah",
+                "area": "Texas",
+                "address": "7 Kemah Water Front, Kemah, TX 77565, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 29.547946499253847,
+                "longitude": -95.01942520539558,
+                "machine_status": "retired",
+                "id": 7082,
+                "last_updated": "2024-03-12"
             }
         }
     ]
