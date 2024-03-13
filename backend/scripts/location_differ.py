@@ -463,7 +463,7 @@ def location_differ(
             if match:
                 continue
 
-            # This is a new machine since the key was not found in both dicts
+            ### This is a new machine since the key was not found in both dicts
             if this_state in UNAVAILABLE_STATES:
                 # Untracked machine that is not available, hence we can skip
                 continue
@@ -563,9 +563,10 @@ def location_differ(
                     subtitle=geojson["properties"]["address"],
                     api=gmaps,
                 )
+
                 dists = [
                     haversine((lat, lng), (float(e["latitude"]), float(e["longitude"])))
-                    for e in tdf
+                    for _, e in tdf.iterrows()
                 ]
                 if min(dists) < 100:
                     # There is a match, we have to update the link
