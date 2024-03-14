@@ -7,6 +7,7 @@ Checkout the app on [the app store](https://apps.apple.com/gb/app/pennylocator/i
 <img align="right" src=https://user-images.githubusercontent.com/20857899/184221232-5a37ec6f-dba8-4093-b9a8-ad6cfad33e3c.gif >
 
 
+
 **App description**
 
 You enjoy collecting pressed pennys?
@@ -23,6 +24,10 @@ PennyMe also helps you to easily navigate to any machine. And it shows its addre
 
 PennyMe relies on user contributions! Add new machines or report if anything has changed!
 
+
+## Not an apple user?
+
+See [here](https://jannisborn.github.io/PennyMe/webmap/map.html) for a map of all pins: https://jannisborn.github.io/PennyMe/webmap/map.html 
 
 
 
