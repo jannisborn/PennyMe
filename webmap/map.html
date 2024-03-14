@@ -106,6 +106,16 @@
                        <strong>Last Updated:</strong> ${properties.last_updated}<br>
                        <strong>External URL:</strong> ${externalUrlLink}`;
 
+                // Conditionally add multimachine if available
+                if (properties.multimachine !== undefined) {
+                    description += `<br><strong>Multimachine:</strong> ${properties.multimachine}`;
+                }
+
+                // Conditionally add paywall if available
+                if (properties.paywall !== undefined) {
+                    description += `<br><strong>Paywall:</strong> ${properties.paywall ? 'Yes' : 'No'}`;
+                }
+
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(description)
