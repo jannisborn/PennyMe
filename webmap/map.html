@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>PennyMe</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .mapboxgl-ctrl-top-right {
+            margin-top: 50px;
+        }
+
+        /* Adjust the position of default Mapbox controls */
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+    <div id="styleSwitcher" style="position: absolute;top: 10px;right: 10px;z-index: 1;background: white;padding: 5px;">
+        <button onclick="setMapStyle('mapbox://styles/mapbox/streets-v11')">Streets</button>
+        <button onclick="setMapStyle('mapbox://styles/mapbox/satellite-v9')">Satellite</button>
+        <button onclick="setMapStyle('mapbox://styles/mapbox/outdoors-v11')">Outdoors</button>
+    </div>
+
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiamFubmlzYm9ybiIsImEiOiJjbHRybTN4NmUwNjF0MmtxcHBjanlmZWNlIn0.cRTExA7LT1NMSSJVnOtyig';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [10.00855, 53.59714],
+            zoom: 6
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+
+        var geolocateControl = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserLocation: true
+        });
+        map.addControl(geolocateControl, 'bottom-left');
+
+
+        function setMapStyle(style) {
+            map.setStyle(style);
+            // Re-add the GeoJSON layer once the style has loaded
+            map.on('style.load', addGeoJSONLayer);
+        }
+        function addGeoJSONLayer() {
+
+            map.loadImage('pin.png', function (error, image) {
+                if (error) throw error;
+                // Add the image to the map as an icon
+                map.addImage('my-custom-pin', image);
+
+                map.addSource('myGeoJSON', {
+                    type: 'geojson',
+                    data: 'all.json' // Make sure this path is correct
+                });
+
+                map.addLayer({
+                    id: 'geojsonLayer',
+                    type: 'symbol', // Use 'symbol' type for custom icons
+                    source: 'myGeoJSON',
+                    layout: {
+                        'icon-image': 'my-custom-pin', // Reference the custom icon
+                        'icon-size': 0.05, // Adjust the size of the icon
+                        'icon-anchor': 'bottom' // Anchors the icon bottom to the coordinate
+                    }
+                });
+            });
+            map.on('click', 'geojsonLayer', function (e) {
+                while (Math.abs(e.lngLat.lng - e.features[0].geometry.coordinates[0]) > 180) {
+                    e.lngLat.lng += e.lngLat.lng > e.features[0].geometry.coordinates[0] ? -360 : 360;
+                }
+
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var properties = e.features[0].properties;
+
+                // Create a hyperlink for the external_url if it exists and is not "null"
+                var externalUrlLink = (properties.external_url && properties.external_url !== "null")
+                    ? `<a href="${properties.external_url}" target="_blank">PennyCollector</a>`
+                    : "No Link Available";
+
+                var description = `<strong>Name:</strong> ${properties.name}<br>
+                       <strong>Area:</strong> ${properties.area}<br>
+                       <strong>Address:</strong> ${properties.address}<br>
+                       <strong>Status:</strong> ${properties.machine_status}<br>
+                       <strong>Last Updated:</strong> ${properties.last_updated}<br>
+                       <strong>External URL:</strong> ${externalUrlLink}`;
+
+                // Conditionally add multimachine if available
+                if (properties.multimachine !== undefined) {
+                    description += `<br><strong>Multimachine:</strong> ${properties.multimachine}`;
+                }
+
+                // Conditionally add paywall if available
+                if (properties.paywall !== undefined) {
+                    description += `<br><strong>Paywall:</strong> ${properties.paywall ? 'Yes' : 'No'}`;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+
+
+            // Change the cursor to a pointer when the mouse is over the geojsonLayer.
+            map.on('mouseenter', 'geojsonLayer', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'geojsonLayer', function () {
+                map.getCanvas().style.cursor = '';
+            });
+            function setMapStyle(style) {
+                map.setStyle(style);
+                // Re-add the GeoJSON layer once the style has loaded
+                map.on('style.load', addGeoJSONLayer);
+            }
+            map.on('load', addGeoJSONLayer);
+        }
+        // });
+        map.on('load', addGeoJSONLayer);
+    </script>
+</body>
+
+</html>
