@@ -7960,9 +7960,9 @@
                 "internal_url": "null",
                 "latitude": "32.7523936",
                 "longitude": "-117.1958841",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6124,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-15"
             }
         },
         {
@@ -9593,9 +9593,9 @@
                 "internal_url": "null",
                 "latitude": "39.09376049999999",
                 "longitude": "-94.42338649999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6159,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-14"
             }
         },
         {
@@ -22511,7 +22511,7 @@
                 ]
             },
             "properties": {
-                "name": "Kid Rock's Big Ass Honky Tonk Rock N' Roll Steakhouse ",
+                "name": "Kid Rock's Big Ass Honky Tonk Rock N' Roll Steakhouse",
                 "area": "Tennessee",
                 "address": "221 Broadway, Nashville",
                 "status": "unvisited",
@@ -22519,9 +22519,9 @@
                 "internal_url": "null",
                 "latitude": "36.1614462",
                 "longitude": "-86.7757255",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 5343,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-03-13"
             }
         },
         {
@@ -44822,10 +44822,10 @@
                 "internal_url": "null",
                 "latitude": "39.98879220000001",
                 "longitude": "-85.9368657",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "retired",
                 "id": 2286,
-                "last_updated": "2024-02-25"
+                "last_updated": "2024-03-15"
             }
         },
         {
@@ -46187,6 +46187,52 @@
                 "machine_status": "retired",
                 "id": 7082,
                 "last_updated": "2024-03-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.593546,
+                    30.394468
+                ]
+            },
+            "properties": {
+                "name": "Gulfarium Marine Adventure Park",
+                "area": "Florida",
+                "address": "1010 Miracle Strip Parkway, Ft. Walton Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1807",
+                "internal_url": "null",
+                "latitude": "30.394468",
+                "longitude": "-86.593546",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3307,
+                "last_updated": "2024-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.47316339999999,
+                    36.9530369
+                ]
+            },
+            "properties": {
+                "name": "Lost River Cave",
+                "area": "Kentucky",
+                "address": "2818 Nashville Rd, Bowling Green",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2299",
+                "internal_url": "null",
+                "latitude": "36.9530369",
+                "longitude": "-86.47316339999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3515,
+                "last_updated": "2024-03-13"
             }
         }
     ]
