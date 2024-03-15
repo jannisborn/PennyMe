@@ -36,9 +36,9 @@
         <button onclick="setMapStyle('mapbox://styles/mapbox/outdoors-v11')">Outdoors</button>
     </div>
 
-
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiamFubmlzYm9ybiIsImEiOiJjbHRybTN4NmUwNjF0MmtxcHBjanlmZWNlIn0.cRTExA7LT1NMSSJVnOtyig';
+        // Access-restricted token
+        mapboxgl.accessToken = "pk.eyJ1IjoiamFubmlzYm9ybiIsImEiOiJjbHRzZXNlaXIwcWRlMm1vYTkxc21vcDBkIn0.6zSSt0cHnFY1TfdQyoxSPg";
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -65,25 +65,32 @@
         }
         function addGeoJSONLayer() {
 
-            map.loadImage('pin.png', function (error, image) {
+            map.loadImage('red.png', function (error, redImage) {
                 if (error) throw error;
                 // Add the image to the map as an icon
-                map.addImage('my-custom-pin', image);
+                map.addImage('red-pin', redImage);
+                map.loadImage('gray.png', function (error, grayImage) {
+                    if (error) throw error;
+                    map.addImage('gray-pin', grayImage);
 
-                map.addSource('myGeoJSON', {
-                    type: 'geojson',
-                    data: 'all.json' // Make sure this path is correct
-                });
+                    map.addSource('myGeoJSON', {
+                        type: 'geojson',
+                        data: 'all.json' // Make sure this path is correct
+                    });
 
-                map.addLayer({
-                    id: 'geojsonLayer',
-                    type: 'symbol', // Use 'symbol' type for custom icons
-                    source: 'myGeoJSON',
-                    layout: {
-                        'icon-image': 'my-custom-pin', // Reference the custom icon
-                        'icon-size': 0.05, // Adjust the size of the icon
-                        'icon-anchor': 'bottom' // Anchors the icon bottom to the coordinate
-                    }
+                    map.addLayer({
+                        id: 'geojsonLayer',
+                        type: 'symbol', // Use 'symbol' type for custom icons
+                        source: 'myGeoJSON',
+                        layout: {
+                            'icon-image': ['case',
+                                ['==', ['get', 'machine_status'], 'available'], 'red-pin',
+                                'gray-pin'
+                            ],
+                            'icon-size': 0.07, // Adjust the size of the icon
+                            'icon-anchor': 'bottom' // Anchors the icon bottom to the coordinate
+                        }
+                    });
                 });
             });
             map.on('click', 'geojsonLayer', function (e) {
