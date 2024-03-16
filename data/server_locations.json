@@ -10260,9 +10260,9 @@
                 "internal_url": "null",
                 "latitude": "27.8001832",
                 "longitude": "-82.7994263",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6176,
-                "last_updated": "2023-12-11"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -46347,6 +46347,259 @@
                 "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 5145,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.0666252,
+                    31.7124458
+                ]
+            },
+            "properties": {
+                "name": "Big Nose Kate's Saloon",
+                "area": "Arizona",
+                "address": "417 E Allen St, Tombstone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423565",
+                "internal_url": "null",
+                "latitude": "31.7124458",
+                "longitude": "-110.0666252",
+                "machine_status": "available",
+                "id": 7083,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.27608500000001,
+                    36.637734
+                ]
+            },
+            "properties": {
+                "name": "Music Road Mall, Mo's Old Time Photo",
+                "area": "Missouri",
+                "address": "3010 W. Highway 76, Branson",
+                "external_url": "http://209.221.138.252/Details.aspx?location=9488",
+                "internal_url": "null",
+                "latitude": "36.637734",
+                "longitude": "-93.27608500000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1063,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.2946343,
+                    29.5503867
+                ]
+            },
+            "properties": {
+                "name": "Pollys Pet Shop",
+                "area": "Texas",
+                "address": "940 Pat Booker Road, Universal City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424764",
+                "internal_url": "null",
+                "latitude": "29.5503867",
+                "longitude": "-98.2946343",
+                "machine_status": "available",
+                "id": 7084,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.006671,
+                    47.9412934
+                ]
+            },
+            "properties": {
+                "name": "Coulee Wall Variety Store",
+                "area": "Washington",
+                "address": "414 Midway Ave, Grand Coulee",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424996",
+                "internal_url": "null",
+                "latitude": "47.9412934",
+                "longitude": "-119.006671",
+                "machine_status": "available",
+                "id": 7085,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.8784993,
+                    40.8502252
+                ]
+            },
+            "properties": {
+                "name": "Bronx Zoo/Wildlife Conservation Society",
+                "area": "New York",
+                "address": "2300 Southern Boulevard, New York City (Bronx)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3652",
+                "internal_url": "null",
+                "latitude": "40.8502252",
+                "longitude": "-73.8784993",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3034,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.6387226,
+                    -16.8183623
+                ]
+            },
+            "properties": {
+                "name": "Kuranda Scenic Railway",
+                "area": "Australia",
+                "address": "Coondoo Street, QLD - Kuranda ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=207455",
+                "internal_url": "null",
+                "latitude": "-16.8183623",
+                "longitude": "145.6387226",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2145,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.9150398,
+                    52.4791473
+                ]
+            },
+            "properties": {
+                "name": "Legoland Discovery Centre",
+                "area": "England",
+                "address": "King Edwards Road, WEST MIDLANDS - Birmingham",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424984",
+                "internal_url": "null",
+                "latitude": "52.4791473",
+                "longitude": "-1.9150398",
+                "machine_status": "available",
+                "id": 7086,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.8863917,
+                    32.7346911
+                ]
+            },
+            "properties": {
+                "name": "Ribeiro Frio (Madeira Island)",
+                "area": "Portugal",
+                "address": "Souvenirs Ribeiro Frio , Funchal ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424919",
+                "internal_url": "null",
+                "latitude": "32.7346911",
+                "longitude": "-16.8863917",
+                "machine_status": "available",
+                "id": 7087,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.9082357,
+                    32.6506129
+                ]
+            },
+            "properties": {
+                "name": "Pico do Arieiro",
+                "area": "Portugal",
+                "address": "Pico do Arieiro, Funchal (Madeira Island)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424918",
+                "internal_url": "null",
+                "latitude": "32.6506129",
+                "longitude": "-16.9082357",
+                "machine_status": "available",
+                "id": 7088,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.8451827,
+                    25.1098695
+                ]
+            },
+            "properties": {
+                "name": "Jiufen Old Street Square",
+                "area": "Taiwan",
+                "address": "Shuqi Road, New Taipei City - Ruifang District",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331548",
+                "internal_url": "null",
+                "latitude": "25.1098695",
+                "longitude": "121.8451827",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2359,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.93991419999999,
+                    30.1170506
+                ]
+            },
+            "properties": {
+                "name": "Zoo of Acadiana",
+                "area": "Louisiana",
+                "address": "Highway 90 E, Broussard",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "30.1170506",
+                "longitude": "-91.93991419999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3568,
                 "last_updated": "2024-03-16"
             }
         }
