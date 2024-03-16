@@ -565,7 +565,11 @@ def location_differ(
                 )
 
                 dists = [
-                    haversine((lat, lng), (float(e["latitude"]), float(e["longitude"])))
+                    haversine(
+                        (lat, lng),
+                        (float(e["latitude"]), float(e["longitude"])),
+                        unit="m",
+                    )
                     for _, e in tdf.iterrows()
                 ]
                 if min(dists) < 100:
