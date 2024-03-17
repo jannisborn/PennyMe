@@ -46718,6 +46718,30 @@
                 "last_updated": "2024-03-17",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.7126134,
+                    41.4459344
+                ]
+            },
+            "properties": {
+                "name": "Cleveland Metroparks Zoo",
+                "area": "Ohio",
+                "address": "3900 Wildlife Way, Cleveland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3839",
+                "internal_url": "null",
+                "latitude": "41.4459344",
+                "longitude": "-81.7126134",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1956,
+                "last_updated": "2024-03-17",
+                "multimachine": 5
+            }
         }
     ]
 }
