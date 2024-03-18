@@ -5189,9 +5189,9 @@
                 "latitude": "36.2176958",
                 "longitude": "-86.6978622",
                 "multimachine": 2,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4243,
-                "last_updated": "2023-10-07"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -21187,13 +21187,13 @@
                 "area": "Ireland",
                 "address": "Queen's Road 1 Olympic Way, Titanic Quarter, Belfast, Belfast",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=416331",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.597285",
                 "longitude": "-5.93012",
                 "machine_status": "available",
                 "id": 6474,
-                "last_updated": "2023-10-20"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -46689,10 +46689,10 @@
                 "internal_url": "null",
                 "latitude": "51.5161284",
                 "longitude": "-0.176387",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1476,
-                "last_updated": "2024-03-17"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -46765,6 +46765,190 @@
                 "id": 2194,
                 "last_updated": "2024-03-18",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2724435,
+                    31.1121164
+                ]
+            },
+            "properties": {
+                "name": "Kims Kitchen",
+                "area": "Louisiana",
+                "address": "3010 Colony Blvd, New Llano",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425305",
+                "internal_url": "null",
+                "latitude": "31.1121164",
+                "longitude": "-93.2724435",
+                "machine_status": "available",
+                "id": 7089,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.6453421,
+                    41.9318509
+                ]
+            },
+            "properties": {
+                "name": "Corry Area Historical Society ",
+                "area": "Pennsylvania",
+                "address": "945 Mead Avenue , Corry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425311",
+                "internal_url": "null",
+                "latitude": "41.9318509",
+                "longitude": "-79.6453421",
+                "machine_status": "available",
+                "id": 7090,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2411496,
+                    53.42558140000001
+                ]
+            },
+            "properties": {
+                "name": "Dublin Airport",
+                "area": "Ireland",
+                "address": "Treminal 2, Dublin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=208660",
+                "internal_url": "null",
+                "latitude": "53.42558140000001",
+                "longitude": "-6.2411496",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 705,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.8920445,
+                    54.21614
+                ]
+            },
+            "properties": {
+                "name": "Bon Bon Gift Shop",
+                "area": "Northern Ireland",
+                "address": "6 Central Promenade, COUNTY DOWN - Newcastle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425379",
+                "internal_url": "null",
+                "latitude": "54.21614",
+                "longitude": "-5.8920445",
+                "machine_status": "available",
+                "id": 7091,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.3711942,
+                    55.8790089
+                ]
+            },
+            "properties": {
+                "name": "Soar at INTU Shopping Centre",
+                "area": "Scotland",
+                "address": "King's Inch Rd, Glasgow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=243593",
+                "internal_url": "null",
+                "latitude": "55.8790089",
+                "longitude": "-4.3711942",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 774,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.451972,
+                    53.32908159999999
+                ]
+            },
+            "properties": {
+                "name": "Lyons Robin Hood ",
+                "area": "Wales",
+                "address": "Rhyl Coast Rd, NORTH WALES - Rhyl",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425390",
+                "internal_url": "null",
+                "latitude": "53.32908159999999",
+                "longitude": "-3.451972",
+                "machine_status": "available",
+                "id": 7092,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0950466,
+                    52.76122470000001
+                ]
+            },
+            "properties": {
+                "name": "Lyons Sunnysands Holiday Park",
+                "area": "Wales",
+                "address": "Sunnysands Caravan Park, Talybont, NORTH WALES - Talybont",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425389",
+                "internal_url": "null",
+                "latitude": "52.76122470000001",
+                "longitude": "-4.0950466",
+                "machine_status": "available",
+                "id": 7093,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.7423237,
+                    51.5930921
+                ]
+            },
+            "properties": {
+                "name": "Caldicot Castle",
+                "area": "Wales",
+                "address": "Church Road, SOUTH WALES - Monmouthshire",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425302",
+                "internal_url": "null",
+                "latitude": "51.5930921",
+                "longitude": "-2.7423237",
+                "machine_status": "available",
+                "id": 7094,
+                "last_updated": "2024-03-16"
             }
         }
     ]
