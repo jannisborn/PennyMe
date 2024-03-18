@@ -46742,6 +46742,30 @@
                 "last_updated": "2024-03-17",
                 "multimachine": 5
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.3859678,
+                    34.8474429
+                ]
+            },
+            "properties": {
+                "name": "Greenville Zoo",
+                "area": "South Carolina",
+                "address": "150 Cleveland Park Dr, Greenville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=268714",
+                "internal_url": "null",
+                "latitude": "34.8474429",
+                "longitude": "-82.3859678",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2194,
+                "last_updated": "2024-03-18",
+                "paywall": true
+            }
         }
     ]
 }
