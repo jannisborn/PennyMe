@@ -5189,9 +5189,9 @@
                 "latitude": "36.2176958",
                 "longitude": "-86.6978622",
                 "multimachine": 2,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4243,
-                "last_updated": "2023-10-07"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -7960,9 +7960,9 @@
                 "internal_url": "null",
                 "latitude": "32.7523936",
                 "longitude": "-117.1958841",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6124,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-15"
             }
         },
         {
@@ -9593,9 +9593,9 @@
                 "internal_url": "null",
                 "latitude": "39.09376049999999",
                 "longitude": "-94.42338649999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6159,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-14"
             }
         },
         {
@@ -10260,9 +10260,9 @@
                 "internal_url": "null",
                 "latitude": "27.8001832",
                 "longitude": "-82.7994263",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6176,
-                "last_updated": "2023-12-11"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -11802,9 +11802,9 @@
                 "internal_url": "null",
                 "latitude": "36.1314339",
                 "longitude": "-115.1648666",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6225,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -21187,13 +21187,13 @@
                 "area": "Ireland",
                 "address": "Queen's Road 1 Olympic Way, Titanic Quarter, Belfast, Belfast",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=416331",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.597285",
                 "longitude": "-5.93012",
                 "machine_status": "available",
                 "id": 6474,
-                "last_updated": "2023-10-20"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -44822,10 +44822,10 @@
                 "internal_url": "null",
                 "latitude": "39.98879220000001",
                 "longitude": "-85.9368657",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "retired",
                 "id": 2286,
-                "last_updated": "2024-02-25"
+                "last_updated": "2024-03-15"
             }
         },
         {
@@ -46233,6 +46233,792 @@
                 "status": "unvisited",
                 "id": 3515,
                 "last_updated": "2024-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.88609989999999,
+                    42.521723
+                ]
+            },
+            "properties": {
+                "name": "Witch Way Gifts",
+                "area": "Massachusetts",
+                "address": "155 Derby Street, Salem",
+                "external_url": "http://209.221.138.252/Details.aspx?location=94214",
+                "internal_url": "null",
+                "latitude": "42.521723",
+                "longitude": "-70.88609989999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2922,
+                "last_updated": "2024-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.0213512,
+                    51.8164253
+                ]
+            },
+            "properties": {
+                "name": "Slot Loevestein",
+                "area": "Netherlands",
+                "address": "Loevestein 1 , Poederoijen",
+                "external_url": "http://209.221.138.252/Details.aspx?location=302672",
+                "internal_url": "null",
+                "latitude": "51.8164253",
+                "longitude": "5.0213512",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 221,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.4974488,
+                    34.0089972
+                ]
+            },
+            "properties": {
+                "name": "Santa Monica Pier - Playland Arcade",
+                "area": "California",
+                "address": "350 Santa Monica Pier, Santa Monica",
+                "external_url": "http://209.221.138.252/Details.aspx?location=529",
+                "internal_url": "null",
+                "latitude": "34.0089972",
+                "longitude": "-118.4974488",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5258,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.24216879731725,
+                    43.99284224086636
+                ]
+            },
+            "properties": {
+                "name": "Wall Discount Outlet store",
+                "area": "South Dakota",
+                "address": "537 Main Street, Wall SD 57790",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318023",
+                "internal_url": "null",
+                "latitude": "43.99284224086636",
+                "longitude": "-102.24216879731725",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1318,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3421874,
+                    47.6073853
+                ]
+            },
+            "properties": {
+                "name": "Pier 59 - Seattle Aquarium",
+                "area": "Washington",
+                "address": "1483 Alaskan Way suite 103, Seattle",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1111",
+                "internal_url": "null",
+                "latitude": "47.6073853",
+                "longitude": "-122.3421874",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5145,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.0666252,
+                    31.7124458
+                ]
+            },
+            "properties": {
+                "name": "Big Nose Kate's Saloon",
+                "area": "Arizona",
+                "address": "417 E Allen St, Tombstone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=423565",
+                "internal_url": "null",
+                "latitude": "31.7124458",
+                "longitude": "-110.0666252",
+                "machine_status": "available",
+                "id": 7083,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.27608500000001,
+                    36.637734
+                ]
+            },
+            "properties": {
+                "name": "Music Road Mall, Mo's Old Time Photo",
+                "area": "Missouri",
+                "address": "3010 W. Highway 76, Branson",
+                "external_url": "http://209.221.138.252/Details.aspx?location=9488",
+                "internal_url": "null",
+                "latitude": "36.637734",
+                "longitude": "-93.27608500000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1063,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.2946343,
+                    29.5503867
+                ]
+            },
+            "properties": {
+                "name": "Pollys Pet Shop",
+                "area": "Texas",
+                "address": "940 Pat Booker Road, Universal City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424764",
+                "internal_url": "null",
+                "latitude": "29.5503867",
+                "longitude": "-98.2946343",
+                "machine_status": "available",
+                "id": 7084,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.006671,
+                    47.9412934
+                ]
+            },
+            "properties": {
+                "name": "Coulee Wall Variety Store",
+                "area": "Washington",
+                "address": "414 Midway Ave, Grand Coulee",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424996",
+                "internal_url": "null",
+                "latitude": "47.9412934",
+                "longitude": "-119.006671",
+                "machine_status": "available",
+                "id": 7085,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.8784993,
+                    40.8502252
+                ]
+            },
+            "properties": {
+                "name": "Bronx Zoo/Wildlife Conservation Society",
+                "area": "New York",
+                "address": "2300 Southern Boulevard, New York City (Bronx)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3652",
+                "internal_url": "null",
+                "latitude": "40.8502252",
+                "longitude": "-73.8784993",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3034,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.6387226,
+                    -16.8183623
+                ]
+            },
+            "properties": {
+                "name": "Kuranda Scenic Railway",
+                "area": "Australia",
+                "address": "Coondoo Street, QLD - Kuranda ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=207455",
+                "internal_url": "null",
+                "latitude": "-16.8183623",
+                "longitude": "145.6387226",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2145,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.9150398,
+                    52.4791473
+                ]
+            },
+            "properties": {
+                "name": "Legoland Discovery Centre",
+                "area": "England",
+                "address": "King Edwards Road, WEST MIDLANDS - Birmingham",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424984",
+                "internal_url": "null",
+                "latitude": "52.4791473",
+                "longitude": "-1.9150398",
+                "machine_status": "available",
+                "id": 7086,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.8863917,
+                    32.7346911
+                ]
+            },
+            "properties": {
+                "name": "Ribeiro Frio (Madeira Island)",
+                "area": "Portugal",
+                "address": "Souvenirs Ribeiro Frio , Funchal ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424919",
+                "internal_url": "null",
+                "latitude": "32.7346911",
+                "longitude": "-16.8863917",
+                "machine_status": "available",
+                "id": 7087,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.9082357,
+                    32.6506129
+                ]
+            },
+            "properties": {
+                "name": "Pico do Arieiro",
+                "area": "Portugal",
+                "address": "Pico do Arieiro, Funchal (Madeira Island)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424918",
+                "internal_url": "null",
+                "latitude": "32.6506129",
+                "longitude": "-16.9082357",
+                "machine_status": "available",
+                "id": 7088,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.8451827,
+                    25.1098695
+                ]
+            },
+            "properties": {
+                "name": "Jiufen Old Street Square",
+                "area": "Taiwan",
+                "address": "Shuqi Road, New Taipei City - Ruifang District",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331548",
+                "internal_url": "null",
+                "latitude": "25.1098695",
+                "longitude": "121.8451827",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2359,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.93991419999999,
+                    30.1170506
+                ]
+            },
+            "properties": {
+                "name": "Zoo of Acadiana",
+                "area": "Louisiana",
+                "address": "Highway 90 E, Broussard",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "30.1170506",
+                "longitude": "-91.93991419999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3568,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6873931,
+                    41.4687292
+                ]
+            },
+            "properties": {
+                "name": "A Christmas Story House",
+                "area": "Ohio",
+                "address": "3169 W 11th St., Cleveland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196636",
+                "internal_url": "null",
+                "latitude": "41.4687292",
+                "longitude": "-81.6873931",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1955,
+                "last_updated": "2024-03-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.7387906,
+                    43.3234653
+                ]
+            },
+            "properties": {
+                "name": "Michigan Shoppe",
+                "area": "Michigan",
+                "address": "925 South Main Street F-2, Frankenmuth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=251709",
+                "internal_url": "null",
+                "latitude": "43.3234653",
+                "longitude": "-83.7387906",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2523,
+                "last_updated": "2024-03-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.701222,
+                    40.0609036
+                ]
+            },
+            "properties": {
+                "name": "Uranus Fudge Factory (Gift Shop)",
+                "area": "Indiana",
+                "address": "1423 w 53rd street, Anderson",
+                "external_url": "http://209.221.138.252/Details.aspx?location=378730",
+                "internal_url": "null",
+                "latitude": "40.0609036",
+                "longitude": "-85.701222",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5460,
+                "last_updated": "2024-03-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.176387,
+                    51.5161284
+                ]
+            },
+            "properties": {
+                "name": "Paddington Bear Store",
+                "area": "England",
+                "address": "Praed St, Paddington, London , LONDON - Paddington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=300813",
+                "internal_url": "null",
+                "latitude": "51.5161284",
+                "longitude": "-0.176387",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1476,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.502403,
+                    40.783588
+                ]
+            },
+            "properties": {
+                "name": "Ohio State Reformatory",
+                "area": "Ohio",
+                "address": "100 Reformatory Road, Mansfield",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27802",
+                "internal_url": "null",
+                "latitude": "40.783588",
+                "longitude": "-82.502403",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1984,
+                "last_updated": "2024-03-17",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.7126134,
+                    41.4459344
+                ]
+            },
+            "properties": {
+                "name": "Cleveland Metroparks Zoo",
+                "area": "Ohio",
+                "address": "3900 Wildlife Way, Cleveland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3839",
+                "internal_url": "null",
+                "latitude": "41.4459344",
+                "longitude": "-81.7126134",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1956,
+                "last_updated": "2024-03-17",
+                "multimachine": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.3859678,
+                    34.8474429
+                ]
+            },
+            "properties": {
+                "name": "Greenville Zoo",
+                "area": "South Carolina",
+                "address": "150 Cleveland Park Dr, Greenville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=268714",
+                "internal_url": "null",
+                "latitude": "34.8474429",
+                "longitude": "-82.3859678",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2194,
+                "last_updated": "2024-03-18",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2724435,
+                    31.1121164
+                ]
+            },
+            "properties": {
+                "name": "Kims Kitchen",
+                "area": "Louisiana",
+                "address": "3010 Colony Blvd, New Llano",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425305",
+                "internal_url": "null",
+                "latitude": "31.1121164",
+                "longitude": "-93.2724435",
+                "machine_status": "available",
+                "id": 7089,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.6453421,
+                    41.9318509
+                ]
+            },
+            "properties": {
+                "name": "Corry Area Historical Society ",
+                "area": "Pennsylvania",
+                "address": "945 Mead Avenue , Corry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425311",
+                "internal_url": "null",
+                "latitude": "41.9318509",
+                "longitude": "-79.6453421",
+                "machine_status": "available",
+                "id": 7090,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2411496,
+                    53.42558140000001
+                ]
+            },
+            "properties": {
+                "name": "Dublin Airport",
+                "area": "Ireland",
+                "address": "Treminal 2, Dublin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=208660",
+                "internal_url": "null",
+                "latitude": "53.42558140000001",
+                "longitude": "-6.2411496",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 705,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.8920445,
+                    54.21614
+                ]
+            },
+            "properties": {
+                "name": "Bon Bon Gift Shop",
+                "area": "Northern Ireland",
+                "address": "6 Central Promenade, COUNTY DOWN - Newcastle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425379",
+                "internal_url": "null",
+                "latitude": "54.21614",
+                "longitude": "-5.8920445",
+                "machine_status": "available",
+                "id": 7091,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.3711942,
+                    55.8790089
+                ]
+            },
+            "properties": {
+                "name": "Soar at INTU Shopping Centre",
+                "area": "Scotland",
+                "address": "King's Inch Rd, Glasgow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=243593",
+                "internal_url": "null",
+                "latitude": "55.8790089",
+                "longitude": "-4.3711942",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 774,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.451972,
+                    53.32908159999999
+                ]
+            },
+            "properties": {
+                "name": "Lyons Robin Hood ",
+                "area": "Wales",
+                "address": "Rhyl Coast Rd, NORTH WALES - Rhyl",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425390",
+                "internal_url": "null",
+                "latitude": "53.32908159999999",
+                "longitude": "-3.451972",
+                "machine_status": "available",
+                "id": 7092,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0950466,
+                    52.76122470000001
+                ]
+            },
+            "properties": {
+                "name": "Lyons Sunnysands Holiday Park",
+                "area": "Wales",
+                "address": "Sunnysands Caravan Park, Talybont, NORTH WALES - Talybont",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425389",
+                "internal_url": "null",
+                "latitude": "52.76122470000001",
+                "longitude": "-4.0950466",
+                "machine_status": "available",
+                "id": 7093,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.7423237,
+                    51.5930921
+                ]
+            },
+            "properties": {
+                "name": "Caldicot Castle",
+                "area": "Wales",
+                "address": "Church Road, SOUTH WALES - Monmouthshire",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425302",
+                "internal_url": "null",
+                "latitude": "51.5930921",
+                "longitude": "-2.7423237",
+                "machine_status": "available",
+                "id": 7094,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.7302019,
+                    52.0512575
+                ]
+            },
+            "properties": {
+                "name": "Gulliver's Land",
+                "area": "England",
+                "address": "Livingstone Drive Newlands , BUCKINGHAMSHIRE - Milton Keynes",
+                "external_url": "http://209.221.138.252/Details.aspx?location=192246",
+                "internal_url": "null",
+                "latitude": "52.0512575",
+                "longitude": "-0.7302019",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1335,
+                "last_updated": "2024-03-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -158.1033888,
+                    21.5854686
+                ]
+            },
+            "properties": {
+                "name": "The Aloha General Store",
+                "area": "Hawaii",
+                "address": "66-250 Kamehameha Highway, Oahu - Haleiwa",
+                "external_url": "http://209.221.138.252/Details.aspx?location=18926",
+                "internal_url": "null",
+                "latitude": "21.5854686",
+                "longitude": "-158.1033888",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3844,
+                "last_updated": "2024-03-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3492774,
+                    47.6205063
+                ]
+            },
+            "properties": {
+                "name": "Seattle Center - Space Needle Space Base Gift Shop",
+                "area": "Washington",
+                "address": "400 Broad Street, Seattle",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1117",
+                "internal_url": "null",
+                "latitude": "47.6205063",
+                "longitude": "-122.3492774",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5149,
+                "last_updated": "2024-03-19",
+                "multimachine": 3
             }
         }
     ]

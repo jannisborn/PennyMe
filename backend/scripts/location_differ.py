@@ -565,7 +565,11 @@ def location_differ(
                 )
 
                 dists = [
-                    haversine((lat, lng), (float(e["latitude"]), float(e["longitude"])))
+                    haversine(
+                        (lat, lng),
+                        (float(e["latitude"]), float(e["longitude"])),
+                        unit="m",
+                    )
                     for _, e in tdf.iterrows()
                 ]
                 if min(dists) < 100:
@@ -579,10 +583,12 @@ def location_differ(
 
                     e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
                     logger.info(
-                        f"Distance match - Seeems that machine {this_title} at {this_address} already exists as: {match}"
+                        f"Distance match - Seeems that machine {this_title} at {this_address} already exists as: {e_entry['properties']['name']}"
                     )
                     # Update machine and save in dict
-                    assert e_entry["properties"]["external_url"] == "null"
+                    assert e_entry["properties"]["external_url"] == "null", e_entry[
+                        "properties"
+                    ]
                     if tdf.iloc[m_idx]["source"] == "Device":
                         e_entry["properties"]["external_url"] = this_link
                         e_entry["properties"]["last_updated"] = today
