@@ -17827,13 +17827,13 @@
                 "area": "Japan",
                 "address": "20-15 Udagawacho Humnax Pavillion Shibuya Koen-dori, , Shibuya - Tokyo Prefecture",
                 "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=371106",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "35.6612003",
                 "longitude": "139.7001252",
                 "machine_status": "retired",
                 "id": 5841,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -47019,6 +47019,167 @@
                 "id": 5149,
                 "last_updated": "2024-03-19",
                 "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.0810924,
+                    40.3083174
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Colorado",
+                "address": "5201 Nugget Road, Berthoud",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425563",
+                "internal_url": "null",
+                "latitude": "40.3083174",
+                "longitude": "-105.0810924",
+                "machine_status": "available",
+                "id": 7095,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.2456723,
+                    30.3137182
+                ]
+            },
+            "properties": {
+                "name": "Keith's Superstores",
+                "area": "Mississippi",
+                "address": "102 E. Beach Blvd, Pass Christian",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425462",
+                "internal_url": "null",
+                "latitude": "30.3137182",
+                "longitude": "-89.2456723",
+                "machine_status": "available",
+                "id": 7096,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.21056519999999,
+                    19.2956057
+                ]
+            },
+            "properties": {
+                "name": "Six Flags Mexico",
+                "area": "Mexico",
+                "address": "Carretera Picacho Ajusco Km 1.5, Mexico City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425565",
+                "internal_url": "null",
+                "latitude": "19.2956057",
+                "longitude": "-99.21056519999999",
+                "machine_status": "available",
+                "id": 7097,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.5377732,
+                    22.1799676
+                ]
+            },
+            "properties": {
+                "name": "Macau Tower",
+                "area": "Macao",
+                "address": ", Macau",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "22.1799676",
+                "longitude": "113.5377732",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2038,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    134.1720506,
+                    34.3253204
+                ]
+            },
+            "properties": {
+                "name": "Tsudanomatsubara SA (Heading Kobe)",
+                "area": "Japan",
+                "address": "935-5 Tsuruha, Tsuda, Sanuki City, Kagawa",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "34.3253204",
+                "longitude": "134.1720506",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2821,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.5997151,
+                    35.3484444
+                ]
+            },
+            "properties": {
+                "name": "Kanazawa Zoo",
+                "area": "Japan",
+                "address": "5-15-1 Kamariya-Higashi, Kanazawa-ku, Yokohama City - Kanagawa Prefecture",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "35.3484444",
+                "longitude": "139.5997151",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2882,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    141.3945073,
+                    42.9990682
+                ]
+            },
+            "properties": {
+                "name": "Hitsujigaoka Observation Hill",
+                "area": "Japan",
+                "address": "1 Hitsujigaoka Toyohira-ku, Sapporo Hokkaido",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "42.9990682",
+                "longitude": "141.3945073",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2825,
+                "last_updated": "2024-03-16"
             }
         }
     ]
