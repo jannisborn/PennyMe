@@ -8581,9 +8581,9 @@
                 "internal_url": "null",
                 "latitude": "38.8435892",
                 "longitude": "-104.7588218",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6136,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -47203,6 +47203,29 @@
                 "status": "unvisited",
                 "id": 4588,
                 "last_updated": "2024-03-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.46370309999999,
+                    38.0087286
+                ]
+            },
+            "properties": {
+                "name": "Michie Tavern, General Store",
+                "area": "Virginia",
+                "address": "683 Thomas Jefferson Parkway, Charlottesville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=31512",
+                "internal_url": "null",
+                "latitude": "38.0087286",
+                "longitude": "-78.46370309999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4409,
+                "last_updated": "2024-03-16"
             }
         }
     ]
