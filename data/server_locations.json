@@ -47300,6 +47300,52 @@
                 "last_updated": "2024-03-21",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.7513054,
+                    53.1325947
+                ]
+            },
+            "properties": {
+                "name": "The Ice Cream Farm",
+                "area": "England",
+                "address": "Drumlan Hall, Newton Lane, CHESHIRE - Drumlan Hall",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425740",
+                "internal_url": "null",
+                "latitude": "53.1325947",
+                "longitude": "-2.7513054",
+                "machine_status": "available",
+                "id": 7099,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.2373987,
+                    50.5529671
+                ]
+            },
+            "properties": {
+                "name": "Glasshutte Monshau",
+                "area": "Germany",
+                "address": ", Monschau",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425734",
+                "internal_url": "null",
+                "latitude": "50.5529671",
+                "longitude": "6.2373987",
+                "machine_status": "available",
+                "id": 7100,
+                "last_updated": "2024-03-16"
+            }
         }
     ]
 }
