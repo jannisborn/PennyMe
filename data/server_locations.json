@@ -6444,9 +6444,9 @@
                 "internal_url": "null",
                 "latitude": "33.53849",
                 "longitude": "-112.355836",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2625,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -12840,9 +12840,9 @@
                 "internal_url": "null",
                 "latitude": "36.3668304",
                 "longitude": "-104.6029115",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6252,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -47622,6 +47622,167 @@
                 "status": "unvisited",
                 "id": 1810,
                 "last_updated": "2024-03-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.79269,
+                    29.30917
+                ]
+            },
+            "properties": {
+                "name": "Great Storm Theater",
+                "area": "Texas",
+                "address": "Pier 21 (Near Wharf Rd), Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2417",
+                "internal_url": "null",
+                "latitude": "29.30917",
+                "longitude": "-94.79269",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3708,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4877009,
+                    29.425728
+                ]
+            },
+            "properties": {
+                "name": "Losoya Marketplace",
+                "area": "Texas",
+                "address": "20 Losoya St, San Antonio ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425983",
+                "internal_url": "null",
+                "latitude": "29.425728",
+                "longitude": "-98.4877009",
+                "machine_status": "available",
+                "id": 7103,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9205853,
+                    36.5104429
+                ]
+            },
+            "properties": {
+                "name": "Cree Mee Drive In",
+                "area": "New Mexico",
+                "address": "31089 US Highway 64, Cimmaron.",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426023",
+                "internal_url": "null",
+                "latitude": "36.5104429",
+                "longitude": "-104.9205853",
+                "machine_status": "available",
+                "id": 7104,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.7927697,
+                    50.3324407
+                ]
+            },
+            "properties": {
+                "name": "Heligan Lost Gardens",
+                "area": "England",
+                "address": "B3273, Pentewan, Saint Austell, CORNWALL - St Austell",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425964",
+                "internal_url": "null",
+                "latitude": "50.3324407",
+                "longitude": "-4.7927697",
+                "machine_status": "available",
+                "id": 7105,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3861457,
+                    53.4196465
+                ]
+            },
+            "properties": {
+                "name": "Magna Science Adventure Centre",
+                "area": "England",
+                "address": "Sheffield Road, Templeborough, SOUTH YORKSHIRE - Rotherham",
+                "external_url": "http://209.221.138.252/Details.aspx?location=6869",
+                "internal_url": "null",
+                "latitude": "53.4196465",
+                "longitude": "-1.3861457",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1553,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0624765,
+                    47.4911983
+                ]
+            },
+            "properties": {
+                "name": "National Museum",
+                "area": "Hungary",
+                "address": "Múzeum krt. 1416.",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259782",
+                "internal_url": "null",
+                "latitude": "47.4911983",
+                "longitude": "19.0624765",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 830,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.1171498,
+                    25.1304426
+                ]
+            },
+            "properties": {
+                "name": "Atlantis",
+                "area": "United Arab Emirates",
+                "address": "The Palm, Dubai",
+                "external_url": "http://209.221.138.252/Details.aspx?location=195659",
+                "internal_url": "null",
+                "latitude": "25.1304426",
+                "longitude": "55.1171498",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3483,
+                "last_updated": "2024-03-16"
             }
         }
     ]
