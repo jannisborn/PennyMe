@@ -47554,6 +47554,29 @@
                 "last_updated": "2024-03-24",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.98863399999999,
+                    40.756536
+                ]
+            },
+            "properties": {
+                "name": "Dave and Buster's",
+                "area": "New York",
+                "address": "234 W. 42nd St., 3rd Floor, New York City (Manhattan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250087",
+                "internal_url": "null",
+                "latitude": "40.756536",
+                "longitude": "-73.98863399999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3044,
+                "last_updated": "2024-03-24"
+            }
         }
     ]
 }
