@@ -21,7 +21,10 @@
                 "longitude": "10.00855",
                 "machine_status": "available",
                 "id": 6003,
-                "last_updated": "2022-12-05"
+                "last_updated": "2022-12-05",
+                "notes": {
+                    "2024-03-20": "This is a token machine"
+                }
             }
         },
         {
@@ -6441,9 +6444,9 @@
                 "internal_url": "null",
                 "latitude": "33.53849",
                 "longitude": "-112.355836",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2625,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -8903,9 +8906,9 @@
                 "internal_url": "null",
                 "latitude": "38.8588217",
                 "longitude": "-104.9185894",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6142,
-                "last_updated": "2023-10-28"
+                "last_updated": "2024-03-24"
             }
         },
         {
@@ -12837,9 +12840,9 @@
                 "internal_url": "null",
                 "latitude": "36.3668304",
                 "longitude": "-104.6029115",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6252,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -23807,9 +23810,9 @@
                 "internal_url": "null",
                 "latitude": "28.4729899",
                 "longitude": "-81.46588679999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3416,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-03-23"
             }
         },
         {
@@ -42428,10 +42431,10 @@
                 "internal_url": "null",
                 "latitude": "36.2536466",
                 "longitude": "-121.7856034",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4579,
-                "last_updated": "2024-01-12"
+                "last_updated": "2024-03-22"
             }
         },
         {
@@ -47225,6 +47228,560 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4409,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.41859993570219,
+                    50.08206896400322
+                ]
+            },
+            "properties": {
+                "name": "Café Louvre souvenir coin",
+                "area": "Czech Republic",
+                "address": "Národní 1987/22, 110 00 Praha 1-Staré Město, Czechia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.08206896400322,
+                "longitude": 14.41859993570219,
+                "machine_status": "available",
+                "id": 7098,
+                "last_updated": "2024-03-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.5979910384061,
+                    31.96003056460666
+                ]
+            },
+            "properties": {
+                "name": "Kitt Peak National Observatory",
+                "area": "Arizona",
+                "address": "About 56 miles west of Tucson on Kitt Peak, Tucson",
+                "external_url": "http://209.221.138.252/Details.aspx?location=263633",
+                "internal_url": "null",
+                "latitude": "31.96003056460666",
+                "longitude": "-111.5979910384061",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2711,
+                "last_updated": "2024-03-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.5229602,
+                    33.3936879
+                ]
+            },
+            "properties": {
+                "name": "International UFO Museum",
+                "area": "New Mexico",
+                "address": "114 North Main, Roswell",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3490",
+                "internal_url": "null",
+                "latitude": "33.3936879",
+                "longitude": "-104.5229602",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4938,
+                "last_updated": "2024-03-21",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.7513054,
+                    53.1325947
+                ]
+            },
+            "properties": {
+                "name": "The Ice Cream Farm",
+                "area": "England",
+                "address": "Drumlan Hall, Newton Lane, CHESHIRE - Drumlan Hall",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425740",
+                "internal_url": "null",
+                "latitude": "53.1325947",
+                "longitude": "-2.7513054",
+                "machine_status": "available",
+                "id": 7099,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.2373987,
+                    50.5529671
+                ]
+            },
+            "properties": {
+                "name": "Glasshutte Monshau",
+                "area": "Germany",
+                "address": ", Monschau",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425734",
+                "internal_url": "null",
+                "latitude": "50.5529671",
+                "longitude": "6.2373987",
+                "machine_status": "available",
+                "id": 7100,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.7391938,
+                    43.32902199999999
+                ]
+            },
+            "properties": {
+                "name": "Frankenmuth Cheese Haus",
+                "area": "Michigan",
+                "address": "561 South Main Street , Frankenmuth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3029",
+                "internal_url": "null",
+                "latitude": "43.32902199999999",
+                "longitude": "-83.7391938",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 2522,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.77575709999999,
+                    36.1609385
+                ]
+            },
+            "properties": {
+                "name": "The Johnny Cash Museum",
+                "area": "Tennessee",
+                "address": "119 3rd Ave S, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=243912",
+                "internal_url": "null",
+                "latitude": "36.1609385",
+                "longitude": "-86.77575709999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4255,
+                "last_updated": "2024-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7761258,
+                    36.1582632
+                ]
+            },
+            "properties": {
+                "name": "Country Music Hall of Fame and Museum",
+                "area": "Tennessee",
+                "address": "222 Fifth Avenue, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=256976",
+                "internal_url": "null",
+                "latitude": "36.1582632",
+                "longitude": "-86.7761258",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5342,
+                "last_updated": "2024-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.587245927213266,
+                    38.03822003473177
+                ]
+            },
+            "properties": {
+                "name": "Erice Tabacchi",
+                "area": "Italy",
+                "address": "Via Antonio Cordici 9, 91016 Erice, Italy",
+                "external_url": "http://209.221.138.252/Details.aspx?location=246287",
+                "internal_url": "null",
+                "latitude": "38.03822003473177",
+                "longitude": "12.587245927213266",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 976,
+                "last_updated": "2024-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.418535,
+                    42.4215382
+                ]
+            },
+            "properties": {
+                "name": "Jerry's Rogue Jets",
+                "area": "Oregon",
+                "address": "29980 Harbor Way, Gold Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425863",
+                "internal_url": "null",
+                "latitude": "42.4215382",
+                "longitude": "-124.418535",
+                "machine_status": "available",
+                "id": 7101,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.4311463,
+                    54.9988579
+                ]
+            },
+            "properties": {
+                "name": "South Shields Museum and Art Gallery",
+                "area": "England",
+                "address": "4 Ocean Road, TYNE & WEAR - South Shields",
+                "external_url": "http://209.221.138.252/Details.aspx?location=102092",
+                "internal_url": "null",
+                "latitude": "54.9988579",
+                "longitude": "-1.4311463",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1572,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.903462,
+                    52.480111
+                ]
+            },
+            "properties": {
+                "name": "Birmingham Art Gallery & Museum",
+                "area": "England",
+                "address": "Chamberlain Square, , WEST MIDLANDS - Birmingham",
+                "external_url": "http://209.221.138.252/Details.aspx?location=101916",
+                "internal_url": "null",
+                "latitude": "52.480111",
+                "longitude": "-1.903462",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1584,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.8881627,
+                    32.7390986
+                ]
+            },
+            "properties": {
+                "name": "Snack Bar Flor da Selva",
+                "area": "Portugal",
+                "address": "Vereda Promenade da Laurissilva, Balcões 4, Ribeiro Frio (Madeira Island)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425843",
+                "internal_url": "null",
+                "latitude": "32.7390986",
+                "longitude": "-16.8881627",
+                "machine_status": "available",
+                "id": 7102,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.3902522,
+                    33.5261111
+                ]
+            },
+            "properties": {
+                "name": "Mercantile and Gift Shop",
+                "area": "Arizona",
+                "address": "1 Main St, Tortilla Flats",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250086",
+                "internal_url": "null",
+                "latitude": "33.5261111",
+                "longitude": "-111.3902522",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2706,
+                "last_updated": "2024-03-24",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.98863399999999,
+                    40.756536
+                ]
+            },
+            "properties": {
+                "name": "Dave and Buster's",
+                "area": "New York",
+                "address": "234 W. 42nd St., 3rd Floor, New York City (Manhattan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250087",
+                "internal_url": "null",
+                "latitude": "40.756536",
+                "longitude": "-73.98863399999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3044,
+                "last_updated": "2024-03-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.9854896,
+                    36.1229851
+                ]
+            },
+            "properties": {
+                "name": "The Gathering Place",
+                "area": "Oklahoma",
+                "address": "2950 S. John Williams Way, Tulsa",
+                "external_url": "http://209.221.138.252/Details.aspx?location=328778",
+                "internal_url": "null",
+                "latitude": "36.1229851",
+                "longitude": "-95.9854896",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1809,
+                "last_updated": "2024-03-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.9064904,
+                    36.2130153
+                ]
+            },
+            "properties": {
+                "name": "Tulsa Zoo & Living Museum",
+                "area": "Oklahoma",
+                "address": "6421 East 36th Street North, Tulsa",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3880",
+                "internal_url": "null",
+                "latitude": "36.2130153",
+                "longitude": "-95.9064904",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1810,
+                "last_updated": "2024-03-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.79269,
+                    29.30917
+                ]
+            },
+            "properties": {
+                "name": "Great Storm Theater",
+                "area": "Texas",
+                "address": "Pier 21 (Near Wharf Rd), Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2417",
+                "internal_url": "null",
+                "latitude": "29.30917",
+                "longitude": "-94.79269",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3708,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4877009,
+                    29.425728
+                ]
+            },
+            "properties": {
+                "name": "Losoya Marketplace",
+                "area": "Texas",
+                "address": "20 Losoya St, San Antonio ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425983",
+                "internal_url": "null",
+                "latitude": "29.425728",
+                "longitude": "-98.4877009",
+                "machine_status": "available",
+                "id": 7103,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9205853,
+                    36.5104429
+                ]
+            },
+            "properties": {
+                "name": "Cree Mee Drive In",
+                "area": "New Mexico",
+                "address": "31089 US Highway 64, Cimmaron.",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426023",
+                "internal_url": "null",
+                "latitude": "36.5104429",
+                "longitude": "-104.9205853",
+                "machine_status": "available",
+                "id": 7104,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.7927697,
+                    50.3324407
+                ]
+            },
+            "properties": {
+                "name": "Heligan Lost Gardens",
+                "area": "England",
+                "address": "B3273, Pentewan, Saint Austell, CORNWALL - St Austell",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=425964",
+                "internal_url": "null",
+                "latitude": "50.3324407",
+                "longitude": "-4.7927697",
+                "machine_status": "available",
+                "id": 7105,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3861457,
+                    53.4196465
+                ]
+            },
+            "properties": {
+                "name": "Magna Science Adventure Centre",
+                "area": "England",
+                "address": "Sheffield Road, Templeborough, SOUTH YORKSHIRE - Rotherham",
+                "external_url": "http://209.221.138.252/Details.aspx?location=6869",
+                "internal_url": "null",
+                "latitude": "53.4196465",
+                "longitude": "-1.3861457",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1553,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0624765,
+                    47.4911983
+                ]
+            },
+            "properties": {
+                "name": "National Museum",
+                "area": "Hungary",
+                "address": "Múzeum krt. 1416.",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259782",
+                "internal_url": "null",
+                "latitude": "47.4911983",
+                "longitude": "19.0624765",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 830,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.1171498,
+                    25.1304426
+                ]
+            },
+            "properties": {
+                "name": "Atlantis",
+                "area": "United Arab Emirates",
+                "address": "The Palm, Dubai",
+                "external_url": "http://209.221.138.252/Details.aspx?location=195659",
+                "internal_url": "null",
+                "latitude": "25.1304426",
+                "longitude": "55.1171498",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3483,
                 "last_updated": "2024-03-16"
             }
         }
