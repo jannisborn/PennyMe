@@ -39982,9 +39982,9 @@
                 "internal_url": "null",
                 "latitude": "45.4347343",
                 "longitude": "-122.7581863",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6987,
-                "last_updated": "2024-02-17"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -47806,6 +47806,52 @@
                 "status": "unvisited",
                 "id": 5366,
                 "last_updated": "2024-03-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.3013471,
+                    35.8808043
+                ]
+            },
+            "properties": {
+                "name": "Apsen Copies",
+                "area": "New Mexico",
+                "address": "1907 Central Avenue, Los Alamos",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39884",
+                "internal_url": "null",
+                "latitude": "35.8808043",
+                "longitude": "-106.3013471",
+                "machine_status": "available",
+                "id": 7106,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.299273,
+                    43.535542
+                ]
+            },
+            "properties": {
+                "name": "Livorno - Acquario di Livorno",
+                "area": "Italy",
+                "address": "Piazza Mascagni, 1, Livorno",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426063",
+                "internal_url": "null",
+                "latitude": "43.535542",
+                "longitude": "10.299273",
+                "machine_status": "available",
+                "id": 7107,
+                "last_updated": "2024-03-16"
             }
         }
     ]
