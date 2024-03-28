@@ -39982,9 +39982,9 @@
                 "internal_url": "null",
                 "latitude": "45.4347343",
                 "longitude": "-122.7581863",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6987,
-                "last_updated": "2024-02-17"
+                "last_updated": "2024-03-16"
             }
         },
         {
@@ -47364,10 +47364,10 @@
                 "internal_url": "null",
                 "latitude": "43.32902199999999",
                 "longitude": "-83.7391938",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "retired",
                 "id": 2522,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-03-26"
             }
         },
         {
@@ -47783,6 +47783,421 @@
                 "status": "unvisited",
                 "id": 3483,
                 "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4641236,
+                    29.9838569
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Florida",
+                "address": "200 World Commerce Parkway, St. Augustine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=355401",
+                "internal_url": "null",
+                "latitude": "29.9838569",
+                "longitude": "-81.4641236",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5366,
+                "last_updated": "2024-03-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.3013471,
+                    35.8808043
+                ]
+            },
+            "properties": {
+                "name": "Apsen Copies",
+                "area": "New Mexico",
+                "address": "1907 Central Avenue, Los Alamos",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39884",
+                "internal_url": "null",
+                "latitude": "35.8808043",
+                "longitude": "-106.3013471",
+                "machine_status": "available",
+                "id": 7106,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.299273,
+                    43.535542
+                ]
+            },
+            "properties": {
+                "name": "Livorno - Acquario di Livorno",
+                "area": "Italy",
+                "address": "Piazza Mascagni, 1, Livorno",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426063",
+                "internal_url": "null",
+                "latitude": "43.535542",
+                "longitude": "10.299273",
+                "machine_status": "available",
+                "id": 7107,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.158068,
+                    39.768403
+                ]
+            },
+            "properties": {
+                "name": "Indiana",
+                "area": "_Collector Books_",
+                "address": ", Indiana",
+                "external_url": "http://209.221.138.252/Details.aspx?location=106117",
+                "internal_url": "null",
+                "latitude": "39.768403",
+                "longitude": "-86.158068",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5565,
+                "last_updated": "2024-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.7780965,
+                    -41.2852716
+                ]
+            },
+            "properties": {
+                "name": "Wellington Museum",
+                "area": "New Zealand",
+                "address": "2 Jervois Quay, Wellington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=310751",
+                "internal_url": "null",
+                "latitude": "-41.2852716",
+                "longitude": "174.7780965",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3884,
+                "last_updated": "2024-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.7857493,
+                    -41.2658237
+                ]
+            },
+            "properties": {
+                "name": "Interislander Ferries Aratere, Arahura, and Kaiitaki",
+                "area": "New Zealand",
+                "address": "Sails from Aotea Quay, 5 minutes north of Wellington Railway Station, Wellington to Picton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=5597",
+                "internal_url": "null",
+                "latitude": "-41.2658237",
+                "longitude": "174.7857493",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3885,
+                "last_updated": "2024-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5186929690605,
+                    28.36951880005
+                ]
+            },
+            "properties": {
+                "name": "Disney Springs Town Square Firehouse",
+                "area": "Florida",
+                "address": "1486 buena vista dr, Lake Buena Vista, Florida 32830",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 28.36951880005,
+                "longitude": -81.5186929690605,
+                "machine_status": "available",
+                "id": 7108,
+                "last_updated": "2024-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.0541863,
+                    34.5138061
+                ]
+            },
+            "properties": {
+                "name": "National Park Gifts and Souvenirs",
+                "area": "Arkansas",
+                "address": "370 Central Ave, Hot Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=498",
+                "internal_url": "null",
+                "latitude": "34.5138061",
+                "longitude": "-93.0541863",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2308,
+                "last_updated": "2024-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.8522655,
+                    29.2734805
+                ]
+            },
+            "properties": {
+                "name": "Moody Gardens Zoo and Aquarium",
+                "area": "Texas",
+                "address": "1 Hope Blvd., Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2423",
+                "internal_url": "null",
+                "latitude": "29.2734805",
+                "longitude": "-94.8522655",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3711,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.9980337,
+                    37.1893221
+                ]
+            },
+            "properties": {
+                "name": "Zion Park Gifts and Deli",
+                "area": "Utah",
+                "address": "866 Zion Park Boulevard, Springdale",
+                "external_url": "http://209.221.138.252/Details.aspx?location=209212",
+                "internal_url": "null",
+                "latitude": "37.1893221",
+                "longitude": "-112.9980337",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2097,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1721488,
+                    36.1088418
+                ]
+            },
+            "properties": {
+                "name": "Harmon Corner - Rainforest Café",
+                "area": "Nevada",
+                "address": "3717 Las Vegas Boulevard South suite 275, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=241578",
+                "internal_url": "null",
+                "latitude": "36.1088418",
+                "longitude": "-115.1721488",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4510,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.3771916,
+                    51.3852331
+                ]
+            },
+            "properties": {
+                "name": "Dreamland Margate ",
+                "area": "England",
+                "address": "Dreamland , KENT - Margate",
+                "external_url": "http://209.221.138.252/Details.aspx?location=363758",
+                "internal_url": "null",
+                "latitude": "51.3852331",
+                "longitude": "1.3771916",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5639,
+                "last_updated": "2024-03-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8972159,
+                    52.3764879
+                ]
+            },
+            "properties": {
+                "name": "The Bulldog Store",
+                "area": "Netherlands",
+                "address": "Damrak 21, Amsterdam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=334707",
+                "internal_url": "null",
+                "latitude": "52.3764879",
+                "longitude": "4.8972159",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5859,
+                "last_updated": "2024-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.44420749999999,
+                    38.9109189
+                ]
+            },
+            "properties": {
+                "name": "Smithsonian National Air and Space Museum @ The Steven F. Udvar Hazy Center",
+                "area": "Virginia",
+                "address": "14390 Air & Space Museum Parkway, Chantilly",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1208",
+                "internal_url": "null",
+                "latitude": "38.9109189",
+                "longitude": "-77.44420749999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4408,
+                "last_updated": "2024-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.3831516,
+                    35.0260078
+                ]
+            },
+            "properties": {
+                "name": "Fast Fanny's Place (Formerly Eagle's Nest Antiques)",
+                "area": "Arizona",
+                "address": "152 South Main Street, Oatman",
+                "external_url": "http://209.221.138.252/Details.aspx?location=327",
+                "internal_url": "null",
+                "latitude": "35.0260078",
+                "longitude": "-114.3831516",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2654,
+                "last_updated": "2024-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.383125,
+                    35.0256213
+                ]
+            },
+            "properties": {
+                "name": "Main Street Emporium",
+                "area": "Arizona",
+                "address": "150 South Main Street, Oatman",
+                "external_url": "http://209.221.138.252/Details.aspx?location=183011",
+                "internal_url": "null",
+                "latitude": "35.0256213",
+                "longitude": "-114.383125",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2655,
+                "last_updated": "2024-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.195797,
+                    32.753128
+                ]
+            },
+            "properties": {
+                "name": "Old Town - Kacha Inka's Art (was Cielito Lindo/ Old Town Trading Company",
+                "area": "California",
+                "address": "2543 San Diego Ave, Twigg Street, San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1161",
+                "internal_url": "null",
+                "latitude": "32.753128",
+                "longitude": "-117.195797",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4780,
+                "last_updated": "2024-03-28",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1524075,
+                    32.7274772
+                ]
+            },
+            "properties": {
+                "name": "Balboa Park - Future San Diego Comic-Con Museum",
+                "area": "California",
+                "address": "2131 Pan American Plaza, San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=322320",
+                "internal_url": "null",
+                "latitude": "32.7274772",
+                "longitude": "-117.1524075",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4764,
+                "last_updated": "2024-03-28"
             }
         }
     ]
