@@ -543,7 +543,12 @@ def location_differ(
                         f"Seeems that machine {this_title} at {this_address} already exists as: {match}"
                     )
                     # Update machine and save in dict
-                    assert e_entry["properties"]["external_url"] == "null"
+                    if e_entry["properties"]["external_url"] != "null":
+                        # Machine exists on another website --> add to problems
+                        msg = f"Machine {this_title} exists already as {match}"
+                        problem_data['features'].append(prelim_to_problem_json(geojson, msg))
+                        continue
+                
                     if tdf.iloc[m_idx]["source"] == "Device":
                         e_entry["properties"]["external_url"] = this_link
                         e_entry["properties"]["last_updated"] = today
