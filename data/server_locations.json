@@ -48260,13 +48260,13 @@
                 "area": "England",
                 "address": "38 Scotswood View, Garden Court, Quadrant, Metrocentre, Gateshead NE11 9XY, UK",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426560",
                 "internal_url": "null",
                 "latitude": 54.958878197517386,
                 "longitude": -1.6701093951815753,
                 "machine_status": "available",
                 "id": 7111,
-                "last_updated": "2024-03-30"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -48519,6 +48519,52 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 1352,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.982354,
+                    40.45208299999999
+                ]
+            },
+            "properties": {
+                "name": "Grandpa Joe's Candy Shop (Strip District)",
+                "area": "Pennsylvania",
+                "address": "2124 Penn Ave, Pittsburgh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426588",
+                "internal_url": "null",
+                "latitude": "40.45208299999999",
+                "longitude": "-79.982354",
+                "machine_status": "available",
+                "id": 7119,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.8678029,
+                    38.0434451
+                ]
+            },
+            "properties": {
+                "name": "Strataca",
+                "area": "Kansas",
+                "address": "3650 E Avenue G, Hutchinson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426611",
+                "internal_url": "null",
+                "latitude": "38.0434451",
+                "longitude": "-97.8678029",
+                "machine_status": "available",
+                "id": 7120,
                 "last_updated": "2024-03-29"
             }
         }
