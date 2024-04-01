@@ -2749,9 +2749,9 @@
                 "internal_url": "null",
                 "latitude": "33.763382",
                 "longitude": "-84.3951098",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1619,
-                "last_updated": "2023-08-05"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -23498,22 +23498,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.74231,
-                    47.50075
+                    13.434691525219678,
+                    47.773529953861114
                 ]
             },
             "properties": {
-                "name": "Bregenz",
+                "name": "Scharfberg",
                 "area": "Austria",
-                "address": "At the boatlanding on the lake shore, Bregenz - Lake Constance",
+                "address": "Scharfberg, Unterrach",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=422954",
                 "internal_url": "null",
-                "latitude": "47.50075",
-                "longitude": "9.74231",
+                "latitude": "47.773529953861114",
+                "longitude": "13.434691525219678",
                 "machine_status": "available",
                 "id": 5605,
-                "last_updated": "2024-02-25"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -24446,7 +24446,7 @@
                 ]
             },
             "properties": {
-                "name": "Glen Canyon Dam Visitor Center ",
+                "name": "Glen Canyon Dam Visitor Center",
                 "area": "Arizona",
                 "address": "Hwy 89 North, Page",
                 "status": "unvisited",
@@ -24454,9 +24454,9 @@
                 "internal_url": "null",
                 "latitude": "36.9357176",
                 "longitude": "-111.4858141",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 2659,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-03-31"
             }
         },
         {
@@ -32527,15 +32527,15 @@
             "properties": {
                 "name": "Plau am See Fischerhaus",
                 "area": "Germany",
-                "address": "An d. Metow 12-16, 19395 Plau am See, Germany",
+                "address": "An Metow 12-16, 19395 Plau am See, Germany",
                 "status": "unvisited",
-                "external_url": "http://elongated-coin.de/phpBB3/viewtopic.php?t=13954",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426203",
                 "internal_url": "null",
                 "latitude": "53.4579637",
                 "longitude": "12.2697721",
                 "machine_status": "available",
                 "id": 6702,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -38638,9 +38638,9 @@
                 "internal_url": "null",
                 "latitude": "41.3118774",
                 "longitude": "-88.1467854",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6946,
-                "last_updated": "2023-11-18"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -44638,13 +44638,13 @@
                 "area": "England",
                 "address": "York Street, LONDON - Waterloo",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=422838",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "51.5048541",
                 "longitude": "-0.1136621",
                 "machine_status": "available",
                 "id": 7055,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -48198,6 +48198,374 @@
                 "status": "unvisited",
                 "id": 4764,
                 "last_updated": "2024-03-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.739871657715225,
+                    47.50426751279994
+                ]
+            },
+            "properties": {
+                "name": "Bregenzer Festspiele",
+                "area": "Austria",
+                "address": "Seeanlagen 2, 6900 Bregenz",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.50426751279994,
+                "longitude": 9.739871657715225,
+                "machine_status": "available",
+                "id": 7109,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -131.474537390943,
+                    55.36564442877866
+                ]
+            },
+            "properties": {
+                "name": "George Inlet Lodge",
+                "area": "Alaska",
+                "address": "9.8 S Tongass Hwy, Ketchikan, AK 99901, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 55.36564442877866,
+                "longitude": -131.474537390943,
+                "machine_status": "available",
+                "id": 7110,
+                "last_updated": "2024-03-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.6701093951815753,
+                    54.958878197517386
+                ]
+            },
+            "properties": {
+                "name": "Namco Funscape angry birds",
+                "area": "England",
+                "address": "38 Scotswood View, Garden Court, Quadrant, Metrocentre, Gateshead NE11 9XY, UK",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426560",
+                "internal_url": "null",
+                "latitude": 54.958878197517386,
+                "longitude": -1.6701093951815753,
+                "machine_status": "available",
+                "id": 7111,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.9048689073673,
+                    32.80199420119954
+                ]
+            },
+            "properties": {
+                "name": "Mount Pleasant Memorial Waterfront Park",
+                "area": "South Carolina",
+                "address": "200 Wonder's Way, Charleston, SC 29403, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 32.80199420119954,
+                "longitude": -79.9048689073673,
+                "machine_status": "available",
+                "id": 7112,
+                "last_updated": "2024-03-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.4516723,
+                    31.2921789
+                ]
+            },
+            "properties": {
+                "name": "Silver Dollar Pawn & Jewelry Center",
+                "area": "Louisiana",
+                "address": "2417 Lee Street, Alexandria",
+                "external_url": "http://209.221.138.252/Details.aspx?location=135303",
+                "internal_url": "null",
+                "latitude": "31.2921789",
+                "longitude": "-92.4516723",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3559,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.36820329999999,
+                    39.3680804
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Ohio",
+                "address": "7250 Cabela Drive, West Chester Township",
+                "external_url": "http://209.221.138.252/Details.aspx?location=240772",
+                "internal_url": "null",
+                "latitude": "39.3680804",
+                "longitude": "-84.36820329999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2018,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.8957281,
+                    36.2067509
+                ]
+            },
+            "properties": {
+                "name": "Tulsa Air and Space Museum and Planetarium",
+                "area": "Oklahoma",
+                "address": "3624 N. 74th E. Ave., Tulsa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3881",
+                "internal_url": "null",
+                "latitude": "36.2067509",
+                "longitude": "-95.8957281",
+                "machine_status": "available",
+                "id": 7113,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.374563,
+                    33.746605
+                ]
+            },
+            "properties": {
+                "name": "Only You Tattoo",
+                "area": "Georgia",
+                "address": "401 Memorial Dr. SE, Atlanta",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426393",
+                "internal_url": "null",
+                "latitude": "33.746605",
+                "longitude": "-84.374563",
+                "machine_status": "available",
+                "id": 7114,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.1865957,
+                    -38.4103713
+                ]
+            },
+            "properties": {
+                "name": "Anglesea General Store",
+                "area": "Australia",
+                "address": "119 Great Ocean Rd, VIC - Anglesea",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331010",
+                "internal_url": "null",
+                "latitude": "-38.4103713",
+                "longitude": "144.1865957",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2163,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.365658,
+                    50.619028
+                ]
+            },
+            "properties": {
+                "name": "World Of Country Life",
+                "area": "England",
+                "address": "West Down Lane, Sandy Bay, DEVON - Exmouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426207",
+                "internal_url": "null",
+                "latitude": "50.619028",
+                "longitude": "-3.365658",
+                "machine_status": "available",
+                "id": 7115,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.6794525,
+                    51.1676051
+                ]
+            },
+            "properties": {
+                "name": "Moritzburg Castle ",
+                "area": "Germany",
+                "address": "Gestüt, Schloßallee 1, 01468 Moritzburg, Germany, Moritzburg ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426221",
+                "internal_url": "null",
+                "latitude": "51.1676051",
+                "longitude": "13.6794525",
+                "machine_status": "available",
+                "id": 7116,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    138.7795573,
+                    35.4836319
+                ]
+            },
+            "properties": {
+                "name": "Fujiyama Onsen",
+                "area": "Japan",
+                "address": "4-17-1 Shin-nishihara, Fuji-Yoshida, Yamanashi",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426474",
+                "internal_url": "null",
+                "latitude": "35.4836319",
+                "longitude": "138.7795573",
+                "machine_status": "available",
+                "id": 7117,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.0560596,
+                    55.9068754
+                ]
+            },
+            "properties": {
+                "name": "Palanga Amber Museum ",
+                "area": "Lithuania",
+                "address": "17 Vytauto Gatve, Palanga, Palanga",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426220",
+                "internal_url": "null",
+                "latitude": "55.9068754",
+                "longitude": "21.0560596",
+                "machine_status": "available",
+                "id": 7118,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.713174599999999,
+                    50.0657041
+                ]
+            },
+            "properties": {
+                "name": "West Country Shopping Village",
+                "area": "England",
+                "address": "Land's End, Sennen, Cornwall - Penzance ",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.0657041",
+                "longitude": "-5.713174599999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1352,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.982354,
+                    40.45208299999999
+                ]
+            },
+            "properties": {
+                "name": "Grandpa Joe's Candy Shop (Strip District)",
+                "area": "Pennsylvania",
+                "address": "2124 Penn Ave, Pittsburgh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426588",
+                "internal_url": "null",
+                "latitude": "40.45208299999999",
+                "longitude": "-79.982354",
+                "machine_status": "available",
+                "id": 7119,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.8678029,
+                    38.0434451
+                ]
+            },
+            "properties": {
+                "name": "Strataca",
+                "area": "Kansas",
+                "address": "3650 E Avenue G, Hutchinson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426611",
+                "internal_url": "null",
+                "latitude": "38.0434451",
+                "longitude": "-97.8678029",
+                "machine_status": "available",
+                "id": 7120,
+                "last_updated": "2024-03-29"
             }
         }
     ]
