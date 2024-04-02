@@ -48567,6 +48567,31 @@
                 "id": 7120,
                 "last_updated": "2024-03-29"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.23420589999999,
+                    42.3034513
+                ]
+            },
+            "properties": {
+                "name": "Ford Rouge Factory Tour/Henry Ford Museum",
+                "area": "Michigan",
+                "address": "20900 Oakwood Blvd, Dearborn",
+                "external_url": "http://209.221.138.252/Details.aspx?location=11115",
+                "internal_url": "null",
+                "latitude": "42.3034513",
+                "longitude": "-83.23420589999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2506,
+                "last_updated": "2024-04-02",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
