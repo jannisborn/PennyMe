@@ -23277,13 +23277,13 @@
                 "area": "Germany",
                 "address": "Münsterplatz 16, Freiburg im Breisgau",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426721",
                 "internal_url": "null",
                 "latitude": "47.99509",
                 "longitude": "7.8522",
                 "machine_status": "available",
                 "id": 5708,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -48637,6 +48637,52 @@
                 "status": "unvisited",
                 "id": 3079,
                 "last_updated": "2024-04-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1766899,
+                    34.5058989
+                ]
+            },
+            "properties": {
+                "name": "Chickasaw Nation Welcome Center",
+                "area": "Oklahoma",
+                "address": "35 N. Colbert Dr., Davis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426716",
+                "internal_url": "null",
+                "latitude": "34.5058989",
+                "longitude": "-97.1766899",
+                "machine_status": "available",
+                "id": 7121,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.5404413,
+                    13.7542097
+                ]
+            },
+            "properties": {
+                "name": "Baiyoke Sky Hotel",
+                "area": "Thailand",
+                "address": ", Bangkok",
+                "external_url": "http://209.221.138.252/Details.aspx?location=60988",
+                "internal_url": "null",
+                "latitude": "13.7542097",
+                "longitude": "100.5404413",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3911,
+                "last_updated": "2024-03-29"
             }
         }
     ]
