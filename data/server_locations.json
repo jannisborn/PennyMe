@@ -486,7 +486,7 @@
                 ]
             },
             "properties": {
-                "name": "Circus Circus Hotel & Casino (Las Vegas) ",
+                "name": "Circus Circus Hotel & Casino (Las Vegas)",
                 "area": "Nevada",
                 "address": "2880 Las Vegas Boulevard South, Las Vegas",
                 "status": "unvisited",
@@ -497,7 +497,7 @@
                 "multimachine": 4,
                 "machine_status": "available",
                 "id": 4494,
-                "last_updated": "2023-04-05"
+                "last_updated": "2024-04-05"
             }
         },
         {
@@ -2821,9 +2821,9 @@
                 "internal_url": "null",
                 "latitude": "41.3874555",
                 "longitude": "-72.086904",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1689,
-                "last_updated": "2023-08-05"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -6421,9 +6421,9 @@
                 "internal_url": "null",
                 "latitude": "36.0441081",
                 "longitude": "-111.8261764",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 2631,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-01"
             }
         },
         {
@@ -16431,9 +16431,9 @@
                 "internal_url": "null",
                 "latitude": "36.132827",
                 "longitude": "-5.351932",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 144,
-                "last_updated": "2023-10-31"
+                "last_updated": "2024-04-05"
             }
         },
         {
@@ -23277,13 +23277,13 @@
                 "area": "Germany",
                 "address": "Münsterplatz 16, Freiburg im Breisgau",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426721",
                 "internal_url": "null",
                 "latitude": "47.99509",
                 "longitude": "7.8522",
                 "machine_status": "available",
                 "id": 5708,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -48566,6 +48566,516 @@
                 "machine_status": "available",
                 "id": 7120,
                 "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.23420589999999,
+                    42.3034513
+                ]
+            },
+            "properties": {
+                "name": "Ford Rouge Factory Tour/Henry Ford Museum",
+                "area": "Michigan",
+                "address": "20900 Oakwood Blvd, Dearborn",
+                "external_url": "http://209.221.138.252/Details.aspx?location=11115",
+                "internal_url": "null",
+                "latitude": "42.3034513",
+                "longitude": "-83.23420589999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2506,
+                "last_updated": "2024-04-02",
+                "multimachine": 2,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.15143599999999,
+                    39.985439
+                ]
+            },
+            "properties": {
+                "name": "Red Caboose Motel",
+                "area": "Pennsylvania",
+                "address": "312 Paradise Ln, Ronks",
+                "external_url": "http://209.221.138.252/Details.aspx?location=86824",
+                "internal_url": "null",
+                "latitude": "39.985439",
+                "longitude": "-76.15143599999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4060,
+                "last_updated": "2024-04-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.6015896,
+                    43.1524853
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Play (formally Strong Museum)",
+                "area": "New York",
+                "address": "1 Manhattan Square Drive, Rochester",
+                "external_url": "http://209.221.138.252/Details.aspx?location=78918",
+                "internal_url": "null",
+                "latitude": "43.1524853",
+                "longitude": "-77.6015896",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3079,
+                "last_updated": "2024-04-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1766899,
+                    34.5058989
+                ]
+            },
+            "properties": {
+                "name": "Chickasaw Nation Welcome Center",
+                "area": "Oklahoma",
+                "address": "35 N. Colbert Dr., Davis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426716",
+                "internal_url": "null",
+                "latitude": "34.5058989",
+                "longitude": "-97.1766899",
+                "machine_status": "available",
+                "id": 7121,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.5404413,
+                    13.7542097
+                ]
+            },
+            "properties": {
+                "name": "Baiyoke Sky Hotel",
+                "area": "Thailand",
+                "address": ", Bangkok",
+                "external_url": "http://209.221.138.252/Details.aspx?location=60988",
+                "internal_url": "null",
+                "latitude": "13.7542097",
+                "longitude": "100.5404413",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3911,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1735602,
+                    36.10178399999999
+                ]
+            },
+            "properties": {
+                "name": "New York New York Hotel & Casino - Hershey's Chocolate World",
+                "area": "Nevada",
+                "address": "3790 South Las Vegas Boulevard, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=300780",
+                "internal_url": "null",
+                "latitude": "36.10178399999999",
+                "longitude": "-115.1735602",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4522,
+                "last_updated": "2024-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.7136937,
+                    39.9856299
+                ]
+            },
+            "properties": {
+                "name": "Harley Davidson Tour Center",
+                "area": "Pennsylvania",
+                "address": "1425 Eden Road, York",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3985",
+                "internal_url": "null",
+                "latitude": "39.9856299",
+                "longitude": "-76.7136937",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4076,
+                "last_updated": "2024-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1766899,
+                    34.5058989
+                ]
+            },
+            "properties": {
+                "name": "Chickasaw Nation Welcome Center ",
+                "area": "Oklahoma",
+                "address": "35 N. Colbert Rd, Davis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426809",
+                "internal_url": "null",
+                "latitude": "34.5058989",
+                "longitude": "-97.1766899",
+                "machine_status": "available",
+                "id": 7122,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5149612,
+                    28.3725967
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Disney Springs, Marketplace, Star Wars Trading Post",
+                "area": "Florida",
+                "address": ", Lake Buena Vista",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426901",
+                "internal_url": "null",
+                "latitude": "28.3725967",
+                "longitude": "-81.5149612",
+                "machine_status": "available",
+                "id": 7123,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4717529,
+                    28.4487923
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World Store on International Drive",
+                "area": "Florida",
+                "address": "8050 International Dr, Orlando",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426830",
+                "internal_url": "null",
+                "latitude": "28.4487923",
+                "longitude": "-81.4717529",
+                "machine_status": "available",
+                "id": 7124,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.17674199999999,
+                    32.6824175
+                ]
+            },
+            "properties": {
+                "name": "Caddo Lake State Park",
+                "area": "Texas",
+                "address": "245 Park Rd 2, Karnak ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426800",
+                "internal_url": "null",
+                "latitude": "32.6824175",
+                "longitude": "-94.17674199999999",
+                "machine_status": "available",
+                "id": 7125,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.1670528,
+                    47.0067543
+                ]
+            },
+            "properties": {
+                "name": "Cloud Nine Gifts and Souvenirs",
+                "area": "Washington",
+                "address": "699 Ocean Shores Boulevard NW, Ocean Shores",
+                "external_url": "http://209.221.138.252/Details.aspx?location=326362",
+                "internal_url": "null",
+                "latitude": "47.0067543",
+                "longitude": "-124.1670528",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5118,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.4049906,
+                    50.8964249
+                ]
+            },
+            "properties": {
+                "name": "Red Funnel Ferries Southampton - Isle of Wight ",
+                "area": "England",
+                "address": "Terminal 1 Dock Gate 7  off Town Quay Road, HAMPSHIRE - Southampton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=282886",
+                "internal_url": "null",
+                "latitude": "50.8964249",
+                "longitude": "-1.4049906",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1420,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.16588095343813,
+                    36.138014213995966
+                ]
+            },
+            "properties": {
+                "name": "Circus Circus-Adventure Dome Entrance",
+                "area": "Nevada",
+                "address": "2880 S Las Vegas Blvd, Las Vegas, Nevada",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.138014213995966,
+                "longitude": -115.16588095343813,
+                "machine_status": "available",
+                "id": 7126,
+                "last_updated": "2024-04-05",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.03591459538824,
+                    54.605766315575664
+                ]
+            },
+            "properties": {
+                "name": "Trail in Birston",
+                "area": "Lithuania",
+                "address": "Algirdo g. 13, 59204 Birštonas, Lithuania",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 54.605766315575664,
+                "longitude": 24.03591459538824,
+                "machine_status": "available",
+                "id": 7127,
+                "last_updated": "2024-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.18802278592193,
+                    38.628777199361835
+                ]
+            },
+            "properties": {
+                "name": "Economy Museum at the Federal Reserve Bank of St. Louis",
+                "area": "Missouri",
+                "address": "1 Federal Reserve Bank Plaza, St. Louis, MO 63102",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231941",
+                "internal_url": "null",
+                "latitude": "38.628777199361835",
+                "longitude": "-90.18802278592193",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1130,
+                "last_updated": "2024-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.10133033462617,
+                    37.18598179964637
+                ]
+            },
+            "properties": {
+                "name": "Mammoth Cave National Park",
+                "area": "Kentucky",
+                "address": "1 Mammoth Cave Pkwy, Mammoth Cave",
+                "external_url": "http://209.221.138.252/Details.aspx?location=15859",
+                "internal_url": "null",
+                "latitude": "37.18598179964637",
+                "longitude": "-86.10133033462617",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3537,
+                "last_updated": "2024-04-05",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.3535552,
+                    36.140933
+                ]
+            },
+            "properties": {
+                "name": "Piazza Grill, John Mackintosh Square.",
+                "area": "Gibraltar",
+                "address": "Main St in John Mackintosh Square, Gibraltar",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319253",
+                "internal_url": "null",
+                "latitude": "36.140933",
+                "longitude": "-5.3535552",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 145,
+                "last_updated": "2024-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.3013471,
+                    35.8808043
+                ]
+            },
+            "properties": {
+                "name": "Aspen Copies & Office Supplies",
+                "area": "New Mexico",
+                "address": "1907 Trinity Dr, Los Alamos",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426898",
+                "internal_url": "null",
+                "latitude": "35.8808043",
+                "longitude": "-106.3013471",
+                "machine_status": "available",
+                "id": 7128,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.0781923,
+                    38.7161725
+                ]
+            },
+            "properties": {
+                "name": "Snyder's Candy",
+                "area": "Delaware",
+                "address": "60 Rehoboth Ave., Rehoboth Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=255556",
+                "internal_url": "null",
+                "latitude": "38.7161725",
+                "longitude": "-75.0781923",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2246,
+                "last_updated": "2024-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.08678110000001,
+                    38.3281238
+                ]
+            },
+            "properties": {
+                "name": "Dolle's Candyland",
+                "area": "Maryland",
+                "address": "500 South Boardwalk at Wicomico Street, Ocean City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=79242",
+                "internal_url": "null",
+                "latitude": "38.3281238",
+                "longitude": "-75.08678110000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3624,
+                "last_updated": "2024-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.022483,
+                    30.229724
+                ]
+            },
+            "properties": {
+                "name": "Fort Morgan Museum",
+                "area": "Alabama",
+                "address": "51 Highway 180, Gulf Shores",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105496",
+                "internal_url": "null",
+                "latitude": "30.229724",
+                "longitude": "-88.022483",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1714,
+                "last_updated": "2024-04-06"
             }
         }
     ]
