@@ -20020,9 +20020,9 @@
                 "internal_url": "null",
                 "latitude": "28.466559",
                 "longitude": "-16.2480297",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6442,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -45818,10 +45818,10 @@
                 "internal_url": "null",
                 "latitude": "30.2726451",
                 "longitude": "-97.7392512",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3650,
-                "last_updated": "2024-03-06"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -49288,6 +49288,52 @@
                 "id": 3226,
                 "last_updated": "2024-04-08",
                 "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.85720119999999,
+                    33.5951327
+                ]
+            },
+            "properties": {
+                "name": "Covington Visitor Center",
+                "area": "Georgia",
+                "address": "1143 Oak St. SE , Covington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427061",
+                "internal_url": "null",
+                "latitude": "33.5951327",
+                "longitude": "-83.85720119999999",
+                "machine_status": "available",
+                "id": 7129,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.8705579,
+                    51.1610129
+                ]
+            },
+            "properties": {
+                "name": "Schloss Benrath",
+                "area": "Germany",
+                "address": "enrather Schlossallee 100-106, 40597 Düsseldorf, North Rhine-Westphalia Germany, Düsseldorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427065",
+                "internal_url": "null",
+                "latitude": "51.1610129",
+                "longitude": "6.8705579",
+                "machine_status": "available",
+                "id": 7130,
+                "last_updated": "2024-03-29"
             }
         }
     ]
