@@ -48703,10 +48703,10 @@
                 "internal_url": "null",
                 "latitude": "36.10178399999999",
                 "longitude": "-115.1735602",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4522,
-                "last_updated": "2024-04-04"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -49333,6 +49333,52 @@
                 "longitude": "6.8705579",
                 "machine_status": "available",
                 "id": 7130,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2405849,
+                    44.8541961
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - The Neighborhood",
+                "area": "Minnesota",
+                "address": " 154 E Broadway , Bloomington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427156",
+                "internal_url": "null",
+                "latitude": "44.8541961",
+                "longitude": "-93.2405849",
+                "machine_status": "available",
+                "id": 7131,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.2620493,
+                    38.2914642
+                ]
+            },
+            "properties": {
+                "name": "Capitol Reef National Park Visitor Center",
+                "area": "Utah",
+                "address": ", Capitol Reef National Park/ Torrey",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.2914642",
+                "longitude": "-111.2620493",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5404,
                 "last_updated": "2024-03-29"
             }
         }
