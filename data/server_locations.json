@@ -21310,9 +21310,9 @@
                 "internal_url": "null",
                 "latitude": "38.7139092",
                 "longitude": "-9.1334762",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6479,
-                "last_updated": "2023-10-20"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -31173,13 +31173,13 @@
                 "area": "Germany",
                 "address": "Großer Feldberg 1, 61389 Schmitten, Germany",
                 "status": "unvisited",
-                "external_url": "http://elongated-coin.de/phpBB3/viewtopic.php?t=1767",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "50.2321207",
                 "longitude": "8.4580619",
                 "machine_status": "available",
                 "id": 6641,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -49404,6 +49404,75 @@
                 "id": 3663,
                 "last_updated": "2024-04-10",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.7072576,
+                    55.4162524
+                ]
+            },
+            "properties": {
+                "name": "Fusiliers Museum of Northumberland",
+                "area": "England",
+                "address": "Alnwick Castle, Abbot's Tower, NORTHUMBERLAND - Alnwick",
+                "external_url": "http://209.221.138.252/Details.aspx?location=63572",
+                "internal_url": "null",
+                "latitude": "55.4162524",
+                "longitude": "-1.7072576",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1535,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.8697056,
+                    41.89247950000001
+                ]
+            },
+            "properties": {
+                "name": "Castro de Santa Tecla",
+                "area": "Spain",
+                "address": "Monte de Santa Trega, 36780, Pontevedra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427258",
+                "internal_url": "null",
+                "latitude": "41.89247950000001",
+                "longitude": "-8.8697056",
+                "machine_status": "available",
+                "id": 7132,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.3906089,
+                    38.7875851
+                ]
+            },
+            "properties": {
+                "name": "Pena Palace",
+                "area": "Portugal",
+                "address": ", Sintra",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.7875851",
+                "longitude": "-9.3906089",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5893,
+                "last_updated": "2024-03-29"
             }
         }
     ]
