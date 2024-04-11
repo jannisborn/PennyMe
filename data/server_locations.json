@@ -49521,6 +49521,52 @@
                 "last_updated": "2024-04-11",
                 "multimachine": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.9604033,
+                    43.59341149999999
+                ]
+            },
+            "properties": {
+                "name": "Orlova Chuka Cave",
+                "area": "Bulgaria",
+                "address": "Orlova Chuka Cave, Pepelina, Dve Mogili",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427328",
+                "internal_url": "null",
+                "latitude": "43.59341149999999",
+                "longitude": "25.9604033",
+                "machine_status": "available",
+                "id": 7133,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.9473025,
+                    43.844609
+                ]
+            },
+            "properties": {
+                "name": "EcoMuseum",
+                "area": "Bulgaria",
+                "address": "Ruse Center, ul. \"Alexandrovska\" 3, Ruse",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427329",
+                "internal_url": "null",
+                "latitude": "43.844609",
+                "longitude": "25.9473025",
+                "machine_status": "available",
+                "id": 7134,
+                "last_updated": "2024-04-11"
+            }
         }
     ]
 }
