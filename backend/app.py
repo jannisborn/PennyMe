@@ -140,7 +140,6 @@ def process_machine_entry(
     """
 
     try:
-
         # Wait for cron job to finish and until 5 min passed since last commit
         wait()
 
