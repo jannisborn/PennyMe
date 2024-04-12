@@ -49662,6 +49662,29 @@
                 "last_updated": "2024-04-12",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.616856554787638,
+                    48.13745791763776
+                ]
+            },
+            "properties": {
+                "name": "Test machine",
+                "area": "Germany",
+                "address": "Einstein Straße 179",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 48.13745791763776,
+                "longitude": 11.616856554787638,
+                "machine_status": "available",
+                "id": 7136,
+                "last_updated": "2024-04-12"
+            }
         }
     ]
 }
