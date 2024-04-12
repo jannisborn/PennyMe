@@ -127,11 +127,7 @@ def save_comment(comment: str, ip: str, machine_id: int):
 
 
 def process_machine_entry(
-    new_machine_entry: Dict[str, Any],
-    tmp_img_path: str,
-    ip_address: str,
-    title: str,
-    address: str,
+    new_machine_entry: Dict[str, Any], tmp_img_path: str, ip_address: str
 ):
     """
     Process a new machine entry (upload image, send message to slack, etc.)
@@ -141,13 +137,17 @@ def process_machine_entry(
         new_machine_entry: The new machine entry to process.
         tmp_img_path: Temporary path to the image.
         ip_address: The IP address of the user.
-        title: The title of the machine.
-        address: The address of the machine.
     """
 
     try:
         # Wait for cron job to finish and until 5 min passed since last commit
         wait()
+
+        # Backup machine data
+        tmp_id = new_machine_entry["properties"]["id"]
+        with open(os.path.join("..", "data", f"{tmp_id}.json"), "w") as f:
+            json.dump(new_machine_entry, f, indent=4)
+
         # We can add machine
         new_machine_id = push_newmachine_to_github(new_machine_entry)
 
@@ -158,6 +158,7 @@ def process_machine_entry(
         # Upload the image
         process_uploaded_image(img_path)
 
+        title = new_machine_entry["properties"]["name"]
         # Send message to slack
         image_slack(
             new_machine_id,
@@ -166,6 +167,7 @@ def process_machine_entry(
             img_slack_text="New machine proposed:",
         )
     except Exception as e:
+        address = new_machine_entry["properties"]["address"]
         message_slack_raw(
             text=f"Error when processing machine entry: {title}, {address} ({e})",
         )
@@ -276,6 +278,7 @@ def create_machine():
     paywall = True if request.args.get("paywall") == "true" else False
 
     # put properties into dictionary
+    tmp_id = random.randint(-(2**16), -1)
     properties_dict = {
         "name": title,
         "area": area,
@@ -286,7 +289,7 @@ def create_machine():
         "latitude": location[1],
         "longitude": location[0],
         "machine_status": "available",
-        "id": -1,  # to be updated later
+        "id": tmp_id,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
     # add multimachine or paywall only if not defaults
@@ -302,16 +305,13 @@ def create_machine():
     }
     ip_address = request.remote_addr
 
-    tmp_path = os.path.join(PATH_IMAGES, f"{random.randint(-(2**16), -1)}.jpg")
+    tmp_path = os.path.join(PATH_IMAGES, f"{tmp_id}.jpg")
     request.files["image"].save(tmp_path)
 
     message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
     # Add to queue
     request_queue.put(
-        (
-            process_machine_entry,
-            (new_machine_entry, tmp_path, ip_address, title, address),
-        )
+        (process_machine_entry, (new_machine_entry, tmp_path, ip_address))
     )
 
     return jsonify({"message": "Success!"}), 200

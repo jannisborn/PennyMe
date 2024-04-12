@@ -9008,22 +9008,23 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -93.2432822,
-                    44.8545364
+                    -93.2407762770843,
+                    44.85374968385508
                 ]
             },
             "properties": {
                 "name": "Mall of America - I Love Minnesota Store",
                 "area": "Minnesota",
-                "address": "372 West Market - Level 3, Bloomington",
+                "address": "372 West Market - Level 1, Bloomington",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=22336",
                 "internal_url": "null",
-                "latitude": "44.8545364",
-                "longitude": "-93.2432822",
+                "latitude": "44.85374968385508",
+                "longitude": "-93.2407762770843",
                 "machine_status": "available",
                 "id": 6144,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-07",
+                "paywall": true
             }
         },
         {
@@ -11505,9 +11506,9 @@
                 "internal_url": "null",
                 "latitude": "40.7774076",
                 "longitude": "-111.8881773",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6215,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-08"
             }
         },
         {
@@ -20019,9 +20020,9 @@
                 "internal_url": "null",
                 "latitude": "28.466559",
                 "longitude": "-16.2480297",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6442,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -21309,9 +21310,9 @@
                 "internal_url": "null",
                 "latitude": "38.7139092",
                 "longitude": "-9.1334762",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6479,
-                "last_updated": "2023-10-20"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -27379,9 +27380,9 @@
                 "internal_url": "null",
                 "latitude": "54.5135621",
                 "longitude": "9.5694428",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 613,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -31168,7 +31169,7 @@
                 ]
             },
             "properties": {
-                "name": "Schmitten Groer Feldberg (Taunus)",
+                "name": "Schmitten Großer Feldberg (Taunus)",
                 "area": "Germany",
                 "address": "Großer Feldberg 1, 61389 Schmitten, Germany",
                 "status": "unvisited",
@@ -31178,7 +31179,7 @@
                 "longitude": "8.4580619",
                 "machine_status": "available",
                 "id": 6641,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -45817,10 +45818,10 @@
                 "internal_url": "null",
                 "latitude": "30.2726451",
                 "longitude": "-97.7392512",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3650,
-                "last_updated": "2024-03-06"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -48702,10 +48703,10 @@
                 "internal_url": "null",
                 "latitude": "36.10178399999999",
                 "longitude": "-115.1735602",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4522,
-                "last_updated": "2024-04-04"
+                "last_updated": "2024-03-29"
             }
         },
         {
@@ -49060,22 +49061,583 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -88.022483,
-                    30.229724
+                    -88.01710716228666,
+                    30.231707649592426
                 ]
             },
             "properties": {
-                "name": "Fort Morgan Museum",
+                "name": "Fort Morgan State Historic Site",
                 "area": "Alabama",
-                "address": "51 Highway 180, Gulf Shores",
+                "address": "453 AL-180, Gulf Shores, AL 36542",
                 "external_url": "http://209.221.138.252/Details.aspx?location=105496",
                 "internal_url": "null",
-                "latitude": "30.229724",
-                "longitude": "-88.022483",
-                "machine_status": "out-of-order",
+                "latitude": "30.231707649592426",
+                "longitude": "-88.01710716228666",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1714,
-                "last_updated": "2024-04-06"
+                "last_updated": "2024-04-12",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.3125806,
+                    -33.7320908
+                ]
+            },
+            "properties": {
+                "name": "Echo Point Information Centre",
+                "area": "Australia",
+                "address": "2780 Echo Point Rd, NSW - Katoomba",
+                "external_url": "http://209.221.138.252/Details.aspx?location=249104",
+                "internal_url": "null",
+                "latitude": "-33.7320908",
+                "longitude": "150.3125806",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2116,
+                "last_updated": "2024-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.08647490000001,
+                    38.3281156
+                ]
+            },
+            "properties": {
+                "name": "Ripley's Believe It or Not - Ocean City",
+                "area": "Maryland",
+                "address": "401 Atlantic Avenue, Ocean City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2465",
+                "internal_url": "null",
+                "latitude": "38.3281156",
+                "longitude": "-75.08647490000001",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3627,
+                "last_updated": "2024-04-07",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8158093,
+                    40.7526353
+                ]
+            },
+            "properties": {
+                "name": "This Is The Place State Park",
+                "area": "Utah",
+                "address": "2601 E. Sunnyside Ave. (800 South), Salt Lake City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1745",
+                "internal_url": "null",
+                "latitude": "40.7526353",
+                "longitude": "-111.8158093",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2092,
+                "last_updated": "2024-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.6695211,
+                    35.097284
+                ]
+            },
+            "properties": {
+                "name": "Old Town - Wild West T's & Gifts",
+                "area": "New Mexico",
+                "address": "401 San Felipe Street Northwest (Old Town), Albuquerque",
+                "external_url": "http://209.221.138.252/Details.aspx?location=14777",
+                "internal_url": "null",
+                "latitude": "35.097284",
+                "longitude": "-106.6695211",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5465,
+                "last_updated": "2024-04-07",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.075655,
+                    42.097203
+                ]
+            },
+            "properties": {
+                "name": "Erie Zoo",
+                "area": "Pennsylvania",
+                "address": "423 W. 38th St., Erie",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3850",
+                "internal_url": "null",
+                "latitude": "42.097203",
+                "longitude": "-80.075655",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3973,
+                "last_updated": "2024-04-07",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0366255,
+                    40.0942012
+                ]
+            },
+            "properties": {
+                "name": "Jenkinsons Boardwalk - Pavilion Arcade",
+                "area": "New Jersey",
+                "address": "300 Ocean Ave, Point Pleasant Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=382086",
+                "internal_url": "null",
+                "latitude": "40.0942012",
+                "longitude": "-74.0366255",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5456,
+                "last_updated": "2024-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8874814,
+                    40.4261843
+                ]
+            },
+            "properties": {
+                "name": "Thanksgiving Point-Butterfly Biosphere",
+                "area": "Utah",
+                "address": "3003 N Thanksgiving Way, Lehi",
+                "external_url": "http://209.221.138.252/Details.aspx?location=320267",
+                "internal_url": "null",
+                "latitude": "40.4261843",
+                "longitude": "-111.8874814",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2074,
+                "last_updated": "2024-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9077203,
+                    40.4325364
+                ]
+            },
+            "properties": {
+                "name": "Thanksgiving Point - The Natural Curiosity Museum",
+                "area": "Utah",
+                "address": "3605 Garden Drive, Lehi",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258573",
+                "internal_url": "null",
+                "latitude": "40.4325364",
+                "longitude": "-111.9077203",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2073,
+                "last_updated": "2024-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.13308239999999,
+                    19.4343942
+                ]
+            },
+            "properties": {
+                "name": "Metropolitan Cathedral",
+                "area": "Mexico",
+                "address": "Downtown Mexico City, Zocalo, Mexico City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=253573",
+                "internal_url": "null",
+                "latitude": "19.4343942",
+                "longitude": "-99.13308239999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3226,
+                "last_updated": "2024-04-08",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.85720119999999,
+                    33.5951327
+                ]
+            },
+            "properties": {
+                "name": "Covington Visitor Center",
+                "area": "Georgia",
+                "address": "1143 Oak St. SE , Covington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427061",
+                "internal_url": "null",
+                "latitude": "33.5951327",
+                "longitude": "-83.85720119999999",
+                "machine_status": "available",
+                "id": 7129,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.8705579,
+                    51.1610129
+                ]
+            },
+            "properties": {
+                "name": "Schloss Benrath",
+                "area": "Germany",
+                "address": "enrather Schlossallee 100-106, 40597 Düsseldorf, North Rhine-Westphalia Germany, Düsseldorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427065",
+                "internal_url": "null",
+                "latitude": "51.1610129",
+                "longitude": "6.8705579",
+                "machine_status": "available",
+                "id": 7130,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2405849,
+                    44.8541961
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - The Neighborhood",
+                "area": "Minnesota",
+                "address": " 154 E Broadway , Bloomington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427156",
+                "internal_url": "null",
+                "latitude": "44.8541961",
+                "longitude": "-93.2405849",
+                "machine_status": "available",
+                "id": 7131,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.2620493,
+                    38.2914642
+                ]
+            },
+            "properties": {
+                "name": "Capitol Reef National Park Visitor Center",
+                "area": "Utah",
+                "address": ", Capitol Reef National Park/ Torrey",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.2914642",
+                "longitude": "-111.2620493",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5404,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.8262645,
+                    30.082569
+                ]
+            },
+            "properties": {
+                "name": "Cabela's World's Foremost Outfitter",
+                "area": "Texas",
+                "address": "15570 Interstate 35 (I-35 South Exit 220), Buda",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4769",
+                "internal_url": "null",
+                "latitude": "30.082569",
+                "longitude": "-97.8262645",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3663,
+                "last_updated": "2024-04-10",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.7072576,
+                    55.4162524
+                ]
+            },
+            "properties": {
+                "name": "Fusiliers Museum of Northumberland",
+                "area": "England",
+                "address": "Alnwick Castle, Abbot's Tower, NORTHUMBERLAND - Alnwick",
+                "external_url": "http://209.221.138.252/Details.aspx?location=63572",
+                "internal_url": "null",
+                "latitude": "55.4162524",
+                "longitude": "-1.7072576",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1535,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.8697056,
+                    41.89247950000001
+                ]
+            },
+            "properties": {
+                "name": "Castro de Santa Tecla",
+                "area": "Spain",
+                "address": "Monte de Santa Trega, 36780, Pontevedra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427258",
+                "internal_url": "null",
+                "latitude": "41.89247950000001",
+                "longitude": "-8.8697056",
+                "machine_status": "available",
+                "id": 7132,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.3906089,
+                    38.7875851
+                ]
+            },
+            "properties": {
+                "name": "Pena Palace",
+                "area": "Portugal",
+                "address": ", Sintra",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.7875851",
+                "longitude": "-9.3906089",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5893,
+                "last_updated": "2024-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.2826965,
+                    37.8512631
+                ]
+            },
+            "properties": {
+                "name": "Stecco Taormina",
+                "area": "Italy",
+                "address": "Corso Umberto, 229 / Piazza Duomo, Sicily, Messina Province - Taormina",
+                "external_url": "http://209.221.138.252/Details.aspx?location=348316",
+                "internal_url": "null",
+                "latitude": "37.8512631",
+                "longitude": "15.2826965",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5824,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.69044099999999,
+                    30.2504821
+                ]
+            },
+            "properties": {
+                "name": "Gulf Shores Souvenirs & Gifts (aka Purple Octopus)",
+                "area": "Alabama",
+                "address": "301 Gulf Shores Pkwy, Gulf Shores",
+                "external_url": "http://209.221.138.252/Details.aspx?location=37818",
+                "internal_url": "null",
+                "latitude": "30.2504821",
+                "longitude": "-87.69044099999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1715,
+                "last_updated": "2024-04-11",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.9604033,
+                    43.59341149999999
+                ]
+            },
+            "properties": {
+                "name": "Orlova Chuka Cave",
+                "area": "Bulgaria",
+                "address": "Orlova Chuka Cave, Pepelina, Dve Mogili",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427328",
+                "internal_url": "null",
+                "latitude": "43.59341149999999",
+                "longitude": "25.9604033",
+                "machine_status": "available",
+                "id": 7133,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.9473025,
+                    43.844609
+                ]
+            },
+            "properties": {
+                "name": "EcoMuseum",
+                "area": "Bulgaria",
+                "address": "Ruse Center, ul. \"Alexandrovska\" 3, Ruse",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427329",
+                "internal_url": "null",
+                "latitude": "43.844609",
+                "longitude": "25.9473025",
+                "machine_status": "available",
+                "id": 7134,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.9377719,
+                    30.2608711
+                ]
+            },
+            "properties": {
+                "name": "Austin Zoo & Animal Sanctuary",
+                "area": "Texas",
+                "address": "18807 Rawhide Trail, Austin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1762",
+                "internal_url": "null",
+                "latitude": "30.2608711",
+                "longitude": "-97.9377719",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3649,
+                "last_updated": "2024-04-11",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.682126,
+                    30.370783
+                ]
+            },
+            "properties": {
+                "name": "Lambert's Cafe",
+                "area": "Alabama",
+                "address": "2981 S. McKenzie, Foley",
+                "external_url": "http://209.221.138.252/Details.aspx?location=175",
+                "internal_url": "null",
+                "latitude": "30.370783",
+                "longitude": "-87.682126",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1710,
+                "last_updated": "2024-04-11",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1561435,
+                    37.6735701
+                ]
+            },
+            "properties": {
+                "name": "Bryce Canyon General Store",
+                "area": "Utah",
+                "address": "26 S Main St, Bryce Canyon City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=357798",
+                "internal_url": "null",
+                "latitude": "37.6735701",
+                "longitude": "-112.1561435",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5402,
+                "last_updated": "2024-04-11"
             }
         }
     ]
