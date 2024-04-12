@@ -49662,52 +49662,6 @@
                 "last_updated": "2024-04-12",
                 "paywall": true
             }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    11.616856554787638,
-                    48.13745791763776
-                ]
-            },
-            "properties": {
-                "name": "Test machine",
-                "area": "Germany",
-                "address": "Einstein Straße 179",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "latitude": 48.13745791763776,
-                "longitude": 11.616856554787638,
-                "machine_status": "available",
-                "id": 7136,
-                "last_updated": "2024-04-12"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    11.620412639792837,
-                    48.138158795231746
-                ]
-            },
-            "properties": {
-                "name": "Test 2",
-                "area": "Germany",
-                "address": "Einsteinstrasse {[}]179",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "latitude": 48.138158795231746,
-                "longitude": 11.620412639792837,
-                "machine_status": "available",
-                "id": 7137,
-                "last_updated": "2024-04-12"
-            }
         }
     ]
 }
