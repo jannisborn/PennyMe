@@ -4787,13 +4787,13 @@
                 "area": "Germany",
                 "address": "Nordermarkt 5, 24937 Flensburg, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427527",
                 "internal_url": "null",
                 "latitude": 54.789214983611444,
                 "longitude": 9.43215654105179,
                 "machine_status": "available",
                 "id": 6058,
-                "last_updated": "2023-09-17"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -49799,6 +49799,29 @@
                 "status": "unvisited",
                 "id": 3563,
                 "last_updated": "2024-04-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.2921558,
+                    41.4456671
+                ]
+            },
+            "properties": {
+                "name": "Lar de Santa Estefânia (Convent)",
+                "area": "Portugal",
+                "address": "Largo Martins Sarmento 57, Guimarães",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427540",
+                "internal_url": "null",
+                "latitude": "41.4456671",
+                "longitude": "-8.2921558",
+                "machine_status": "available",
+                "id": 7136,
+                "last_updated": "2024-04-11"
             }
         }
     ]
