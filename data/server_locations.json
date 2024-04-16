@@ -13163,9 +13163,9 @@
                 "internal_url": "null",
                 "latitude": "43.0874441",
                 "longitude": "-79.0641553",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6256,
-                "last_updated": "2024-01-21"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -49846,6 +49846,29 @@
                 "id": 601,
                 "last_updated": "2024-04-16",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0650351,
+                    43.0837193
+                ]
+            },
+            "properties": {
+                "name": "Niagara Falls State Park Information Center",
+                "area": "New York",
+                "address": "332 Prospect St, Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427624",
+                "internal_url": "null",
+                "latitude": "43.0837193",
+                "longitude": "-79.0650351",
+                "machine_status": "available",
+                "id": 7137,
+                "last_updated": "2024-04-11"
             }
         }
     ]
