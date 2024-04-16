@@ -4787,13 +4787,13 @@
                 "area": "Germany",
                 "address": "Nordermarkt 5, 24937 Flensburg, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427527",
                 "internal_url": "null",
                 "latitude": 54.789214983611444,
                 "longitude": 9.43215654105179,
                 "machine_status": "available",
                 "id": 6058,
-                "last_updated": "2023-09-17"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -12956,9 +12956,9 @@
                 "internal_url": "null",
                 "latitude": "41.4064722",
                 "longitude": "-92.917654",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5470,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-13"
             }
         },
         {
@@ -13163,9 +13163,9 @@
                 "internal_url": "null",
                 "latitude": "43.0874441",
                 "longitude": "-79.0641553",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6256,
-                "last_updated": "2024-01-21"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -34182,7 +34182,7 @@
                 ]
             },
             "properties": {
-                "name": "München Bavaria Filmstadt (Bullyversum)",
+                "name": "Bullyversum",
                 "area": "Germany",
                 "address": "82031 Grünwald, Germany",
                 "status": "retired",
@@ -34192,7 +34192,7 @@
                 "longitude": "11.5552984",
                 "machine_status": "retired",
                 "id": 6774,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-04-13"
             }
         },
         {
@@ -45228,7 +45228,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    8.543325,
+                    8.54332500000007,
                     47.370296
                 ]
             },
@@ -45239,11 +45239,11 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=103894",
                 "internal_url": "null",
                 "latitude": "47.370296",
-                "longitude": "8.543325",
+                "longitude": "8.54332500000007",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 712,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-04-16"
             }
         },
         {
@@ -49638,6 +49638,261 @@
                 "status": "unvisited",
                 "id": 5402,
                 "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.0846085,
+                    42.2819407
+                ]
+            },
+            "properties": {
+                "name": "Main Street Mercantile",
+                "area": "Arizona",
+                "address": "1020 N Main St A, Cottonwood",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427372",
+                "internal_url": "null",
+                "latitude": "42.2819407",
+                "longitude": "-89.0846085",
+                "machine_status": "available",
+                "id": 7135,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.5230764,
+                    33.3974248
+                ]
+            },
+            "properties": {
+                "name": "Roswell Visitor Center",
+                "area": "New Mexico",
+                "address": "426 N Main St, Roswell",
+                "external_url": "http://209.221.138.252/Details.aspx?location=380343",
+                "internal_url": "null",
+                "latitude": "33.3974248",
+                "longitude": "-104.5230764",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5467,
+                "last_updated": "2024-04-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.393286,
+                    48.211074
+                ]
+            },
+            "properties": {
+                "name": "Kunsthaus Wien (Hundertwasser museum)",
+                "area": "Austria",
+                "address": "Untere Weißgerberstraße 13, 1030 Vienna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=285978",
+                "internal_url": "null",
+                "latitude": "48.211074",
+                "longitude": "16.393286",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1020,
+                "last_updated": "2024-04-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.0170273,
+                    37.1092774
+                ]
+            },
+            "properties": {
+                "name": "Pea Soup Andersen's Restaurant ",
+                "area": "California",
+                "address": "12411 Highway 33 South, Santa Nella",
+                "external_url": "http://209.221.138.252/Details.aspx?location=523",
+                "internal_url": "null",
+                "latitude": "37.1092774",
+                "longitude": "-121.0170273",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4857,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3181013,
+                    48.19092759999999
+                ]
+            },
+            "properties": {
+                "name": "Technisches Museum Wien",
+                "area": "Austria",
+                "address": "Mariahilfer Straße 212",
+                "external_url": "http://209.221.138.252/Details.aspx?location=227247",
+                "internal_url": "null",
+                "latitude": "48.19092759999999",
+                "longitude": "16.3181013",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1025,
+                "last_updated": "2024-04-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.5463893,
+                    52.2700188
+                ]
+            },
+            "properties": {
+                "name": "Keukenhof Tulip Gardens",
+                "area": "Netherlands",
+                "address": "Stationsweg 166a, Lisse",
+                "external_url": "http://209.221.138.252/Details.aspx?location=55048",
+                "internal_url": "null",
+                "latitude": "52.2700188",
+                "longitude": "4.5463893",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 209,
+                "last_updated": "2024-04-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.1872714,
+                    30.4571913
+                ]
+            },
+            "properties": {
+                "name": "Louisiana State Capitol",
+                "area": "Louisiana",
+                "address": "24th Floor, Baton Rouge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=90581",
+                "internal_url": "null",
+                "latitude": "30.4571913",
+                "longitude": "-91.1872714",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3563,
+                "last_updated": "2024-04-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.2921558,
+                    41.4456671
+                ]
+            },
+            "properties": {
+                "name": "Lar de Santa Estefânia (Convent)",
+                "area": "Portugal",
+                "address": "Largo Martins Sarmento 57, Guimarães",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427540",
+                "internal_url": "null",
+                "latitude": "41.4456671",
+                "longitude": "-8.2921558",
+                "machine_status": "available",
+                "id": 7136,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.071177112372139,
+                    50.96252052051729
+                ]
+            },
+            "properties": {
+                "name": "Bastei Bridge",
+                "area": "Germany",
+                "address": "Basteiweg, 01824 Lohmen",
+                "external_url": "http://209.221.138.252/Details.aspx?location=328171",
+                "internal_url": "null",
+                "latitude": "50.96252052051729",
+                "longitude": "14.071177112372139",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 601,
+                "last_updated": "2024-04-16",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0650351,
+                    43.0837193
+                ]
+            },
+            "properties": {
+                "name": "Niagara Falls State Park Information Center",
+                "area": "New York",
+                "address": "332 Prospect St, Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427624",
+                "internal_url": "null",
+                "latitude": "43.0837193",
+                "longitude": "-79.0650351",
+                "machine_status": "available",
+                "id": 7137,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.3919688,
+                    27.813759
+                ]
+            },
+            "properties": {
+                "name": "Texas State Aquarium",
+                "area": "Texas",
+                "address": "2710 North Shoreline Blvd, Corpus Christi",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2099",
+                "internal_url": "null",
+                "latitude": "27.813759",
+                "longitude": "-97.3919688",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3675,
+                "last_updated": "2024-04-16",
+                "multimachine": 2
             }
         }
     ]
