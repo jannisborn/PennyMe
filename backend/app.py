@@ -232,16 +232,7 @@ def create_machine():
         return jsonify({"error": "Google Maps does not know this address"}), 400
 
     dist = haversine((lat, lng), (location[1], location[0]))
-    if dist > 1:  # km
-        return (
-            jsonify(
-                {
-                    "error": f"Address {address} seems >1km away from coordinates ({location[1]}, {location[0]})"
-                }
-            ),
-            400,
-        )
-
+    address_okay = dist <= 1  # km
     out = GM_CLIENT.reverse_geocode(
         [location[1], location[0]], result_type="street_address"
     )
@@ -313,6 +304,10 @@ def create_machine():
     request_queue.put(
         (process_machine_entry, (new_machine_entry, tmp_path, ip_address))
     )
+    if not address_okay:
+        msg = f"Machine request submitted. Watch out, address {address} seems >1km away from coordinates ({location[1]}, {location[0]})"
+        message_slack_raw(msg)
+        return jsonify({"Success": msg}), 201
 
     return jsonify({"message": "Success!"}), 200
 
@@ -402,7 +397,6 @@ def change_machine():
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
     # if address or coordinates were changed, compare them and return warning if needed
-    address_okay = True
     if latitude != lat_old or longitude != lng_old or address != old_address:
         # Verify that address matches coordinates
         found_coords, (lat, lng) = address_to_coordinates(address, area, title)
@@ -411,8 +405,7 @@ def change_machine():
             return jsonify({"error": "Google Maps does not know this address"}), 400
 
         dist = haversine((lat, lng), (latitude, longitude))
-        if dist > 1:  # km
-            address_okay = False  # triggers warning
+        address_okay = dist <= 1  # km
 
         # adapt dictionary entries
         updated_machine_entry["properties"]["address"] = address
