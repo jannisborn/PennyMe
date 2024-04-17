@@ -18,6 +18,41 @@ import CoreLocation
 // variable defining how large the shown region is when changing coordinates
 let regionInMeters: Double = 100
 
+@available(iOS 13.0, *)
+struct MapViewRepresentable: UIViewRepresentable {
+    @Binding var mapType: MKMapType
+    @Binding var centerCoordinate: CLLocationCoordinate2D
+
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        return mapView
+    }
+
+    func updateUIView(_ view: MKMapView, context: Context) {
+        view.mapType = mapType
+        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        view.setRegion(region, animated: true)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: MapViewRepresentable
+
+        init(_ parent: MapViewRepresentable) {
+            self.parent = parent
+        }
+
+        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            parent.centerCoordinate = mapView.centerCoordinate
+        }
+    }
+}
+
+
 @available(iOS 14.0, *)
 struct MapView: View {
     @State private var region: MKCoordinateRegion
@@ -25,6 +60,8 @@ struct MapView: View {
     @Binding private var centerCoordinate: CLLocationCoordinate2D
     @Environment(\.presentationMode) private var presentationMode
     let initalCenterCoords: CLLocationCoordinate2D
+    @State private var mapType: MKMapType = .standard
+
     
     init(centerCoordinate: Binding<CLLocationCoordinate2D>, initialCenter: CLLocationCoordinate2D) {
             _centerCoordinate = centerCoordinate
@@ -42,13 +79,9 @@ struct MapView: View {
                                                   tint: .red))]
         ZStack {
             // add map
-            Map(coordinateRegion: $region, showsUserLocation: true,
-                annotationItems: markers) { marker in
-                marker.location
-            }.edgesIgnoringSafeArea(.all)
-            .onChange(of: region.center) { newCenter in
-                        centerCoordinate = newCenter
-                    }
+            MapViewRepresentable(mapType: $mapType, centerCoordinate: $centerCoordinate)
+                .edgesIgnoringSafeArea(.all)
+            
             // add finished button
             VStack{
                 Spacer()
@@ -59,7 +92,7 @@ struct MapView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(8)
-                .padding(20)
+                .padding(.bottom, 20) // Padding at the bottom
                 .alert(isPresented: $showDoneAlert) {
                     Alert(
                         title: Text("Moved pin location successfully from (\(initalCenterCoords.latitude), \(initalCenterCoords.longitude)) to (\(centerCoordinate.latitude), \(centerCoordinate.longitude))."),
@@ -74,7 +107,34 @@ struct MapView: View {
                     )
                 }
             }
-        }
+            VStack{
+                Spacer()
+                HStack{
+                    Button(
+                        action: {
+                            switch mapType {
+                            case .standard:
+                                mapType = .satellite
+                            case .satellite:
+                                mapType = .hybrid
+                            default:
+                                mapType = .standard
+                            }
+                        }){
+                            Image("map_symbol_without_border")
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                                .padding()
+                                .shadow(color: Color.black.opacity(0.25), radius: 2, x: 0, y: 2)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.leading, 2)
+                    Spacer()
+                }
+            }
+        }.ignoresSafeArea(.all) // Ignore safe area for the entire ZStack
     }
 }
     
