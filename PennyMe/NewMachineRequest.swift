@@ -175,11 +175,11 @@ struct NewMachineFormView: View {
                 }.padding().disabled(isLoading)
             }
             
-            AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for suggesting this machine. We will review this request shortly. Note that it can take up to a few days until the machine becomes visible.")
+            AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for suggesting this machine. We will review this request shortly. Note that it may take a few days until the machine becomes visible.")
                 .padding()
         }
         .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Attention!"), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
+                    Alert(title: Text("Error!"), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
                 }
         .padding()
         .navigationBarTitle("Add new machine")
