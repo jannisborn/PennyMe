@@ -49986,6 +49986,98 @@
                 "id": 1365,
                 "last_updated": "2024-04-20"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.140636,
+                    36.056927
+                ]
+            },
+            "properties": {
+                "name": "Bright Angel Lodge",
+                "area": "Arizona",
+                "address": "Eastern side of the south rim of the Canyon, Grand Canyon National Park, South Rim",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=341",
+                "internal_url": "null",
+                "latitude": "36.056927",
+                "longitude": "-112.140636",
+                "machine_status": "available",
+                "id": 7139,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.983113,
+                    40.333878
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees #60 - Johnstown, CO",
+                "area": "Colorado",
+                "address": "5201 Nugget Road, Berthoud",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427886",
+                "internal_url": "null",
+                "latitude": "40.333878",
+                "longitude": "-104.983113",
+                "machine_status": "available",
+                "id": 7140,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.5940178,
+                    36.3335762
+                ]
+            },
+            "properties": {
+                "name": "Aqua World Ibaraki Prefecture Oarai Aquarium",
+                "area": "Japan",
+                "address": "8252-3 Isohama-cho, Oarai-cho, Higashiibaraki-gun, Ibaraki",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427882",
+                "internal_url": "null",
+                "latitude": "36.3335762",
+                "longitude": "140.5940178",
+                "machine_status": "available",
+                "id": 7141,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.2865584,
+                    54.6380366
+                ]
+            },
+            "properties": {
+                "name": "Vilnius International Airport",
+                "area": "Lithunia",
+                "address": ", Vilnius",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259200",
+                "internal_url": "null",
+                "latitude": "54.6380366",
+                "longitude": "25.2865584",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 800,
+                "last_updated": "2024-04-11"
+            }
         }
     ]
 }
