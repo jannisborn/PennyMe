@@ -42872,10 +42872,10 @@
                 "internal_url": "null",
                 "latitude": "46.80454719999999",
                 "longitude": "-92.1599383",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3148,
-                "last_updated": "2024-01-26"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -50170,6 +50170,52 @@
                 "status": "unvisited",
                 "id": 5393,
                 "last_updated": "2024-04-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.209857,
+                    40.6909327
+                ]
+            },
+            "properties": {
+                "name": "Crayola Factory Store",
+                "area": "Pennsylvania",
+                "address": "Two Rivers Landing 30 Centre Square, Easton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3845",
+                "internal_url": "null",
+                "latitude": "40.6909327",
+                "longitude": "-75.209857",
+                "machine_status": "available",
+                "id": 7143,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.1806044,
+                    24.8252617
+                ]
+            },
+            "properties": {
+                "name": "Leofoo Village Theme Park",
+                "area": "Taiwan",
+                "address": ", Guanxi, Hsinchu County",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427969",
+                "internal_url": "null",
+                "latitude": "24.8252617",
+                "longitude": "121.1806044",
+                "machine_status": "available",
+                "id": 7144,
+                "last_updated": "2024-04-11"
             }
         }
     ]
