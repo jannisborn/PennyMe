@@ -11690,10 +11690,10 @@
                 "internal_url": "null",
                 "latitude": "36.1630422",
                 "longitude": "-115.1592392",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6221,
                 "paywall": true,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -23048,13 +23048,13 @@
                 "area": "Spain",
                 "address": "Narrika Kalea, San Sebastian",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428117",
                 "internal_url": "null",
                 "latitude": "43.3234631",
                 "longitude": "-1.9841633",
                 "machine_status": "available",
                 "id": 5942,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -50263,6 +50263,29 @@
                 "id": 274,
                 "last_updated": "2024-04-23",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.390747699999999,
+                    36.8406138
+                ]
+            },
+            "properties": {
+                "name": "Super La Cuesta",
+                "area": "Spain",
+                "address": "2 C. San Juan, Zahara de la Sierra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428115",
+                "internal_url": "null",
+                "latitude": "36.8406138",
+                "longitude": "-5.390747699999999",
+                "machine_status": "available",
+                "id": 7145,
+                "last_updated": "2024-04-11"
             }
         }
     ]
