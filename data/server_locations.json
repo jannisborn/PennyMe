@@ -11690,10 +11690,10 @@
                 "internal_url": "null",
                 "latitude": "36.1630422",
                 "longitude": "-115.1592392",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6221,
                 "paywall": true,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -23048,13 +23048,13 @@
                 "area": "Spain",
                 "address": "Narrika Kalea, San Sebastian",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428117",
                 "internal_url": "null",
                 "latitude": "43.3234631",
                 "longitude": "-1.9841633",
                 "machine_status": "available",
                 "id": 5942,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -42872,10 +42872,10 @@
                 "internal_url": "null",
                 "latitude": "46.80454719999999",
                 "longitude": "-92.1599383",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3148,
-                "last_updated": "2024-01-26"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -49893,6 +49893,422 @@
                 "id": 3675,
                 "last_updated": "2024-04-16",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.0985366,
+                    54.3131711
+                ]
+            },
+            "properties": {
+                "name": "CITTI-Park",
+                "area": "Germany",
+                "address": "Mühlendamm 1, Kiel",
+                "external_url": "http://209.221.138.252/Details.aspx?location=384822",
+                "internal_url": "null",
+                "latitude": "54.3131711",
+                "longitude": "10.0985366",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5727,
+                "last_updated": "2024-04-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.662525,
+                    30.35701629999999
+                ]
+            },
+            "properties": {
+                "name": "Javelinas on Holland",
+                "area": "Texas",
+                "address": "202 W. Holland Avenue, 79830",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427799",
+                "internal_url": "null",
+                "latitude": "30.35701629999999",
+                "longitude": "-103.662525",
+                "machine_status": "available",
+                "id": 7138,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.0807114,
+                    29.749857
+                ]
+            },
+            "properties": {
+                "name": "San Jacinto Monument",
+                "area": "Texas",
+                "address": "One Monument Circle, La Porte",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2511",
+                "internal_url": "null",
+                "latitude": "29.749857",
+                "longitude": "-95.0807114",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3749,
+                "last_updated": "2024-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.4859543,
+                    53.09048929999999
+                ]
+            },
+            "properties": {
+                "name": "National Tramway Museum",
+                "area": "England",
+                "address": "Crich, DERBYSHIRE- Matlock",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27061",
+                "internal_url": "null",
+                "latitude": "53.09048929999999",
+                "longitude": "-1.4859543",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1365,
+                "last_updated": "2024-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.140636,
+                    36.056927
+                ]
+            },
+            "properties": {
+                "name": "Bright Angel Lodge",
+                "area": "Arizona",
+                "address": "Eastern side of the south rim of the Canyon, Grand Canyon National Park, South Rim",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=341",
+                "internal_url": "null",
+                "latitude": "36.056927",
+                "longitude": "-112.140636",
+                "machine_status": "available",
+                "id": 7139,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.983113,
+                    40.333878
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees #60 - Johnstown, CO",
+                "area": "Colorado",
+                "address": "5201 Nugget Road, Berthoud",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427886",
+                "internal_url": "null",
+                "latitude": "40.333878",
+                "longitude": "-104.983113",
+                "machine_status": "available",
+                "id": 7140,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.5940178,
+                    36.3335762
+                ]
+            },
+            "properties": {
+                "name": "Aqua World Ibaraki Prefecture Oarai Aquarium",
+                "area": "Japan",
+                "address": "8252-3 Isohama-cho, Oarai-cho, Higashiibaraki-gun, Ibaraki",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427882",
+                "internal_url": "null",
+                "latitude": "36.3335762",
+                "longitude": "140.5940178",
+                "machine_status": "available",
+                "id": 7141,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.2865584,
+                    54.6380366
+                ]
+            },
+            "properties": {
+                "name": "Vilnius International Airport",
+                "area": "Lithunia",
+                "address": ", Vilnius",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259200",
+                "internal_url": "null",
+                "latitude": "54.6380366",
+                "longitude": "25.2865584",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 800,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.4050706,
+                    35.1211917
+                ]
+            },
+            "properties": {
+                "name": "Pickles Gap Village",
+                "area": "Arkansas",
+                "address": "Highway 65 North, Conway",
+                "external_url": "http://209.221.138.252/Details.aspx?location=31612",
+                "internal_url": "null",
+                "latitude": "35.1211917",
+                "longitude": "-92.4050706",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2299,
+                "last_updated": "2024-04-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.5964307,
+                    30.9525248
+                ]
+            },
+            "properties": {
+                "name": "Chevron #209169",
+                "area": "Mississippi",
+                "address": "6239 US-98, Lucedale",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427968",
+                "internal_url": "null",
+                "latitude": "30.9525248",
+                "longitude": "-88.5964307",
+                "machine_status": "available",
+                "id": 7142,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.77829349999999,
+                    36.1607242
+                ]
+            },
+            "properties": {
+                "name": "Legends Gift Shop",
+                "area": "Tennessee",
+                "address": "424 Broadway, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2448",
+                "internal_url": "null",
+                "latitude": "36.1607242",
+                "longitude": "-86.77829349999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4246,
+                "last_updated": "2024-04-22",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.08839995974637,
+                    32.08083283921194
+                ]
+            },
+            "properties": {
+                "name": "Cinnamon Bear Country Store - Savannah",
+                "area": "Georgia",
+                "address": "205 E. River Street, Savannah",
+                "external_url": "http://209.221.138.252/Details.aspx?location=277151",
+                "internal_url": "null",
+                "latitude": "32.08083283921194",
+                "longitude": "-81.08839995974637",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5393,
+                "last_updated": "2024-04-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.209857,
+                    40.6909327
+                ]
+            },
+            "properties": {
+                "name": "Crayola Factory Store",
+                "area": "Pennsylvania",
+                "address": "Two Rivers Landing 30 Centre Square, Easton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3845",
+                "internal_url": "null",
+                "latitude": "40.6909327",
+                "longitude": "-75.209857",
+                "machine_status": "available",
+                "id": 7143,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.1806044,
+                    24.8252617
+                ]
+            },
+            "properties": {
+                "name": "Leofoo Village Theme Park",
+                "area": "Taiwan",
+                "address": ", Guanxi, Hsinchu County",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=427969",
+                "internal_url": "null",
+                "latitude": "24.8252617",
+                "longitude": "121.1806044",
+                "machine_status": "available",
+                "id": 7144,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.8409271,
+                    35.229441
+                ]
+            },
+            "properties": {
+                "name": "Discovery Place",
+                "area": "North Carolina",
+                "address": "301 N Tryon St, Charlotte",
+                "external_url": "http://209.221.138.252/Details.aspx?location=78810",
+                "internal_url": "null",
+                "latitude": "35.229441",
+                "longitude": "-80.8409271",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4091,
+                "last_updated": "2024-04-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.6482994,
+                    39.5674251
+                ]
+            },
+            "properties": {
+                "name": "Mallorca Cathedral",
+                "area": "Spain",
+                "address": "07001 Palma de Mallorca, Baleares, Mallorca",
+                "external_url": "http://209.221.138.252/Details.aspx?location=85589",
+                "internal_url": "null",
+                "latitude": "39.5674251",
+                "longitude": "2.6482994",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 274,
+                "last_updated": "2024-04-23",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.390747699999999,
+                    36.8406138
+                ]
+            },
+            "properties": {
+                "name": "Super La Cuesta",
+                "area": "Spain",
+                "address": "2 C. San Juan, Zahara de la Sierra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428115",
+                "internal_url": "null",
+                "latitude": "36.8406138",
+                "longitude": "-5.390747699999999",
+                "machine_status": "available",
+                "id": 7145,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.41087711166155,
+                    37.810463356823085
+                ]
+            },
+            "properties": {
+                "name": "Fisherman’s Wharf SF",
+                "area": "California",
+                "address": "1 Pier 39, San Francisco, CA 94133, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 37.810463356823085,
+                "longitude": -122.41087711166155,
+                "machine_status": "available",
+                "id": 7146,
+                "last_updated": "2024-04-24"
             }
         }
     ]
