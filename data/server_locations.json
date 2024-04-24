@@ -34623,13 +34623,13 @@
                 "area": "Germany",
                 "address": "Nordseestraße 8b, 25899 Dagebüll, Germany",
                 "status": "unvisited",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=17722",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.7296278",
                 "longitude": "8.6960207",
                 "machine_status": "available",
                 "id": 6793,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -42802,10 +42802,10 @@
                 "internal_url": "null",
                 "latitude": "34.8698955",
                 "longitude": "-111.7612868",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5199,
-                "last_updated": "2024-01-21"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -50332,6 +50332,98 @@
                 "status": "unvisited",
                 "id": 935,
                 "last_updated": "2024-04-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.7312185,
+                    34.918064
+                ]
+            },
+            "properties": {
+                "name": "Dairy Queen Sedona",
+                "area": "Arizona",
+                "address": "4551 N Hwy 89A, Sedona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=263420",
+                "internal_url": "null",
+                "latitude": "34.918064",
+                "longitude": "-111.7312185",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2683,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1465369,
+                    36.6062861
+                ]
+            },
+            "properties": {
+                "name": "Stovepipe Wells Village Hotel Gift shop",
+                "area": "California",
+                "address": "Highway 190, Stovepipe Wells Village, Death Valley National Park",
+                "external_url": "http://209.221.138.252/Details.aspx?location=335970",
+                "internal_url": "null",
+                "latitude": "36.6062861",
+                "longitude": "-117.1465369",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4611,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.0178234,
+                    36.9584522
+                ]
+            },
+            "properties": {
+                "name": "Municipal Wharf - Made in Santa Cruz",
+                "area": "California",
+                "address": "57 Municipal Wharf , Santa Cruz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=248278",
+                "internal_url": "null",
+                "latitude": "36.9584522",
+                "longitude": "-122.0178234",
+                "machine_status": "available",
+                "id": 7147,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.165928699999999,
+                    36.7412046
+                ]
+            },
+            "properties": {
+                "name": "Puente nuevo souvenirs",
+                "area": "Spain",
+                "address": "2 C. Rosario, Ronda",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428126",
+                "internal_url": "null",
+                "latitude": "36.7412046",
+                "longitude": "-5.165928699999999",
+                "machine_status": "available",
+                "id": 7148,
+                "last_updated": "2024-04-11"
             }
         }
     ]
