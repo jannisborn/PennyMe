@@ -19690,7 +19690,7 @@
                 ]
             },
             "properties": {
-                "name": "Souvenirs Sagrada Família",
+                "name": "Souvenirs Sagrada Familia",
                 "area": "Spain",
                 "address": "Carrer de Provença, 437, Barcelona - Catalonia Region Barcelona Province",
                 "status": "unvisited",
@@ -19698,9 +19698,9 @@
                 "internal_url": "null",
                 "latitude": "41.4043488",
                 "longitude": "2.1737735",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6429,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-24"
             }
         },
         {
@@ -34623,13 +34623,13 @@
                 "area": "Germany",
                 "address": "Nordseestraße 8b, 25899 Dagebüll, Germany",
                 "status": "unvisited",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=17722",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.7296278",
                 "longitude": "8.6960207",
                 "machine_status": "available",
                 "id": 6793,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -36785,13 +36785,13 @@
                 "area": "Poland",
                 "address": "Podzamcze 3, 11-440 Reszel, Poland",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428217",
                 "internal_url": "null",
                 "latitude": "54.0484004",
                 "longitude": "21.1476748",
                 "machine_status": "available",
                 "id": 6887,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -42802,10 +42802,10 @@
                 "internal_url": "null",
                 "latitude": "34.8698955",
                 "longitude": "-111.7612868",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5199,
-                "last_updated": "2024-01-21"
+                "last_updated": "2024-04-11"
             }
         },
         {
@@ -48265,9 +48265,9 @@
                 "internal_url": "null",
                 "latitude": 54.958878197517386,
                 "longitude": -1.6701093951815753,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7111,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -49829,8 +49829,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    14.071177112372139,
-                    50.96252052051729
+                    14.071366223888909,
+                    50.96242053937161
                 ]
             },
             "properties": {
@@ -49839,13 +49839,13 @@
                 "address": "Basteiweg, 01824 Lohmen",
                 "external_url": "http://209.221.138.252/Details.aspx?location=328171",
                 "internal_url": "null",
-                "latitude": "50.96252052051729",
-                "longitude": "14.071177112372139",
+                "latitude": "50.96242053937161",
+                "longitude": "14.071366223888909",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 601,
-                "last_updated": "2024-04-16",
-                "multimachine": 2
+                "last_updated": "2024-04-27",
+                "multimachine": 1
             }
         },
         {
@@ -50309,6 +50309,213 @@
                 "machine_status": "available",
                 "id": 7146,
                 "last_updated": "2024-04-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.2576769,
+                    40.8504796
+                ]
+            },
+            "properties": {
+                "name": "Ferrigno Lucio Sas",
+                "area": "Italy",
+                "address": "Via San Gregorio Armeno 22",
+                "external_url": "http://209.221.138.252/Details.aspx?location=73080",
+                "internal_url": "null",
+                "latitude": "40.8504796",
+                "longitude": "14.2576769",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 935,
+                "last_updated": "2024-04-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.7312185,
+                    34.918064
+                ]
+            },
+            "properties": {
+                "name": "Dairy Queen Sedona",
+                "area": "Arizona",
+                "address": "4551 N Hwy 89A, Sedona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=263420",
+                "internal_url": "null",
+                "latitude": "34.918064",
+                "longitude": "-111.7312185",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2683,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1465369,
+                    36.6062861
+                ]
+            },
+            "properties": {
+                "name": "Stovepipe Wells Village Hotel Gift shop",
+                "area": "California",
+                "address": "Highway 190, Stovepipe Wells Village, Death Valley National Park",
+                "external_url": "http://209.221.138.252/Details.aspx?location=335970",
+                "internal_url": "null",
+                "latitude": "36.6062861",
+                "longitude": "-117.1465369",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4611,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.0178234,
+                    36.9584522
+                ]
+            },
+            "properties": {
+                "name": "Municipal Wharf - Made in Santa Cruz",
+                "area": "California",
+                "address": "57 Municipal Wharf , Santa Cruz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=248278",
+                "internal_url": "null",
+                "latitude": "36.9584522",
+                "longitude": "-122.0178234",
+                "machine_status": "available",
+                "id": 7147,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.165928699999999,
+                    36.7412046
+                ]
+            },
+            "properties": {
+                "name": "Puente nuevo souvenirs",
+                "area": "Spain",
+                "address": "2 C. Rosario, Ronda",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428126",
+                "internal_url": "null",
+                "latitude": "36.7412046",
+                "longitude": "-5.165928699999999",
+                "machine_status": "available",
+                "id": 7148,
+                "last_updated": "2024-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.0598705,
+                    36.9823205
+                ]
+            },
+            "properties": {
+                "name": "UC Santa Cruz Arboretum and Botanic Garden",
+                "area": "California",
+                "address": "1 Arboretum Road, Santa Cruz",
+                "external_url": "http://209.221.138.252/Details.aspx?location=355320",
+                "internal_url": "null",
+                "latitude": "36.9823205",
+                "longitude": "-122.0598705",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5256,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.3831652,
+                    50.9809934
+                ]
+            },
+            "properties": {
+                "name": "The Milky Way Adventure Park, Downland Farm",
+                "area": "England",
+                "address": "Higher Clovelly, Bideford , DEVON - Minehead",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107409",
+                "internal_url": "null",
+                "latitude": "50.9809934",
+                "longitude": "-4.3831652",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1372,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.07161266392583,
+                    50.96254281889971
+                ]
+            },
+            "properties": {
+                "name": "Bastei Bridge 2",
+                "area": "Germany",
+                "address": "Basteibrücke, 01824 Lohmen, Germany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=328171",
+                "internal_url": "null",
+                "latitude": 50.96254281889971,
+                "longitude": 14.07161266392583,
+                "machine_status": "available",
+                "id": 7149,
+                "last_updated": "2024-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.066185067672375,
+                    50.965422719578484
+                ]
+            },
+            "properties": {
+                "name": "Bastei Bus Stop",
+                "area": "Germany",
+                "address": "Basteiweg, 01824 Lomen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.965422719578484,
+                "longitude": 14.066185067672375,
+                "machine_status": "available",
+                "id": 7150,
+                "last_updated": "2024-04-27"
             }
         }
     ]
