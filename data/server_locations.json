@@ -25785,13 +25785,13 @@
                 "area": "Bulgaria",
                 "address": ", Belogradchik",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428474",
                 "internal_url": "null",
                 "latitude": "43.6232074",
                 "longitude": "22.6779485",
                 "machine_status": "available",
                 "id": 878,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -46647,10 +46647,10 @@
                 "internal_url": "null",
                 "latitude": "43.3234653",
                 "longitude": "-83.7387906",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2523,
-                "last_updated": "2024-03-17"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -46693,10 +46693,10 @@
                 "internal_url": "null",
                 "latitude": "51.5161284",
                 "longitude": "-0.176387",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1476,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -47365,10 +47365,10 @@
                 "internal_url": "null",
                 "latitude": "43.32902199999999",
                 "longitude": "-83.7391938",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "retired",
                 "id": 2522,
-                "last_updated": "2024-03-26"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -49424,10 +49424,10 @@
                 "internal_url": "null",
                 "latitude": "55.4162524",
                 "longitude": "-1.7072576",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1535,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -50654,6 +50654,75 @@
                 "machine_status": "available",
                 "id": 7152,
                 "last_updated": "2024-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.40057279999999,
+                    42.8925863
+                ]
+            },
+            "properties": {
+                "name": "Yankton Mall - Located (???)",
+                "area": "South Dakota",
+                "address": ", Yankton ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428495",
+                "internal_url": "null",
+                "latitude": "42.8925863",
+                "longitude": "-97.40057279999999",
+                "machine_status": "available",
+                "id": 7153,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.40057279999999,
+                    42.8925863
+                ]
+            },
+            "properties": {
+                "name": "Yankton Mall, - near the movie theater",
+                "area": "South Dakota",
+                "address": ", Yankton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428511",
+                "internal_url": "null",
+                "latitude": "42.8925863",
+                "longitude": "-97.40057279999999",
+                "machine_status": "available",
+                "id": 7154,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.3139403,
+                    35.0544016
+                ]
+            },
+            "properties": {
+                "name": "Chattanooga Lookouts AT&T Field",
+                "area": "Tennessee",
+                "address": "201 Power Alley, Chattanooga",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=389294",
+                "internal_url": "null",
+                "latitude": "35.0544016",
+                "longitude": "-85.3139403",
+                "machine_status": "available",
+                "id": 7155,
+                "last_updated": "2024-04-25"
             }
         }
     ]
