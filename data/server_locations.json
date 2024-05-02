@@ -17329,9 +17329,9 @@
                 "internal_url": "null",
                 "latitude": "40.6284055",
                 "longitude": "14.4869128",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6367,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-28"
             }
         },
         {
@@ -25785,13 +25785,13 @@
                 "area": "Bulgaria",
                 "address": ", Belogradchik",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428474",
                 "internal_url": "null",
                 "latitude": "43.6232074",
                 "longitude": "22.6779485",
                 "machine_status": "available",
                 "id": 878,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -44362,10 +44362,10 @@
                 "internal_url": "null",
                 "latitude": "38.8912662",
                 "longitude": "-77.0260654",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3246,
-                "last_updated": "2024-02-19",
+                "last_updated": "2024-04-29",
                 "multimachine": 2
             }
         },
@@ -45194,10 +45194,10 @@
                 "internal_url": "null",
                 "latitude": "52.5215584",
                 "longitude": "5.4369773",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 208,
-                "last_updated": "2024-02-29"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -46279,10 +46279,10 @@
                 "internal_url": "null",
                 "latitude": "51.8164253",
                 "longitude": "5.0213512",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 221,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -46647,10 +46647,10 @@
                 "internal_url": "null",
                 "latitude": "43.3234653",
                 "longitude": "-83.7387906",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2523,
-                "last_updated": "2024-03-17"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -46693,10 +46693,10 @@
                 "internal_url": "null",
                 "latitude": "51.5161284",
                 "longitude": "-0.176387",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1476,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -47365,10 +47365,10 @@
                 "internal_url": "null",
                 "latitude": "43.32902199999999",
                 "longitude": "-83.7391938",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "retired",
                 "id": 2522,
-                "last_updated": "2024-03-26"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -47918,10 +47918,10 @@
                 "internal_url": "null",
                 "latitude": "-41.2658237",
                 "longitude": "174.7857493",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3885,
-                "last_updated": "2024-03-26"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -49424,10 +49424,10 @@
                 "internal_url": "null",
                 "latitude": "55.4162524",
                 "longitude": "-1.7072576",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1535,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -49772,10 +49772,10 @@
                 "internal_url": "null",
                 "latitude": "52.2700188",
                 "longitude": "4.5463893",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 209,
-                "last_updated": "2024-04-14"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -50516,6 +50516,443 @@
                 "machine_status": "available",
                 "id": 7150,
                 "last_updated": "2024-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7020524,
+                    40.41928559999999
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs & Carcasa",
+                "area": "Spain",
+                "address": "C. de la Montera, 43, Centro, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428270",
+                "internal_url": "null",
+                "latitude": "40.41928559999999",
+                "longitude": "-3.7020524",
+                "machine_status": "available",
+                "id": 7151,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.9041389,
+                    52.3675734
+                ]
+            },
+            "properties": {
+                "name": "Unknown????",
+                "area": "Netherlands",
+                "address": ", Amsterdam",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "52.3675734",
+                "longitude": "4.9041389",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5862,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.796531,
+                    53.2014047
+                ]
+            },
+            "properties": {
+                "name": "Sint Jacobsstraat ",
+                "area": "Netherlands",
+                "address": "Sint Jacobsstraat 9, Leeuwarden",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.2014047",
+                "longitude": "5.796531",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 205,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.789752,
+                    53.2030251
+                ]
+            },
+            "properties": {
+                "name": "Oldehoven",
+                "area": "Netherlands",
+                "address": "Oldehoofsterkerkhof, 8911 DE , Leeuwarden",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "53.2030251",
+                "longitude": "5.789752",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 204,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51323359999999,
+                    35.7132367
+                ]
+            },
+            "properties": {
+                "name": "Mountain Mall",
+                "area": "Tennessee",
+                "address": "611 Parkway Floor A outside Aunt Mahalia's, Gatlinburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2155",
+                "internal_url": "null",
+                "latitude": "35.7132367",
+                "longitude": "-83.51323359999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4207,
+                "last_updated": "2024-04-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.83801450988334,
+                    35.97766985605265
+                ]
+            },
+            "properties": {
+                "name": "World Famous Coffee Cup Café",
+                "area": "Nevada",
+                "address": "512 Nevada Way Boulder City, NV 89005 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.97766985605265,
+                "longitude": -114.83801450988334,
+                "machine_status": "available",
+                "id": 7152,
+                "last_updated": "2024-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.40057279999999,
+                    42.8925863
+                ]
+            },
+            "properties": {
+                "name": "Yankton Mall",
+                "area": "South Dakota",
+                "address": "2101 Broadway Ave #10, Yankton, SD 57078",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428495",
+                "internal_url": "null",
+                "latitude": "42.8925863",
+                "longitude": "-97.40057279999999",
+                "machine_status": "available",
+                "id": 7153,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.40057279999999,
+                    42.8925863
+                ]
+            },
+            "properties": {
+                "name": "Yankton Mall, - near the movie theater",
+                "area": "South Dakota",
+                "address": ", Yankton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428511",
+                "internal_url": "null",
+                "latitude": "42.8925863",
+                "longitude": "-97.40057279999999",
+                "machine_status": "available",
+                "id": 7154,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.3139403,
+                    35.0544016
+                ]
+            },
+            "properties": {
+                "name": "Chattanooga Lookouts AT&T Field",
+                "area": "Tennessee",
+                "address": "201 Power Alley, Chattanooga",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=389294",
+                "internal_url": "null",
+                "latitude": "35.0544016",
+                "longitude": "-85.3139403",
+                "machine_status": "available",
+                "id": 7155,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1571498,
+                    37.6734133
+                ]
+            },
+            "properties": {
+                "name": "Ruby's Inn General Store",
+                "area": "Utah",
+                "address": "26 S Main St, Bryce Canyon City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350600",
+                "internal_url": "null",
+                "latitude": "37.6734133",
+                "longitude": "-112.1571498",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5401,
+                "last_updated": "2024-04-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.38125285528737,
+                    38.06863930971662
+                ]
+            },
+            "properties": {
+                "name": "West Virginia Rest Area 69",
+                "area": "West Virginia",
+                "address": "West Virginia Turnpike Eskdale, WV 25075 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 38.06863930971662,
+                "longitude": -81.38125285528737,
+                "machine_status": "available",
+                "id": 7156,
+                "last_updated": "2024-04-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.2680178,
+                    42.0521472
+                ]
+            },
+            "properties": {
+                "name": "Hip-Nautic Gifts",
+                "area": "Oregon",
+                "address": "16372 Lower Harbor Rd, Brookings",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428588",
+                "internal_url": "null",
+                "latitude": "42.0521472",
+                "longitude": "-124.2680178",
+                "machine_status": "available",
+                "id": 7157,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.0726022,
+                    37.3837623
+                ]
+            },
+            "properties": {
+                "name": "Hovenweep National Monument",
+                "area": "Utah",
+                "address": ", Blanding",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428761",
+                "internal_url": "null",
+                "latitude": "37.3837623",
+                "longitude": "-109.0726022",
+                "machine_status": "available",
+                "id": 7158,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1564018,
+                    37.6739665
+                ]
+            },
+            "properties": {
+                "name": "Rubys Inn ",
+                "area": "Utah",
+                "address": "1000S. Main Hwy 63 (26 Main St??), Bryce City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=211260",
+                "internal_url": "null",
+                "latitude": "37.6739665",
+                "longitude": "-112.1564018",
+                "machine_status": "available",
+                "id": 7159,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.7211595,
+                    58.31846640000001
+                ]
+            },
+            "properties": {
+                "name": "Eesti Põllumajandusmuuseum",
+                "area": "Bulgaria",
+                "address": "Pargi 4, Ulenurme",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428703",
+                "internal_url": "null",
+                "latitude": "58.31846640000001",
+                "longitude": "26.7211595",
+                "machine_status": "available",
+                "id": 7160,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.684982,
+                    58.57619219999999
+                ]
+            },
+            "properties": {
+                "name": "Elistvere Loomapark",
+                "area": "Estonia",
+                "address": ", Elistvere",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=428705",
+                "internal_url": "null",
+                "latitude": "58.57619219999999",
+                "longitude": "26.684982",
+                "machine_status": "available",
+                "id": 7161,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.7872654,
+                    46.5877459
+                ]
+            },
+            "properties": {
+                "name": "Turda Salt Mine",
+                "area": "Romania",
+                "address": ", Turda",
+                "external_url": "http://209.221.138.252/Details.aspx?location=97250",
+                "internal_url": "null",
+                "latitude": "46.5877459",
+                "longitude": "23.7872654",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 896,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.9618246,
+                    50.0474296
+                ]
+            },
+            "properties": {
+                "name": "Fabryka Schindlera",
+                "area": "Poland",
+                "address": "Lipowa 4, Krakow",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "50.0474296",
+                "longitude": "19.9618246",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.079571564887294,
+                    54.179820643600344
+                ]
+            },
+            "properties": {
+                "name": "Leuchturm",
+                "area": "Germany",
+                "address": "Seepromenade Warnemünde",
+                "external_url": "http://209.221.138.252/Details.aspx?location=195719",
+                "internal_url": "null",
+                "latitude": "54.179820643600344",
+                "longitude": "12.079571564887294",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 632,
+                "last_updated": "2024-05-02"
             }
         }
     ]
