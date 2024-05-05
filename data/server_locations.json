@@ -1422,13 +1422,13 @@
                 "area": "Switzerland",
                 "address": "",
                 "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=272929",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "46.660467",
                 "longitude": "8.053718",
                 "machine_status": "retired",
                 "id": 718,
-                "last_updated": "2023-07-15"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -43433,10 +43433,10 @@
                 "logs": {
                     "2021-11-14": "Could not find machine before the entrance anymore. Checked both levels, but it might have been move inside the waterpark."
                 },
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 725,
-                "last_updated": "2024-05-05"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -51092,6 +51092,29 @@
                 "id": 7163,
                 "last_updated": "2024-05-05",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5295769,
+                    25.0308076
+                ]
+            },
+            "properties": {
+                "name": "Yongkang street market ",
+                "area": "Taiwan",
+                "address": "6 Yongkang street, Taipei",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "25.0308076",
+                "longitude": "121.5295769",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2371,
+                "last_updated": "2024-04-25"
             }
         }
     ]
