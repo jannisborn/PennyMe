@@ -7825,9 +7825,9 @@
                 "internal_url": "null",
                 "latitude": "35.3705752",
                 "longitude": "-120.8569796",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6120,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -42479,9 +42479,9 @@
                 "internal_url": "null",
                 "latitude": "55.3425263",
                 "longitude": "-131.6435809",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7036,
-                "last_updated": "2024-01-09"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -51161,6 +51161,29 @@
                 "status": "unvisited",
                 "id": 1159,
                 "last_updated": "2024-05-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7805445,
+                    35.62058340000001
+                ]
+            },
+            "properties": {
+                "name": "Odaiba (????) ",
+                "area": "Japan",
+                "address": ", Odaiba",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429197",
+                "internal_url": "null",
+                "latitude": "35.62058340000001",
+                "longitude": "139.7805445",
+                "machine_status": "available",
+                "id": 7164,
+                "last_updated": "2024-04-25"
             }
         }
     ]
