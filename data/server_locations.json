@@ -39983,9 +39983,9 @@
                 "internal_url": "null",
                 "latitude": "45.4347343",
                 "longitude": "-122.7581863",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6987,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-04-25"
             }
         },
         {
@@ -51207,6 +51207,75 @@
                 "status": "unvisited",
                 "id": 1897,
                 "last_updated": "2024-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.0142238,
+                    42.461352
+                ]
+            },
+            "properties": {
+                "name": "Historic Auto Attractions",
+                "area": "Illinois",
+                "address": "13825 Metric Rd, Roscoe ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429204",
+                "internal_url": "null",
+                "latitude": "42.461352",
+                "longitude": "-89.0142238",
+                "machine_status": "available",
+                "id": 7165,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.905531,
+                    52.4801595
+                ]
+            },
+            "properties": {
+                "name": "Birmingham Library",
+                "area": "England",
+                "address": "Birmingham, WEST MIDLANDS - Birmingham",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429268",
+                "internal_url": "null",
+                "latitude": "52.4801595",
+                "longitude": "-1.905531",
+                "machine_status": "available",
+                "id": 7166,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.4417664,
+                    35.8277061
+                ]
+            },
+            "properties": {
+                "name": "Hagar qim souvenir shop",
+                "area": "Malta",
+                "address": "Il-Qrendi QRD 2501, Malta, Hagar qim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=375509",
+                "internal_url": "null",
+                "latitude": "35.8277061",
+                "longitude": "14.4417664",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5853,
+                "last_updated": "2024-04-25"
             }
         }
     ]
