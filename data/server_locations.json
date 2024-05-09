@@ -51326,6 +51326,52 @@
                 "multimachine": 6,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.3662349,
+                    38.9530608
+                ]
+            },
+            "properties": {
+                "name": "The Jeep Guy Museum",
+                "area": "Utah",
+                "address": "860 Airway Dr, Fillmore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429278",
+                "internal_url": "null",
+                "latitude": "38.9530608",
+                "longitude": "-112.3662349",
+                "machine_status": "available",
+                "id": 7167,
+                "last_updated": "2024-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.703147599999999,
+                    40.4161389
+                ]
+            },
+            "properties": {
+                "name": "From Madrid with Love",
+                "area": "Spain",
+                "address": "C. de Carretas, 11, Centro, Madrid ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429279",
+                "internal_url": "null",
+                "latitude": "40.4161389",
+                "longitude": "-3.703147599999999",
+                "machine_status": "available",
+                "id": 7168,
+                "last_updated": "2024-04-25"
+            }
         }
     ]
 }
