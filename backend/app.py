@@ -396,6 +396,7 @@ def change_machine():
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
+    address_okay = True  # by default okay
     # if address or coordinates were changed, compare them and return warning if needed
     if latitude != lat_old or longitude != lng_old or address != old_address:
         # Verify that address matches coordinates
