@@ -51372,6 +51372,31 @@
                 "id": 7168,
                 "last_updated": "2024-04-25"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.78366620000001,
+                    39.0860427
+                ]
+            },
+            "properties": {
+                "name": "Creation Museum",
+                "area": "Kentucky",
+                "address": "2800 Bullittsburg Church Rd, Hebron",
+                "external_url": "http://209.221.138.252/Details.aspx?location=38402",
+                "internal_url": "null",
+                "latitude": "39.0860427",
+                "longitude": "-84.78366620000001",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3525,
+                "last_updated": "2024-05-10",
+                "multimachine": 3,
+                "paywall": true
+            }
         }
     ]
 }
