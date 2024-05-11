@@ -51484,7 +51484,7 @@
                 "internal_url": "null",
                 "latitude": "43.83490399999999",
                 "longitude": "4.3596146",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 82,
                 "last_updated": "2024-05-10"
@@ -51510,6 +51510,75 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 962,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51922689999999,
+                    35.7109528
+                ]
+            },
+            "properties": {
+                "name": "Dick's Last Resort  Gatlinburg",
+                "area": "Tennessee",
+                "address": "903 Parkway, Gatlinburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262371",
+                "internal_url": "null",
+                "latitude": "35.7109528",
+                "longitude": "-83.51922689999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4202,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3032127,
+                    29.0285539
+                ]
+            },
+            "properties": {
+                "name": "Pretty Little Things of DeLand",
+                "area": "Florida",
+                "address": "113 N Woodland Blvd, Deland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429328",
+                "internal_url": "null",
+                "latitude": "29.0285539",
+                "longitude": "-81.3032127",
+                "machine_status": "available",
+                "id": 7170,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7759965,
+                    35.6290584
+                ]
+            },
+            "properties": {
+                "name": "Decks Tokyo Building",
+                "area": "Japan",
+                "address": "1-6-1 Daiba, Minato, Tokyo 135-0091, Japan, Tokyo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=199635",
+                "internal_url": "null",
+                "latitude": "35.6290584",
+                "longitude": "139.7759965",
+                "machine_status": "available",
+                "id": 7171,
                 "last_updated": "2024-05-10"
             }
         }
