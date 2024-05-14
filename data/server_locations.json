@@ -51697,6 +51697,75 @@
                 "id": 73,
                 "last_updated": "2024-05-14"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7754903,
+                    36.1627024
+                ]
+            },
+            "properties": {
+                "name": "Wildhorse Saloon",
+                "area": "Tennessee",
+                "address": "120 2nd Ave. North, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39935",
+                "internal_url": "null",
+                "latitude": "36.1627024",
+                "longitude": "-86.7754903",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4257,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4509587,
+                    28.4755669
+                ]
+            },
+            "properties": {
+                "name": "Disney's Character Warehouse",
+                "area": "Florida",
+                "address": "4951 International Dr, Orlando",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429498",
+                "internal_url": "null",
+                "latitude": "28.4755669",
+                "longitude": "-81.4509587",
+                "machine_status": "available",
+                "id": 7172,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3879824,
+                    33.7489954
+                ]
+            },
+            "properties": {
+                "name": "The Dungeon Shanghai ",
+                "area": "China",
+                "address": ", Shanghai ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317524",
+                "internal_url": "null",
+                "latitude": "33.7489954",
+                "longitude": "-84.3879824",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2949,
+                "last_updated": "2024-05-10"
+            }
         }
     ]
 }
