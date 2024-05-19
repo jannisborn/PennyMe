@@ -2235,9 +2235,9 @@
                 "latitude": "43.65341340000001",
                 "longitude": "-110.7185596",
                 "multimachine": 2,
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 3117,
-                "last_updated": "2023-07-23"
+                "last_updated": "2024-05-18"
             }
         },
         {
@@ -2936,11 +2936,11 @@
                 "internal_url": "null",
                 "latitude": "39.8106132",
                 "longitude": "-86.1578917",
-                "multimachine": 3,
+                "multimachine": 2,
                 "paywall": true,
                 "machine_status": "available",
                 "id": 2266,
-                "last_updated": "2023-08-05"
+                "last_updated": "2024-05-19"
             }
         },
         {
@@ -2984,10 +2984,10 @@
                 "internal_url": "null",
                 "latitude": 39.81106757061918,
                 "longitude": -86.15813267991254,
-                "paywall": "false",
+                "paywall": false,
                 "machine_status": "available",
                 "id": 6018,
-                "last_updated": "2023-08-05"
+                "last_updated": "2024-05-19"
             }
         },
         {
@@ -7641,9 +7641,9 @@
                 "internal_url": "null",
                 "latitude": "36.606886",
                 "longitude": "-117.1467942",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6114,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51650,6 +51650,512 @@
                 "status": "unvisited",
                 "id": 69,
                 "last_updated": "2024-05-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.9926158,
+                    32.9597153
+                ]
+            },
+            "properties": {
+                "name": "Other Elongated Penny Related Items (Pennybandz)",
+                "area": "_Collector Books_",
+                "address": ", Pennycollector",
+                "external_url": "http://209.221.138.252/Details.aspx?location=261158",
+                "internal_url": "null",
+                "latitude": "32.9597153",
+                "longitude": "-96.9926158",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5588,
+                "last_updated": "2024-05-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.724777967709953,
+                    45.19866752339188
+                ]
+            },
+            "properties": {
+                "name": "Grenoble Bastille",
+                "area": "France",
+                "address": "la Bastille, Grenoble",
+                "external_url": "http://209.221.138.252/Details.aspx?location=72630",
+                "internal_url": "null",
+                "latitude": "45.19866752339188",
+                "longitude": "5.724777967709953",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 73,
+                "last_updated": "2024-05-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7754903,
+                    36.1627024
+                ]
+            },
+            "properties": {
+                "name": "Wildhorse Saloon",
+                "area": "Tennessee",
+                "address": "120 2nd Ave. North, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=39935",
+                "internal_url": "null",
+                "latitude": "36.1627024",
+                "longitude": "-86.7754903",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4257,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4509587,
+                    28.4755669
+                ]
+            },
+            "properties": {
+                "name": "Disney's Character Warehouse",
+                "area": "Florida",
+                "address": "4951 International Dr, Orlando",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429498",
+                "internal_url": "null",
+                "latitude": "28.4755669",
+                "longitude": "-81.4509587",
+                "machine_status": "available",
+                "id": 7172,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3879824,
+                    33.7489954
+                ]
+            },
+            "properties": {
+                "name": "The Dungeon Shanghai ",
+                "area": "China",
+                "address": ", Shanghai ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317524",
+                "internal_url": "null",
+                "latitude": "33.7489954",
+                "longitude": "-84.3879824",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2949,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.60738049999999,
+                    36.5005774
+                ]
+            },
+            "properties": {
+                "name": "Mayberry Market and Souvenirs ",
+                "area": "North Carolina",
+                "address": "182 N Main St., Mount Airy",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429554",
+                "internal_url": "null",
+                "latitude": "36.5005774",
+                "longitude": "-80.60738049999999",
+                "machine_status": "available",
+                "id": 7173,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.27964639999999,
+                    45.050791
+                ]
+            },
+            "properties": {
+                "name": "From the Forty LLC - Main Street Shops",
+                "area": "Wisconsin",
+                "address": "7828 State Highway 42 - Unit 2E, Egg Harbor",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429563",
+                "internal_url": "null",
+                "latitude": "45.050791",
+                "longitude": "-87.27964639999999",
+                "machine_status": "available",
+                "id": 7174,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.3277171,
+                    -42.1601677
+                ]
+            },
+            "properties": {
+                "name": "West Coast Wilderness Railway",
+                "area": "Australia",
+                "address": "Regatta Point Station, 62 Esplanade, Strahan, TAS - Strahan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429547",
+                "internal_url": "null",
+                "latitude": "-42.1601677",
+                "longitude": "145.3277171",
+                "machine_status": "available",
+                "id": 7175,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.6448022,
+                    51.4773885
+                ]
+            },
+            "properties": {
+                "name": "Haven Holiday Park",
+                "area": "England",
+                "address": "Allhallows on Sea, near Rochester, KENT - Allhallows On Sea",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429555",
+                "internal_url": "null",
+                "latitude": "51.4773885",
+                "longitude": "0.6448022",
+                "machine_status": "available",
+                "id": 7176,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.499669122981683,
+                    54.34153335114027
+                ]
+            },
+            "properties": {
+                "name": "Lauterbach Mole",
+                "area": "Germany",
+                "address": "Hafenstraße 3C, 18581 Putbus, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 54.34153335114027,
+                "longitude": 13.499669122981683,
+                "machine_status": "available",
+                "id": 7177,
+                "last_updated": "2024-05-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.1440887,
+                    41.003334
+                ]
+            },
+            "properties": {
+                "name": "Odd-Lot Outlet Superstore",
+                "area": "Pennsylvania",
+                "address": "Route 209, Marshalls Creek",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4053",
+                "internal_url": "null",
+                "latitude": "41.003334",
+                "longitude": "-75.1440887",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4018,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.8351383,
+                    32.3264743
+                ]
+            },
+            "properties": {
+                "name": "Makin Waves",
+                "area": "Bermuda",
+                "address": "5 Camber Road, Dockyard",
+                "external_url": "http://209.221.138.252/Details.aspx?location=408",
+                "internal_url": "null",
+                "latitude": "32.3264743",
+                "longitude": "-64.8351383",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1684,
+                "last_updated": "2024-05-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1334032,
+                    51.5200679
+                ]
+            },
+            "properties": {
+                "name": "Monopoly Lifesized",
+                "area": "England",
+                "address": "213-215 Tottenham Court Road, LONDON - Camden",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429612",
+                "internal_url": "null",
+                "latitude": "51.5200679",
+                "longitude": "-0.1334032",
+                "machine_status": "available",
+                "id": 7178,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.694824323346122,
+                    50.849334222545906
+                ]
+            },
+            "properties": {
+                "name": "Sint Servaasbrug Maastricht",
+                "area": "Netherlands",
+                "address": "Maastrichter Brugstraat 1, 6211 ES Maastricht",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.849334222545906,
+                "longitude": 5.694824323346122,
+                "machine_status": "available",
+                "id": 7179,
+                "last_updated": "2024-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.8025451571108,
+                    36.02961914836139
+                ]
+            },
+            "properties": {
+                "name": "M&NA Railroad Station Depot",
+                "area": "Arkansas",
+                "address": "110 Highway 65, St. Joe",
+                "external_url": "http://209.221.138.252/Details.aspx?location=314829",
+                "internal_url": "null",
+                "latitude": "36.02961914836139",
+                "longitude": "-92.8025451571108",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2325,
+                "last_updated": "2024-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.27418399999999,
+                    32.823393
+                ]
+            },
+            "properties": {
+                "name": "Clown Hamburgers",
+                "area": "Texas",
+                "address": "5020 Stanley Keller Rd, Haltom City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=288236",
+                "internal_url": "null",
+                "latitude": "32.823393",
+                "longitude": "-97.27418399999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3733,
+                "last_updated": "2024-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.58179109999999,
+                    32.5729402
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Alabama",
+                "address": "2500 Buc-ees Blvd, Auburn, AL 36832, Auburn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429691",
+                "internal_url": "null",
+                "latitude": "32.5729402",
+                "longitude": "-85.58179109999999",
+                "machine_status": "available",
+                "id": 7180,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -60.1995598,
+                    46.1417902
+                ]
+            },
+            "properties": {
+                "name": "Joan Harriss Cruise Pavilion",
+                "area": "Canada",
+                "address": "74 Esplanade St, Nova Scotia - Sydney",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429688",
+                "internal_url": "null",
+                "latitude": "46.1417902",
+                "longitude": "-60.1995598",
+                "machine_status": "available",
+                "id": 7181,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.535676,
+                    36.5079648
+                ]
+            },
+            "properties": {
+                "name": "Train Park Hakusan",
+                "area": "Japan",
+                "address": "2828-1 Miyabomachi, Hakusan-shi, Ishikawa Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429683",
+                "internal_url": "null",
+                "latitude": "36.5079648",
+                "longitude": "136.535676",
+                "machine_status": "available",
+                "id": 7182,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.30188059999999,
+                    29.6739639
+                ]
+            },
+            "properties": {
+                "name": "Satchel's Pizza",
+                "area": "Florida",
+                "address": "1800 NE 23rd Ave, Gainesville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=227251",
+                "internal_url": "null",
+                "latitude": "29.6739639",
+                "longitude": "-82.30188059999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3310,
+                "last_updated": "2024-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1643665,
+                    39.7645005
+                ]
+            },
+            "properties": {
+                "name": "Indiana Convention Center, GenCon in the Dealer Hall",
+                "area": "Indiana",
+                "address": "100 South Capitol Avenue, Indianapolis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=365503",
+                "internal_url": "null",
+                "latitude": "39.7645005",
+                "longitude": "-86.1643665",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5462,
+                "last_updated": "2024-05-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.42441339217271,
+                    51.181463684128694
+                ]
+            },
+            "properties": {
+                "name": "Bautzen Hauptmarkt",
+                "area": "Germany",
+                "address": "Kornstraße 2, 02625 Bautzen, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 51.181463684128694,
+                "longitude": 14.42441339217271,
+                "machine_status": "available",
+                "id": 7183,
+                "last_updated": "2024-05-19"
             }
         }
     ]
