@@ -49027,10 +49027,10 @@
                 "internal_url": "null",
                 "latitude": "38.7161725",
                 "longitude": "-75.0781923",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2246,
-                "last_updated": "2024-04-06"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52432,6 +52432,29 @@
                 "status": "unvisited",
                 "id": 474,
                 "last_updated": "2024-05-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0218478,
+                    52.0743017
+                ]
+            },
+            "properties": {
+                "name": "Silverstone Museum",
+                "area": "England",
+                "address": "Silverstone Circuit, Luffield Abbey, Northamptonshire - Silverstone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=429770",
+                "internal_url": "null",
+                "latitude": "52.0743017",
+                "longitude": "-1.0218478",
+                "machine_status": "available",
+                "id": 7185,
+                "last_updated": "2024-05-10"
             }
         }
     ]
