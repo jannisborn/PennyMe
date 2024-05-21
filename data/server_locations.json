@@ -52548,6 +52548,31 @@
                 "id": 3615,
                 "last_updated": "2024-05-20"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.57996709999999,
+                    38.6289142
+                ]
+            },
+            "properties": {
+                "name": "The Ark Encounter",
+                "area": "Kentucky",
+                "address": "1 Ark Encounter Drive, Williamstown",
+                "external_url": "http://209.221.138.252/Details.aspx?location=277372",
+                "internal_url": "null",
+                "latitude": "38.6289142",
+                "longitude": "-84.57996709999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3544,
+                "last_updated": "2024-05-21",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
