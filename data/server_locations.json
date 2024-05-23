@@ -39910,13 +39910,13 @@
                 "area": "Michigan",
                 "address": "5052 M66 North, Charlevoix",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=418411",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "45.2803067",
                 "longitude": "-85.2298292",
                 "machine_status": "available",
                 "id": 6985,
-                "last_updated": "2023-11-30"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52591,10 +52591,10 @@
                 "internal_url": "null",
                 "latitude": "36.8435831",
                 "longitude": "-75.9711601",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4459,
-                "last_updated": "2024-05-21"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52733,6 +52733,52 @@
                 "status": "unvisited",
                 "id": 3125,
                 "last_updated": "2024-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.2298292,
+                    45.2803067
+                ]
+            },
+            "properties": {
+                "name": "Castle Farms    ",
+                "area": "Michigan",
+                "address": "5052 M 66 N, Charlevoix,",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430120",
+                "internal_url": "null",
+                "latitude": "45.2803067",
+                "longitude": "-85.2298292",
+                "machine_status": "available",
+                "id": 7189,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5210989,
+                    25.0523201
+                ]
+            },
+            "properties": {
+                "name": "Shin Kong Mitsukoshi Nanxi Store One",
+                "area": "Taiwan",
+                "address": "No. 12, Nanjing W Rd, Zhongshan District, Taipei City, 10491, Taipei",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430094",
+                "internal_url": "null",
+                "latitude": "25.0523201",
+                "longitude": "121.5210989",
+                "machine_status": "available",
+                "id": 7190,
+                "last_updated": "2024-05-10"
             }
         }
     ]
