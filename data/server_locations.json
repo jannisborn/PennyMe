@@ -47803,10 +47803,10 @@
                 "internal_url": "null",
                 "latitude": "29.9838569",
                 "longitude": "-81.4641236",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5366,
-                "last_updated": "2024-03-25"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52779,6 +52779,29 @@
                 "status": "unvisited",
                 "id": 5519,
                 "last_updated": "2024-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.9809849,
+                    47.9565529
+                ]
+            },
+            "properties": {
+                "name": "Grand Coulee Dam Visitor's Arrival Center",
+                "area": "Washington",
+                "address": "Base of the Dam, Coulee Dam",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1074",
+                "internal_url": "null",
+                "latitude": "47.9565529",
+                "longitude": "-118.9809849",
+                "machine_status": "available",
+                "id": 7191,
+                "last_updated": "2024-05-10"
             }
         }
     ]
