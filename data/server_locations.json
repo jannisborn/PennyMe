@@ -46597,14 +46597,14 @@
                 "name": "Zoo of Acadiana",
                 "area": "Louisiana",
                 "address": "Highway 90 E, Broussard",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430238",
                 "internal_url": "null",
                 "latitude": "30.1170506",
                 "longitude": "-91.93991419999999",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3568,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51203,10 +51203,10 @@
                 "internal_url": "null",
                 "latitude": "39.61155499376937",
                 "longitude": "-105.09669373047906",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1897,
-                "last_updated": "2024-05-08"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52825,6 +52825,52 @@
                 "status": "unvisited",
                 "id": 3666,
                 "last_updated": "2024-05-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.474477,
+                    37.558324
+                ]
+            },
+            "properties": {
+                "name": "Virginia Museum of History & Culture (Was Virginia Historical Society)",
+                "area": "Virginia",
+                "address": "428 N Arthur Ashe Boulevard, Richmond",
+                "external_url": "http://209.221.138.252/Details.aspx?location=111621",
+                "internal_url": "null",
+                "latitude": "37.558324",
+                "longitude": "-77.474477",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4445,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.8064341,
+                    38.9892691
+                ]
+            },
+            "properties": {
+                "name": "Tributes and Traditions Retro Arcade and Fascination",
+                "area": "New Jersey",
+                "address": "2900-2904 Boardwalk, Wildwood",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343805",
+                "internal_url": "null",
+                "latitude": "38.9892691",
+                "longitude": "-74.8064341",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 2408,
+                "last_updated": "2024-05-10"
             }
         }
     ]
