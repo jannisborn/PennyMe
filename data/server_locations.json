@@ -1357,9 +1357,9 @@
                 "internal_url": "null",
                 "latitude": "47.73167717508765",
                 "longitude": "-116.78978643063256",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4312,
-                "last_updated": "2023-07-13"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -37383,13 +37383,13 @@
                 "area": "Germany",
                 "address": "Rheinpromenade 11, 46446 Emmerich am Rhein, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430315",
                 "internal_url": "null",
                 "latitude": "51.8294643",
                 "longitude": "6.2445451",
                 "machine_status": "available",
                 "id": 6913,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51203,7 +51203,7 @@
                 "internal_url": "null",
                 "latitude": "39.61155499376937",
                 "longitude": "-105.09669373047906",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1897,
                 "last_updated": "2024-05-10"
@@ -52988,6 +52988,29 @@
                 "id": 1111,
                 "last_updated": "2024-05-27",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.4049299,
+                    36.74986
+                ]
+            },
+            "properties": {
+                "name": "Mabry Mill Restaurant and Gift Shop",
+                "area": "Virginia",
+                "address": "266 Mabry Mill Rd., Meadows of Dan",
+                "external_url": "http://209.221.138.252/Details.aspx?location=209384",
+                "internal_url": "null",
+                "latitude": "36.74986",
+                "longitude": "-80.4049299",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4429,
+                "last_updated": "2024-05-10"
             }
         }
     ]
