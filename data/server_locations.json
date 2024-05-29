@@ -53034,6 +53034,52 @@
                 "id": 3323,
                 "last_updated": "2024-05-28"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.9112762,
+                    34.2401798
+                ]
+            },
+            "properties": {
+                "name": "Beary Bliss",
+                "area": "California",
+                "address": "685 Pine Knot Ave, Unit A, Big Bear Lake",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430405",
+                "internal_url": "null",
+                "latitude": "34.2401798",
+                "longitude": "-116.9112762",
+                "machine_status": "available",
+                "id": 7193,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.9446972,
+                    42.3836083
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge",
+                "area": "Illinois",
+                "address": "1700 Nations Drive  , Gurnee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=295376",
+                "internal_url": "null",
+                "latitude": "42.3836083",
+                "longitude": "-87.9446972",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1227,
+                "last_updated": "2024-05-10"
+            }
         }
     ]
 }
