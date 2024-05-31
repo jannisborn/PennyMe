@@ -3009,9 +3009,9 @@
                 "latitude": "35.0277544",
                 "longitude": "-111.0221934",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2737,
-                "last_updated": "2023-08-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -48034,10 +48034,10 @@
                 "internal_url": "null",
                 "latitude": "36.1088418",
                 "longitude": "-115.1721488",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4510,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53126,6 +53126,29 @@
                 "status": "unvisited",
                 "id": 4774,
                 "last_updated": "2024-05-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.963188,
+                    48.77656870000001
+                ]
+            },
+            "properties": {
+                "name": "France Miniature",
+                "area": "France",
+                "address": "Boulevard André Malraux, Elancourt",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430624",
+                "internal_url": "null",
+                "latitude": "48.77656870000001",
+                "longitude": "1.963188",
+                "machine_status": "available",
+                "id": 7194,
+                "last_updated": "2024-05-10"
             }
         }
     ]
