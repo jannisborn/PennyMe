@@ -50648,13 +50648,13 @@
                 "area": "Nevada",
                 "address": "512 Nevada Way Boulder City, NV 89005 United States",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430711",
                 "internal_url": "null",
                 "latitude": 35.97766985605265,
                 "longitude": -114.83801450988334,
                 "machine_status": "available",
                 "id": 7152,
-                "last_updated": "2024-04-29"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51923,10 +51923,10 @@
                 "internal_url": "null",
                 "latitude": "32.3264743",
                 "longitude": "-64.8351383",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1684,
-                "last_updated": "2024-05-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53197,6 +53197,75 @@
                 "last_updated": "2024-06-02",
                 "multimachine": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.66365479999999,
+                    47.0259497
+                ]
+            },
+            "properties": {
+                "name": "Two Harbors Area Chamber Of Commerce \"Tourist Information\" Center",
+                "area": "Minnesota",
+                "address": "1330 MN-61, Two Harbors",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430674",
+                "internal_url": "null",
+                "latitude": "47.0259497",
+                "longitude": "-91.66365479999999",
+                "machine_status": "available",
+                "id": 7195,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.8201017,
+                    48.25931569999999
+                ]
+            },
+            "properties": {
+                "name": "Burg Kreuzen",
+                "area": "Austria",
+                "address": ", Bad Kreuzen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430673",
+                "internal_url": "null",
+                "latitude": "48.25931569999999",
+                "longitude": "14.8201017",
+                "machine_status": "available",
+                "id": 7196,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.442341,
+                    39.083438
+                ]
+            },
+            "properties": {
+                "name": "Cova de can Marça",
+                "area": "Spain",
+                "address": "Port de Balansat , Puerto san Miguel",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430679",
+                "internal_url": "null",
+                "latitude": "39.083438",
+                "longitude": "1.442341",
+                "machine_status": "available",
+                "id": 7197,
+                "last_updated": "2024-05-10"
             }
         }
     ]
