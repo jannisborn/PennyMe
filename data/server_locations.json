@@ -29587,13 +29587,13 @@
                 "area": "Germany",
                 "address": "Helgolandkai 13, 25761 Büsum, Germany",
                 "status": "retired",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=7333",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.1247020",
                 "longitude": "8.8612556",
                 "machine_status": "retired",
                 "id": 6572,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51065,10 +51065,10 @@
                 "internal_url": "null",
                 "latitude": "36.1014995",
                 "longitude": "-115.1740094",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4520,
-                "last_updated": "2024-05-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53289,6 +53289,52 @@
                 "status": "unvisited",
                 "id": 741,
                 "last_updated": "2024-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.412609,
+                    31.315864
+                ]
+            },
+            "properties": {
+                "name": "Keith's Superstore",
+                "area": "Mississippi",
+                "address": "5331 Old HWY 11, Hattiesburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430892",
+                "internal_url": "null",
+                "latitude": "31.315864",
+                "longitude": "-89.412609",
+                "machine_status": "available",
+                "id": 7198,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.7100404,
+                    52.0111047
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs shop",
+                "area": "Netherlands",
+                "address": "Wijdstraat 41, Gouda",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430800",
+                "internal_url": "null",
+                "latitude": "52.0111047",
+                "longitude": "4.7100404",
+                "machine_status": "available",
+                "id": 7199,
+                "last_updated": "2024-05-10"
             }
         }
     ]
