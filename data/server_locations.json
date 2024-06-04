@@ -2235,9 +2235,9 @@
                 "latitude": "43.65341340000001",
                 "longitude": "-110.7185596",
                 "multimachine": 2,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 3117,
-                "last_updated": "2024-05-18"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -7963,9 +7963,9 @@
                 "internal_url": "null",
                 "latitude": "32.7523936",
                 "longitude": "-117.1958841",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "id": 6124,
-                "last_updated": "2024-03-15"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -29633,13 +29633,13 @@
                 "area": "Germany",
                 "address": "Südstrand 9, 25761 Büsum, Germany",
                 "status": "retired",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=1875",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.1280516",
                 "longitude": "8.8572278",
                 "machine_status": "retired",
                 "id": 6574,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53624,6 +53624,29 @@
                 "status": "unvisited",
                 "id": 5410,
                 "last_updated": "2024-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.38044,
+                    52.5165
+                ]
+            },
+            "properties": {
+                "name": "Brandenburg Gate Shop 2",
+                "area": "Germany",
+                "address": "Brandenburger Tor, Unter den Linden 78, 10117 Berlin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430884",
+                "internal_url": "null",
+                "latitude": "52.516500",
+                "longitude": "13.380440",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5055,
+                "last_updated": "2024-05-10"
             }
         }
     ]
