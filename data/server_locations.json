@@ -53384,6 +53384,31 @@
                 "last_updated": "2024-06-04",
                 "multimachine": 4
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5549243,
+                    28.3616941
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, *Hollywood Studios* (formerly MGM Studios)",
+                "area": "Florida",
+                "address": "Hollywood Studios Resort, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1715",
+                "internal_url": "null",
+                "latitude": "28.3616941",
+                "longitude": "-81.5549243",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3338,
+                "last_updated": "2024-06-04",
+                "multimachine": 1,
+                "paywall": true
+            }
         }
     ]
 }
