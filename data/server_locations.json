@@ -5192,9 +5192,9 @@
                 "latitude": "36.2176958",
                 "longitude": "-86.6978622",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4243,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -47040,13 +47040,13 @@
                 "area": "Colorado",
                 "address": "5201 Nugget Road, Berthoud",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=425563",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "40.3083174",
                 "longitude": "-105.0810924",
                 "machine_status": "available",
                 "id": 7095,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53646,6 +53646,52 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 5055,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.33238709999999,
+                    43.2297193
+                ]
+            },
+            "properties": {
+                "name": "USS Silversides Submarine Museum",
+                "area": "Michigan",
+                "address": "1346 Bluff Street, Muskegon",
+                "external_url": "http://209.221.138.252/Details.aspx?location=354336",
+                "internal_url": "null",
+                "latitude": "43.2297193",
+                "longitude": "-86.33238709999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5277,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.5086529,
+                    44.414571
+                ]
+            },
+            "properties": {
+                "name": "Sturgis Motorcycle Museum and Hall of Fame",
+                "area": "South Dakota",
+                "address": "999 Main Street, Sturgis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=341998",
+                "internal_url": "null",
+                "latitude": "44.414571",
+                "longitude": "-103.5086529",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 1317,
                 "last_updated": "2024-05-10"
             }
         }
