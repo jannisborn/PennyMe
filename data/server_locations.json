@@ -1495,9 +1495,9 @@
                 "internal_url": "null",
                 "latitude": "44.4593593",
                 "longitude": "-110.8259479",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5511,
-                "last_updated": "2023-07-22"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -14060,9 +14060,9 @@
                 "internal_url": "null",
                 "latitude": "44.4714079",
                 "longitude": "-110.5545361",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6277,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -21012,9 +21012,9 @@
                 "internal_url": "null",
                 "latitude": "44.73359",
                 "longitude": "-110.491356",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3122,
-                "last_updated": "2023-10-18"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -25878,13 +25878,13 @@
                 "area": "Wyoming",
                 "address": "West Entrance Road, Yellowstone National Park",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=662",
                 "internal_url": "null",
                 "latitude": "44.4593593",
                 "longitude": "-110.8259479",
                 "machine_status": "available",
                 "id": 3126,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53762,6 +53762,98 @@
                 "status": "unvisited",
                 "id": 2079,
                 "last_updated": "2024-06-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1756473,
+                    36.0955849
+                ]
+            },
+            "properties": {
+                "name": "Luxor Hotel Casino - Titanic Exhibition",
+                "area": "Nevada",
+                "address": "3900 Las Vegas Boulevard, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=203390",
+                "internal_url": "null",
+                "latitude": "36.0955849",
+                "longitude": "-115.1756473",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4514,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9624746,
+                    41.3730797
+                ]
+            },
+            "properties": {
+                "name": "West Point Military Academy Visitors Center",
+                "area": "New York",
+                "address": "Building 2107, West Point Hwy, West Point",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3523",
+                "internal_url": "null",
+                "latitude": "41.3730797",
+                "longitude": "-73.9624746",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3095,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8295324,
+                    44.4566373
+                ]
+            },
+            "properties": {
+                "name": "Old Faithful Snow Lodge",
+                "area": "Wyoming",
+                "address": "2051 Snow Lodge Ave. , Yellowstone National Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431066",
+                "internal_url": "null",
+                "latitude": "44.4566373",
+                "longitude": "-110.8295324",
+                "machine_status": "available",
+                "id": 7201,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.6531641,
+                    54.3498001
+                ]
+            },
+            "properties": {
+                "name": "St. Mary's Church Bazylika Mariacka Wniebowziecia Najswietszej Maryi Panny ",
+                "area": "Poland",
+                "address": "Podkramarska 5, Gdansk",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431111",
+                "internal_url": "null",
+                "latitude": "54.3498001",
+                "longitude": "18.6531641",
+                "machine_status": "available",
+                "id": 7202,
+                "last_updated": "2024-05-10"
             }
         }
     ]
