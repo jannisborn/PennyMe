@@ -1495,9 +1495,9 @@
                 "internal_url": "null",
                 "latitude": "44.4593593",
                 "longitude": "-110.8259479",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5511,
-                "last_updated": "2023-07-22"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -2235,9 +2235,9 @@
                 "latitude": "43.65341340000001",
                 "longitude": "-110.7185596",
                 "multimachine": 2,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 3117,
-                "last_updated": "2024-05-18"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -2749,9 +2749,9 @@
                 "internal_url": "null",
                 "latitude": "33.763382",
                 "longitude": "-84.3951098",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1619,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-05-30"
             }
         },
         {
@@ -3009,9 +3009,9 @@
                 "latitude": "35.0277544",
                 "longitude": "-111.0221934",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2737,
-                "last_updated": "2023-08-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -5192,9 +5192,9 @@
                 "latitude": "36.2176958",
                 "longitude": "-86.6978622",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4243,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -5633,7 +5633,7 @@
             "properties": {
                 "name": "Oasis Travel Center",
                 "area": "Alabama",
-                "address": "27801 County Road 64 Ext , Robertsdale ",
+                "address": "27801 County Road 64 Ext , Robertsdale",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=409542",
                 "internal_url": "null",
@@ -5641,7 +5641,7 @@
                 "longitude": "-87.6157576",
                 "machine_status": "available",
                 "id": 6065,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-06-08"
             }
         },
         {
@@ -7963,9 +7963,9 @@
                 "internal_url": "null",
                 "latitude": "32.7523936",
                 "longitude": "-117.1958841",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "id": 6124,
-                "last_updated": "2024-03-15"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -10379,9 +10379,9 @@
                 "internal_url": "null",
                 "latitude": "28.3870146",
                 "longitude": "-81.4924151",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6179,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-06-04"
             }
         },
         {
@@ -14060,9 +14060,9 @@
                 "internal_url": "null",
                 "latitude": "44.4714079",
                 "longitude": "-110.5545361",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6277,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -20759,7 +20759,8 @@
                 "multimachine": 5,
                 "machine_status": "available",
                 "id": 1624,
-                "last_updated": "2021-04-05"
+                "last_updated": "2024-05-31",
+                "paywall": true
             }
         },
         {
@@ -21011,9 +21012,9 @@
                 "internal_url": "null",
                 "latitude": "44.73359",
                 "longitude": "-110.491356",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3122,
-                "last_updated": "2023-10-18"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -22290,11 +22291,11 @@
                 "internal_url": "null",
                 "latitude": "38.8589369",
                 "longitude": "-104.9179652",
-                "paywall": true,
+                "paywall": false,
                 "multimachine": 4,
                 "machine_status": "available",
                 "id": 1900,
-                "last_updated": "2023-10-28"
+                "last_updated": "2024-06-09"
             }
         },
         {
@@ -25877,13 +25878,13 @@
                 "area": "Wyoming",
                 "address": "West Entrance Road, Yellowstone National Park",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=662",
                 "internal_url": "null",
                 "latitude": "44.4593593",
                 "longitude": "-110.8259479",
                 "machine_status": "available",
                 "id": 3126,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -29586,13 +29587,13 @@
                 "area": "Germany",
                 "address": "Helgolandkai 13, 25761 Büsum, Germany",
                 "status": "retired",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=7333",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.1247020",
                 "longitude": "8.8612556",
                 "machine_status": "retired",
                 "id": 6572,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -29632,13 +29633,13 @@
                 "area": "Germany",
                 "address": "Südstrand 9, 25761 Büsum, Germany",
                 "status": "retired",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=1875",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.1280516",
                 "longitude": "8.8572278",
                 "machine_status": "retired",
                 "id": 6574,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -42851,8 +42852,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3365,
-                "last_updated": "2024-01-23",
-                "multimachine": 3
+                "last_updated": "2024-06-04",
+                "multimachine": 2
             }
         },
         {
@@ -46688,7 +46689,7 @@
             "properties": {
                 "name": "Paddington Bear Store",
                 "area": "England",
-                "address": "Praed St, Paddington, London , LONDON - Paddington",
+                "address": "Praed St, Paddington, London",
                 "external_url": "http://209.221.138.252/Details.aspx?location=300813",
                 "internal_url": "null",
                 "latitude": "51.5161284",
@@ -46696,7 +46697,7 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1476,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-06-02"
             }
         },
         {
@@ -47039,13 +47040,13 @@
                 "area": "Colorado",
                 "address": "5201 Nugget Road, Berthoud",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=425563",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "40.3083174",
                 "longitude": "-105.0810924",
                 "machine_status": "available",
                 "id": 7095,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -48033,10 +48034,10 @@
                 "internal_url": "null",
                 "latitude": "36.1088418",
                 "longitude": "-115.1721488",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4510,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -49377,10 +49378,10 @@
                 "internal_url": "null",
                 "latitude": "38.2914642",
                 "longitude": "-111.2620493",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5404,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-06-08"
             }
         },
         {
@@ -50647,13 +50648,13 @@
                 "area": "Nevada",
                 "address": "512 Nevada Way Boulder City, NV 89005 United States",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430711",
                 "internal_url": "null",
                 "latitude": 35.97766985605265,
                 "longitude": -114.83801450988334,
                 "machine_status": "available",
                 "id": 7152,
-                "last_updated": "2024-04-29"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51064,10 +51065,10 @@
                 "internal_url": "null",
                 "latitude": "36.1014995",
                 "longitude": "-115.1740094",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4520,
-                "last_updated": "2024-05-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -51922,10 +51923,10 @@
                 "internal_url": "null",
                 "latitude": "32.3264743",
                 "longitude": "-64.8351383",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1684,
-                "last_updated": "2024-05-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52799,7 +52800,7 @@
                 "internal_url": "null",
                 "latitude": "47.9565529",
                 "longitude": "-118.9809849",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7191,
                 "last_updated": "2024-05-10"
             }
@@ -53033,6 +53034,873 @@
                 "status": "unvisited",
                 "id": 3323,
                 "last_updated": "2024-05-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.9112762,
+                    34.2401798
+                ]
+            },
+            "properties": {
+                "name": "Beary Bliss",
+                "area": "California",
+                "address": "685 Pine Knot Ave, Unit A, Big Bear Lake",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430405",
+                "internal_url": "null",
+                "latitude": "34.2401798",
+                "longitude": "-116.9112762",
+                "machine_status": "available",
+                "id": 7193,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.9446972,
+                    42.3836083
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge",
+                "area": "Illinois",
+                "address": "1700 Nations Drive  , Gurnee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=295376",
+                "internal_url": "null",
+                "latitude": "42.3836083",
+                "longitude": "-87.9446972",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1227,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1598457,
+                    32.7127904
+                ]
+            },
+            "properties": {
+                "name": "San Diego Trading Company",
+                "area": "California",
+                "address": "568 5th Ave, San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350201",
+                "internal_url": "null",
+                "latitude": "32.7127904",
+                "longitude": "-117.1598457",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4788,
+                "last_updated": "2024-05-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1590667,
+                    32.7135
+                ]
+            },
+            "properties": {
+                "name": "Coin-op Game Room",
+                "area": "California",
+                "address": "789 Sixth Avenue (Gaslamp Area), San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=280212",
+                "internal_url": "null",
+                "latitude": "32.7135",
+                "longitude": "-117.1590667",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4774,
+                "last_updated": "2024-05-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.963188,
+                    48.77656870000001
+                ]
+            },
+            "properties": {
+                "name": "France Miniature",
+                "area": "France",
+                "address": "Boulevard André Malraux, Elancourt",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430624",
+                "internal_url": "null",
+                "latitude": "48.77656870000001",
+                "longitude": "1.963188",
+                "machine_status": "available",
+                "id": 7194,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.39617417630774,
+                    39.91851829902906
+                ]
+            },
+            "properties": {
+                "name": "Little Big City",
+                "area": "China",
+                "address": ", Beijing",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317522",
+                "internal_url": "null",
+                "latitude": "39.91851829902906",
+                "longitude": "116.39617417630774",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2939,
+                "last_updated": "2024-06-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1543613,
+                    51.5230174
+                ]
+            },
+            "properties": {
+                "name": "Madame Tussaud's",
+                "area": "England",
+                "address": "Marylebone Road, London",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3917",
+                "internal_url": "null",
+                "latitude": "51.5230174",
+                "longitude": "-0.1543613",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1458,
+                "last_updated": "2024-06-02",
+                "multimachine": 3,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.66365479999999,
+                    47.0259497
+                ]
+            },
+            "properties": {
+                "name": "Two Harbors Area Chamber Of Commerce \"Tourist Information\" Center",
+                "area": "Minnesota",
+                "address": "1330 MN-61, Two Harbors",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430674",
+                "internal_url": "null",
+                "latitude": "47.0259497",
+                "longitude": "-91.66365479999999",
+                "machine_status": "available",
+                "id": 7195,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.8201017,
+                    48.25931569999999
+                ]
+            },
+            "properties": {
+                "name": "Burg Kreuzen",
+                "area": "Austria",
+                "address": ", Bad Kreuzen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430673",
+                "internal_url": "null",
+                "latitude": "48.25931569999999",
+                "longitude": "14.8201017",
+                "machine_status": "available",
+                "id": 7196,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.442341,
+                    39.083438
+                ]
+            },
+            "properties": {
+                "name": "Cova de can Marça",
+                "area": "Spain",
+                "address": "Port de Balansat , Puerto san Miguel",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430679",
+                "internal_url": "null",
+                "latitude": "39.083438",
+                "longitude": "1.442341",
+                "machine_status": "available",
+                "id": 7197,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.4420012,
+                    57.32413989999999
+                ]
+            },
+            "properties": {
+                "name": "Urquhart Castle",
+                "area": "Scotland",
+                "address": "By Drumnadrochit, Drumnadrochit",
+                "external_url": "http://209.221.138.252/Details.aspx?location=269018",
+                "internal_url": "null",
+                "latitude": "57.32413989999999",
+                "longitude": "-4.4420012",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 741,
+                "last_updated": "2024-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.412609,
+                    31.315864
+                ]
+            },
+            "properties": {
+                "name": "Keith's Superstore",
+                "area": "Mississippi",
+                "address": "5331 Old HWY 11, Hattiesburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430892",
+                "internal_url": "null",
+                "latitude": "31.315864",
+                "longitude": "-89.412609",
+                "machine_status": "available",
+                "id": 7198,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.7100404,
+                    52.0111047
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs shop",
+                "area": "Netherlands",
+                "address": "Wijdstraat 41, Gouda",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430800",
+                "internal_url": "null",
+                "latitude": "52.0111047",
+                "longitude": "4.7100404",
+                "machine_status": "available",
+                "id": 7199,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.54883679999999,
+                    28.3499354
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Art of Animation Resort,",
+                "area": "Florida",
+                "address": "Landscape of Flavors Food Court, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=211245",
+                "internal_url": "null",
+                "latitude": "28.3499354",
+                "longitude": "-81.54883679999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3345,
+                "last_updated": "2024-06-04",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.54297489999999,
+                    28.3507881
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Pop Century Resort",
+                "area": "Florida",
+                "address": "1050 Century Drive, Kissimmee, FL, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1634",
+                "internal_url": "null",
+                "latitude": "28.3507881",
+                "longitude": "-81.54297489999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3372,
+                "last_updated": "2024-06-04",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5549243,
+                    28.3616941
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, *Hollywood Studios* (formerly MGM Studios)",
+                "area": "Florida",
+                "address": "Hollywood Studios Resort, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1715",
+                "internal_url": "null",
+                "latitude": "28.3616941",
+                "longitude": "-81.5549243",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3338,
+                "last_updated": "2024-06-04",
+                "multimachine": 24,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5584959,
+                    28.3653655
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, *Epcot*",
+                "area": "Florida",
+                "address": "Epcot Resort, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=11469",
+                "internal_url": "null",
+                "latitude": "28.3653655",
+                "longitude": "-81.5584959",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3337,
+                "last_updated": "2024-06-04",
+                "multimachine": 27,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.55583229999999,
+                    28.366159
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Boardwalk Inn Resort",
+                "area": "Florida",
+                "address": ", Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2984",
+                "internal_url": "null",
+                "latitude": "28.366159",
+                "longitude": "-81.55583229999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3347,
+                "last_updated": "2024-06-04",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5368923,
+                    28.3858689
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Port Orleans, Riverside Resort",
+                "area": "Florida",
+                "address": "Disney Springs Resort Area, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1632",
+                "internal_url": "null",
+                "latitude": "28.3858689",
+                "longitude": "-81.5368923",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3373,
+                "last_updated": "2024-06-04",
+                "multimachine": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5147338,
+                    28.3726663
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Disney Springs, Disney Pin Traders",
+                "area": "Florida",
+                "address": "Disney Springs Shopping Area, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=285667",
+                "internal_url": "null",
+                "latitude": "28.3726663",
+                "longitude": "-81.5147338",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3353,
+                "last_updated": "2024-06-04",
+                "multimachine": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.514287,
+                    28.372642
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Disney Springs, Once Upon A Toy (store)",
+                "area": "Florida",
+                "address": "Disney Springs Shopping Area, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=26904",
+                "internal_url": "null",
+                "latitude": "28.372642",
+                "longitude": "-81.514287",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3360,
+                "last_updated": "2024-06-04",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5143135,
+                    28.3738582
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Disney Springs, Rainforest Cafe",
+                "area": "Florida",
+                "address": "1800 East Buena Vista Drive, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1732",
+                "internal_url": "null",
+                "latitude": "28.3738582",
+                "longitude": "-81.5143135",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3361,
+                "last_updated": "2024-06-04",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5119119,
+                    28.3752792
+                ]
+            },
+            "properties": {
+                "name": "Disney Springs Resort area, Wyndham Garden Lake Buena Vista",
+                "area": "Florida",
+                "address": "1850B Hotel Plaza Boulevard, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=297225",
+                "internal_url": "null",
+                "latitude": "28.3752792",
+                "longitude": "-81.5119119",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3335,
+                "last_updated": "2024-06-04",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6035192,
+                    28.3524485
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, *Animal Kingdom*",
+                "area": "Florida",
+                "address": "Animal Kingdom Resort, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=17865",
+                "internal_url": "null",
+                "latitude": "28.3524485",
+                "longitude": "-81.6035192",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3336,
+                "last_updated": "2024-06-04",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.5506071,
+                    38.5739283
+                ]
+            },
+            "properties": {
+                "name": "The T-Shirt Shop",
+                "area": "Utah",
+                "address": "38 North Main Street, Moab",
+                "external_url": "http://209.221.138.252/Details.aspx?location=376989",
+                "internal_url": "null",
+                "latitude": "38.5739283",
+                "longitude": "-109.5506071",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5410,
+                "last_updated": "2024-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.38044,
+                    52.5165
+                ]
+            },
+            "properties": {
+                "name": "Brandenburg Gate Shop 2",
+                "area": "Germany",
+                "address": "Brandenburger Tor, Unter den Linden 78, 10117 Berlin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=430884",
+                "internal_url": "null",
+                "latitude": "52.516500",
+                "longitude": "13.380440",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5055,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.33238709999999,
+                    43.2297193
+                ]
+            },
+            "properties": {
+                "name": "USS Silversides Submarine Museum",
+                "area": "Michigan",
+                "address": "1346 Bluff Street, Muskegon",
+                "external_url": "http://209.221.138.252/Details.aspx?location=354336",
+                "internal_url": "null",
+                "latitude": "43.2297193",
+                "longitude": "-86.33238709999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5277,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.5086529,
+                    44.414571
+                ]
+            },
+            "properties": {
+                "name": "Sturgis Motorcycle Museum and Hall of Fame",
+                "area": "South Dakota",
+                "address": "999 Main Street, Sturgis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=341998",
+                "internal_url": "null",
+                "latitude": "44.414571",
+                "longitude": "-103.5086529",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 1317,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.03538745391836,
+                    28.057304179650565
+                ]
+            },
+            "properties": {
+                "name": "Fulton Mansion Historical Site",
+                "area": "Texas",
+                "address": "317 S Fulton Beach Rd Rockport",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 28.057304179650565,
+                "longitude": -97.03538745391836,
+                "machine_status": "available",
+                "id": 7200,
+                "last_updated": "2024-06-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -131.6440827,
+                    55.3398117
+                ]
+            },
+            "properties": {
+                "name": "Ketchikan Outlet Store",
+                "area": "Alaska",
+                "address": "5 Salmon Landing, Ketchikan",
+                "external_url": "http://209.221.138.252/Details.aspx?location=41716",
+                "internal_url": "null",
+                "latitude": "55.3398117",
+                "longitude": "-131.6440827",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1164,
+                "last_updated": "2024-06-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.5509713,
+                    38.5738956
+                ]
+            },
+            "properties": {
+                "name": "Dirt Shirts",
+                "area": "Utah",
+                "address": "78 South Main St., Moab",
+                "external_url": "http://209.221.138.252/Details.aspx?location=110195",
+                "internal_url": "null",
+                "latitude": "38.5738956",
+                "longitude": "-109.5509713",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2079,
+                "last_updated": "2024-06-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1756473,
+                    36.0955849
+                ]
+            },
+            "properties": {
+                "name": "Luxor Hotel Casino - Titanic Exhibition",
+                "area": "Nevada",
+                "address": "3900 Las Vegas Boulevard, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=203390",
+                "internal_url": "null",
+                "latitude": "36.0955849",
+                "longitude": "-115.1756473",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4514,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9624746,
+                    41.3730797
+                ]
+            },
+            "properties": {
+                "name": "West Point Military Academy Visitors Center",
+                "area": "New York",
+                "address": "Building 2107, West Point Hwy, West Point",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3523",
+                "internal_url": "null",
+                "latitude": "41.3730797",
+                "longitude": "-73.9624746",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3095,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8295324,
+                    44.4566373
+                ]
+            },
+            "properties": {
+                "name": "Old Faithful Snow Lodge",
+                "area": "Wyoming",
+                "address": "2051 Snow Lodge Ave. , Yellowstone National Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431066",
+                "internal_url": "null",
+                "latitude": "44.4566373",
+                "longitude": "-110.8295324",
+                "machine_status": "available",
+                "id": 7201,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.6531641,
+                    54.3498001
+                ]
+            },
+            "properties": {
+                "name": "St. Mary's Church Bazylika Mariacka Wniebowziecia Najswietszej Maryi Panny ",
+                "area": "Poland",
+                "address": "Podkramarska 5, Gdansk",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431111",
+                "internal_url": "null",
+                "latitude": "54.3498001",
+                "longitude": "18.6531641",
+                "machine_status": "available",
+                "id": 7202,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.7957261,
+                    33.7774946
+                ]
+            },
+            "properties": {
+                "name": "The Original Benjamin's (Calabash Seafood Restaurant)",
+                "area": "South Carolina",
+                "address": "9593 North Kings Highway , Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3151",
+                "internal_url": "null",
+                "latitude": "33.7774946",
+                "longitude": "-78.7957261",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2224,
+                "last_updated": "2024-06-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.931258,
+                    38.8560737
+                ]
+            },
+            "properties": {
+                "name": "Manitou & Pikes Peak Cog Railway",
+                "area": "Colorado",
+                "address": "515 Ruxton Avenue, Manitou Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=484",
+                "internal_url": "null",
+                "latitude": "38.8560737",
+                "longitude": "-104.931258",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1903,
+                "last_updated": "2024-06-09",
+                "multimachine": 2
             }
         }
     ]
