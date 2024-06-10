@@ -53971,6 +53971,31 @@
                 "id": 1539,
                 "last_updated": "2024-06-10"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.948953,
+                    39.7501637
+                ]
+            },
+            "properties": {
+                "name": "Denver Zoo",
+                "area": "Colorado",
+                "address": "2300 Steele St, Denver",
+                "external_url": "http://209.221.138.252/Details.aspx?location=205666",
+                "internal_url": "null",
+                "latitude": "39.7501637",
+                "longitude": "-104.948953",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1847,
+                "last_updated": "2024-06-10",
+                "multimachine": 4,
+                "paywall": true
+            }
         }
     ]
 }
