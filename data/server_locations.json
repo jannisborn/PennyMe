@@ -50167,10 +50167,10 @@
                 "internal_url": "null",
                 "latitude": "32.08083283921194",
                 "longitude": "-81.08839995974637",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5393,
-                "last_updated": "2024-04-22"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53995,6 +53995,98 @@
                 "last_updated": "2024-06-10",
                 "multimachine": 4,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.886191,
+                    33.684028
+                ]
+            },
+            "properties": {
+                "name": "2nd Avenue Fishing Pier",
+                "area": "South Carolina",
+                "address": "110 North Ocean Boulevard, Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3135",
+                "internal_url": "null",
+                "latitude": "33.684028",
+                "longitude": "-78.886191",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2208,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.7045591,
+                    33.8116154
+                ]
+            },
+            "properties": {
+                "name": "Lost Treasure Golf (Professor Hacker's)",
+                "area": "South Carolina",
+                "address": "1705 Highway 17 South (near 18th Ave), North Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=5862",
+                "internal_url": "null",
+                "latitude": "33.8116154",
+                "longitude": "-78.7045591",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2232,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.2018521,
+                    32.1294267
+                ]
+            },
+            "properties": {
+                "name": "Savannah/Hilton Head International Airport",
+                "area": "Georgia",
+                "address": "400 Airways Ave, Savannah",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431391",
+                "internal_url": "null",
+                "latitude": "32.1294267",
+                "longitude": "-81.2018521",
+                "machine_status": "available",
+                "id": 7204,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0849865,
+                    32.080052
+                ]
+            },
+            "properties": {
+                "name": "The Cinnamon Bear Country Store",
+                "area": "Georgia",
+                "address": "508 E. River Street, Savannah",
+                "external_url": "http://209.221.138.252/Details.aspx?location=364436",
+                "internal_url": "null",
+                "latitude": "32.080052",
+                "longitude": "-81.0849865",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5394,
+                "last_updated": "2024-05-10"
             }
         }
     ]
