@@ -21662,9 +21662,9 @@
                 "internal_url": "null",
                 "latitude": "40.782901655174776",
                 "longitude": "17.23829564639623",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 898,
-                "last_updated": "2023-10-23"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -53966,10 +53966,10 @@
                 "internal_url": "null",
                 "latitude": "52.9514874",
                 "longitude": "-1.2079374",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1539,
-                "last_updated": "2024-06-10"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -54110,6 +54110,29 @@
                 "status": "unvisited",
                 "id": 4662,
                 "last_updated": "2024-06-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.606523599844937,
+                    40.66654072293267
+                ]
+            },
+            "properties": {
+                "name": "Tina Maragno Souvenir Shop",
+                "area": "Italy",
+                "address": "Piazza Vittorio Veneto 42, Matera, Italy",
+                "external_url": "http://209.221.138.252/Details.aspx?location=291577",
+                "internal_url": "null",
+                "latitude": "40.66654072293267",
+                "longitude": "16.606523599844937",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 904,
+                "last_updated": "2024-05-10"
             }
         }
     ]
