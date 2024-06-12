@@ -30484,13 +30484,13 @@
                 "area": "Germany",
                 "address": "25832 Tönning, Germany",
                 "status": "unvisited",
-                "external_url": "http://www.elongated-coin.de/phpBB3/viewtopic.php?t=2950",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "54.3178840",
                 "longitude": "8.9527525",
                 "machine_status": "available",
                 "id": 6611,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -43850,10 +43850,10 @@
                 "internal_url": "null",
                 "latitude": "41.7905726",
                 "longitude": "-87.5830659",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1212,
-                "last_updated": "2024-02-13",
+                "last_updated": "2024-05-10",
                 "multimachine": 4,
                 "paywall": true
             }
@@ -54203,6 +54203,75 @@
                 "id": 4385,
                 "last_updated": "2024-06-12",
                 "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.8930816,
+                    42.216587
+                ]
+            },
+            "properties": {
+                "name": "Klassic Arcade 3.0",
+                "area": "Michigan",
+                "address": "200 South Gremps Street , Paw Paw",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431573",
+                "internal_url": "null",
+                "latitude": "42.216587",
+                "longitude": "-85.8930816",
+                "machine_status": "available",
+                "id": 7205,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.4409426,
+                    44.4380052
+                ]
+            },
+            "properties": {
+                "name": "Lakeside Lodge",
+                "area": "Idaho",
+                "address": "3857 Lakeside Dr, Island Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431551",
+                "internal_url": "null",
+                "latitude": "44.4380052",
+                "longitude": "-111.4409426",
+                "machine_status": "available",
+                "id": 7206,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.788091,
+                    46.7791793
+                ]
+            },
+            "properties": {
+                "name": "The Beach Club  (On Madeline Island)",
+                "area": "Wisconsin",
+                "address": "715 Main street, La Pointe ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431583",
+                "internal_url": "null",
+                "latitude": "46.7791793",
+                "longitude": "-90.788091",
+                "machine_status": "available",
+                "id": 7207,
+                "last_updated": "2024-05-10"
             }
         }
     ]
