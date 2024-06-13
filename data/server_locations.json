@@ -52707,10 +52707,10 @@
                 "internal_url": "null",
                 "latitude": "44.4569017",
                 "longitude": "-110.8278615",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3125,
-                "last_updated": "2024-05-23"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -54319,6 +54319,167 @@
                 "id": 5142,
                 "last_updated": "2024-06-13",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.49451221984872,
+                    39.36567923776644
+                ]
+            },
+            "properties": {
+                "name": "Klassic Arcade 3.0",
+                "area": "Michigan",
+                "address": "200 south Gremps st Paw paw, mi 49079",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 39.36567923776644,
+                "longitude": -84.49451221984872,
+                "machine_status": "available",
+                "id": 7209,
+                "last_updated": "2024-06-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.872988,
+                    35.32606500000001
+                ]
+            },
+            "properties": {
+                "name": "Delgadillo's Snow Cap Drive In",
+                "area": "Arizona",
+                "address": "301 Arizona 66, Seligman",
+                "external_url": "http://209.221.138.252/Details.aspx?location=385232",
+                "internal_url": "null",
+                "latitude": "35.32606500000001",
+                "longitude": "-112.872988",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5200,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1496841,
+                    33.4942797
+                ]
+            },
+            "properties": {
+                "name": "Coin-Op Game Room Temecula",
+                "area": "California",
+                "address": "28588 Old Town Front St, Temecula",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431700",
+                "internal_url": "null",
+                "latitude": "33.4942797",
+                "longitude": "-117.1496841",
+                "machine_status": "available",
+                "id": 7210,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.5786586,
+                    45.8171575
+                ]
+            },
+            "properties": {
+                "name": "Hopewell Rocks",
+                "area": "Canada",
+                "address": "131 Discovery Lane, NB - Hopewell Cape",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258069",
+                "internal_url": "null",
+                "latitude": "45.8171575",
+                "longitude": "-64.5786586",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4982,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.5838497,
+                    55.6802207
+                ]
+            },
+            "properties": {
+                "name": "Guinness World Records Museum",
+                "area": "Denmark",
+                "address": "Østergade 16, Copenhagen (København)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431697",
+                "internal_url": "null",
+                "latitude": "55.6802207",
+                "longitude": "12.5838497",
+                "machine_status": "available",
+                "id": 7211,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.5701299,
+                    55.676193
+                ]
+            },
+            "properties": {
+                "name": "Ripleys Believe It or Not Copenhagen",
+                "area": "Denmark",
+                "address": "Rådhuspladsen 57, Copenhagen (København)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431698",
+                "internal_url": "null",
+                "latitude": "55.676193",
+                "longitude": "12.5701299",
+                "machine_status": "available",
+                "id": 7212,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.860430099999999,
+                    46.6877328
+                ]
+            },
+            "properties": {
+                "name": "Ticket-Shop, Interlaken Souvenirs & Travel Services",
+                "area": "Switzerland",
+                "address": "Höheweg 95, Interlaken",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431734",
+                "internal_url": "null",
+                "latitude": "46.6877328",
+                "longitude": "7.860430099999999",
+                "machine_status": "available",
+                "id": 7213,
+                "last_updated": "2024-05-10"
             }
         }
     ]
