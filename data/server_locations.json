@@ -54550,6 +54550,30 @@
                 "id": 286,
                 "last_updated": "2024-06-15"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.33153100837956,
+                    42.65878905577905
+                ]
+            },
+            "properties": {
+                "name": "Coin machine",
+                "area": "Bulgaria",
+                "address": "Sofia, Srebarna St, Loven, 1, 1700 Sofia, Bulgaria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 42.65878905577905,
+                "longitude": 23.33153100837956,
+                "machine_status": "available",
+                "id": 7214,
+                "last_updated": "2024-06-15",
+                "paywall": true
+            }
         }
     ]
 }
