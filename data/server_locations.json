@@ -39286,9 +39286,9 @@
                 "internal_url": "null",
                 "latitude": "35.9637835",
                 "longitude": "-75.63262929999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4135,
-                "last_updated": "2023-11-23"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -47988,10 +47988,10 @@
                 "internal_url": "null",
                 "latitude": "29.2734805",
                 "longitude": "-94.8522655",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3711,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -54642,6 +54642,167 @@
                 "machine_status": "available",
                 "id": 7215,
                 "last_updated": "2024-06-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.8760404,
+                    35.3264405
+                ]
+            },
+            "properties": {
+                "name": "Historic Seligman Sundries",
+                "area": "Arizona",
+                "address": "22405 Route 66, Seligman",
+                "external_url": "http://209.221.138.252/Details.aspx?location=208152",
+                "internal_url": "null",
+                "latitude": "35.3264405",
+                "longitude": "-112.8760404",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5982,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.930067,
+                    45.162884
+                ]
+            },
+            "properties": {
+                "name": "Boyne Mountain Resort",
+                "area": "Michigan",
+                "address": "1 Boyne Mountain Rd, Boyne Falls",
+                "external_url": "http://209.221.138.252/Details.aspx?location=241894",
+                "internal_url": "null",
+                "latitude": "45.162884",
+                "longitude": "-84.930067",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2498,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.387983,
+                    31.4664
+                ]
+            },
+            "properties": {
+                "name": "En Gedi National Park",
+                "area": "Israel",
+                "address": "Route 90, En Gedi",
+                "external_url": "http://209.221.138.252/Details.aspx?location=14638",
+                "internal_url": "null",
+                "latitude": "31.4664",
+                "longitude": "35.387983",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1041,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.5495859,
+                    31.8374644
+                ]
+            },
+            "properties": {
+                "name": "Baptismal Site on the Jordan River - Qasr al-Yahud",
+                "area": "Israel",
+                "address": "Take road 1 east to the junction with the Jericho detour road (road 90), Jericho",
+                "external_url": "http://209.221.138.252/Details.aspx?location=198981",
+                "internal_url": "null",
+                "latitude": "31.8374644",
+                "longitude": "35.5495859",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1042,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.849103,
+                    31.990144
+                ]
+            },
+            "properties": {
+                "name": " Gan Israel (Garden of Israel)",
+                "area": "Israel",
+                "address": ", Kfar Chabad",
+                "external_url": "http://209.221.138.252/Details.aspx?location=188139",
+                "internal_url": "null",
+                "latitude": "31.990144",
+                "longitude": "34.849103",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1043,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.9690158,
+                    31.8421649
+                ]
+            },
+            "properties": {
+                "name": "Mini Isarel",
+                "area": "Israel",
+                "address": "road 424 near Latrun, Latrun",
+                "external_url": "http://209.221.138.252/Details.aspx?location=198983",
+                "internal_url": "null",
+                "latitude": "31.8421649",
+                "longitude": "34.9690158",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1044,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.0031576,
+                    29.7882452
+                ]
+            },
+            "properties": {
+                "name": "King Solomon's Mines Timna",
+                "area": "Israel",
+                "address": ", Timna",
+                "external_url": "http://209.221.138.252/Details.aspx?location=22170",
+                "internal_url": "null",
+                "latitude": "29.7882452",
+                "longitude": "35.0031576",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1047,
+                "last_updated": "2024-05-10"
             }
         }
     ]
