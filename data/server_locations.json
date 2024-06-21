@@ -143,9 +143,9 @@
                 "internal_url": "null",
                 "latitude": "41.7561942",
                 "longitude": "-88.3181599",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1197,
-                "last_updated": "2023-03-26"
+                "last_updated": "2024-06-19"
             }
         },
         {
@@ -1029,15 +1029,15 @@
             "properties": {
                 "name": "Chimney Rock State Park",
                 "area": "North Carolina",
-                "address": "U.S. Hwys 64/74, Chimney Rock ",
+                "address": "U.S. Hwys 64/74, Chimney Rock",
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3717",
                 "internal_url": "null",
                 "latitude": "35.4397021",
                 "longitude": "-82.2485749",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4100,
-                "last_updated": "2023-05-25"
+                "last_updated": "2024-06-17"
             }
         },
         {
@@ -1980,9 +1980,9 @@
                 "internal_url": "null",
                 "latitude": "45.40294129999999",
                 "longitude": "-84.6127355",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2536,
-                "last_updated": "2024-01-28"
+                "last_updated": "2024-06-20"
             }
         },
         {
@@ -26433,13 +26433,13 @@
                 "area": "Washington",
                 "address": "Ovation of the Seas, Seattle",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=431991",
                 "internal_url": "null",
                 "latitude": "47.6062095",
                 "longitude": "-122.3320708",
                 "machine_status": "available",
                 "id": 5147,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -31661,9 +31661,9 @@
                 "internal_url": "null",
                 "latitude": "39.8504718",
                 "longitude": "2.8001253",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6663,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-06-19"
             }
         },
         {
@@ -39892,9 +39892,9 @@
                 "latitude": "33.920239",
                 "longitude": "-116.77287",
                 "paywall": true,
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 4583,
-                "last_updated": "2023-11-29"
+                "last_updated": "2024-06-19"
             }
         },
         {
@@ -52703,7 +52703,7 @@
                 "name": "Yellowstone - Old Faithful General Store",
                 "area": "Wyoming",
                 "address": "West Entrance Road , Yellowstone National Park",
-                "external_url": "http://209.221.138.252/Details.aspx?location=663",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "44.4569017",
                 "longitude": "-110.8278615",
@@ -54326,8 +54326,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -84.49451221984872,
-                    39.36567923776644
+                    -86.18718653401035,
+                    42.18990199848279
                 ]
             },
             "properties": {
@@ -54337,11 +54337,11 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 39.36567923776644,
-                "longitude": -84.49451221984872,
+                "latitude": "42.18990199848279",
+                "longitude": "-86.18718653401035",
                 "machine_status": "available",
                 "id": 7209,
-                "last_updated": "2024-06-13"
+                "last_updated": "2024-06-16"
             }
         },
         {
@@ -54849,6 +54849,489 @@
                 "machine_status": "available",
                 "id": 7216,
                 "last_updated": "2024-06-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.21711601294768,
+                    37.80151102222
+                ]
+            },
+            "properties": {
+                "name": "Tamarack",
+                "area": "West Virginia",
+                "address": "TamarackBeckley, WV 25801, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 37.80151102222,
+                "longitude": -81.21711601294768,
+                "machine_status": "available",
+                "id": 7217,
+                "last_updated": "2024-06-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9644911,
+                    40.6657246
+                ]
+            },
+            "properties": {
+                "name": "Prospect Park Zoo",
+                "area": "New York",
+                "address": "450 Flatbush Avenue, New York City (Brooklyn)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3649",
+                "internal_url": "null",
+                "latitude": "40.6657246",
+                "longitude": "-73.9644911",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3038,
+                "last_updated": "2024-06-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.18790249999999,
+                    43.27816259999999
+                ]
+            },
+            "properties": {
+                "name": "Cabela's Outdoor Gear",
+                "area": "Wisconsin",
+                "address": "3048 Pioneer Rd., Richfield",
+                "external_url": "http://209.221.138.252/Details.aspx?location=20214",
+                "internal_url": "null",
+                "latitude": "43.27816259999999",
+                "longitude": "-88.18790249999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2456,
+                "last_updated": "2024-06-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.41923089220788,
+                    32.37520135703253
+                ]
+            },
+            "properties": {
+                "name": "Texas Beat Smokehouse",
+                "area": "Texas",
+                "address": "2825 Nolan River Rd, Cleburne, TX 76033, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 32.37520135703253,
+                "longitude": -97.41923089220788,
+                "machine_status": "available",
+                "id": 7218,
+                "last_updated": "2024-06-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9761953,
+                    40.7586117
+                ]
+            },
+            "properties": {
+                "name": "St. Patrick's Cathedral",
+                "area": "New York",
+                "address": "5th Avenue between 50th/51st, New York City (Manhattan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=194272",
+                "internal_url": "null",
+                "latitude": "40.7586117",
+                "longitude": "-73.9761953",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3054,
+                "last_updated": "2024-06-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.360972,
+                    51.841365
+                ]
+            },
+            "properties": {
+                "name": "Blenheim Palace",
+                "area": "England",
+                "address": "Oxfordshire, Woodstock",
+                "external_url": "http://209.221.138.252/Details.aspx?location=324414",
+                "internal_url": "null",
+                "latitude": "51.841365",
+                "longitude": "-1.360972",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1543,
+                "last_updated": "2024-06-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.9112436,
+                    34.2416662
+                ]
+            },
+            "properties": {
+                "name": "Scenic Outfitters ",
+                "area": "California",
+                "address": ", Big Bear Lake",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432197",
+                "internal_url": "null",
+                "latitude": "34.2416662",
+                "longitude": "-116.9112436",
+                "machine_status": "available",
+                "id": 7219,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.5897934,
+                    40.8012872
+                ]
+            },
+            "properties": {
+                "name": "Red Feather Trading Post",
+                "area": "Colorado",
+                "address": "41 Main St, Red Feather Lakes",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432198",
+                "internal_url": "null",
+                "latitude": "40.8012872",
+                "longitude": "-105.5897934",
+                "machine_status": "available",
+                "id": 7220,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.4182455,
+                    43.8955436
+                ]
+            },
+            "properties": {
+                "name": "The Emporium",
+                "area": "South Dakota",
+                "address": "160 w. Winter Street, Keystone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432056",
+                "internal_url": "null",
+                "latitude": "43.8955436",
+                "longitude": "-103.4182455",
+                "machine_status": "available",
+                "id": 7221,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.932158,
+                    45.0202366
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone Trading Post",
+                "area": "Montana",
+                "address": "101 Main St, Cooke City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432037",
+                "internal_url": "null",
+                "latitude": "45.0202366",
+                "longitude": "-109.932158",
+                "machine_status": "available",
+                "id": 7222,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.6963384,
+                    33.0089095
+                ]
+            },
+            "properties": {
+                "name": "Daingerfield State Park",
+                "area": "Texas",
+                "address": "455 Park RD 17, Daingerfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432039",
+                "internal_url": "null",
+                "latitude": "33.0089095",
+                "longitude": "-94.6963384",
+                "machine_status": "available",
+                "id": 7223,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.9423091,
+                    48.9059191
+                ]
+            },
+            "properties": {
+                "name": "Chateau Cejkovice",
+                "area": "Czech Republic",
+                "address": ", Cejkovice",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432013",
+                "internal_url": "null",
+                "latitude": "48.9059191",
+                "longitude": "16.9423091",
+                "machine_status": "available",
+                "id": 7224,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.2843698,
+                    46.9817244
+                ]
+            },
+            "properties": {
+                "name": "Castle Sümeg",
+                "area": "Hungary",
+                "address": "Sumeg Varoldal utca 12 8330, Sümeg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432012",
+                "internal_url": "null",
+                "latitude": "46.9817244",
+                "longitude": "17.2843698",
+                "machine_status": "available",
+                "id": 7225,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.0957797,
+                    62.4655165
+                ]
+            },
+            "properties": {
+                "name": "Atlanterhavsparken, The Atlantic Sea Park",
+                "area": "Norway",
+                "address": "Tueneset, 2090 skarbøvik, 6006 , Alesund",
+                "external_url": "http://209.221.138.252/Details.aspx?location=112265",
+                "internal_url": "null",
+                "latitude": "62.4655165",
+                "longitude": "6.0957797",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 42,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8278615,
+                    44.4569017
+                ]
+            },
+            "properties": {
+                "name": "Old Faithful General Store",
+                "area": "Montana",
+                "address": "2 Old Faithful Loop Road, West Yellowstone",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.4569017",
+                "longitude": "-110.8278615",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2980,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.6141062,
+                    33.8370537
+                ]
+            },
+            "properties": {
+                "name": "Palm Springs Aerial Tramway",
+                "area": "California",
+                "address": "One Tram Way, Palm Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=222613",
+                "internal_url": "null",
+                "latitude": "33.8370537",
+                "longitude": "-116.6141062",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4722,
+                "last_updated": "2024-06-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.61710099999999,
+                    45.849446
+                ]
+            },
+            "properties": {
+                "name": "Star Line Mackinac Island Ferry - Mackinac Islan",
+                "area": "Michigan",
+                "address": "7271 Main St., Mackinac Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=296690",
+                "internal_url": "null",
+                "latitude": "45.849446",
+                "longitude": "-84.61710099999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2550,
+                "last_updated": "2024-06-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.261586,
+                    51.75094439999999
+                ]
+            },
+            "properties": {
+                "name": "Oxford Castle (gift shop)",
+                "area": "England",
+                "address": "Castle Street, OXFORDSHIRE - Oxford",
+                "external_url": "http://209.221.138.252/Details.aspx?location=51143",
+                "internal_url": "null",
+                "latitude": "51.75094439999999",
+                "longitude": "-1.261586",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1542,
+                "last_updated": "2024-06-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.9510491,
+                    37.3183318
+                ]
+            },
+            "properties": {
+                "name": "Winchester Mystery House",
+                "area": "California",
+                "address": "525 S. Winchester Boulevard, San Jose",
+                "external_url": "http://209.221.138.252/Details.aspx?location=575",
+                "internal_url": "null",
+                "latitude": "37.3183318",
+                "longitude": "-121.9510491",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4827,
+                "last_updated": "2024-06-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.25340687876712,
+                    46.5785913580913
+                ]
+            },
+            "properties": {
+                "name": "Upper Tahquamenon Falls",
+                "area": "Michigan",
+                "address": "Tahquamenon Falls State Park, 41382 W. M 123, Paradise",
+                "external_url": "http://209.221.138.252/Details.aspx?location=30056",
+                "internal_url": "null",
+                "latitude": "46.5785913580913",
+                "longitude": "-85.25340687876712",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2581,
+                "last_updated": "2024-06-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.6275658,
+                    45.8683129
+                ]
+            },
+            "properties": {
+                "name": "Highstones Discount Family Clothing",
+                "area": "Michigan",
+                "address": "7463 Main St - Star Line Ferry Dock, Mackinac Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2832",
+                "internal_url": "null",
+                "latitude": "45.8683129",
+                "longitude": "-84.6275658",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2546,
+                "last_updated": "2024-06-20"
             }
         }
     ]
