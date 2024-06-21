@@ -11414,9 +11414,9 @@
                 "internal_url": "null",
                 "latitude": "38.573697",
                 "longitude": "-110.707109",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2065,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -55355,6 +55355,121 @@
                 "machine_status": "available",
                 "id": 7226,
                 "last_updated": "2024-06-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.0673994,
+                    31.7129501
+                ]
+            },
+            "properties": {
+                "name": "Superstition Sue Gifts",
+                "area": "Arizona",
+                "address": "332 E. Allen St., Tombstone",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259540",
+                "internal_url": "null",
+                "latitude": "31.7129501",
+                "longitude": "-110.0673994",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2703,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6618459,
+                    45.4736956
+                ]
+            },
+            "properties": {
+                "name": "Oaks Park - Skating Rink",
+                "area": "Oregon",
+                "address": "7805 SE Oaks Park Way, Portland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4369",
+                "internal_url": "null",
+                "latitude": "45.4736956",
+                "longitude": "-122.6618459",
+                "machine_status": "available",
+                "id": 7227,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.71392150000001,
+                    43.423324
+                ]
+            },
+            "properties": {
+                "name": "Waterfront Living/ Lake George",
+                "area": "New York",
+                "address": "155 Canada St., Lake George",
+                "external_url": "http://209.221.138.252/Details.aspx?location=251587",
+                "internal_url": "null",
+                "latitude": "43.423324",
+                "longitude": "-73.71392150000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3025,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.4912117,
+                    40.1441077
+                ]
+            },
+            "properties": {
+                "name": "Nilogi Souvenir Shop ",
+                "area": "Italy",
+                "address": "62 Corso Garribaldi , Otranto",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432251",
+                "internal_url": "null",
+                "latitude": "40.1441077",
+                "longitude": "18.4912117",
+                "machine_status": "available",
+                "id": 7228,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4724799,
+                    41.9005412
+                ]
+            },
+            "properties": {
+                "name": "News kiosk",
+                "area": "Italy",
+                "address": "Near Via Giuseppe Zanardelli, 22-16, 00186, Rome (Roma) RM",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432242",
+                "internal_url": "null",
+                "latitude": "41.9005412",
+                "longitude": "12.4724799",
+                "machine_status": "available",
+                "id": 7229,
+                "last_updated": "2024-05-10"
             }
         }
     ]
