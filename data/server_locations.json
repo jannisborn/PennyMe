@@ -55512,10 +55512,10 @@
                 "internal_url": "null",
                 "latitude": "38.2590439",
                 "longitude": "-78.83462639999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4417,
-                "last_updated": "2024-06-22"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -55539,6 +55539,121 @@
                 "status": "unvisited",
                 "id": 4603,
                 "last_updated": "2024-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.63865229999999,
+                    30.2650669
+                ]
+            },
+            "properties": {
+                "name": "Gulf State Park",
+                "area": "Alabama",
+                "address": "243 Campground Road, Orange Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=254610",
+                "internal_url": "null",
+                "latitude": "30.2650669",
+                "longitude": "-87.63865229999999",
+                "machine_status": "available",
+                "id": 7230,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.8374765,
+                    30.1938087
+                ]
+            },
+            "properties": {
+                "name": "Days Inn, Beach",
+                "area": "Florida",
+                "address": "12818 Front Beach Rd, Panama City Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432489",
+                "internal_url": "null",
+                "latitude": "30.1938087",
+                "longitude": "-85.8374765",
+                "machine_status": "available",
+                "id": 7231,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.6281291,
+                    38.440401
+                ]
+            },
+            "properties": {
+                "name": "Kansas Wetlands Education Center",
+                "area": "Kansas",
+                "address": "592 NE K-156 Highway, Great Bend",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432499",
+                "internal_url": "null",
+                "latitude": "38.440401",
+                "longitude": "-98.6281291",
+                "machine_status": "available",
+                "id": 7232,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.54277840000002,
+                    43.8250211
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shop Canada",
+                "area": "Canada",
+                "address": " 1 Bass Pro Mills Dr, Ontario - Vaughan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432423",
+                "internal_url": "null",
+                "latitude": "43.8250211",
+                "longitude": "-79.54277840000002",
+                "machine_status": "available",
+                "id": 7233,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    171.3300356,
+                    -42.11532769999999
+                ]
+            },
+            "properties": {
+                "name": "Footlite and Sole Punakaiki Gift Shop",
+                "area": "New Zealand",
+                "address": "4296 State Highway 6, Punakaiki 7873, Punakaiki, West Coast",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432432",
+                "internal_url": "null",
+                "latitude": "-42.11532769999999",
+                "longitude": "171.3300356",
+                "machine_status": "available",
+                "id": 7234,
+                "last_updated": "2024-05-10"
             }
         }
     ]
