@@ -1357,7 +1357,7 @@
                 "internal_url": "null",
                 "latitude": "47.73167717508765",
                 "longitude": "-116.78978643063256",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4312,
                 "last_updated": "2024-05-10"
             }
@@ -10080,9 +10080,9 @@
                 "internal_url": "null",
                 "latitude": "28.419869",
                 "longitude": "-81.7055024",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3272,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -47574,10 +47574,10 @@
                 "internal_url": "null",
                 "latitude": "40.756536",
                 "longitude": "-73.98863399999999",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3044,
-                "last_updated": "2024-03-24"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -55748,6 +55748,121 @@
                 "status": "unvisited",
                 "id": 5266,
                 "last_updated": "2024-06-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.5887569,
+                    40.772133
+                ]
+            },
+            "properties": {
+                "name": "Showcase Coins and Bullion",
+                "area": "Ohio",
+                "address": "2071 W. 4th St., Ontario",
+                "external_url": "http://209.221.138.252/Details.aspx?location=58402",
+                "internal_url": "null",
+                "latitude": "40.772133",
+                "longitude": "-82.5887569",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1997,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0344366,
+                    44.046946
+                ]
+            },
+            "properties": {
+                "name": "Roaring Rapids Pizza Company",
+                "area": "Oregon",
+                "address": "4006 Franklin Boulevard, Eugene",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4686",
+                "internal_url": "null",
+                "latitude": "44.046946",
+                "longitude": "-123.0344366",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4355,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.52828249999999,
+                    45.6592706
+                ]
+            },
+            "properties": {
+                "name": "Fort Sisseton Historic State Park",
+                "area": "South Dakota",
+                "address": "11907 434th Ave, Lake City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432577",
+                "internal_url": "null",
+                "latitude": "45.6592706",
+                "longitude": "-97.52828249999999",
+                "machine_status": "available",
+                "id": 7235,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5219303,
+                    35.7338368
+                ]
+            },
+            "properties": {
+                "name": "Gatlinburg Visitor Center",
+                "area": "Tennessee",
+                "address": "1011 Banner Rd, Gatlinburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317500",
+                "internal_url": "null",
+                "latitude": "35.7338368",
+                "longitude": "-83.5219303",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4205,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7748008,
+                    35.6277345
+                ]
+            },
+            "properties": {
+                "name": "FUJI TV, The Odaiba Observatory",
+                "area": "Japan",
+                "address": ", Tokyo - Odaiba Minato Ward",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432687",
+                "internal_url": "null",
+                "latitude": "35.6277345",
+                "longitude": "139.7748008",
+                "machine_status": "available",
+                "id": 7236,
+                "last_updated": "2024-05-10"
             }
         }
     ]
