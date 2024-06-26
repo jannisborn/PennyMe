@@ -42019,10 +42019,10 @@
                 "internal_url": "null",
                 "latitude": "40.5909948",
                 "longitude": "-122.3763838",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "retired",
                 "id": 4744,
-                "last_updated": "2024-01-04"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -43969,10 +43969,10 @@
                 "internal_url": "null",
                 "latitude": "47.6100454",
                 "longitude": "-122.3408736",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5152,
-                "last_updated": "2024-02-17"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52593,7 +52593,7 @@
                 "internal_url": "null",
                 "latitude": "36.8435831",
                 "longitude": "-75.9711601",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4459,
                 "last_updated": "2024-05-10"
@@ -55910,6 +55910,213 @@
                 "status": "retired",
                 "id": 2306,
                 "last_updated": "2024-06-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.641256,
+                    45.448041
+                ]
+            },
+            "properties": {
+                "name": "Pietros Pizza",
+                "area": "Oregon",
+                "address": "10300 SE Main St, Milwaukie, OR, Milwaukie",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432726",
+                "internal_url": "null",
+                "latitude": "45.448041",
+                "longitude": "-122.641256",
+                "machine_status": "available",
+                "id": 7238,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.77644339999999,
+                    42.6768875
+                ]
+            },
+            "properties": {
+                "name": "Sparks Pinball Museum",
+                "area": "Michigan",
+                "address": "33151 23 mile road, New Baltimore ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432779",
+                "internal_url": "null",
+                "latitude": "42.6768875",
+                "longitude": "-82.77644339999999",
+                "machine_status": "available",
+                "id": 7239,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.6064983,
+                    32.3230556
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees",
+                "area": "Texas",
+                "address": "1402 S IH-45 , Ennis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=369220",
+                "internal_url": "null",
+                "latitude": "32.3230556",
+                "longitude": "-96.6064983",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5378,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4871028,
+                    29.4263031
+                ]
+            },
+            "properties": {
+                "name": "Ripley's Haunted Adventure",
+                "area": "Texas",
+                "address": "329 Alamo Plaza, San Antonio",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2613",
+                "internal_url": "null",
+                "latitude": "29.4263031",
+                "longitude": "-98.4871028",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3788,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.5473692,
+                    38.6446737
+                ]
+            },
+            "properties": {
+                "name": "Dukes of Hazzard Museum (Was Cooters in the Valley)",
+                "area": "Virginia",
+                "address": "4768 US Hwy 211 West, Luray",
+                "external_url": "http://209.221.138.252/Details.aspx?location=268762",
+                "internal_url": "null",
+                "latitude": "38.6446737",
+                "longitude": "-78.5473692",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4422,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.392338,
+                    38.673392
+                ]
+            },
+            "properties": {
+                "name": "Jellystone Park Campground",
+                "area": "Virginia",
+                "address": "2250 US Hwy 211 East, Luray",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1217",
+                "internal_url": "null",
+                "latitude": "38.673392",
+                "longitude": "-78.392338",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4423,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.666787,
+                    38.713124
+                ]
+            },
+            "properties": {
+                "name": "Yellow Barn at Shenandoah Caverns",
+                "area": "Virginia",
+                "address": "261 Caverns Road (I-81 Exit #269), Shenandoah Caverns",
+                "external_url": "http://209.221.138.252/Details.aspx?location=46820",
+                "internal_url": "null",
+                "latitude": "38.713124",
+                "longitude": "-78.666787",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4450,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0480097,
+                    49.3279618
+                ]
+            },
+            "properties": {
+                "name": "Tsawwassen Ferry Terminal",
+                "area": "Canada",
+                "address": "919 21st St E, North Vancouver, BC, Delta",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432781",
+                "internal_url": "null",
+                "latitude": "49.3279618",
+                "longitude": "-123.0480097",
+                "machine_status": "available",
+                "id": 7240,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.6103874,
+                    -17.5598646
+                ]
+            },
+            "properties": {
+                "name": "Tahiti Faa'a International Airport",
+                "area": "France",
+                "address": ", Tahiti Faa'a",
+                "external_url": "http://209.221.138.252/Details.aspx?location=266650",
+                "internal_url": "null",
+                "latitude": "-17.5598646",
+                "longitude": "-149.6103874",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 116,
+                "last_updated": "2024-05-10"
             }
         }
     ]
