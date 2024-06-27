@@ -7111,9 +7111,9 @@
                 "internal_url": "null",
                 "latitude": "42.139786",
                 "longitude": "-72.02485",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2899,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -44201,10 +44201,10 @@
                 "internal_url": "null",
                 "latitude": "44.9275013",
                 "longitude": "-124.019163",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4369,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -56140,6 +56140,190 @@
                 "status": "unvisited",
                 "id": 701,
                 "last_updated": "2024-06-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.3238765,
+                    30.3898669
+                ]
+            },
+            "properties": {
+                "name": "Baytowne Wharf",
+                "area": "Florida",
+                "address": ", Miramar Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432970",
+                "internal_url": "null",
+                "latitude": "30.3898669",
+                "longitude": "-86.3238765",
+                "machine_status": "available",
+                "id": 7241,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.345243,
+                    32.7884369
+                ]
+            },
+            "properties": {
+                "name": "Texas Hot Stuff",
+                "area": "Texas",
+                "address": "140 East Exchange Ste 105, Fort Worth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432952",
+                "internal_url": "null",
+                "latitude": "32.7884369",
+                "longitude": "-97.345243",
+                "machine_status": "available",
+                "id": 7242,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.38311999999999,
+                    34.00385139999999
+                ]
+            },
+            "properties": {
+                "name": "Chattahoochee Nature Center",
+                "area": "Georgia",
+                "address": "9135 Willeo RD, Roswell",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432951",
+                "internal_url": "null",
+                "latitude": "34.00385139999999",
+                "longitude": "-84.38311999999999",
+                "machine_status": "available",
+                "id": 7243,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.3539254,
+                    37.9259463
+                ]
+            },
+            "properties": {
+                "name": "Pony Tails Chincoteague's Sweets Superstore",
+                "area": "Virginia",
+                "address": "7011 Maddox Blvd., Chincoteague",
+                "external_url": "http://209.221.138.252/Details.aspx?location=295864",
+                "internal_url": "null",
+                "latitude": "37.9259463",
+                "longitude": "-75.3539254",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5437,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0675384,
+                    47.3473964
+                ]
+            },
+            "properties": {
+                "name": "Alderbrook Resort and Spa",
+                "area": "Washington",
+                "address": "10 E Alderbrook Dr., Union",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432959",
+                "internal_url": "null",
+                "latitude": "47.3473964",
+                "longitude": "-123.0675384",
+                "machine_status": "available",
+                "id": 7244,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.114485,
+                    39.563747
+                ]
+            },
+            "properties": {
+                "name": "Amelia Earhart Birthplace Museum",
+                "area": "Kansas",
+                "address": "223 N. Terrace, Atchison",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432961",
+                "internal_url": "null",
+                "latitude": "39.563747",
+                "longitude": "-95.114485",
+                "machine_status": "available",
+                "id": 7245,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.1781275,
+                    39.56845939999999
+                ]
+            },
+            "properties": {
+                "name": "Amelia Earhart Hanger Museum",
+                "area": "Kansas",
+                "address": "16701 286th Road Atchison, Kansas 66002, Atchison",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432960",
+                "internal_url": "null",
+                "latitude": "39.56845939999999",
+                "longitude": "-95.1781275",
+                "machine_status": "available",
+                "id": 7246,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8077958,
+                    43.9525693
+                ]
+            },
+            "properties": {
+                "name": "Buvette du Rocher des Doms",
+                "area": "France",
+                "address": "2 Montée des Moulins , Avignon",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=432947",
+                "internal_url": "null",
+                "latitude": "43.9525693",
+                "longitude": "4.8077958",
+                "machine_status": "available",
+                "id": 7247,
+                "last_updated": "2024-05-10"
             }
         }
     ]
