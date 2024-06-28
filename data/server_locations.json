@@ -56087,7 +56087,7 @@
                 "area": "Canada",
                 "address": "919 21st St E, North Vancouver, BC, Delta",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=432781",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "49.3279618",
                 "longitude": "-123.0480097",
@@ -56371,6 +56371,52 @@
                 "status": "unvisited",
                 "id": 5915,
                 "last_updated": "2024-06-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.66907719999999,
+                    40.8709471
+                ]
+            },
+            "properties": {
+                "name": "Wallys",
+                "area": "Illinois",
+                "address": "1 Holiday Road, Pontiac",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433096",
+                "internal_url": "null",
+                "latitude": "40.8709471",
+                "longitude": "-88.66907719999999",
+                "machine_status": "available",
+                "id": 7248,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.0979392,
+                    37.5112862
+                ]
+            },
+            "properties": {
+                "name": "Lotte World Adventure",
+                "area": "South Korea",
+                "address": "40-1 Jamsil-dong, Songpa-gu, Seoul, South Korea, Seoul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=209454",
+                "internal_url": "null",
+                "latitude": "37.5112862",
+                "longitude": "127.0979392",
+                "machine_status": "available",
+                "id": 7249,
+                "last_updated": "2024-05-10"
             }
         }
     ]
