@@ -56536,6 +56536,31 @@
                 "multimachine": 2,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1852802,
+                    39.7677381
+                ]
+            },
+            "properties": {
+                "name": "Indianapolis Zoo",
+                "area": "Indiana",
+                "address": "1200 West Washington Street, Indianapolis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2137",
+                "internal_url": "null",
+                "latitude": "39.7677381",
+                "longitude": "-86.1852802",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2271,
+                "last_updated": "2024-06-28",
+                "multimachine": 7,
+                "paywall": true
+            }
         }
     ]
 }
