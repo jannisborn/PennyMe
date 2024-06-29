@@ -9781,9 +9781,9 @@
                 "internal_url": "null",
                 "latitude": "35.7126814",
                 "longitude": "-83.514517",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4199,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -46235,10 +46235,10 @@
                 "internal_url": "null",
                 "latitude": "36.9530369",
                 "longitude": "-86.47316339999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3515,
-                "last_updated": "2024-03-13"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -56560,6 +56560,98 @@
                 "last_updated": "2024-06-28",
                 "multimachine": 7,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.1665819,
+                    47.0065087
+                ]
+            },
+            "properties": {
+                "name": "Sharky's",
+                "area": "Washington",
+                "address": "695 Ocean Shores Blvd NW, Ocean Shores",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433229",
+                "internal_url": "null",
+                "latitude": "47.0065087",
+                "longitude": "-124.1665819",
+                "machine_status": "available",
+                "id": 7250,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    20.993481,
+                    52.2494958
+                ]
+            },
+            "properties": {
+                "name": "Museum of the History of Polish Jews",
+                "area": "Poland",
+                "address": "Mordechaja Anielewicza 6, 00-157, Warsaw",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433213",
+                "internal_url": "null",
+                "latitude": "52.2494958",
+                "longitude": "20.993481",
+                "machine_status": "available",
+                "id": 7251,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.0215756,
+                    52.2581092
+                ]
+            },
+            "properties": {
+                "name": "Warsaw Zoo",
+                "area": "Poland",
+                "address": "Ratuszowa 1/3, 03-461 Warszawa, Poland, Warsaw",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433214",
+                "internal_url": "null",
+                "latitude": "52.2581092",
+                "longitude": "21.0215756",
+                "machine_status": "available",
+                "id": 7252,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.1048655,
+                    37.5134856
+                ]
+            },
+            "properties": {
+                "name": "Lotte World Aquarium",
+                "area": "South Korea",
+                "address": "300, Olympic-ro, Songpa-gu, Seoul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433208",
+                "internal_url": "null",
+                "latitude": "37.5134856",
+                "longitude": "127.1048655",
+                "machine_status": "available",
+                "id": 7253,
+                "last_updated": "2024-05-10"
             }
         }
     ]
