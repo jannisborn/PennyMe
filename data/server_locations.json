@@ -52545,10 +52545,10 @@
                 "internal_url": "null",
                 "latitude": "39.64951800000001",
                 "longitude": "-78.763648",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3615,
-                "last_updated": "2024-05-20"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -56768,6 +56768,29 @@
                 "id": 7257,
                 "last_updated": "2024-06-30",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.709481,
+                    42.5940407
+                ]
+            },
+            "properties": {
+                "name": "Ponca State Park",
+                "area": "Nebraska",
+                "address": "88090 Spur 26 E, Ponca",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433311",
+                "internal_url": "null",
+                "latitude": "42.5940407",
+                "longitude": "-96.709481",
+                "machine_status": "available",
+                "id": 7258,
+                "last_updated": "2024-05-10"
             }
         }
     ]
