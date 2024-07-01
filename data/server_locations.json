@@ -56839,6 +56839,52 @@
                 "id": 1150,
                 "last_updated": "2024-07-01"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.4396629,
+                    42.642032
+                ]
+            },
+            "properties": {
+                "name": "Butterfly Place, The",
+                "area": "Massachusetts",
+                "address": "120 Tyngsboro Road, Westford",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2639",
+                "internal_url": "null",
+                "latitude": "42.642032",
+                "longitude": "-71.4396629",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2935,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0208206,
+                    39.8163966
+                ]
+            },
+            "properties": {
+                "name": "Meyersdale Train Station ",
+                "area": "Pennsylvania",
+                "address": "527 Main Street, Meyersdale ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433422",
+                "internal_url": "null",
+                "latitude": "39.8163966",
+                "longitude": "-79.0208206",
+                "machine_status": "available",
+                "id": 7260,
+                "last_updated": "2024-05-10"
+            }
         }
     ]
 }
