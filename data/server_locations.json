@@ -54936,13 +54936,13 @@
                 "area": "Texas",
                 "address": "2825 Nolan River Rd, Cleburne, TX 76033, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433524",
                 "internal_url": "null",
                 "latitude": 32.37520135703253,
                 "longitude": -97.41923089220788,
                 "machine_status": "available",
                 "id": 7218,
-                "last_updated": "2024-06-17"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -55931,7 +55931,7 @@
                 "internal_url": "null",
                 "latitude": "45.448041",
                 "longitude": "-122.641256",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7238,
                 "last_updated": "2024-05-10"
             }
@@ -56979,6 +56979,170 @@
                 "status": "unvisited",
                 "id": 2096,
                 "last_updated": "2024-07-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.427795,
+                    43.5280584
+                ]
+            },
+            "properties": {
+                "name": "Funtown Splashton USA",
+                "area": "Maine",
+                "address": "774 Portland Rd , Saco",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433541",
+                "internal_url": "null",
+                "latitude": "43.5280584",
+                "longitude": "-70.427795",
+                "machine_status": "available",
+                "id": 7261,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.230648,
+                    39.823306
+                ]
+            },
+            "properties": {
+                "name": "Jennie Wade House",
+                "area": "Pennsylvania",
+                "address": "548 Baltimore Street , Gettysburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3866",
+                "internal_url": "null",
+                "latitude": "39.823306",
+                "longitude": "-77.230648",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3989,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2420255,
+                    44.8547397
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Nickelodeon Universe",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=45780",
+                "internal_url": "null",
+                "latitude": "44.8547397",
+                "longitude": "-93.2420255",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3140,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.1455233,
+                    44.4406949
+                ]
+            },
+            "properties": {
+                "name": "Laura Ingalls Wilder Museum",
+                "area": "Wisconsin",
+                "address": "306 Third Street, Pepin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433532",
+                "internal_url": "null",
+                "latitude": "44.4406949",
+                "longitude": "-92.1455233",
+                "machine_status": "available",
+                "id": 7262,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.90072,
+                    46.87973
+                ]
+            },
+            "properties": {
+                "name": "Szantod Port",
+                "area": "Hungary",
+                "address": "Szantod, Tihany u. 9 (Balaton), 8622 Hungary",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433544",
+                "internal_url": "null",
+                "latitude": "46.879730",
+                "longitude": "17.900720",
+                "logs": {
+                    "2021-11-14": "Requires 2x 100 + 5 Hungarian forint."
+                },
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5041,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.8923111,
+                    46.9171247
+                ]
+            },
+            "properties": {
+                "name": "Tihany - By the Molo Cafe & Bar.",
+                "area": "Hungary",
+                "address": ", Tihany",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433542",
+                "internal_url": "null",
+                "latitude": "46.9171247",
+                "longitude": "17.8923111",
+                "machine_status": "available",
+                "id": 7263,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.3784285,
+                    51.45045
+                ]
+            },
+            "properties": {
+                "name": "Eindhoven Airport",
+                "area": "Netherlands",
+                "address": "Luchthavenweg 25, Eindhoven",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433639",
+                "internal_url": "null",
+                "latitude": "51.45045",
+                "longitude": "5.3784285",
+                "machine_status": "available",
+                "id": 7264,
+                "last_updated": "2024-05-10"
             }
         }
     ]
