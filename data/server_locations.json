@@ -43199,10 +43199,10 @@
                 "internal_url": "null",
                 "latitude": "46.7905036",
                 "longitude": "-123.01",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5097,
-                "last_updated": "2024-02-02"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -45887,13 +45887,13 @@
                 "area": "Malaysia",
                 "address": "No. 09-103,  7th Floor, Berjaya Times Square, 1, Jln Imbi, Kuala Lumpur",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=424322",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "3.1421073",
                 "longitude": "101.7105795",
                 "machine_status": "available",
                 "id": 7075,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -46052,10 +46052,10 @@
                 "internal_url": "null",
                 "latitude": "32.519008",
                 "longitude": "-93.739556",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3566,
-                "last_updated": "2024-03-10"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -52017,10 +52017,10 @@
                 "internal_url": "null",
                 "latitude": "32.823393",
                 "longitude": "-97.27418399999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3733,
-                "last_updated": "2024-05-18"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -57259,6 +57259,121 @@
                 "status": "unvisited",
                 "id": 255,
                 "last_updated": "2024-07-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.5738596,
+                    45.4357857
+                ]
+            },
+            "properties": {
+                "name": "Clakamas Town Center - Made in Oregon",
+                "area": "Oregon",
+                "address": "12000 SE 82nd Avenue #2078, Happy Valley",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433660",
+                "internal_url": "null",
+                "latitude": "45.4357857",
+                "longitude": "-122.5738596",
+                "machine_status": "available",
+                "id": 7266,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1706876,
+                    36.11774
+                ]
+            },
+            "properties": {
+                "name": "Museum of Selfies",
+                "area": "Nevada",
+                "address": "LINQ Promenade, 3545 S Las Vegas Blvd Suite L-07B, Las Vegas, NV 89109, Las Vegas ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433686",
+                "internal_url": "null",
+                "latitude": "36.11774",
+                "longitude": "-115.1706876",
+                "machine_status": "available",
+                "id": 7267,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9760005,
+                    40.5740101
+                ]
+            },
+            "properties": {
+                "name": "New York Aquarium",
+                "area": "New York",
+                "address": "Boardwalk at West 8th Street, New York City (Brooklyn)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3650",
+                "internal_url": "null",
+                "latitude": "40.5740101",
+                "longitude": "-73.9760005",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3037,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.2360968,
+                    38.9635818
+                ]
+            },
+            "properties": {
+                "name": "Mass Street Soda & Sweets",
+                "area": "Kansas",
+                "address": "1103 Massachusetts St, Lawrence, KS 66044, Lawrence",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433680",
+                "internal_url": "null",
+                "latitude": "38.9635818",
+                "longitude": "-95.2360968",
+                "machine_status": "available",
+                "id": 7268,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.121314,
+                    52.090695
+                ]
+            },
+            "properties": {
+                "name": "Domtower",
+                "area": "Netherlands",
+                "address": "Domplein 9 , Utrecht",
+                "external_url": "http://209.221.138.252/Details.aspx?location=36987",
+                "internal_url": "null",
+                "latitude": "52.090695",
+                "longitude": "5.121314",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 237,
+                "last_updated": "2024-05-10"
             }
         }
     ]
