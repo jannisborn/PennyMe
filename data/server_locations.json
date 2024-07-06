@@ -57393,10 +57393,10 @@
                 "internal_url": "null",
                 "latitude": "59.44253393695872",
                 "longitude": "24.74939254291038",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 253,
-                "last_updated": "2024-07-05"
+                "last_updated": "2024-05-10"
             }
         },
         {
@@ -57513,6 +57513,52 @@
                 "id": 1603,
                 "last_updated": "2024-07-06",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1364389,
+                    49.9000253
+                ]
+            },
+            "properties": {
+                "name": "Manitoba Museum",
+                "area": "Canada",
+                "address": "190 Rupert Avenue, Manitoba - Winnipeg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4238",
+                "internal_url": "null",
+                "latitude": "49.9000253",
+                "longitude": "-97.1364389",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4980,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.7492626,
+                    59.44249799999999
+                ]
+            },
+            "properties": {
+                "name": "Maritime Museum Tallinn",
+                "area": "Estonia",
+                "address": "Pikk 70, Tallinn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=181886",
+                "internal_url": "null",
+                "latitude": "59.44249799999999",
+                "longitude": "24.7492626",
+                "machine_status": "available",
+                "id": 7269,
+                "last_updated": "2024-05-10"
             }
         }
     ]
