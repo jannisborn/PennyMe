@@ -7917,9 +7917,9 @@
                 "internal_url": "null",
                 "latitude": "39.9159598",
                 "longitude": "-123.7657553",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4729,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -39893,9 +39893,9 @@
                 "latitude": "33.920239",
                 "longitude": "-116.77287",
                 "paywall": true,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4583,
-                "last_updated": "2024-06-19"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -57439,10 +57439,10 @@
                 "internal_url": "null",
                 "latitude": "39.086769",
                 "longitude": "-94.419427",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1093,
-                "last_updated": "2024-07-05"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -57485,10 +57485,10 @@
                 "internal_url": "null",
                 "latitude": "44.072026",
                 "longitude": "-103.2632553",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5323,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -57673,6 +57673,98 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 5885,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.1927651,
+                    34.6140583
+                ]
+            },
+            "properties": {
+                "name": "Pea Soup Andersen's Restaurant",
+                "area": "California",
+                "address": "376 Avenue of the Flags, Buellton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1441",
+                "internal_url": "null",
+                "latitude": "34.6140583",
+                "longitude": "-120.1927651",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4581,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1912676,
+                    33.7598278
+                ]
+            },
+            "properties": {
+                "name": "Shoreline Village - Santa's Workshop",
+                "area": "California",
+                "address": "419 A Shoreline Village Drive, Long Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433927",
+                "internal_url": "null",
+                "latitude": "33.7598278",
+                "longitude": "-118.1912676",
+                "machine_status": "available",
+                "id": 7270,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.86568470000002,
+                    47.4662976
+                ]
+            },
+            "properties": {
+                "name": "Sundae in the Park - Fort Wilkins ",
+                "area": "Michigan",
+                "address": "15223 US Highway 41 (c/o Fort Wilkins State Park 15318 US 41) , Copper Harbor",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319907",
+                "internal_url": "null",
+                "latitude": "47.4662976",
+                "longitude": "-87.86568470000002",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2504,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.9308547,
+                    45.3734512
+                ]
+            },
+            "properties": {
+                "name": "Susie's Sweets and Souvenirs",
+                "area": "Wisconsin",
+                "address": "1219 Main Road, Washington Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=339906",
+                "internal_url": "null",
+                "latitude": "45.3734512",
+                "longitude": "-86.9308547",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2463,
                 "last_updated": "2024-07-07"
             }
         }
