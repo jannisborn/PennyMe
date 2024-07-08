@@ -7917,9 +7917,9 @@
                 "internal_url": "null",
                 "latitude": "39.9159598",
                 "longitude": "-123.7657553",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4729,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -9620,9 +9620,9 @@
                 "internal_url": "null",
                 "latitude": "39.09376049999999",
                 "longitude": "-94.42338649999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6160,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-07-05"
             }
         },
         {
@@ -13403,8 +13403,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -71.1631137,
-                    42.7070354
+                    -95.2313579776291,
+                    38.94924971554137
                 ]
             },
             "properties": {
@@ -13414,11 +13414,11 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=410459",
                 "internal_url": "null",
-                "latitude": "42.7070354",
-                "longitude": "-71.1631137",
+                "latitude": "38.94924971554137",
+                "longitude": "-95.2313579776291",
                 "machine_status": "available",
                 "id": 6259,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -35135,9 +35135,9 @@
                 "internal_url": "null",
                 "latitude": "43.7018221",
                 "longitude": "7.3118466",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6815,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -36047,7 +36047,7 @@
                 ]
             },
             "properties": {
-                "name": "2970",
+                "name": "2970 Cabo Espichel",
                 "area": "Portugal",
                 "address": "2970, Portugal",
                 "status": "unvisited",
@@ -36057,7 +36057,7 @@
                 "longitude": "-9.2140034",
                 "machine_status": "available",
                 "id": 6855,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-07-05"
             }
         },
         {
@@ -39893,9 +39893,9 @@
                 "latitude": "33.920239",
                 "longitude": "-116.77287",
                 "paywall": true,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4583,
-                "last_updated": "2024-06-19"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -43410,10 +43410,10 @@
                 "internal_url": "null",
                 "latitude": "29.8977805",
                 "longitude": "-81.3135877",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3445,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -45729,10 +45729,10 @@
                 "internal_url": "null",
                 "latitude": "-36.1198565",
                 "longitude": "144.7468663",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2166,
-                "last_updated": "2024-03-05"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -53311,9 +53311,9 @@
                 "internal_url": "null",
                 "latitude": "31.315864",
                 "longitude": "-89.412609",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7198,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -57255,10 +57255,10 @@
                 "internal_url": "null",
                 "latitude": "59.43631539999999",
                 "longitude": "24.7409419",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 255,
-                "last_updated": "2024-07-04"
+                "last_updated": "2024-07-06"
             }
         },
         {
@@ -57374,6 +57374,421 @@
                 "status": "unvisited",
                 "id": 237,
                 "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.74939254291038,
+                    59.44253393695872
+                ]
+            },
+            "properties": {
+                "name": "Maritiem Museum",
+                "area": "Estonia",
+                "address": "Pikk 70, 10133 Tallinn, Estonia",
+                "external_url": "http://209.221.138.252/Details.aspx?location=301626",
+                "internal_url": "null",
+                "latitude": "59.44253393695872",
+                "longitude": "24.74939254291038",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 253,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.671431,
+                    59.395884
+                ]
+            },
+            "properties": {
+                "name": "Tallinn Technical University",
+                "area": "Estonia",
+                "address": "Ehitaja tee 5, Tallinn",
+                "external_url": "http://209.221.138.252/Details.aspx?location=181877",
+                "internal_url": "null",
+                "latitude": "59.395884",
+                "longitude": "24.671431",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 257,
+                "last_updated": "2024-07-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.419427,
+                    39.086769
+                ]
+            },
+            "properties": {
+                "name": "National Frontier Trails Museum",
+                "area": "Missouri",
+                "address": "318 W. Pacific Ave, Independence",
+                "external_url": "http://209.221.138.252/Details.aspx?location=15528",
+                "internal_url": "null",
+                "latitude": "39.086769",
+                "longitude": "-94.419427",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1093,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.360941700000001,
+                    43.7292336
+                ]
+            },
+            "properties": {
+                "name": "Tourist Information",
+                "area": "France",
+                "address": "Place du Général de Gaulle, Eze Le Village",
+                "external_url": "http://209.221.138.252/Details.aspx?location=197005",
+                "internal_url": "null",
+                "latitude": "43.7292336",
+                "longitude": "7.360941700000001",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 70,
+                "last_updated": "2024-07-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.2632553,
+                    44.072026
+                ]
+            },
+            "properties": {
+                "name": "Storybook Island",
+                "area": "South Dakota",
+                "address": "1301 Sheridan Lake Rd, Rapid City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2913",
+                "internal_url": "null",
+                "latitude": "44.072026",
+                "longitude": "-103.2632553",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5323,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.794593,
+                    51.5624771
+                ]
+            },
+            "properties": {
+                "name": "Steam Museum Of The Great Western Railways",
+                "area": "England",
+                "address": "Fire Fly Avenue, WILTSHIRE - Swindon",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107478",
+                "internal_url": "null",
+                "latitude": "51.5624771",
+                "longitude": "-1.794593",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1603,
+                "last_updated": "2024-07-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1364389,
+                    49.9000253
+                ]
+            },
+            "properties": {
+                "name": "Manitoba Museum",
+                "area": "Canada",
+                "address": "190 Rupert Avenue, Manitoba - Winnipeg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4238",
+                "internal_url": "null",
+                "latitude": "49.9000253",
+                "longitude": "-97.1364389",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4980,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.7492626,
+                    59.44249799999999
+                ]
+            },
+            "properties": {
+                "name": "Maritime Museum Tallinn",
+                "area": "Estonia",
+                "address": "Pikk 70, Tallinn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=181886",
+                "internal_url": "null",
+                "latitude": "59.44249799999999",
+                "longitude": "24.7492626",
+                "machine_status": "available",
+                "id": 7269,
+                "last_updated": "2024-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.2108966,
+                    38.9115919
+                ]
+            },
+            "properties": {
+                "name": "Eisenhower Presidential Library, Museum & Boyhood Home",
+                "area": "Kansas",
+                "address": "200 S.E. 4th, Abilene",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4691",
+                "internal_url": "null",
+                "latitude": "38.9115919",
+                "longitude": "-97.2108966",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3921,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.3393388221332,
+                    35.019003798205446
+                ]
+            },
+            "properties": {
+                "name": "Ruby Falls, Lookout Mountain Tower Gift Shop",
+                "area": "Tennessee",
+                "address": "1720 South Scenic Highway , Chattanooga",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2147",
+                "internal_url": "null",
+                "latitude": "35.019003798205446",
+                "longitude": "-85.3393388221332",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4191,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.31316869999999,
+                    29.8945009
+                ]
+            },
+            "properties": {
+                "name": "St. George's Row Shops",
+                "area": "Florida",
+                "address": "106 St. George St., St. Augustine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1553",
+                "internal_url": "null",
+                "latitude": "29.8945009",
+                "longitude": "-81.31316869999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3457,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3131434,
+                    29.8944976
+                ]
+            },
+            "properties": {
+                "name": "Aunt Matilda's Steampunk Trunk",
+                "area": "Florida",
+                "address": "142 Saint George Street, St Augustine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=373434",
+                "internal_url": "null",
+                "latitude": "29.8944976",
+                "longitude": "-81.3131434",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5365,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.592602869255959,
+                    37.31578954604758
+                ]
+            },
+            "properties": {
+                "name": "Miradouro da Foia",
+                "area": "Portugal",
+                "address": "8550, Monchique, Algarve, Portugal",
+                "external_url": "http://209.221.138.252/Details.aspx?location=336733",
+                "internal_url": "null",
+                "latitude": "37.31578954604758",
+                "longitude": "-8.592602869255959",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5885,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.1927651,
+                    34.6140583
+                ]
+            },
+            "properties": {
+                "name": "Pea Soup Andersen's Restaurant",
+                "area": "California",
+                "address": "376 Avenue of the Flags, Buellton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1441",
+                "internal_url": "null",
+                "latitude": "34.6140583",
+                "longitude": "-120.1927651",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4581,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1912676,
+                    33.7598278
+                ]
+            },
+            "properties": {
+                "name": "Shoreline Village - Santa's Workshop",
+                "area": "California",
+                "address": "419 A Shoreline Village Drive, Long Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=433927",
+                "internal_url": "null",
+                "latitude": "33.7598278",
+                "longitude": "-118.1912676",
+                "machine_status": "available",
+                "id": 7270,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.86568470000002,
+                    47.4662976
+                ]
+            },
+            "properties": {
+                "name": "Sundae in the Park - Fort Wilkins ",
+                "area": "Michigan",
+                "address": "15223 US Highway 41 (c/o Fort Wilkins State Park 15318 US 41) , Copper Harbor",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319907",
+                "internal_url": "null",
+                "latitude": "47.4662976",
+                "longitude": "-87.86568470000002",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2504,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.9308547,
+                    45.3734512
+                ]
+            },
+            "properties": {
+                "name": "Susie's Sweets and Souvenirs",
+                "area": "Wisconsin",
+                "address": "1219 Main Road, Washington Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=339906",
+                "internal_url": "null",
+                "latitude": "45.3734512",
+                "longitude": "-86.9308547",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2463,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3364522718414,
+                    29.938881962885574
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee’s - St. Augustine",
+                "area": "Florida",
+                "address": "200 World Commerce Pkwy, St. Augustine, FL 32092",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 29.938881962885574,
+                "longitude": -81.3364522718414,
+                "machine_status": "available",
+                "id": 7271,
+                "last_updated": "2024-07-07"
             }
         }
     ]
