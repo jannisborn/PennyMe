@@ -49683,10 +49683,10 @@
                 "internal_url": "null",
                 "latitude": "33.3974248",
                 "longitude": "-104.5230764",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5467,
-                "last_updated": "2024-04-13"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -57837,6 +57837,29 @@
                 "status": "unvisited",
                 "id": 5572,
                 "last_updated": "2024-07-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.25524999999999,
+                    44.6912923
+                ]
+            },
+            "properties": {
+                "name": "Point Betsie Lighthouse",
+                "area": "Michigan",
+                "address": "3701 Point Betsie Rd, Frankfort",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434025",
+                "internal_url": "null",
+                "latitude": "44.6912923",
+                "longitude": "-86.25524999999999",
+                "machine_status": "available",
+                "id": 7272,
+                "last_updated": "2024-07-07"
             }
         }
     ]
