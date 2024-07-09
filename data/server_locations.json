@@ -49729,10 +49729,10 @@
                 "internal_url": "null",
                 "latitude": "37.1092774",
                 "longitude": "-121.0170273",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4857,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -57977,6 +57977,75 @@
                 "last_updated": "2024-07-09",
                 "multimachine": "1x3 prints (I only got 2/3)",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3542387,
+                    48.5318371
+                ]
+            },
+            "properties": {
+                "name": "Ernstbrunn Wildlife Park",
+                "area": "Austria",
+                "address": "Hollabrunnerstrasse, Ernstbrunn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434105",
+                "internal_url": "null",
+                "latitude": "48.5318371",
+                "longitude": "16.3542387",
+                "machine_status": "available",
+                "id": 7274,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -63.4070892,
+                    46.4846611
+                ]
+            },
+            "properties": {
+                "name": "Cavendish Beach Adventure Zone",
+                "area": "Canada",
+                "address": "18 Moore Rd, PEI - Cavendish",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434110",
+                "internal_url": "null",
+                "latitude": "46.4846611",
+                "longitude": "-63.4070892",
+                "machine_status": "available",
+                "id": 7275,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.092801,
+                    50.731913
+                ]
+            },
+            "properties": {
+                "name": "LVR-Museum Bonn",
+                "area": "Germany",
+                "address": "Colmantstr. 14-16 ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=182123",
+                "internal_url": "null",
+                "latitude": "50.731913",
+                "longitude": "7.092801",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 451,
+                "last_updated": "2024-07-07"
             }
         }
     ]
