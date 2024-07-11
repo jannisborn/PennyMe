@@ -46118,13 +46118,13 @@
                 "area": "Texas",
                 "address": "1301 S Henderson Blvd, Kilgore, TX 75662, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434296",
                 "internal_url": "null",
                 "latitude": 32.377037706976,
                 "longitude": -94.86968710951791,
                 "machine_status": "available",
                 "id": 7079,
-                "last_updated": "2024-03-11"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -58300,6 +58300,52 @@
                 "machine_status": "available",
                 "id": 7284,
                 "last_updated": "2024-07-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.790066,
+                    40.009875
+                ]
+            },
+            "properties": {
+                "name": "One Log House  Espresso & Gifts",
+                "area": "California",
+                "address": "705 US HWY 101, Garberville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1250",
+                "internal_url": "null",
+                "latitude": "40.009875",
+                "longitude": "-123.790066",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4630,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2558081,
+                    32.7942171
+                ]
+            },
+            "properties": {
+                "name": "Pacific Beach ",
+                "area": "California",
+                "address": "4343 Ocean Blvd, Pacific Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434283",
+                "internal_url": "null",
+                "latitude": "32.7942171",
+                "longitude": "-117.2558081",
+                "machine_status": "available",
+                "id": 7285,
+                "last_updated": "2024-07-07"
             }
         }
     ]
