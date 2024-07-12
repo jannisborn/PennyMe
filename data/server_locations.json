@@ -54200,10 +54200,10 @@
                 "internal_url": "null",
                 "latitude": "45.5100569",
                 "longitude": "-122.7158264",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4385,
-                "last_updated": "2024-06-12",
+                "last_updated": "2024-07-07",
                 "multimachine": 3
             }
         },
@@ -58369,6 +58369,190 @@
                 "status": "unvisited",
                 "id": 4265,
                 "last_updated": "2024-07-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.0087684,
+                    47.7228201
+                ]
+            },
+            "properties": {
+                "name": "Untersbergbahn Bergstation",
+                "area": "Austria",
+                "address": "Hochalm 496/9, 5083, Austria, Salzburg (Grödig)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434353",
+                "internal_url": "null",
+                "latitude": "47.7228201",
+                "longitude": "13.0087684",
+                "machine_status": "available",
+                "id": 7286,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.121053,
+                    47.482133
+                ]
+            },
+            "properties": {
+                "name": "Compagnie Océane Ferry Building Quiberon",
+                "area": "France",
+                "address": "Gare Maritime, Port Maria, BRITTANY - Quiberon",
+                "external_url": "http://209.221.138.252/Details.aspx?location=286565",
+                "internal_url": "null",
+                "latitude": "47.482133",
+                "longitude": "-3.121053",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 63,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.353753899999999,
+                    51.2983378
+                ]
+            },
+            "properties": {
+                "name": "Haus Ennepetal - Kluterthöhle",
+                "area": "Germany",
+                "address": "Gasstraße 10, Ennepetal",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434348",
+                "internal_url": "null",
+                "latitude": "51.2983378",
+                "longitude": "7.353753899999999",
+                "machine_status": "available",
+                "id": 7287,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.185200999999999,
+                    51.39672299999999
+                ]
+            },
+            "properties": {
+                "name": "Fahrräder Hecken",
+                "area": "Germany",
+                "address": "Steinhagen 14, Hattingen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434345",
+                "internal_url": "null",
+                "latitude": "51.39672299999999",
+                "longitude": "7.185200999999999",
+                "machine_status": "available",
+                "id": 7288,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.188746699999999,
+                    51.4074748
+                ]
+            },
+            "properties": {
+                "name": "Henrichshütte",
+                "area": "Germany",
+                "address": "Werksstraße 31-33, Hattingen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434346",
+                "internal_url": "null",
+                "latitude": "51.4074748",
+                "longitude": "7.188746699999999",
+                "machine_status": "available",
+                "id": 7289,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.0966803,
+                    49.020896
+                ]
+            },
+            "properties": {
+                "name": "Regensburger Wundertüte",
+                "area": "Germany",
+                "address": "Goldene-Bären-Straße 12, Regensburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434351",
+                "internal_url": "null",
+                "latitude": "49.020896",
+                "longitude": "12.0966803",
+                "machine_status": "available",
+                "id": 7290,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.0871992,
+                    51.3128209
+                ]
+            },
+            "properties": {
+                "name": "Mariendom ",
+                "area": "Germany",
+                "address": "Elberfelder Str. 12, Velbert-Neviges",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434341",
+                "internal_url": "null",
+                "latitude": "51.3128209",
+                "longitude": "7.0871992",
+                "machine_status": "available",
+                "id": 7291,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.1048263,
+                    51.2392133
+                ]
+            },
+            "properties": {
+                "name": "Stadion am Zoo",
+                "area": "Germany",
+                "address": "Hubertusallee 4, Wuppertal ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434347",
+                "internal_url": "null",
+                "latitude": "51.2392133",
+                "longitude": "7.1048263",
+                "machine_status": "available",
+                "id": 7292,
+                "last_updated": "2024-07-07"
             }
         }
     ]
