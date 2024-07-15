@@ -7360,13 +7360,13 @@
                 "area": "Pennsylvania",
                 "address": "101 S Independence Mall W, Philadelphia, PA 19106",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=411247",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "39.9502112",
                 "longitude": "-75.15015559999999",
                 "machine_status": "available",
                 "id": 6107,
-                "last_updated": "2024-01-28",
+                "last_updated": "2024-07-07",
                 "multimachine": 1
             }
         },
@@ -42874,10 +42874,10 @@
                 "internal_url": "null",
                 "latitude": "46.80454719999999",
                 "longitude": "-92.1599383",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3148,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -48729,10 +48729,10 @@
                 "internal_url": "null",
                 "latitude": "39.9856299",
                 "longitude": "-76.7136937",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4076,
-                "last_updated": "2024-04-04"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -53261,13 +53261,13 @@
                 "area": "Spain",
                 "address": "Port de Balansat , Puerto san Miguel",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=430679",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "39.083438",
                 "longitude": "1.442341",
                 "machine_status": "available",
                 "id": 7197,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -58717,6 +58717,121 @@
                 "last_updated": "2024-07-15",
                 "multimachine": 4,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6030665,
+                    41.45492420000001
+                ]
+            },
+            "properties": {
+                "name": "Mardells gift shop",
+                "area": "Massachusetts",
+                "address": "50 Main St, Vineyard Haven (Marthas Vineyard)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434554",
+                "internal_url": "null",
+                "latitude": "41.45492420000001",
+                "longitude": "-70.6030665",
+                "machine_status": "available",
+                "id": 7298,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.02816,
+                    35.4752693
+                ]
+            },
+            "properties": {
+                "name": "Farmers Furniture ",
+                "area": "Tennessee",
+                "address": "200 Able Drive, Dayton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434538",
+                "internal_url": "null",
+                "latitude": "35.4752693",
+                "longitude": "-85.02816",
+                "machine_status": "available",
+                "id": 7299,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.480263,
+                    44.229329
+                ]
+            },
+            "properties": {
+                "name": "Kingston and Pembroke Railway Station Visitor Information Center",
+                "area": "Canada",
+                "address": "209 Ontario Street, Ontario - Kingston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105212",
+                "internal_url": "null",
+                "latitude": "44.229329",
+                "longitude": "-76.480263",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5000,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.7766757,
+                    25.0426687
+                ]
+            },
+            "properties": {
+                "name": "????DAEBAK (Shifen Old Street)",
+                "area": "Taiwan",
+                "address": "No. 106 , Shifen Street, Pingxi District, New Taipei City, New Taipei City - Pingxi District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434520",
+                "internal_url": "null",
+                "latitude": "25.0426687",
+                "longitude": "121.7766757",
+                "machine_status": "available",
+                "id": 7300,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5055717,
+                    25.0451617
+                ]
+            },
+            "properties": {
+                "name": "Spy x Family Cafe (inside Eslite Spectrum Wuchang Mall)",
+                "area": "Taiwan",
+                "address": "No. 77, Section 2, Wuchang St, Wanhua District, Taipei City, 108, Taipei (Ximen Shopping District)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434519",
+                "internal_url": "null",
+                "latitude": "25.0451617",
+                "longitude": "121.5055717",
+                "machine_status": "available",
+                "id": 7301,
+                "last_updated": "2024-07-07"
             }
         }
     ]
