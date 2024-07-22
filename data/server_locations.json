@@ -56715,13 +56715,13 @@
                 "area": "Pennsylvania",
                 "address": "2001 Smallman St, Pittsburgh, PA 15222, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435221",
                 "internal_url": "null",
                 "latitude": 40.45193921891792,
                 "longitude": -79.98490823168817,
                 "machine_status": "available",
                 "id": 7256,
-                "last_updated": "2024-06-30"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -59383,6 +59383,52 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 5208,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8226881,
+                    40.7641297
+                ]
+            },
+            "properties": {
+                "name": "National History Museum of Utah",
+                "area": "Utah",
+                "address": "301 Wakara Way, Salt Lake City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435216",
+                "internal_url": "null",
+                "latitude": "40.7641297",
+                "longitude": "-111.8226881",
+                "machine_status": "available",
+                "id": 7318,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.240494,
+                    38.4409764
+                ]
+            },
+            "properties": {
+                "name": "Pizza Madness",
+                "area": "Colorado",
+                "address": "509 Main St, Cañon City",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.4409764",
+                "longitude": "-105.240494",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1818,
                 "last_updated": "2024-07-21"
             }
         }
