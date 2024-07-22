@@ -7360,13 +7360,13 @@
                 "area": "Pennsylvania",
                 "address": "101 S Independence Mall W, Philadelphia, PA 19106",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=411247",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "39.9502112",
                 "longitude": "-75.15015559999999",
                 "machine_status": "available",
                 "id": 6107,
-                "last_updated": "2024-01-28",
+                "last_updated": "2024-07-07",
                 "multimachine": 1
             }
         },
@@ -26388,13 +26388,13 @@
                 "area": "Hungary",
                 "address": "",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434760",
                 "internal_url": "null",
                 "latitude": "47.5960091",
                 "longitude": "19.347578",
                 "machine_status": "available",
                 "id": 843,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -35825,9 +35825,9 @@
                 "internal_url": "null",
                 "latitude": "46.7122228",
                 "longitude": "8.2163307",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6845,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -42874,10 +42874,10 @@
                 "internal_url": "null",
                 "latitude": "46.80454719999999",
                 "longitude": "-92.1599383",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3148,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -43970,10 +43970,10 @@
                 "internal_url": "null",
                 "latitude": "47.6100454",
                 "longitude": "-122.3408736",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5152,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -48729,10 +48729,10 @@
                 "internal_url": "null",
                 "latitude": "39.9856299",
                 "longitude": "-76.7136937",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4076,
-                "last_updated": "2024-04-04"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -49053,10 +49053,10 @@
                 "internal_url": "null",
                 "latitude": "38.3281238",
                 "longitude": "-75.08678110000001",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3624,
-                "last_updated": "2024-04-06"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -53261,13 +53261,13 @@
                 "area": "Spain",
                 "address": "Port de Balansat , Puerto san Miguel",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=430679",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "39.083438",
                 "longitude": "1.442341",
                 "machine_status": "available",
                 "id": 7197,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-07"
             }
         },
         {
@@ -54039,10 +54039,10 @@
                 "internal_url": "null",
                 "latitude": "33.8116154",
                 "longitude": "-78.7045591",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2232,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -58365,10 +58365,10 @@
                 "internal_url": "null",
                 "latitude": "35.779833",
                 "longitude": "-83.54651899999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4265,
-                "last_updated": "2024-07-12"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -58692,6 +58692,698 @@
                 "status": "unvisited",
                 "id": 5102,
                 "last_updated": "2024-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.153505157940209,
+                    41.08514278767115
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop entrance portaventura world",
+                "area": "Spain",
+                "address": "Av. Pere molas tarragona43840 Salou, Tarragona, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 41.08514278767115,
+                "longitude": 1.153505157940209,
+                "machine_status": "available",
+                "id": 7297,
+                "last_updated": "2024-07-15",
+                "multimachine": 4,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6030665,
+                    41.45492420000001
+                ]
+            },
+            "properties": {
+                "name": "Mardells gift shop",
+                "area": "Massachusetts",
+                "address": "50 Main St, Vineyard Haven (Marthas Vineyard)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434554",
+                "internal_url": "null",
+                "latitude": "41.45492420000001",
+                "longitude": "-70.6030665",
+                "machine_status": "available",
+                "id": 7298,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.02816,
+                    35.4752693
+                ]
+            },
+            "properties": {
+                "name": "Farmers Furniture ",
+                "area": "Tennessee",
+                "address": "200 Able Drive, Dayton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434538",
+                "internal_url": "null",
+                "latitude": "35.4752693",
+                "longitude": "-85.02816",
+                "machine_status": "available",
+                "id": 7299,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.480263,
+                    44.229329
+                ]
+            },
+            "properties": {
+                "name": "Kingston and Pembroke Railway Station Visitor Information Center",
+                "area": "Canada",
+                "address": "209 Ontario Street, Ontario - Kingston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105212",
+                "internal_url": "null",
+                "latitude": "44.229329",
+                "longitude": "-76.480263",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5000,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.7766757,
+                    25.0426687
+                ]
+            },
+            "properties": {
+                "name": "????DAEBAK (Shifen Old Street)",
+                "area": "Taiwan",
+                "address": "No. 106 , Shifen Street, Pingxi District, New Taipei City, New Taipei City - Pingxi District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434520",
+                "internal_url": "null",
+                "latitude": "25.0426687",
+                "longitude": "121.7766757",
+                "machine_status": "available",
+                "id": 7300,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5055717,
+                    25.0451617
+                ]
+            },
+            "properties": {
+                "name": "Spy x Family Cafe (inside Eslite Spectrum Wuchang Mall)",
+                "area": "Taiwan",
+                "address": "No. 77, Section 2, Wuchang St, Wanhua District, Taipei City, 108, Taipei (Ximen Shopping District)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434519",
+                "internal_url": "null",
+                "latitude": "25.0451617",
+                "longitude": "121.5055717",
+                "machine_status": "available",
+                "id": 7301,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.0890219,
+                    39.99893429999999
+                ]
+            },
+            "properties": {
+                "name": "WOW! Children's Museum",
+                "area": "Colorado",
+                "address": "110 N. Harrison Ave., Lafayette",
+                "external_url": "http://209.221.138.252/Details.aspx?location=306429",
+                "internal_url": "null",
+                "latitude": "39.99893429999999",
+                "longitude": "-105.0890219",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1889,
+                "last_updated": "2024-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.7743614,
+                    38.945846
+                ]
+            },
+            "properties": {
+                "name": "George Orthodontics",
+                "area": "Colorado",
+                "address": "7770 N Union Blvd, Suite B, Colorado Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196082",
+                "internal_url": "null",
+                "latitude": "38.945846",
+                "longitude": "-104.7743614",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5281,
+                "last_updated": "2024-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.2862464,
+                    47.5101885
+                ]
+            },
+            "properties": {
+                "name": "C.M. Russell Museum",
+                "area": "Montana",
+                "address": "400 13th St N, Great Falls",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317535",
+                "internal_url": "null",
+                "latitude": "47.5101885",
+                "longitude": "-111.2862464",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2963,
+                "last_updated": "2024-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7277117510711,
+                    45.78081647886706
+                ]
+            },
+            "properties": {
+                "name": "Mackinaw Crossing",
+                "area": "Michigan",
+                "address": "182 S Huron Ave, Mackinaw City, MI 49701, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 45.78081647886706,
+                "longitude": -84.7277117510711,
+                "machine_status": "available",
+                "id": 7302,
+                "last_updated": "2024-07-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.5072025,
+                    46.05189439999999
+                ]
+            },
+            "properties": {
+                "name": "Barbara Souvenirs 'E' Gifts",
+                "area": "Slovenia",
+                "address": "Vicino a Doprsni kip Antona Trstenjaka, Trubarjeva cesta 7, 1000 Ljubljana, Slovenia, Lubiana",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434665",
+                "internal_url": "null",
+                "latitude": "46.05189439999999",
+                "longitude": "14.5072025",
+                "machine_status": "available",
+                "id": 7303,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.510553,
+                    25.137255
+                ]
+            },
+            "properties": {
+                "name": "Tea Colors Cafe - Thermal Valley ",
+                "area": "Taiwan",
+                "address": "No. 28-1, Zhongshan Road, Beitou District, Taipei City, Taipei - Beitou District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434666",
+                "internal_url": "null",
+                "latitude": "25.137255",
+                "longitude": "121.510553",
+                "machine_status": "available",
+                "id": 7304,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.9300411,
+                    23.848537
+                ]
+            },
+            "properties": {
+                "name": "The Cyrstal Inn",
+                "area": "Taiwan",
+                "address": "No. 110, Wenhua Street, Yuchi Township, Nantou County, Yuchi Township - Ita Thao Shopping District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434521",
+                "internal_url": "null",
+                "latitude": "23.848537",
+                "longitude": "120.9300411",
+                "machine_status": "available",
+                "id": 7305,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.9311185,
+                    23.8479442
+                ]
+            },
+            "properties": {
+                "name": "Yiyong Street",
+                "area": "Taiwan",
+                "address": "No. 76 , Yiyong Street, Riyue Village, Yuchi Township, Nantou County, Yuchi Township - Ita Thao Shopping District",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434522",
+                "internal_url": "null",
+                "latitude": "23.8479442",
+                "longitude": "120.9311185",
+                "machine_status": "available",
+                "id": 7306,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.9114,
+                    23.86666
+                ]
+            },
+            "properties": {
+                "name": "Shuishe Visitor Center/ Mall",
+                "area": "Taiwan",
+                "address": "No. 163 , Zhongshan Road, Yuchi Township, Nantou County, Yuchi Township - Shuishe",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434523",
+                "internal_url": "null",
+                "latitude": "23.86666",
+                "longitude": "120.9114",
+                "machine_status": "available",
+                "id": 7307,
+                "last_updated": "2024-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -151.4224173,
+                    59.60238940000001
+                ]
+            },
+            "properties": {
+                "name": "Fish Connection ",
+                "area": "Alaska",
+                "address": ", Homer",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434940",
+                "internal_url": "null",
+                "latitude": "59.60238940000001",
+                "longitude": "-151.4224173",
+                "machine_status": "available",
+                "id": 7308,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -151.4224173,
+                    59.60238940000001
+                ]
+            },
+            "properties": {
+                "name": "Fish Connection ",
+                "area": "Alaska",
+                "address": ", Homer",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434958",
+                "internal_url": "null",
+                "latitude": "59.60238940000001",
+                "longitude": "-151.4224173",
+                "machine_status": "available",
+                "id": 7309,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.346973,
+                    34.4727777
+                ]
+            },
+            "properties": {
+                "name": "Lake Havasu City Visitor Center",
+                "area": "Arizona",
+                "address": "422 English Village, Lake Havasu City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434937",
+                "internal_url": "null",
+                "latitude": "34.4727777",
+                "longitude": "-114.346973",
+                "machine_status": "available",
+                "id": 7310,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.404954,
+                    52.52000659999999
+                ]
+            },
+            "properties": {
+                "name": "Western Pressed Penny Souvenir shop ",
+                "area": "Maryland",
+                "address": ", Berlin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435107",
+                "internal_url": "null",
+                "latitude": "52.52000659999999",
+                "longitude": "13.404954",
+                "machine_status": "available",
+                "id": 7311,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.5365599,
+                    45.18765500000001
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Minnesota",
+                "address": "20200 Rogers Drive, Rogers",
+                "external_url": "http://209.221.138.252/Details.aspx?location=8154",
+                "internal_url": "null",
+                "latitude": "45.18765500000001",
+                "longitude": "-93.5365599",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3170,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8819491,
+                    33.7156173
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - Klig's Kites",
+                "area": "South Carolina",
+                "address": "1325 Celebrity Circle, #M146, Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3140",
+                "internal_url": "null",
+                "latitude": "33.7156173",
+                "longitude": "-78.8819491",
+                "machine_status": "available",
+                "id": 7312,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.87653399999999,
+                    33.715809
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - River Street Sweets",
+                "area": "South Carolina",
+                "address": "1116 Celebrity Circle, #C310, Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19316",
+                "internal_url": "null",
+                "latitude": "33.715809",
+                "longitude": "-78.87653399999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2213,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.7444031,
+                    52.50703189999999
+                ]
+            },
+            "properties": {
+                "name": "Pleasurewood Hills Family Theme Park",
+                "area": "England",
+                "address": "Leisure Way, SUFFOLK - Lowestoft",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434750",
+                "internal_url": "null",
+                "latitude": "52.50703189999999",
+                "longitude": "1.7444031",
+                "machine_status": "available",
+                "id": 7313,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0391045,
+                    47.4981912
+                ]
+            },
+            "properties": {
+                "name": "Buda Castle Funicular",
+                "area": "Hungary",
+                "address": "Castle District",
+                "external_url": "http://209.221.138.252/Details.aspx?location=9750",
+                "internal_url": "null",
+                "latitude": "47.4981912",
+                "longitude": "19.0391045",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 818,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0501225,
+                    47.530426
+                ]
+            },
+            "properties": {
+                "name": "Margit Sziget Szabadtéri Színpad",
+                "area": "Hungary",
+                "address": "Budapest, Zielinski Szilárd stny., 1007, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434762",
+                "internal_url": "null",
+                "latitude": "47.530426",
+                "longitude": "19.0501225",
+                "machine_status": "available",
+                "id": 7314,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.3965517,
+                    47.4435369
+                ]
+            },
+            "properties": {
+                "name": "Aqua Szuvenír",
+                "area": "Hungary",
+                "address": ", Hajdúszoboszló",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434763",
+                "internal_url": "null",
+                "latitude": "47.4435369",
+                "longitude": "21.3965517",
+                "machine_status": "available",
+                "id": 7315,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.3872339,
+                    52.1554695
+                ]
+            },
+            "properties": {
+                "name": "Tourist Office Amersfoort (VVV)",
+                "area": "Netherlands",
+                "address": "Breestraat 1, Amersfoort",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434765",
+                "internal_url": "null",
+                "latitude": "52.1554695",
+                "longitude": "5.3872339",
+                "machine_status": "available",
+                "id": 7316,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.613984499999999,
+                    41.1458213
+                ]
+            },
+            "properties": {
+                "name": "Clérigos Church Tower",
+                "area": "Portugal",
+                "address": "R. de São Filipe de Nery, 4050-546 Porto, Porto",
+                "external_url": "http://209.221.138.252/Details.aspx?location=287470",
+                "internal_url": "null",
+                "latitude": "41.1458213",
+                "longitude": "-8.613984499999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 675,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6279881,
+                    46.7579868
+                ]
+            },
+            "properties": {
+                "name": "Thun Boat Dock",
+                "area": "Switzerland",
+                "address": ", Thun",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435085",
+                "internal_url": "null",
+                "latitude": "46.7579868",
+                "longitude": "7.6279881",
+                "machine_status": "available",
+                "id": 7317,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.2070644,
+                    38.0932834
+                ]
+            },
+            "properties": {
+                "name": "Assateague Island gifts and merchandise",
+                "area": "Maryland",
+                "address": ", Asseteague ",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "38.0932834",
+                "longitude": "-75.2070644",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5208,
+                "last_updated": "2024-07-21"
             }
         }
     ]
