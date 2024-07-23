@@ -560,13 +560,13 @@
                 "area": "Nevada",
                 "address": "18 US-50, Stateline",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105911",
                 "internal_url": "null",
                 "latitude": "38.96029",
                 "longitude": "-119.94187",
                 "machine_status": "available",
                 "id": 6004,
-                "last_updated": "2023-04-15"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -16962,9 +16962,9 @@
                 "internal_url": "null",
                 "latitude": "53.3498053",
                 "longitude": "-6.2603097",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6358,
-                "last_updated": "2024-06-27"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -55838,10 +55838,10 @@
                 "internal_url": "null",
                 "latitude": "35.7338368",
                 "longitude": "-83.5219303",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4205,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -59055,7 +59055,7 @@
                 "area": "Alaska",
                 "address": ", Homer",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=434940",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "59.60238940000001",
                 "longitude": "-151.4224173",
@@ -59078,7 +59078,7 @@
                 "area": "Alaska",
                 "address": ", Homer",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=434958",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "59.60238940000001",
                 "longitude": "-151.4224173",
@@ -59454,6 +59454,75 @@
                 "id": 4715,
                 "last_updated": "2024-07-23",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1902941,
+                    33.7607682
+                ]
+            },
+            "properties": {
+                "name": "Pelican Pier",
+                "area": "California",
+                "address": "411 Shoreline Village Dr,, Long Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435363",
+                "internal_url": "null",
+                "latitude": "33.7607682",
+                "longitude": "-118.1902941",
+                "machine_status": "available",
+                "id": 7319,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.4876731,
+                    43.6678515
+                ]
+            },
+            "properties": {
+                "name": "Silver Town Mini Golf",
+                "area": "Michigan",
+                "address": "8424 West Hazel Rd., Mears",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435302",
+                "internal_url": "null",
+                "latitude": "43.6678515",
+                "longitude": "-86.4876731",
+                "machine_status": "available",
+                "id": 7320,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1451175,
+                    48.94568109999999
+                ]
+            },
+            "properties": {
+                "name": "Office de Tourisme de Maisons - Laffitte",
+                "area": "France",
+                "address": "41 Av. de Longueil , Maisons-Laffitte",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435304",
+                "internal_url": "null",
+                "latitude": "48.94568109999999",
+                "longitude": "2.1451175",
+                "machine_status": "available",
+                "id": 7321,
+                "last_updated": "2024-07-21"
             }
         }
     ]
