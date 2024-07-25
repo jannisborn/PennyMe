@@ -55284,10 +55284,10 @@
                 "internal_url": "null",
                 "latitude": "37.3183318",
                 "longitude": "-121.9510491",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4827,
-                "last_updated": "2024-06-19"
+                "last_updated": "2024-07-21"
             }
         },
         {
@@ -59546,6 +59546,213 @@
                 "machine_status": "available",
                 "id": 7322,
                 "last_updated": "2024-07-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -147.3431398,
+                    64.75489859999999
+                ]
+            },
+            "properties": {
+                "name": "Santa Claus House North Pole",
+                "area": "Alaska",
+                "address": "101 St. Nicholas Dr, North Pole",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435436",
+                "internal_url": "null",
+                "latitude": "64.75489859999999",
+                "longitude": "-147.3431398",
+                "machine_status": "available",
+                "id": 7323,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.04608,
+                    34.517285
+                ]
+            },
+            "properties": {
+                "name": "Hot Springs Mountain Tower",
+                "area": "Arkansas",
+                "address": "401 Hot Springs Mountain Drive, Hot Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=500",
+                "internal_url": "null",
+                "latitude": "34.517285",
+                "longitude": "-93.04608",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2304,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1560721,
+                    42.1082542
+                ]
+            },
+            "properties": {
+                "name": "Waldameer Park & Waterworld",
+                "area": "Pennsylvania",
+                "address": ", Erie",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3854",
+                "internal_url": "null",
+                "latitude": "42.1082542",
+                "longitude": "-80.1560721",
+                "machine_status": "available",
+                "id": 7324,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1440898,
+                    26.0494753
+                ]
+            },
+            "properties": {
+                "name": "Jaxson's Ice Cream Parlor",
+                "area": "Florida",
+                "address": "128 S Federal Hwy, Dania Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=20695",
+                "internal_url": "null",
+                "latitude": "26.0494753",
+                "longitude": "-80.1440898",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3276,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.7243266,
+                    38.54761999999999
+                ]
+            },
+            "properties": {
+                "name": "Fish Lake Lodge General Store",
+                "area": "Utah",
+                "address": "2 North State Route 25, Fish Lake (Close to Richfield and Burrville)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435437",
+                "internal_url": "null",
+                "latitude": "38.54761999999999",
+                "longitude": "-111.7243266",
+                "machine_status": "available",
+                "id": 7325,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.3249108,
+                    43.3076073
+                ]
+            },
+            "properties": {
+                "name": "Drake Field",
+                "area": "New Hampshire",
+                "address": "17 Fayette St, Pittsfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435536",
+                "internal_url": "null",
+                "latitude": "43.3076073",
+                "longitude": "-71.3249108",
+                "machine_status": "available",
+                "id": 7326,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.7310343,
+                    39.3235965
+                ]
+            },
+            "properties": {
+                "name": "The Hodge Podge",
+                "area": "West Virginia",
+                "address": "148 High Street, Harpers Ferry",
+                "external_url": "http://209.221.138.252/Details.aspx?location=16162",
+                "internal_url": "null",
+                "latitude": "39.3235965",
+                "longitude": "-77.7310343",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3897,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.8576874,
+                    41.11916009999999
+                ]
+            },
+            "properties": {
+                "name": "Little Americas Cheyenne Gas Station",
+                "area": "Wyoming",
+                "address": "2800 W Lincoln Way,, Cheyenne",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435537",
+                "internal_url": "null",
+                "latitude": "41.11916009999999",
+                "longitude": "-104.8576874",
+                "machine_status": "available",
+                "id": 7327,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.2038369,
+                    49.70782149999999
+                ]
+            },
+            "properties": {
+                "name": "Normandie - Etretat",
+                "area": "France",
+                "address": "Le Vieux Marché, Etretat",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435411",
+                "internal_url": "null",
+                "latitude": "49.70782149999999",
+                "longitude": "0.2038369",
+                "machine_status": "available",
+                "id": 7328,
+                "last_updated": "2024-07-21"
             }
         }
     ]
