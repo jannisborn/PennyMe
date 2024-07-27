@@ -60081,6 +60081,52 @@
                 "last_updated": "2024-07-27",
                 "multimachine": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5736557,
+                    35.8016963
+                ]
+            },
+            "properties": {
+                "name": "Beef Jerky Outlet Pigeon Forge",
+                "area": "Tennessee",
+                "address": "2726 Parkway, Pigeon Forge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=129676",
+                "internal_url": "null",
+                "latitude": "35.8016963",
+                "longitude": "-83.5736557",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4261,
+                "last_updated": "2024-07-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.6049177,
+                    18.5563431
+                ]
+            },
+            "properties": {
+                "name": "Iglesia de Santa Prisca",
+                "area": "Mexico",
+                "address": "Pajaritos 3 De Cenaobscuras 40200 Taxco, Gro., Taxco",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435717",
+                "internal_url": "null",
+                "latitude": "18.5563431",
+                "longitude": "-99.6049177",
+                "machine_status": "available",
+                "id": 7338,
+                "last_updated": "2024-07-21"
+            }
         }
     ]
 }
