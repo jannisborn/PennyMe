@@ -493,11 +493,28 @@ def location_differ(
             tdf = external[external.area == geojson["properties"]["area"]]
             if len(tdf) > 0:
                 # Verify that machine is indeed new through fuzzy search
-                match, score = fuzzysearch.extract(
-                    this_title, list(tdf["name"]), limit=1
-                )[0]
+                query = this_title
+                matches, scores = fuzzysearch.extract(query, list(tdf["name"]), limit=1)
+                if len(scores) == 1 or scores[1] <= 92:
+                    # regular case
+                    match, score = matches[0], scores[0]
+                else:
+                    logger.info(
+                        f"Edge case, potentially multiple matches for {this_title}"
+                    )
+                    query = this_title + this_address
+                    matches, scores = fuzzysearch.extract(
+                        query,
+                        [n + a for n, a in zip(tdf["name"], tdf["address"])],
+                        limit=1,
+                    )
+                    if scores[1] > 92:
+                        logger.info(
+                            f"After comparing title ({this_title}) and address ({this_address}) there are still multiple matches, taking first one"
+                        )
+                    match, score = matches[0], scores[0]
 
-                if score > 92:
+                if score > 92 or query == this_title + this_address:
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["name"]).index(match)
@@ -508,7 +525,7 @@ def location_differ(
 
                     e_entry = cur_data["features"][tdf.iloc[m_idx]["data_idx"]]
                     logger.info(
-                        f"Seeems that machine {this_title} already exists as: {match}"
+                        f"Seems that machine {this_title} already exists as: {match}"
                     )
                     # Update machine and save in dict
                     assert e_entry["properties"]["external_url"] == "null"
