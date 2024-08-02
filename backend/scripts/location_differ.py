@@ -494,25 +494,25 @@ def location_differ(
             if len(tdf) > 0:
                 # Verify that machine is indeed new through fuzzy search
                 query = this_title
-                matches, scores = fuzzysearch.extract(query, list(tdf["name"]), limit=1)
-                if len(scores) == 1 or scores[1] <= 92:
+                result = fuzzysearch.extract(query, list(tdf["name"]), limit=2)
+                if len(result) == 1 or result[1][1] <= 92:
                     # regular case
-                    match, score = matches[0], scores[0]
+                    match, score = result[0]
                 else:
                     logger.info(
                         f"Edge case, potentially multiple matches for {this_title}"
                     )
                     query = this_title + this_address
-                    matches, scores = fuzzysearch.extract(
+                    result = fuzzysearch.extract(
                         query,
                         [n + a for n, a in zip(tdf["name"], tdf["address"])],
-                        limit=1,
+                        limit=2,
                     )
-                    if scores[1] > 92:
+                    if result[1][1] > 92:
                         logger.info(
                             f"After comparing title ({this_title}) and address ({this_address}) there are still multiple matches, taking first one"
                         )
-                    match, score = matches[0], scores[0]
+                    match, score = result[0]
 
                 if score > 92 or query == this_title + this_address:
                     # There is a match, we have to update the link
