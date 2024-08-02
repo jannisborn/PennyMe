@@ -514,10 +514,17 @@ def location_differ(
                         )
                     match, score = result[0]
 
-                if score > 92 or query == this_title + this_address:
+                if query == this_title + this_address:
+                    tdf["name_address"] = [
+                        r.name + r.address for _, r in tdf.iterrows()
+                    ]
+                    m_idx = list(tdf.name_address).index(match)
+                elif score > 92:
                     # There is a match, we have to update the link
                     # Extract the entry from original data
                     m_idx = list(tdf["name"]).index(match)
+
+                if query == this_title + this_address or score > 92:
                     if tdf.iloc[m_idx]["source"] == "Device":
                         cur_data = device_data
                     else:
