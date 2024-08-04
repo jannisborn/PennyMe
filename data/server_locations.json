@@ -1574,8 +1574,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -115.1721634,
-                    36.1139743
+                    -115.16772588576356,
+                    36.11415721345083
                 ]
             },
             "properties": {
@@ -1585,11 +1585,11 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=377240",
                 "internal_url": "null",
-                "latitude": "36.1139743",
-                "longitude": "-115.1721634",
+                "latitude": "36.11415721345083",
+                "longitude": "-115.16772588576356",
                 "machine_status": "available",
                 "id": 5427,
-                "last_updated": "2023-07-22"
+                "last_updated": "2024-07-30"
             }
         },
         {
@@ -46259,10 +46259,10 @@
                 "internal_url": "null",
                 "latitude": "42.521723",
                 "longitude": "-70.88609989999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2922,
-                "last_updated": "2024-03-15"
+                "last_updated": "2024-07-30"
             }
         },
         {
@@ -47391,10 +47391,10 @@
                 "internal_url": "null",
                 "latitude": "36.1609385",
                 "longitude": "-86.77575709999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4255,
-                "last_updated": "2024-03-23"
+                "last_updated": "2024-08-01"
             }
         },
         {
@@ -48105,10 +48105,11 @@
                 "internal_url": "null",
                 "latitude": "38.9109189",
                 "longitude": "-77.44420749999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4408,
-                "last_updated": "2024-03-27"
+                "last_updated": "2024-08-01",
+                "multimachine": 4
             }
         },
         {
@@ -50630,10 +50631,10 @@
                 "internal_url": "null",
                 "latitude": "35.7132367",
                 "longitude": "-83.51323359999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4207,
-                "last_updated": "2024-04-28"
+                "last_updated": "2024-07-30"
             }
         },
         {
@@ -52870,10 +52871,10 @@
                 "internal_url": "null",
                 "latitude": "38.9892691",
                 "longitude": "-74.8064341",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "retired",
                 "id": 2408,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-03"
             }
         },
         {
@@ -53783,10 +53784,10 @@
                 "internal_url": "null",
                 "latitude": "36.0955849",
                 "longitude": "-115.1756473",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4514,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-07-29"
             }
         },
         {
@@ -60285,6 +60286,236 @@
                 "status": "unvisited",
                 "id": 5374,
                 "last_updated": "2024-07-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.25347169999999,
+                    43.6565001
+                ]
+            },
+            "properties": {
+                "name": "Maine Souvenir shop",
+                "area": "Maine",
+                "address": "2 Exchange ST,, Portland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=370512",
+                "internal_url": "null",
+                "latitude": "43.6565001",
+                "longitude": "-70.25347169999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5185,
+                "last_updated": "2024-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6714044,
+                    41.2926282
+                ]
+            },
+            "properties": {
+                "name": "Ohio Turnpike @ Great Lakes",
+                "area": "Ohio",
+                "address": "Mile 170 Westbound, Broadview Heights",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3858",
+                "internal_url": "null",
+                "latitude": "41.2926282",
+                "longitude": "-81.6714044",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1949,
+                "last_updated": "2024-07-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.01743197576906,
+                    44.964537860424215
+                ]
+            },
+            "properties": {
+                "name": "The Chocolate Frog",
+                "area": "Oregon",
+                "address": "3521 SW Hwy 101 (Milepost 117), Lincoln City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=330384",
+                "internal_url": "null",
+                "latitude": "44.964537860424215",
+                "longitude": "-124.01743197576906",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4371,
+                "last_updated": "2024-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.984556409444995,
+                    47.42088698162563
+                ]
+            },
+            "properties": {
+                "name": "Zugspitze - Alte Zollhütte",
+                "area": "Germany",
+                "address": "Zugspitze",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.42088698162563,
+                "longitude": 10.984556409444995,
+                "machine_status": "available",
+                "id": 7345,
+                "last_updated": "2024-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.99960759999999,
+                    40.7645266
+                ]
+            },
+            "properties": {
+                "name": "U.S.S. Intrepid Sea, Air & Space Museum",
+                "area": "New York",
+                "address": "Pier 86, West 46th Street & 12th Avenue, New York City (Manhattan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3595",
+                "internal_url": "null",
+                "latitude": "40.7645266",
+                "longitude": "-73.99960759999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3055,
+                "last_updated": "2024-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.27333459999997,
+                    44.33855589999998
+                ]
+            },
+            "properties": {
+                "name": "Hulls Cove Visitor Center",
+                "area": "Maine",
+                "address": "25 visitors center road, Bar Harbor",
+                "external_url": "http://209.221.138.252/Details.aspx?location=370304",
+                "internal_url": "null",
+                "latitude": "44.33855589999998",
+                "longitude": "-68.27333459999997",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5183,
+                "last_updated": "2024-08-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.2052116,
+                    39.6655381
+                ]
+            },
+            "properties": {
+                "name": "Red Rocks Park and Amphitheatre",
+                "area": "Colorado",
+                "address": "18300 Visitors Center Drive, Morrison",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449",
+                "internal_url": "null",
+                "latitude": "39.6655381",
+                "longitude": "-105.2052116",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1911,
+                "last_updated": "2024-08-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0928937,
+                    50.78019459999999
+                ]
+            },
+            "properties": {
+                "name": "Blue Reef Aquarium",
+                "area": "England",
+                "address": "Clarence Esplenade, HAMPSHIRE - Portsmouth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=22529",
+                "internal_url": "null",
+                "latitude": "50.78019459999999",
+                "longitude": "-1.0928937",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1411,
+                "last_updated": "2024-08-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.3568923,
+                    35.654771
+                ]
+            },
+            "properties": {
+                "name": "Fall Creek Falls State Park",
+                "area": "Tennessee",
+                "address": "2009 Village Camp Road, Pikeville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2662",
+                "internal_url": "null",
+                "latitude": "35.654771",
+                "longitude": "-85.3568923",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4287,
+                "last_updated": "2024-08-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.34748882107909,
+                    49.480952206456905
+                ]
+            },
+            "properties": {
+                "name": "Eberstadter Tropfsteinhöhle",
+                "area": "Germany",
+                "address": "Höhlenweg 8, 74722 Buchen, Deutschland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 49.480952206456905,
+                "longitude": 9.34748882107909,
+                "machine_status": "available",
+                "id": 7346,
+                "last_updated": "2024-08-03"
             }
         }
     ]
