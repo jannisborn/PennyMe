@@ -516,7 +516,7 @@ def location_differ(
 
                 if query == this_title + this_address:
                     tdf["name_address"] = [
-                        str(r.name) + r.address for _, r in tdf.iterrows()
+                        n + a for n, a in zip(tdf["name"], tdf["address"])
                     ]
                     m_idx = list(tdf.name_address).index(match)
                 elif score > 92:
