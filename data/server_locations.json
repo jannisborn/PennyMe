@@ -61554,6 +61554,31 @@
                 "last_updated": "2024-08-07",
                 "multimachine": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.1179609,
+                    40.1561609
+                ]
+            },
+            "properties": {
+                "name": "Columbus Zoo and Aquarium",
+                "area": "Ohio",
+                "address": "9990 Riverside Drive, Powell",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3796",
+                "internal_url": "null",
+                "latitude": "40.1561609",
+                "longitude": "-83.1179609",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2002,
+                "last_updated": "2024-08-07",
+                "multimachine": 6,
+                "paywall": true
+            }
         }
     ]
 }
