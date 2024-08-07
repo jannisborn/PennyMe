@@ -49219,10 +49219,10 @@
                 "internal_url": "null",
                 "latitude": "40.0942012",
                 "longitude": "-74.0366255",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5456,
-                "last_updated": "2024-04-07"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -56230,10 +56230,10 @@
                 "internal_url": "null",
                 "latitude": "37.9259463",
                 "longitude": "-75.3539254",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5437,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -61505,6 +61505,29 @@
                 "status": "unvisited",
                 "id": 3292,
                 "last_updated": "2024-08-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.619653699999999,
+                    41.5309687
+                ]
+            },
+            "properties": {
+                "name": "Barcelos, Braga",
+                "area": "Portugal",
+                "address": "Largo da Porta Nova 19, 4750-329 Barcelos, Portogallo, Barcelos",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436717",
+                "internal_url": "null",
+                "latitude": "41.5309687",
+                "longitude": "-8.619653699999999",
+                "machine_status": "available",
+                "id": 7375,
+                "last_updated": "2024-08-06"
             }
         }
     ]
