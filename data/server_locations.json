@@ -19354,9 +19354,9 @@
                 "internal_url": "null",
                 "latitude": "55.950902",
                 "longitude": "-3.1956862",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 756,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -61640,13 +61640,13 @@
                 "area": "Scotland",
                 "address": "Nelson’s MonumentRegent Terrace, Edinburgh EH7 5BN, UK",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436874",
                 "internal_url": "null",
                 "latitude": 55.95439388367951,
                 "longitude": -3.1825620291430505,
                 "machine_status": "available",
                 "id": 7376,
-                "last_updated": "2024-08-07"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -61831,6 +61831,121 @@
                 "longitude": "7.7699995",
                 "machine_status": "available",
                 "id": 7381,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.2583824,
+                    34.7464097
+                ]
+            },
+            "properties": {
+                "name": "Clinton Presidential Center",
+                "area": "Arkansas",
+                "address": "1200 President Clinton Ave, Little Rock",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436883",
+                "internal_url": "null",
+                "latitude": "34.7464097",
+                "longitude": "-92.2583824",
+                "machine_status": "available",
+                "id": 7382,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.14924,
+                    47.55397
+                ]
+            },
+            "properties": {
+                "name": "Wörschach",
+                "area": "Austria",
+                "address": "Klammweg, 8942, Oostenrijk, Wörschach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436879",
+                "internal_url": "null",
+                "latitude": "47.55397",
+                "longitude": "14.14924",
+                "machine_status": "available",
+                "id": 7383,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.4857157,
+                    44.23216
+                ]
+            },
+            "properties": {
+                "name": "End of the Thread Cafe",
+                "area": "Canada",
+                "address": "15 Main Street, Ontario - Brighton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=127665",
+                "internal_url": "null",
+                "latitude": "44.23216",
+                "longitude": "-76.4857157",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4985,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.9366806,
+                    50.0576552
+                ]
+            },
+            "properties": {
+                "name": "The Archeological Museum of Krakow",
+                "area": "Poland",
+                "address": "Senacka 3, 31-002, Krakow",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436881",
+                "internal_url": "null",
+                "latitude": "50.0576552",
+                "longitude": "19.9366806",
+                "machine_status": "available",
+                "id": 7384,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.9454401,
+                    49.298524
+                ]
+            },
+            "properties": {
+                "name": "Gubalówka Funicular Railway",
+                "area": "Poland",
+                "address": "Na Gubalówke st.   34-500, Zakopane",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436882",
+                "internal_url": "null",
+                "latitude": "49.298524",
+                "longitude": "19.9454401",
+                "machine_status": "available",
+                "id": 7385,
                 "last_updated": "2024-08-06"
             }
         }
