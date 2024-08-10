@@ -422,9 +422,9 @@
                 "latitude": "38.2057299",
                 "longitude": "-85.7071264",
                 "multimachine": 6,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3536,
-                "last_updated": "2023-03-26"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -62110,6 +62110,52 @@
                 "status": "unvisited",
                 "id": 1902,
                 "last_updated": "2024-08-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.07588590000002,
+                    40.3810679
+                ]
+            },
+            "properties": {
+                "name": "Raystown Lake Welcome Center",
+                "area": "Pennsylvania",
+                "address": "6993 Seven Points Rd, Hesston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436948",
+                "internal_url": "null",
+                "latitude": "40.3810679",
+                "longitude": "-78.07588590000002",
+                "machine_status": "available",
+                "id": 7391,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.5580671,
+                    39.8004066
+                ]
+            },
+            "properties": {
+                "name": "Grand River Historical Society & Museum",
+                "area": "Missouri",
+                "address": "1401 Forest Drive, Chillicothe",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=436936",
+                "internal_url": "null",
+                "latitude": "39.8004066",
+                "longitude": "-93.5580671",
+                "machine_status": "available",
+                "id": 7392,
+                "last_updated": "2024-08-06"
             }
         }
     ]
