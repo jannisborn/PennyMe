@@ -62297,6 +62297,52 @@
                 "id": 3358,
                 "last_updated": "2024-08-11"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8913201,
+                    33.7184475
+                ]
+            },
+            "properties": {
+                "name": "Broadway Grand Prix",
+                "area": "South Carolina",
+                "address": "1820 21st Ave N, Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437056",
+                "internal_url": "null",
+                "latitude": "33.7184475",
+                "longitude": "-78.8913201",
+                "machine_status": "available",
+                "id": 7394,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.6362648,
+                    42.419572
+                ]
+            },
+            "properties": {
+                "name": "Pontevedra, Albergues Virxe Peregrina",
+                "area": "Spain",
+                "address": "Rúa de Ramón Otero Pedraio, s/n, 36004 Pontevedra, Spagna, Pontevedra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437023",
+                "internal_url": "null",
+                "latitude": "42.419572",
+                "longitude": "-8.6362648",
+                "machine_status": "available",
+                "id": 7395,
+                "last_updated": "2024-08-06"
+            }
         }
     ]
 }
