@@ -9551,9 +9551,9 @@
                 "internal_url": "null",
                 "latitude": "36.64281057130955",
                 "longitude": "-93.2506705138694",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6157,
-                "last_updated": "2024-07-10"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -61410,7 +61410,7 @@
                 "internal_url": "null",
                 "latitude": "31.5475092",
                 "longitude": "-97.1213879",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5386,
                 "last_updated": "2024-08-06"
@@ -62480,6 +62480,144 @@
                 "longitude": "-123.4741756",
                 "machine_status": "available",
                 "id": 7397,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.72590699999999,
+                    39.9625888
+                ]
+            },
+            "properties": {
+                "name": "Yorktown Hotel",
+                "area": "Pennsylvania",
+                "address": "48 E Market St, , York",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437368",
+                "internal_url": "null",
+                "latitude": "39.9625888",
+                "longitude": "-76.72590699999999",
+                "machine_status": "available",
+                "id": 7398,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.5506197,
+                    37.0876824
+                ]
+            },
+            "properties": {
+                "name": "Joplin History and Mineral Museum",
+                "area": "Missouri",
+                "address": "504 S Schifferdecker, Joplin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437369",
+                "internal_url": "null",
+                "latitude": "37.0876824",
+                "longitude": "-94.5506197",
+                "machine_status": "available",
+                "id": 7399,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.45796659999999,
+                    39.4953034
+                ]
+            },
+            "properties": {
+                "name": "Historic Smithville",
+                "area": "New Jersey",
+                "address": "1 N. New York Rd., Smithville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3422",
+                "internal_url": "null",
+                "latitude": "39.4953034",
+                "longitude": "-74.45796659999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2402,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.9319664,
+                    32.7833163
+                ]
+            },
+            "properties": {
+                "name": "Capital Market",
+                "area": "West Virginia",
+                "address": "800 Smith St, Charlston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437169",
+                "internal_url": "null",
+                "latitude": "32.7833163",
+                "longitude": "-79.9319664",
+                "machine_status": "available",
+                "id": 7400,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -27.0587656,
+                    38.7319375
+                ]
+            },
+            "properties": {
+                "name": "Marina Souvenirs",
+                "area": "Portugal",
+                "address": "Praia da Vitória, Praia da Vitória",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437168",
+                "internal_url": "null",
+                "latitude": "38.7319375",
+                "longitude": "-27.0587656",
+                "machine_status": "available",
+                "id": 7401,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1956707,
+                    55.9489544
+                ]
+            },
+            "properties": {
+                "name": "Camera Obscura ",
+                "area": "Scotland",
+                "address": "The Royal Mile 549 Castlehill , Edinburgh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=98115",
+                "internal_url": "null",
+                "latitude": "55.9489544",
+                "longitude": "-3.1956707",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 746,
                 "last_updated": "2024-08-06"
             }
         }
