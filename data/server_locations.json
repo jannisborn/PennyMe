@@ -55467,13 +55467,13 @@
                 "area": "Italy",
                 "address": "Near Via Giuseppe Zanardelli, 22-16, 00186, Rome (Roma) RM",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=432242",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "41.9005412",
                 "longitude": "12.4724799",
                 "machine_status": "available",
                 "id": 7229,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -62665,6 +62665,75 @@
                 "status": "unvisited",
                 "id": 5764,
                 "last_updated": "2024-08-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.0584927,
+                    42.35717959999999
+                ]
+            },
+            "properties": {
+                "name": "Old South Meeting House",
+                "area": "Massachusetts",
+                "address": "310 Washington Street, Boston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437539",
+                "internal_url": "null",
+                "latitude": "42.35717959999999",
+                "longitude": "-71.0584927",
+                "machine_status": "available",
+                "id": 7402,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.07963219999999,
+                    42.3948506
+                ]
+            },
+            "properties": {
+                "name": "Legoland Discovery Center",
+                "area": "Massachusetts",
+                "address": "598 Assembly Row, Somerville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=209386",
+                "internal_url": "null",
+                "latitude": "42.3948506",
+                "longitude": "-71.07963219999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2924,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4768729,
+                    41.8986108
+                ]
+            },
+            "properties": {
+                "name": "Edicola Pantheon (Newspaper kiosk)",
+                "area": "Italy",
+                "address": "Salita dei Crescenzi 25",
+                "external_url": "http://209.221.138.252/Details.aspx?location=53872",
+                "internal_url": "null",
+                "latitude": "41.8986108",
+                "longitude": "12.4768729",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 963,
+                "last_updated": "2024-08-06"
             }
         }
     ]
