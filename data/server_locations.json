@@ -21011,13 +21011,13 @@
                 "area": "Wyoming",
                 "address": "North or West Entrance Road, Yellowstone National Park",
                 "status": "retired",
-                "external_url": "http://209.221.138.252/Details.aspx?location=833",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "44.73359",
                 "longitude": "-110.491356",
                 "machine_status": "available",
                 "id": 3122,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -40103,9 +40103,9 @@
                 "internal_url": "null",
                 "latitude": "56.8198915",
                 "longitude": "-5.105201399999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 762,
-                "last_updated": "2023-12-05"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -62853,6 +62853,75 @@
                 "status": "unvisited",
                 "id": 955,
                 "last_updated": "2024-08-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0208262,
+                    39.8163911
+                ]
+            },
+            "properties": {
+                "name": "Meyersdale Area Historical Society",
+                "area": "Pennsylvania",
+                "address": "527 Main St, Meyersdale",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437582",
+                "internal_url": "null",
+                "latitude": "39.8163911",
+                "longitude": "-79.0208262",
+                "machine_status": "available",
+                "id": 7404,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.1895256,
+                    19.4232085
+                ]
+            },
+            "properties": {
+                "name": "Zoológico de Chapultepec ",
+                "area": "Mexico",
+                "address": "Calz. Chivatito s/n, Bosque de Chapultepec I secc. , Mexico City ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437590",
+                "internal_url": "null",
+                "latitude": "19.4232085",
+                "longitude": "-99.1895256",
+                "machine_status": "available",
+                "id": 7405,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.375252,
+                    44.564758
+                ]
+            },
+            "properties": {
+                "name": "Fishing Bridge General Store",
+                "area": "Montana",
+                "address": "1 NE Entrance, Yellowstone National Park, West Yellowstone",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.564758",
+                "longitude": "-110.375252",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2975,
+                "last_updated": "2024-08-06"
             }
         }
     ]
