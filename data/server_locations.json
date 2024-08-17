@@ -8538,9 +8538,9 @@
                 "internal_url": "null",
                 "latitude": "39.4824098",
                 "longitude": "-106.0457303",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6135,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -25122,13 +25122,13 @@
                 "area": "Spain",
                 "address": "plaza mayor, Cuenca ",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437685",
                 "internal_url": "null",
                 "latitude": "40.0784274",
                 "longitude": "-2.1299123",
                 "machine_status": "available",
                 "id": 305,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -62994,6 +62994,75 @@
                 "machine_status": "available",
                 "id": 7407,
                 "last_updated": "2024-08-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.4598312,
+                    36.9193687
+                ]
+            },
+            "properties": {
+                "name": "John Wesley Powell Memorial Museum",
+                "area": "Arizona",
+                "address": "6 S. Lake Powell Blvd, Page",
+                "external_url": "http://209.221.138.252/Details.aspx?location=373226",
+                "internal_url": "null",
+                "latitude": "36.9193687",
+                "longitude": "-111.4598312",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5197,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.3859302,
+                    35.6102674
+                ]
+            },
+            "properties": {
+                "name": "Primm Valley Resort & Casino",
+                "area": "Nevada",
+                "address": "31900 Las Vegas Boulevard South, Primm",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2990",
+                "internal_url": "null",
+                "latitude": "35.6102674",
+                "longitude": "-115.3859302",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5429,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.1740078,
+                    50.6262544
+                ]
+            },
+            "properties": {
+                "name": "Fishermans Cottage ",
+                "area": "England",
+                "address": "Fishermans cottage, Shanklin esplanade (furthest end), Shanklin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437684",
+                "internal_url": "null",
+                "latitude": "50.6262544",
+                "longitude": "-1.1740078",
+                "machine_status": "available",
+                "id": 7408,
+                "last_updated": "2024-08-06"
             }
         }
     ]
