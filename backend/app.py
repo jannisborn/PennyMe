@@ -307,7 +307,7 @@ def create_machine():
     )
     if not address_okay:
         if address != orig_address:
-            address_print = f"{address} (original input: {orig_address})" 
+            address_print = f"{address} (original input: {orig_address})"
         else:
             address_print = address
         msg = f"Machine request submitted. Watch out, address {address_print} seems >1km away from coordinates ({location[1]}, {location[0]})"
