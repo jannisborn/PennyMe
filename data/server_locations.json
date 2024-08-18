@@ -47418,10 +47418,10 @@
                 "internal_url": "null",
                 "latitude": "36.1582632",
                 "longitude": "-86.7761258",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5342,
-                "last_updated": "2024-03-23"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -63409,6 +63409,75 @@
                 "status": "unvisited",
                 "id": 628,
                 "last_updated": "2024-08-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.6336041,
+                    44.0563456
+                ]
+            },
+            "properties": {
+                "name": "Loon Mountain Resort ",
+                "area": "New Hampshire",
+                "address": "60 Loon Mountain Rd, Lincoln",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437848",
+                "internal_url": "null",
+                "latitude": "44.0563456",
+                "longitude": "-71.6336041",
+                "machine_status": "available",
+                "id": 7420,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.7161223,
+                    38.4065721
+                ]
+            },
+            "properties": {
+                "name": "Massanutten Resort ",
+                "area": "Virginia",
+                "address": "1822 Resort Dr,, Massanutten",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437866",
+                "internal_url": "null",
+                "latitude": "38.4065721",
+                "longitude": "-78.7161223",
+                "machine_status": "available",
+                "id": 7421,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.1610038,
+                    35.1592713
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Busan Aquarium",
+                "area": "South Korea",
+                "address": "266, Haeundaehaebyeon-ro, Haeundae-gu, Busan, Republic of Korea, Busan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437752",
+                "internal_url": "null",
+                "latitude": "35.1592713",
+                "longitude": "129.1610038",
+                "machine_status": "available",
+                "id": 7422,
+                "last_updated": "2024-08-06"
             }
         }
     ]
