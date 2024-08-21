@@ -45339,10 +45339,10 @@
                 "internal_url": "null",
                 "latitude": "40.7481219",
                 "longitude": "14.4818101",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5822,
-                "last_updated": "2024-03-04"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -54829,10 +54829,10 @@
                 "internal_url": "null",
                 "latitude": "38.9553202",
                 "longitude": "-119.9437376",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5259,
-                "last_updated": "2024-06-16"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -63498,7 +63498,7 @@
                 "internal_url": "null",
                 "latitude": "38.9465564",
                 "longitude": "-119.9643475",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4877,
                 "last_updated": "2024-08-06"
@@ -63664,6 +63664,190 @@
                 "machine_status": "available",
                 "id": 7426,
                 "last_updated": "2024-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9590949,
+                    38.9491291
+                ]
+            },
+            "properties": {
+                "name": "Empanash ",
+                "area": "California",
+                "address": "900 Ski Run Blvd #106, South Lake Tahoe ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438020",
+                "internal_url": "null",
+                "latitude": "38.9491291",
+                "longitude": "-119.9590949",
+                "machine_status": "available",
+                "id": 7427,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2421109,
+                    44.8547985
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Legacy Toys",
+                "area": "Minnesota",
+                "address": "301 North Garden - Level 3 N301, Bloomington ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=368358",
+                "internal_url": "null",
+                "latitude": "44.8547985",
+                "longitude": "-93.2421109",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5292,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.6030188,
+                    36.1584115
+                ]
+            },
+            "properties": {
+                "name": "Nashville Shores Lakeside Resort  ",
+                "area": "Tennessee",
+                "address": "4001 Bell Rd, Hermitage",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438129",
+                "internal_url": "null",
+                "latitude": "36.1584115",
+                "longitude": "-86.6030188",
+                "machine_status": "available",
+                "id": 7428,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.092519,
+                    31.993304
+                ]
+            },
+            "properties": {
+                "name": "Museum of the Southwest",
+                "area": "Texas",
+                "address": "1705 W Missouri Ave, Midland",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=437972",
+                "internal_url": "null",
+                "latitude": "31.993304",
+                "longitude": "-102.092519",
+                "machine_status": "available",
+                "id": 7429,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.17034679999999,
+                    38.72270690000001
+                ]
+            },
+            "properties": {
+                "name": "National Museum of the United States Army ",
+                "area": "Virginia",
+                "address": "1775 Liberty Dr, , Fort Belvoir,",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438124",
+                "internal_url": "null",
+                "latitude": "38.72270690000001",
+                "longitude": "-77.17034679999999",
+                "machine_status": "available",
+                "id": 7430,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.843269,
+                    50.719797
+                ]
+            },
+            "properties": {
+                "name": "Boscombe Pier",
+                "area": "England",
+                "address": "Undercliff Drive, DORSET - Bournemouth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=272718",
+                "internal_url": "null",
+                "latitude": "50.719797",
+                "longitude": "-1.843269",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1381,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5659429,
+                    53.8020141
+                ]
+            },
+            "properties": {
+                "name": "Emmerdale Studio Experience Tour (Emmerdale Production Centre)",
+                "area": "England",
+                "address": "27 Burley Rd., WEST YORKSHIRE - Leeds",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258216",
+                "internal_url": "null",
+                "latitude": "53.8020141",
+                "longitude": "-1.5659429",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1597,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.0453449,
+                    35.239629
+                ]
+            },
+            "properties": {
+                "name": "Hakone Kowakien Yunessun",
+                "area": "Japan",
+                "address": "1297 Ninotaira, Hakone, Ashigarashimo District, Kanagawa 250-0407, Hakone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438037",
+                "internal_url": "null",
+                "latitude": "35.239629",
+                "longitude": "139.0453449",
+                "machine_status": "available",
+                "id": 7431,
+                "last_updated": "2024-08-06"
             }
         }
     ]
