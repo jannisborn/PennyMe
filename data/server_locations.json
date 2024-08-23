@@ -1703,9 +1703,9 @@
                 "internal_url": "null",
                 "latitude": "40.781635",
                 "longitude": "17.236364",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 899,
-                "last_updated": "2023-07-15"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -1887,9 +1887,9 @@
                 "internal_url": "null",
                 "latitude": "29.2505778",
                 "longitude": "-94.85318889999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3705,
-                "last_updated": "2023-07-15"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -11898,9 +11898,9 @@
                 "internal_url": "null",
                 "latitude": "38.0721506",
                 "longitude": "-117.2377709",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6228,
-                "last_updated": "2024-06-13"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -21665,9 +21665,9 @@
                 "internal_url": "null",
                 "latitude": "40.782901655174776",
                 "longitude": "17.23829564639623",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 898,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -53107,10 +53107,10 @@
                 "internal_url": "null",
                 "latitude": "32.7127904",
                 "longitude": "-117.1598457",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4788,
-                "last_updated": "2024-05-29"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -57768,10 +57768,10 @@
                 "internal_url": "null",
                 "latitude": "45.3734512",
                 "longitude": "-86.9308547",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2463,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-08-06"
             }
         },
         {
@@ -64035,6 +64035,167 @@
                 "machine_status": "available",
                 "id": 7436,
                 "last_updated": "2024-08-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9483855,
+                    39.0068062
+                ]
+            },
+            "properties": {
+                "name": "M.S. Dixie II",
+                "area": "Nevada",
+                "address": "760 Hwy 50, Zephyr Cove, Lake Tahoe",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438168",
+                "internal_url": "null",
+                "latitude": "39.0068062",
+                "longitude": "-119.9483855",
+                "machine_status": "available",
+                "id": 7437,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.5308905,
+                    38.0223543
+                ]
+            },
+            "properties": {
+                "name": "Department of Forestry",
+                "area": "Virginia",
+                "address": "900 Natural Resources Dr #800, Charlottesville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438195",
+                "internal_url": "null",
+                "latitude": "38.0223543",
+                "longitude": "-78.5308905",
+                "machine_status": "available",
+                "id": 7438,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.5423996,
+                    43.2319762
+                ]
+            },
+            "properties": {
+                "name": "Seabreeze Amusement Park",
+                "area": "New York",
+                "address": "4600 Culver Road, Rochester ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438196",
+                "internal_url": "null",
+                "latitude": "43.2319762",
+                "longitude": "-77.5423996",
+                "machine_status": "available",
+                "id": 7439,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.90172766148352,
+                    44.26537721045426
+                ]
+            },
+            "properties": {
+                "name": "Yogi Bear Jellystone Park",
+                "area": "Wisconsin",
+                "address": "E6506 WI-110, Fremont, WI 54940, United States",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4777",
+                "internal_url": "null",
+                "latitude": "44.26537721045426",
+                "longitude": "-88.90172766148352",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2419,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.5060138,
+                    43.8453685
+                ]
+            },
+            "properties": {
+                "name": "Vi-Ta Playtime! Gadget and Souvenir",
+                "area": "Italy",
+                "address": "Piazza Anfiteatro 35",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258748",
+                "internal_url": "null",
+                "latitude": "43.8453685",
+                "longitude": "10.5060138",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 929,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.5780989,
+                    40.732566
+                ]
+            },
+            "properties": {
+                "name": "L'Erbavoglio",
+                "area": "Italy",
+                "address": "Via Cattedrale, 3",
+                "external_url": "http://209.221.138.252/Details.aspx?location=73135",
+                "internal_url": "null",
+                "latitude": "40.732566",
+                "longitude": "17.5780989",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 941,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.5784586,
+                    40.7332739
+                ]
+            },
+            "properties": {
+                "name": "Ottica Glamour",
+                "area": "Italy",
+                "address": "Piazza Pierre Sansone 5 to Antica Sartoria at Piazza Pietro Sansone 3., Ostuni BR",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438406",
+                "internal_url": "null",
+                "latitude": "40.7332739",
+                "longitude": "17.5784586",
+                "machine_status": "available",
+                "id": 7440,
+                "last_updated": "2024-08-06"
             }
         }
     ]
