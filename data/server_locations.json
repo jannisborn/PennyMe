@@ -64220,6 +64220,98 @@
                 "id": 1124,
                 "last_updated": "2024-08-24"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.0804043,
+                    38.8002432
+                ]
+            },
+            "properties": {
+                "name": "Sierra at Tahoe Ski Resort",
+                "area": "California",
+                "address": "4045 Highway 50, South Lake Tahoe",
+                "external_url": "http://209.221.138.252/Details.aspx?location=294710",
+                "internal_url": "null",
+                "latitude": "38.8002432",
+                "longitude": "-120.0804043",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4876,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -130.3208187,
+                    54.3150367
+                ]
+            },
+            "properties": {
+                "name": "Prince Rupert Dock",
+                "area": "Canada",
+                "address": ", Prince Rupert",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438432",
+                "internal_url": "null",
+                "latitude": "54.3150367",
+                "longitude": "-130.3208187",
+                "machine_status": "available",
+                "id": 7441,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.3908475,
+                    35.2508913
+                ]
+            },
+            "properties": {
+                "name": "Isumi Railway Ohara Station",
+                "area": "Japan",
+                "address": "Isumi-shi, Ohara, Chiba",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438425",
+                "internal_url": "null",
+                "latitude": "35.2508913",
+                "longitude": "140.3908475",
+                "machine_status": "available",
+                "id": 7442,
+                "last_updated": "2024-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.0680893,
+                    41.5866743
+                ]
+            },
+            "properties": {
+                "name": "El Burgo de Osma (Soria) ",
+                "area": "Spain",
+                "address": "Calle Mayor 17, El Burgo de Osma",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438428",
+                "internal_url": "null",
+                "latitude": "41.5866743",
+                "longitude": "-3.0680893",
+                "machine_status": "available",
+                "id": 7443,
+                "last_updated": "2024-08-06"
+            }
         }
     ]
 }
