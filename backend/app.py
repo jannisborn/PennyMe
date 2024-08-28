@@ -233,19 +233,20 @@ def create_machine():
 
     dist = haversine((lat, lng), (location[1], location[0]))
     address_okay = dist <= 1  # km
+
+    # Get google maps address for the coordinates
     out = GM_CLIENT.reverse_geocode(
         [location[1], location[0]], result_type="street_address"
     )
+    orig_address = address
 
-    b = True
-    if out != []:
+    if out != []:  # if address is found
         ad = out[0]["formatted_address"]
         _, score = fuzzysearch.extract(ad, [address], limit=1)[0]
         if score > 85:
             # Prefer Google Maps address over user address
             address = ad
-            b = False
-    elif b:
+    else:
         out = GM_CLIENT.reverse_geocode(
             (location[1], location[0]), result_type="point_of_interest"
         )
@@ -305,7 +306,11 @@ def create_machine():
         (process_machine_entry, (new_machine_entry, tmp_path, ip_address))
     )
     if not address_okay:
-        msg = f"Machine request submitted. Watch out, address {address} seems >1km away from coordinates ({location[1]}, {location[0]})"
+        if address != orig_address:
+            address_print = f"{address} (original input: {orig_address})"
+        else:
+            address_print = address
+        msg = f"Machine request submitted. Watch out, address {address_print} seems >1km away from coordinates ({location[1]}, {location[0]})"
         message_slack_raw(msg)
         return jsonify({"Success": msg}), 201
 
