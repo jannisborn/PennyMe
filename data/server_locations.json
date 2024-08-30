@@ -6927,9 +6927,9 @@
                 "internal_url": "null",
                 "latitude": "45.9930402",
                 "longitude": "-123.9288242",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6096,
-                "last_updated": "2024-02-22"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -47968,10 +47968,10 @@
                 "internal_url": "null",
                 "latitude": "34.5138061",
                 "longitude": "-93.0541863",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2308,
-                "last_updated": "2024-08-06"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63236,6 +63236,98 @@
                 "id": 7496,
                 "last_updated": "2024-08-30",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4148825,
+                    37.8082059
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Jefferson St. - Madame Tussauds",
+                "area": "California",
+                "address": "145 Jefferson St, San Francisco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=210901",
+                "internal_url": "null",
+                "latitude": "37.8082059",
+                "longitude": "-122.4148825",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5252,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.0171127,
+                    42.698246
+                ]
+            },
+            "properties": {
+                "name": "Charcoal Corral",
+                "area": "New York",
+                "address": "7037 Chapman Ave,, Perry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439058",
+                "internal_url": "null",
+                "latitude": "42.698246",
+                "longitude": "-78.0171127",
+                "machine_status": "available",
+                "id": 7497,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.9077458,
+                    53.97633949999999
+                ]
+            },
+            "properties": {
+                "name": "Embsay & Bolton Abbey Railway",
+                "area": "England",
+                "address": "Bolton Abbey Railway Station, NORTH YORKSHIRE - Skipton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=181521",
+                "internal_url": "null",
+                "latitude": "53.97633949999999",
+                "longitude": "-1.9077458",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1526,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.0071228,
+                    41.920362
+                ]
+            },
+            "properties": {
+                "name": "Good vibes, Good, Great Finds",
+                "area": "Massachusetts",
+                "address": "464 State Highway Route 6, Wellfleet",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.920362",
+                "longitude": "-70.0071228",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5229,
+                "last_updated": "2024-08-28"
             }
         }
     ]
