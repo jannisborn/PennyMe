@@ -26434,13 +26434,13 @@
                 "area": "Washington",
                 "address": "Ovation of the Seas, Seattle",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=431991",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "47.6062095",
                 "longitude": "-122.3320708",
                 "machine_status": "available",
                 "id": 5147,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63446,6 +63446,98 @@
                 "id": 7499,
                 "last_updated": "2024-09-01",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.71477829999999,
+                    41.4972633
+                ]
+            },
+            "properties": {
+                "name": "Lyman Orchard Farm Store ",
+                "area": "Connecticut",
+                "address": "32 Reeds Gap Rd, Middlefield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439316",
+                "internal_url": "null",
+                "latitude": "41.4972633",
+                "longitude": "-72.71477829999999",
+                "machine_status": "available",
+                "id": 7500,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3328481,
+                    47.6061389
+                ]
+            },
+            "properties": {
+                "name": "Royal Caribbean Cruise Line,  'Quantum of the Seas'",
+                "area": "Washington",
+                "address": ", Seattle ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439361",
+                "internal_url": "null",
+                "latitude": "47.6061389",
+                "longitude": "-122.3328481",
+                "machine_status": "available",
+                "id": 7501,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.8366554,
+                    37.5842251
+                ]
+            },
+            "properties": {
+                "name": "Selinunte Archaeological Park ",
+                "area": "Italy",
+                "address": "Piazzale Bovio Marconi, sicily, Marinella",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439398",
+                "internal_url": "null",
+                "latitude": "37.5842251",
+                "longitude": "12.8366554",
+                "machine_status": "available",
+                "id": 7502,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3173108,
+                    52.0798347
+                ]
+            },
+            "properties": {
+                "name": "Holland Souvenirs",
+                "area": "Netherlands",
+                "address": "Korte Poten 13, Den Haag",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439300",
+                "internal_url": "null",
+                "latitude": "52.0798347",
+                "longitude": "4.3173108",
+                "machine_status": "available",
+                "id": 7503,
+                "last_updated": "2024-08-28"
             }
         }
     ]
