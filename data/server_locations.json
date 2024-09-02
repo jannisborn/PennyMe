@@ -52988,10 +52988,10 @@
                 "internal_url": "null",
                 "latitude": "36.74986",
                 "longitude": "-80.4049299",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4429,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63584,6 +63584,98 @@
                 "status": "unvisited",
                 "id": 1813,
                 "last_updated": "2024-09-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.1550118,
+                    29.8606974
+                ]
+            },
+            "properties": {
+                "name": "Camp Fimfo Texas Hill Country",
+                "area": "Texas",
+                "address": "520 Whitewater Way, New Braunfels",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439388",
+                "internal_url": "null",
+                "latitude": "29.8606974",
+                "longitude": "-98.1550118",
+                "machine_status": "available",
+                "id": 7504,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.3926044,
+                    29.5391049
+                ]
+            },
+            "properties": {
+                "name": "Morgan's Wonderland ",
+                "area": "Texas",
+                "address": "5223 David Edward Dr, San Antonio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439503",
+                "internal_url": "null",
+                "latitude": "29.5391049",
+                "longitude": "-98.3926044",
+                "machine_status": "available",
+                "id": 7505,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.7809441,
+                    37.87953
+                ]
+            },
+            "properties": {
+                "name": "C. Judería, 4",
+                "area": "Spain",
+                "address": "C. Judería, 4, Centro, 14003, Cordoba",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439390",
+                "internal_url": "null",
+                "latitude": "37.87953",
+                "longitude": "-4.7809441",
+                "machine_status": "available",
+                "id": 7506,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.992712999999999,
+                    37.389406
+                ]
+            },
+            "properties": {
+                "name": "Azahar",
+                "area": "Spain",
+                "address": "C. Francos, 12, 6, Casco Antiguo, 41004 Sevilla, Sevilla",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439392",
+                "internal_url": "null",
+                "latitude": "37.389406",
+                "longitude": "-5.992712999999999",
+                "machine_status": "available",
+                "id": 7507,
+                "last_updated": "2024-08-28"
             }
         }
     ]
