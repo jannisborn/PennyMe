@@ -2749,9 +2749,9 @@
                 "internal_url": "null",
                 "latitude": "33.763382",
                 "longitude": "-84.3951098",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1619,
-                "last_updated": "2024-05-30"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63769,6 +63769,236 @@
                 "machine_status": "available",
                 "id": 7508,
                 "last_updated": "2024-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.073876,
+                    39.59153939999999
+                ]
+            },
+            "properties": {
+                "name": "Great Wplf Lodge",
+                "area": "Maryland",
+                "address": "1240 Chesapeake Overlook Pkwy,, Perryville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439592",
+                "internal_url": "null",
+                "latitude": "39.59153939999999",
+                "longitude": "-76.073876",
+                "machine_status": "available",
+                "id": 7509,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.3994878,
+                    40.5139259
+                ]
+            },
+            "properties": {
+                "name": "Horseshoe Curve National Historic Landmark",
+                "area": "Pennsylvania",
+                "address": "1300 Ninth Ave, Altoona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3758",
+                "internal_url": "null",
+                "latitude": "40.5139259",
+                "longitude": "-78.3994878",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3953,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.32207489999999,
+                    41.0598488
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge Poconos",
+                "area": "Pennsylvania",
+                "address": "1 Great Wolf Dr,, Scotrun",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439596",
+                "internal_url": "null",
+                "latitude": "41.0598488",
+                "longitude": "-75.32207489999999",
+                "machine_status": "available",
+                "id": 7510,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.096898,
+                    32.7912981
+                ]
+            },
+            "properties": {
+                "name": "The Mart (Antique Mall)",
+                "area": "California",
+                "address": "6505 Mission Gorge Road, San Diego ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439502",
+                "internal_url": "null",
+                "latitude": "32.7912981",
+                "longitude": "-117.096898",
+                "machine_status": "available",
+                "id": 7511,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.8010931,
+                    34.2746834
+                ]
+            },
+            "properties": {
+                "name": "Strathern Historical Park",
+                "area": "California",
+                "address": "137 Strathern Pl, Simi Valley",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439531",
+                "internal_url": "null",
+                "latitude": "34.2746834",
+                "longitude": "-118.8010931",
+                "machine_status": "available",
+                "id": 7512,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.17339369999999,
+                    45.0133352
+                ]
+            },
+            "properties": {
+                "name": "SeaQuest Roseville Aquarium & Petting Zoo ",
+                "area": "Minnesota",
+                "address": "Rosedale Center, 1595 Highway 36 W, Roseville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=337867",
+                "internal_url": "null",
+                "latitude": "45.0133352",
+                "longitude": "-93.17339369999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3171,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6766967,
+                    26.1677684
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge Water Park - Southwest Florida",
+                "area": "Florida",
+                "address": "3900 City Gate Blvd,, Naples",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439586",
+                "internal_url": "null",
+                "latitude": "26.1677684",
+                "longitude": "-81.6766967",
+                "machine_status": "available",
+                "id": 7513,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1561862,
+                    37.67328620000001
+                ]
+            },
+            "properties": {
+                "name": "Old Bryce Town Ice Cream and Candy Shop",
+                "area": "Utah",
+                "address": "26 UT-63, Bryce Canyon City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439560",
+                "internal_url": "null",
+                "latitude": "37.67328620000001",
+                "longitude": "-112.1561862",
+                "machine_status": "available",
+                "id": 7514,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -158.1031943,
+                    21.5894099
+                ]
+            },
+            "properties": {
+                "name": "Scoop of Paradise",
+                "area": "Hawaii",
+                "address": "66-145 Kamehameha Hwy, Oahu - Haleiwa",
+                "external_url": "http://209.221.138.252/Details.aspx?location=56178",
+                "internal_url": "null",
+                "latitude": "21.5894099",
+                "longitude": "-158.1031943",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3843,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.5190853,
+                    38.0563417
+                ]
+            },
+            "properties": {
+                "name": "Barrel House Distilling Co.",
+                "area": "Kentucky",
+                "address": "1200 Manchester St. , Lexington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439660",
+                "internal_url": "null",
+                "latitude": "38.0563417",
+                "longitude": "-84.5190853",
+                "machine_status": "available",
+                "id": 7515,
+                "last_updated": "2024-08-28"
             }
         }
     ]
