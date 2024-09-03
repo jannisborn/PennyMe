@@ -6927,9 +6927,9 @@
                 "internal_url": "null",
                 "latitude": "45.9930402",
                 "longitude": "-123.9288242",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6096,
-                "last_updated": "2024-02-22"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -22245,10 +22245,10 @@
                 "internal_url": "null",
                 "latitude": "52.1474982",
                 "longitude": "4.3842739",
-                "multimachine": 2,
+                "multimachine": 6,
                 "machine_status": "available",
                 "id": 246,
-                "last_updated": "2023-10-27"
+                "last_updated": "2024-09-01"
             }
         },
         {
@@ -23905,9 +23905,9 @@
                 "internal_url": "null",
                 "latitude": "28.8092772",
                 "longitude": "-97.0187796",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3817,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -26434,13 +26434,13 @@
                 "area": "Washington",
                 "address": "Ovation of the Seas, Seattle",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=431991",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "47.6062095",
                 "longitude": "-122.3320708",
                 "machine_status": "available",
                 "id": 5147,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -39274,8 +39274,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -75.63262929999999,
-                    35.9637835
+                    -75.62522151469032,
+                    35.95861001898371
                 ]
             },
             "properties": {
@@ -39285,11 +39285,11 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3691",
                 "internal_url": "null",
-                "latitude": "35.9637835",
-                "longitude": "-75.63262929999999",
-                "machine_status": "available",
+                "latitude": "35.95861001898371",
+                "longitude": "-75.62522151469032",
+                "machine_status": "out-of-order",
                 "id": 4135,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -44494,7 +44494,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -0.026508286029147805,
+                    -0.026508286029147815,
                     53.561166661531004
                 ]
             },
@@ -44505,11 +44505,11 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 53.561166661531004,
-                "longitude": -0.026508286029147805,
-                "machine_status": "available",
+                "latitude": "53.561166661531004",
+                "longitude": "-0.026508286029147815",
+                "machine_status": "retired",
                 "id": 7052,
-                "last_updated": "2024-02-24"
+                "last_updated": "2024-08-31"
             }
         },
         {
@@ -47968,10 +47968,10 @@
                 "internal_url": "null",
                 "latitude": "34.5138061",
                 "longitude": "-93.0541863",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2308,
-                "last_updated": "2024-08-06"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -52364,10 +52364,10 @@
                 "internal_url": "null",
                 "latitude": "37.7849485",
                 "longitude": "-122.4307307",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 4821,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-09-02"
             }
         },
         {
@@ -52988,10 +52988,10 @@
                 "internal_url": "null",
                 "latitude": "36.74986",
                 "longitude": "-80.4049299",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4429,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -61666,10 +61666,10 @@
                 "internal_url": "null",
                 "latitude": "30.4176097",
                 "longitude": "-87.193367",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3433,
-                "last_updated": "2024-08-07"
+                "last_updated": "2024-09-01"
             }
         },
         {
@@ -63142,6 +63142,539 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 2975,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.59553330000001,
+                    35.9100731
+                ]
+            },
+            "properties": {
+                "name": "Jennette's  Pier",
+                "area": "North Carolina",
+                "address": "7223 South Virginia Dare Trail., Nags Head",
+                "external_url": "http://209.221.138.252/Details.aspx?location=95439",
+                "internal_url": "null",
+                "latitude": "35.9100731",
+                "longitude": "-75.59553330000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4134,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.7072063,
+                    41.8343571
+                ]
+            },
+            "properties": {
+                "name": "Scotts Bluff National Monument",
+                "area": "Nebraska",
+                "address": "190276 Old Oregon Trail, Gering",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=438926",
+                "internal_url": "null",
+                "latitude": "41.8343571",
+                "longitude": "-103.7072063",
+                "machine_status": "available",
+                "id": 7494,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.38598999999999,
+                    29.721698
+                ]
+            },
+            "properties": {
+                "name": "Houston Museum of Health & Medical Science",
+                "area": "Texas",
+                "address": "1515 Hermann Dr. , Houston",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2493",
+                "internal_url": "null",
+                "latitude": "29.721698",
+                "longitude": "-95.38598999999999",
+                "machine_status": "available",
+                "id": 7495,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.00721488340805,
+                    40.436185712155385
+                ]
+            },
+            "properties": {
+                "name": "Gateway Clipper Fleet",
+                "area": "Japan",
+                "address": "350 West Station Square Drive Pittsburgh",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 40.436185712155385,
+                "longitude": -80.00721488340805,
+                "machine_status": "available",
+                "id": 7496,
+                "last_updated": "2024-08-30",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4148825,
+                    37.8082059
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Jefferson St. - Madame Tussauds",
+                "area": "California",
+                "address": "145 Jefferson St, San Francisco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=210901",
+                "internal_url": "null",
+                "latitude": "37.8082059",
+                "longitude": "-122.4148825",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5252,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.0171127,
+                    42.698246
+                ]
+            },
+            "properties": {
+                "name": "Charcoal Corral",
+                "area": "New York",
+                "address": "7037 Chapman Ave,, Perry",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439058",
+                "internal_url": "null",
+                "latitude": "42.698246",
+                "longitude": "-78.0171127",
+                "machine_status": "available",
+                "id": 7497,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.9077458,
+                    53.97633949999999
+                ]
+            },
+            "properties": {
+                "name": "Embsay & Bolton Abbey Railway",
+                "area": "England",
+                "address": "Bolton Abbey Railway Station, NORTH YORKSHIRE - Skipton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=181521",
+                "internal_url": "null",
+                "latitude": "53.97633949999999",
+                "longitude": "-1.9077458",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1526,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.0071228,
+                    41.920362
+                ]
+            },
+            "properties": {
+                "name": "Good vibes, Good, Great Finds",
+                "area": "Massachusetts",
+                "address": "464 State Highway Route 6, Wellfleet",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.920362",
+                "longitude": "-70.0071228",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5229,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.6728534,
+                    35.4411845
+                ]
+            },
+            "properties": {
+                "name": "Cima Mining Company / Shell Gas Station",
+                "area": "California",
+                "address": "65845 Cima Road, Nipton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=256238",
+                "internal_url": "null",
+                "latitude": "35.4411845",
+                "longitude": "-115.6728534",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4708,
+                "last_updated": "2024-08-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.74854932338398,
+                    34.150459957822385
+                ]
+            },
+            "properties": {
+                "name": "Hochatown saloon",
+                "area": "Oklahoma",
+                "address": "88 Old Hochatown Rd, Broken Bow, OK 74728, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 34.150459957822385,
+                "longitude": -94.74854932338398,
+                "machine_status": "available",
+                "id": 7498,
+                "last_updated": "2024-08-31",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.67445479999999,
+                    41.771362
+                ]
+            },
+            "properties": {
+                "name": "Dunkin Donuts Park / Yard Goats Baseball",
+                "area": "Connecticut",
+                "address": "1214 Main St, Hartford",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "41.771362",
+                "longitude": "-72.67445479999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5306,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.1550229,
+                    51.7864488
+                ]
+            },
+            "properties": {
+                "name": "Clacton Pier Arcade",
+                "area": "England",
+                "address": "1 North Sea Clacton-on-Sea Essex, ESSEX - Clacton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=274876",
+                "internal_url": "null",
+                "latitude": "51.7864488",
+                "longitude": "1.1550229",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1400,
+                "last_updated": "2024-09-01",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.81676845672858,
+                    36.32846571166521
+                ]
+            },
+            "properties": {
+                "name": "Arcade Mania",
+                "area": "North Carolina",
+                "address": "813a Ocean Trail, Corolla, NC 27927, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.32846571166521,
+                "longitude": -75.81676845672858,
+                "machine_status": "available",
+                "id": 7499,
+                "last_updated": "2024-09-01",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.71477829999999,
+                    41.4972633
+                ]
+            },
+            "properties": {
+                "name": "Lyman Orchard Farm Store ",
+                "area": "Connecticut",
+                "address": "32 Reeds Gap Rd, Middlefield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439316",
+                "internal_url": "null",
+                "latitude": "41.4972633",
+                "longitude": "-72.71477829999999",
+                "machine_status": "available",
+                "id": 7500,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3328481,
+                    47.6061389
+                ]
+            },
+            "properties": {
+                "name": "Royal Caribbean Cruise Line,  'Quantum of the Seas'",
+                "area": "Washington",
+                "address": ", Seattle ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439361",
+                "internal_url": "null",
+                "latitude": "47.6061389",
+                "longitude": "-122.3328481",
+                "machine_status": "available",
+                "id": 7501,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.8366554,
+                    37.5842251
+                ]
+            },
+            "properties": {
+                "name": "Selinunte Archaeological Park ",
+                "area": "Italy",
+                "address": "Piazzale Bovio Marconi, sicily, Marinella",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439398",
+                "internal_url": "null",
+                "latitude": "37.5842251",
+                "longitude": "12.8366554",
+                "machine_status": "available",
+                "id": 7502,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3173108,
+                    52.0798347
+                ]
+            },
+            "properties": {
+                "name": "Holland Souvenirs",
+                "area": "Netherlands",
+                "address": "Korte Poten 13, Den Haag",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439300",
+                "internal_url": "null",
+                "latitude": "52.0798347",
+                "longitude": "4.3173108",
+                "machine_status": "available",
+                "id": 7503,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.5849203,
+                    36.8834305
+                ]
+            },
+            "properties": {
+                "name": "Chama Valley Chamber of Commerce and Welcome Center",
+                "area": "New Mexico",
+                "address": "2372 South Highway 17, P.O. Box 306, Charma",
+                "external_url": "http://209.221.138.252/Details.aspx?location=304830",
+                "internal_url": "null",
+                "latitude": "36.8834305",
+                "longitude": "-106.5849203",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4921,
+                "last_updated": "2024-09-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.865142,
+                    37.466735
+                ]
+            },
+            "properties": {
+                "name": "Colorado Welcome Center at Alamosa",
+                "area": "Colorado",
+                "address": "610 State St. , Alamosa",
+                "external_url": "http://209.221.138.252/Details.aspx?location=340695",
+                "internal_url": "null",
+                "latitude": "37.466735",
+                "longitude": "-105.865142",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1813,
+                "last_updated": "2024-09-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.1550118,
+                    29.8606974
+                ]
+            },
+            "properties": {
+                "name": "Camp Fimfo Texas Hill Country",
+                "area": "Texas",
+                "address": "520 Whitewater Way, New Braunfels",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439388",
+                "internal_url": "null",
+                "latitude": "29.8606974",
+                "longitude": "-98.1550118",
+                "machine_status": "available",
+                "id": 7504,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.3926044,
+                    29.5391049
+                ]
+            },
+            "properties": {
+                "name": "Morgan's Wonderland ",
+                "area": "Texas",
+                "address": "5223 David Edward Dr, San Antonio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439503",
+                "internal_url": "null",
+                "latitude": "29.5391049",
+                "longitude": "-98.3926044",
+                "machine_status": "available",
+                "id": 7505,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.7809441,
+                    37.87953
+                ]
+            },
+            "properties": {
+                "name": "C. Judería, 4",
+                "area": "Spain",
+                "address": "C. Judería, 4, Centro, 14003, Cordoba",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439390",
+                "internal_url": "null",
+                "latitude": "37.87953",
+                "longitude": "-4.7809441",
+                "machine_status": "available",
+                "id": 7506,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.992712999999999,
+                    37.389406
+                ]
+            },
+            "properties": {
+                "name": "Azahar",
+                "area": "Spain",
+                "address": "C. Francos, 12, 6, Casco Antiguo, 41004 Sevilla, Sevilla",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439392",
+                "internal_url": "null",
+                "latitude": "37.389406",
+                "longitude": "-5.992712999999999",
+                "machine_status": "available",
+                "id": 7507,
                 "last_updated": "2024-08-28"
             }
         }
