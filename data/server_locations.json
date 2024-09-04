@@ -7341,9 +7341,9 @@
                 "internal_url": "null",
                 "latitude": "40.2621017",
                 "longitude": "-79.27633519999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4015,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63998,6 +63998,98 @@
                 "longitude": "-84.5190853",
                 "machine_status": "available",
                 "id": 7515,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.6230617,
+                    44.7642663
+                ]
+            },
+            "properties": {
+                "name": "Rocket Fizz",
+                "area": "Michigan",
+                "address": "111-B E Front St, Traverse City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=342752",
+                "internal_url": "null",
+                "latitude": "44.7642663",
+                "longitude": "-85.6230617",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2605,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.8463958,
+                    32.0138101
+                ]
+            },
+            "properties": {
+                "name": "Wave Surf Shop (second location)",
+                "area": "Georgia",
+                "address": "704 1st St, Tybee Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439773",
+                "internal_url": "null",
+                "latitude": "32.0138101",
+                "longitude": "-80.8463958",
+                "machine_status": "available",
+                "id": 7516,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1868109,
+                    36.1162893
+                ]
+            },
+            "properties": {
+                "name": "Rio Suite Hotel & Casino, Paradise Island Wear,",
+                "area": "Nevada",
+                "address": "3700 West Flamingo Road, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2991",
+                "internal_url": "null",
+                "latitude": "36.1162893",
+                "longitude": "-115.1868109",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4525,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.1266926,
+                    45.7580131
+                ]
+            },
+            "properties": {
+                "name": "ASTRA Museum",
+                "area": "Romania",
+                "address": "Strada Padurea Dumbrava 16, Sibiu",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439568",
+                "internal_url": "null",
+                "latitude": "45.7580131",
+                "longitude": "24.1266926",
+                "machine_status": "available",
+                "id": 7517,
                 "last_updated": "2024-08-28"
             }
         }
