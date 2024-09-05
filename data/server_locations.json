@@ -64115,6 +64115,52 @@
                 "id": 4125,
                 "last_updated": "2024-09-05"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.5117261,
+                    45.8454607
+                ]
+            },
+            "properties": {
+                "name": "Kings Landing",
+                "area": "Canada",
+                "address": "New Brunswick 102, Prince William, New Brunswick - Fredricton - Prince William",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439886",
+                "internal_url": "null",
+                "latitude": "45.8454607",
+                "longitude": "-66.5117261",
+                "machine_status": "available",
+                "id": 7518,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.464345,
+                    51.354512
+                ]
+            },
+            "properties": {
+                "name": "Brooklands Museum",
+                "area": "England",
+                "address": "Brooklands Drive, Weybridge, SURREY - Weybridge",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439883",
+                "internal_url": "null",
+                "latitude": "51.354512",
+                "longitude": "-0.464345",
+                "machine_status": "available",
+                "id": 7519,
+                "last_updated": "2024-08-28"
+            }
         }
     ]
 }
