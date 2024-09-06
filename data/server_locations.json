@@ -3269,9 +3269,9 @@
                 "internal_url": "null",
                 "latitude": "38.9562465",
                 "longitude": "-119.9443247",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4875,
-                "last_updated": "2023-08-13"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -11228,13 +11228,13 @@
                 "area": "Nebraska",
                 "address": "3133 W Hwy 34, Grand Island",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=398575",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "40.9263957",
                 "longitude": "-98.3420118",
                 "machine_status": "available",
                 "id": 6205,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -52828,10 +52828,10 @@
                 "internal_url": "null",
                 "latitude": "32.5762874",
                 "longitude": "-95.8558499",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3666,
-                "last_updated": "2024-05-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -58878,10 +58878,10 @@
                 "internal_url": "null",
                 "latitude": "38.945846",
                 "longitude": "-104.7743614",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5281,
-                "last_updated": "2024-07-16"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -61432,13 +61432,13 @@
                 "area": "Italy",
                 "address": "Piazza della Loggia, 1, 91016 Erice TP, Italy",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439919",
                 "internal_url": "null",
                 "latitude": 38.038281504142084,
                 "longitude": 12.587106112362113,
                 "machine_status": "available",
                 "id": 7374,
-                "last_updated": "2024-08-06"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -64185,6 +64185,75 @@
                 "status": "unvisited",
                 "id": 2210,
                 "last_updated": "2024-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.3325496,
+                    40.9072655
+                ]
+            },
+            "properties": {
+                "name": "Nebraska State Fair ",
+                "area": "Nebraska",
+                "address": "501 East Fonner Road #200, Grand Island ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440044",
+                "internal_url": "null",
+                "latitude": "40.9072655",
+                "longitude": "-98.3325496",
+                "machine_status": "available",
+                "id": 7520,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.4438502,
+                    50.6073806
+                ]
+            },
+            "properties": {
+                "name": "Nothe Fort",
+                "area": "England",
+                "address": "Barrack Road , DORSET - Weymouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439928",
+                "internal_url": "null",
+                "latitude": "50.6073806",
+                "longitude": "-2.4438502",
+                "machine_status": "available",
+                "id": 7521,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.210042,
+                    50.80750399999999
+                ]
+            },
+            "properties": {
+                "name": "Hovercraft Museum",
+                "area": "England",
+                "address": "Seaplane Square, Marine Parade West, Lee-on-the-Solent, HAMPSHIRE - Lee-on-the-Solent",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439927",
+                "internal_url": "null",
+                "latitude": "50.80750399999999",
+                "longitude": "-1.210042",
+                "machine_status": "available",
+                "id": 7522,
+                "last_updated": "2024-08-28"
             }
         }
     ]
