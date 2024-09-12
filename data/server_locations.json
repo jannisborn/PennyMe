@@ -2749,9 +2749,9 @@
                 "internal_url": "null",
                 "latitude": "33.763382",
                 "longitude": "-84.3951098",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1619,
-                "last_updated": "2024-05-30"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -3081,7 +3081,8 @@
                 "longitude": "-83.5678459",
                 "machine_status": "available",
                 "id": 4282,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-09-09",
+                "multimachine": 2
             }
         },
         {
@@ -3269,9 +3270,9 @@
                 "internal_url": "null",
                 "latitude": "38.9562465",
                 "longitude": "-119.9443247",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4875,
-                "last_updated": "2023-08-13"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -3792,8 +3793,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -78.878282,
-                    33.716508
+                    -78.87624990690874,
+                    33.71560391798763
                 ]
             },
             "properties": {
@@ -3803,11 +3804,13 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=19337",
                 "internal_url": "null",
-                "latitude": "33.716508",
-                "longitude": "-78.878282",
+                "latitude": "33.71560391798763",
+                "longitude": "-78.87624990690874",
                 "machine_status": "available",
                 "id": 2211,
-                "last_updated": "2023-08-23"
+                "last_updated": "2024-09-05",
+                "multimachine": 2,
+                "paywall": true
             }
         },
         {
@@ -7341,9 +7344,9 @@
                 "internal_url": "null",
                 "latitude": "40.2621017",
                 "longitude": "-79.27633519999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4015,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -11226,13 +11229,13 @@
                 "area": "Nebraska",
                 "address": "3133 W Hwy 34, Grand Island",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=398575",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "40.9263957",
                 "longitude": "-98.3420118",
                 "machine_status": "available",
                 "id": 6205,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -37782,9 +37785,9 @@
                 "internal_url": "null",
                 "latitude": "53.0227970",
                 "longitude": "9.8831392",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 588,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-09-03"
             }
         },
         {
@@ -46849,8 +46852,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -5.8920445,
-                    54.21614
+                    -5.890325945819131,
+                    54.210092273560115
                 ]
             },
             "properties": {
@@ -46860,11 +46863,11 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=425379",
                 "internal_url": "null",
-                "latitude": "54.21614",
-                "longitude": "-5.8920445",
-                "machine_status": "available",
+                "latitude": "54.210092273560115",
+                "longitude": "-5.890325945819131",
+                "machine_status": "out-of-order",
                 "id": 7091,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-09-08"
             }
         },
         {
@@ -52826,10 +52829,10 @@
                 "internal_url": "null",
                 "latitude": "32.5762874",
                 "longitude": "-95.8558499",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3666,
-                "last_updated": "2024-05-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -58876,10 +58879,10 @@
                 "internal_url": "null",
                 "latitude": "38.945846",
                 "longitude": "-104.7743614",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5281,
-                "last_updated": "2024-07-16"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -58946,9 +58949,9 @@
                 "internal_url": "null",
                 "latitude": "46.05189439999999",
                 "longitude": "14.5072025",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7303,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-09-08"
             }
         },
         {
@@ -59590,10 +59593,10 @@
                 "internal_url": "null",
                 "latitude": "34.517285",
                 "longitude": "-93.04608",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2304,
-                "last_updated": "2024-07-21"
+                "last_updated": "2024-09-03"
             }
         },
         {
@@ -60306,10 +60309,10 @@
                 "internal_url": "null",
                 "latitude": "43.6565001",
                 "longitude": "-70.25347169999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5185,
-                "last_updated": "2024-07-31"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -61430,13 +61433,13 @@
                 "area": "Italy",
                 "address": "Piazza della Loggia, 1, 91016 Erice TP, Italy",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439919",
                 "internal_url": "null",
                 "latitude": 38.038281504142084,
                 "longitude": 12.587106112362113,
                 "machine_status": "available",
                 "id": 7374,
-                "last_updated": "2024-08-06"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63442,9 +63445,9 @@
                 "internal_url": "null",
                 "latitude": 36.32846571166521,
                 "longitude": -75.81676845672858,
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7499,
-                "last_updated": "2024-09-01",
+                "last_updated": "2024-09-05",
                 "paywall": true
             }
         },
@@ -63580,10 +63583,10 @@
                 "internal_url": "null",
                 "latitude": "37.466735",
                 "longitude": "-105.865142",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1813,
-                "last_updated": "2024-09-02"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63676,6 +63679,904 @@
                 "machine_status": "available",
                 "id": 7507,
                 "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.192621300000001,
+                    50.6732488
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Center Königswinter",
+                "area": "Germany",
+                "address": "Rheinallee 8",
+                "external_url": "http://209.221.138.252/Details.aspx?location=40905",
+                "internal_url": "null",
+                "latitude": "50.6732488",
+                "longitude": "7.192621300000001",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 531,
+                "last_updated": "2024-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.5875179,
+                    50.0515536
+                ]
+            },
+            "properties": {
+                "name": "Frankfurt Airport, Ludwigs Pizza",
+                "area": "Germany",
+                "address": "Frankfurt Airport, Frankfurt",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196471",
+                "internal_url": "null",
+                "latitude": "50.0515536",
+                "longitude": "8.5875179",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5706,
+                "last_updated": "2024-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.3113164,
+                    48.4250473
+                ]
+            },
+            "properties": {
+                "name": "Legoland Deutschland",
+                "area": "Germany",
+                "address": "LEGOLAND Allee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=83138",
+                "internal_url": "null",
+                "latitude": "48.4250473",
+                "longitude": "10.3113164",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 488,
+                "last_updated": "2024-09-03",
+                "multimachine": 10
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.93842525794786,
+                    40.08564180859688
+                ]
+            },
+            "properties": {
+                "name": "Granby Grand Mountain Trading Co",
+                "area": "Colorado",
+                "address": "E Agate",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 40.08564180859688,
+                "longitude": -105.93842525794786,
+                "machine_status": "available",
+                "id": 7508,
+                "last_updated": "2024-09-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.073876,
+                    39.59153939999999
+                ]
+            },
+            "properties": {
+                "name": "Great Wplf Lodge",
+                "area": "Maryland",
+                "address": "1240 Chesapeake Overlook Pkwy,, Perryville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439592",
+                "internal_url": "null",
+                "latitude": "39.59153939999999",
+                "longitude": "-76.073876",
+                "machine_status": "available",
+                "id": 7509,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.3994878,
+                    40.5139259
+                ]
+            },
+            "properties": {
+                "name": "Horseshoe Curve National Historic Landmark",
+                "area": "Pennsylvania",
+                "address": "1300 Ninth Ave, Altoona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3758",
+                "internal_url": "null",
+                "latitude": "40.5139259",
+                "longitude": "-78.3994878",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3953,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.32207489999999,
+                    41.0598488
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge Poconos",
+                "area": "Pennsylvania",
+                "address": "1 Great Wolf Dr,, Scotrun",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439596",
+                "internal_url": "null",
+                "latitude": "41.0598488",
+                "longitude": "-75.32207489999999",
+                "machine_status": "available",
+                "id": 7510,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.096898,
+                    32.7912981
+                ]
+            },
+            "properties": {
+                "name": "The Mart (Antique Mall)",
+                "area": "California",
+                "address": "6505 Mission Gorge Road, San Diego ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439502",
+                "internal_url": "null",
+                "latitude": "32.7912981",
+                "longitude": "-117.096898",
+                "machine_status": "available",
+                "id": 7511,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.8010931,
+                    34.2746834
+                ]
+            },
+            "properties": {
+                "name": "Strathern Historical Park",
+                "area": "California",
+                "address": "137 Strathern Pl, Simi Valley",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439531",
+                "internal_url": "null",
+                "latitude": "34.2746834",
+                "longitude": "-118.8010931",
+                "machine_status": "available",
+                "id": 7512,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.17339369999999,
+                    45.0133352
+                ]
+            },
+            "properties": {
+                "name": "SeaQuest Roseville Aquarium & Petting Zoo ",
+                "area": "Minnesota",
+                "address": "Rosedale Center, 1595 Highway 36 W, Roseville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=337867",
+                "internal_url": "null",
+                "latitude": "45.0133352",
+                "longitude": "-93.17339369999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3171,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6766967,
+                    26.1677684
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge Water Park - Southwest Florida",
+                "area": "Florida",
+                "address": "3900 City Gate Blvd,, Naples",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439586",
+                "internal_url": "null",
+                "latitude": "26.1677684",
+                "longitude": "-81.6766967",
+                "machine_status": "available",
+                "id": 7513,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1561862,
+                    37.67328620000001
+                ]
+            },
+            "properties": {
+                "name": "Old Bryce Town Ice Cream and Candy Shop",
+                "area": "Utah",
+                "address": "26 UT-63, Bryce Canyon City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439560",
+                "internal_url": "null",
+                "latitude": "37.67328620000001",
+                "longitude": "-112.1561862",
+                "machine_status": "available",
+                "id": 7514,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -158.1031943,
+                    21.5894099
+                ]
+            },
+            "properties": {
+                "name": "Scoop of Paradise",
+                "area": "Hawaii",
+                "address": "66-145 Kamehameha Hwy, Oahu - Haleiwa",
+                "external_url": "http://209.221.138.252/Details.aspx?location=56178",
+                "internal_url": "null",
+                "latitude": "21.5894099",
+                "longitude": "-158.1031943",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3843,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.5190853,
+                    38.0563417
+                ]
+            },
+            "properties": {
+                "name": "Barrel House Distilling Co.",
+                "area": "Kentucky",
+                "address": "1200 Manchester St. , Lexington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439660",
+                "internal_url": "null",
+                "latitude": "38.0563417",
+                "longitude": "-84.5190853",
+                "machine_status": "available",
+                "id": 7515,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.6230617,
+                    44.7642663
+                ]
+            },
+            "properties": {
+                "name": "Rocket Fizz",
+                "area": "Michigan",
+                "address": "111-B E Front St, Traverse City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=342752",
+                "internal_url": "null",
+                "latitude": "44.7642663",
+                "longitude": "-85.6230617",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2605,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.8463958,
+                    32.0138101
+                ]
+            },
+            "properties": {
+                "name": "Wave Surf Shop (second location)",
+                "area": "Georgia",
+                "address": "704 1st St, Tybee Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439773",
+                "internal_url": "null",
+                "latitude": "32.0138101",
+                "longitude": "-80.8463958",
+                "machine_status": "available",
+                "id": 7516,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1868109,
+                    36.1162893
+                ]
+            },
+            "properties": {
+                "name": "Rio Suite Hotel & Casino, Paradise Island Wear,",
+                "area": "Nevada",
+                "address": "3700 West Flamingo Road, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2991",
+                "internal_url": "null",
+                "latitude": "36.1162893",
+                "longitude": "-115.1868109",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4525,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.1266926,
+                    45.7580131
+                ]
+            },
+            "properties": {
+                "name": "ASTRA Museum",
+                "area": "Romania",
+                "address": "Strada Padurea Dumbrava 16, Sibiu",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439568",
+                "internal_url": "null",
+                "latitude": "45.7580131",
+                "longitude": "24.1266926",
+                "machine_status": "available",
+                "id": 7517,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.7039834,
+                    35.9176536
+                ]
+            },
+            "properties": {
+                "name": "North Carolina Aquarium on Roanoke Island",
+                "area": "North Carolina",
+                "address": "374 Airport Road, Manteo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3683",
+                "internal_url": "null",
+                "latitude": "35.9176536",
+                "longitude": "-75.7039834",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4125,
+                "last_updated": "2024-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.5117261,
+                    45.8454607
+                ]
+            },
+            "properties": {
+                "name": "Kings Landing",
+                "area": "Canada",
+                "address": "New Brunswick 102, Prince William, New Brunswick - Fredricton - Prince William",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439886",
+                "internal_url": "null",
+                "latitude": "45.8454607",
+                "longitude": "-66.5117261",
+                "machine_status": "available",
+                "id": 7518,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.464345,
+                    51.354512
+                ]
+            },
+            "properties": {
+                "name": "Brooklands Museum",
+                "area": "England",
+                "address": "Brooklands Drive, Weybridge, SURREY - Weybridge",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439883",
+                "internal_url": "null",
+                "latitude": "51.354512",
+                "longitude": "-0.464345",
+                "machine_status": "available",
+                "id": 7519,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8805165,
+                    33.7151179
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - Broadway Magic",
+                "area": "South Carolina",
+                "address": "1215 Celebrity Cir, #150, Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=79963",
+                "internal_url": "null",
+                "latitude": "33.7151179",
+                "longitude": "-78.8805165",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2210,
+                "last_updated": "2024-09-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.3325496,
+                    40.9072655
+                ]
+            },
+            "properties": {
+                "name": "Nebraska State Fair ",
+                "area": "Nebraska",
+                "address": "501 East Fonner Road #200, Grand Island ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440044",
+                "internal_url": "null",
+                "latitude": "40.9072655",
+                "longitude": "-98.3325496",
+                "machine_status": "available",
+                "id": 7520,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.4438502,
+                    50.6073806
+                ]
+            },
+            "properties": {
+                "name": "Nothe Fort",
+                "area": "England",
+                "address": "Barrack Road , DORSET - Weymouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439928",
+                "internal_url": "null",
+                "latitude": "50.6073806",
+                "longitude": "-2.4438502",
+                "machine_status": "available",
+                "id": 7521,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.210042,
+                    50.80750399999999
+                ]
+            },
+            "properties": {
+                "name": "Hovercraft Museum",
+                "area": "England",
+                "address": "Seaplane Square, Marine Parade West, Lee-on-the-Solent, HAMPSHIRE - Lee-on-the-Solent",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439927",
+                "internal_url": "null",
+                "latitude": "50.80750399999999",
+                "longitude": "-1.210042",
+                "machine_status": "available",
+                "id": 7522,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.74616922001717,
+                    33.79836867456132
+                ]
+            },
+            "properties": {
+                "name": "Barefoot Landing - Black Market Minerals",
+                "area": "South Carolina",
+                "address": "4892 Hwy 17 S, store #20 , North Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=51289",
+                "internal_url": "null",
+                "latitude": "33.79836867456132",
+                "longitude": "-78.74616922001717",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2229,
+                "last_updated": "2024-09-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.071508,
+                    47.8928908
+                ]
+            },
+            "properties": {
+                "name": "Scheels Sporting Goods",
+                "area": "North Dakota",
+                "address": "2800 South Columbia Road , Grand Forks",
+                "external_url": "http://209.221.138.252/Details.aspx?location=356560",
+                "internal_url": "null",
+                "latitude": "47.8928908",
+                "longitude": "-97.071508",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5503,
+                "last_updated": "2024-09-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.18809809999999,
+                    38.6245316
+                ]
+            },
+            "properties": {
+                "name": "Jefferson National Parks Association",
+                "area": "Missouri",
+                "address": "2nd & Walnut Streets, South Leg Service Entrance, St. Louis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250842",
+                "internal_url": "null",
+                "latitude": "38.6245316",
+                "longitude": "-90.18809809999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1129,
+                "last_updated": "2024-09-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.8557361,
+                    40.8109523
+                ]
+            },
+            "properties": {
+                "name": "Penn State All Sports Museum",
+                "area": "Pennsylvania",
+                "address": "1 Beaver Stadium, University Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440125",
+                "internal_url": "null",
+                "latitude": "40.8109523",
+                "longitude": "-77.8557361",
+                "machine_status": "available",
+                "id": 7523,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.63657834086965,
+                    40.10703565910185
+                ]
+            },
+            "properties": {
+                "name": "The Garst Museum",
+                "area": "Ohio",
+                "address": "205 N Broadway St,",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 40.10703565910185,
+                "longitude": -84.63657834086965,
+                "machine_status": "available",
+                "id": 7524,
+                "last_updated": "2024-09-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.02755228636828,
+                    43.634703369837624
+                ]
+            },
+            "properties": {
+                "name": "Bank of Montpelier",
+                "area": "Idaho",
+                "address": "833 Washington Street, Montpelier",
+                "external_url": "http://209.221.138.252/Details.aspx?location=344000",
+                "internal_url": "null",
+                "latitude": "43.634703369837624",
+                "longitude": "-112.02755228636828",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4319,
+                "last_updated": "2024-09-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.5129342,
+                    46.0506773
+                ]
+            },
+            "properties": {
+                "name": "Paviljon Zvoncek",
+                "area": "Slovenia",
+                "address": "Adamic-Lundrovo nabreje 1",
+                "external_url": "http://209.221.138.252/Details.aspx?location=249127",
+                "internal_url": "null",
+                "latitude": "46.0506773",
+                "longitude": "14.5129342",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 808,
+                "last_updated": "2024-09-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.50400410000003,
+                    38.53927909999999
+                ]
+            },
+            "properties": {
+                "name": "William Land Park - Sacramento Zoo",
+                "area": "California",
+                "address": "3930 West Land Park Dr., Sacramento",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1198",
+                "internal_url": "null",
+                "latitude": "38.53927909999999",
+                "longitude": "-121.50400410000003",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4759,
+                "last_updated": "2024-09-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.73280372961088,
+                    45.77950874151858
+                ]
+            },
+            "properties": {
+                "name": "Mystery Town",
+                "area": "Michigan",
+                "address": "200 S Nicolet St Mackinaw City, MI, 49701",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 45.77950874151858,
+                "longitude": -84.73280372961088,
+                "machine_status": "available",
+                "id": 7525,
+                "last_updated": "2024-09-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2550533,
+                    36.6594865
+                ]
+            },
+            "properties": {
+                "name": "Made In The USA Store",
+                "area": "Missouri",
+                "address": "4270 Gretna Rd, Branson ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440258",
+                "internal_url": "null",
+                "latitude": "36.6594865",
+                "longitude": "-93.2550533",
+                "machine_status": "available",
+                "id": 7526,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.6045773,
+                    35.9812258
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Tennessee",
+                "address": "170 Buc-ee's Boulevard (I-40 at exit 407), Sevierville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440144",
+                "internal_url": "null",
+                "latitude": "35.9812258",
+                "longitude": "-83.6045773",
+                "machine_status": "available",
+                "id": 7527,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.61226359999999,
+                    39.2857251
+                ]
+            },
+            "properties": {
+                "name": "Harborplace - Light Street Pavillion",
+                "area": "Maryland",
+                "address": "301 Light Street, Baltimore",
+                "external_url": "http://209.221.138.252/Details.aspx?location=8618",
+                "internal_url": "null",
+                "latitude": "39.2857251",
+                "longitude": "-76.61226359999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3607,
+                "last_updated": "2024-09-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.7337491,
+                    46.7866928
+                ]
+            },
+            "properties": {
+                "name": "Mount Rainier National Park - Paradise Inn Gift Shop",
+                "area": "Washington",
+                "address": "52807 Paradise Valley Road East, Ashford",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440325",
+                "internal_url": "null",
+                "latitude": "46.7866928",
+                "longitude": "-121.7337491",
+                "machine_status": "available",
+                "id": 7528,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.060168,
+                    36.209524
+                ]
+            },
+            "properties": {
+                "name": "North Rim Lodge",
+                "area": "Arizona",
+                "address": "End of Highway 67, Grand Canyon National Park, North Rim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329",
+                "internal_url": "null",
+                "latitude": "36.209524",
+                "longitude": "-112.060168",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2628,
+                "last_updated": "2024-09-12"
             }
         }
     ]
