@@ -58902,10 +58902,10 @@
                 "internal_url": "null",
                 "latitude": "47.5101885",
                 "longitude": "-111.2862464",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2963,
-                "last_updated": "2024-07-16"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -64623,6 +64623,121 @@
                 "status": "unvisited",
                 "id": 1051,
                 "last_updated": "2024-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.8348669,
+                    40.4864408
+                ]
+            },
+            "properties": {
+                "name": "Steamboat Trading Company",
+                "area": "Colorado",
+                "address": "810 Lincoln Avenue, Steamboat Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=53315",
+                "internal_url": "null",
+                "latitude": "40.4864408",
+                "longitude": "-106.8348669",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1932,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.81257629999999,
+                    32.138651
+                ]
+            },
+            "properties": {
+                "name": "Harbourtown Lighthouse",
+                "area": "South Carolina",
+                "address": "149 Lighthouse Road, Hilton Head",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3129",
+                "internal_url": "null",
+                "latitude": "32.138651",
+                "longitude": "-80.81257629999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2200,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.3193872,
+                    37.7461316
+                ]
+            },
+            "properties": {
+                "name": "Red Canyon Visitor Center",
+                "area": "Utah",
+                "address": "5375 UT-12, Panguitch",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440586",
+                "internal_url": "null",
+                "latitude": "37.7461316",
+                "longitude": "-112.3193872",
+                "machine_status": "available",
+                "id": 7529,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1761257,
+                    36.119001
+                ]
+            },
+            "properties": {
+                "name": "Caesars Place Hotel Casino",
+                "area": "Nevada",
+                "address": "Forum Shops - Welcome to Las Vegas Store, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440532",
+                "internal_url": "null",
+                "latitude": "36.119001",
+                "longitude": "-115.1761257",
+                "machine_status": "available",
+                "id": 7530,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1754312,
+                    36.0987973
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino - Below the Knee",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=305786",
+                "internal_url": "null",
+                "latitude": "36.0987973",
+                "longitude": "-115.1754312",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4506,
+                "last_updated": "2024-08-28"
             }
         }
     ]
