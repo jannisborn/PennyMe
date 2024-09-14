@@ -6447,9 +6447,9 @@
                 "internal_url": "null",
                 "latitude": "33.53849",
                 "longitude": "-112.355836",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2625,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -64808,6 +64808,29 @@
                 "status": "unvisited",
                 "id": 965,
                 "last_updated": "2024-09-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.8739631,
+                    51.14510070000001
+                ]
+            },
+            "properties": {
+                "name": "National Park Inn General Store",
+                "area": "Washington",
+                "address": "47009 Paradise Valley Road East, Mount Rainier National Park - Ashford",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440716",
+                "internal_url": "null",
+                "latitude": "51.14510070000001",
+                "longitude": "0.8739631",
+                "machine_status": "available",
+                "id": 7532,
+                "last_updated": "2024-08-28"
             }
         }
     ]
