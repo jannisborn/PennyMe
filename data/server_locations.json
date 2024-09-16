@@ -6447,9 +6447,9 @@
                 "internal_url": "null",
                 "latitude": "33.53849",
                 "longitude": "-112.355836",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2625,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -23444,13 +23444,13 @@
                 "area": "Germany",
                 "address": "25826 Schleswig-Holstein",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440887",
                 "internal_url": "null",
                 "latitude": "54.3048043",
                 "longitude": "8.6522205",
                 "machine_status": "available",
                 "id": 5763,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -27494,15 +27494,15 @@
             "properties": {
                 "name": "Inverness Museum and Art Gallery",
                 "area": "Scotland",
-                "address": "Castle Wynd, Inverness, IV2 3EQ",
+                "address": "Castle Wynd, Inverness",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=262458",
                 "internal_url": "null",
                 "latitude": "57.47703319999999",
                 "longitude": "-4.225450599999999",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 778,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-09-13"
             }
         },
         {
@@ -51050,9 +51050,9 @@
                 "internal_url": "null",
                 "latitude": 47.202474629615864,
                 "longitude": -91.3682720277433,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7162,
-                "last_updated": "2024-05-05"
+                "last_updated": "2024-09-14"
             }
         },
         {
@@ -52505,10 +52505,10 @@
                 "internal_url": "null",
                 "latitude": "44.0519703",
                 "longitude": "-71.1287719",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5081,
-                "last_updated": "2024-05-20"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -58902,10 +58902,10 @@
                 "internal_url": "null",
                 "latitude": "47.5101885",
                 "longitude": "-111.2862464",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2963,
-                "last_updated": "2024-07-16"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -62486,22 +62486,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -79.9422186,
-                    32.7835688
+                    -81.62744979786899,
+                    38.35216931668957
                 ]
             },
             "properties": {
                 "name": "Capital Market",
                 "area": "West Virginia",
-                "address": "800 Smith St, Charlston",
+                "address": "800 Smith St, Charlston, West Virginia",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=437169",
                 "internal_url": "null",
-                "latitude": "32.7835688",
-                "longitude": "-79.9422186",
+                "latitude": "38.35216931668957",
+                "longitude": "-81.62744979786899",
                 "machine_status": "available",
                 "id": 7474,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-09-15"
             }
         },
         {
@@ -63445,9 +63445,9 @@
                 "internal_url": "null",
                 "latitude": 36.32846571166521,
                 "longitude": -75.81676845672858,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7499,
-                "last_updated": "2024-09-05",
+                "last_updated": "2024-09-14",
                 "paywall": true
             }
         },
@@ -64577,6 +64577,471 @@
                 "status": "unvisited",
                 "id": 2628,
                 "last_updated": "2024-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.21421409999999,
+                    36.6440054
+                ]
+            },
+            "properties": {
+                "name": "Branson Landing",
+                "area": "Missouri",
+                "address": "100 Branson Landing, Branson",
+                "external_url": "http://209.221.138.252/Details.aspx?location=24161",
+                "internal_url": "null",
+                "latitude": "36.6440054",
+                "longitude": "-93.21421409999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1054,
+                "last_updated": "2024-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2135224,
+                    36.6414441
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops, Branson Landing",
+                "area": "Missouri",
+                "address": "1 Bass Pro Drive, Branson",
+                "external_url": "http://209.221.138.252/Details.aspx?location=27218",
+                "internal_url": "null",
+                "latitude": "36.6414441",
+                "longitude": "-93.2135224",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1051,
+                "last_updated": "2024-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.8348669,
+                    40.4864408
+                ]
+            },
+            "properties": {
+                "name": "Steamboat Trading Company",
+                "area": "Colorado",
+                "address": "810 Lincoln Avenue, Steamboat Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=53315",
+                "internal_url": "null",
+                "latitude": "40.4864408",
+                "longitude": "-106.8348669",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1932,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.81257629999999,
+                    32.138651
+                ]
+            },
+            "properties": {
+                "name": "Harbourtown Lighthouse",
+                "area": "South Carolina",
+                "address": "149 Lighthouse Road, Hilton Head",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3129",
+                "internal_url": "null",
+                "latitude": "32.138651",
+                "longitude": "-80.81257629999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2200,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.3193872,
+                    37.7461316
+                ]
+            },
+            "properties": {
+                "name": "Red Canyon Visitor Center",
+                "area": "Utah",
+                "address": "5375 UT-12, Panguitch",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440586",
+                "internal_url": "null",
+                "latitude": "37.7461316",
+                "longitude": "-112.3193872",
+                "machine_status": "available",
+                "id": 7529,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1761257,
+                    36.119001
+                ]
+            },
+            "properties": {
+                "name": "Caesars Place Hotel Casino",
+                "area": "Nevada",
+                "address": "Forum Shops - Welcome to Las Vegas Store, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440532",
+                "internal_url": "null",
+                "latitude": "36.119001",
+                "longitude": "-115.1761257",
+                "machine_status": "available",
+                "id": 7530,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1754312,
+                    36.0987973
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino - Below the Knee",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=305786",
+                "internal_url": "null",
+                "latitude": "36.0987973",
+                "longitude": "-115.1754312",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4506,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.5124951,
+                    35.8975921
+                ]
+            },
+            "properties": {
+                "name": "St. John's Cathedral, Valletta",
+                "area": "Malta",
+                "address": ", Valletta",
+                "external_url": "http://209.221.138.252/Details.aspx?location=108559",
+                "internal_url": "null",
+                "latitude": "35.8975921",
+                "longitude": "14.5124951",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1032,
+                "last_updated": "2024-09-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.29266729938709,
+                    37.06429594834581
+                ]
+            },
+            "properties": {
+                "name": "Penny Souvenir Ortigia",
+                "area": "Italy",
+                "address": "Via Trento, 24, 96100 Siracusa SR, Italy",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 37.06429594834581,
+                "longitude": 15.29266729938709,
+                "machine_status": "available",
+                "id": 7531,
+                "last_updated": "2024-09-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.0848433,
+                    37.5031814
+                ]
+            },
+            "properties": {
+                "name": "Giorgio Venezian clothing store",
+                "area": "Italy",
+                "address": "Via dei Crociferi 8/8A",
+                "external_url": "http://209.221.138.252/Details.aspx?location=280516",
+                "internal_url": "null",
+                "latitude": "37.5031814",
+                "longitude": "15.0848433",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 965,
+                "last_updated": "2024-09-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.8739631,
+                    51.14510070000001
+                ]
+            },
+            "properties": {
+                "name": "National Park Inn General Store",
+                "area": "Washington",
+                "address": "47009 Paradise Valley Road East, Mount Rainier National Park - Ashford",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440716",
+                "internal_url": "null",
+                "latitude": "51.14510070000001",
+                "longitude": "0.8739631",
+                "machine_status": "available",
+                "id": 7532,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.054623918749019,
+                    53.811969052603736
+                ]
+            },
+            "properties": {
+                "name": "Madame Tussauds Waxworks. (Formally Louis Tussauds)",
+                "area": "England",
+                "address": "85-89 Promenade, City Centre, , LANCASHIRE - Blackpool",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93853",
+                "internal_url": "null",
+                "latitude": "53.811969052603736",
+                "longitude": "-3.054623918749019",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1442,
+                "last_updated": "2024-09-15",
+                "multimachine": 1,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.1287038383537,
+                    44.05189774883827
+                ]
+            },
+            "properties": {
+                "name": "Conway scenic railroad",
+                "area": "New Hampshire",
+                "address": "26 Norcross Cir, North Conway, NH 03860, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 44.05189774883827,
+                "longitude": -71.1287038383537,
+                "machine_status": "available",
+                "id": 7533,
+                "last_updated": "2024-09-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.021811,
+                    52.029418
+                ]
+            },
+            "properties": {
+                "name": "Paviljoen de Posbank",
+                "area": "Netherlands",
+                "address": "Beekhuizenseweg 1, Rheden",
+                "external_url": "http://209.221.138.252/Details.aspx?location=326466",
+                "internal_url": "null",
+                "latitude": "52.029418",
+                "longitude": "6.021811",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5870,
+                "last_updated": "2024-09-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.296254,
+                    51.363583
+                ]
+            },
+            "properties": {
+                "name": "Chessington Safari Hotel",
+                "area": "England",
+                "address": "Leatherhead Rd, , SURREY - Chessington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440823",
+                "internal_url": "null",
+                "latitude": "51.363583",
+                "longitude": "-0.296254",
+                "machine_status": "available",
+                "id": 7534,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.841152,
+                    54.473217
+                ]
+            },
+            "properties": {
+                "name": "Beach Eckernförde",
+                "area": "Germany",
+                "address": "Jungfernstieg 110, Eckernförde",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440889",
+                "internal_url": "null",
+                "latitude": "54.473217",
+                "longitude": "9.841152",
+                "machine_status": "available",
+                "id": 7535,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.1344041,
+                    54.31834
+                ]
+            },
+            "properties": {
+                "name": "Kiel Welcome Center",
+                "area": "Germany",
+                "address": "Stresemannplatz 1-3, Kiel",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440885",
+                "internal_url": "null",
+                "latitude": "54.31834",
+                "longitude": "10.1344041",
+                "machine_status": "available",
+                "id": 7536,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.0734926,
+                    54.4781765
+                ]
+            },
+            "properties": {
+                "name": "Beach Surendorf",
+                "area": "Germany",
+                "address": "Zum Kurstrand 5, Surendorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440888",
+                "internal_url": "null",
+                "latitude": "54.4781765",
+                "longitude": "10.0734926",
+                "machine_status": "available",
+                "id": 7537,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.700515,
+                    55.414098
+                ]
+            },
+            "properties": {
+                "name": "The Alnwick Garden",
+                "area": "England",
+                "address": "Denwick Lane, NORTHUMBERLAND - Alnwick",
+                "external_url": "http://209.221.138.252/Details.aspx?location=256485",
+                "internal_url": "null",
+                "latitude": "55.414098",
+                "longitude": "-1.700515",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1536,
+                "last_updated": "2024-09-16",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.117545199999999,
+                    49.3506063
+                ]
+            },
+            "properties": {
+                "name": "GONDWANA - the Prehistoric Museum",
+                "area": "Germany",
+                "address": "Bildstockstraße,  , Schiffweiler",
+                "external_url": "http://209.221.138.252/Details.aspx?location=334304",
+                "internal_url": "null",
+                "latitude": "49.3506063",
+                "longitude": "7.117545199999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5761,
+                "last_updated": "2024-09-16",
+                "multimachine": 3
             }
         }
     ]
