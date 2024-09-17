@@ -64320,10 +64320,10 @@
                 "internal_url": "null",
                 "latitude": "38.6245316",
                 "longitude": "-90.18809809999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1129,
-                "last_updated": "2024-09-07"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65088,6 +65088,29 @@
                 "status": "unvisited",
                 "id": 3728,
                 "last_updated": "2024-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.2100832,
+                    51.3363235
+                ]
+            },
+            "properties": {
+                "name": "Zeebrugge Cruise Terminal",
+                "area": "Belgium",
+                "address": "Zweedse Kaai, Zeebrugge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=310753",
+                "internal_url": "null",
+                "latitude": "51.3363235",
+                "longitude": "3.2100832",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 143,
+                "last_updated": "2024-08-28"
             }
         }
     ]
