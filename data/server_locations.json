@@ -27731,9 +27731,9 @@
                 "internal_url": "null",
                 "latitude": "37.1750801",
                 "longitude": "-107.3032109",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1826,
-                "last_updated": "2023-11-03"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -60447,10 +60447,10 @@
                 "internal_url": "null",
                 "latitude": "39.6655381",
                 "longitude": "-105.2052116",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1911,
-                "last_updated": "2024-08-01"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -64320,10 +64320,10 @@
                 "internal_url": "null",
                 "latitude": "38.6245316",
                 "longitude": "-90.18809809999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1129,
-                "last_updated": "2024-09-07"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65042,6 +65042,98 @@
                 "id": 5761,
                 "last_updated": "2024-09-16",
                 "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.8449709,
+                    34.4901521
+                ]
+            },
+            "properties": {
+                "name": "Dolphin Island",
+                "area": "Japan",
+                "address": "Toba Marine Terminal 2F 1-2383-51 Toba, Toba City, Mie Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=440824",
+                "internal_url": "null",
+                "latitude": "34.4901521",
+                "longitude": "136.8449709",
+                "machine_status": "available",
+                "id": 7538,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.04158969999999,
+                    32.96823
+                ]
+            },
+            "properties": {
+                "name": "Grapevine Mills - LEGOLAND® Discovery Center",
+                "area": "Texas",
+                "address": "3000 Grapevine Mills Pkwy, Grapevine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93991",
+                "internal_url": "null",
+                "latitude": "32.96823",
+                "longitude": "-97.04158969999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3728,
+                "last_updated": "2024-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.2100832,
+                    51.3363235
+                ]
+            },
+            "properties": {
+                "name": "Zeebrugge Cruise Terminal",
+                "area": "Belgium",
+                "address": "Zweedse Kaai, Zeebrugge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=310753",
+                "internal_url": "null",
+                "latitude": "51.3363235",
+                "longitude": "3.2100832",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 143,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.34237636674091,
+                    35.65473217448297
+                ]
+            },
+            "properties": {
+                "name": "Lake Isabella/Kern River KOA Holiday",
+                "area": "California",
+                "address": "15627 Hwy 178 Weldon, CA 93283",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 35.65473217448297,
+                "longitude": -118.34237636674091,
+                "machine_status": "available",
+                "id": 7539,
+                "last_updated": "2024-09-18"
             }
         }
     ]
