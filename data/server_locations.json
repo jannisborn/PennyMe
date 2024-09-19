@@ -37434,13 +37434,13 @@
                 "area": "Germany",
                 "address": "Kaiserstraße 15, 32457 Porta Westfalica, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441338",
                 "internal_url": "null",
                 "latitude": "52.2454835",
                 "longitude": "8.9052425",
                 "machine_status": "available",
                 "id": 6915,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -40747,13 +40747,13 @@
                 "area": "Germany",
                 "address": "Deisterallee 1",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441337",
                 "internal_url": "null",
                 "latitude": "52.1046945",
                 "longitude": "9.3619937",
                 "machine_status": "available",
                 "id": 503,
-                "last_updated": "2023-12-11"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -54368,10 +54368,10 @@
                 "internal_url": "null",
                 "latitude": "35.32606500000001",
                 "longitude": "-112.872988",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5200,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65134,6 +65134,52 @@
                 "machine_status": "available",
                 "id": 7539,
                 "last_updated": "2024-09-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.9498151,
+                    40.7959634
+                ]
+            },
+            "properties": {
+                "name": "Wayne County Fair",
+                "area": "Ohio",
+                "address": "199 Vanover St,,  Wooster",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441381",
+                "internal_url": "null",
+                "latitude": "40.7959634",
+                "longitude": "-81.9498151",
+                "machine_status": "available",
+                "id": 7540,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.721994,
+                    52.95078900000001
+                ]
+            },
+            "properties": {
+                "name": "Fort Kijkduun",
+                "area": "Netherlands",
+                "address": ", Den Helder",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441369",
+                "internal_url": "null",
+                "latitude": "52.95078900000001",
+                "longitude": "4.721994",
+                "machine_status": "available",
+                "id": 7541,
+                "last_updated": "2024-08-28"
             }
         }
     ]
