@@ -3855,9 +3855,9 @@
                 "latitude": "41.62047786549837",
                 "longitude": "-83.58340252422926",
                 "paywall": true,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2014,
-                "last_updated": "2023-10-23"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -3902,9 +3902,9 @@
                 "latitude": 41.6178601139826,
                 "longitude": -83.58005165675876,
                 "paywall": true,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6038,
-                "last_updated": "2023-10-23"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -3926,9 +3926,9 @@
                 "latitude": 41.61943698517184,
                 "longitude": -83.58167902736798,
                 "paywall": true,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6036,
-                "last_updated": "2023-10-23"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -3950,9 +3950,9 @@
                 "latitude": 41.61995504860125,
                 "longitude": -83.57957191012376,
                 "paywall": true,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6035,
-                "last_updated": "2023-10-23"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -20923,9 +20923,9 @@
                 "internal_url": "null",
                 "latitude": "47.660127",
                 "longitude": "8.858686",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 728,
-                "last_updated": "2023-10-15"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -40311,9 +40311,9 @@
                 "internal_url": "null",
                 "latitude": "38.6827047",
                 "longitude": "-121.1661338",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5239,
-                "last_updated": "2023-12-08"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65196,13 +65196,13 @@
                 "area": "Missouri",
                 "address": "599 St Denis St, Florissant, MO 63031, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441459",
                 "internal_url": "null",
                 "latitude": 38.79527500701513,
                 "longitude": -90.32557182866604,
                 "machine_status": "available",
                 "id": 7542,
-                "last_updated": "2024-09-19",
+                "last_updated": "2024-08-28",
                 "paywall": true
             }
         },
@@ -65273,6 +65273,98 @@
                 "status": "unvisited",
                 "id": 3060,
                 "last_updated": "2024-09-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.260725,
+                    37.968937
+                ]
+            },
+            "properties": {
+                "name": "Covers Apple Ranch",
+                "area": "California",
+                "address": "19211 Cherokee Road, Tuolumne",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441603",
+                "internal_url": "null",
+                "latitude": "37.968937",
+                "longitude": "-120.260725",
+                "machine_status": "available",
+                "id": 7543,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.1835583,
+                    38.6230306
+                ]
+            },
+            "properties": {
+                "name": "Gateway Arch Riverboat Tours",
+                "area": "Missouri",
+                "address": "50 N Leonor K Sullivan Blvd, St. Louis",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=7099",
+                "internal_url": "null",
+                "latitude": "38.6230306",
+                "longitude": "-90.1835583",
+                "machine_status": "available",
+                "id": 7544,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.8470425,
+                    47.04254
+                ]
+            },
+            "properties": {
+                "name": "Insert Coin - Arcade & Bar",
+                "area": "Washington",
+                "address": "3430 Pacific Ave SE D1, Olympia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441455",
+                "internal_url": "null",
+                "latitude": "47.04254",
+                "longitude": "-122.8470425",
+                "machine_status": "available",
+                "id": 7545,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.4324902,
+                    36.4180039
+                ]
+            },
+            "properties": {
+                "name": "Bookstore and More, Thira",
+                "area": "Greece",
+                "address": "25is Martiou 847 00 Thira Santorini Greece, Thira",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441563",
+                "internal_url": "null",
+                "latitude": "36.4180039",
+                "longitude": "25.4324902",
+                "machine_status": "available",
+                "id": 7546,
+                "last_updated": "2024-08-28"
             }
         }
     ]
