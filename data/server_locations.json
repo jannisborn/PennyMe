@@ -60309,7 +60309,7 @@
                 "internal_url": "null",
                 "latitude": "43.6565001",
                 "longitude": "-70.25347169999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5185,
                 "last_updated": "2024-08-28"
@@ -65388,6 +65388,52 @@
                 "machine_status": "available",
                 "id": 7547,
                 "last_updated": "2024-09-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1816039,
+                    36.1318636
+                ]
+            },
+            "properties": {
+                "name": "Area 15",
+                "area": "Nevada",
+                "address": "3215 S Rancho Dr, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=368007",
+                "internal_url": "null",
+                "latitude": "36.1318636",
+                "longitude": "-115.1816039",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5419,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.6487863,
+                    51.418691
+                ]
+            },
+            "properties": {
+                "name": "Hannoversch Münden",
+                "area": "Germany",
+                "address": "Tanzwerder 12, Hannoversch Münden",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441689",
+                "internal_url": "null",
+                "latitude": "51.418691",
+                "longitude": "9.6487863",
+                "machine_status": "available",
+                "id": 7548,
+                "last_updated": "2024-08-28"
             }
         }
     ]
