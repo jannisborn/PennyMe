@@ -48619,10 +48619,10 @@
                 "internal_url": "null",
                 "latitude": "39.985439",
                 "longitude": "-76.15143599999999",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4060,
-                "last_updated": "2024-04-03"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65480,6 +65480,29 @@
                 "machine_status": "available",
                 "id": 7549,
                 "last_updated": "2024-09-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6668449,
+                    47.6354882
+                ]
+            },
+            "properties": {
+                "name": "Burg Rötteln",
+                "area": "Germany",
+                "address": "Burg Rötteln, Lörrach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441730",
+                "internal_url": "null",
+                "latitude": "47.6354882",
+                "longitude": "7.6668449",
+                "machine_status": "available",
+                "id": 7550,
+                "last_updated": "2024-08-28"
             }
         }
     ]
