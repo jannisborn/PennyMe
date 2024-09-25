@@ -39455,9 +39455,9 @@
                 "internal_url": "null",
                 "latitude": "39.9533113",
                 "longitude": "-75.15943",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4043,
-                "last_updated": "2024-02-21"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65642,6 +65642,52 @@
                 "status": "unvisited",
                 "id": 1134,
                 "last_updated": "2024-09-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.61909469999999,
+                    42.0924038
+                ]
+            },
+            "properties": {
+                "name": "Eastern States Expo",
+                "area": "Massachusetts",
+                "address": "1305 Memorial Avenue, West Springfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=83922",
+                "internal_url": "null",
+                "latitude": "42.0924038",
+                "longitude": "-72.61909469999999",
+                "machine_status": "available",
+                "id": 7552,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3463194,
+                    37.4005889
+                ]
+            },
+            "properties": {
+                "name": "Laws Railroad Museum and Historical Site",
+                "area": "California",
+                "address": ", Bishop",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=441887",
+                "internal_url": "null",
+                "latitude": "37.4005889",
+                "longitude": "-118.3463194",
+                "machine_status": "available",
+                "id": 7553,
+                "last_updated": "2024-08-28"
             }
         }
     ]
