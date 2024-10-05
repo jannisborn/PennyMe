@@ -18,6 +18,7 @@ let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
 var totalMachines = 0
+var machinesByArea: [String: Int] = [:]
 var visitedCount = 0
 var visitedByArea: [String: Int] = [:]
 
@@ -416,7 +417,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                     
                     // Count how many machines have the personalStatus "visited"
                     if personalStatus == "visited" {
-                        print("Visited machine", machine.id, machine.area)
                         // Increment the total visited count
                         visitedCount += 1
                         
@@ -513,9 +513,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         
                         // count how many machines we have in total
                         totalMachines = 0
+                        machinesByArea = [:]
                         for machine in self!.artworks {
                             if machine.machineStatus != "retired" {
                                 totalMachines += 1
+                                machinesByArea[machine.area, default: 0] += 1
                             }
                         }
                         
