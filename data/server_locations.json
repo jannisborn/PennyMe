@@ -3690,9 +3690,9 @@
                 "internal_url": "null",
                 "latitude": 19.379946215605646,
                 "longitude": -81.41522770982236,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6029,
-                "last_updated": "2023-08-22"
+                "last_updated": "2024-10-04"
             }
         },
         {
@@ -11647,9 +11647,9 @@
                 "internal_url": "null",
                 "latitude": "36.1387477",
                 "longitude": "-115.1662589",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4518,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -16482,9 +16482,9 @@
                 "internal_url": "null",
                 "latitude": "37.9756761",
                 "longitude": "23.7253573",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6345,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-10-04"
             }
         },
         {
@@ -24552,9 +24552,9 @@
                 "internal_url": "null",
                 "latitude": "37.17542",
                 "longitude": "-3.598843",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 314,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-10-04"
             }
         },
         {
@@ -24575,9 +24575,9 @@
                 "internal_url": "null",
                 "latitude": "37.1756733",
                 "longitude": "-3.599958",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 319,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-10-04"
             }
         },
         {
@@ -24613,7 +24613,7 @@
                 ]
             },
             "properties": {
-                "name": "Welcome / Tourist Center ",
+                "name": "Welcome / Tourist Center",
                 "area": "Spain",
                 "address": ", Seville",
                 "status": "unvisited",
@@ -24621,9 +24621,9 @@
                 "internal_url": "null",
                 "latitude": "37.3777893",
                 "longitude": "-6.001627099999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 381,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-09-29"
             }
         },
         {
@@ -39104,9 +39104,9 @@
                 "internal_url": "null",
                 "latitude": "40.9759725",
                 "longitude": "29.0707123",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6964,
-                "last_updated": "2023-11-18"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -39849,9 +39849,9 @@
                 "internal_url": "null",
                 "latitude": "39.3178043",
                 "longitude": "-77.7581415",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6984,
-                "last_updated": "2023-11-28"
+                "last_updated": "2024-10-04"
             }
         },
         {
@@ -45221,13 +45221,13 @@
                 "area": "Switzerland",
                 "address": "Quai 1, 3855 Brienz, Switzerland",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442598",
                 "internal_url": "null",
                 "latitude": 46.75413435722217,
                 "longitude": 8.038198753360998,
                 "machine_status": "available",
                 "id": 7071,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -46355,10 +46355,10 @@
                 "internal_url": "null",
                 "latitude": "47.6073853",
                 "longitude": "-122.3421874",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5145,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-10-04"
             }
         },
         {
@@ -49246,10 +49246,10 @@
                 "internal_url": "null",
                 "latitude": "40.4261843",
                 "longitude": "-111.8874814",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2074,
-                "last_updated": "2024-04-08"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -49269,10 +49269,10 @@
                 "internal_url": "null",
                 "latitude": "40.4325364",
                 "longitude": "-111.9077203",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2073,
-                "last_updated": "2024-04-08"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -50278,22 +50278,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -5.390747699999999,
-                    36.8406138
+                    -5.390791438898958,
+                    36.8404928750403
                 ]
             },
             "properties": {
-                "name": "Super La Cuesta",
+                "name": "La Despensa de Zahara",
                 "area": "Spain",
                 "address": "2 C. San Juan, Zahara de la Sierra",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=428115",
                 "internal_url": "null",
-                "latitude": "36.8406138",
-                "longitude": "-5.390747699999999",
+                "latitude": "36.8404928750403",
+                "longitude": "-5.390791438898958",
                 "machine_status": "available",
                 "id": 7145,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-10-01"
             }
         },
         {
@@ -54552,10 +54552,10 @@
                 "internal_url": "null",
                 "latitude": "41.4036299",
                 "longitude": "2.1743558",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 286,
-                "last_updated": "2024-06-15"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -63784,7 +63784,7 @@
                 ]
             },
             "properties": {
-                "name": "Great Wplf Lodge",
+                "name": "Great Wolf Lodge",
                 "area": "Maryland",
                 "address": "1240 Chesapeake Overlook Pkwy,, Perryville",
                 "status": "unvisited",
@@ -63794,7 +63794,7 @@
                 "longitude": "-76.073876",
                 "machine_status": "available",
                 "id": 7509,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-09-29"
             }
         },
         {
@@ -65407,7 +65407,7 @@
                 "internal_url": "null",
                 "latitude": "36.1318636",
                 "longitude": "-115.1816039",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5419,
                 "last_updated": "2024-08-28"
@@ -66033,6 +66033,374 @@
                 "status": "unvisited",
                 "id": 3677,
                 "last_updated": "2024-09-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2173092,
+                    36.6439901
+                ]
+            },
+            "properties": {
+                "name": "Alex and Alainas Treasure Chest",
+                "area": "Missouri",
+                "address": "102 West Main Street, Branson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442285",
+                "internal_url": "null",
+                "latitude": "36.6439901",
+                "longitude": "-93.2173092",
+                "machine_status": "available",
+                "id": 7565,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.6050572,
+                    39.0503194
+                ]
+            },
+            "properties": {
+                "name": "Supernatural Body Piercing",
+                "area": "Missouri",
+                "address": "1624 Westport Rd, Kansas City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442178",
+                "internal_url": "null",
+                "latitude": "39.0503194",
+                "longitude": "-94.6050572",
+                "machine_status": "available",
+                "id": 7566,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.6501305,
+                    39.3087172
+                ]
+            },
+            "properties": {
+                "name": "Zepha's Cove",
+                "area": "Nevada",
+                "address": "145 South C Street, Virginia City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3194",
+                "internal_url": "null",
+                "latitude": "39.3087172",
+                "longitude": "-119.6501305",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4548,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.3591538,
+                    39.4941469
+                ]
+            },
+            "properties": {
+                "name": "The Play Zone",
+                "area": "Indiana",
+                "address": "1251 N Fruitridge Avenue, Terre Haute",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442360",
+                "internal_url": "null",
+                "latitude": "39.4941469",
+                "longitude": "-87.3591538",
+                "machine_status": "available",
+                "id": 7567,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -130.3279953,
+                    54.31174189999999
+                ]
+            },
+            "properties": {
+                "name": "Gary's Lock & Security Shop Ltd",
+                "area": "Canada",
+                "address": "617 2 Ave W, BC - Prince Rupert",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442355",
+                "internal_url": "null",
+                "latitude": "54.31174189999999",
+                "longitude": "-130.3279953",
+                "machine_status": "available",
+                "id": 7568,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.110603,
+                    36.086693
+                ]
+            },
+            "properties": {
+                "name": "Tsukuba Expo Center",
+                "area": "Japan",
+                "address": "305-0031Tsukuba - 2-9 Azuma, Tsukuba City, Ibaraki Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442361",
+                "internal_url": "null",
+                "latitude": "36.086693",
+                "longitude": "140.110603",
+                "machine_status": "available",
+                "id": 7569,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1187873,
+                    41.42207519999999
+                ]
+            },
+            "properties": {
+                "name": "Temple of the Sacred Heart of Jesus",
+                "area": "Spain",
+                "address": "Ctra. de Vallvidrera al Tibidabo, 111, Sarrià-Sant Gervasi, 08035 Barcelona, Spain, Barcelona",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442167",
+                "internal_url": "null",
+                "latitude": "41.42207519999999",
+                "longitude": "2.1187873",
+                "machine_status": "available",
+                "id": 7570,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.92263962175929,
+                    37.33343195806126
+                ]
+            },
+            "properties": {
+                "name": "Rosicrucian Egyptian Museum",
+                "area": "Australia",
+                "address": "1660 Park Ave San Jose, CA 95191",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 37.33343195806126,
+                "longitude": -121.92263962175929,
+                "machine_status": "available",
+                "id": 7571,
+                "last_updated": "2024-09-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.295115173852949,
+                    36.52967388069284
+                ]
+            },
+            "properties": {
+                "name": "Kiosko La Catedrale",
+                "area": "Spain",
+                "address": "Pl. Catedral, 9, 11005 Cádiz, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.52967388069284,
+                "longitude": -6.295115173852949,
+                "machine_status": "available",
+                "id": 7572,
+                "last_updated": "2024-09-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.165667208472308,
+                    36.74000162016611
+                ]
+            },
+            "properties": {
+                "name": "Los arcos artesania",
+                "area": "Spain",
+                "address": "C. Armiñán, 8, 29400 Ronda, Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.74000162016611,
+                "longitude": -5.165667208472308,
+                "machine_status": "available",
+                "id": 7573,
+                "last_updated": "2024-10-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.165291974690667,
+                    36.737322182061234
+                ]
+            },
+            "properties": {
+                "name": "Iglesia de Santa María la Mayor",
+                "area": "Spain",
+                "address": "Pl. Duquesa de Parcent, 13, 29400 Ronda, Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.737322182061234,
+                "longitude": -5.165291974690667,
+                "machine_status": "available",
+                "id": 7574,
+                "last_updated": "2024-10-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.396233,
+                    39.3571517
+                ]
+            },
+            "properties": {
+                "name": "The Cone in West",
+                "area": "Ohio",
+                "address": "6855 Tylersville Rd., West Chester",
+                "external_url": "http://209.221.138.252/Details.aspx?location=194647",
+                "internal_url": "null",
+                "latitude": "39.3571517",
+                "longitude": "-84.396233",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2017,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.8983011184916276,
+                    36.79252679996346
+                ]
+            },
+            "properties": {
+                "name": "Toca Madera Artesana",
+                "area": "Spain",
+                "address": "Frigiliana",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231589",
+                "internal_url": "null",
+                "latitude": "36.79252679996346",
+                "longitude": "-3.8983011184916276",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 334,
+                "last_updated": "2024-10-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.599623,
+                    37.1754371
+                ]
+            },
+            "properties": {
+                "name": "Color de la Tierra",
+                "area": "Spain",
+                "address": "Plaza Bib-rambia, Kiosco nº 20, Granada",
+                "external_url": "http://209.221.138.252/Details.aspx?location=223329",
+                "internal_url": "null",
+                "latitude": "37.1754371",
+                "longitude": "-3.599623",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 316,
+                "last_updated": "2024-10-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.5990820257464775,
+                    37.17568945825209
+                ]
+            },
+            "properties": {
+                "name": "Cruz de Elvira - Catedral de Granada",
+                "area": "Spain",
+                "address": "Calle Oficios / Calle del Estribo, Granada",
+                "external_url": "http://209.221.138.252/Details.aspx?location=54548",
+                "internal_url": "null",
+                "latitude": "37.17568945825209",
+                "longitude": "-3.5990820257464775",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 315,
+                "last_updated": "2024-10-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.6065303,
+                    37.1628956
+                ]
+            },
+            "properties": {
+                "name": "Parque de Ciências",
+                "area": "Spain",
+                "address": ", Granada",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245689",
+                "internal_url": "null",
+                "latitude": "37.1628956",
+                "longitude": "-3.6065303",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 318,
+                "last_updated": "2024-10-04"
             }
         }
     ]
