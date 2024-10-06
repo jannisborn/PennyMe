@@ -50104,10 +50104,10 @@
                 "internal_url": "null",
                 "latitude": "35.1211917",
                 "longitude": "-92.4050706",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2299,
-                "last_updated": "2024-04-21"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -51185,13 +51185,13 @@
                 "area": "Japan",
                 "address": ", Odaiba",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=429197",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "35.62058340000001",
                 "longitude": "139.7805445",
                 "machine_status": "available",
                 "id": 7164,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66489,10 +66489,10 @@
                 "internal_url": "null",
                 "latitude": "40.8582111",
                 "longitude": "-82.25296519999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1941,
-                "last_updated": "2024-10-06"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66540,6 +66540,121 @@
                 "machine_status": "available",
                 "id": 7576,
                 "last_updated": "2024-10-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.7343822,
+                    33.8001975
+                ]
+            },
+            "properties": {
+                "name": "Klig's Kites Superstore",
+                "area": "South Carolina",
+                "address": "4505 N Kings Hwy (US-17), North Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442830",
+                "internal_url": "null",
+                "latitude": "33.8001975",
+                "longitude": "-78.7343822",
+                "machine_status": "available",
+                "id": 7577,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5137252,
+                    35.7128548
+                ]
+            },
+            "properties": {
+                "name": "Buckboard Too Shop",
+                "area": "Tennessee",
+                "address": "612 Parkway, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442869",
+                "internal_url": "null",
+                "latitude": "35.7128548",
+                "longitude": "-83.5137252",
+                "machine_status": "available",
+                "id": 7578,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.1472105,
+                    41.3090552
+                ]
+            },
+            "properties": {
+                "name": "Mimi's Cafe (Was Milltown Market)",
+                "area": "Illinois",
+                "address": "209 N Water St, Wilmington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435292",
+                "internal_url": "null",
+                "latitude": "41.3090552",
+                "longitude": "-88.1472105",
+                "machine_status": "available",
+                "id": 7579,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.8504781,
+                    26.5052353
+                ]
+            },
+            "properties": {
+                "name": "Cape Manzamo",
+                "area": "Japan",
+                "address": "Manzamo Co., Ltd. 2767 Onna Onnason, Kunigamigun, Okinawa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442813",
+                "internal_url": "null",
+                "latitude": "26.5052353",
+                "longitude": "127.8504781",
+                "machine_status": "available",
+                "id": 7580,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5137252,
+                    35.7128548
+                ]
+            },
+            "properties": {
+                "name": "Buckboard Too",
+                "area": "Tennessee",
+                "address": "612 Parkway, Gatlinburg",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "35.7128548",
+                "longitude": "-83.5137252",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4201,
+                "last_updated": "2024-08-28"
             }
         }
     ]
