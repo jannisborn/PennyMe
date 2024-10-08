@@ -39244,9 +39244,9 @@
                 "internal_url": "null",
                 "latitude": "52.19415430000001",
                 "longitude": "-1.708537",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1579,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -50678,13 +50678,13 @@
                 "area": "South Dakota",
                 "address": "2101 Broadway Ave #10, Yankton, SD 57078",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=428495",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "42.8925863",
                 "longitude": "-97.40057279999999",
                 "machine_status": "available",
                 "id": 7153,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66724,6 +66724,75 @@
                 "status": "unvisited",
                 "id": 1336,
                 "last_updated": "2024-10-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.11885699999999,
+                    33.8185861
+                ]
+            },
+            "properties": {
+                "name": "Escape the Netherworld",
+                "area": "Georgia",
+                "address": "2076 West Park Place Blvd., Stone Mountain",
+                "external_url": "http://209.221.138.252/Details.aspx?location=129525",
+                "internal_url": "null",
+                "latitude": "33.8185861",
+                "longitude": "-84.11885699999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1670,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.568159,
+                    42.9848886
+                ]
+            },
+            "properties": {
+                "name": "The Great Pumpkin Farm",
+                "area": "New York",
+                "address": "11199 Main St, Clarence",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442943",
+                "internal_url": "null",
+                "latitude": "42.9848886",
+                "longitude": "-78.568159",
+                "machine_status": "available",
+                "id": 7582,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.0879822,
+                    45.2588526
+                ]
+            },
+            "properties": {
+                "name": "Reversing Falls Restaurant at Stonehammer UNESCO Global Geopark",
+                "area": "Canada",
+                "address": "200 Bridge Rd,, New Brunswick - Saint John",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442948",
+                "internal_url": "null",
+                "latitude": "45.2588526",
+                "longitude": "-66.0879822",
+                "machine_status": "available",
+                "id": 7583,
+                "last_updated": "2024-08-28"
             }
         }
     ]
