@@ -53292,10 +53292,10 @@
                 "internal_url": "null",
                 "latitude": "57.32413989999999",
                 "longitude": "-4.4420012",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 741,
-                "last_updated": "2024-06-03"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66816,6 +66816,29 @@
                 "status": "unvisited",
                 "id": 3691,
                 "last_updated": "2024-10-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.119596,
+                    50.7882151
+                ]
+            },
+            "properties": {
+                "name": "Submarine Museum/ Gosport ",
+                "area": "England",
+                "address": ", HAMPSHIRE - Portsmouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443055",
+                "internal_url": "null",
+                "latitude": "50.7882151",
+                "longitude": "-1.119596",
+                "machine_status": "available",
+                "id": 7584,
+                "last_updated": "2024-08-28"
             }
         }
     ]
