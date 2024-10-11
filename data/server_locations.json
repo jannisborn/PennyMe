@@ -19694,9 +19694,9 @@
                 ]
             },
             "properties": {
-                "name": "Souvenirs Sagrada Familia",
+                "name": "Sport Sagrada Familia",
                 "area": "Spain",
-                "address": "Carrer de Provença, 437, Barcelona - Catalonia Region Barcelona Province",
+                "address": "Carrer de Provença, 438, Barcelona - Catalonia Region Barcelona Province",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=389512",
                 "internal_url": "null",
@@ -19704,7 +19704,7 @@
                 "longitude": "2.1737735",
                 "machine_status": "available",
                 "id": 6429,
-                "last_updated": "2024-08-06"
+                "last_updated": "2024-10-06"
             }
         },
         {
@@ -37507,9 +37507,9 @@
                 "internal_url": "null",
                 "latitude": "41.3831172",
                 "longitude": "2.1776331",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6918,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-10-06"
             }
         },
         {
@@ -39244,9 +39244,9 @@
                 "internal_url": "null",
                 "latitude": "52.19415430000001",
                 "longitude": "-1.708537",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1579,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -50104,10 +50104,10 @@
                 "internal_url": "null",
                 "latitude": "35.1211917",
                 "longitude": "-92.4050706",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2299,
-                "last_updated": "2024-04-21"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -50678,13 +50678,13 @@
                 "area": "South Dakota",
                 "address": "2101 Broadway Ave #10, Yankton, SD 57078",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=428495",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "42.8925863",
                 "longitude": "-97.40057279999999",
                 "machine_status": "available",
                 "id": 7153,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -51185,13 +51185,13 @@
                 "area": "Japan",
                 "address": ", Odaiba",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=429197",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "35.62058340000001",
                 "longitude": "139.7805445",
                 "machine_status": "available",
                 "id": 7164,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -53292,10 +53292,10 @@
                 "internal_url": "null",
                 "latitude": "57.32413989999999",
                 "longitude": "-4.4420012",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 741,
-                "last_updated": "2024-06-03"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66401,6 +66401,444 @@
                 "status": "unvisited",
                 "id": 318,
                 "last_updated": "2024-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.3358532,
+                    25.8072486
+                ]
+            },
+            "properties": {
+                "name": "Carnival Cruise Lines/Freedom",
+                "area": "Florida",
+                "address": "3655 NW 87th Avenue, Miami",
+                "external_url": "http://209.221.138.252/Details.aspx?location=373394",
+                "internal_url": "null",
+                "latitude": "25.8072486",
+                "longitude": "-80.3358532",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5355,
+                "last_updated": "2024-10-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.5727362,
+                    40.0161633
+                ]
+            },
+            "properties": {
+                "name": "Cones and Clubs Mini Golf",
+                "area": "Pennsylvania",
+                "address": "5745 Lincoln Hwy, York",
+                "external_url": "http://209.221.138.252/Details.aspx?location=77758",
+                "internal_url": "null",
+                "latitude": "40.0161633",
+                "longitude": "-76.5727362",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4075,
+                "last_updated": "2024-10-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0394053,
+                    40.699329
+                ]
+            },
+            "properties": {
+                "name": "Ellis Island Immigration Museum",
+                "area": "New York",
+                "address": "Ellis Island, New York Harbor",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3611",
+                "internal_url": "null",
+                "latitude": "40.699329",
+                "longitude": "-74.0394053",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3059,
+                "last_updated": "2024-10-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.25296519999999,
+                    40.8582111
+                ]
+            },
+            "properties": {
+                "name": "Grandpa's Cheesebarn Inc.",
+                "area": "Ohio",
+                "address": "668 U.S. 250, Ashland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=204343",
+                "internal_url": "null",
+                "latitude": "40.8582111",
+                "longitude": "-82.25296519999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1941,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.983367245204561,
+                    50.938994578045794
+                ]
+            },
+            "properties": {
+                "name": "Lanxess Arena",
+                "area": "Germany",
+                "address": "Willy-Brandt-Platz 3, 50679 Köln, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.938994578045794,
+                "longitude": 6.983367245204561,
+                "machine_status": "available",
+                "id": 7575,
+                "last_updated": "2024-10-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.8955646205053833,
+                    36.79159149510764
+                ]
+            },
+            "properties": {
+                "name": "Lola la de los vinos de Frigiliana",
+                "area": "Spain",
+                "address": "C. Real, 4, 29788 Frigiliana, Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 36.79159149510764,
+                "longitude": -3.8955646205053833,
+                "machine_status": "available",
+                "id": 7576,
+                "last_updated": "2024-10-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.7343822,
+                    33.8001975
+                ]
+            },
+            "properties": {
+                "name": "Klig's Kites Superstore",
+                "area": "South Carolina",
+                "address": "4505 N Kings Hwy (US-17), North Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442830",
+                "internal_url": "null",
+                "latitude": "33.8001975",
+                "longitude": "-78.7343822",
+                "machine_status": "available",
+                "id": 7577,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5137252,
+                    35.7128548
+                ]
+            },
+            "properties": {
+                "name": "Buckboard Too Shop",
+                "area": "Tennessee",
+                "address": "612 Parkway, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442869",
+                "internal_url": "null",
+                "latitude": "35.7128548",
+                "longitude": "-83.5137252",
+                "machine_status": "available",
+                "id": 7578,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.1472105,
+                    41.3090552
+                ]
+            },
+            "properties": {
+                "name": "Mimi's Cafe (Was Milltown Market)",
+                "area": "Illinois",
+                "address": "209 N Water St, Wilmington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=435292",
+                "internal_url": "null",
+                "latitude": "41.3090552",
+                "longitude": "-88.1472105",
+                "machine_status": "available",
+                "id": 7579,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.8504781,
+                    26.5052353
+                ]
+            },
+            "properties": {
+                "name": "Cape Manzamo",
+                "area": "Japan",
+                "address": "Manzamo Co., Ltd. 2767 Onna Onnason, Kunigamigun, Okinawa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442813",
+                "internal_url": "null",
+                "latitude": "26.5052353",
+                "longitude": "127.8504781",
+                "machine_status": "available",
+                "id": 7580,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5137252,
+                    35.7128548
+                ]
+            },
+            "properties": {
+                "name": "Buckboard Too",
+                "area": "Tennessee",
+                "address": "612 Parkway, Gatlinburg",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "35.7128548",
+                "longitude": "-83.5137252",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4201,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.2124265,
+                    52.5401639
+                ]
+            },
+            "properties": {
+                "name": "Zitadelle Spandau",
+                "area": "Germany",
+                "address": "Am Juliusturm 64, Berlin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442897",
+                "internal_url": "null",
+                "latitude": "52.5401639",
+                "longitude": "13.2124265",
+                "machine_status": "available",
+                "id": 7581,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.6857157,
+                    34.4104119
+                ]
+            },
+            "properties": {
+                "name": "Stearns Wharf - Santa Barbara Museum of Natural History, Sea Center",
+                "area": "California",
+                "address": "211 Stearns Wharf , Santa Barbara",
+                "external_url": "http://209.221.138.252/Details.aspx?location=14420",
+                "internal_url": "null",
+                "latitude": "34.4104119",
+                "longitude": "-119.6857157",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4844,
+                "last_updated": "2024-10-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.11819958892882752,
+                    52.20621681044941
+                ]
+            },
+            "properties": {
+                "name": "Cambridge Gift Shop",
+                "area": "England",
+                "address": "Guild Hall. Unit 3 Peas Hill, CAMBRIDGESHIRE - Cambridge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231302",
+                "internal_url": "null",
+                "latitude": "52.20621681044941",
+                "longitude": "0.11819958892882752",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1336,
+                "last_updated": "2024-10-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.11885699999999,
+                    33.8185861
+                ]
+            },
+            "properties": {
+                "name": "Escape the Netherworld",
+                "area": "Georgia",
+                "address": "2076 West Park Place Blvd., Stone Mountain",
+                "external_url": "http://209.221.138.252/Details.aspx?location=129525",
+                "internal_url": "null",
+                "latitude": "33.8185861",
+                "longitude": "-84.11885699999999",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1670,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.568159,
+                    42.9848886
+                ]
+            },
+            "properties": {
+                "name": "The Great Pumpkin Farm",
+                "area": "New York",
+                "address": "11199 Main St, Clarence",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442943",
+                "internal_url": "null",
+                "latitude": "42.9848886",
+                "longitude": "-78.568159",
+                "machine_status": "available",
+                "id": 7582,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.0879822,
+                    45.2588526
+                ]
+            },
+            "properties": {
+                "name": "Reversing Falls Restaurant at Stonehammer UNESCO Global Geopark",
+                "area": "Canada",
+                "address": "200 Bridge Rd,, New Brunswick - Saint John",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=442948",
+                "internal_url": "null",
+                "latitude": "45.2588526",
+                "longitude": "-66.0879822",
+                "machine_status": "available",
+                "id": 7583,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.3248526,
+                    32.6866701
+                ]
+            },
+            "properties": {
+                "name": "La Gran Plaza",
+                "area": "Texas",
+                "address": "4200 S. Freeway, Fort Worth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=247418",
+                "internal_url": "null",
+                "latitude": "32.6866701",
+                "longitude": "-97.3248526",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3691,
+                "last_updated": "2024-10-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.119596,
+                    50.7882151
+                ]
+            },
+            "properties": {
+                "name": "Submarine Museum/ Gosport ",
+                "area": "England",
+                "address": ", HAMPSHIRE - Portsmouth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443055",
+                "internal_url": "null",
+                "latitude": "50.7882151",
+                "longitude": "-1.119596",
+                "machine_status": "available",
+                "id": 7584,
+                "last_updated": "2024-08-28"
             }
         }
     ]
