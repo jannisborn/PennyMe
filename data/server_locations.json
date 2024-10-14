@@ -6516,9 +6516,9 @@
                 "internal_url": "null",
                 "latitude": "34.8737264",
                 "longitude": "-111.7598125",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5981,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -47834,10 +47834,10 @@
                 "internal_url": "null",
                 "latitude": "-41.2852716",
                 "longitude": "174.7780965",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3884,
-                "last_updated": "2024-03-26"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66911,6 +66911,29 @@
                 "id": 7587,
                 "last_updated": "2024-10-13",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.6419734,
+                    43.8290678
+                ]
+            },
+            "properties": {
+                "name": "Boyds World Famous Antiques",
+                "area": "South Dakota",
+                "address": "24671 US-385, Custer",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443187",
+                "internal_url": "null",
+                "latitude": "43.8290678",
+                "longitude": "-103.6419734",
+                "machine_status": "available",
+                "id": 7588,
+                "last_updated": "2024-08-28"
             }
         }
     ]
