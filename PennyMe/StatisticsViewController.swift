@@ -91,6 +91,11 @@ class StatisticsViewController: UIViewController {
         UserDefaults.standard.synchronize()
         
         crownImage.tintColor = color
+        // Enable user interaction on the image view
+        crownImage.isUserInteractionEnabled = true
+        // Create a tap gesture recognizer and attach it to the image view
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showPopUp))
+        crownImage.addGestureRecognizer(tapGesture)
         
         showPercentSwitch.onTintColor = UIColor.black
         showPercentSwitch.addTarget(self, action: #selector(setBarChartType), for: .valueChanged)
@@ -116,6 +121,19 @@ class StatisticsViewController: UIViewController {
         setBarChartType(sender: showPercentSwitch)
     }
     
+    // The function that will be called when the image is tapped
+    @objc func showPopUp() {
+        // Create the alert controller (pop-up window)
+        let alertController = UIAlertController(title: "Collection status", message: "Visit machines to raise your status!\n \(bronzeCutoff): Bronze\n\(silverCutoff): Gold\n\(goldCutoff): Gold\n\(goldproCutoff): Gold Pro\n\(goldlegendCutoff): Gold Legend", preferredStyle: .alert)
+
+        // Add an action button to the alert
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+
+        // Present the alert to the user
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     @objc func setBarChartType(sender:UISwitch!) {
         if sender.isOn{
             setupBarChart(mode: "percent")
