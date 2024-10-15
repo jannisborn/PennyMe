@@ -17,12 +17,18 @@ let LAT_DEGREE_TO_KM = 110.948
 let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
+var totalMachines = 0
+var machinesByArea: [String: Int] = [:]
+var visitedCount = 0
+var visitedByArea: [String: Int] = [:]
+
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var ownLocation: UIButton!
     @IBOutlet var toggleMapButton: UIButton!
+    @IBOutlet weak var userStatsButton: UIButton!
     
     @IBOutlet weak var navigationbar: UINavigationItem!
     
@@ -121,6 +127,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         addMapTrackingButton()
         addSettingsButton()
         toggleMapTypeButton()
+        initUserStatsButton()
         
         // long gesture recognizer
         let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
@@ -259,7 +266,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         PennyMap.addSubview(settingsbutton)
     }
     
-    
+    func initUserStatsButton(){
+        let image = UIImage(systemName: "person.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.gray)
+        userStatsButton.tintColor = .black
+        userStatsButton.backgroundColor = .white
+        userStatsButton.layer.cornerRadius = 0.5 * userStatsButton.bounds.size.width
+        userStatsButton.clipsToBounds = true
+        userStatsButton.setImage(image, for: .normal)
+        userStatsButton.imageView?.contentMode = .scaleAspectFit
+
+        // Add shadow
+        userStatsButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        userStatsButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        userStatsButton.layer.shadowOpacity = 1.0
+        userStatsButton.layer.shadowRadius = 0.0
+        userStatsButton.layer.masksToBounds = false
+        
+        PennyMap.addSubview(userStatsButton)
+        
+    }
     
     func toggleMapTypeButton(){
         
@@ -375,6 +400,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 print("file already exists but could not be read", error)
             }
         }
+        
+        // Set visited to zero again
+        visitedCount = 0
+        visitedByArea = [:]
+        
         // If we have saved some already:
         if !is_empty{
             let ids_in_dict = Array(statusDict[0].keys)
@@ -384,6 +414,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                     let machine = artworks[pinId]
                     let personalStatus = statusDict[0][machine.id] ?? "unvisited"
                     machine.status = personalStatus
+                    
+                    // Count how many machines have the personalStatus "visited"
+                    if personalStatus == "visited" {
+                        // Increment the total visited count
+                        visitedCount += 1
+                        
+                        // Increment the count for the specific area
+                        let area = machine.area ?? "Unknown Area"
+                        visitedByArea[area, default: 0] += 1
+                    }
+                    
                     // check if machine should be displayed based on settings
                     let shouldDisplayMachine = checkMachineShouldBeVisible(status: personalStatus, machineStatus: machine.machineStatus)
                     
@@ -469,6 +510,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         // re-add annotations here
                         self?.isVisible = [:]
                         self?.addAnnotationsIteratively()
+                        
+                        // count how many machines we have in total
+                        totalMachines = 0
+                        machinesByArea = [:]
+                        for machine in self!.artworks {
+                            if machine.machineStatus != "retired" {
+                                totalMachines += 1
+                                machinesByArea[machine.area, default: 0] += 1
+                            }
+                        }
+                        
                         // check colours of the pins with user annotations
                         self?.check_json_dict()
                         //                        }
