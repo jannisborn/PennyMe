@@ -64115,10 +64115,10 @@
                 "internal_url": "null",
                 "latitude": "33.7151179",
                 "longitude": "-78.8805165",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2210,
-                "last_updated": "2024-09-05"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66860,10 +66860,10 @@
                 "internal_url": "null",
                 "latitude": "33.7161889",
                 "longitude": "-78.88374879999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2214,
-                "last_updated": "2024-10-13"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66980,6 +66980,52 @@
                 "machine_status": "available",
                 "id": 7590,
                 "last_updated": "2024-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.87685909999999,
+                    44.3475359
+                ]
+            },
+            "properties": {
+                "name": "High Falls George",
+                "area": "New York",
+                "address": "4761 NY-86, Wilmington, NY 12997,, Wilmington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443292",
+                "internal_url": "null",
+                "latitude": "44.3475359",
+                "longitude": "-73.87685909999999",
+                "machine_status": "available",
+                "id": 7591,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.9620281,
+                    36.0031217
+                ]
+            },
+            "properties": {
+                "name": "Georgetown Rest Area I-75 Northbound",
+                "area": "Kentucky",
+                "address": "I-75 N Milemaker 127, Georgetown ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443323",
+                "internal_url": "null",
+                "latitude": "36.0031217",
+                "longitude": "-83.9620281",
+                "machine_status": "available",
+                "id": 7592,
+                "last_updated": "2024-08-28"
             }
         }
     ]
