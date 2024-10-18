@@ -48065,10 +48065,10 @@
                 "internal_url": "null",
                 "latitude": "35.0260078",
                 "longitude": "-114.3831516",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2654,
-                "last_updated": "2024-03-27"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -48088,10 +48088,10 @@
                 "internal_url": "null",
                 "latitude": "35.0256213",
                 "longitude": "-114.383125",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2655,
-                "last_updated": "2024-03-27"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -67210,6 +67210,52 @@
                 "status": "unvisited",
                 "id": 5209,
                 "last_updated": "2024-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.4364903,
+                    47.0762243
+                ]
+            },
+            "properties": {
+                "name": "Die Schlossbergbahn",
+                "area": "Austria",
+                "address": "Am Schlossberg 7, 8010 Graz, Austria, Graz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443419",
+                "internal_url": "null",
+                "latitude": "47.0762243",
+                "longitude": "15.4364903",
+                "machine_status": "available",
+                "id": 7595,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.4417305,
+                    47.0678961
+                ]
+            },
+            "properties": {
+                "name": "Schloßberg Biergarten",
+                "area": "Austria",
+                "address": "6a Schloßberg , Graz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443418",
+                "internal_url": "null",
+                "latitude": "47.0678961",
+                "longitude": "15.4417305",
+                "machine_status": "available",
+                "id": 7596,
+                "last_updated": "2024-08-28"
             }
         }
     ]
