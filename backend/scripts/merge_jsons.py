@@ -1,9 +1,9 @@
 import json
-from datetime import datetime
 from copy import deepcopy
-import typer
+from datetime import datetime
 from pathlib import Path
 
+import typer
 
 app = typer.Typer()
 
