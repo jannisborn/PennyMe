@@ -670,8 +670,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 39.81106757061918,
-                "longitude": -86.15813267991254,
+                "latitude": "39.81106757061918",
+                "longitude": "-86.15813267991254",
                 "paywall": false,
                 "machine_status": "retired",
                 "id": 6018,
@@ -765,8 +765,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=31625",
                 "internal_url": "null",
-                "latitude": 19.379946215605646,
-                "longitude": -81.41522770982236,
+                "latitude": "19.379946215605646",
+                "longitude": "-81.41522770982236",
                 "machine_status": "retired",
                 "id": 6029,
                 "last_updated": "2024-10-04"
@@ -837,8 +837,8 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=284070",
                 "internal_url": "null",
-                "latitude": 41.6178601139826,
-                "longitude": -83.58005165675876,
+                "latitude": "41.6178601139826",
+                "longitude": "-83.58005165675876",
                 "paywall": true,
                 "machine_status": "available",
                 "id": 6038,
@@ -861,8 +861,8 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=284070",
                 "internal_url": "null",
-                "latitude": 41.61943698517184,
-                "longitude": -83.58167902736798,
+                "latitude": "41.61943698517184",
+                "longitude": "-83.58167902736798",
                 "paywall": true,
                 "machine_status": "available",
                 "id": 6036,
@@ -885,8 +885,8 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=284070",
                 "internal_url": "null",
-                "latitude": 41.61995504860125,
-                "longitude": -83.57957191012376,
+                "latitude": "41.61995504860125",
+                "longitude": "-83.57957191012376",
                 "paywall": true,
                 "machine_status": "available",
                 "id": 6035,
@@ -933,8 +933,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=427527",
                 "internal_url": "null",
-                "latitude": 54.789214983611444,
-                "longitude": 9.43215654105179,
+                "latitude": "54.789214983611444",
+                "longitude": "9.43215654105179",
                 "machine_status": "available",
                 "id": 6058,
                 "last_updated": "2024-04-11"
@@ -2816,6 +2816,328 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -2.7198467,
+                    55.995776
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Flight",
+                "area": "Scotland",
+                "address": "East Fortune Airfield, , North Berwick",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=407472",
+                "internal_url": "null",
+                "latitude": "55.995776",
+                "longitude": "-2.7198467",
+                "machine_status": "available",
+                "id": 6422,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.036619,
+                    56.1628948
+                ]
+            },
+            "properties": {
+                "name": "Blair Drummond Safari Park and Adventure Park",
+                "area": "Scotland",
+                "address": "Blair Drummond, Stirling",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=29655",
+                "internal_url": "null",
+                "latitude": "56.1628948",
+                "longitude": "-4.036619",
+                "machine_status": "available",
+                "id": 789,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8177673,
+                    1.254273
+                ]
+            },
+            "properties": {
+                "name": "Sentosa 4D Adventureland",
+                "area": "Singapore",
+                "address": "51B Imbiah Rd, Sentosa Island",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=283790",
+                "internal_url": "null",
+                "latitude": "1.254273",
+                "longitude": "103.8177673",
+                "machine_status": "retired",
+                "id": 3207,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8161825,
+                    1.3157058
+                ]
+            },
+            "properties": {
+                "name": "National Orchid Garden",
+                "area": "Singapore",
+                "address": "in Singapore Botanic Gardens, 1 Cluny Road, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=106601",
+                "internal_url": "null",
+                "latitude": "1.3157058",
+                "longitude": "103.8161825",
+                "machine_status": "available",
+                "id": 6423,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.5808141,
+                    48.7793502
+                ]
+            },
+            "properties": {
+                "name": "Hurbanovo namestie",
+                "area": "Slovenia",
+                "address": ", Bojnice, Slovakia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=399871",
+                "internal_url": "null",
+                "latitude": "48.7793502",
+                "longitude": "18.5808141",
+                "machine_status": "available",
+                "id": 6424,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.567273,
+                    45.527863
+                ]
+            },
+            "properties": {
+                "name": "Aquarium of Piran",
+                "area": "Slovenia",
+                "address": "Trinkova Ulica",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238664",
+                "internal_url": "null",
+                "latitude": "45.527863",
+                "longitude": "13.567273",
+                "machine_status": "available",
+                "id": 809,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.47446,
+                    -33.963225
+                ]
+            },
+            "properties": {
+                "name": "Outeniqua Railway Museum",
+                "area": "South Africa",
+                "address": "Outeniqua Railway Museum, George, George",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=89417",
+                "internal_url": "null",
+                "latitude": "-33.963225",
+                "longitude": "22.47446",
+                "machine_status": "retired",
+                "id": 3510,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.032321,
+                    35.1012187
+                ]
+            },
+            "properties": {
+                "name": "Busan Tower",
+                "area": "South Korea",
+                "address": "Yongdusan Park , Busan",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=226708",
+                "internal_url": "null",
+                "latitude": "35.1012187",
+                "longitude": "129.032321",
+                "machine_status": "available",
+                "id": 2105,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.1697909,
+                    35.159848
+                ]
+            },
+            "properties": {
+                "name": "BUSAN X the SKY LCT Landmark Tower ",
+                "area": "South Korea",
+                "address": "30, Dalmaji-gil, Haeundae-gu,, Busan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=402882",
+                "internal_url": "null",
+                "latitude": "35.159848",
+                "longitude": "129.1697909",
+                "machine_status": "available",
+                "id": 6425,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    126.9804702,
+                    37.5238506
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Korea",
+                "area": "South Korea",
+                "address": "137 Seobinggo-ro, Yongsan-gu, Seoul, South Korea, Seoul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=410711",
+                "internal_url": "null",
+                "latitude": "37.5238506",
+                "longitude": "126.9804702",
+                "machine_status": "available",
+                "id": 6426,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.0559567,
+                    42.4575538
+                ]
+            },
+            "properties": {
+                "name": "The Pilgrim's Shop",
+                "area": "Spain",
+                "address": "Glorieta del Ingeniero Eduardo de Castro, Astorga ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=411131",
+                "internal_url": "null",
+                "latitude": "42.4575538",
+                "longitude": "-6.0559567",
+                "machine_status": "available",
+                "id": 6427,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1493331,
+                    41.3763184
+                ]
+            },
+            "properties": {
+                "name": "Arenas de Barcelona",
+                "area": "Spain",
+                "address": "Gran Via de les Corts Catalanes, 373-385, Barcelona",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=214500",
+                "internal_url": "null",
+                "latitude": "41.3763184",
+                "longitude": "2.1493331",
+                "machine_status": "retired",
+                "id": 278,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1826047,
+                    41.3947292
+                ]
+            },
+            "properties": {
+                "name": "Barcelona Nord Station",
+                "area": "Spain",
+                "address": ", Barcelona",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319701",
+                "internal_url": "null",
+                "latitude": "41.3947292",
+                "longitude": "2.1826047",
+                "machine_status": "retired",
+                "id": 279,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1972576,
+                    41.3876109
+                ]
+            },
+            "properties": {
+                "name": "La Rotonda Port Olympic Souvenir Shop",
+                "area": "Spain",
+                "address": "Carrer de la Marina, 16 First Floor, Barcelona - Catalonia Region Barcelona Province",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319699",
+                "internal_url": "null",
+                "latitude": "41.3876109",
+                "longitude": "2.1972576",
+                "machine_status": "available",
+                "id": 6428,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     2.1737735,
                     41.4043488
                 ]
@@ -3060,8 +3382,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=435783",
                 "internal_url": "null",
-                "latitude": 35.22915576377668,
-                "longitude": -80.8674470650878,
+                "latitude": "35.22915576377668",
+                "longitude": "-80.8674470650878",
                 "machine_status": "available",
                 "id": 6484,
                 "last_updated": "2024-08-06"
@@ -15313,8 +15635,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=417951",
                 "internal_url": "null",
-                "latitude": 35.17827654153432,
-                "longitude": -80.65244675242843,
+                "latitude": "35.17827654153432",
+                "longitude": "-80.65244675242843",
                 "machine_status": "available",
                 "id": 6965,
                 "last_updated": "2023-11-19"
@@ -15499,8 +15821,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 32.797794816410295,
-                "longitude": -17.042609124192843,
+                "latitude": "32.797794816410295",
+                "longitude": "-17.042609124192843",
                 "multimachine": 3,
                 "paywall": true,
                 "machine_status": "available",
@@ -16313,8 +16635,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=435800",
                 "internal_url": "null",
-                "latitude": 35.405982631065385,
-                "longitude": -80.8650689746821,
+                "latitude": "35.405982631065385",
+                "longitude": "-80.8650689746821",
                 "machine_status": "available",
                 "id": 6989,
                 "last_updated": "2024-08-06"
@@ -16500,8 +16822,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=275019",
                 "internal_url": "null",
-                "latitude": 29.941865920450606,
-                "longitude": -90.07105961928818,
+                "latitude": "29.941865920450606",
+                "longitude": "-90.07105961928818",
                 "machine_status": "available",
                 "id": 6990,
                 "last_updated": "2023-12-10"
@@ -16960,8 +17282,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2331",
                 "internal_url": "null",
-                "latitude": 29.95758564851048,
-                "longitude": -90.06166219416926,
+                "latitude": "29.95758564851048",
+                "longitude": "-90.06166219416926",
                 "machine_status": "available",
                 "id": 6996,
                 "last_updated": "2023-12-13"
@@ -17400,8 +17722,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 34.69220822848988,
-                "longitude": -77.12628030915306,
+                "latitude": "34.69220822848988",
+                "longitude": "-77.12628030915306",
                 "machine_status": "available",
                 "id": 7011,
                 "last_updated": "2023-12-23",
@@ -18532,8 +18854,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=420685",
                 "internal_url": "null",
-                "latitude": 47.62499720590904,
-                "longitude": -122.52059546740021,
+                "latitude": "47.62499720590904",
+                "longitude": "-122.52059546740021",
                 "machine_status": "available",
                 "id": 7038,
                 "last_updated": "2024-01-15"
@@ -21227,8 +21549,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=442598",
                 "internal_url": "null",
-                "latitude": 46.75413435722217,
-                "longitude": 8.038198753360998,
+                "latitude": "46.75413435722217",
+                "longitude": "8.038198753360998",
                 "machine_status": "available",
                 "id": 7071,
                 "last_updated": "2024-08-28"
@@ -21943,8 +22265,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.05336350691331,
-                "longitude": -112.1209868016424,
+                "latitude": "36.05336350691331",
+                "longitude": "-112.1209868016424",
                 "machine_status": "available",
                 "id": 7076,
                 "last_updated": "2024-03-07"
@@ -22128,8 +22450,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=434296",
                 "internal_url": "null",
-                "latitude": 32.377037706976,
-                "longitude": -94.86968710951791,
+                "latitude": "32.377037706976",
+                "longitude": "-94.86968710951791",
                 "machine_status": "available",
                 "id": 7079,
                 "last_updated": "2024-07-07"
@@ -22151,8 +22473,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 39.68323466768144,
-                "longitude": -75.65261081635325,
+                "latitude": "39.68323466768144",
+                "longitude": "-75.65261081635325",
                 "machine_status": "available",
                 "id": 7080,
                 "last_updated": "2024-03-11"
@@ -22174,8 +22496,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 29.547785940629495,
-                "longitude": -95.01797594048259,
+                "latitude": "29.547785940629495",
+                "longitude": "-95.01797594048259",
                 "machine_status": "retired",
                 "id": 7081,
                 "last_updated": "2024-03-11"
@@ -22197,8 +22519,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 29.547946499253847,
-                "longitude": -95.01942520539558,
+                "latitude": "29.547946499253847",
+                "longitude": "-95.01942520539558",
                 "machine_status": "retired",
                 "id": 7082,
                 "last_updated": "2024-03-12"
@@ -22635,10 +22957,10 @@
                 "internal_url": "null",
                 "latitude": "41.4687292",
                 "longitude": "-81.6873931",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1955,
-                "last_updated": "2024-03-17"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -23259,8 +23581,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.08206896400322,
-                "longitude": 14.41859993570219,
+                "latitude": "50.08206896400322",
+                "longitude": "14.41859993570219",
                 "machine_status": "available",
                 "id": 7098,
                 "last_updated": "2024-03-21"
@@ -23951,8 +24273,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 28.36951880005,
-                "longitude": -81.5186929690605,
+                "latitude": "28.36951880005",
+                "longitude": "-81.5186929690605",
                 "machine_status": "available",
                 "id": 7108,
                 "last_updated": "2024-03-26"
@@ -24229,8 +24551,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.50426751279994,
-                "longitude": 9.739871657715225,
+                "latitude": "47.50426751279994",
+                "longitude": "9.739871657715225",
                 "machine_status": "available",
                 "id": 7109,
                 "last_updated": "2024-03-29"
@@ -24252,8 +24574,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 55.36564442877866,
-                "longitude": -131.474537390943,
+                "latitude": "55.36564442877866",
+                "longitude": "-131.474537390943",
                 "machine_status": "available",
                 "id": 7110,
                 "last_updated": "2024-03-30"
@@ -24275,8 +24597,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=426560",
                 "internal_url": "null",
-                "latitude": 54.958878197517386,
-                "longitude": -1.6701093951815753,
+                "latitude": "54.958878197517386",
+                "longitude": "-1.6701093951815753",
                 "machine_status": "retired",
                 "id": 7111,
                 "last_updated": "2024-04-25"
@@ -24298,8 +24620,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 32.80199420119954,
-                "longitude": -79.9048689073673,
+                "latitude": "32.80199420119954",
+                "longitude": "-79.9048689073673",
                 "machine_status": "available",
                 "id": 7112,
                 "last_updated": "2024-03-30"
@@ -24899,8 +25221,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.138014213995966,
-                "longitude": -115.16588095343813,
+                "latitude": "36.138014213995966",
+                "longitude": "-115.16588095343813",
                 "machine_status": "available",
                 "id": 7126,
                 "last_updated": "2024-04-05",
@@ -24923,8 +25245,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 54.605766315575664,
-                "longitude": 24.03591459538824,
+                "latitude": "54.605766315575664",
+                "longitude": "24.03591459538824",
                 "machine_status": "available",
                 "id": 7127,
                 "last_updated": "2024-04-05"
@@ -26317,8 +26639,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.810463356823085,
-                "longitude": -122.41087711166155,
+                "latitude": "37.810463356823085",
+                "longitude": "-122.41087711166155",
                 "machine_status": "retired",
                 "id": 7146,
                 "last_updated": "2024-06-25"
@@ -26501,8 +26823,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=328171",
                 "internal_url": "null",
-                "latitude": 50.96254281889971,
-                "longitude": 14.07161266392583,
+                "latitude": "50.96254281889971",
+                "longitude": "14.07161266392583",
                 "machine_status": "available",
                 "id": 7149,
                 "last_updated": "2024-04-27"
@@ -26524,8 +26846,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.965422719578484,
-                "longitude": 14.066185067672375,
+                "latitude": "50.965422719578484",
+                "longitude": "14.066185067672375",
                 "machine_status": "available",
                 "id": 7150,
                 "last_updated": "2024-04-27"
@@ -26662,8 +26984,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=430711",
                 "internal_url": "null",
-                "latitude": 35.97766985605265,
-                "longitude": -114.83801450988334,
+                "latitude": "35.97766985605265",
+                "longitude": "-114.83801450988334",
                 "machine_status": "available",
                 "id": 7152,
                 "last_updated": "2024-05-10"
@@ -26777,8 +27099,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 38.06863930971662,
-                "longitude": -81.38125285528737,
+                "latitude": "38.06863930971662",
+                "longitude": "-81.38125285528737",
                 "machine_status": "available",
                 "id": 7156,
                 "last_updated": "2024-04-30"
@@ -27053,8 +27375,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.202474629615864,
-                "longitude": -91.3682720277433,
+                "latitude": "47.202474629615864",
+                "longitude": "-91.3682720277433",
                 "machine_status": "retired",
                 "id": 7162,
                 "last_updated": "2024-09-14"
@@ -27099,8 +27421,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 54.032147598646155,
-                "longitude": 23.96213831358823,
+                "latitude": "54.032147598646155",
+                "longitude": "23.96213831358823",
                 "machine_status": "available",
                 "id": 7163,
                 "last_updated": "2024-05-05",
@@ -27473,8 +27795,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.088705,
-                "longitude": -89.541369,
+                "latitude": "37.088705",
+                "longitude": "-89.541369",
                 "machine_status": "available",
                 "id": 7169,
                 "last_updated": "2024-05-10"
@@ -27888,8 +28210,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 54.34153335114027,
-                "longitude": 13.499669122981683,
+                "latitude": "54.34153335114027",
+                "longitude": "13.499669122981683",
                 "machine_status": "available",
                 "id": 7177,
                 "last_updated": "2024-05-16"
@@ -27980,8 +28302,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.849334222545906,
-                "longitude": 5.694824323346122,
+                "latitude": "50.849334222545906",
+                "longitude": "5.694824323346122",
                 "machine_status": "available",
                 "id": 7179,
                 "last_updated": "2024-05-18"
@@ -28164,8 +28486,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 51.181463684128694,
-                "longitude": 14.42441339217271,
+                "latitude": "51.181463684128694",
+                "longitude": "14.42441339217271",
                 "machine_status": "available",
                 "id": 7183,
                 "last_updated": "2024-05-19"
@@ -28394,8 +28716,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.64812579768244,
-                "longitude": 11.511764302612525,
+                "latitude": "42.64812579768244",
+                "longitude": "11.511764302612525",
                 "machine_status": "available",
                 "id": 7184,
                 "last_updated": "2024-05-19"
@@ -28649,8 +28971,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 44.07735899463516,
-                "longitude": 12.575270765739969,
+                "latitude": "44.07735899463516",
+                "longitude": "12.575270765739969",
                 "machine_status": "available",
                 "id": 7186,
                 "last_updated": "2024-05-22"
@@ -29723,8 +30045,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 28.057304179650565,
-                "longitude": -97.03538745391836,
+                "latitude": "28.057304179650565",
+                "longitude": "-97.03538745391836",
                 "machine_status": "available",
                 "id": 7200,
                 "last_updated": "2024-06-05"
@@ -29931,8 +30253,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 27.33534397507246,
-                "longitude": -82.5762545599509,
+                "latitude": "27.33534397507246",
+                "longitude": "-82.5762545599509",
                 "machine_status": "available",
                 "id": 7203,
                 "last_updated": "2024-06-09"
@@ -30302,8 +30624,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.043207999829505,
-                "longitude": -111.82582959461817,
+                "latitude": "36.043207999829505",
+                "longitude": "-111.82582959461817",
                 "machine_status": "available",
                 "id": 7208,
                 "last_updated": "2024-06-12"
@@ -30579,8 +30901,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.65878905577905,
-                "longitude": 23.33153100837956,
+                "latitude": "42.65878905577905",
+                "longitude": "23.33153100837956",
                 "machine_status": "available",
                 "id": 7214,
                 "last_updated": "2024-06-15",
@@ -30649,8 +30971,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 39.021317009972805,
-                "longitude": -83.42922901590077,
+                "latitude": "39.021317009972805",
+                "longitude": "-83.42922901590077",
                 "machine_status": "available",
                 "id": 7215,
                 "last_updated": "2024-06-15"
@@ -30856,8 +31178,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.04330877351062,
-                "longitude": -111.8258079251137,
+                "latitude": "36.04330877351062",
+                "longitude": "-111.8258079251137",
                 "machine_status": "available",
                 "id": 7216,
                 "last_updated": "2024-06-16"
@@ -30879,8 +31201,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.80151102222,
-                "longitude": -81.21711601294768,
+                "latitude": "37.80151102222",
+                "longitude": "-81.21711601294768",
                 "machine_status": "available",
                 "id": 7217,
                 "last_updated": "2024-06-16"
@@ -30948,8 +31270,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=433524",
                 "internal_url": "null",
-                "latitude": 32.37520135703253,
-                "longitude": -97.41923089220788,
+                "latitude": "32.37520135703253",
+                "longitude": "-97.41923089220788",
                 "machine_status": "available",
                 "id": 7218,
                 "last_updated": "2024-05-10"
@@ -31362,8 +31684,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.810362334047625,
-                "longitude": -122.41062002853917,
+                "latitude": "37.810362334047625",
+                "longitude": "-122.41062002853917",
                 "machine_status": "available",
                 "id": 7226,
                 "last_updated": "2024-06-21"
@@ -31893,8 +32215,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.70634107009974,
-                "longitude": 10.694347790987369,
+                "latitude": "50.70634107009974",
+                "longitude": "10.694347790987369",
                 "machine_status": "available",
                 "id": 7237,
                 "last_updated": "2024-06-25"
@@ -32681,8 +33003,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 35.026043061810405,
-                "longitude": -114.38313352797147,
+                "latitude": "35.026043061810405",
+                "longitude": "-114.38313352797147",
                 "machine_status": "available",
                 "id": 7254,
                 "last_updated": "2024-06-30"
@@ -32704,8 +33026,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 35.02569253105915,
-                "longitude": -114.38304076166368,
+                "latitude": "35.02569253105915",
+                "longitude": "-114.38304076166368",
                 "machine_status": "available",
                 "id": 7255,
                 "last_updated": "2024-06-30"
@@ -32727,8 +33049,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=435221",
                 "internal_url": "null",
-                "latitude": 40.45193921891792,
-                "longitude": -79.98490823168817,
+                "latitude": "40.45193921891792",
+                "longitude": "-79.98490823168817",
                 "machine_status": "available",
                 "id": 7256,
                 "last_updated": "2024-07-21"
@@ -32773,8 +33095,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 25.7855531117283,
-                "longitude": -80.18793150036367,
+                "latitude": "25.7855531117283",
+                "longitude": "-80.18793150036367",
                 "machine_status": "available",
                 "id": 7257,
                 "last_updated": "2024-06-30",
@@ -32820,8 +33142,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 54.12749912640985,
-                "longitude": 8.863538211299923,
+                "latitude": "54.12749912640985",
+                "longitude": "8.863538211299923",
                 "machine_status": "available",
                 "id": 7259,
                 "last_updated": "2024-07-01",
@@ -33240,8 +33562,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.05327210128528,
-                "longitude": -112.12088397614399,
+                "latitude": "36.05327210128528",
+                "longitude": "-112.12088397614399",
                 "machine_status": "available",
                 "id": 7265,
                 "last_updated": "2024-07-03",
@@ -33794,8 +34116,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 29.938881962885574,
-                "longitude": -81.3364522718414,
+                "latitude": "29.938881962885574",
+                "longitude": "-81.3364522718414",
                 "machine_status": "available",
                 "id": 7271,
                 "last_updated": "2024-07-07"
@@ -33980,8 +34302,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.57071290947021,
-                "longitude": -0.5497250684859667,
+                "latitude": "42.57071290947021",
+                "longitude": "-0.5497250684859667",
                 "machine_status": "available",
                 "id": 7273,
                 "last_updated": "2024-07-09",
@@ -34097,8 +34419,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.85955722301916,
-                "longitude": 20.62489739168428,
+                "latitude": "37.85955722301916",
+                "longitude": "20.62489739168428",
                 "machine_status": "available",
                 "id": 7276,
                 "last_updated": "2024-07-10",
@@ -34305,8 +34627,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 43.65137276854406,
-                "longitude": -94.09616177554015,
+                "latitude": "43.65137276854406",
+                "longitude": "-94.09616177554015",
                 "machine_status": "available",
                 "id": 7284,
                 "last_updated": "2024-07-11"
@@ -34581,8 +34903,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 52.50775184200053,
-                "longitude": 1.7470722438666815,
+                "latitude": "52.50775184200053",
+                "longitude": "1.7470722438666815",
                 "machine_status": "available",
                 "id": 7293,
                 "last_updated": "2024-07-13"
@@ -34604,8 +34926,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.8561666331915,
-                "longitude": 13.35102552825898,
+                "latitude": "47.8561666331915",
+                "longitude": "13.35102552825898",
                 "machine_status": "available",
                 "id": 7294,
                 "last_updated": "2024-07-13"
@@ -34651,8 +34973,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 45.20436177454018,
-                "longitude": -123.1409820831797,
+                "latitude": "45.20436177454018",
+                "longitude": "-123.1409820831797",
                 "machine_status": "available",
                 "id": 7295,
                 "last_updated": "2024-07-13"
@@ -34674,8 +34996,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.040674217803115,
-                "longitude": -86.21236894884932,
+                "latitude": "37.040674217803115",
+                "longitude": "-86.21236894884932",
                 "machine_status": "available",
                 "id": 7296,
                 "last_updated": "2024-07-14"
@@ -34720,8 +35042,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 41.08514278767115,
-                "longitude": 1.153505157940209,
+                "latitude": "41.08514278767115",
+                "longitude": "1.153505157940209",
                 "machine_status": "available",
                 "id": 7297,
                 "last_updated": "2024-07-15",
@@ -34929,8 +35251,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 45.78081647886706,
-                "longitude": -84.7277117510711,
+                "latitude": "45.78081647886706",
+                "longitude": "-84.7277117510711",
                 "machine_status": "available",
                 "id": 7302,
                 "last_updated": "2024-07-16"
@@ -35551,8 +35873,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 32.04675559665894,
-                "longitude": -97.09336773168765,
+                "latitude": "32.04675559665894",
+                "longitude": "-97.09336773168765",
                 "machine_status": "available",
                 "id": 7322,
                 "last_updated": "2024-07-25"
@@ -35781,8 +36103,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": -37.88688872176615,
-                "longitude": 145.08510430844294,
+                "latitude": "-37.88688872176615",
+                "longitude": "145.08510430844294",
                 "machine_status": "available",
                 "id": 7329,
                 "last_updated": "2024-07-26"
@@ -35942,8 +36264,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 51.88878197137526,
-                "longitude": 8.875656212643214,
+                "latitude": "51.88878197137526",
+                "longitude": "8.875656212643214",
                 "machine_status": "available",
                 "id": 7334,
                 "last_updated": "2024-07-27",
@@ -35967,8 +36289,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 51.89057849760274,
-                "longitude": 8.874172350622736,
+                "latitude": "51.89057849760274",
+                "longitude": "8.874172350622736",
                 "machine_status": "available",
                 "id": 7335,
                 "last_updated": "2024-07-27"
@@ -35990,8 +36312,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.77332453392757,
-                "longitude": 15.318461749653643,
+                "latitude": "47.77332453392757",
+                "longitude": "15.318461749653643",
                 "machine_status": "available",
                 "id": 7336,
                 "last_updated": "2024-07-27"
@@ -36013,8 +36335,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.9260257544319,
-                "longitude": 15.473334597650455,
+                "latitude": "47.9260257544319",
+                "longitude": "15.473334597650455",
                 "machine_status": "available",
                 "id": 7337,
                 "last_updated": "2024-07-27"
@@ -36129,8 +36451,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 43.08627789630425,
-                "longitude": -79.06422147051848,
+                "latitude": "43.08627789630425",
+                "longitude": "-79.06422147051848",
                 "machine_status": "available",
                 "id": 7339,
                 "last_updated": "2024-07-28"
@@ -36198,8 +36520,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.506216553914,
-                "longitude": 9.779285984711432,
+                "latitude": "47.506216553914",
+                "longitude": "9.779285984711432",
                 "machine_status": "available",
                 "id": 7340,
                 "last_updated": "2024-07-28"
@@ -36221,8 +36543,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.506033652747284,
-                "longitude": 9.779028243502275,
+                "latitude": "47.506033652747284",
+                "longitude": "9.779028243502275",
                 "machine_status": "available",
                 "id": 7341,
                 "last_updated": "2024-07-28"
@@ -36244,8 +36566,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 28.37039182372141,
-                "longitude": -81.51967629906319,
+                "latitude": "28.37039182372141",
+                "longitude": "-81.51967629906319",
                 "machine_status": "available",
                 "id": 7342,
                 "last_updated": "2024-07-28"
@@ -36267,8 +36589,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 28.370397804801154,
-                "longitude": -81.52033032915215,
+                "latitude": "28.370397804801154",
+                "longitude": "-81.52033032915215",
                 "machine_status": "available",
                 "id": 7343,
                 "last_updated": "2024-07-28"
@@ -36382,8 +36704,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.42088698162563,
-                "longitude": 10.984556409444995,
+                "latitude": "47.42088698162563",
+                "longitude": "10.984556409444995",
                 "machine_status": "available",
                 "id": 7345,
                 "last_updated": "2024-07-30"
@@ -36520,8 +36842,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 49.480952206456905,
-                "longitude": 9.34748882107909,
+                "latitude": "49.480952206456905",
+                "longitude": "9.34748882107909",
                 "machine_status": "available",
                 "id": 7346,
                 "last_updated": "2024-08-03"
@@ -36612,8 +36934,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.74246845081325,
-                "longitude": -78.29972047255046,
+                "latitude": "42.74246845081325",
+                "longitude": "-78.29972047255046",
                 "machine_status": "available",
                 "id": 7347,
                 "last_updated": "2024-08-04"
@@ -36635,8 +36957,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 54.31811810353812,
-                "longitude": -130.32140688588382,
+                "latitude": "54.31811810353812",
+                "longitude": "-130.32140688588382",
                 "machine_status": "available",
                 "id": 7348,
                 "last_updated": "2024-08-05"
@@ -37440,8 +37762,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=439919",
                 "internal_url": "null",
-                "latitude": 38.038281504142084,
-                "longitude": 12.587106112362113,
+                "latitude": "38.038281504142084",
+                "longitude": "12.587106112362113",
                 "machine_status": "available",
                 "id": 7374,
                 "last_updated": "2024-08-28"
@@ -37650,8 +37972,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=436874",
                 "internal_url": "null",
-                "latitude": 55.95439388367951,
-                "longitude": -3.1825620291430505,
+                "latitude": "55.95439388367951",
+                "longitude": "-3.1825620291430505",
                 "machine_status": "available",
                 "id": 7376,
                 "last_updated": "2024-08-28"
@@ -37696,8 +38018,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 43.62775602681171,
-                "longitude": -89.77109452682734,
+                "latitude": "43.62775602681171",
+                "longitude": "-89.77109452682734",
                 "machine_status": "available",
                 "id": 7448,
                 "last_updated": "2024-08-27"
@@ -37719,8 +38041,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 30.37355925775665,
-                "longitude": -87.65749148131677,
+                "latitude": "30.37355925775665",
+                "longitude": "-87.65749148131677",
                 "machine_status": "available",
                 "id": 7449,
                 "last_updated": "2024-08-27",
@@ -39238,8 +39560,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 40.436185712155385,
-                "longitude": -80.00721488340805,
+                "latitude": "40.436185712155385",
+                "longitude": "-80.00721488340805",
                 "machine_status": "available",
                 "id": 7496,
                 "last_updated": "2024-08-30",
@@ -39377,8 +39699,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 34.150459957822385,
-                "longitude": -94.74854932338398,
+                "latitude": "34.150459957822385",
+                "longitude": "-94.74854932338398",
                 "machine_status": "available",
                 "id": 7498,
                 "last_updated": "2024-08-31",
@@ -39448,8 +39770,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.32846571166521,
-                "longitude": -75.81676845672858,
+                "latitude": "36.32846571166521",
+                "longitude": "-75.81676845672858",
                 "machine_status": "available",
                 "id": 7499,
                 "last_updated": "2024-09-14",
@@ -39772,8 +40094,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 40.08564180859688,
-                "longitude": -105.93842525794786,
+                "latitude": "40.08564180859688",
+                "longitude": "-105.93842525794786",
                 "machine_status": "available",
                 "id": 7508,
                 "last_updated": "2024-09-03"
@@ -40370,8 +40692,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 40.10703565910185,
-                "longitude": -84.63657834086965,
+                "latitude": "40.10703565910185",
+                "longitude": "-84.63657834086965",
                 "machine_status": "available",
                 "id": 7524,
                 "last_updated": "2024-09-08"
@@ -40462,8 +40784,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 45.77950874151858,
-                "longitude": -84.73280372961088,
+                "latitude": "45.77950874151858",
+                "longitude": "-84.73280372961088",
                 "machine_status": "available",
                 "id": 7525,
                 "last_updated": "2024-09-08"
@@ -40785,8 +41107,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.06429594834581,
-                "longitude": 15.29266729938709,
+                "latitude": "37.06429594834581",
+                "longitude": "15.29266729938709",
                 "machine_status": "available",
                 "id": 7531,
                 "last_updated": "2024-09-14"
@@ -40879,8 +41201,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 44.05189774883827,
-                "longitude": -71.1287038383537,
+                "latitude": "44.05189774883827",
+                "longitude": "-71.1287038383537",
                 "machine_status": "available",
                 "id": 7533,
                 "last_updated": "2024-09-15"
@@ -41134,8 +41456,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 35.65473217448297,
-                "longitude": -118.34237636674091,
+                "latitude": "35.65473217448297",
+                "longitude": "-118.34237636674091",
                 "machine_status": "available",
                 "id": 7539,
                 "last_updated": "2024-09-18"
@@ -41203,8 +41525,8 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=441459",
                 "internal_url": "null",
-                "latitude": 38.79527500701513,
-                "longitude": -90.32557182866604,
+                "latitude": "38.79527500701513",
+                "longitude": "-90.32557182866604",
                 "machine_status": "available",
                 "id": 7542,
                 "last_updated": "2024-08-28",
@@ -41388,8 +41710,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.785163908500465,
-                "longitude": -1.0999892052688933,
+                "latitude": "50.785163908500465",
+                "longitude": "-1.0999892052688933",
                 "machine_status": "available",
                 "id": 7547,
                 "last_updated": "2024-09-22"
@@ -41480,8 +41802,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.77963088364591,
-                "longitude": -1.089395559986837,
+                "latitude": "50.77963088364591",
+                "longitude": "-1.089395559986837",
                 "machine_status": "available",
                 "id": 7549,
                 "last_updated": "2024-09-23"
@@ -41526,8 +41848,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 35.897210953647125,
-                "longitude": 14.512858145126945,
+                "latitude": "35.897210953647125",
+                "longitude": "14.512858145126945",
                 "machine_status": "available",
                 "id": 7551,
                 "last_updated": "2024-09-24"
@@ -41734,8 +42056,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.403074153473746,
-                "longitude": -86.27375147349628,
+                "latitude": "42.403074153473746",
+                "longitude": "-86.27375147349628",
                 "machine_status": "available",
                 "id": 7554,
                 "last_updated": "2024-09-26"
@@ -41918,8 +42240,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 35.18659082873749,
-                "longitude": -101.97371568551999,
+                "latitude": "35.18659082873749",
+                "longitude": "-101.97371568551999",
                 "machine_status": "available",
                 "id": 7561,
                 "last_updated": "2024-09-28"
@@ -41941,8 +42263,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 39.06716073514247,
-                "longitude": -96.28784888491383,
+                "latitude": "39.06716073514247",
+                "longitude": "-96.28784888491383",
                 "machine_status": "available",
                 "id": 7562,
                 "last_updated": "2024-09-28"
@@ -41964,8 +42286,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.383037522903024,
-                "longitude": -5.996367966711067,
+                "latitude": "37.383037522903024",
+                "longitude": "-5.996367966711067",
                 "machine_status": "available",
                 "id": 7563,
                 "last_updated": "2024-09-28"
@@ -41987,8 +42309,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 43.52797400170426,
-                "longitude": -87.94248056148516,
+                "latitude": "43.52797400170426",
+                "longitude": "-87.94248056148516",
                 "machine_status": "available",
                 "id": 7564,
                 "last_updated": "2024-09-28"
@@ -42217,8 +42539,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.33343195806126,
-                "longitude": -121.92263962175929,
+                "latitude": "37.33343195806126",
+                "longitude": "-121.92263962175929",
                 "machine_status": "available",
                 "id": 7571,
                 "last_updated": "2024-09-29"
@@ -42240,8 +42562,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.52967388069284,
-                "longitude": -6.295115173852949,
+                "latitude": "36.52967388069284",
+                "longitude": "-6.295115173852949",
                 "machine_status": "available",
                 "id": 7572,
                 "last_updated": "2024-09-30"
@@ -42263,8 +42585,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.74000162016611,
-                "longitude": -5.165667208472308,
+                "latitude": "36.74000162016611",
+                "longitude": "-5.165667208472308",
                 "machine_status": "available",
                 "id": 7573,
                 "last_updated": "2024-10-01"
@@ -42286,8 +42608,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.737322182061234,
-                "longitude": -5.165291974690667,
+                "latitude": "36.737322182061234",
+                "longitude": "-5.165291974690667",
                 "machine_status": "available",
                 "id": 7574,
                 "last_updated": "2024-10-01"
@@ -42516,8 +42838,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.938994578045794,
-                "longitude": 6.983367245204561,
+                "latitude": "50.938994578045794",
+                "longitude": "6.983367245204561",
                 "machine_status": "available",
                 "id": 7575,
                 "last_updated": "2024-10-06",
@@ -42540,8 +42862,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 36.79159149510764,
-                "longitude": -3.8955646205053833,
+                "latitude": "36.79159149510764",
+                "longitude": "-3.8955646205053833",
                 "machine_status": "available",
                 "id": 7576,
                 "last_updated": "2024-10-06"
@@ -42835,7 +43157,7 @@
             "properties": {
                 "name": "Submarine Museum/ Gosport ",
                 "area": "England",
-                "address": "Hampshire - Portsmouth",
+                "address": ", HAMPSHIRE - Portsmouth",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443055",
                 "internal_url": "null",
@@ -42908,8 +43230,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 47.496544984658605,
-                "longitude": 19.039620388876557,
+                "latitude": "47.496544984658605",
+                "longitude": "19.039620388876557",
                 "machine_status": "available",
                 "id": 7586,
                 "last_updated": "2024-10-12"
@@ -42977,8 +43299,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 50.02908251052284,
-                "longitude": 7.664411677892323,
+                "latitude": "50.02908251052284",
+                "longitude": "7.664411677892323",
                 "machine_status": "available",
                 "id": 7587,
                 "last_updated": "2024-10-13",
@@ -43024,8 +43346,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.523759313620914,
-                "longitude": -87.89325782771036,
+                "latitude": "42.523759313620914",
+                "longitude": "-87.89325782771036",
                 "machine_status": "available",
                 "id": 7589,
                 "last_updated": "2024-10-15"
@@ -43047,8 +43369,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.78436461647052,
-                "longitude": -25.500675992512484,
+                "latitude": "37.78436461647052",
+                "longitude": "-25.500675992512484",
                 "machine_status": "available",
                 "id": 7590,
                 "last_updated": "2024-10-16"
@@ -43162,8 +43484,8 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 37.818279048448396,
-                "longitude": -25.402520198081525,
+                "latitude": "37.818279048448396",
+                "longitude": "-25.402520198081525",
                 "machine_status": "available",
                 "id": 7593,
                 "last_updated": "2024-10-17"
