@@ -683,9 +683,9 @@
                 "latitude": "43.0822684",
                 "longitude": "-79.0707941",
                 "multimachine": 4,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3062,
-                "last_updated": "2023 -04-05"
+                "last_updated": "2024-10-14"
             }
         },
         {
@@ -6516,9 +6516,9 @@
                 "internal_url": "null",
                 "latitude": "34.8737264",
                 "longitude": "-111.7598125",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5981,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -11786,9 +11786,9 @@
                 "internal_url": "null",
                 "latitude": "36.1017806",
                 "longitude": "-115.1737468",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 4521,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-10-13"
             }
         },
         {
@@ -15743,9 +15743,10 @@
                 "internal_url": "null",
                 "latitude": "51.621873",
                 "longitude": "6.9747145",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 453,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-10-14",
+                "multimachine": 4
             }
         },
         {
@@ -16574,9 +16575,9 @@
                 "internal_url": "null",
                 "latitude": "47.5001213",
                 "longitude": "19.0528283",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6348,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-10-12"
             }
         },
         {
@@ -24943,9 +24944,9 @@
                 "internal_url": "null",
                 "latitude": "39.2863929",
                 "longitude": "-76.607204",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 3608,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-10-18"
             }
         },
         {
@@ -26947,9 +26948,9 @@
                 "internal_url": "null",
                 "latitude": "50.86154459999999",
                 "longitude": "6.058654499999999",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 199,
-                "last_updated": "2023-10-29"
+                "last_updated": "2024-10-13"
             }
         },
         {
@@ -34504,52 +34505,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.2456813,
-                    47.7617903
-                ]
-            },
-            "properties": {
-                "name": "88682 Salem",
-                "area": "Germany",
-                "address": "88682 Salem, Germany",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "latitude": "47.7617903",
-                "longitude": "9.2456813",
-                "machine_status": "available",
-                "id": 6788,
-                "last_updated": "2023-11-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.2456804,
-                    47.7617812
-                ]
-            },
-            "properties": {
-                "name": "88682 Salem",
-                "area": "Germany",
-                "address": "88682 Salem, Germany",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "latitude": "47.7617812",
-                "longitude": "9.2456804",
-                "machine_status": "available",
-                "id": 6789,
-                "last_updated": "2023-11-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     8.5605369,
                     54.6798939
                 ]
@@ -35393,29 +35348,6 @@
                 "longitude": "8.3539380",
                 "machine_status": "available",
                 "id": 6826,
-                "last_updated": "2023-11-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    7.6154453,
-                    50.3670461
-                ]
-            },
-            "properties": {
-                "name": "56077 Koblenz",
-                "area": "Germany",
-                "address": "56077 Koblenz, Germany",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "latitude": "50.3670461",
-                "longitude": "7.6154453",
-                "machine_status": "available",
-                "id": 6827,
                 "last_updated": "2023-11-05"
             }
         },
@@ -45247,10 +45179,10 @@
                 "internal_url": "null",
                 "latitude": "47.370296",
                 "longitude": "8.54332500000007",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 712,
-                "last_updated": "2024-05-05"
+                "last_updated": "2024-10-19"
             }
         },
         {
@@ -47902,10 +47834,10 @@
                 "internal_url": "null",
                 "latitude": "-41.2852716",
                 "longitude": "174.7780965",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3884,
-                "last_updated": "2024-03-26"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -48133,10 +48065,10 @@
                 "internal_url": "null",
                 "latitude": "35.0260078",
                 "longitude": "-114.3831516",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2654,
-                "last_updated": "2024-03-27"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -48156,10 +48088,10 @@
                 "internal_url": "null",
                 "latitude": "35.0256213",
                 "longitude": "-114.383125",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2655,
-                "last_updated": "2024-03-27"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -48699,8 +48631,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -115.1735602,
-                    36.10178399999999
+                    -115.17375364862437,
+                    36.10160253927843
                 ]
             },
             "properties": {
@@ -48709,12 +48641,13 @@
                 "address": "3790 South Las Vegas Boulevard, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=300780",
                 "internal_url": "null",
-                "latitude": "36.10178399999999",
-                "longitude": "-115.1735602",
+                "latitude": "36.10160253927843",
+                "longitude": "-115.17375364862437",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 4522,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-10-13",
+                "multimachine": 3
             }
         },
         {
@@ -55704,10 +55637,10 @@
                 "internal_url": "null",
                 "latitude": "32.7163836",
                 "longitude": "-117.1733529",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4786,
-                "last_updated": "2024-06-24"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -62399,7 +62332,7 @@
                 ]
             },
             "properties": {
-                "name": "Massanutten Resort ",
+                "name": "Massanutten Resort",
                 "area": "Virginia",
                 "address": "1822 Resort Dr,, Massanutten",
                 "status": "unvisited",
@@ -62407,9 +62340,9 @@
                 "internal_url": "null",
                 "latitude": "38.4067483",
                 "longitude": "-78.7158571",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7471,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-10-14"
             }
         },
         {
@@ -64182,10 +64115,10 @@
                 "internal_url": "null",
                 "latitude": "33.7151179",
                 "longitude": "-78.8805165",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2210,
-                "last_updated": "2024-09-05"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -65615,10 +65548,10 @@
                 "internal_url": "null",
                 "latitude": "38.5496852",
                 "longitude": "-90.35413469999999",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1128,
-                "last_updated": "2024-09-25"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -66830,7 +66763,7 @@
             "properties": {
                 "name": "Submarine Museum/ Gosport ",
                 "area": "England",
-                "address": ", HAMPSHIRE - Portsmouth",
+                "address": "Hampshire - Portsmouth",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443055",
                 "internal_url": "null",
@@ -66839,6 +66772,513 @@
                 "machine_status": "available",
                 "id": 7584,
                 "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.8506755,
+                    35.9715692
+                ]
+            },
+            "properties": {
+                "name": "Tom Devlin's Monster Museum",
+                "area": "Nevada",
+                "address": "1310 Nevada Highway, Boulder City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443108",
+                "internal_url": "null",
+                "latitude": "35.9715692",
+                "longitude": "-114.8506755",
+                "machine_status": "available",
+                "id": 7585,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0425706,
+                    47.49489639999999
+                ]
+            },
+            "properties": {
+                "name": "Várkert Bazár",
+                "area": "Hungary",
+                "address": "Ybl Miklós tér",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252316",
+                "internal_url": "null",
+                "latitude": "47.49489639999999",
+                "longitude": "19.0425706",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 836,
+                "last_updated": "2024-10-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.039620388876557,
+                    47.496544984658605
+                ]
+            },
+            "properties": {
+                "name": "Budavari Palota/Castle",
+                "area": "Hungary",
+                "address": "Budapest, Szent György tér 2, 1013 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 47.496544984658605,
+                "longitude": 19.039620388876557,
+                "machine_status": "available",
+                "id": 7586,
+                "last_updated": "2024-10-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.88374879999999,
+                    33.7161889
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - Tervis store (Was Body & Bath Cafe)",
+                "area": "South Carolina",
+                "address": "1325 Celebrity Circle, #A111, Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=17570",
+                "internal_url": "null",
+                "latitude": "33.7161889",
+                "longitude": "-78.88374879999999",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2214,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.0581648,
+                    50.8610759
+                ]
+            },
+            "properties": {
+                "name": "Continium Discovery Center (former industrion)",
+                "area": "Netherlands",
+                "address": "Museumplein 2, Kerkrade",
+                "external_url": "http://209.221.138.252/Details.aspx?location=42607",
+                "internal_url": "null",
+                "latitude": "50.8610759",
+                "longitude": "6.0581648",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5868,
+                "last_updated": "2024-10-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.664411677892323,
+                    50.02908251052284
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Rheinböllen",
+                "area": "Germany",
+                "address": "Hochwildschutzpark 1, 55494 Rheinböllen, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 50.02908251052284,
+                "longitude": 7.664411677892323,
+                "machine_status": "available",
+                "id": 7587,
+                "last_updated": "2024-10-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.6419734,
+                    43.8290678
+                ]
+            },
+            "properties": {
+                "name": "Boyds World Famous Antiques",
+                "area": "South Dakota",
+                "address": "24671 US-385, Custer",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443187",
+                "internal_url": "null",
+                "latitude": "43.8290678",
+                "longitude": "-103.6419734",
+                "machine_status": "available",
+                "id": 7588,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.89325782771036,
+                    42.523759313620914
+                ]
+            },
+            "properties": {
+                "name": "Jelly Belly Center",
+                "area": "Australia",
+                "address": "10100 Jelly Belly Lane Pleasant Prairie, WI 53158",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 42.523759313620914,
+                "longitude": -87.89325782771036,
+                "machine_status": "available",
+                "id": 7589,
+                "last_updated": "2024-10-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -25.500675992512484,
+                    37.78436461647052
+                ]
+            },
+            "properties": {
+                "name": "Caldeira Velha",
+                "area": "Portugal",
+                "address": "EN5-2A 9600, 9600, Portugal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 37.78436461647052,
+                "longitude": -25.500675992512484,
+                "machine_status": "available",
+                "id": 7590,
+                "last_updated": "2024-10-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.87685909999999,
+                    44.3475359
+                ]
+            },
+            "properties": {
+                "name": "High Falls George",
+                "area": "New York",
+                "address": "4761 NY-86, Wilmington, NY 12997,, Wilmington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443292",
+                "internal_url": "null",
+                "latitude": "44.3475359",
+                "longitude": "-73.87685909999999",
+                "machine_status": "available",
+                "id": 7591,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.9620281,
+                    36.0031217
+                ]
+            },
+            "properties": {
+                "name": "Georgetown Rest Area I-75 Northbound",
+                "area": "Kentucky",
+                "address": "I-75 N Milemaker 127, Georgetown ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443323",
+                "internal_url": "null",
+                "latitude": "36.0031217",
+                "longitude": "-83.9620281",
+                "machine_status": "available",
+                "id": 7592,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1442705,
+                    36.1707881
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Pioneer Gift Shop",
+                "area": "Nevada",
+                "address": "25 Fremont Street, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2989",
+                "internal_url": "null",
+                "latitude": "36.1707881",
+                "longitude": "-115.1442705",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4502,
+                "last_updated": "2024-10-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1426404,
+                    36.1702959
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Fabulous Las Vegas Jewelry and Gifts Gift Shop",
+                "area": "Nevada",
+                "address": "300 Fremont Street, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=165962",
+                "internal_url": "null",
+                "latitude": "36.1702959",
+                "longitude": "-115.1426404",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4498,
+                "last_updated": "2024-10-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -25.402520198081525,
+                    37.818279048448396
+                ]
+            },
+            "properties": {
+                "name": "Chá Gorreana",
+                "area": "Portugal",
+                "address": "São Miguel, 9625, Portugal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 37.818279048448396,
+                "longitude": -25.402520198081525,
+                "machine_status": "available",
+                "id": 7593,
+                "last_updated": "2024-10-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.0946297,
+                    46.78337020000001
+                ]
+            },
+            "properties": {
+                "name": "Duluth Deals",
+                "area": "Minnesota",
+                "address": "347 Canal Park Dr, Duluth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=439654",
+                "internal_url": "null",
+                "latitude": "46.78337020000001",
+                "longitude": "-92.0946297",
+                "machine_status": "available",
+                "id": 7594,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5191335,
+                    28.3709743
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, Disney Springs, House of Blues",
+                "area": "Florida",
+                "address": "Disney Springs Shopping Area, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1723",
+                "internal_url": "null",
+                "latitude": "28.3709743",
+                "longitude": "-81.5191335",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3357,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.4291334,
+                    35.2458736
+                ]
+            },
+            "properties": {
+                "name": "Milburn-Price Culture Museum",
+                "area": "Texas",
+                "address": "1005 Coke Street, Vega",
+                "external_url": "http://209.221.138.252/Details.aspx?location=283184",
+                "internal_url": "null",
+                "latitude": "35.2458736",
+                "longitude": "-102.4291334",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3816,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.395564551035964,
+                    43.722415236787214
+                ]
+            },
+            "properties": {
+                "name": "Pisa Information Center",
+                "area": "Italy",
+                "address": "Piazza del Duomo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=236775",
+                "internal_url": "null",
+                "latitude": "43.722415236787214",
+                "longitude": "10.395564551035964",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 947,
+                "last_updated": "2024-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.6071272,
+                    39.2860516
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Maryland",
+                "address": "601 E Pratt St, Baltimore",
+                "external_url": "http://209.221.138.252/Details.aspx?location=372345",
+                "internal_url": "null",
+                "latitude": "39.2860516",
+                "longitude": "-76.6071272",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5209,
+                "last_updated": "2024-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.4364903,
+                    47.0762243
+                ]
+            },
+            "properties": {
+                "name": "Die Schlossbergbahn",
+                "area": "Austria",
+                "address": "Am Schlossberg 7, 8010 Graz, Austria, Graz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443419",
+                "internal_url": "null",
+                "latitude": "47.0762243",
+                "longitude": "15.4364903",
+                "machine_status": "available",
+                "id": 7595,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.4417305,
+                    47.0678961
+                ]
+            },
+            "properties": {
+                "name": "Schloßberg Biergarten",
+                "area": "Austria",
+                "address": "6a Schloßberg , Graz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443418",
+                "internal_url": "null",
+                "latitude": "47.0678961",
+                "longitude": "15.4417305",
+                "machine_status": "available",
+                "id": 7596,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1847392,
+                    35.2518644
+                ]
+            },
+            "properties": {
+                "name": "Wild West Junction, Long Horn Saloon",
+                "area": "Arizona",
+                "address": "321 E. Route 66, Williams",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250337",
+                "internal_url": "null",
+                "latitude": "35.2518644",
+                "longitude": "-112.1847392",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2734,
+                "last_updated": "2024-10-19"
             }
         }
     ]
