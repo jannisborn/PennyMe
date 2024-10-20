@@ -10,7 +10,6 @@
 		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
 		837476502CADDAD800812146 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8374764F2CADDAD800812146 /* StatisticsViewController.swift */; };
 		837476532CB0918000812146 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 837476522CB0918000812146 /* DGCharts */; };
-		837476552CB0918000812146 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 837476542CB0918000812146 /* DGChartsDynamic */; };
 		839CF440267B78AB00E259D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839CF43F267B78AB00E259D9 /* SettingsViewController.swift */; };
 		83BAF44E2A792D45002365D2 /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BAF44D2A792D45002365D2 /* ImagePickerHelper.swift */; };
 		83D226CD2620F4910050ED9E /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D226CC2620F4910050ED9E /* PinViewController.swift */; };
@@ -84,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				837476552CB0918000812146 /* DGChartsDynamic in Frameworks */,
 				837476532CB0918000812146 /* DGCharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +195,6 @@
 			name = PennyMe;
 			packageProductDependencies = (
 				837476522CB0918000812146 /* DGCharts */,
-				837476542CB0918000812146 /* DGChartsDynamic */,
 			);
 			productName = PennyMe;
 			productReference = 9F9F31A12300B40900C0E854 /* PennyMe.app */;
@@ -687,11 +684,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 837476512CB0918000812146 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
-		};
-		837476542CB0918000812146 /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 837476512CB0918000812146 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
