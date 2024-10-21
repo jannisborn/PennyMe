@@ -19542,9 +19542,9 @@
                 "internal_url": "null",
                 "latitude": "35.1012187",
                 "longitude": "129.032321",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2105,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -46563,10 +46563,10 @@
                 "internal_url": "null",
                 "latitude": "41.4687292",
                 "longitude": "-81.6873931",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1955,
-                "last_updated": "2024-03-17"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -54462,10 +54462,10 @@
                 "internal_url": "null",
                 "latitude": "35.2507535",
                 "longitude": "-112.1887471",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2733,
-                "last_updated": "2024-06-15"
+                "last_updated": "2024-10-20"
             }
         },
         {
@@ -54532,10 +54532,10 @@
                 "internal_url": "null",
                 "latitude": "35.6531212",
                 "longitude": "-112.1401332",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5203,
-                "last_updated": "2024-06-15"
+                "last_updated": "2024-10-20"
             }
         },
         {
@@ -57170,9 +57170,9 @@
                 "internal_url": "null",
                 "latitude": 36.05327210128528,
                 "longitude": -112.12088397614399,
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7265,
-                "last_updated": "2024-07-03",
+                "last_updated": "2024-10-21",
                 "paywall": true
             }
         },
@@ -66147,9 +66147,9 @@
                 "internal_url": "null",
                 "latitude": 37.33343195806126,
                 "longitude": -121.92263962175929,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7571,
-                "last_updated": "2024-09-29"
+                "last_updated": "2024-10-19"
             }
         },
         {
@@ -66763,7 +66763,7 @@
             "properties": {
                 "name": "Submarine Museum/ Gosport ",
                 "area": "England",
-                "address": "Hampshire - Portsmouth",
+                "address": ", HAMPSHIRE - Portsmouth",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443055",
                 "internal_url": "null",
@@ -66942,7 +66942,7 @@
                 "type": "Point",
                 "coordinates": [
                     -87.89325782771036,
-                    42.523759313620914
+                    42.523759313620886
                 ]
             },
             "properties": {
@@ -66952,11 +66952,11 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.523759313620914,
-                "longitude": -87.89325782771036,
+                "latitude": "42.523759313620886",
+                "longitude": "-87.89325782771036",
                 "machine_status": "available",
                 "id": 7589,
-                "last_updated": "2024-10-15"
+                "last_updated": "2024-10-20"
             }
         },
         {
@@ -67279,6 +67279,75 @@
                 "status": "unvisited",
                 "id": 2734,
                 "last_updated": "2024-10-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.086106,
+                    41.584849
+                ]
+            },
+            "properties": {
+                "name": "Trees of Mystery",
+                "area": "California",
+                "address": "15500 US Highway 101 North (P.O. Box 96), Klamath",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1343",
+                "internal_url": "null",
+                "latitude": "41.584849",
+                "longitude": "-124.086106",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4653,
+                "last_updated": "2024-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.73530553728567,
+                    28.060122087736627
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop",
+                "area": "Spain",
+                "address": "Centro Comercial \"Carlota, 38660 Playa de la Américas, Santa Cruz de Tenerife, Spanje",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 28.060122087736627,
+                "longitude": -16.73530553728567,
+                "machine_status": "available",
+                "id": 7597,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4914143,
+                    41.8916454
+                ]
+            },
+            "properties": {
+                "name": "Edicola Colosseo Metro",
+                "area": "Italy",
+                "address": "Piazza del Colosseo / Metro 'B' Line Colosseo exit",
+                "external_url": "http://209.221.138.252/Details.aspx?location=37874",
+                "internal_url": "null",
+                "latitude": "41.8916454",
+                "longitude": "12.4914143",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 959,
+                "last_updated": "2024-10-21"
             }
         }
     ]
