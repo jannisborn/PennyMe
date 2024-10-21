@@ -14611,13 +14611,13 @@
                 "area": "Belgium",
                 "address": "Jan Blomstraat , Antwerpen",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=401561",
+                "external_url": "null",
                 "internal_url": "null",
                 "latitude": "51.22026779999999",
                 "longitude": "4.4015157",
                 "machine_status": "available",
                 "id": 6293,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-10-21"
             }
         },
         {
@@ -58600,13 +58600,13 @@
                 "area": "Kentucky",
                 "address": "4005 Smiths Grove- Scottsville Rd, Smiths Grove, KY 42171, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434220",
                 "internal_url": "null",
                 "latitude": 37.040674217803115,
                 "longitude": -86.21236894884932,
                 "machine_status": "available",
                 "id": 7296,
-                "last_updated": "2024-07-14"
+                "last_updated": "2024-10-21"
             }
         },
         {
@@ -67347,6 +67347,121 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 959,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.00784999999999,
+                    40.4353648
+                ]
+            },
+            "properties": {
+                "name": "Gateway Clipper",
+                "area": "Pennsylvania",
+                "address": "350 W Station Square Dr, Pittsburgh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443579",
+                "internal_url": "null",
+                "latitude": "40.4353648",
+                "longitude": "-80.00784999999999",
+                "machine_status": "available",
+                "id": 7598,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.6727961,
+                    35.270672
+                ]
+            },
+            "properties": {
+                "name": "Dream Maker Station Route 66 Souvenir & Gift Shop From (Midpoint Cafe)",
+                "area": "Texas",
+                "address": "307 U.S. Rt. 66, Adrian",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443498",
+                "internal_url": "null",
+                "latitude": "35.270672",
+                "longitude": "-102.6727961",
+                "machine_status": "available",
+                "id": 7599,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.6727961,
+                    35.270672
+                ]
+            },
+            "properties": {
+                "name": "Midpoint Cafe",
+                "area": "Texas",
+                "address": "305 W Historic Rte 66, Adrian",
+                "external_url": "http://209.221.138.252/Details.aspx?location=349234",
+                "internal_url": "null",
+                "latitude": "35.270672",
+                "longitude": "-102.6727961",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3636,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.9580381,
+                    29.8860743
+                ]
+            },
+            "properties": {
+                "name": "Dewberry Farm",
+                "area": "Texas",
+                "address": "7705 FM 362, Brookshire",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443602",
+                "internal_url": "null",
+                "latitude": "29.8860743",
+                "longitude": "-95.9580381",
+                "machine_status": "available",
+                "id": 7600,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -25.7925998,
+                    37.863629
+                ]
+            },
+            "properties": {
+                "name": "Sete Cidades, Green Love Restaurant, ",
+                "area": "Portugal",
+                "address": "Margem da Lagoa das Sete Cidades nº 9,, Sete Cidades (Sao Miguel, Azores)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443650",
+                "internal_url": "null",
+                "latitude": "37.863629",
+                "longitude": "-25.7925998",
+                "machine_status": "available",
+                "id": 7601,
                 "last_updated": "2024-10-21"
             }
         }
