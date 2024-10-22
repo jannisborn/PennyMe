@@ -667,7 +667,7 @@ def location_differ(
                 new += 1
                 machine_idx += 1
                 server_data["features"].append(geojson)
-            total_changes += changes
+        total_changes += changes
 
     logger.info(
         f"\n Result: {total_changes} changes, {new} new machines found"
