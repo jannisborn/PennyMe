@@ -264,7 +264,9 @@ def location_differ(
                         break
 
                     if cur_state == "available" and this_state in UNAVAILABLE_STATES:
-                        logger.info(f"{this_title} is currently unavailable")
+                        logger.info(
+                            f"{this_title} (in {area}) is currently unavailable"
+                        )
                         # Machine is currently unavailable, update this in server dict
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
@@ -659,17 +661,12 @@ def location_differ(
                 problem_data["features"].append(prelim_to_problem_json(geojson, msg))
             else:
                 logger.info(
-                    f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
+                    f"{j}/{length}: Found machine to be added: {geojson['properties']['name']} in {area}"
                 )
                 changes += 1
                 new += 1
                 machine_idx += 1
                 server_data["features"].append(geojson)
-        if changes > 0:
-            logger.info(
-                f"Location {area} ({i}/{len(areas)}): Changes in {changes}/"
-                f"{len(location_raw_list)} machines found."
-            )
             total_changes += changes
 
     logger.info(
