@@ -13143,9 +13143,9 @@
                 "internal_url": "null",
                 "latitude": "40.74947820000001",
                 "longitude": "-73.9873721",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6255,
-                "last_updated": "2023-10-14"
+                "last_updated": "2024-10-22"
             }
         },
         {
@@ -67511,6 +67511,52 @@
                 "last_updated": "2024-10-22",
                 "multimachine": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3508655,
+                    41.6648654
+                ]
+            },
+            "properties": {
+                "name": "James A. Garfield House National Historic Site",
+                "area": "Ohio",
+                "address": "8095 Mentor Avenue, Mentor",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443725",
+                "internal_url": "null",
+                "latitude": "41.6648654",
+                "longitude": "-81.3508655",
+                "machine_status": "available",
+                "id": 7602,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.458934,
+                    43.607508
+                ]
+            },
+            "properties": {
+                "name": "Mt Washington Cruises Ticket Office",
+                "area": "New Hampshire",
+                "address": "211 Lakeside Avenue, Laconia",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3376",
+                "internal_url": "null",
+                "latitude": "43.607508",
+                "longitude": "-71.458934",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5073,
+                "last_updated": "2024-10-22"
             }
         }
     ]
