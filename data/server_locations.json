@@ -2262,6 +2262,52 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -73.98867709999999,
+                    40.7565399
+                ]
+            },
+            "properties": {
+                "name": "Ripley's Believe it Or Not - Time Square",
+                "area": "New York",
+                "address": "Address 234 West 42nd Street, New York City",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333975",
+                "internal_url": "null",
+                "latitude": "40.7565399",
+                "longitude": "-73.98867709999999",
+                "machine_status": "retired",
+                "id": 3056,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9873721,
+                    40.74947820000001
+                ]
+            },
+            "properties": {
+                "name": "Harry Potter Exhibition",
+                "area": "New York",
+                "address": "50 W 34th St, New York City(Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=407211",
+                "internal_url": "null",
+                "latitude": "40.74947820000001",
+                "longitude": "-73.9873721",
+                "machine_status": "retired",
+                "id": 6255,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -79.0641553,
                     43.0874441
                 ]
@@ -44250,6 +44296,52 @@
                 "last_updated": "2024-10-22",
                 "multimachine": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3508655,
+                    41.6648654
+                ]
+            },
+            "properties": {
+                "name": "James A. Garfield House National Historic Site",
+                "area": "Ohio",
+                "address": "8095 Mentor Avenue, Mentor",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443725",
+                "internal_url": "null",
+                "latitude": "41.6648654",
+                "longitude": "-81.3508655",
+                "machine_status": "available",
+                "id": 7602,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.458934,
+                    43.607508
+                ]
+            },
+            "properties": {
+                "name": "Mt Washington Cruises Ticket Office",
+                "area": "New Hampshire",
+                "address": "211 Lakeside Avenue, Laconia",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3376",
+                "internal_url": "null",
+                "latitude": "43.607508",
+                "longitude": "-71.458934",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5073,
+                "last_updated": "2024-10-22"
             }
         }
     ]
