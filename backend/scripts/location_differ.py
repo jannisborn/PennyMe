@@ -130,7 +130,9 @@ def location_differ(
         elif url not in device_dict.keys():
             device_dict[url] = [geojson]
         else:
-            device_dict[url].append(geojson)
+            raise ValueError(
+                f"Duplicate entry in all_locations must not occur (problem={url}) - {geojson}"
+            )
 
     server_dict = {}
     for i, geojson in enumerate(server_data["features"]):
@@ -264,25 +266,18 @@ def location_differ(
                         break
 
                     if cur_state == "available" and this_state in UNAVAILABLE_STATES:
-                        logger.info(
-                            f"{this_title} (in {area}) is currently unavailable"
-                        )
+                        logger.info(f"{this_title} is currently unavailable")
                         # Machine is currently unavailable, update this in server dict
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            if len(device_dict[this_link]) > 1:
-                                logger.warning(
-                                    f"A url linking to multiple machines retired, maybe check manually: {device_dict[this_link]}"
-                                )
+                            assert len(device_dict[this_link]) == 1
                             # Retire machine
-                            for entry in device_dict[this_link]:
-                                entry["properties"]["machine_status"] = (
-                                    UNAVAILABLE_MAPPER[this_state]
-                                )
-                                entry["properties"]["last_updated"] = today
-                                server_data["features"].append(entry)
-                                changes += 1
-                                depr += 1
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["machine_status"] = UNAVAILABLE_MAPPER[
+                                this_state
+                            ]
+                            entry["properties"]["last_updated"] = today
+                            server_data["features"].append(entry)
                         elif name == "Server":
                             if len(server_dict[this_link]) > 1:
                                 logger.warning(
@@ -303,8 +298,8 @@ def location_differ(
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
-                                changes += 1  # track that we changed this machine
-                                depr += 1
+                        changes += 1  # track that we changed this machine
+                        depr += 1
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
 
@@ -316,26 +311,25 @@ def location_differ(
                         # A machine documented as retired is available again
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            if len(device_dict[this_link]) > 1:
-                                logger.warning(
-                                    f"A url linking to multiple machines got available again, maybe check manually: {device_dict[this_link]}"
-                                )
-
-                            for entry in device_dict[this_link]:
-                                entry["properties"]["machine_status"] = "available"
-                                entry["properties"]["last_updated"] = today
-                                entry["properties"]["name"] = entry["properties"][
-                                    "name"
-                                ].strip()
-                                entry["properties"]["address"] = entry["properties"][
-                                    "address"
-                                ].strip()
-                                server_data["features"].append(entry)
-                                changes += 1
-                                new += 1
+                            assert len(device_dict[this_link]) == 1
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["machine_status"] = "available"
+                            entry["properties"]["last_updated"] = today
+                            entry["properties"]["name"] = entry["properties"][
+                                "name"
+                            ].strip()
+                            entry["properties"]["address"] = entry["properties"][
+                                "address"
+                            ].strip()
+                            server_data["features"].append(entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
                             entry = server_dict[this_link]
+                            if len(entry) > 1:
+                                logger.warning(
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {entry}"
+                                )
 
                             # Extract all machines of that URL (usually 1)
                             idxs = [
@@ -345,7 +339,7 @@ def location_differ(
                             ]
                             if len(idxs) > 1:
                                 logger.warning(
-                                    f"For {this_link} found {len(idxs)} machines: {idxs} which got available again"
+                                    f"For {this_link} found {len(idxs)} machines: {idxs}"
                                 )
                             # Re-activate all machines of that URL
                             for idx in idxs:
@@ -356,8 +350,8 @@ def location_differ(
                                     "last_updated"
                                 ] = today
 
-                                changes += 1
-                                new += 1
+                        changes += 1  # track that we changed this machine
+                        new += 1
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
 
@@ -369,28 +363,26 @@ def location_differ(
                         logger.info(f"{this_title} is only temporarily unavailable")
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            if len(device_dict[this_link]) > 1:
-                                logger.warning(
-                                    f"A url linking to multiple machines is temporarily unavailable not retired, maybe check manually: {device_dict[this_link]}"
-                                )
-                            for entry in device_dict[this_link]:
-                                entry["properties"]["machine_status"] = "out-of-order"
-                                entry["properties"]["last_updated"] = today
-                                entry["properties"]["name"] = entry["properties"][
-                                    "name"
-                                ].strip()
-                                entry["properties"]["address"] = entry["properties"][
-                                    "address"
-                                ].strip()
-                                server_data["features"].append(entry)
-                                changes += 1
+                            assert len(device_dict[this_link]) == 1
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["machine_status"] = "out-of-order"
+                            entry["properties"]["last_updated"] = today
+                            entry["properties"]["name"] = entry["properties"][
+                                "name"
+                            ].strip()
+                            entry["properties"]["address"] = entry["properties"][
+                                "address"
+                            ].strip()
+                            server_data["features"].append(entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
                             entry = server_dict[this_link]
                             if len(entry) > 1:
                                 logger.warning(
-                                    f"A url linking to multiple machines is temporarily unavailable not retired, maybe check manually: {entry}"
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {entry}"
                                 )
+
                             # Extract all machines of that URL (usually 1)
                             idxs = [
                                 i
@@ -409,8 +401,8 @@ def location_differ(
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
-                                changes += 1
 
+                        changes += 1  # track that we changed this machine
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
 
@@ -419,30 +411,26 @@ def location_differ(
                         logger.info(f"{this_title} got permanently removed")
                         if name == "Device":
                             # Easy case, we just add this machine to server_dict
-                            if len(device_dict[this_link]) > 1:
-                                logger.warning(
-                                    f"A url linking to multiple machines got removed, maybe check manually: {device_dict[this_link]}"
-                                )
-
-                            for entry in device_dict[this_link]:
-                                entry["properties"]["machine_status"] = (
-                                    UNAVAILABLE_MAPPER[this_state]
-                                )
-                                entry["properties"]["last_updated"] = today
-                                entry["properties"]["name"] = entry["properties"][
-                                    "name"
-                                ].strip()
-                                entry["properties"]["address"] = entry["properties"][
-                                    "address"
-                                ].strip()
-                                server_data["features"].append(entry)
-                                changes += 1
+                            assert len(device_dict[this_link]) == 1
+                            entry = device_dict[this_link][0]
+                            entry["properties"]["machine_status"] = UNAVAILABLE_MAPPER[
+                                this_state
+                            ]
+                            entry["properties"]["last_updated"] = today
+                            entry["properties"]["name"] = entry["properties"][
+                                "name"
+                            ].strip()
+                            entry["properties"]["address"] = entry["properties"][
+                                "address"
+                            ].strip()
+                            server_data["features"].append(entry)
                         elif name == "Server":
                             # Machine is already documented in server_dict
                             entry = server_dict[this_link]
                             if len(entry) > 1:
                                 logger.warning(
-                                    f"A url linking to multiple machines got removed, maybe check manually: {entry}"
+                                    "A url linking to multiple machines retired, "
+                                    f"maybe check manually: {entry}"
                                 )
 
                             # Extract all machines of that URL (usually 1)
@@ -463,7 +451,8 @@ def location_differ(
                                 server_data["features"][idx]["properties"][
                                     "last_updated"
                                 ] = today
-                                changes += 1
+
+                        changes += 1  # track that we changed this machine
                         match = True  # machine was found in existing dict
                         break  # to not change a machine found in both dicts twice
                     else:
@@ -661,13 +650,18 @@ def location_differ(
                 problem_data["features"].append(prelim_to_problem_json(geojson, msg))
             else:
                 logger.info(
-                    f"{j}/{length}: Found machine to be added: {geojson['properties']['name']} in {area}"
+                    f"{j}/{length}: Found machine to be added: {geojson['properties']['name']}"
                 )
                 changes += 1
                 new += 1
                 machine_idx += 1
                 server_data["features"].append(geojson)
-        total_changes += changes
+        if changes > 0:
+            logger.info(
+                f"Location {area} ({i}/{len(areas)}): Changes in {changes}/"
+                f"{len(location_raw_list)} machines found."
+            )
+            total_changes += changes
 
     logger.info(
         f"\n Result: {total_changes} changes, {new} new machines found"

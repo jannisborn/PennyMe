@@ -2262,6 +2262,52 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -73.98867709999999,
+                    40.7565399
+                ]
+            },
+            "properties": {
+                "name": "Ripley's Believe it Or Not - Time Square",
+                "area": "New York",
+                "address": "Address 234 West 42nd Street, New York City",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333975",
+                "internal_url": "null",
+                "latitude": "40.7565399",
+                "longitude": "-73.98867709999999",
+                "machine_status": "retired",
+                "id": 3056,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9873721,
+                    40.74947820000001
+                ]
+            },
+            "properties": {
+                "name": "Harry Potter Exhibition",
+                "area": "New York",
+                "address": "50 W 34th St, New York City(Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=407211",
+                "internal_url": "null",
+                "latitude": "40.74947820000001",
+                "longitude": "-73.9873721",
+                "machine_status": "retired",
+                "id": 6255,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -79.0641553,
                     43.0874441
                 ]
@@ -2439,6 +2485,351 @@
                 "machine_status": "available",
                 "id": 6291,
                 "last_updated": "2024-05-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.7430756,
+                    47.3850406
+                ]
+            },
+            "properties": {
+                "name": "Schloss Tratzberg",
+                "area": "Austria",
+                "address": "Tratzberg 1, 6200 Jenbach, Austria",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=404336",
+                "internal_url": "null",
+                "latitude": "47.3850406",
+                "longitude": "11.7430756",
+                "machine_status": "available",
+                "id": 1011,
+                "last_updated": "2023-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3706312,
+                    48.2048456
+                ]
+            },
+            "properties": {
+                "name": "Planet Vienna (gifts and souvenirs)",
+                "area": "Austria",
+                "address": "Kärntner Straße 30, 1010 Vienna",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284508",
+                "internal_url": "null",
+                "latitude": "48.2048456",
+                "longitude": "16.3706312",
+                "machine_status": "available",
+                "id": 1021,
+                "last_updated": "2023-10-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.4015157,
+                    51.22026779999999
+                ]
+            },
+            "properties": {
+                "name": "Onze Lieve Vrouw Kathedral ",
+                "area": "Belgium",
+                "address": "Jan Blomstraat , Antwerpen",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "51.22026779999999",
+                "longitude": "4.4015157",
+                "machine_status": "available",
+                "id": 6293,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3550824,
+                    42.65979799999999
+                ]
+            },
+            "properties": {
+                "name": "Muzeiko Childrens Museum ",
+                "area": "Bulgaria",
+                "address": "ul. Professor Boyan Kamenov 3, 1700 Studentski Kompleks, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=404220",
+                "internal_url": "null",
+                "latitude": "42.65979799999999",
+                "longitude": "23.3550824",
+                "machine_status": "available",
+                "id": 6294,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2242371,
+                    52.2203483
+                ]
+            },
+            "properties": {
+                "name": "Jasper National Park - Columbia Icefield Discovery Centre",
+                "area": "Canada",
+                "address": "AB 93 North (Icefields Parkway), Alberta - Jasper",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=48213",
+                "internal_url": "null",
+                "latitude": "52.2203483",
+                "longitude": "-117.2242371",
+                "machine_status": "available",
+                "id": 4961,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.103834,
+                    49.273376
+                ]
+            },
+            "properties": {
+                "name": "Science World at TELUS World of Science",
+                "area": "Canada",
+                "address": "1455 Quebec Street, BC - Vancouver",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=100743",
+                "internal_url": "null",
+                "latitude": "49.273376",
+                "longitude": "-123.103834",
+                "machine_status": "retired",
+                "id": 4972,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.16139199999999,
+                    44.3245343
+                ]
+            },
+            "properties": {
+                "name": "Gananoque Boat Line",
+                "area": "Canada",
+                "address": "280 Main St., Ontario - Gananoque",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=127664",
+                "internal_url": "null",
+                "latitude": "44.3245343",
+                "longitude": "-76.16139199999999",
+                "machine_status": "retired",
+                "id": 4993,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.76141969999999,
+                    43.3143704
+                ]
+            },
+            "properties": {
+                "name": "Grand Bend Sweet Shop",
+                "area": "Canada",
+                "address": "63 Main St. West, Ontario - Grand Bend",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=29471",
+                "internal_url": "null",
+                "latitude": "43.3143704",
+                "longitude": "-81.76141969999999",
+                "machine_status": "available",
+                "id": 4994,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.60736,
+                    43.993623
+                ]
+            },
+            "properties": {
+                "name": "Jungle Cat World",
+                "area": "Canada",
+                "address": "3667 Concession Rd 6, Ontario - Orono",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=405894",
+                "internal_url": "null",
+                "latitude": "43.993623",
+                "longitude": "-78.60736",
+                "machine_status": "available",
+                "id": 6295,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.5538107,
+                    43.5388451
+                ]
+            },
+            "properties": {
+                "name": "A Gift to Remember",
+                "area": "Canada",
+                "address": "1395 King St N, Ontario - St. Jacobs",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=244573",
+                "internal_url": "null",
+                "latitude": "43.5388451",
+                "longitude": "-80.5538107",
+                "machine_status": "retired",
+                "id": 5022,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -63.69540869999999,
+                    46.2549804
+                ]
+            },
+            "properties": {
+                "name": "Confederation Bridge, Borden-Carleton Visitor Information Centre",
+                "area": "Canada",
+                "address": "100 Abegweit Dr, PEI - Borden - Carleton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1006",
+                "internal_url": "null",
+                "latitude": "46.2549804",
+                "longitude": "-63.69540869999999",
+                "machine_status": "available",
+                "id": 5035,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.4353998,
+                    45.4431901
+                ]
+            },
+            "properties": {
+                "name": "Boutique BFLY",
+                "area": "Canada",
+                "address": "9500 Boulevard Leduc, Quebec - Brossard",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=281043",
+                "internal_url": "null",
+                "latitude": "45.4431901",
+                "longitude": "-73.4353998",
+                "machine_status": "retired",
+                "id": 5038,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.1944446,
+                    38.9181671
+                ]
+            },
+            "properties": {
+                "name": "Royal Walter Cruise Ship Terminal - Cayman Crafters Market",
+                "area": "Cayman Islands",
+                "address": "S. Church St on the water front Royal Cruise port, Georgetown",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=104923",
+                "internal_url": "null",
+                "latitude": "38.9181671",
+                "longitude": "-78.1944446",
+                "machine_status": "retired",
+                "id": 4405,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.6624046,
+                    31.1416262
+                ]
+            },
+            "properties": {
+                "name": "Shanghai Disney Resort",
+                "area": "China",
+                "address": ", Shanghai",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=406947",
+                "internal_url": "null",
+                "latitude": "31.1416262",
+                "longitude": "121.6624046",
+                "machine_status": "available",
+                "id": 6296,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.6565916,
+                    49.7795324
+                ]
+            },
+            "properties": {
+                "name": "Konopiste Castle ",
+                "area": "Czech",
+                "address": "Konopiste 1, Benesov",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=865",
+                "internal_url": "null",
+                "latitude": "49.7795324",
+                "longitude": "14.6565916",
+                "machine_status": "retired",
+                "id": 46,
+                "last_updated": "2023-10-14"
             }
         },
         {
@@ -2809,6 +3200,328 @@
                 "machine_status": "retired",
                 "id": 756,
                 "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.7198467,
+                    55.995776
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Flight",
+                "area": "Scotland",
+                "address": "East Fortune Airfield, , North Berwick",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=407472",
+                "internal_url": "null",
+                "latitude": "55.995776",
+                "longitude": "-2.7198467",
+                "machine_status": "available",
+                "id": 6422,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.036619,
+                    56.1628948
+                ]
+            },
+            "properties": {
+                "name": "Blair Drummond Safari Park and Adventure Park",
+                "area": "Scotland",
+                "address": "Blair Drummond, Stirling",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=29655",
+                "internal_url": "null",
+                "latitude": "56.1628948",
+                "longitude": "-4.036619",
+                "machine_status": "available",
+                "id": 789,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8177673,
+                    1.254273
+                ]
+            },
+            "properties": {
+                "name": "Sentosa 4D Adventureland",
+                "area": "Singapore",
+                "address": "51B Imbiah Rd, Sentosa Island",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=283790",
+                "internal_url": "null",
+                "latitude": "1.254273",
+                "longitude": "103.8177673",
+                "machine_status": "retired",
+                "id": 3207,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8161825,
+                    1.3157058
+                ]
+            },
+            "properties": {
+                "name": "National Orchid Garden",
+                "area": "Singapore",
+                "address": "in Singapore Botanic Gardens, 1 Cluny Road, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=106601",
+                "internal_url": "null",
+                "latitude": "1.3157058",
+                "longitude": "103.8161825",
+                "machine_status": "available",
+                "id": 6423,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.5808141,
+                    48.7793502
+                ]
+            },
+            "properties": {
+                "name": "Hurbanovo namestie",
+                "area": "Slovenia",
+                "address": ", Bojnice, Slovakia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=399871",
+                "internal_url": "null",
+                "latitude": "48.7793502",
+                "longitude": "18.5808141",
+                "machine_status": "available",
+                "id": 6424,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.567273,
+                    45.527863
+                ]
+            },
+            "properties": {
+                "name": "Aquarium of Piran",
+                "area": "Slovenia",
+                "address": "Trinkova Ulica",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238664",
+                "internal_url": "null",
+                "latitude": "45.527863",
+                "longitude": "13.567273",
+                "machine_status": "available",
+                "id": 809,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.47446,
+                    -33.963225
+                ]
+            },
+            "properties": {
+                "name": "Outeniqua Railway Museum",
+                "area": "South Africa",
+                "address": "Outeniqua Railway Museum, George, George",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=89417",
+                "internal_url": "null",
+                "latitude": "-33.963225",
+                "longitude": "22.47446",
+                "machine_status": "retired",
+                "id": 3510,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.032321,
+                    35.1012187
+                ]
+            },
+            "properties": {
+                "name": "Busan Tower",
+                "area": "South Korea",
+                "address": "Yongdusan Park , Busan",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=226708",
+                "internal_url": "null",
+                "latitude": "35.1012187",
+                "longitude": "129.032321",
+                "machine_status": "available",
+                "id": 2105,
+                "last_updated": "2024-08-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.1697909,
+                    35.159848
+                ]
+            },
+            "properties": {
+                "name": "BUSAN X the SKY LCT Landmark Tower ",
+                "area": "South Korea",
+                "address": "30, Dalmaji-gil, Haeundae-gu,, Busan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=402882",
+                "internal_url": "null",
+                "latitude": "35.159848",
+                "longitude": "129.1697909",
+                "machine_status": "available",
+                "id": 6425,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    126.9804702,
+                    37.5238506
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Korea",
+                "area": "South Korea",
+                "address": "137 Seobinggo-ro, Yongsan-gu, Seoul, South Korea, Seoul",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=410711",
+                "internal_url": "null",
+                "latitude": "37.5238506",
+                "longitude": "126.9804702",
+                "machine_status": "available",
+                "id": 6426,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.0559567,
+                    42.4575538
+                ]
+            },
+            "properties": {
+                "name": "The Pilgrim's Shop",
+                "area": "Spain",
+                "address": "Glorieta del Ingeniero Eduardo de Castro, Astorga ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=411131",
+                "internal_url": "null",
+                "latitude": "42.4575538",
+                "longitude": "-6.0559567",
+                "machine_status": "available",
+                "id": 6427,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1493331,
+                    41.3763184
+                ]
+            },
+            "properties": {
+                "name": "Arenas de Barcelona",
+                "area": "Spain",
+                "address": "Gran Via de les Corts Catalanes, 373-385, Barcelona",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=214500",
+                "internal_url": "null",
+                "latitude": "41.3763184",
+                "longitude": "2.1493331",
+                "machine_status": "retired",
+                "id": 278,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1826047,
+                    41.3947292
+                ]
+            },
+            "properties": {
+                "name": "Barcelona Nord Station",
+                "area": "Spain",
+                "address": ", Barcelona",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319701",
+                "internal_url": "null",
+                "latitude": "41.3947292",
+                "longitude": "2.1826047",
+                "machine_status": "retired",
+                "id": 279,
+                "last_updated": "2023-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1972576,
+                    41.3876109
+                ]
+            },
+            "properties": {
+                "name": "La Rotonda Port Olympic Souvenir Shop",
+                "area": "Spain",
+                "address": "Carrer de la Marina, 16 First Floor, Barcelona - Catalonia Region Barcelona Province",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=319699",
+                "internal_url": "null",
+                "latitude": "41.3876109",
+                "longitude": "2.1972576",
+                "machine_status": "available",
+                "id": 6428,
+                "last_updated": "2023-10-14"
             }
         },
         {
@@ -22635,10 +23348,10 @@
                 "internal_url": "null",
                 "latitude": "41.4687292",
                 "longitude": "-81.6873931",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1955,
-                "last_updated": "2024-03-17"
+                "last_updated": "2024-08-28"
             }
         },
         {
@@ -30534,10 +31247,10 @@
                 "internal_url": "null",
                 "latitude": "35.2507535",
                 "longitude": "-112.1887471",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2733,
-                "last_updated": "2024-06-15"
+                "last_updated": "2024-10-20"
             }
         },
         {
@@ -30604,10 +31317,10 @@
                 "internal_url": "null",
                 "latitude": "35.6531212",
                 "longitude": "-112.1401332",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5203,
-                "last_updated": "2024-06-15"
+                "last_updated": "2024-10-20"
             }
         },
         {
@@ -33242,9 +33955,9 @@
                 "internal_url": "null",
                 "latitude": 36.05327210128528,
                 "longitude": -112.12088397614399,
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7265,
-                "last_updated": "2024-07-03",
+                "last_updated": "2024-10-21",
                 "paywall": true
             }
         },
@@ -34672,13 +35385,13 @@
                 "area": "Kentucky",
                 "address": "4005 Smiths Grove- Scottsville Rd, Smiths Grove, KY 42171, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=434220",
                 "internal_url": "null",
                 "latitude": 37.040674217803115,
                 "longitude": -86.21236894884932,
                 "machine_status": "available",
                 "id": 7296,
-                "last_updated": "2024-07-14"
+                "last_updated": "2024-10-21"
             }
         },
         {
@@ -36153,10 +36866,11 @@
                 "internal_url": "null",
                 "latitude": "35.8040891",
                 "longitude": "-83.57154700000001",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4279,
-                "last_updated": "2024-07-28"
+                "last_updated": "2024-10-24",
+                "multimachine": 4
             }
         },
         {
@@ -42219,9 +42933,9 @@
                 "internal_url": "null",
                 "latitude": 37.33343195806126,
                 "longitude": -121.92263962175929,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7571,
-                "last_updated": "2024-09-29"
+                "last_updated": "2024-10-19"
             }
         },
         {
@@ -42835,7 +43549,7 @@
             "properties": {
                 "name": "Submarine Museum/ Gosport ",
                 "area": "England",
-                "address": "Hampshire - Portsmouth",
+                "address": ", HAMPSHIRE - Portsmouth",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443055",
                 "internal_url": "null",
@@ -43014,7 +43728,7 @@
                 "type": "Point",
                 "coordinates": [
                     -87.89325782771036,
-                    42.523759313620914
+                    42.523759313620886
                 ]
             },
             "properties": {
@@ -43024,11 +43738,11 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "latitude": 42.523759313620914,
-                "longitude": -87.89325782771036,
+                "latitude": "42.523759313620886",
+                "longitude": "-87.89325782771036",
                 "machine_status": "available",
                 "id": 7589,
-                "last_updated": "2024-10-15"
+                "last_updated": "2024-10-20"
             }
         },
         {
@@ -43351,6 +44065,376 @@
                 "status": "unvisited",
                 "id": 2734,
                 "last_updated": "2024-10-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.086106,
+                    41.584849
+                ]
+            },
+            "properties": {
+                "name": "Trees of Mystery",
+                "area": "California",
+                "address": "15500 US Highway 101 North (P.O. Box 96), Klamath",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1343",
+                "internal_url": "null",
+                "latitude": "41.584849",
+                "longitude": "-124.086106",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4653,
+                "last_updated": "2024-10-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.73530553728567,
+                    28.060122087736627
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop",
+                "area": "Spain",
+                "address": "Centro Comercial \"Carlota, 38660 Playa de la Américas, Santa Cruz de Tenerife, Spanje",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": 28.060122087736627,
+                "longitude": -16.73530553728567,
+                "machine_status": "available",
+                "id": 7597,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4914143,
+                    41.8916454
+                ]
+            },
+            "properties": {
+                "name": "Edicola Colosseo Metro",
+                "area": "Italy",
+                "address": "Piazza del Colosseo / Metro 'B' Line Colosseo exit",
+                "external_url": "http://209.221.138.252/Details.aspx?location=37874",
+                "internal_url": "null",
+                "latitude": "41.8916454",
+                "longitude": "12.4914143",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 959,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.00784999999999,
+                    40.4353648
+                ]
+            },
+            "properties": {
+                "name": "Gateway Clipper",
+                "area": "Pennsylvania",
+                "address": "350 W Station Square Dr, Pittsburgh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443579",
+                "internal_url": "null",
+                "latitude": "40.4353648",
+                "longitude": "-80.00784999999999",
+                "machine_status": "available",
+                "id": 7598,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.6727961,
+                    35.270672
+                ]
+            },
+            "properties": {
+                "name": "Dream Maker Station Route 66 Souvenir & Gift Shop From (Midpoint Cafe)",
+                "area": "Texas",
+                "address": "307 U.S. Rt. 66, Adrian",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443498",
+                "internal_url": "null",
+                "latitude": "35.270672",
+                "longitude": "-102.6727961",
+                "machine_status": "available",
+                "id": 7599,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.6727961,
+                    35.270672
+                ]
+            },
+            "properties": {
+                "name": "Midpoint Cafe",
+                "area": "Texas",
+                "address": "305 W Historic Rte 66, Adrian",
+                "external_url": "http://209.221.138.252/Details.aspx?location=349234",
+                "internal_url": "null",
+                "latitude": "35.270672",
+                "longitude": "-102.6727961",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3636,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.9580381,
+                    29.8860743
+                ]
+            },
+            "properties": {
+                "name": "Dewberry Farm",
+                "area": "Texas",
+                "address": "7705 FM 362, Brookshire",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443602",
+                "internal_url": "null",
+                "latitude": "29.8860743",
+                "longitude": "-95.9580381",
+                "machine_status": "available",
+                "id": 7600,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -25.7925998,
+                    37.863629
+                ]
+            },
+            "properties": {
+                "name": "Sete Cidades, Green Love Restaurant, ",
+                "area": "Portugal",
+                "address": "Margem da Lagoa das Sete Cidades nº 9,, Sete Cidades (Sao Miguel, Azores)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443650",
+                "internal_url": "null",
+                "latitude": "37.863629",
+                "longitude": "-25.7925998",
+                "machine_status": "available",
+                "id": 7601,
+                "last_updated": "2024-10-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.69071319999999,
+                    36.2011379
+                ]
+            },
+            "properties": {
+                "name": "Opry Mills Mall - Bass Pro Shops",
+                "area": "Tennessee",
+                "address": "323 Opry Mills Drive, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2615",
+                "internal_url": "null",
+                "latitude": "36.2011379",
+                "longitude": "-86.69071319999999",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4250,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.5283658,
+                    13.723525
+                ]
+            },
+            "properties": {
+                "name": "Mahanakhon Skywalk",
+                "area": "Thailand",
+                "address": "114 4 Naradhiwat Rajanagarindra Rd, Silom, Bang Rak, Bangkok",
+                "external_url": "http://209.221.138.252/Details.aspx?location=345464",
+                "internal_url": "null",
+                "latitude": "13.723525",
+                "longitude": "100.5283658",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3913,
+                "last_updated": "2024-10-22",
+                "multimachine": 3,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3508655,
+                    41.6648654
+                ]
+            },
+            "properties": {
+                "name": "James A. Garfield House National Historic Site",
+                "area": "Ohio",
+                "address": "8095 Mentor Avenue, Mentor",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443725",
+                "internal_url": "null",
+                "latitude": "41.6648654",
+                "longitude": "-81.3508655",
+                "machine_status": "available",
+                "id": 7602,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.458934,
+                    43.607508
+                ]
+            },
+            "properties": {
+                "name": "Mt Washington Cruises Ticket Office",
+                "area": "New Hampshire",
+                "address": "211 Lakeside Avenue, Laconia",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3376",
+                "internal_url": "null",
+                "latitude": "43.607508",
+                "longitude": "-71.458934",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5073,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.71416169999999,
+                    35.7964165
+                ]
+            },
+            "properties": {
+                "name": "Norh Carolina State Fairgrounds",
+                "area": "North Carolina",
+                "address": "4285 Trinity Rd, Raleigh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443823",
+                "internal_url": "null",
+                "latitude": "35.7964165",
+                "longitude": "-78.71416169999999",
+                "machine_status": "available",
+                "id": 7603,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.314937,
+                    44.487146
+                ]
+            },
+            "properties": {
+                "name": "Scenic Caves Nature Adventures",
+                "area": "Canada",
+                "address": "P.O.Box 215,, Ontario - Collingwood",
+                "external_url": "null",
+                "internal_url": "null",
+                "latitude": "44.487146",
+                "longitude": "-80.314937",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4992,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4460255,
+                    43.9377637
+                ]
+            },
+            "properties": {
+                "name": "Funivia (cable car) San Marino",
+                "area": "San_Marino",
+                "address": ", San Marino",
+                "external_url": "http://209.221.138.252/Details.aspx?location=17941",
+                "internal_url": "null",
+                "latitude": "43.9377637",
+                "longitude": "12.4460255",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 122,
+                "last_updated": "2024-10-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.8774057,
+                    35.3255608
+                ]
+            },
+            "properties": {
+                "name": "Hwy 66 Chevron",
+                "area": "Arizona",
+                "address": "22955 W. Route 66, Seligman",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443901",
+                "internal_url": "null",
+                "latitude": "35.3255608",
+                "longitude": "-112.8774057",
+                "machine_status": "available",
+                "id": 7604,
+                "last_updated": "2024-10-22"
             }
         }
     ]

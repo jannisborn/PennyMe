@@ -29,6 +29,9 @@ jobs:
     - name: Check code formatting with black
       run: black --check .
 
+    - name: Check code formatting with ruff
+      run: ruff format --check .
+    
     - name: Check sanity of json files
       run: python .hooks/check_json.py
 
