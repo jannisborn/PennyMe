@@ -161,11 +161,9 @@ class StatisticsViewController: UIViewController {
     
     func setupBarChart(mode: String) {
         // Sort the dictionary and get the top 5 countries
-        var topFiveCountries = visitedByArea.sorted { $0.value > $1.value }.prefix(5)//.reversed()
+        var topFiveCountries = visitedByArea.sorted { $0.value > $1.value }.prefix(5)
         // if percent: sort by percentage
         if mode != "absolute" {
-            //            topFiveCountries = visitedByArea.sorted { ($0.value/machinesByArea[$0.key]!) > ($1.value/machinesByArea[$1.key]!) }.prefix(5).reversed()
-            //            }
             topFiveCountries = visitedByArea.sorted {
                 let percentage1 = Double($0.value) / Double(machinesByArea[$0.key] ?? 1)
                 let percentage2 = Double($1.value) / Double(machinesByArea[$1.key] ?? 1)
@@ -176,9 +174,10 @@ class StatisticsViewController: UIViewController {
         // Create entries for the bar chart
         var barChartEntries: [BarChartDataEntry] = []
         var countryNames: [String] = []
+        var nameSizes: [String] = []
 
         // Assign colors to each bar
-        var barColors: [UIColor] = [] // [.orange, .red, .purple, UIColor.systemBlue, UIColor.systemGreen]
+        var barColors: [UIColor] = []
         
         for (index, country) in topFiveCountries.reversed().enumerated() {
             var barValue: Double = 0
@@ -191,11 +190,24 @@ class StatisticsViewController: UIViewController {
             let entry = BarChartDataEntry(x: Double(index), y: barValue)
             
             barChartEntries.append(entry)
-            
-            countryNames.append(country.key)
+            // add name
+            let name = country.key
+            let maxNameLength = 12 // Example threshold, adjust as needed
+            let formattedName = ((name.count > maxNameLength) && name.contains(" ")) ? insertLineBreaksInCountryName(name, maxLength: maxNameLength) : name
+            countryNames.append(formattedName)
+            // append size for scaling
+            nameSizes.append(contentsOf: formattedName.components(separatedBy: "\n"))
             barColors.append(colorForValue(value: Int(barValue), mode: mode))
         }
 
+        // Calculate the longest country name with line breaks and update padding accordingly
+        let longestName = nameSizes.max(by: { $1.count > $0.count }) ?? ""
+        let longestNameLength = longestName.count
+
+        // Adjust the left padding to accommodate the longest label
+        barChartView.extraLeftOffset = CGFloat(longestNameLength) * 2.0
+//        barChartView.extraRightOffset = 10.0
+        
         // Create the BarChartDataSet
         let dataSet = BarChartDataSet(entries: barChartEntries, label: "Collected Pennies")
         dataSet.colors = barColors
@@ -218,7 +230,10 @@ class StatisticsViewController: UIViewController {
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: countryNames)
         barChartView.xAxis.granularity = 1
         barChartView.xAxis.labelPosition = .bottom // Horizontal bar chart has labels at the bottom
-
+        // Adjust the bar chart's font size to make room for two-line labels
+        barChartView.xAxis.granularityEnabled = true
+        barChartView.xAxis.wordWrapEnabled = true
+        barChartView.xAxis.avoidFirstLastClippingEnabled = true
         // Increase font size of the x-axis (country labels)
         barChartView.xAxis.labelFont = .systemFont(ofSize: 16)
 
@@ -240,6 +255,24 @@ class StatisticsViewController: UIViewController {
         barChartView.notifyDataSetChanged()
     }
 
+    func insertLineBreaksInCountryName(_ name: String, maxLength: Int) -> String {
+        // Split the string into chunks and insert line breaks at a reasonable spot
+        let words = name.split(separator: " ")
+        var currentLineLength = 0
+        var result = ""
+        // iterate over words
+        for word in words {
+            currentLineLength += word.count + 1 // +1 for space
+            if (currentLineLength > maxLength) && (result.count > 0) {
+                result += "\n" + word
+                currentLineLength = word.count
+            } else {
+                result += (result.isEmpty ? "" : " ") + word
+            }
+        }
+        return result
+    }
+    
     func colorForValue(value: Int, mode: String) -> UIColor {
         // Define the minimum and maximum values for the range
         let minValue = 1
