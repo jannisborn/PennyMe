@@ -137,9 +137,9 @@
                 "latitude": "43.0822684",
                 "longitude": "-79.0707941",
                 "multimachine": 4,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3062,
-                "last_updated": "2024-10-14"
+                "last_updated": "2024-10-22"
             }
         },
         {
@@ -19471,9 +19471,9 @@
                 "latitude": "33.920239",
                 "longitude": "-116.77287",
                 "paywall": true,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4583,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-10-22"
             }
         },
         {
@@ -25700,10 +25700,10 @@
                 "internal_url": "null",
                 "latitude": "34.0089972",
                 "longitude": "-118.4974488",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5258,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-10-22"
             }
         },
         {
@@ -37690,13 +37690,13 @@
                 "area": "Minnesota",
                 "address": "1134 Giant Lane, Blue Earth, MN 56103",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443961",
                 "internal_url": "null",
                 "latitude": "43.65137276854406",
                 "longitude": "-94.09616177554015",
                 "machine_status": "available",
                 "id": 7284,
-                "last_updated": "2024-07-11"
+                "last_updated": "2024-10-22"
             }
         },
         {
@@ -47108,6 +47108,52 @@
                 "longitude": "-112.8774057",
                 "machine_status": "available",
                 "id": 7604,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.9186242,
+                    35.46115080000001
+                ]
+            },
+            "properties": {
+                "name": "Terrible's Searchlight Casino",
+                "area": "Nevada",
+                "address": "670 US-95, Searchlight",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=443969",
+                "internal_url": "null",
+                "latitude": "35.46115080000001",
+                "longitude": "-114.9186242",
+                "machine_status": "available",
+                "id": 7605,
+                "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.072324,
+                    43.0806142
+                ]
+            },
+            "properties": {
+                "name": "Top of the Falls Gift Shop",
+                "area": "New York",
+                "address": "Goat Island RD, Niagara Falls",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3581",
+                "internal_url": "null",
+                "latitude": "43.0806142",
+                "longitude": "-79.072324",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3068,
                 "last_updated": "2024-10-22"
             }
         }
