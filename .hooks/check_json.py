@@ -28,7 +28,7 @@ try:
 
     check_data(data, name="server locations")
     id_counts = Counter([e["properties"]["id"] for e in data["features"]])
-    if not id_counts.most_common == 1:
+    if not id_counts.most_common()[0][-1] == 1:
         non_unique = [item for item, cnt in id_counts.items() if cnt > 1]
         raise ValueError(
             f"{len(non_unique)} duplicate entries in server_locations: {non_unique}"
