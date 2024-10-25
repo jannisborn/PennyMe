@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+from collections import Counter
 from typing import Any, Dict, List
 
 
@@ -26,11 +27,13 @@ try:
         data = json.load(f)
 
     check_data(data, name="server locations")
-    ids = [e["properties"]["id"] for e in data["features"]]
-    if not len(ids) == len(set(ids)):
+    id_counts = Counter([e["properties"]["id"] for e in data["features"]])
+    if not id_counts.most_common == 1:
+        non_unique = [item for item, cnt in id_counts.items() if cnt > 1]
         raise ValueError(
-            f"Duplicate entries in server_locations {len(ids)} and {len(set(ids))}"
+            f"{len(non_unique)} duplicate entries in server_locations: {non_unique}"
         )
+
 except Exception as e:
     print(f"Data is corrupted: {e}")
     sys.exit(1)
