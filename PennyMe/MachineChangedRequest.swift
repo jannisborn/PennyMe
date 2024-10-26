@@ -75,14 +75,17 @@ struct MapView: View {
     }
     
     var body: some View {
-        let markers = [Marker(location: MapMarker(coordinate: centerCoordinate,
-                                                  tint: .red))]
         ZStack {
-            // add map
+            // Custom MapViewRepresentable for map type switching
             MapViewRepresentable(mapType: $mapType, centerCoordinate: $centerCoordinate)
                 .edgesIgnoringSafeArea(.all)
             
-            // add finished button
+            // Overlay the marker at the center coordinate
+            Image(systemName: "mappin.circle.fill")
+                .foregroundColor(.red)
+                .font(.title)
+                .offset(y: -20) // Offset to position the marker correctly
+            
             VStack{
                 Spacer()
                 Button("Finished") {
@@ -102,7 +105,6 @@ struct MapView: View {
                         },
                         secondaryButton: .cancel(Text("Continue editing")) {
                             showDoneAlert = false
-                            
                         }
                     )
                 }
