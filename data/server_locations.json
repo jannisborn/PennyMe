@@ -26227,9 +26227,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=427156",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7131,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-10-26"
             }
         },
         {
@@ -27660,12 +27660,12 @@
                 "name": "Fabryka Schindlera",
                 "area": "Poland",
                 "address": "Lipowa 4, Krakow",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444092",
                 "internal_url": "null",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-10-26"
             }
         },
         {
@@ -42931,6 +42931,27 @@
                 "id": 7606,
                 "last_updated": "2024-10-26",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.1133452,
+                    43.0365951
+                ]
+            },
+            "properties": {
+                "name": "Schuster's Farm - Goods & Goodies",
+                "area": "Wisconsin",
+                "address": "1326 US-12, Deerfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444186",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7607,
+                "last_updated": "2024-10-26"
             }
         }
     ]
