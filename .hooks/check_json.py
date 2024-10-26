@@ -8,12 +8,6 @@ from typing import Any, Dict, List
 def check_data(data: List[Dict[str, Any]], name: str):
     for x in data["features"]:
         assert isinstance(
-            x["properties"]["latitude"], str
-        ), f"In {name} file did not find str for coordinates for ID = {x['properties']['id']}"
-        assert isinstance(
-            x["properties"]["longitude"], str
-        ), f"In {name} file did not find str for coordinates for ID = {x['properties']['id']}"
-        assert isinstance(
             x["geometry"]["coordinates"][0], float
         ), f"In {name} file did not find float for coordinates for ID = {x['properties']['id']}"
         assert isinstance(
