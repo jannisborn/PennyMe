@@ -127,11 +127,7 @@ def save_comment(comment: str, ip: str, machine_id: int):
 
 
 def process_machine_entry(
-    new_machine_entry: Dict[str, Any],
-    tmp_img_path: str,
-    ip_address: str,
-    title: str,
-    address: str,
+    new_machine_entry: Dict[str, Any], tmp_img_path: str, ip_address: str
 ):
     """
     Process a new machine entry (upload image, send message to slack, etc.)
@@ -141,13 +137,17 @@ def process_machine_entry(
         new_machine_entry: The new machine entry to process.
         tmp_img_path: Temporary path to the image.
         ip_address: The IP address of the user.
-        title: The title of the machine.
-        address: The address of the machine.
     """
 
     try:
         # Wait for cron job to finish and until 5 min passed since last commit
         wait()
+
+        # Backup machine data
+        tmp_id = new_machine_entry["properties"]["id"]
+        with open(os.path.join("..", "data", f"{tmp_id}.json"), "w") as f:
+            json.dump(new_machine_entry, f, indent=4)
+
         # We can add machine
         new_machine_id = push_newmachine_to_github(new_machine_entry)
 
@@ -158,6 +158,7 @@ def process_machine_entry(
         # Upload the image
         process_uploaded_image(img_path)
 
+        title = new_machine_entry["properties"]["name"]
         # Send message to slack
         image_slack(
             new_machine_id,
@@ -166,6 +167,7 @@ def process_machine_entry(
             img_slack_text="New machine proposed:",
         )
     except Exception as e:
+        address = new_machine_entry["properties"]["address"]
         message_slack_raw(
             text=f"Error when processing machine entry: {title}, {address} ({e})",
         )
@@ -230,29 +232,21 @@ def create_machine():
         return jsonify({"error": "Google Maps does not know this address"}), 400
 
     dist = haversine((lat, lng), (location[1], location[0]))
-    if dist > 1:  # km
-        return (
-            jsonify(
-                {
-                    "error": f"Address {address} seems >1km away from coordinates ({location[1]}, {location[0]})"
-                }
-            ),
-            400,
-        )
+    address_okay = dist <= 1  # km
 
+    # Get google maps address for the coordinates
     out = GM_CLIENT.reverse_geocode(
         [location[1], location[0]], result_type="street_address"
     )
+    orig_address = address
 
-    b = True
-    if out != []:
+    if out != []:  # if address is found
         ad = out[0]["formatted_address"]
         _, score = fuzzysearch.extract(ad, [address], limit=1)[0]
         if score > 85:
             # Prefer Google Maps address over user address
             address = ad
-            b = False
-    elif b:
+    else:
         out = GM_CLIENT.reverse_geocode(
             (location[1], location[0]), result_type="point_of_interest"
         )
@@ -276,6 +270,7 @@ def create_machine():
     paywall = True if request.args.get("paywall") == "true" else False
 
     # put properties into dictionary
+    tmp_id = random.randint(-(2**16), -1)
     properties_dict = {
         "name": title,
         "area": area,
@@ -284,7 +279,7 @@ def create_machine():
         "external_url": "null",
         "internal_url": "null",
         "machine_status": "available",
-        "id": -1,  # to be updated later
+        "id": tmp_id,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
     # add multimachine or paywall only if not defaults
@@ -300,17 +295,22 @@ def create_machine():
     }
     ip_address = request.remote_addr
 
-    tmp_path = os.path.join(PATH_IMAGES, f"{random.randint(-(2**16), -1)}.jpg")
+    tmp_path = os.path.join(PATH_IMAGES, f"{tmp_id}.jpg")
     request.files["image"].save(tmp_path)
 
     message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
     # Add to queue
     request_queue.put(
-        (
-            process_machine_entry,
-            (new_machine_entry, tmp_path, ip_address, title, address),
-        )
+        (process_machine_entry, (new_machine_entry, tmp_path, ip_address))
     )
+    if not address_okay:
+        if address != orig_address:
+            address_print = f"{address} (original input: {orig_address})"
+        else:
+            address_print = address
+        msg = f"Machine request submitted. Watch out, address {address_print} seems >1km away from coordinates ({location[1]}, {location[0]})"
+        message_slack_raw(msg)
+        return jsonify({"Success": msg}), 201
 
     return jsonify({"message": "Success!"}), 200
 
@@ -399,8 +399,8 @@ def change_machine():
     # Case 6: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
+    address_okay = True  # by default okay
     # if address or coordinates were changed, compare them and return warning if needed
-    address_okay = True
     if latitude != lat_old or longitude != lng_old or address != old_address:
         # Verify that address matches coordinates
         found_coords, (lat, lng) = address_to_coordinates(address, area, title)
@@ -409,8 +409,7 @@ def change_machine():
             return jsonify({"error": "Google Maps does not know this address"}), 400
 
         dist = haversine((lat, lng), (latitude, longitude))
-        if dist > 1:  # km
-            address_okay = False  # triggers warning
+        address_okay = dist <= 1  # km
 
         # adapt dictionary entries
         updated_machine_entry["properties"]["address"] = address
