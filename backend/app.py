@@ -126,9 +126,7 @@ def save_comment(comment: str, ip: str, machine_id: int):
         json.dump(IP_COMMENT_DICT, f, indent=4)
 
 
-def process_machine_entry(
-    new_machine_entry: Dict[str, Any], tmp_img_path: str, ip_address: str
-):
+def process_machine_entry(new_machine_entry: Dict[str, Any], tmp_img_path: str, ip_address: str):
     """
     Process a new machine entry (upload image, send message to slack, etc.)
     Typically executed from a thread to avoid clash with cron job
@@ -214,11 +212,7 @@ def create_machine():
     area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
     if score < 90:
         return (
-            jsonify(
-                {
-                    "error": "Could not match country. Provide country or US state name in English"
-                }
-            ),
+            jsonify({"error": "Could not match country. Provide country or US state name in English"}),
             400,
         )
 
@@ -235,9 +229,7 @@ def create_machine():
     address_okay = dist <= 1  # km
 
     # Get google maps address for the coordinates
-    out = GM_CLIENT.reverse_geocode(
-        [location[1], location[0]], result_type="street_address"
-    )
+    out = GM_CLIENT.reverse_geocode([location[1], location[0]], result_type="street_address")
     orig_address = address
 
     if out != []:  # if address is found
@@ -247,15 +239,11 @@ def create_machine():
             # Prefer Google Maps address over user address
             address = ad
     else:
-        out = GM_CLIENT.reverse_geocode(
-            (location[1], location[0]), result_type="point_of_interest"
-        )
+        out = GM_CLIENT.reverse_geocode((location[1], location[0]), result_type="point_of_interest")
         if out != []:
             address = out[0]["formatted_address"]
         else:
-            out = GM_CLIENT.reverse_geocode(
-                (location[1], location[0]), result_type="postal_code"
-            )
+            out = GM_CLIENT.reverse_geocode((location[1], location[0]), result_type="postal_code")
             if out != []:
                 postal_code = out[0]["formatted_address"].split(" ")[0]
                 if postal_code not in address:
@@ -278,8 +266,6 @@ def create_machine():
         "status": "unvisited",
         "external_url": "null",
         "internal_url": "null",
-        "latitude": location[1],
-        "longitude": location[0],
         "machine_status": "available",
         "id": tmp_id,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
@@ -302,9 +288,7 @@ def create_machine():
 
     message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
     # Add to queue
-    request_queue.put(
-        (process_machine_entry, (new_machine_entry, tmp_path, ip_address))
-    )
+    request_queue.put((process_machine_entry, (new_machine_entry, tmp_path, ip_address)))
     if not address_okay:
         if address != orig_address:
             address_print = f"{address} (original input: {orig_address})"
@@ -347,9 +331,7 @@ def change_machine():
 
     # Start new dictionary
     updated_machine_entry = existing_machine_infos.copy()
-    updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
-        " "
-    )[0]
+    updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(" ")[0]
 
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
@@ -362,17 +344,11 @@ def change_machine():
         area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
         if score < 90:
             return (
-                jsonify(
-                    {
-                        "error": "Could not match country. Provide country or US state name in English"
-                    }
-                ),
+                jsonify({"error": "Could not match country. Provide country or US state name in English"}),
                 400,
             )
         updated_machine_entry["properties"]["area"] = area
-        msg += (
-            f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
-        )
+        msg += f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
 
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
@@ -415,8 +391,6 @@ def change_machine():
 
         # adapt dictionary entries
         updated_machine_entry["properties"]["address"] = address
-        updated_machine_entry["properties"]["latitude"] = str(latitude)
-        updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
             msg += f"\tAddress from: {old_address} to: {address}\n"
@@ -478,18 +452,14 @@ def run_location_differ():
             api_key=os.getenv("GCLOUD_KEY"),
             load_from_github=True,
         )
-        open_differ_pr(
-            locations_path=new_json_file, problems_path=new_problems_json_file
-        )
+        open_differ_pr(locations_path=new_json_file, problems_path=new_problems_json_file)
 
         # Move files
         os.rename(
             new_problems_json_file,
             os.path.join(debug_path, os.path.basename(new_problems_json_file)),
         )
-        os.rename(
-            new_json_file, os.path.join(debug_path, os.path.basename(new_json_file))
-        )
+        os.rename(new_json_file, os.path.join(debug_path, os.path.basename(new_json_file)))
 
 
 def worker():

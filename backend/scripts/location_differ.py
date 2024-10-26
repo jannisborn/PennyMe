@@ -138,10 +138,12 @@ def location_differ(
             geojson["properties"]["name"]
         )
         url = geojson["properties"]["external_url"]
-        if url == "null" or "209.221.138.252" not in url:
+        if "209.221.138.252" not in url:
             entry = geojson["properties"].copy()
             entry["source"] = "Server"
             entry["data_idx"] = i
+            entry["longitude"] = geojson["geometry"]["coordinates"][0]
+            entry["latitude"] = geojson["geometry"]["coordinates"][1]
             external_list.append(entry)
         elif url not in server_dict.keys():
             server_dict[url] = [geojson]
@@ -649,8 +651,6 @@ def location_differ(
                 api=gmaps,
             )
 
-            geojson["properties"]["latitude"] = str(lat)
-            geojson["properties"]["longitude"] = str(lng)
             geojson["geometry"]["coordinates"] = [lng, lat]
             geojson["properties"]["last_updated"] = today
             geojson["properties"]["id"] = machine_idx
