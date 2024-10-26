@@ -278,8 +278,6 @@ def create_machine():
         "status": "unvisited",
         "external_url": "null",
         "internal_url": "null",
-        "latitude": location[1],
-        "longitude": location[0],
         "machine_status": "available",
         "id": tmp_id,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
@@ -415,8 +413,6 @@ def change_machine():
 
         # adapt dictionary entries
         updated_machine_entry["properties"]["address"] = address
-        updated_machine_entry["properties"]["latitude"] = str(latitude)
-        updated_machine_entry["properties"]["longitude"] = str(longitude)
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address != old_address:
             msg += f"\tAddress from: {old_address} to: {address}\n"

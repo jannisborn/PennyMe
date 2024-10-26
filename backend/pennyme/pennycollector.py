@@ -160,8 +160,6 @@ def get_prelim_geojson(
             "status": "unvisited",
             "external_url": link,
             "internal_url": "null",
-            "latitude": "N.A.",
-            "longitude": "N.A.",
             "machine_status": state,
             "id": -1,
         },
