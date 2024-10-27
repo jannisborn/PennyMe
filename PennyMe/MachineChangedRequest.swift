@@ -328,6 +328,19 @@ struct MachineChangedForm: View {
 
         let statusNew = statusDict[selectedSegment]!
         
+        // check if anything was changed at all, otherwise abort
+        if (name == pinDataStored.title!) &&
+            (address == pinDataStored.address) &&
+            (area == pinDataStored.area) &&
+            (multimachine == String(pinDataStored.multimachine)) && 
+            (paywall == pinDataStored.paywall) &&
+            (lat_coord == pinDataStored.coordinate.latitude) &&
+            (lon_coord == pinDataStored.coordinate.longitude) &&
+            (statusNew == pinDataStored.machineStatus) {
+            finishLoading(message: "Nothing was changed - not submitting.")
+            return
+        }
+
         var urlComponents = URLComponents(string: flaskURL)!
         urlComponents.path = "/change_machine"
         urlComponents.queryItems = [
