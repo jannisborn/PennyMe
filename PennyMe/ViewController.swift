@@ -674,8 +674,8 @@ extension ViewController: CLLocationManagerDelegate {
         guard let location = locations.last else {return}
 
         // Get closest pins
-        let lonCurrent = location.coordinate.longitude // 168.823 // 8.5490 // here are we!
-        let latCurrent =  location.coordinate.latitude // -44.9408  // 47.3899
+        let lonCurrent = location.coordinate.longitude
+        let latCurrent =  location.coordinate.latitude
         let (pennyCounter, minDist, closestID, foundIndices) = getCandidates(artworks: artworks, curLat: latCurrent, curLon: lonCurrent, radius:radius)
         // check whether we have found any new machines
         let doPush = determinePush(currentNearby: foundIndices)
@@ -775,8 +775,6 @@ extension ViewController: CLLocationManagerDelegate {
 
     func getCandidates(artworks: [Artwork], curLat:Double, curLon: Double, radius: Double) -> (Int, Double, Int, [Int]){
         let (minLat, maxLat, minLon, maxLon) = getCoordinateRange(lat: curLat, long: curLon, radius: radius)
-//        print("min and max", (minLat, maxLat, minLon, maxLon))
-        
         let guess = Int(artworks.count/2)
         let startIndex = searchLatIndex(artworks: artworks, minLat: minLat, curIndex: guess, totalIndex: guess)
 
@@ -799,7 +797,7 @@ extension ViewController: CLLocationManagerDelegate {
             }
 
             // Check whether the pin is in the square
-            if minLon < lon && lon < maxLon && artwork.status == "unvisited"{
+            if minLon < lon && lon < maxLon && artwork.status == "unvisited" && artwork.machineStatus == "available"{
                 let distInKm = haversineDinstance(la1: curLat, lo1: curLon, la2: lat, lo2: lon)/1000
                 // check whether in circle
                 if distInKm < radius{
