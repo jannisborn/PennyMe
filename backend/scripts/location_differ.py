@@ -223,7 +223,7 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_states)) > 1:
-                        msg = f"{this_link} used in multiple pins with different states, requires manual handling: {cur_dict[this_link]}"
+                        msg = f"{this_link} used in multiple pins with different states, requires manual handling."
                         logger.error(msg)
                         problem_data["features"].append(
                             prelim_to_problem_json(geojson, msg)
@@ -252,7 +252,7 @@ def location_differ(
                         for s in range(len(cur_dict[this_link]))
                     ]
                     if len(set(cur_updates)) > 1:
-                        msg = f"{this_link} used in multiple pins with different dates, requires manual handling: {cur_dict[this_link]}"
+                        msg = f"{this_link} used in multiple pins with different dates, requires manual handling."
                         logger.error(msg)
                         problem_data["features"].append(
                             prelim_to_problem_json(geojson, msg)

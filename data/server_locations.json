@@ -26227,9 +26227,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=427156",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7131,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-10-26"
             }
         },
         {
@@ -26472,20 +26472,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -112.1561435,
-                    37.6735701
+                    -112.1562065851583,
+                    37.67310411571469
                 ]
             },
             "properties": {
                 "name": "Bryce Canyon General Store",
                 "area": "Utah",
-                "address": "26 S Main St, Bryce Canyon City",
+                "address": "Multi-Use Path Tropic, UT  84776 United States",
                 "external_url": "http://209.221.138.252/Details.aspx?location=357798",
                 "internal_url": "null",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 5402,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-10-27"
             }
         },
         {
@@ -27494,10 +27494,10 @@
                 "address": "26 S Main St, Bryce Canyon City",
                 "external_url": "http://209.221.138.252/Details.aspx?location=350600",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5401,
-                "last_updated": "2024-04-30"
+                "last_updated": "2024-10-27"
             }
         },
         {
@@ -27568,20 +27568,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -112.1564018,
-                    37.6739665
+                    -112.15709164743296,
+                    37.67362423932664
                 ]
             },
             "properties": {
-                "name": "Rubys Inn ",
+                "name": "Ruby's Inn General Store",
                 "area": "Utah",
-                "address": "1000S. Main Hwy 63 (26 Main St??), Bryce City",
+                "address": "26 S Main St Bryce Canyon, UT 84764 United States",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=211260",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7159,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-10-27"
             }
         },
         {
@@ -27660,12 +27660,12 @@
                 "name": "Fabryka Schindlera",
                 "area": "Poland",
                 "address": "Lipowa 4, Krakow",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444092",
                 "internal_url": "null",
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-10-26"
             }
         },
         {
@@ -34012,10 +34012,10 @@
                 "address": "897 Zion Park Rd, Springdale",
                 "external_url": "http://209.221.138.252/Details.aspx?location=371575",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5413,
-                "last_updated": "2024-07-09"
+                "last_updated": "2024-10-27"
             }
         },
         {
@@ -42909,6 +42909,133 @@
                 "status": "retired",
                 "id": 3068,
                 "last_updated": "2024-10-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.435022164928824,
+                    49.84505196061288
+                ]
+            },
+            "properties": {
+                "name": "Dinosaurierpark Teufelsschlucht",
+                "area": "Germany",
+                "address": "Ferschweilerstraße 50, 54668 Ernzen, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7606,
+                "last_updated": "2024-10-26",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.1133452,
+                    43.0365951
+                ]
+            },
+            "properties": {
+                "name": "Schuster's Farm - Goods & Goodies",
+                "area": "Wisconsin",
+                "address": "1326 US-12, Deerfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444186",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7607,
+                "last_updated": "2024-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.49538249999999,
+                    25.9133667
+                ]
+            },
+            "properties": {
+                "name": "Gladys Porter Zoo",
+                "area": "Texas",
+                "address": "500 Ringgold St (Near intersection of Cummings Pl and Ringgold St), Brownsville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1994",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3662,
+                "last_updated": "2024-10-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9120169,
+                    40.9864584
+                ]
+            },
+            "properties": {
+                "name": "Cabela's (Farmington)",
+                "area": "Utah",
+                "address": "391 N Cabela's Dr, 84025 Farmington",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250813",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2063,
+                "last_updated": "2024-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1357524,
+                    50.8196056
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Brighton, ",
+                "area": "England",
+                "address": "Marine Parade, Brighton and Hove, Brighton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444218",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7608,
+                "last_updated": "2024-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.405995,
+                    36.9279429
+                ]
+            },
+            "properties": {
+                "name": "Sopotujar - Witches Villiage ",
+                "area": "Spain",
+                "address": "Outside the candy house, Sopotujar, Sierra Nevada, Granada , Sierra Nevada Mountains",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444217",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7609,
+                "last_updated": "2024-10-26"
             }
         }
     ]
