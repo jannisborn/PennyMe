@@ -33,28 +33,6 @@
                 ]
             },
             "properties": {
-                "name": "Kemah Boardwalk Aquarium - Restaurant",
-                "area": "Texas",
-                "address": "11 Kemah Waterfront St , Kemah",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=66674",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "http://209.221.138.252/Details.aspx?location=66674 used in multiple pins with different states, requires manual handling: [{'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-95.02096259999999, 29.54827]}, 'properties': {'name': 'Kemah Boardwalk - Aquarium Resturant', 'area': 'Texas', 'address': '11 Kemah Waterfront St , Kemah', 'external_url': 'http://209.221.138.252/Details.aspx?location=66674', 'internal_url': 'null', 'machine_status': 'retired', 'status': 'retired', 'id': 3746, 'last_updated': '2022-10-22'}}, {'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-95.0202048, 29.5473219]}, 'properties': {'name': 'Kemah Boardwalk Aquarium - Restaurant', 'area': 'Texas', 'address': '11 Kemah Waterfront St , Kemah', 'status': 'unvisited', 'external_url': 'http://209.221.138.252/Details.aspx?location=66674', 'internal_url': 'null', 'machine_status': 'available', 'id': 6192, 'last_updated': '2023-10-14'}}]"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
                 "name": "True Grits Gift & Cards",
                 "area": "Georgia",
                 "address": "107 E. River Street, Savannah",
@@ -66,28 +44,6 @@
                 "last_updated": -1
             },
             "problem": "To-be-added-machine True Grits Gift & Cards in Georgia seems unavailable: http://209.221.138.252/Details.aspx?location=1860 with Internal Server Error (500)"
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Carhenge",
-                "area": "Nebraska",
-                "address": "2151 Co Rd 59, Alliance",
-                "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=28701",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "http://209.221.138.252/Details.aspx?location=28701 used in multiple pins with different states, requires manual handling: [{'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-102.857987, 42.142293]}, 'properties': {'name': 'Carhenge', 'area': 'Nebraska', 'address': '3 1/2 mi. N. on NE Hwy 87, Alliance', 'external_url': 'http://209.221.138.252/Details.aspx?location=28701', 'internal_url': 'null', 'machine_status': 'retired', 'status': 'retired', 'id': 4163, 'last_updated': '2022-10-22'}}, {'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-102.857987, 42.142293]}, 'properties': {'name': 'Carhenge', 'area': 'Nebraska', 'address': '2151 Co Rd 59, Alliance', 'status': 'unvisited', 'external_url': 'http://209.221.138.252/Details.aspx?location=28701', 'internal_url': 'null', 'machine_status': 'available', 'id': 6201, 'last_updated': '2023-10-14'}}]"
         },
         {
             "type": "Feature",
@@ -116,8 +72,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    "N.A.",
-                    "N.A."
+                    -110.7033756,
+                    44.9756282
                 ]
             },
             "properties": {
@@ -128,10 +84,10 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=369286",
                 "internal_url": "null",
                 "machine_status": "available",
-                "id": -1,
-                "last_updated": -1
+                "id": 7613,
+                "last_updated": "2024-10-29"
             },
-            "problem": "http://209.221.138.252/Details.aspx?location=369286 used in multiple pins with different states, requires manual handling: [{'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-110.7033756, 44.9756282]}, 'properties': {'name': 'Mammoth General Store', 'area': 'Wyoming', 'address': '1 Mammoth Upper Loop Road (U.S. 89), Yellowstone National Park - Mammoth Hot Springs', 'external_url': 'http://209.221.138.252/Details.aspx?location=369286', 'internal_url': 'null', 'machine_status': 'available', 'status': 'unvisited', 'id': 5510, 'last_updated': '2022-10-22'}}, {'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-110.703436, 44.975659]}, 'properties': {'name': 'Yellowstone - Mammoth General Store', 'area': 'Wyoming', 'address': '315A Grand Loop Rd, Yellowstone National Park, WY 82190, United States', 'status': 'retired', 'external_url': 'http://209.221.138.252/Details.aspx?location=369286', 'internal_url': 'null', 'machine_status': 'retired', 'id': 3124, 'last_updated': '2023-07-23'}}]"
+            "problem": "http://209.221.138.252/Details.aspx?location=369286 used in multiple pins with different states, requires manual handling."
         },
         {
             "type": "Feature",
@@ -160,8 +116,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    "N.A.",
-                    "N.A."
+                    -2.9192435,
+                    54.36522309999999
                 ]
             },
             "properties": {
@@ -172,10 +128,10 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=3239",
                 "internal_url": "null",
                 "machine_status": "available",
-                "id": -1,
-                "last_updated": -1
+                "id": 7614,
+                "last_updated": "2024-10-29"
             },
-            "problem": "http://209.221.138.252/Details.aspx?location=3239 used in multiple pins with different states, requires manual handling: [{'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-2.9190726, 54.3654125]}, 'properties': {'name': 'The World of Beatrix Potter Attraction', 'area': 'England', 'address': 'The Old Laundry, English Lake District, CUMBRIA - Bowness On Windermere', 'external_url': 'http://209.221.138.252/Details.aspx?location=3239', 'internal_url': 'null', 'machine_status': 'retired', 'status': 'retired', 'id': 1357, 'last_updated': '2022-10-22'}}, {'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [-2.919627, 54.364703]}, 'properties': {'name': 'The World of Beatrix Potter Attraction', 'area': 'England', 'address': 'The Old Laundry, English Lake District, CUMBRIA - Bowness On Windermere', 'status': 'unvisited', 'external_url': 'http://209.221.138.252/Details.aspx?location=3239', 'internal_url': 'null', 'machine_status': 'available', 'id': 6298, 'last_updated': '2023-10-14'}}]"
+            "problem": "http://209.221.138.252/Details.aspx?location=3239 used in multiple pins with different states, requires manual handling."
         },
         {
             "type": "Feature",
