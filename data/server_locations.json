@@ -4098,9 +4098,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=411545",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6257,
-                "last_updated": "2024-07-22"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -33144,10 +33144,10 @@
                 "address": "1 Zion Canyon Scenic Drive, Springdale",
                 "external_url": "http://209.221.138.252/Details.aspx?location=109673",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2096,
-                "last_updated": "2024-07-02"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -43330,6 +43330,48 @@
                 "internal_url": "null",
                 "machine_status": "retired",
                 "id": 6410,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.73336019999999,
+                    45.783121
+                ]
+            },
+            "properties": {
+                "name": "I-75 Plaza ",
+                "area": "Michigan",
+                "address": "46 W Etherington St, Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444394",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7620,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9687628,
+                    56.4566719
+                ]
+            },
+            "properties": {
+                "name": "RRS Discovery",
+                "area": "Scotland",
+                "address": "Riverside Drive, Dundee ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424308",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7621,
                 "last_updated": "2024-10-30"
             }
         }
