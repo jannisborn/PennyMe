@@ -228,6 +228,7 @@ def location_differ(
                         problem_data["features"].append(
                             prelim_to_problem_json(geojson, msg)
                         )
+                        match = True
                         continue
                     cur_state = cur_states[0]
                     if this_state == cur_state:
@@ -257,6 +258,7 @@ def location_differ(
                         problem_data["features"].append(
                             prelim_to_problem_json(geojson, msg)
                         )
+                        match = True
                         continue
                     cur_updated = cur_updates[0]
 
@@ -556,9 +558,9 @@ def location_differ(
                     else:
                         # Machine is already in server_dict, just update content
                         i = tdf.iloc[m_idx]["data_idx"]
-                        server_data["features"][i]["properties"][
-                            "external_url"
-                        ] = this_link
+                        server_data["features"][i]["properties"]["external_url"] = (
+                            this_link
+                        )
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
@@ -595,9 +597,9 @@ def location_differ(
                     else:
                         # Machine is already in server_dict, just update content
                         i = tdf.iloc[m_idx]["data_idx"]
-                        server_data["features"][i]["properties"][
-                            "external_url"
-                        ] = this_link
+                        server_data["features"][i]["properties"]["external_url"] = (
+                            this_link
+                        )
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
@@ -638,9 +640,9 @@ def location_differ(
                     else:
                         # Machine is already in server_dict, just update content
                         i = tdf.iloc[m_idx]["data_idx"]
-                        server_data["features"][i]["properties"][
-                            "external_url"
-                        ] = this_link
+                        server_data["features"][i]["properties"]["external_url"] = (
+                            this_link
+                        )
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
