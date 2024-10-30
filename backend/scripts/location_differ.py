@@ -558,9 +558,9 @@ def location_differ(
                     else:
                         # Machine is already in server_dict, just update content
                         i = tdf.iloc[m_idx]["data_idx"]
-                        server_data["features"][i]["properties"]["external_url"] = (
-                            this_link
-                        )
+                        server_data["features"][i]["properties"][
+                            "external_url"
+                        ] = this_link
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
@@ -597,9 +597,9 @@ def location_differ(
                     else:
                         # Machine is already in server_dict, just update content
                         i = tdf.iloc[m_idx]["data_idx"]
-                        server_data["features"][i]["properties"]["external_url"] = (
-                            this_link
-                        )
+                        server_data["features"][i]["properties"][
+                            "external_url"
+                        ] = this_link
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
@@ -640,9 +640,9 @@ def location_differ(
                     else:
                         # Machine is already in server_dict, just update content
                         i = tdf.iloc[m_idx]["data_idx"]
-                        server_data["features"][i]["properties"]["external_url"] = (
-                            this_link
-                        )
+                        server_data["features"][i]["properties"][
+                            "external_url"
+                        ] = this_link
                         server_data["features"][i]["properties"]["last_updated"] = today
                     continue
 
