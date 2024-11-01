@@ -43459,6 +43459,48 @@
                 "id": 7624,
                 "last_updated": "2024-11-01"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.93799410000001,
+                    43.0392649
+                ]
+            },
+            "properties": {
+                "name": "Pabst Mansion",
+                "area": "Wisconsin",
+                "address": "2000 West Wisconsin Avenue , Milwaukee",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=202536",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7625,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5612173,
+                    46.2441246
+                ]
+            },
+            "properties": {
+                "name": "Phare des Baleines île de ré",
+                "area": "France",
+                "address": "155 allée du phare, Saint Clement des Baleines",
+                "external_url": "http://209.221.138.252/Details.aspx?location=339934",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5663,
+                "last_updated": "2024-10-30"
+            }
         }
     ]
 }
