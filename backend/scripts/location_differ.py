@@ -228,6 +228,7 @@ def location_differ(
                         problem_data["features"].append(
                             prelim_to_problem_json(geojson, msg)
                         )
+                        match = True
                         continue
                     cur_state = cur_states[0]
                     if this_state == cur_state:
@@ -257,6 +258,7 @@ def location_differ(
                         problem_data["features"].append(
                             prelim_to_problem_json(geojson, msg)
                         )
+                        match = True
                         continue
                     cur_updated = cur_updates[0]
 
@@ -654,7 +656,8 @@ def location_differ(
             geojson["geometry"]["coordinates"] = [lng, lat]
             geojson["properties"]["last_updated"] = today
             geojson["properties"]["id"] = machine_idx
-            del geojson["temporary"]
+            if "temporary" in geojson.keys():
+                del geojson["temporary"]
 
             if (lat, lng) == (0, 0):
                 msg = f"{geojson['properties']['name']} could not find coordinates for {geojson['properties']['address']}"

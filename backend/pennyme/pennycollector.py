@@ -1,5 +1,6 @@
 """Utils to parse pennycollector.com"""
 
+from copy import deepcopy
 from datetime import datetime
 from typing import Any, Dict, List, Tuple
 
@@ -170,7 +171,7 @@ def get_prelim_geojson(
     return geojson
 
 
-def prelim_to_problem_json(geojson=Dict[str, Any], msg: str = "") -> Dict[str, Any]:
+def prelim_to_problem_json(gj: Dict[str, Any], msg: str = "") -> Dict[str, Any]:
     """
     Receives a preliminary geo-json object and strips of all attributes to make
     it compatible with the format in `problems.json`.
@@ -181,6 +182,7 @@ def prelim_to_problem_json(geojson=Dict[str, Any], msg: str = "") -> Dict[str, A
     Returns:
         Stripped geojson object
     """
+    geojson = deepcopy(gj)
     geojson["properties"]["id"] = -1
     geojson["properties"]["last_updated"] = -1
     geojson["problem"] = msg
@@ -221,4 +223,5 @@ def get_coordinates(
     except NameError:
         logger.error(f"Geolocation failed for: {title}\t sub: {subtitle}")
         lat, lng = 0, 0
+    return lat, lng
     return lat, lng

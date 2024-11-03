@@ -505,10 +505,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=112303",
                 "internal_url": "null",
-                "multimachine": 2,
-                "machine_status": "available",
+                "multimachine": 1,
+                "machine_status": "out-of-order",
                 "id": 3117,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-10-31"
             }
         },
         {
@@ -3593,9 +3593,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=389400",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6167,
-                "last_updated": "2023-11-17"
+                "last_updated": "2024-10-28"
             }
         },
         {
@@ -3972,9 +3972,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=379879",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 5470,
-                "last_updated": "2024-04-13"
+                "last_updated": "2024-10-29"
             }
         },
         {
@@ -4098,9 +4098,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=411545",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6257,
-                "last_updated": "2024-07-22"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -20278,10 +20278,10 @@
                 "address": "300 AZ-89A, Sedona",
                 "external_url": "http://209.221.138.252/Details.aspx?location=363316",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5199,
-                "last_updated": "2024-04-11"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -22477,8 +22477,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    8.54332500000007,
-                    47.370296
+                    8.543325000000067,
+                    47.37029599999997
                 ]
             },
             "properties": {
@@ -22490,7 +22490,7 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 712,
-                "last_updated": "2024-10-26"
+                "last_updated": "2024-10-28"
             }
         },
         {
@@ -33144,10 +33144,10 @@
                 "address": "1 Zion Canyon Scenic Drive, Springdale",
                 "external_url": "http://209.221.138.252/Details.aspx?location=109673",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2096,
-                "last_updated": "2024-07-02"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -33758,10 +33758,10 @@
                 "address": "142 Saint George Street, St Augustine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=373434",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5365,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -38558,15 +38558,15 @@
                 ]
             },
             "properties": {
-                "name": "Camera Obscura ",
+                "name": "Camera Obscura",
                 "area": "Scotland",
                 "address": "The Royal Mile 549 Castlehill , Edinburgh",
                 "external_url": "http://209.221.138.252/Details.aspx?location=98115",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 746,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-10-29"
             }
         },
         {
@@ -41222,9 +41222,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7561,
-                "last_updated": "2024-09-28"
+                "last_updated": "2024-11-01"
             }
         },
         {
@@ -43036,6 +43036,512 @@
                 "machine_status": "available",
                 "id": 7609,
                 "last_updated": "2024-10-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.7259166365175944,
+                    51.05305309124858
+                ]
+            },
+            "properties": {
+                "name": "Gent",
+                "area": "Belgium",
+                "address": "Lange Kruisstraat 2, 9000 Gent, Belgium",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7610,
+                "last_updated": "2024-10-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.9082826,
+                    32.648131
+                ]
+            },
+            "properties": {
+                "name": "Funchal Cathedral",
+                "area": "Portugal",
+                "address": "Rua do Aljube, Funchal (Madeira Island)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=394499",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6409,
+                "last_updated": "2024-10-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.7217452822013306,
+                    51.05663825413771
+                ]
+            },
+            "properties": {
+                "name": "Gent souvenirs",
+                "area": "Belgium",
+                "address": "Kleine Vismarkt 18, 9000 Gent, Belgium",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7611,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.8914193,
+                    42.5204357
+                ]
+            },
+            "properties": {
+                "name": "Salem Witch Village",
+                "area": "Massachusetts",
+                "address": "282 Derby Street, Salem",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2656",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2920,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -17.0038848,
+                    32.6583872
+                ]
+            },
+            "properties": {
+                "name": "Cabo Girão Viewpoint",
+                "area": "Portugal",
+                "address": "Estrada do Cabo Girão, 9300-351 , Câmara dos Lobos (madeira Island)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=287711",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 659,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.7456519,
+                    41.621488
+                ]
+            },
+            "properties": {
+                "name": "Outtens Delites",
+                "area": "Maryland",
+                "address": "1 N Main St., Berlin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444327",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7612,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.0543282,
+                    42.36408540000001
+                ]
+            },
+            "properties": {
+                "name": "Caffe Vittoria",
+                "area": "Massachusetts",
+                "address": "296 Hanover Street, Boston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2717",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 2886,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8781942,
+                    35.6287368
+                ]
+            },
+            "properties": {
+                "name": "Tokyo DisneySea Fantasy Springs Hotel",
+                "area": "Japan",
+                "address": "Tokyo Disneysea, Tokyo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444332",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7615,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6837261,
+                    24.1364405
+                ]
+            },
+            "properties": {
+                "name": "Old Taichung Main Train Station ",
+                "area": "Taiwan",
+                "address": ", Taichung ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444351",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7616,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.8702006,
+                    42.0930235
+                ]
+            },
+            "properties": {
+                "name": "Knight Museum & Sandhills Center",
+                "area": "Nebraska",
+                "address": "908 Yellowstone Ave., Alliance",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6202,
+                "last_updated": "2024-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.38951760893702,
+                    52.535436884597836
+                ]
+            },
+            "properties": {
+                "name": "Berlin Wall Memorial",
+                "area": "Germany",
+                "address": "Bernauer Str. 111",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7617,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.195599773785935,
+                    55.94897919845714
+                ]
+            },
+            "properties": {
+                "name": "Camera Obscura",
+                "area": "Scotland",
+                "address": "543-2 Castlehill, Edinburgh EH1 2ND, UK",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7618,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.389414884839987,
+                    52.535475302558034
+                ]
+            },
+            "properties": {
+                "name": "Berlin Wall Memorial",
+                "area": "Germany",
+                "address": "Ackerstraße 137, 13355 Berlin, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7619,
+                "last_updated": "2024-10-30",
+                "multimachine": "."
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.916687,
+                    32.6413396
+                ]
+            },
+            "properties": {
+                "name": "Port of Funchal",
+                "area": "Portugal",
+                "address": "23 Av. Sá Carneiro , Funchal (Madeira Island)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=395155",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6410,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.73336019999999,
+                    45.783121
+                ]
+            },
+            "properties": {
+                "name": "I-75 Plaza ",
+                "area": "Michigan",
+                "address": "46 W Etherington St, Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444394",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7620,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9687628,
+                    56.4566719
+                ]
+            },
+            "properties": {
+                "name": "RRS Discovery",
+                "area": "Scotland",
+                "address": "Riverside Drive, Dundee ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=424308",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7621,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.5844320249782,
+                    37.74685280384786
+                ]
+            },
+            "properties": {
+                "name": "Yosemite village store",
+                "area": "California",
+                "address": "9011 Village Dr, YOSEMITE NATIONAL PARK, CA 95389",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7622,
+                "last_updated": "2024-10-30",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1351839,
+                    36.1241882
+                ]
+            },
+            "properties": {
+                "name": "Sea Quest Aquarium/The Boulevard Mall",
+                "area": "Nevada",
+                "address": "3528 South Maryland Parkway, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=263064",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4526,
+                "last_updated": "2024-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.772347034403402,
+                    51.22578395686854
+                ]
+            },
+            "properties": {
+                "name": "Marktplatz Düsseldorf",
+                "area": "Germany",
+                "address": "Marktplatz 8, 40213 Düsseldorf",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7623,
+                "last_updated": "2024-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.772356234035684,
+                    51.22576790941687
+                ]
+            },
+            "properties": {
+                "name": "Marktplatz Düsseldorf 2",
+                "area": "Germany",
+                "address": "Marktplatz 8, 40213 Düsseldorf",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7624,
+                "last_updated": "2024-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.93799410000001,
+                    43.0392649
+                ]
+            },
+            "properties": {
+                "name": "Pabst Mansion",
+                "area": "Wisconsin",
+                "address": "2000 West Wisconsin Avenue , Milwaukee",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=202536",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7625,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5612173,
+                    46.2441246
+                ]
+            },
+            "properties": {
+                "name": "Phare des Baleines île de ré",
+                "area": "France",
+                "address": "155 allée du phare, Saint Clement des Baleines",
+                "external_url": "http://209.221.138.252/Details.aspx?location=339934",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5663,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.143457830548114,
+                    53.08992418258514
+                ]
+            },
+            "properties": {
+                "name": "Ailwee cave bird of prey",
+                "area": "Ireland",
+                "address": "Ailwee Cave experience",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7626,
+                "last_updated": "2024-11-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    138.5961919,
+                    36.6229014
+                ]
+            },
+            "properties": {
+                "name": "Hotel Ichii",
+                "area": "Japan",
+                "address": "411 Kusatsu, Kusatsu-machi, Agatsuma-gun, Gunma Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444612",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7627,
+                "last_updated": "2024-10-30"
             }
         }
     ]
