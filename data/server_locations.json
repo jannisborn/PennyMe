@@ -24132,11 +24132,11 @@
                 "area": "Colorado",
                 "address": "5201 Nugget Road, Berthoud",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444732",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7095,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -40164,10 +40164,10 @@
                 "address": ", Valletta",
                 "external_url": "http://209.221.138.252/Details.aspx?location=108559",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1032,
-                "last_updated": "2024-09-14",
+                "last_updated": "2024-10-30",
                 "paywall": true
             }
         },
@@ -43585,6 +43585,48 @@
                 "status": "unvisited",
                 "id": 4775,
                 "last_updated": "2024-11-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -135.3194142,
+                    59.45345709999999
+                ]
+            },
+            "properties": {
+                "name": "Skagway Trading Co.",
+                "area": "Alaska",
+                "address": "131 Broadway, Skagway",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444712",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7628,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.10722539999999,
+                    38.2727337
+                ]
+            },
+            "properties": {
+                "name": "Jesse James Wax Museum",
+                "area": "Missouri",
+                "address": "I-44 - Exit 230, Stanton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=270826",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1138,
+                "last_updated": "2024-10-30"
             }
         }
     ]
