@@ -14711,8 +14711,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    11.9025099,
-                    54.1043769
+                    11.900942731584452,
+                    54.105772307032346
                 ]
             },
             "properties": {
@@ -14724,7 +14724,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6876,
-                "last_updated": "2023-11-05"
+                "last_updated": "2024-11-09"
             }
         },
         {
@@ -20192,10 +20192,10 @@
                 "address": "129 Fremont Street, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=10479",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 4499,
-                "last_updated": "2024-05-03"
+                "last_updated": "2024-11-08"
             }
         },
         {
@@ -23015,10 +23015,10 @@
                 "address": "112 E 11th St., Austin",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1764",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3650,
-                "last_updated": "2024-03-29"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -24132,11 +24132,11 @@
                 "area": "Colorado",
                 "address": "5201 Nugget Road, Berthoud",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444732",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7095,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -30715,10 +30715,10 @@
                 "address": "1201 Alaskan Way suite 102, Seattle",
                 "external_url": "http://209.221.138.252/Details.aspx?location=237103",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5142,
-                "last_updated": "2024-06-13",
+                "last_updated": "2024-11-04",
                 "multimachine": 2
             }
         },
@@ -40164,10 +40164,10 @@
                 "address": ", Valletta",
                 "external_url": "http://209.221.138.252/Details.aspx?location=108559",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1032,
-                "last_updated": "2024-09-14",
+                "last_updated": "2024-10-30",
                 "paywall": true
             }
         },
@@ -42315,10 +42315,10 @@
                 "address": "25 Fremont Street, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2989",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4502,
-                "last_updated": "2024-10-17"
+                "last_updated": "2024-11-08"
             }
         },
         {
@@ -42336,10 +42336,10 @@
                 "address": "300 Fremont Street, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=165962",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4498,
-                "last_updated": "2024-10-17"
+                "last_updated": "2024-11-08"
             }
         },
         {
@@ -43516,11 +43516,11 @@
                 "area": "Ireland",
                 "address": "Ailwee Cave experience",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444658",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7626,
-                "last_updated": "2024-11-02"
+                "last_updated": "2024-10-30"
             }
         },
         {
@@ -43542,6 +43542,366 @@
                 "machine_status": "available",
                 "id": 7627,
                 "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0255908,
+                    38.8966765
+                ]
+            },
+            "properties": {
+                "name": "Ford's Theatre",
+                "area": "Washington DC",
+                "address": "511 10th Street NW between E and F Streets, Washington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=54877",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3235,
+                "last_updated": "2024-11-03",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2098733,
+                    32.7415944
+                ]
+            },
+            "properties": {
+                "name": "Corvette Diner",
+                "area": "California",
+                "address": "2965 Historic Decatur Rd., San Diego",
+                "external_url": "http://209.221.138.252/Details.aspx?location=192713",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4775,
+                "last_updated": "2024-11-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -135.3194142,
+                    59.45345709999999
+                ]
+            },
+            "properties": {
+                "name": "Skagway Trading Co.",
+                "area": "Alaska",
+                "address": "131 Broadway, Skagway",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444712",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7628,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.10722539999999,
+                    38.2727337
+                ]
+            },
+            "properties": {
+                "name": "Jesse James Wax Museum",
+                "area": "Missouri",
+                "address": "I-44 - Exit 230, Stanton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=270826",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1138,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.5346557,
+                    44.5649429
+                ]
+            },
+            "properties": {
+                "name": "Hanisch Bakery & Coffee Shop",
+                "area": "Minnesota",
+                "address": "410 W 3rd St, Red Wing",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444823",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7629,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.7040973,
+                    38.2014259
+                ]
+            },
+            "properties": {
+                "name": "Louisville Mega Cavern",
+                "area": "Kentucky",
+                "address": "1841 Taylor Avenue, Louisville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=228974",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3534,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    15.2928548,
+                    37.0645992
+                ]
+            },
+            "properties": {
+                "name": "Palazzo Storico del Mercato",
+                "area": "Italy",
+                "address": "Via Trento, 2, 96100 Siracusa SR, Italy, Siracusa, Ortigia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444772",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7630,
+                "last_updated": "2024-10-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.03926121306559,
+                    40.69874948156629
+                ]
+            },
+            "properties": {
+                "name": "Pressed Penny Collectibles",
+                "area": "New York",
+                "address": "1 Ellis Is, New York, NY 10280, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7631,
+                "last_updated": "2024-11-05",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.1863362,
+                    35.6505171
+                ]
+            },
+            "properties": {
+                "name": "Hearst Castle Visitor Center",
+                "area": "California",
+                "address": "750 Hearst Castle Road (Off State Highway 1), San Simeon",
+                "external_url": "http://209.221.138.252/Details.aspx?location=567",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4836,
+                "last_updated": "2024-11-07",
+                "multimachine": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.11242,
+                    18.46389
+                ]
+            },
+            "properties": {
+                "name": "Señor Frogs",
+                "area": "Puerto Rico",
+                "address": "102 Calle Marina, Old San Juan (Viejo San Juan)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=59520",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5895,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.34429999999999,
+                    37.02398700000001
+                ]
+            },
+            "properties": {
+                "name": "Virginia Air and Space Center",
+                "area": "Virginia",
+                "address": "600 Settlers Landing Rd., Hampton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1212",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4418,
+                "last_updated": "2024-11-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1404649,
+                    36.1701761
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Gene Woods Racing \"DRIFT\" Experience",
+                "area": "Nevada",
+                "address": "450 Fremont ST, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=380182",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5420,
+                "last_updated": "2024-11-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.6711563,
+                    35.0960297
+                ]
+            },
+            "properties": {
+                "name": "The Breaking Bad Store ABQ",
+                "area": "New Mexico",
+                "address": "2047 S Plaza St NW, Albuquerque ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=444942",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7632,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0832479,
+                    47.5148419
+                ]
+            },
+            "properties": {
+                "name": "Budapest Museum of Agriculture",
+                "area": "Hungary",
+                "address": "",
+                "external_url": "http://209.221.138.252/Details.aspx?location=23177",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 820,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046548,
+                    47.4869897
+                ]
+            },
+            "properties": {
+                "name": "Citadel",
+                "area": "Hungary",
+                "address": "Gellert Hill",
+                "external_url": "http://209.221.138.252/Details.aspx?location=259784",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 823,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.16872945849731,
+                    36.117609791037744
+                ]
+            },
+            "properties": {
+                "name": "LINQ Hotel & Casino High Roller",
+                "area": "Nevada",
+                "address": "3545 Las Vegas Blvd South, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=225755",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4513,
+                "last_updated": "2024-11-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.17083901275122,
+                    36.117716051512666
+                ]
+            },
+            "properties": {
+                "name": "LINQ Promenade - Welcome to Las Vegas Gift Shop",
+                "area": "Nevada",
+                "address": "3545 Las Vegas Blvd South Suite L-07, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=408924",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6222,
+                "last_updated": "2024-11-09"
             }
         }
     ]
