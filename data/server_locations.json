@@ -41305,10 +41305,10 @@
                 "address": "653 W 1400 N, Beaver",
                 "external_url": "http://209.221.138.252/Details.aspx?location=384443",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5400,
-                "last_updated": "2024-09-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44029,6 +44029,90 @@
                 "status": "retired",
                 "id": 1556,
                 "last_updated": "2024-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0813714,
+                    47.516285
+                ]
+            },
+            "properties": {
+                "name": "Alpar Ignac Monument",
+                "area": "Hungary",
+                "address": "Kós Károly stny. 1, 1146 Ungheria, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445110",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7635,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.959185,
+                    47.5183586
+                ]
+            },
+            "properties": {
+                "name": "Chairlift of Elizabeth tower uphill station",
+                "area": "Hungary",
+                "address": "Budapest, Jánoshegyi út, 1121 Ungheria, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445111",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7636,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0463939,
+                    47.5266408
+                ]
+            },
+            "properties": {
+                "name": "Margit sziget",
+                "area": "Hungary",
+                "address": "Margareth island, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445108",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7637,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8589636,
+                    1.3022854
+                ]
+            },
+            "properties": {
+                "name": "Sultan Mosque",
+                "area": "Singapore",
+                "address": "3 Muscat St, Singapore 198833, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445106",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7638,
+                "last_updated": "2024-11-07"
             }
         }
     ]
