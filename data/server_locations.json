@@ -3888,9 +3888,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2987",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4521,
-                "last_updated": "2024-10-13"
+                "last_updated": "2024-11-09"
             }
         },
         {
@@ -19192,8 +19192,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -115.1754312,
-                    36.0987973
+                    -115.1755706557654,
+                    36.09882720902451
                 ]
             },
             "properties": {
@@ -19205,7 +19205,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7015,
-                "last_updated": "2023-12-25"
+                "last_updated": "2024-11-10"
             }
         },
         {
@@ -23036,10 +23036,10 @@
                 "address": "202 South Village Loop Drive, Grand Canyon National Park",
                 "external_url": "http://209.221.138.252/Details.aspx?location=286838",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2626,
-                "last_updated": "2024-03-07"
+                "last_updated": "2024-11-10"
             }
         },
         {
@@ -40143,10 +40143,10 @@
                 "address": "3850 Las Vegas Boulevard South, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=305786",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4506,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-10"
             }
         },
         {
@@ -41305,10 +41305,10 @@
                 "address": "653 W 1400 N, Beaver",
                 "external_url": "http://209.221.138.252/Details.aspx?location=384443",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5400,
-                "last_updated": "2024-09-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -43155,13 +43155,13 @@
             "properties": {
                 "name": "Outtens Delites",
                 "area": "Maryland",
-                "address": "1 N Main St., Berlin",
+                "address": "1 N Main St. Berlin, MD",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=444327",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7612,
-                "last_updated": "2024-10-29"
+                "last_updated": "2024-11-10"
             }
         },
         {
@@ -43902,6 +43902,259 @@
                 "machine_status": "available",
                 "id": 6222,
                 "last_updated": "2024-11-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.0786299,
+                    32.9346485
+                ]
+            },
+            "properties": {
+                "name": "Grapevine Convention & Visitors Bureau",
+                "area": "Texas",
+                "address": "636 S. Main Street, Grapevine",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445049",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7633,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.6992083,
+                    43.3644194
+                ]
+            },
+            "properties": {
+                "name": "Beef Jerky Outlet",
+                "area": "New York",
+                "address": "1424 Route 9, Space #8A , Lake George",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331731",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3020,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.17484807910365,
+                    36.10170987764369
+                ]
+            },
+            "properties": {
+                "name": "New York-New York Hotel and Casino - Outside NYC Shop",
+                "area": "Nevada",
+                "address": "3790 Las Vegas Blvd S Las Vegas, NV 89109 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7634,
+                "last_updated": "2024-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.17548127453172,
+                    36.09879507627099
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Hotel & Casino - Welcome to Las Vegas store",
+                "area": "Nevada",
+                "address": "3850 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=413055",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6220,
+                "last_updated": "2024-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.2545821,
+                    53.47713580000001
+                ]
+            },
+            "properties": {
+                "name": "Museum of Science and Industry",
+                "area": "England",
+                "address": "Liverpool Road, LANCASHIRE - Manchester",
+                "external_url": "http://209.221.138.252/Details.aspx?location=91889",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1450,
+                "last_updated": "2024-11-10",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.8864512,
+                    52.9874366
+                ]
+            },
+            "properties": {
+                "name": "Alton Towers Hotel and Resort",
+                "area": "England",
+                "address": "Farley Lane, Alton, STAFFORDSHIRE - Alton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=75138",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 1556,
+                "last_updated": "2024-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0813714,
+                    47.516285
+                ]
+            },
+            "properties": {
+                "name": "Alpar Ignac Monument",
+                "area": "Hungary",
+                "address": "Kós Károly stny. 1, 1146 Ungheria, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445110",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7635,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.959185,
+                    47.5183586
+                ]
+            },
+            "properties": {
+                "name": "Chairlift of Elizabeth tower uphill station",
+                "area": "Hungary",
+                "address": "Budapest, Jánoshegyi út, 1121 Ungheria, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445111",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7636,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0463939,
+                    47.5266408
+                ]
+            },
+            "properties": {
+                "name": "Margit sziget",
+                "area": "Hungary",
+                "address": "Margareth island, Budapest",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445108",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7637,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8589636,
+                    1.3022854
+                ]
+            },
+            "properties": {
+                "name": "Sultan Mosque",
+                "area": "Singapore",
+                "address": "3 Muscat St, Singapore 198833, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445106",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7638,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0865,
+                    51.5045
+                ]
+            },
+            "properties": {
+                "name": "The Shard",
+                "area": "England",
+                "address": "32 London Bridge Street,, LONDON - London Bridge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231487",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1475,
+                "last_updated": "2024-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1723136,
+                    36.1088425
+                ]
+            },
+            "properties": {
+                "name": "Harmon Corner - Bubba Gump Shrimp Company",
+                "area": "Nevada",
+                "address": "3717 Las Vegas Boulevard South suite 2Q and 3C, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=189027",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4509,
+                "last_updated": "2024-11-10"
             }
         }
     ]
