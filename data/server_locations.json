@@ -20192,10 +20192,10 @@
                 "address": "129 Fremont Street, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=10479",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4499,
-                "last_updated": "2024-11-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44327,6 +44327,48 @@
                 "id": 7641,
                 "last_updated": "2024-11-14",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.47555559999999,
+                    37.5375
+                ]
+            },
+            "properties": {
+                "name": "Robins Nature and Visitor Center at Maymont",
+                "area": "Virginia",
+                "address": "2201 Shields Lake Dr, Richmond",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1387",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4444,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.8473403,
+                    46.8589966
+                ]
+            },
+            "properties": {
+                "name": "West Acres Mall - Legacy Toys'",
+                "area": "North Dakota",
+                "address": ", Fargo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445270",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7642,
+                "last_updated": "2024-11-07"
             }
         }
     ]
