@@ -22529,10 +22529,10 @@
                 "address": "4915 Clifton Hill, Ontario - Niagara Falls",
                 "external_url": "http://209.221.138.252/Details.aspx?location=235063",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5012,
-                "last_updated": "2024-03-04"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44751,6 +44751,90 @@
                 "last_updated": "2024-11-24",
                 "multimachine": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.886736,
+                    43.9932547
+                ]
+            },
+            "properties": {
+                "name": "Baba Vida Castle",
+                "area": "Bulgaria",
+                "address": "Baba Vida Fortress, Vidin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445849",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7650,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.2165467,
+                    48.0877871
+                ]
+            },
+            "properties": {
+                "name": "Sigmaringen Castle",
+                "area": "Germany",
+                "address": "Karl-Anton-Platz 8, Sigmaringen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445798",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7651,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.2170138,
+                    48.08688679999999
+                ]
+            },
+            "properties": {
+                "name": "Tourist information",
+                "area": "Germany",
+                "address": "Fürst - Wilhelm - Straße 15, Sigmaringen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445797",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7652,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.63327819999999,
+                    18.4334704
+                ]
+            },
+            "properties": {
+                "name": "The Columbus Foundation, British Virgin Islands,  Nina (Replica)",
+                "area": "Virgin Islands",
+                "address": "Different states and ports (Traveling exhibition), Tortola, British Virgin Islands",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258063",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1606,
+                "last_updated": "2024-11-07"
             }
         }
     ]
