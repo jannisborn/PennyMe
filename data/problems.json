@@ -176,6 +176,28 @@
                 "last_updated": -1
             },
             "problem": "To-be-added-machine Dierenpark (ZOO) in Netherlands seems unavailable: http://209.221.138.252/Details.aspx?location=708 with Internal Server Error (500)"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Unknown Location ",
+                "area": "Taiwan",
+                "address": ", Unknown. ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445868",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": -1,
+                "last_updated": -1
+            },
+            "problem": "Unknown Location  could not find coordinates for , Unknown. "
         }
     ]
 }
