@@ -4140,9 +4140,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=410459",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6259,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-11-29"
             }
         },
         {
@@ -20213,10 +20213,10 @@
                 "address": "363 Prospect Street, Niagara Falls",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3585",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3065,
-                "last_updated": "2024-01-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -22529,10 +22529,10 @@
                 "address": "4915 Clifton Hill, Ontario - Niagara Falls",
                 "external_url": "http://209.221.138.252/Details.aspx?location=235063",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5012,
-                "last_updated": "2024-03-04"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -28045,9 +28045,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=429279",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7168,
-                "last_updated": "2024-04-25"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -29840,8 +29840,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3345,
-                "last_updated": "2024-06-04",
-                "multimachine": 3
+                "last_updated": "2024-11-23",
+                "multimachine": 4
             }
         },
         {
@@ -33485,9 +33485,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=433680",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7268,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-29"
             }
         },
         {
@@ -35194,10 +35194,10 @@
                 "address": "Castle District",
                 "external_url": "http://209.221.138.252/Details.aspx?location=9750",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 818,
-                "last_updated": "2024-07-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40800,10 +40800,10 @@
                 "address": "71 N. Main, Moab",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1678",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2078,
-                "last_updated": "2024-09-23"
+                "last_updated": "2024-11-30"
             }
         },
         {
@@ -44643,6 +44643,451 @@
                 "machine_status": "available",
                 "id": 270,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.1722805,
+                    26.136495
+                ]
+            },
+            "properties": {
+                "name": "Sea Turtle Inc.",
+                "area": "Texas",
+                "address": "6617 Padre Boulevard., South Padre Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2725",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3804,
+                "last_updated": "2024-11-19",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.6630983363971037,
+                    40.4318969979063
+                ]
+            },
+            "properties": {
+                "name": "Las Ventas Bullring",
+                "area": "Spain",
+                "address": "C. Alcalá, 237, 28028, Madrid",
+                "external_url": "http://209.221.138.252/Details.aspx?location=374722",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5927,
+                "last_updated": "2024-11-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4686103,
+                    19.3136947
+                ]
+            },
+            "properties": {
+                "name": "Ex-Hacienda de Chautla ",
+                "area": "Mexico",
+                "address": "Carr. Federal México-Puebla Km. 4.5, 74135 San Lucas el Grande, Pue., San Lucas el Grande, Puebla ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445627",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7648,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.19319066899845,
+                    28.027942764888405
+                ]
+            },
+            "properties": {
+                "name": "Dinosaur World",
+                "area": "Florida",
+                "address": "5442 Harvey Tew Rd, Plant City, FL 33565, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7649,
+                "last_updated": "2024-11-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.089998,
+                    29.5593451
+                ]
+            },
+            "properties": {
+                "name": "Space Center Houston (Was Johnson Space Center)",
+                "area": "Texas",
+                "address": "2101 NASA Pkwy, Houston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2496",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3741,
+                "last_updated": "2024-11-24",
+                "multimachine": 3,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.886736,
+                    43.9932547
+                ]
+            },
+            "properties": {
+                "name": "Baba Vida Castle",
+                "area": "Bulgaria",
+                "address": "Baba Vida Fortress, Vidin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445849",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7650,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.2165467,
+                    48.0877871
+                ]
+            },
+            "properties": {
+                "name": "Sigmaringen Castle",
+                "area": "Germany",
+                "address": "Karl-Anton-Platz 8, Sigmaringen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445798",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7651,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.2170138,
+                    48.08688679999999
+                ]
+            },
+            "properties": {
+                "name": "Tourist information",
+                "area": "Germany",
+                "address": "Fürst - Wilhelm - Straße 15, Sigmaringen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445797",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7652,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.63327819999999,
+                    18.4334704
+                ]
+            },
+            "properties": {
+                "name": "The Columbus Foundation, British Virgin Islands,  Nina (Replica)",
+                "area": "Virgin Islands",
+                "address": "Different states and ports (Traveling exhibition), Tortola, British Virgin Islands",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258063",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1606,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.09726049999999,
+                    29.9963262
+                ]
+            },
+            "properties": {
+                "name": "Ranch Road Gift",
+                "area": "Texas",
+                "address": "14015 RR 12 Suite 2, Wimberley",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=445931",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7653,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8608244,
+                    35.6656043
+                ]
+            },
+            "properties": {
+                "name": "Henn Na Hotel Tokyo Nishikasai",
+                "area": "Japan",
+                "address": "Tokyo 5 Chome-4-7, Nishikasai",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446033",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7654,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7081642,
+                    40.4158451
+                ]
+            },
+            "properties": {
+                "name": "Restaurante Arrabal",
+                "area": "Spain",
+                "address": "Plaza Mayor 23, Dentro de la Plaza Mayor, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446006",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7655,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.24368834921486,
+                    44.854460669601295
+                ]
+            },
+            "properties": {
+                "name": "Minnesota Symbols",
+                "area": "Minnesota",
+                "address": "60 E Broadway, Bloomington, MN 55425",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7656,
+                "last_updated": "2024-11-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2275685683507,
+                    32.766204888740845
+                ]
+            },
+            "properties": {
+                "name": "Manta Seaworld",
+                "area": "California",
+                "address": "500 Sea World Dr., San Diego, CA 92109, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7657,
+                "last_updated": "2024-11-27",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5183825,
+                    35.711725
+                ]
+            },
+            "properties": {
+                "name": "Gatlinburg SkyPark",
+                "area": "Tennessee",
+                "address": "765 Parkway, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446051",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7658,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.8190504,
+                    40.51696829999999
+                ]
+            },
+            "properties": {
+                "name": "NorthlandZ",
+                "area": "New Jersey",
+                "address": "495 US-202, Flemington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446043",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7659,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.0461815,
+                    47.7964275
+                ]
+            },
+            "properties": {
+                "name": "Rdzeniewski - Amber Shop",
+                "area": "Austria",
+                "address": "Festungsgasse 4, Salzburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446046",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7660,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.2646172,
+                    43.6951943
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe, Nice",
+                "area": "France",
+                "address": ", Nice, French Riviera - Cote d'Azur, ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446118",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7661,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1306121,
+                    39.9691613
+                ]
+            },
+            "properties": {
+                "name": "Carmel Christkindlmarkt ",
+                "area": "Indiana",
+                "address": "10 Carter Green, Carmel",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446130",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7662,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.0610517,
+                    29.9589601
+                ]
+            },
+            "properties": {
+                "name": "Jazz Funeral Store (Decatur St.)",
+                "area": "Louisiana",
+                "address": "929 Decatur Street, New Orleans",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2323",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3587,
+                "last_updated": "2024-11-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.0644628,
+                    29.955112
+                ]
+            },
+            "properties": {
+                "name": "Gumbo File Shop",
+                "area": "Louisiana",
+                "address": "439 Decatur Street, New Orleans",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2327",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3585,
+                "last_updated": "2024-11-30"
             }
         }
     ]
