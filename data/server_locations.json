@@ -17534,9 +17534,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=418201",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6976,
-                "last_updated": "2024-07-15"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45196,6 +45196,27 @@
                 "last_updated": "2024-12-02",
                 "multimachine": 2,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.7827091,
+                    44.3417584
+                ]
+            },
+            "properties": {
+                "name": "Lewies Burger & Brew",
+                "area": "South Dakota",
+                "address": "711 S Main Street, Lead",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446321",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5320,
+                "last_updated": "2024-11-07"
             }
         }
     ]
