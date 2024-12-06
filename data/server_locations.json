@@ -40632,10 +40632,10 @@
                 "address": "Liberty Island, New York Harbor",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4559",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3060,
-                "last_updated": "2024-09-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -41725,10 +41725,10 @@
                 "address": "Ellis Island, New York Harbor",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3611",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3059,
-                "last_updated": "2024-10-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45261,6 +45261,27 @@
                 "id": 4843,
                 "last_updated": "2024-12-03",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.7658314,
+                    28.3730176
+                ]
+            },
+            "properties": {
+                "name": "Casa de Los Balcones",
+                "area": "Spain",
+                "address": "Av. Tomé Cano, 4, 38450 Garachico, Santa Cruz de Tenerife, Spanien, Tenerife - Garachico ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446626",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7666,
+                "last_updated": "2024-11-07"
             }
         }
     ]
