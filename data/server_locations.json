@@ -3277,9 +3277,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=227234",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6125,
-                "last_updated": "2024-01-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45281,6 +45281,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7666,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.05013579999999,
+                    38.1249881
+                ]
+            },
+            "properties": {
+                "name": "Frontier Culture Museum ",
+                "area": "Virginia",
+                "address": "1290 Richmond Ave,, Staunton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=382686",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5441,
                 "last_updated": "2024-11-07"
             }
         }
