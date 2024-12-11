@@ -3277,9 +3277,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=227234",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6125,
-                "last_updated": "2024-01-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -17534,9 +17534,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=418201",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6976,
-                "last_updated": "2024-07-15"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -27494,10 +27494,10 @@
                 "address": "26 S Main St, Bryce Canyon City",
                 "external_url": "http://209.221.138.252/Details.aspx?location=350600",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 5401,
-                "last_updated": "2024-10-27"
+                "last_updated": "2024-12-01"
             }
         },
         {
@@ -29884,8 +29884,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3338,
-                "last_updated": "2024-06-04",
-                "multimachine": 24,
+                "last_updated": "2024-12-03",
+                "multimachine": 16,
                 "paywall": true
             }
         },
@@ -40632,10 +40632,10 @@
                 "address": "Liberty Island, New York Harbor",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4559",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3060,
-                "last_updated": "2024-09-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -41725,10 +41725,10 @@
                 "address": "Ellis Island, New York Harbor",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3611",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3059,
-                "last_updated": "2024-10-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -43581,10 +43581,10 @@
                 "address": "2965 Historic Decatur Rd., San Diego",
                 "external_url": "http://209.221.138.252/Details.aspx?location=192713",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4775,
-                "last_updated": "2024-11-04"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45088,6 +45088,348 @@
                 "status": "unvisited",
                 "id": 3585,
                 "last_updated": "2024-11-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.2599554,
+                    34.9404322
+                ]
+            },
+            "properties": {
+                "name": "Chickamauga and Chattanooga National Military Park",
+                "area": "Georgia",
+                "address": "3370 Lafayette Rd, Fort Oglethorpe",
+                "external_url": "http://209.221.138.252/Details.aspx?location=370301",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5390,
+                "last_updated": "2024-11-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.5111083,
+                    44.4145698
+                ]
+            },
+            "properties": {
+                "name": "Sturgis Photo & Gifts",
+                "area": "South Dakota",
+                "address": "1081 Main St, Sturgis ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446261",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7663,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.7038043,
+                    3.152779
+                ]
+            },
+            "properties": {
+                "name": "The Kuala Lumpur Tower",
+                "area": "Malaysia",
+                "address": "No. 2 Jalan Punchak Off Jalan P.Ramlee, Kuala Lumpur",
+                "external_url": "http://209.221.138.252/Details.aspx?location=272413",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1751,
+                "last_updated": "2024-12-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.51531520766665,
+                    28.372733273459623
+                ]
+            },
+            "properties": {
+                "name": "Goofy's Candy Co.",
+                "area": "Florida",
+                "address": "1770 Buena Vista Dr, Orlando, FL 32830, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7664,
+                "last_updated": "2024-12-01",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.51523630532033,
+                    28.37275066143777
+                ]
+            },
+            "properties": {
+                "name": "Goofy's Candy Company",
+                "area": "Florida",
+                "address": "1770 Buena Vista Dr, Orlando, FL 32830, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7665,
+                "last_updated": "2024-12-02",
+                "multimachine": 2,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.7827091,
+                    44.3417584
+                ]
+            },
+            "properties": {
+                "name": "Lewies Burger & Brew",
+                "area": "South Dakota",
+                "address": "711 S Main Street, Lead",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446321",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5320,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.581212,
+                    28.417663
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, *Magic Kingdom*",
+                "area": "Florida",
+                "address": "Magic Kingdom Resort, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1636",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3339,
+                "last_updated": "2024-12-03",
+                "multimachine": 22
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.6856832,
+                    34.4100018
+                ]
+            },
+            "properties": {
+                "name": "Stearns Wharf - Old Wharf Trading Co./Topside Resort Wear",
+                "area": "California",
+                "address": "217 A & B Stearns Wharf, Santa Barbara",
+                "external_url": "http://209.221.138.252/Details.aspx?location=14418",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4843,
+                "last_updated": "2024-12-03",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.7658314,
+                    28.3730176
+                ]
+            },
+            "properties": {
+                "name": "Casa de Los Balcones",
+                "area": "Spain",
+                "address": "Av. Tomé Cano, 4, 38450 Garachico, Santa Cruz de Tenerife, Spanien, Tenerife - Garachico ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446626",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7666,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.05013579999999,
+                    38.1249881
+                ]
+            },
+            "properties": {
+                "name": "Frontier Culture Museum ",
+                "area": "Virginia",
+                "address": "1290 Richmond Ave,, Staunton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=382686",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5441,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.37640037842645874,
+                    39.47879648426536
+                ]
+            },
+            "properties": {
+                "name": "Torres de serrano",
+                "area": "Spain",
+                "address": "Calle Corellats Benidorm",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7667,
+                "last_updated": "2024-12-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.51512053011507,
+                    28.371705988042585
+                ]
+            },
+            "properties": {
+                "name": "Waterside Stage",
+                "area": "Florida",
+                "address": "1790 East Buena Vista Drive, Orlando, FL 32830",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7668,
+                "last_updated": "2024-12-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7623384,
+                    35.6539977
+                ]
+            },
+            "properties": {
+                "name": "Tachibana-Maru Passenger Ship",
+                "area": "Japan",
+                "address": "Tokai Kisen 1-16-1 Kaigan Minato-ku, Tokyo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446665",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7669,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.00980435274285,
+                    53.18150882272691
+                ]
+            },
+            "properties": {
+                "name": "Kurpark / Kiosk am Strandcafé",
+                "area": "Germany",
+                "address": "Unter den Eichen 10, 26160 Bad Zwischenahn",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7670,
+                "last_updated": "2024-12-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.8980436,
+                    26.7057308
+                ]
+            },
+            "properties": {
+                "name": "Shell Factory, The",
+                "area": "Florida",
+                "address": "2787 North Tamiami Trail, Ft. Myers",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1812",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3304,
+                "last_updated": "2024-12-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1768485,
+                    41.3822645
+                ]
+            },
+            "properties": {
+                "name": "Pl. de Sant Jaume",
+                "area": "Spain",
+                "address": "Carrer de la Llibreteria, 2, Ciutat Vella, Barcelona",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446693",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7671,
+                "last_updated": "2024-11-07"
             }
         }
     ]
