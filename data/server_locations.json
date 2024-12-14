@@ -45063,10 +45063,10 @@
                 "address": "929 Decatur Street, New Orleans",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2323",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3587,
-                "last_updated": "2024-11-29"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45430,6 +45430,111 @@
                 "machine_status": "available",
                 "id": 7671,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.78530959999999,
+                    32.4802536
+                ]
+            },
+            "properties": {
+                "name": "Louisiana State Exihibit Museum",
+                "area": "Louisiana",
+                "address": "3015 Greenwood Rd, Shreveport, LA 71109, United States, Shreveport",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446768",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7672,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.8216881,
+                    21.2657344
+                ]
+            },
+            "properties": {
+                "name": "Waikiki Aquarium",
+                "area": "Hawaii",
+                "address": "2777 Kalakaua Avenue, Oahu - Honolulu",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4534",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3853,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.8355079,
+                    46.4907973
+                ]
+            },
+            "properties": {
+                "name": "Sankt Moritz - Corvatsch",
+                "area": "Switzerland",
+                "address": "Piz corvatsch 3033 mt, Engadin ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446789",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7673,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.28718198421957,
+                    36.646768441740015
+                ]
+            },
+            "properties": {
+                "name": "Toy museum gift shop",
+                "area": "Missouri",
+                "address": "3615 W. 76 Country blvd. 65616",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7674,
+                "last_updated": "2024-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.329519,
+                    52.503017
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe - Berlin",
+                "area": "Germany",
+                "address": "Kurfuerstendamm 224, 10719 Berlin, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5056,
+                "last_updated": "2024-12-14"
             }
         }
     ]
