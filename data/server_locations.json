@@ -43603,9 +43603,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=444712",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7628,
-                "last_updated": "2024-10-30"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45576,6 +45576,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7675,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.5347949,
+                    34.8063356
+                ]
+            },
+            "properties": {
+                "name": "Osaka Wheel",
+                "area": "Japan",
+                "address": "Lalaport Expo City 2-1 Senribanpakukoen Suitashi, Osaka",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446832",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7676,
                 "last_updated": "2024-11-07"
             }
         }
