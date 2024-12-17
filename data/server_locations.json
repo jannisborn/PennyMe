@@ -30462,10 +30462,10 @@
                 "address": "1705 Highway 17 South (near 18th Ave), North Myrtle Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=5862",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2232,
-                "last_updated": "2024-07-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45618,6 +45618,48 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7677,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.867615,
+                    34.2587422
+                ]
+            },
+            "properties": {
+                "name": "Big Bear Snow Play ",
+                "area": "California",
+                "address": "42825 Big Bear Blvd,, Big Bear Lake ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446970",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7678,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.699024,
+                    48.669026
+                ]
+            },
+            "properties": {
+                "name": "Add Slovakia",
+                "area": "Sweeded",
+                "address": ", Add Slovakia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446965",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7679,
                 "last_updated": "2024-11-07"
             }
         }
