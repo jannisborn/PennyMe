@@ -30462,10 +30462,10 @@
                 "address": "1705 Highway 17 South (near 18th Ave), North Myrtle Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=5862",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2232,
-                "last_updated": "2024-07-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -30525,10 +30525,10 @@
                 "address": "100 Aquarium Way, Long Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1334",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4662,
-                "last_updated": "2024-06-10"
+                "last_updated": "2024-12-15"
             }
         },
         {
@@ -40632,10 +40632,10 @@
                 "address": "Liberty Island, New York Harbor",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4559",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3060,
-                "last_updated": "2024-11-07"
+                "last_updated": "2024-12-15"
             }
         },
         {
@@ -41262,11 +41262,11 @@
                 "area": "Spain",
                 "address": "C. Postigo del Carbón, 23, Casco Antiguo, 41001 Sevilla, Spain",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447043",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7563,
-                "last_updated": "2024-09-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -43603,9 +43603,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=444712",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7628,
-                "last_updated": "2024-10-30"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45535,6 +45535,238 @@
                 "status": "unvisited",
                 "id": 5056,
                 "last_updated": "2024-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.909798,
+                    46.434784
+                ]
+            },
+            "properties": {
+                "name": "Restaurant “Le Métropole”",
+                "area": "Switzerland",
+                "address": "Grand-Rue 57",
+                "external_url": "http://209.221.138.252/Details.aspx?location=279193",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 724,
+                "last_updated": "2024-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.0765648,
+                    42.367441
+                ]
+            },
+            "properties": {
+                "name": "Harry Potter  The Exhibition Boston",
+                "area": "Massachusetts",
+                "address": "100 Cambridgeside Place, Cambridge",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446812",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7675,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.5347949,
+                    34.8063356
+                ]
+            },
+            "properties": {
+                "name": "Osaka Wheel",
+                "area": "Japan",
+                "address": "Lalaport Expo City 2-1 Senribanpakukoen Suitashi, Osaka",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446832",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7676,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.0963385,
+                    29.8055423
+                ]
+            },
+            "properties": {
+                "name": "San Felipe de Austin State Historic Site",
+                "area": "Texas",
+                "address": "220 2nd St., San Felipe",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446951",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7677,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.867615,
+                    34.2587422
+                ]
+            },
+            "properties": {
+                "name": "Big Bear Snow Play ",
+                "area": "California",
+                "address": "42825 Big Bear Blvd,, Big Bear Lake ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446970",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7678,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.699024,
+                    48.669026
+                ]
+            },
+            "properties": {
+                "name": "Add Slovakia",
+                "area": "Sweeded",
+                "address": ", Add Slovakia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446965",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7679,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.1318496,
+                    36.4139207
+                ]
+            },
+            "properties": {
+                "name": "Paris Landing KOA Campground",
+                "area": "Tennessee",
+                "address": "6290 East Antioch Road, Buchanan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=446995",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7680,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.50263870635258,
+                    35.463504520494254
+                ]
+            },
+            "properties": {
+                "name": "Bass pro shops",
+                "area": "Oklahoma",
+                "address": "200 Bass Pro Dr Oklahoma City, OK  73104 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7681,
+                "last_updated": "2024-12-20",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6420882,
+                    35.1397707
+                ]
+            },
+            "properties": {
+                "name": "Jim And G's Apparel And Beachwear",
+                "area": "California",
+                "address": "685 Cypress St, Pismo Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=343451",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4733,
+                "last_updated": "2024-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6423593298075,
+                    35.141693476427456
+                ]
+            },
+            "properties": {
+                "name": "Old West Cinnamon Rolls",
+                "area": "California",
+                "address": "861 Dolliver Street Pismo, CA 93449",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7682,
+                "last_updated": "2024-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6379334,
+                    35.1342374
+                ]
+            },
+            "properties": {
+                "name": "Pismo Coast Village Grill",
+                "area": "California",
+                "address": "165 S Dolliver St, Pismo Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329893",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4735,
+                "last_updated": "2024-12-21"
             }
         }
     ]
