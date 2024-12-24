@@ -5320,9 +5320,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=317220",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 977,
-                "last_updated": "2023-10-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -16006,9 +16006,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6931,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-12-22"
             }
         },
         {
@@ -30567,10 +30567,10 @@
                 "address": "19955 Highway 70 West , Alamogordo",
                 "external_url": "http://209.221.138.252/Details.aspx?location=293348",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4902,
-                "last_updated": "2024-06-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -38459,9 +38459,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=437590",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7484,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -43772,10 +43772,10 @@
                 "address": "600 Settlers Landing Rd., Hampton",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1212",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4418,
-                "last_updated": "2024-11-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45767,6 +45767,134 @@
                 "machine_status": "available",
                 "id": 4735,
                 "last_updated": "2024-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1492714308883,
+                    32.73414647498132
+                ]
+            },
+            "properties": {
+                "name": "San Diego Zoo Machines",
+                "area": "California",
+                "address": "2920 Zoo Dr, San Diego, CA 92101, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7683,
+                "last_updated": "2024-12-22",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.17908635614336,
+                    6.221202742169867
+                ]
+            },
+            "properties": {
+                "name": "Guatapé Piedra el Peñol",
+                "area": "Colombia",
+                "address": "Vereda la piedra, Guatapé, Antioquia, Colombia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7684,
+                "last_updated": "2024-12-22",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.9366691,
+                    33.7144649
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Park",
+                "area": "South Carolina",
+                "address": "211 George Bishop Parkway, Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=41063",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5303,
+                "last_updated": "2024-12-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.1394141,
+                    54.0922046
+                ]
+            },
+            "properties": {
+                "name": "U-Boot Denkmal",
+                "area": "Germany",
+                "address": "Strandstrasse 92 /// es handelt sich um den Standort in 24235 Laboe",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 546,
+                "last_updated": "2024-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.7827985,
+                    43.5862793
+                ]
+            },
+            "properties": {
+                "name": "Wilderness Resort Hotel",
+                "area": "Wisconsin",
+                "address": "511 E. Adams St., Wisconsin Dells",
+                "external_url": "http://209.221.138.252/Details.aspx?location=24316",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2483,
+                "last_updated": "2024-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.6080863,
+                    52.1131758
+                ]
+            },
+            "properties": {
+                "name": "Magdeburg area shop",
+                "area": "Germany",
+                "address": ", Magdeburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447184",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7685,
+                "last_updated": "2024-11-07"
             }
         }
     ]
