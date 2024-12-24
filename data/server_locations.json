@@ -5320,9 +5320,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=317220",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 977,
-                "last_updated": "2023-10-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -30567,10 +30567,10 @@
                 "address": "19955 Highway 70 West , Alamogordo",
                 "external_url": "http://209.221.138.252/Details.aspx?location=293348",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4902,
-                "last_updated": "2024-06-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -38459,9 +38459,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=437590",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7484,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -43772,10 +43772,10 @@
                 "address": "600 Settlers Landing Rd., Hampton",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1212",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4418,
-                "last_updated": "2024-11-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45874,6 +45874,27 @@
                 "status": "unvisited",
                 "id": 2483,
                 "last_updated": "2024-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.6080863,
+                    52.1131758
+                ]
+            },
+            "properties": {
+                "name": "Magdeburg area shop",
+                "area": "Germany",
+                "address": ", Magdeburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447184",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7685,
+                "last_updated": "2024-11-07"
             }
         }
     ]
