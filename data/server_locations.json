@@ -45635,7 +45635,7 @@
                 "area": "California",
                 "address": "42825 Big Bear Blvd,, Big Bear Lake ",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=446970",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7678,
@@ -45961,6 +45961,48 @@
                 "machine_status": "available",
                 "id": 7686,
                 "last_updated": "2024-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3392957,
+                    34.1012704
+                ]
+            },
+            "properties": {
+                "name": "Highland Tattoo",
+                "area": "California",
+                "address": "6816 Hollywood Blvd, Hollywood",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447209",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7687,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.205536,
+                    37.205406
+                ]
+            },
+            "properties": {
+                "name": "Fort Zion Gift Shop & Petting Zoo",
+                "area": "Utah",
+                "address": "1000 W Highway 9, Virgin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252187",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 2103,
+                "last_updated": "2024-11-07"
             }
         }
     ]
