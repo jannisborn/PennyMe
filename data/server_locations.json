@@ -18337,9 +18337,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=62691",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 961,
-                "last_updated": "2023-12-11"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -27116,10 +27116,10 @@
                 "address": "Via San Gregorio Armeno 22",
                 "external_url": "http://209.221.138.252/Details.aspx?location=73080",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 935,
-                "last_updated": "2024-04-24"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46024,6 +46024,48 @@
                 "status": "unvisited",
                 "id": 3701,
                 "last_updated": "2024-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.81430379999999,
+                    39.8371589
+                ]
+            },
+            "properties": {
+                "name": "Uranus Fudge Factory",
+                "area": "Indiana",
+                "address": "6404 National Rd E, Richmond",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447367",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7688,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8608244,
+                    35.6656043
+                ]
+            },
+            "properties": {
+                "name": "Henn na Hotel Tokyo Nishikasai",
+                "area": "Japan",
+                "address": "5-4-7 Nishikasai, Edogawa-ku, Tokyo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=349542",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2837,
+                "last_updated": "2024-11-07"
             }
         }
     ]
