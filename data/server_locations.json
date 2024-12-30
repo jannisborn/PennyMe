@@ -309,15 +309,15 @@
                 ]
             },
             "properties": {
-                "name": "Golden Tours Waterloo Branch ",
+                "name": "Golden Tours Waterloo Branch",
                 "area": "England",
                 "address": "York Rd, Elizabeth House, Unit 31 Visitor Centre, London",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=325503",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1490,
-                "last_updated": "2023-11-19"
+                "last_updated": "2024-12-29"
             }
         },
         {
@@ -3256,9 +3256,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412790",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6124,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-12-29"
             }
         },
         {
@@ -5320,9 +5320,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=317220",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 977,
-                "last_updated": "2023-10-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -7592,8 +7592,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    12.2313113,
-                    54.1603985
+                    12.231594609005022,
+                    54.16189024228507
                 ]
             },
             "properties": {
@@ -7605,7 +7605,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6532,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-12-25"
             }
         },
         {
@@ -16006,9 +16006,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6931,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-12-22"
             }
         },
         {
@@ -18337,9 +18337,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=62691",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 961,
-                "last_updated": "2023-12-11"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -27116,10 +27116,10 @@
                 "address": "Via San Gregorio Armeno 22",
                 "external_url": "http://209.221.138.252/Details.aspx?location=73080",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 935,
-                "last_updated": "2024-04-24"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -30567,10 +30567,10 @@
                 "address": "19955 Highway 70 West , Alamogordo",
                 "external_url": "http://209.221.138.252/Details.aspx?location=293348",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4902,
-                "last_updated": "2024-06-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -38459,9 +38459,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=437590",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7484,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -43772,10 +43772,10 @@
                 "address": "600 Settlers Landing Rd., Hampton",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1212",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4418,
-                "last_updated": "2024-11-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45635,7 +45635,7 @@
                 "area": "California",
                 "address": "42825 Big Bear Blvd,, Big Bear Lake ",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=446970",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7678,
@@ -45722,9 +45722,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=343451",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4733,
-                "last_updated": "2024-12-21"
+                "last_updated": "2024-12-28"
             }
         },
         {
@@ -45767,6 +45767,410 @@
                 "machine_status": "available",
                 "id": 4735,
                 "last_updated": "2024-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1492714308883,
+                    32.73414647498132
+                ]
+            },
+            "properties": {
+                "name": "San Diego Zoo Machines",
+                "area": "California",
+                "address": "2920 Zoo Dr, San Diego, CA 92101, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7683,
+                "last_updated": "2024-12-22",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.17908635614336,
+                    6.221202742169867
+                ]
+            },
+            "properties": {
+                "name": "Guatapé Piedra el Peñol",
+                "area": "Colombia",
+                "address": "Vereda la piedra, Guatapé, Antioquia, Colombia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7684,
+                "last_updated": "2024-12-22",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.9366691,
+                    33.7144649
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Park",
+                "area": "South Carolina",
+                "address": "211 George Bishop Parkway, Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=41063",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5303,
+                "last_updated": "2024-12-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.1394141,
+                    54.0922046
+                ]
+            },
+            "properties": {
+                "name": "U-Boot Denkmal",
+                "area": "Germany",
+                "address": "Strandstrasse 92 /// es handelt sich um den Standort in 24235 Laboe",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 546,
+                "last_updated": "2024-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.7827985,
+                    43.5862793
+                ]
+            },
+            "properties": {
+                "name": "Wilderness Resort Hotel",
+                "area": "Wisconsin",
+                "address": "511 E. Adams St., Wisconsin Dells",
+                "external_url": "http://209.221.138.252/Details.aspx?location=24316",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2483,
+                "last_updated": "2024-12-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.6080863,
+                    52.1131758
+                ]
+            },
+            "properties": {
+                "name": "Magdeburg area shop",
+                "area": "Germany",
+                "address": ", Magdeburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447184",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7685,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.084095961048407,
+                    54.180972860269016
+                ]
+            },
+            "properties": {
+                "name": "Seepromenade Warnemünde",
+                "area": "Germany",
+                "address": "Seepromenade Warnemünde, 18119 Rostock",
+                "external_url": "http://209.221.138.252/Details.aspx?location=195841",
+                "internal_url": "null",
+                "logs": {
+                    "2021-11-14": "Exact GPS location is missing."
+                },
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 634,
+                "last_updated": "2024-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.087908,
+                    54.177045
+                ]
+            },
+            "properties": {
+                "name": "Hafenpromenade",
+                "area": "Germany",
+                "address": "Am Alten Strom",
+                "external_url": "http://209.221.138.252/Details.aspx?location=195720",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 631,
+                "last_updated": "2024-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.8279246275196461,
+                    51.17847668023022
+                ]
+            },
+            "properties": {
+                "name": "Stonehenge",
+                "area": "England",
+                "address": "3 Stonehenge Rd, Amesbury, Salisbury SP4 7BA, UK",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7686,
+                "last_updated": "2024-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3392957,
+                    34.1012704
+                ]
+            },
+            "properties": {
+                "name": "Highland Tattoo",
+                "area": "California",
+                "address": "6816 Hollywood Blvd, Hollywood",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447209",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7687,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.205536,
+                    37.205406
+                ]
+            },
+            "properties": {
+                "name": "Fort Zion Gift Shop & Petting Zoo",
+                "area": "Utah",
+                "address": "1000 W Highway 9, Virgin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252187",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 2103,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.8252111,
+                    29.2649278
+                ]
+            },
+            "properties": {
+                "name": "61st Street Fishing Pier",
+                "area": "Texas",
+                "address": "6101 Seawall Blvd, Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=340222",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3701,
+                "last_updated": "2024-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.81430379999999,
+                    39.8371589
+                ]
+            },
+            "properties": {
+                "name": "Uranus Fudge Factory",
+                "area": "Indiana",
+                "address": "6404 National Rd E, Richmond",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447367",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7688,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8608244,
+                    35.6656043
+                ]
+            },
+            "properties": {
+                "name": "Henn na Hotel Tokyo Nishikasai",
+                "area": "Japan",
+                "address": "5-4-7 Nishikasai, Edogawa-ku, Tokyo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=349542",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2837,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.490642337792636,
+                    51.920198179236365
+                ]
+            },
+            "properties": {
+                "name": "2 Cube houses stay okay",
+                "area": "Netherlands",
+                "address": "Overblaak 57, 3011 MH Rotterdam, Netherlands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7689,
+                "last_updated": "2024-12-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.472026888280575,
+                    51.89830980913192
+                ]
+            },
+            "properties": {
+                "name": "Ss Rotterdam op het dek",
+                "area": "Netherlands",
+                "address": "Basaltstraat 25, 3072 AA Rotterdam, Netherlands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7690,
+                "last_updated": "2024-12-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.1004852,
+                    46.78667189999999
+                ]
+            },
+            "properties": {
+                "name": "Bentlyville Gift Shop",
+                "area": "Minnesota",
+                "address": "4313 Haines Road , Duluth",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447383",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7691,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5675905,
+                    35.79875450000001
+                ]
+            },
+            "properties": {
+                "name": "Mine Your Own Gem Mine (formerly Three Bear Gifts)",
+                "area": "Tennessee",
+                "address": "2865 Parkway, Pigeon Forge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2659",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4272,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.79085909999999,
+                    29.2882774
+                ]
+            },
+            "properties": {
+                "name": "Fish Tales Seafood Restaurant",
+                "area": "Texas",
+                "address": "2502 Seawall Blvd, Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=81347",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3704,
+                "last_updated": "2024-12-30"
             }
         }
     ]
