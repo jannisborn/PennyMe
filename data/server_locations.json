@@ -20256,10 +20256,10 @@
                 "address": "1245 Pale San Vitores Rd. (Across from DFS Galleria), Tumon Bay, Mariana Islands",
                 "external_url": "http://209.221.138.252/Details.aspx?location=777",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1743,
-                "last_updated": "2024-01-21",
+                "last_updated": "2024-11-07",
                 "multimachine": 2
             }
         },
@@ -37171,12 +37171,12 @@
                 "name": "College Football Hall of Fame",
                 "area": "Georgia",
                 "address": "250 Marietta St. NW, Atlanta",
-                "external_url": "http://209.221.138.252/Details.aspx?location=284416",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1616,
-                "last_updated": "2024-08-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40080,10 +40080,10 @@
                 "address": "149 Lighthouse Road, Hilton Head",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3129",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2200,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44895,7 +44895,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=446006",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7655,
                 "last_updated": "2024-11-07"
             }
@@ -46259,6 +46259,69 @@
                 "id": 3778,
                 "last_updated": "2024-12-31",
                 "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.260980699999999,
+                    53.3512012
+                ]
+            },
+            "properties": {
+                "name": "Carrolls Irish Gifts",
+                "area": "Ireland",
+                "address": "57/58 Upper O' Connell Street, Dublin",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=110572",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 702,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7074009,
+                    40.415511
+                ]
+            },
+            "properties": {
+                "name": "MiraMira",
+                "area": "Spain",
+                "address": "Plaza Mayor, Dentro de la Plaza Mayor, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447628",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7692,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.993089899999999,
+                    37.38852
+                ]
+            },
+            "properties": {
+                "name": "Un-named Shop",
+                "area": "Spain",
+                "address": "C. Francos, 34, Casco Antiguo, Sevilla",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447508",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7693,
+                "last_updated": "2024-11-07"
             }
         }
     ]
