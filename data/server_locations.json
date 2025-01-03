@@ -3277,7 +3277,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=227234",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6125,
                 "last_updated": "2024-11-07"
             }
@@ -46388,6 +46388,27 @@
                 "status": "unvisited",
                 "id": 4059,
                 "last_updated": "2025-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.7239966,
+                    35.1919642
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Amarillo",
+                "area": "Texas",
+                "address": "9900 E Interstate 40 Hwy, Amarillo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447666",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7694,
+                "last_updated": "2024-11-07"
             }
         }
     ]
