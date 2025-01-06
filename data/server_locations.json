@@ -46539,6 +46539,90 @@
                 "id": 7699,
                 "last_updated": "2024-11-07"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3750886,
+                    39.3512337
+                ]
+            },
+            "properties": {
+                "name": "EnterTRAINment Junction",
+                "area": "Ohio",
+                "address": "7379 Squire Court, West Chester",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196235",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2016,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.1957707,
+                    44.7674337
+                ]
+            },
+            "properties": {
+                "name": "Minnesota Zoo",
+                "area": "Minnesota",
+                "address": "13000 Zoo Boulevard, Apple Valley",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3108",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3131,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.9300781,
+                    32.7806059
+                ]
+            },
+            "properties": {
+                "name": "Shirt Shack ",
+                "area": "South Carolina",
+                "address": "79 South Market St  , Charelston ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447893",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7700,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.2396269,
+                    -33.8462206
+                ]
+            },
+            "properties": {
+                "name": "Taronga Zoo Wharf - Mosman Zu Cafe",
+                "area": "Australia",
+                "address": "Taronga Zoo Ferry Wharf, NSW - Sydney",
+                "external_url": "http://209.221.138.252/Details.aspx?location=290741",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2128,
+                "last_updated": "2024-11-07"
+            }
         }
     ]
 }
