@@ -45064,7 +45064,7 @@
                 "address": "929 Decatur Street, New Orleans",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2323",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3587,
                 "last_updated": "2024-11-07"
@@ -46685,6 +46685,48 @@
                 "status": "unvisited",
                 "id": 4791,
                 "last_updated": "2025-01-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6416731,
+                    35.1396207
+                ]
+            },
+            "properties": {
+                "name": "Tomasko's Salt Water Taffy store #2",
+                "area": "California",
+                "address": "500 Cypress Street, Pismo Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447984",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7702,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.546447,
+                    45.89099
+                ]
+            },
+            "properties": {
+                "name": "Carter County Museum",
+                "area": "Montana",
+                "address": "306 N Main Street, Ekalaka",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=447991",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7703,
+                "last_updated": "2024-11-07"
             }
         }
     ]
