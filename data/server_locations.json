@@ -46147,7 +46147,7 @@
                 "address": "2865 Parkway, Pigeon Forge",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2659",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4272,
                 "last_updated": "2024-11-07"
@@ -46726,6 +46726,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7703,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0884478,
+                    41.5922407
+                ]
+            },
+            "properties": {
+                "name": "Modena Travel Plaza",
+                "area": "New York",
+                "address": "I-87S Milepost 66 Southbound, Modena",
+                "external_url": "http://209.221.138.252/Details.aspx?location=279270",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3029,
                 "last_updated": "2024-11-07"
             }
         }
