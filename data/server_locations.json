@@ -29562,11 +29562,11 @@
                 "area": "California",
                 "address": "685 Pine Knot Ave, Unit A, Big Bear Lake",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=430405",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7193,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -30906,10 +30906,10 @@
                 "address": "107 North Grand Canyon Boulevard, Williams",
                 "external_url": "http://209.221.138.252/Details.aspx?location=239",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2733,
-                "last_updated": "2024-10-20"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -30991,10 +30991,10 @@
                 "address": "530 JFK Memorial Highway",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4846",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2243,
-                "last_updated": "2024-06-15"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42526,10 +42526,10 @@
                 "address": "321 E. Route 66, Williams",
                 "external_url": "http://209.221.138.252/Details.aspx?location=250337",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2734,
-                "last_updated": "2024-10-19"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46980,6 +46980,48 @@
                 "machine_status": "available",
                 "status": "retired",
                 "id": 3497,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.9112,
+                    34.2401686
+                ]
+            },
+            "properties": {
+                "name": "Mountain Gifts",
+                "area": "California",
+                "address": "685 Pine Knot Ave, Unit B, Big Bear Lake",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=448402",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7707,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.9169991,
+                    39.6423103
+                ]
+            },
+            "properties": {
+                "name": "Eagle County Regional Airport",
+                "area": "Colorado",
+                "address": "217 Eldon Wilson Rd, Gypsum",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=448314",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7708,
                 "last_updated": "2024-11-07"
             }
         }
