@@ -19160,10 +19160,10 @@
                 "address": "200 Bass Pro Drive, Oklahoma City, OK 73104",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3897",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1796,
-                "last_updated": "2024-05-24"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -23965,9 +23965,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=425379",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7091,
-                "last_updated": "2024-09-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -34689,10 +34689,10 @@
                 "address": "100 Front Street #6, Friday Harbor on San Juan Island",
                 "external_url": "http://209.221.138.252/Details.aspx?location=74355",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5102,
-                "last_updated": "2024-07-15"
+                "last_updated": "2025-01-24"
             }
         },
         {
@@ -40060,10 +40060,10 @@
                 "address": "810 Lincoln Avenue, Steamboat Springs",
                 "external_url": "http://209.221.138.252/Details.aspx?location=53315",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1932,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46871,10 +46871,10 @@
                 "address": "100 Cabela Drive, Hamburg",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4076",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3993,
-                "last_updated": "2025-01-11"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47044,6 +47044,238 @@
                 "status": "unvisited",
                 "id": 1473,
                 "last_updated": "2025-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.215977299999999,
+                    38.6915837
+                ]
+            },
+            "properties": {
+                "name": "Torre de belem Tower",
+                "area": "Portugal",
+                "address": "Av. Brasília, 1400-038 Lisboa, Lisbon",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 673,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.825613169803156,
+                    41.98511249243718
+                ]
+            },
+            "properties": {
+                "name": "Girona",
+                "area": "Spain",
+                "address": "Carrer Bonaventura Carreras I Peralta, 4, 17004 Girona, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7709,
+                "last_updated": "2025-01-19",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -158.1026974,
+                    21.5913721
+                ]
+            },
+            "properties": {
+                "name": "Aoki's Shave Ice",
+                "area": "Hawaii",
+                "address": "66-117 Kamehameha Highway, Oahu - Haleiwa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=42093",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6218,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.92212567858022,
+                    33.811630875325
+                ]
+            },
+            "properties": {
+                "name": "Haunted Mansion",
+                "area": "California",
+                "address": "1443 S Harbor Blvd, Anaheim, CA 92802, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7710,
+                "last_updated": "2025-01-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -100.7129143,
+                    43.8883224
+                ]
+            },
+            "properties": {
+                "name": "1880 Town - Longhorn Saloon. ",
+                "area": "South Dakota",
+                "address": "Interstate 90, exit 170, Murdo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=186533",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7711,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0240559,
+                    39.8566853
+                ]
+            },
+            "properties": {
+                "name": "Cosas de. Artesanía (Things of Craft)",
+                "area": "Spain",
+                "address": "Calle Cardenal Cisneros, 2, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=448727",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7712,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.6943185,
+                    36.211588
+                ]
+            },
+            "properties": {
+                "name": "Gaylord Opryland Hotel",
+                "area": "Tennessee",
+                "address": "2800 Opryland Dr., Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=289186",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4244,
+                "last_updated": "2025-01-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.900759,
+                    36.6161571
+                ]
+            },
+            "properties": {
+                "name": "Cannery Row - Rosie's Apparel",
+                "area": "California",
+                "address": "711 Cannery Row, Monterey",
+                "external_url": "http://209.221.138.252/Details.aspx?location=306210",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4688,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3925107,
+                    33.9246815
+                ]
+            },
+            "properties": {
+                "name": "Automobile Driving Museum",
+                "area": "California",
+                "address": "610 Lairport St, El Segundo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311510",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4612,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.07833339999999,
+                    29.726334
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Texas",
+                "address": "2760 N Interstate Hwy 35, New Braunfels",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3764,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.71395272991745,
+                    43.423318808848784
+                ]
+            },
+            "properties": {
+                "name": "Stunads Italian Ice",
+                "area": "Australia",
+                "address": "147 Canada St Lake George, NY  12845 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7713,
+                "last_updated": "2025-01-24"
             }
         }
     ]
