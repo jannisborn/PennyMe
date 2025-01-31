@@ -22931,10 +22931,10 @@
                 "address": "74 Murray Esplanade , VIC - Echuca",
                 "external_url": "http://209.221.138.252/Details.aspx?location=193418",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2166,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47572,6 +47572,48 @@
                 "status": "unvisited",
                 "id": 3730,
                 "last_updated": "2025-01-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.13853399999999,
+                    38.842936
+                ]
+            },
+            "properties": {
+                "name": "Point Pleasant Trading Company",
+                "area": "West Virginia",
+                "address": "404 Main Street, Point Pleasant",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449189",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7722,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2587875,
+                    53.3465858
+                ]
+            },
+            "properties": {
+                "name": "The National Wax Museum Plus",
+                "area": "Ireland",
+                "address": "25 Westmoreland Street Dublin 2 D02 EH29, COUNTY DUBLIN - Dublin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7723,
+                "last_updated": "2024-11-07"
             }
         }
     ]
