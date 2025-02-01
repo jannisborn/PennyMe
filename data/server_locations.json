@@ -19561,10 +19561,10 @@
                 "address": "844 Sundial Bridge Dr, Redding",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1242",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "retired",
                 "id": 4744,
-                "last_updated": "2024-05-10"
+                "last_updated": "2025-01-30"
             }
         },
         {
@@ -22931,10 +22931,10 @@
                 "address": "74 Murray Esplanade , VIC - Echuca",
                 "external_url": "http://209.221.138.252/Details.aspx?location=193418",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2166,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -33145,10 +33145,10 @@
                 "address": "1 Zion Canyon Scenic Drive, Springdale",
                 "external_url": "http://209.221.138.252/Details.aspx?location=109673",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2096,
-                "last_updated": "2024-10-30"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47276,6 +47276,344 @@
                 "machine_status": "available",
                 "id": 7713,
                 "last_updated": "2025-01-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9227081,
+                    33.8088118
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Disney's Wonderful World of Sweets",
+                "area": "California",
+                "address": "South Disneyland Drive, Anaheim",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=448957",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7714,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.7408890035234279,
+                    51.38713994521227
+                ]
+            },
+            "properties": {
+                "name": "Look out",
+                "area": "England",
+                "address": "Nine Mile Ride, Bracknell RG12 7QW",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7715,
+                "last_updated": "2025-01-25",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.844404,
+                    1.2834607
+                ]
+            },
+            "properties": {
+                "name": "Chinatown Heritage Centre",
+                "area": "Singapore",
+                "address": "48 Pagoda Street, Chinatown",
+                "external_url": "http://209.221.138.252/Details.aspx?location=276144",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3193,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.31745049999999,
+                    35.4750434
+                ]
+            },
+            "properties": {
+                "name": "Fort Tomahawk",
+                "area": "North Carolina",
+                "address": "441 S. Main Street, Cherokee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=20210",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4092,
+                "last_updated": "2025-01-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.5813116,
+                    39.0820781
+                ]
+            },
+            "properties": {
+                "name": "Legoland Discovery Center",
+                "area": "Kansas",
+                "address": "2475 Grand Blvd. Kansas City, MO",
+                "external_url": "http://209.221.138.252/Details.aspx?location=317512",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2938,
+                "last_updated": "2025-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.40167119816388,
+                    32.035392711825146
+                ]
+            },
+            "properties": {
+                "name": "The home of Jimmy Carter",
+                "area": "Australia",
+                "address": "179 Woodland Dr, Plains, GA 31780, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7716,
+                "last_updated": "2025-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.47888083724229,
+                    31.81024685040517
+                ]
+            },
+            "properties": {
+                "name": "Wyler aerial tramway",
+                "area": "Australia",
+                "address": "1700 McKinley Ave, El Paso, TX 79930, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7717,
+                "last_updated": "2025-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6501268,
+                    30.75368959999999
+                ]
+            },
+            "properties": {
+                "name": "Georgia Visitor Information Center #11 - Kingsland",
+                "area": "Georgia",
+                "address": "100 St Marys Road, St Marys",
+                "external_url": "http://209.221.138.252/Details.aspx?location=213901",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1668,
+                "last_updated": "2025-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.7551814,
+                    40.1956435
+                ]
+            },
+            "properties": {
+                "name": "Harrisburg International Airport/Perfectly Pennsylvania store",
+                "area": "Pennsylvania",
+                "address": "One Terminal Drive, Middletown",
+                "external_url": "http://209.221.138.252/Details.aspx?location=204688",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4020,
+                "last_updated": "2025-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.8570103,
+                    40.806567
+                ]
+            },
+            "properties": {
+                "name": "Bryce Jordan Center - Pegula Ice Arena",
+                "area": "Pennsylvania",
+                "address": "250 University Drive, University Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449043",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7718,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.684920930796135,
+                    47.18916600958953
+                ]
+            },
+            "properties": {
+                "name": "Kitzsteinhorn Top of Salzburg",
+                "area": "Austria",
+                "address": "2. OG",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7719,
+                "last_updated": "2025-01-28",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.282389348546363,
+                    50.37754397800825
+                ]
+            },
+            "properties": {
+                "name": "Vulkan Münze",
+                "area": "Germany",
+                "address": "Laacher-See-Straße 21, 56743 Mendig, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7720,
+                "last_updated": "2025-01-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.87865688225551,
+                    37.36858818607118
+                ]
+            },
+            "properties": {
+                "name": "The Flea Market Inc",
+                "area": "American Samoa",
+                "address": "1590 Berryessa Rd, San Jose, CA 95133, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7721,
+                "last_updated": "2025-01-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.04262729999999,
+                    32.9661856
+                ]
+            },
+            "properties": {
+                "name": "Grapevine Mills - Sea Life",
+                "area": "Texas",
+                "address": "3000 Grapevine Mills Pkwy, Grapevine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=97272",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3730,
+                "last_updated": "2025-01-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.13853399999999,
+                    38.842936
+                ]
+            },
+            "properties": {
+                "name": "Point Pleasant Trading Company",
+                "area": "West Virginia",
+                "address": "404 Main Street, Point Pleasant",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449189",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7722,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2587875,
+                    53.3465858
+                ]
+            },
+            "properties": {
+                "name": "The National Wax Museum Plus",
+                "area": "Ireland",
+                "address": "25 Westmoreland Street Dublin 2 D02 EH29, COUNTY DUBLIN - Dublin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7723,
+                "last_updated": "2024-11-07"
             }
         }
     ]
