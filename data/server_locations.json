@@ -3656,9 +3656,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398850",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6173,
-                "last_updated": "2024-02-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47761,6 +47761,48 @@
                 "status": "unvisited",
                 "id": 626,
                 "last_updated": "2025-02-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0308172,
+                    44.9384502
+                ]
+            },
+            "properties": {
+                "name": "Oregon State Capitol Building",
+                "area": "Oregon",
+                "address": "900 Court Street Street NE, Salem",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=206303",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4389,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.4397113,
+                    47.7418278
+                ]
+            },
+            "properties": {
+                "name": "Yacht",
+                "area": "Austria",
+                "address": ", Sankt Wolfgang im Salzkammergut",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449325",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7727,
+                "last_updated": "2024-11-07"
             }
         }
     ]
