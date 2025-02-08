@@ -3656,9 +3656,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398850",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6173,
-                "last_updated": "2024-02-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -23311,9 +23311,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7080,
-                "last_updated": "2024-03-11"
+                "last_updated": "2025-02-08"
             }
         },
         {
@@ -34818,9 +34818,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=434519",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7301,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -41747,10 +41747,10 @@
                 "address": "668 U.S. 250, Ashland",
                 "external_url": "http://209.221.138.252/Details.aspx?location=204343",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 1941,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-02-08"
             }
         },
         {
@@ -47614,6 +47614,300 @@
                 "machine_status": "available",
                 "id": 7723,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.482655,
+                    47.650238
+                ]
+            },
+            "properties": {
+                "name": "Friedrichshafen waterfront (lake constance)",
+                "area": "Germany",
+                "address": "Seestrasse 22, Bodensee, 88045 Friedrichshafen",
+                "external_url": "http://209.221.138.252/Details.aspx?location=328136",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5048,
+                "last_updated": "2025-02-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.81741933798592,
+                    40.25137063432625
+                ]
+            },
+            "properties": {
+                "name": "Kawuneeche Trading Post",
+                "area": "Colorado",
+                "address": "1123 Grand Ave, Grand Lake",
+                "external_url": "http://209.221.138.252/Details.aspx?location=297888",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1878,
+                "last_updated": "2025-02-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.815490946033819,
+                    53.99280534091839
+                ]
+            },
+            "properties": {
+                "name": "Niendorf Ostsee",
+                "area": "Germany",
+                "address": "Im Hafen, 23669 Timmendorfer Strand",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7724,
+                "last_updated": "2025-02-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.783097675136746,
+                    53.998738893304704
+                ]
+            },
+            "properties": {
+                "name": "SeaLife, Timmendorfer Strand",
+                "area": "Germany",
+                "address": "23669 Timmendorfer Strand/Kurpromenade 5",
+                "external_url": "http://209.221.138.252/Details.aspx?location=63797",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 625,
+                "last_updated": "2025-02-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.7815083652378,
+                    54.00036377429719
+                ]
+            },
+            "properties": {
+                "name": "Maritim Seebrücke",
+                "area": "Germany",
+                "address": "Kurpromenade 3, 23669 Timmendorfer Strand, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7725,
+                "last_updated": "2025-02-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.59651113640838,
+                    40.05948561878399
+                ]
+            },
+            "properties": {
+                "name": "Cabella’s",
+                "area": "Australia",
+                "address": "787 Cabela Dr, Triadelphia, WV 26059, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7726,
+                "last_updated": "2025-02-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.815662,
+                    53.992733
+                ]
+            },
+            "properties": {
+                "name": "Niendorf Hafen",
+                "area": "Germany",
+                "address": "Grüner Weg, 23669 Timmendorfer Strand",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 626,
+                "last_updated": "2025-02-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0308172,
+                    44.9384502
+                ]
+            },
+            "properties": {
+                "name": "Oregon State Capitol Building",
+                "area": "Oregon",
+                "address": "900 Court Street Street NE, Salem",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=206303",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4389,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.4397113,
+                    47.7418278
+                ]
+            },
+            "properties": {
+                "name": "Yacht",
+                "area": "Austria",
+                "address": ", Sankt Wolfgang im Salzkammergut",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449325",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7727,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.28664716731308,
+                    34.01611744777341
+                ]
+            },
+            "properties": {
+                "name": "The Natural History Museum of Los Angeles",
+                "area": "Australia",
+                "address": "900 Exposition Blvd, Los Angeles, CA 90007",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7728,
+                "last_updated": "2025-02-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.75919,
+                    -27.598325
+                ]
+            },
+            "properties": {
+                "name": "Queensland Rail Workshops Museum",
+                "area": "Australia",
+                "address": "North St, QLD - North Ipswich",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52027",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2147,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.521781,
+                    25.0346119
+                ]
+            },
+            "properties": {
+                "name": "National Chiang Kai-shek Cultural Center",
+                "area": "Taiwan",
+                "address": "10048 Chung-Shan South Road, Taipei",
+                "external_url": "http://209.221.138.252/Details.aspx?location=110823",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2368,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.398020507954033,
+                    47.2812537274968
+                ]
+            },
+            "properties": {
+                "name": "Alpenzoo Insbruck",
+                "area": "Austria",
+                "address": "Weiherburggasse 37, 6020 Innsbruck, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7729,
+                "last_updated": "2025-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.396602034336507,
+                    47.28173496351853
+                ]
+            },
+            "properties": {
+                "name": "Alpenzoo II",
+                "area": "Austria",
+                "address": "Weiherburggasse 35, 6020 Innsbruck, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7730,
+                "last_updated": "2025-02-08"
             }
         }
     ]
