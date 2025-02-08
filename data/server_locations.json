@@ -22931,7 +22931,7 @@
                 "address": "74 Murray Esplanade , VIC - Echuca",
                 "external_url": "http://209.221.138.252/Details.aspx?location=193418",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2166,
                 "last_updated": "2024-11-07"
@@ -29290,9 +29290,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=430094",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7190,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46385,10 +46385,10 @@
                 "address": "2811 Lincoln Highway East, Ronks",
                 "external_url": "http://209.221.138.252/Details.aspx?location=312626",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4059,
-                "last_updated": "2025-01-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47908,6 +47908,153 @@
                 "machine_status": "available",
                 "id": 7730,
                 "last_updated": "2025-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.115243,
+                    -35.2732675
+                ]
+            },
+            "properties": {
+                "name": "CSIRO Discovery Centre",
+                "area": "Australia",
+                "address": "Clunies Ross Street - Australian Capitol Territories , ACT - Canberra",
+                "external_url": "http://209.221.138.252/Details.aspx?location=41027",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2110,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.0880786,
+                    -35.1942299
+                ]
+            },
+            "properties": {
+                "name": "National Dinosaur Museum",
+                "area": "Australia",
+                "address": "Gold Creek Road and Barton Highway, ACT - Canberra",
+                "external_url": "http://209.221.138.252/Details.aspx?location=130725",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2111,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.1337285,
+                    -30.2748938
+                ]
+            },
+            "properties": {
+                "name": "The Big Banana Fun Park",
+                "area": "Australia",
+                "address": "351 Pacific Hwy, Coffs Harbour NSW 2450, NSW - Coffs Harbour",
+                "external_url": "http://209.221.138.252/Details.aspx?location=353383",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5600,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.6932928,
+                    -33.7475868
+                ]
+            },
+            "properties": {
+                "name": "Museum of Fire",
+                "area": "Australia",
+                "address": "1 Museum Drive, NSW - Penrith",
+                "external_url": "http://209.221.138.252/Details.aspx?location=62079",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2119,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.95822,
+                    -37.820627
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Melbourne Aquarium (Was the Melborne Aquarium)",
+                "area": "Australia",
+                "address": "150 King St, VIC - Melbourne",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449581",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7731,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    143.1050917,
+                    -38.6621015
+                ]
+            },
+            "properties": {
+                "name": "Twelve Apostles Marine National Park",
+                "area": "Australia",
+                "address": "Great Ocean Rd & Booringa Rd, , VIC - Princetown ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=298262",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2174,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.9486758,
+                    47.7681802
+                ]
+            },
+            "properties": {
+                "name": "Raststation Walserberg",
+                "area": "Austria",
+                "address": ", Walserberg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449504",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7732,
+                "last_updated": "2024-11-07"
             }
         }
     ]
