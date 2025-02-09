@@ -42970,10 +42970,10 @@
                 "address": "500 Ringgold St (Near intersection of Cummings Pl and Ringgold St), Brownsville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1994",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3662,
-                "last_updated": "2024-10-27"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48076,6 +48076,27 @@
                 "machine_status": "available",
                 "id": 7733,
                 "last_updated": "2025-02-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8765395,
+                    33.5550585
+                ]
+            },
+            "properties": {
+                "name": "Arizona Boardwalk - Sugar Drop Candy Shop",
+                "area": "Arizona",
+                "address": "9500 East Vía De Ventura Suite E-140, Scottsdale",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449625",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7734,
+                "last_updated": "2024-11-07"
             }
         }
     ]
