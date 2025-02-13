@@ -47862,7 +47862,7 @@
                 "address": "10048 Chung-Shan South Road, Taipei",
                 "external_url": "http://209.221.138.252/Details.aspx?location=110823",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2368,
                 "last_updated": "2024-11-07"
@@ -48139,6 +48139,27 @@
                 "machine_status": "available",
                 "id": 7735,
                 "last_updated": "2025-02-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.2778269,
+                    30.5715591
+                ]
+            },
+            "properties": {
+                "name": "Ms. Lollipop",
+                "area": "Texas",
+                "address": "208 Main Street, Marble Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449867",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7736,
+                "last_updated": "2024-11-07"
             }
         }
     ]
