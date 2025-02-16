@@ -40018,10 +40018,10 @@
                 "address": "100 Branson Landing, Branson",
                 "external_url": "http://209.221.138.252/Details.aspx?location=24161",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1054,
-                "last_updated": "2024-09-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48286,6 +48286,69 @@
                 "machine_status": "available",
                 "id": 7740,
                 "last_updated": "2025-02-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.6979289,
+                    35.0231674
+                ]
+            },
+            "properties": {
+                "name": "Arizona 66 Trading Company",
+                "area": "Arizona",
+                "address": "101 E. 2nd St, Winslow",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449958",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7741,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.1626393,
+                    -35.0878454
+                ]
+            },
+            "properties": {
+                "name": "Monarto Safari Park",
+                "area": "Australia",
+                "address": "63 Monarto Rd, Monarto SA 5254, South Australia - Monarto",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449957",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7742,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.430205,
+                    34.6558539
+                ]
+            },
+            "properties": {
+                "name": "Osaka Bay Marketplace",
+                "area": "Japan",
+                "address": "Osaka Bay, Osaka, Osaka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333362",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2810,
+                "last_updated": "2024-11-07"
             }
         }
     ]
