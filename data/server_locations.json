@@ -22931,7 +22931,7 @@
                 "address": "74 Murray Esplanade , VIC - Echuca",
                 "external_url": "http://209.221.138.252/Details.aspx?location=193418",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2166,
                 "last_updated": "2024-11-07"
@@ -29290,9 +29290,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=430094",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7190,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -33423,9 +33423,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=433660",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7266,
-                "last_updated": "2024-05-10"
+                "last_updated": "2025-02-18"
             }
         },
         {
@@ -35396,8 +35396,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -118.1902941,
-                    33.7607682
+                    -118.19047461972163,
+                    33.76070817850681
                 ]
             },
             "properties": {
@@ -35409,7 +35409,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7319,
-                "last_updated": "2024-07-21"
+                "last_updated": "2025-02-13"
             }
         },
         {
@@ -38711,10 +38711,10 @@
                 "address": "7223 South Virginia Dare Trail., Nags Head",
                 "external_url": "http://209.221.138.252/Details.aspx?location=95439",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4134,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -39577,10 +39577,10 @@
                 "address": "374 Airport Road, Manteo",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3683",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4125,
-                "last_updated": "2024-09-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40018,10 +40018,10 @@
                 "address": "100 Branson Landing, Branson",
                 "external_url": "http://209.221.138.252/Details.aspx?location=24161",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1054,
-                "last_updated": "2024-09-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42970,10 +42970,10 @@
                 "address": "500 Ringgold St (Near intersection of Cummings Pl and Ringgold St), Brownsville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1994",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3662,
-                "last_updated": "2024-10-27"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46385,10 +46385,10 @@
                 "address": "2811 Lincoln Highway East, Ronks",
                 "external_url": "http://209.221.138.252/Details.aspx?location=312626",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4059,
-                "last_updated": "2025-01-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47862,7 +47862,7 @@
                 "address": "10048 Chung-Shan South Road, Taipei",
                 "external_url": "http://209.221.138.252/Details.aspx?location=110823",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2368,
                 "last_updated": "2024-11-07"
@@ -47908,6 +47908,468 @@
                 "machine_status": "available",
                 "id": 7730,
                 "last_updated": "2025-02-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.115243,
+                    -35.2732675
+                ]
+            },
+            "properties": {
+                "name": "CSIRO Discovery Centre",
+                "area": "Australia",
+                "address": "Clunies Ross Street - Australian Capitol Territories , ACT - Canberra",
+                "external_url": "http://209.221.138.252/Details.aspx?location=41027",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2110,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.0880786,
+                    -35.1942299
+                ]
+            },
+            "properties": {
+                "name": "National Dinosaur Museum",
+                "area": "Australia",
+                "address": "Gold Creek Road and Barton Highway, ACT - Canberra",
+                "external_url": "http://209.221.138.252/Details.aspx?location=130725",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2111,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.1337285,
+                    -30.2748938
+                ]
+            },
+            "properties": {
+                "name": "The Big Banana Fun Park",
+                "area": "Australia",
+                "address": "351 Pacific Hwy, Coffs Harbour NSW 2450, NSW - Coffs Harbour",
+                "external_url": "http://209.221.138.252/Details.aspx?location=353383",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5600,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.6932928,
+                    -33.7475868
+                ]
+            },
+            "properties": {
+                "name": "Museum of Fire",
+                "area": "Australia",
+                "address": "1 Museum Drive, NSW - Penrith",
+                "external_url": "http://209.221.138.252/Details.aspx?location=62079",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2119,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.95822,
+                    -37.820627
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Melbourne Aquarium (Was the Melborne Aquarium)",
+                "area": "Australia",
+                "address": "150 King St, VIC - Melbourne",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449581",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7731,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    143.1050917,
+                    -38.6621015
+                ]
+            },
+            "properties": {
+                "name": "Twelve Apostles Marine National Park",
+                "area": "Australia",
+                "address": "Great Ocean Rd & Booringa Rd, , VIC - Princetown ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=298262",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2174,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.9486758,
+                    47.7681802
+                ]
+            },
+            "properties": {
+                "name": "Raststation Walserberg",
+                "area": "Austria",
+                "address": ", Walserberg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449504",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7732,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.05752609098023,
+                    35.13458360867601
+                ]
+            },
+            "properties": {
+                "name": "National Civil Rights Museum",
+                "area": "Tennessee",
+                "address": "450 Mulberry Street, Memphis, TN",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2440",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7733,
+                "last_updated": "2025-02-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8765395,
+                    33.5550585
+                ]
+            },
+            "properties": {
+                "name": "Arizona Boardwalk - Sugar Drop Candy Shop",
+                "area": "Arizona",
+                "address": "9500 East Vía De Ventura Suite E-140, Scottsdale",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449625",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7734,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.43746519999999,
+                    29.4270201
+                ]
+            },
+            "properties": {
+                "name": "AT&T Center  (Was SBC Center)",
+                "area": "Texas",
+                "address": "One AT&T Center Parkway, San Antonio",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2636",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3775,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.442386273729321,
+                    52.504448597050796
+                ]
+            },
+            "properties": {
+                "name": "East Side Gallery",
+                "area": "Germany",
+                "address": "Mercedes Platz 1, 10243 Berlin",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7735,
+                "last_updated": "2025-02-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.2778269,
+                    30.5715591
+                ]
+            },
+            "properties": {
+                "name": "Ms. Lollipop",
+                "area": "Texas",
+                "address": "208 Main Street, Marble Falls",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449867",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7736,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.8531098,
+                    35.36418099999999
+                ]
+            },
+            "properties": {
+                "name": "Marina Square - Coastal Treasures & Gifts",
+                "area": "California",
+                "address": "601 Embarcadero Suite #4, Morro Bay",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449883",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7737,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.852938,
+                    35.364279
+                ]
+            },
+            "properties": {
+                "name": "Marina Square - Dress Your Soul",
+                "area": "California",
+                "address": "601 Embarcadero Suite #1, Morro Bay",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449884",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7738,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.168776317271876,
+                    50.12545787639796
+                ]
+            },
+            "properties": {
+                "name": "Waldgeist - Zur Eisernen Hand",
+                "area": "Germany",
+                "address": "Eiserne Hand 1, 65232 Taunusstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7739,
+                "last_updated": "2025-02-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.68018719999999,
+                    30.3763263
+                ]
+            },
+            "properties": {
+                "name": "Tanger Outlets, Food Court",
+                "area": "Alabama",
+                "address": "2601 S McKenzie Street, Foley",
+                "external_url": "http://209.221.138.252/Details.aspx?location=87994",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1711,
+                "last_updated": "2025-02-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.96588179999999,
+                    37.7455012
+                ]
+            },
+            "properties": {
+                "name": "17th Street Bar & Grill",
+                "area": "Illinois",
+                "address": "2700 17th Street, Marion",
+                "external_url": "http://209.221.138.252/Details.aspx?location=80739",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1237,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.40332911475345,
+                    42.59984991678688
+                ]
+            },
+            "properties": {
+                "name": "Timber Ridge Lodge",
+                "area": "Wisconsin",
+                "address": "7020 Grand Geneva WayLake Geneva, WI 53147, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7740,
+                "last_updated": "2025-02-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.6979289,
+                    35.0231674
+                ]
+            },
+            "properties": {
+                "name": "Arizona 66 Trading Company",
+                "area": "Arizona",
+                "address": "101 E. 2nd St, Winslow",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449958",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7741,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.1626393,
+                    -35.0878454
+                ]
+            },
+            "properties": {
+                "name": "Monarto Safari Park",
+                "area": "Australia",
+                "address": "63 Monarto Rd, Monarto SA 5254, South Australia - Monarto",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=449957",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7742,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.430205,
+                    34.6558539
+                ]
+            },
+            "properties": {
+                "name": "Osaka Bay Marketplace",
+                "area": "Japan",
+                "address": "Osaka Bay, Osaka, Osaka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333362",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2810,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.0828293,
+                    -37.8848902
+                ]
+            },
+            "properties": {
+                "name": "Legoland Discovery Centre",
+                "area": "Australia",
+                "address": "1341 Dandenong Road, VIC - Chadstone",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450031",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7743,
+                "last_updated": "2024-11-07"
             }
         }
     ]
