@@ -6784,9 +6784,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=275122",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1826,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48434,6 +48434,69 @@
                 "status": "unvisited",
                 "id": 2392,
                 "last_updated": "2025-02-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.7521198,
+                    42.6748615
+                ]
+            },
+            "properties": {
+                "name": "New Baltimore Trade Center",
+                "area": "Michigan",
+                "address": "35248 23 Mile Rd New Baltimore, MI  48047 United States, New Baltimore ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=393529",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6131,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.6664548,
+                    40.1042207
+                ]
+            },
+            "properties": {
+                "name": "Carriage House Glass",
+                "area": "West Virginia",
+                "address": "1330 Oglebay Dr, Wheeling",
+                "external_url": "http://209.221.138.252/Details.aspx?location=263505",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3907,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    172.5472018,
+                    -43.4884139
+                ]
+            },
+            "properties": {
+                "name": "International Antarctica Centre",
+                "area": "New Zealand",
+                "address": "38 Orchard Road (between Memorial Ave and Wairakei Rd), Christchurch Airport",
+                "external_url": "http://209.221.138.252/Details.aspx?location=230350",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3873,
+                "last_updated": "2024-11-07"
             }
         }
     ]
