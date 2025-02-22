@@ -48540,6 +48540,48 @@
                 "id": 7745,
                 "last_updated": "2025-02-22"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.129207,
+                    36.7664715
+                ]
+            },
+            "properties": {
+                "name": "Project Survival Cat Haven",
+                "area": "California",
+                "address": "38257 E Kings Canyon Rd, Dunlap",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450201",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7746,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.3625196,
+                    42.5252972
+                ]
+            },
+            "properties": {
+                "name": "Marvin's Marvelous Mechanical Museum",
+                "area": "Michigan",
+                "address": "31005 Orchard Lake Road, Farmington Hills",
+                "external_url": "http://209.221.138.252/Details.aspx?location=10893",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2514,
+                "last_updated": "2024-11-07"
+            }
         }
     ]
 }
