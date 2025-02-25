@@ -16665,9 +16665,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=417892",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6947,
-                "last_updated": "2023-12-14"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -18929,9 +18929,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1814",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "id": 7008,
-                "last_updated": "2024-02-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48644,6 +48644,69 @@
                 "status": "retired",
                 "id": 3366,
                 "last_updated": "2025-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.10544639999999,
+                    45.01741639999999
+                ]
+            },
+            "properties": {
+                "name": "The Flameburger",
+                "area": "Minnesota",
+                "address": "2526 Rice Street, Little Canada",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450337",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7747,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.656137,
+                    41.94707
+                ]
+            },
+            "properties": {
+                "name": "Sports World",
+                "area": "Illinois",
+                "address": "3555 N. Clark St, Chicago",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262340",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1217,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.02584829999999,
+                    38.8963536
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Washington DC",
+                "address": "999 E Street, Washington DC",
+                "external_url": "http://209.221.138.252/Details.aspx?location=356168",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5468,
+                "last_updated": "2024-11-07"
             }
         }
     ]
