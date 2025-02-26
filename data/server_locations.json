@@ -20812,10 +20812,10 @@
                 "address": "corner of St. George Street and Orange St, St. Augustine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1562",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3445,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -41748,10 +41748,10 @@
                 "address": "668 U.S. 250, Ashland",
                 "external_url": "http://209.221.138.252/Details.aspx?location=204343",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1941,
-                "last_updated": "2025-02-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48706,6 +48706,90 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5468,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.41497439999999,
+                    28.448694
+                ]
+            },
+            "properties": {
+                "name": "One Fat Frog",
+                "area": "Florida",
+                "address": "2416 Sand Lake Road, Orlando",
+                "external_url": "http://209.221.138.252/Details.aspx?location=372390",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5357,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3115369,
+                    28.4229699
+                ]
+            },
+            "properties": {
+                "name": "Orlando International Airport - Universal Studios Airport Store",
+                "area": "Florida",
+                "address": "Orlando Airport, Orlando",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52673",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7748,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46588679999999,
+                    28.4729899
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios CityWalk - Universal Legacy Store",
+                "area": "Florida",
+                "address": "USF - CityWalk, Orlando ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=374794",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5360,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0204962,
+                    39.8577545
+                ]
+            },
+            "properties": {
+                "name": "Museo del Ejército (Army Museum)",
+                "area": "Spain",
+                "address": "Calle de la Union, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450376",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7749,
                 "last_updated": "2024-11-07"
             }
         }
