@@ -6279,7 +6279,8 @@
                 "internal_url": "null",
                 "machine_status": "retired",
                 "id": 4647,
-                "last_updated": "2024-06-23"
+                "last_updated": "2025-02-19",
+                "paywall": true
             }
         },
         {
@@ -6783,9 +6784,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=275122",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1826,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -16664,9 +16665,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=417892",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6947,
-                "last_updated": "2023-12-14"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -18928,9 +18929,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1814",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "id": 7008,
-                "last_updated": "2024-02-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -20811,10 +20812,10 @@
                 "address": "corner of St. George Street and Orange St, St. Augustine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1562",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3445,
-                "last_updated": "2024-07-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -39704,9 +39705,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=439927",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7522,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-02-22"
             }
         },
         {
@@ -41747,10 +41748,10 @@
                 "address": "668 U.S. 250, Ashland",
                 "external_url": "http://209.221.138.252/Details.aspx?location=204343",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1941,
-                "last_updated": "2025-02-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48370,6 +48371,449 @@
                 "machine_status": "available",
                 "id": 7743,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.7932459,
+                    40.0343164
+                ]
+            },
+            "properties": {
+                "name": "Legend of Bigfoot",
+                "area": "California",
+                "address": "2500 US-101, Garberville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450052",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7744,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.346925,
+                    39.3900028
+                ]
+            },
+            "properties": {
+                "name": "Lumberjack's Restaurant",
+                "area": "California",
+                "address": "1700 S. Main St., Willits",
+                "external_url": "http://209.221.138.252/Details.aspx?location=180927",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4890,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.336529,
+                    40.5465209
+                ]
+            },
+            "properties": {
+                "name": "Rainforest Cafe @ Menlo Park Mall",
+                "area": "New Jersey",
+                "address": "520 Menlo Park, Edison",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3453",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2392,
+                "last_updated": "2025-02-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.7521198,
+                    42.6748615
+                ]
+            },
+            "properties": {
+                "name": "New Baltimore Trade Center",
+                "area": "Michigan",
+                "address": "35248 23 Mile Rd New Baltimore, MI  48047 United States, New Baltimore ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=393529",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6131,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.6664548,
+                    40.1042207
+                ]
+            },
+            "properties": {
+                "name": "Carriage House Glass",
+                "area": "West Virginia",
+                "address": "1330 Oglebay Dr, Wheeling",
+                "external_url": "http://209.221.138.252/Details.aspx?location=263505",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3907,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    172.5472018,
+                    -43.4884139
+                ]
+            },
+            "properties": {
+                "name": "International Antarctica Centre",
+                "area": "New Zealand",
+                "address": "38 Orchard Road (between Memorial Ave and Wairakei Rd), Christchurch Airport",
+                "external_url": "http://209.221.138.252/Details.aspx?location=230350",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3873,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7043118,
+                    35.6712824
+                ]
+            },
+            "properties": {
+                "name": "Harajuku Alta",
+                "area": "Japan",
+                "address": "1-16-4 Jingumae Shibuya-ku, Tokyo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=291934",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2836,
+                "last_updated": "2025-02-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.448993408670733,
+                    54.09299396256617
+                ]
+            },
+            "properties": {
+                "name": "Hansestadt Greifswald",
+                "area": "Germany",
+                "address": "An d. Mühle 8Z, 17493 Greifswald, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7745,
+                "last_updated": "2025-02-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.129207,
+                    36.7664715
+                ]
+            },
+            "properties": {
+                "name": "Project Survival Cat Haven",
+                "area": "California",
+                "address": "38257 E Kings Canyon Rd, Dunlap",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450201",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7746,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.3625196,
+                    42.5252972
+                ]
+            },
+            "properties": {
+                "name": "Marvin's Marvelous Mechanical Museum",
+                "area": "Michigan",
+                "address": "31005 Orchard Lake Road, Farmington Hills",
+                "external_url": "http://209.221.138.252/Details.aspx?location=10893",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2514,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.6539363,
+                    34.7111322
+                ]
+            },
+            "properties": {
+                "name": "U.S. Space & Rocket Center",
+                "area": "Alabama",
+                "address": "One Tranquility Base, Huntsville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=184",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1723,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.86632510874271,
+                    36.45653988827381
+                ]
+            },
+            "properties": {
+                "name": "The Ranch at Death Valley General Store",
+                "area": "California",
+                "address": "328 Greenland Boulevard (Highway 190) , Death Valley National Park",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1396",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4608,
+                "last_updated": "2025-02-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5563845,
+                    28.3381102
+                ]
+            },
+            "properties": {
+                "name": "Walt Disney World, ESPN Wide World of Sports",
+                "area": "Florida",
+                "address": "700 South Victory Way, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=32448",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3366,
+                "last_updated": "2025-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.10544639999999,
+                    45.01741639999999
+                ]
+            },
+            "properties": {
+                "name": "The Flameburger",
+                "area": "Minnesota",
+                "address": "2526 Rice Street, Little Canada",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450337",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7747,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.656137,
+                    41.94707
+                ]
+            },
+            "properties": {
+                "name": "Sports World",
+                "area": "Illinois",
+                "address": "3555 N. Clark St, Chicago",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262340",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1217,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.02584829999999,
+                    38.8963536
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Washington DC",
+                "address": "999 E Street, Washington DC",
+                "external_url": "http://209.221.138.252/Details.aspx?location=356168",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5468,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.41497439999999,
+                    28.448694
+                ]
+            },
+            "properties": {
+                "name": "One Fat Frog",
+                "area": "Florida",
+                "address": "2416 Sand Lake Road, Orlando",
+                "external_url": "http://209.221.138.252/Details.aspx?location=372390",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5357,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3115369,
+                    28.4229699
+                ]
+            },
+            "properties": {
+                "name": "Orlando International Airport - Universal Studios Airport Store",
+                "area": "Florida",
+                "address": "Orlando Airport, Orlando",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52673",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7748,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46588679999999,
+                    28.4729899
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios CityWalk - Universal Legacy Store",
+                "area": "Florida",
+                "address": "USF - CityWalk, Orlando ",
+                "external_url": "http://209.221.138.252/Details.aspx?location=374794",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5360,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0204962,
+                    39.8577545
+                ]
+            },
+            "properties": {
+                "name": "Museo del Ejército (Army Museum)",
+                "area": "Spain",
+                "address": "Calle de la Union, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450376",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7749,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.41387879999999,
+                    38.7280034
+                ]
+            },
+            "properties": {
+                "name": "Spring Mill State Park (Grissom Memorial)",
+                "area": "Indiana",
+                "address": "3333 IN-60, Mitchell",
+                "external_url": "http://209.221.138.252/Details.aspx?location=258403",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2279,
+                "last_updated": "2025-02-28",
+                "multimachine": 2,
+                "paywall": true
             }
         }
     ]
