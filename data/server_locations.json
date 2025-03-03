@@ -31538,10 +31538,10 @@
                 "address": "One Tram Way, Palm Springs",
                 "external_url": "http://209.221.138.252/Details.aspx?location=222613",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4722,
-                "last_updated": "2024-06-19"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40760,10 +40760,10 @@
                 "address": "3215 S Rancho Dr, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=368007",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5419,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48964,6 +48964,48 @@
                 "id": 2206,
                 "last_updated": "2025-03-03",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3808822,
+                    40.55001439999999
+                ]
+            },
+            "properties": {
+                "name": "Nauvoo Market Place",
+                "area": "Illinois",
+                "address": "1385 Mulholland Street, Nauvoo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350751",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1241,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.245786,
+                    36.0972793
+                ]
+            },
+            "properties": {
+                "name": "Kaleideum",
+                "area": "North Carolina",
+                "address": "120 W. Third St., Winston-Salem",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450858",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7751,
+                "last_updated": "2024-11-07"
             }
         }
     ]
