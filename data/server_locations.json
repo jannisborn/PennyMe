@@ -16848,7 +16848,7 @@
                 ]
             },
             "properties": {
-                "name": "Zoo Vykov",
+                "name": "Zoo Vyškov",
                 "area": "Czech Republic",
                 "address": "Cukrovarská 424, Vykov",
                 "status": "unvisited",
@@ -16856,7 +16856,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6956,
-                "last_updated": "2023-11-18"
+                "last_updated": "2025-02-28"
             }
         },
         {
@@ -26333,10 +26333,10 @@
                 "address": ", Sintra",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5893,
-                "last_updated": "2024-03-29"
+                "last_updated": "2025-03-02"
             }
         },
         {
@@ -48814,6 +48814,156 @@
                 "last_updated": "2025-02-28",
                 "multimachine": 2,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5069688,
+                    28.3767703
+                ]
+            },
+            "properties": {
+                "name": "Disney Springs Resort area, Disney B Resort & Spa",
+                "area": "Florida",
+                "address": "1905 Hotel Plaza Blvd Lake Buena Vista, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=291355",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3328,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.568113899999999,
+                    53.2193635
+                ]
+            },
+            "properties": {
+                "name": "Martinitoren ",
+                "area": "Netherlands",
+                "address": "Martinikerkhof 3, Groningen",
+                "external_url": "http://209.221.138.252/Details.aspx?location=285516",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 190,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.946218,
+                    30.2055059
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Louisiana",
+                "address": "2200 W. Cabela's Parkway, Gonzales",
+                "external_url": "http://209.221.138.252/Details.aspx?location=37605",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3571,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.2354679,
+                    51.4765405
+                ]
+            },
+            "properties": {
+                "name": "Wildfowl and Wetlands Trust, London Wetland Centre (WWT)",
+                "area": "England",
+                "address": "Queen Elizabeth's Walk, Barnes, LONDON - Barnes",
+                "external_url": "http://209.221.138.252/Details.aspx?location=233461",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1460,
+                "last_updated": "2025-03-02",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.337644,
+                    48.8606111
+                ]
+            },
+            "properties": {
+                "name": "Louvre Museum",
+                "area": "France",
+                "address": "Rue de Rivoli, 75001 Paris, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=397581",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6310,
+                "last_updated": "2025-03-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.3496806249167705,
+                    48.85321651011556
+                ]
+            },
+            "properties": {
+                "name": "Notre dam",
+                "area": "France",
+                "address": "16 Rue du Cloitre Notre Dame, 75004 Paris, France",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7750,
+                "last_updated": "2025-03-02",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8786253,
+                    33.6930544
+                ]
+            },
+            "properties": {
+                "name": "Gay Dolphin Gift Cove",
+                "area": "South Carolina",
+                "address": "916 N Ocean Blvd. (near Mr Joe White Ave, across street from Ripley's Haunted Adventure), Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3144",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2206,
+                "last_updated": "2025-03-03",
+                "multimachine": 2
             }
         }
     ]
