@@ -42422,10 +42422,10 @@
                 "address": "1005 Coke Street, Vega",
                 "external_url": "http://209.221.138.252/Details.aspx?location=283184",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3816,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49070,6 +49070,48 @@
                 "id": 2672,
                 "last_updated": "2025-03-05",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.7902239,
+                    43.6076021
+                ]
+            },
+            "properties": {
+                "name": "Hot Shots Imaging at Hoover Dam",
+                "area": "Nevada",
+                "address": "On the Dam, Hoover Dam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=337617",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4485,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6570448,
+                    41.948603
+                ]
+            },
+            "properties": {
+                "name": "Chicago Cubs Official Sports Store",
+                "area": "Illinois",
+                "address": "3637 N Clark St, Chicago",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238272",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7752,
+                "last_updated": "2024-11-07"
             }
         }
     ]
