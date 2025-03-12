@@ -939,9 +939,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 5697,
-                "last_updated": "2023-10-29"
+                "last_updated": "2025-03-08"
             }
         },
         {
@@ -16848,7 +16848,7 @@
                 ]
             },
             "properties": {
-                "name": "Zoo Vykov",
+                "name": "Zoo Vyškov",
                 "area": "Czech Republic",
                 "address": "Cukrovarská 424, Vykov",
                 "status": "unvisited",
@@ -16856,7 +16856,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6956,
-                "last_updated": "2023-11-18"
+                "last_updated": "2025-02-28"
             }
         },
         {
@@ -22806,10 +22806,10 @@
                 "address": "Armouries Drive, WEST YORKSHIRE - Leeds",
                 "external_url": "http://209.221.138.252/Details.aspx?location=100148",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1598,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -26333,10 +26333,10 @@
                 "address": ", Sintra",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5893,
-                "last_updated": "2024-03-29"
+                "last_updated": "2025-03-02"
             }
         },
         {
@@ -31538,10 +31538,10 @@
                 "address": "One Tram Way, Palm Springs",
                 "external_url": "http://209.221.138.252/Details.aspx?location=222613",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4722,
-                "last_updated": "2024-06-19"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -32380,10 +32380,10 @@
                 "address": "Westmoreland Street, , Dublin",
                 "external_url": "http://209.221.138.252/Details.aspx?location=96570",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 701,
-                "last_updated": "2024-06-27"
+                "last_updated": "2025-03-10"
             }
         },
         {
@@ -36041,10 +36041,10 @@
                 "address": "604 N Adams St, Welsh",
                 "external_url": "http://209.221.138.252/Details.aspx?location=378078",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5174,
-                "last_updated": "2024-07-28"
+                "last_updated": "2025-03-03"
             }
         },
         {
@@ -37495,9 +37495,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=437539",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7453,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-03-11"
             }
         },
         {
@@ -40677,9 +40677,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=7099",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7544,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-03-06"
             }
         },
         {
@@ -40760,10 +40760,10 @@
                 "address": "3215 S Rancho Dr, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=368007",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5419,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42422,10 +42422,10 @@
                 "address": "1005 Coke Street, Vega",
                 "external_url": "http://209.221.138.252/Details.aspx?location=283184",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3816,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48814,6 +48814,537 @@
                 "last_updated": "2025-02-28",
                 "multimachine": 2,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5069688,
+                    28.3767703
+                ]
+            },
+            "properties": {
+                "name": "Disney Springs Resort area, Disney B Resort & Spa",
+                "area": "Florida",
+                "address": "1905 Hotel Plaza Blvd Lake Buena Vista, Lake Buena Vista",
+                "external_url": "http://209.221.138.252/Details.aspx?location=291355",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3328,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.568113899999999,
+                    53.2193635
+                ]
+            },
+            "properties": {
+                "name": "Martinitoren ",
+                "area": "Netherlands",
+                "address": "Martinikerkhof 3, Groningen",
+                "external_url": "http://209.221.138.252/Details.aspx?location=285516",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 190,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.946218,
+                    30.2055059
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Louisiana",
+                "address": "2200 W. Cabela's Parkway, Gonzales",
+                "external_url": "http://209.221.138.252/Details.aspx?location=37605",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3571,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.2354679,
+                    51.4765405
+                ]
+            },
+            "properties": {
+                "name": "Wildfowl and Wetlands Trust, London Wetland Centre (WWT)",
+                "area": "England",
+                "address": "Queen Elizabeth's Walk, Barnes, LONDON - Barnes",
+                "external_url": "http://209.221.138.252/Details.aspx?location=233461",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1460,
+                "last_updated": "2025-03-02",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.337644,
+                    48.8606111
+                ]
+            },
+            "properties": {
+                "name": "Louvre Museum",
+                "area": "France",
+                "address": "Rue de Rivoli, 75001 Paris, Paris - Île-De-France",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=397581",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6310,
+                "last_updated": "2025-03-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.3496806249167705,
+                    48.85321651011556
+                ]
+            },
+            "properties": {
+                "name": "Notre dam",
+                "area": "France",
+                "address": "16 Rue du Cloitre Notre Dame, 75004 Paris, France",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7750,
+                "last_updated": "2025-03-02",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8786253,
+                    33.6930544
+                ]
+            },
+            "properties": {
+                "name": "Gay Dolphin Gift Cove",
+                "area": "South Carolina",
+                "address": "916 N Ocean Blvd. (near Mr Joe White Ave, across street from Ripley's Haunted Adventure), Myrtle Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3144",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2206,
+                "last_updated": "2025-03-03",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3808822,
+                    40.55001439999999
+                ]
+            },
+            "properties": {
+                "name": "Nauvoo Market Place",
+                "area": "Illinois",
+                "address": "1385 Mulholland Street, Nauvoo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350751",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1241,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.245786,
+                    36.0972793
+                ]
+            },
+            "properties": {
+                "name": "Kaleideum",
+                "area": "North Carolina",
+                "address": "120 W. Third St., Winston-Salem",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=450858",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7751,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.914952,
+                    33.80985
+                ]
+            },
+            "properties": {
+                "name": "Tropicana Hotel - The Cove on Harbor Market & Cafe",
+                "area": "California",
+                "address": "1540 S Harbor Boulevard, Anaheim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=38185",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4562,
+                "last_updated": "2025-03-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1467421,
+                    36.6068898
+                ]
+            },
+            "properties": {
+                "name": "Stovepipe Wells General Store & The Nugget Gift Shop",
+                "area": "California",
+                "address": "Highway 190 Stovepipe Wells Village, Death Valley National Park",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4610,
+                "last_updated": "2025-03-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.2179996,
+                    33.6608929
+                ]
+            },
+            "properties": {
+                "name": "Tyson Wells R.V. Park & Market Centre",
+                "area": "Arizona",
+                "address": "121 West Kuehn Street, Quartzsite",
+                "external_url": "http://209.221.138.252/Details.aspx?location=280",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2672,
+                "last_updated": "2025-03-05",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.7902239,
+                    43.6076021
+                ]
+            },
+            "properties": {
+                "name": "Hot Shots Imaging at Hoover Dam",
+                "area": "Nevada",
+                "address": "On the Dam, Hoover Dam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=337617",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4485,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6570448,
+                    41.948603
+                ]
+            },
+            "properties": {
+                "name": "Chicago Cubs Official Sports Store",
+                "area": "Illinois",
+                "address": "3637 N Clark St, Chicago",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=238272",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7752,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.59522322652226,
+                    37.7382167989356
+                ]
+            },
+            "properties": {
+                "name": "Yosemite Lodge gift shop",
+                "area": "California",
+                "address": "9006 Yosemite Lodge Dr, Yosemite Valley, CA 95389",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7753,
+                "last_updated": "2025-03-07",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.353295841151933,
+                    36.145643585682926
+                ]
+            },
+            "properties": {
+                "name": "Money Market",
+                "area": "Gibraltar",
+                "address": "Grand Castmates Gates",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7754,
+                "last_updated": "2025-03-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.94544317971385,
+                    29.8873678688428
+                ]
+            },
+            "properties": {
+                "name": "Texas State University - Ingram Hall",
+                "area": "Texas",
+                "address": "601 University Dr, San Marcos",
+                "external_url": "http://209.221.138.252/Details.aspx?location=315936",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3800,
+                "last_updated": "2025-03-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.17259299999999,
+                    42.32639
+                ]
+            },
+            "properties": {
+                "name": "Volo Auto Museum",
+                "area": "Illinois",
+                "address": "27582 Volo Village Road, Volo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=236160",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1263,
+                "last_updated": "2025-03-08",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5211832,
+                    35.7086479
+                ]
+            },
+            "properties": {
+                "name": "Ober Gatlinburg",
+                "area": "Tennessee",
+                "address": "1001 Parkway Suite #2, Gatlinburg",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2162",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4208,
+                "last_updated": "2025-03-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.3554599,
+                    41.0511644
+                ]
+            },
+            "properties": {
+                "name": "Camelback Mountain Resort",
+                "area": "Pennsylvania",
+                "address": "243 Camelback Road, Tannersville",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=89226",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4070,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.4141935,
+                    38.7354971
+                ]
+            },
+            "properties": {
+                "name": "Spring Mill Inn",
+                "area": "Indiana",
+                "address": "3333 SR-60 E, Mitchell",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451115",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7755,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.6084578,
+                    41.7453237
+                ]
+            },
+            "properties": {
+                "name": "Hills Bank and Trust",
+                "area": "Iowa",
+                "address": "25 Hwy 965 N., North Liberty",
+                "external_url": "http://209.221.138.252/Details.aspx?location=352387",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2343,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5532619,
+                    54.5350201
+                ]
+            },
+            "properties": {
+                "name": "Hopetown",
+                "area": "England",
+                "address": "McNay Street, Darlington, DURHAM - Darlington",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451149",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7756,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.899365899999999,
+                    52.37402969999999
+                ]
+            },
+            "properties": {
+                "name": "Excalibur Café",
+                "area": "Netherlands",
+                "address": "Oudezijds achterburgwal 48, Amsterdam",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451152",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7757,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.46452137995686,
+                    38.33095844494655
+                ]
+            },
+            "properties": {
+                "name": "Calvert Marine Museum",
+                "area": "Australia",
+                "address": "14200 Solomons Island Rd S, Solomons, MD 20688, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7758,
+                "last_updated": "2025-03-12"
             }
         }
     ]
