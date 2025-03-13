@@ -41034,10 +41034,10 @@
                 "address": "200 Nineteenth Street North, Birmingham",
                 "external_url": "http://209.221.138.252/Details.aspx?location=171",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1701,
-                "last_updated": "2024-09-26"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49452,6 +49452,27 @@
                 "machine_status": "available",
                 "id": 7760,
                 "last_updated": "2025-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.8710629,
+                    30.274554
+                ]
+            },
+            "properties": {
+                "name": "Recess! Toy Store",
+                "area": "Texas",
+                "address": "134 E Main St, Fredericksburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451382",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7761,
+                "last_updated": "2024-11-07"
             }
         }
     ]
