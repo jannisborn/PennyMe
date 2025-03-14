@@ -21752,8 +21752,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3833,
-                "last_updated": "2024-02-23",
-                "multimachine": 2
+                "last_updated": "2025-03-13",
+                "multimachine": 3
             }
         },
         {
@@ -41034,10 +41034,10 @@
                 "address": "200 Nineteenth Street North, Birmingham",
                 "external_url": "http://209.221.138.252/Details.aspx?location=171",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1701,
-                "last_updated": "2024-09-26"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46002,9 +46002,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=252187",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2103,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-03-12"
             }
         },
         {
@@ -48598,7 +48598,7 @@
                 "address": "One Tranquility Base, Huntsville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=184",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1723,
                 "last_updated": "2024-11-07"
@@ -49345,6 +49345,155 @@
                 "machine_status": "available",
                 "id": 7758,
                 "last_updated": "2025-03-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1837131,
+                    41.38339029999999
+                ]
+            },
+            "properties": {
+                "name": "Supermercat Port",
+                "area": "Spain",
+                "address": "Avinguda del Marques de l'Argentera, Barcelona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331074",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5916,
+                "last_updated": "2025-03-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.184338,
+                    41.37683699999999
+                ]
+            },
+            "properties": {
+                "name": "LAquarium de Barcelona",
+                "area": "Spain",
+                "address": "Moll d'Espanya del Port Vell, Barcelona - Catalonia Region Barcelona Province",
+                "external_url": "http://209.221.138.252/Details.aspx?location=292069",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 285,
+                "last_updated": "2025-03-12",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.04564374606606,
+                    33.06019810004315
+                ]
+            },
+            "properties": {
+                "name": "Lake Bob Sandlin State Park",
+                "area": "Australia",
+                "address": "341 State Park Road 2117",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7759,
+                "last_updated": "2025-03-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.2838982,
+                    38.5061189
+                ]
+            },
+            "properties": {
+                "name": "Missouri Civil War Museum",
+                "area": "Missouri",
+                "address": "222 Worth Road, St. Louis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=268770",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1131,
+                "last_updated": "2025-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.02386708305227,
+                    33.058158289001355
+                ]
+            },
+            "properties": {
+                "name": "Lake Bob Sandlin State Park",
+                "area": "Australia",
+                "address": "341 State Park Road 2117 Pittsburg,Tx",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7760,
+                "last_updated": "2025-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.8710629,
+                    30.274554
+                ]
+            },
+            "properties": {
+                "name": "Recess! Toy Store",
+                "area": "Texas",
+                "address": "134 E Main St, Fredericksburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451382",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7761,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -108.5705414,
+                    39.064566
+                ]
+            },
+            "properties": {
+                "name": "Grand Junction Amtrak Station",
+                "area": "Colorado",
+                "address": "339 S. 1st Street, Grand Junction",
+                "external_url": "http://209.221.138.252/Details.aspx?location=336848",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1876,
+                "last_updated": "2025-03-14"
             }
         }
     ]
