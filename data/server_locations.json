@@ -47569,10 +47569,10 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=97272",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3730,
-                "last_updated": "2025-01-31"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49494,6 +49494,69 @@
                 "status": "unvisited",
                 "id": 1876,
                 "last_updated": "2025-03-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9226303,
+                    33.8091108
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Wetzel's Pretzels and Salt and Straw",
+                "area": "California",
+                "address": "1540 South Disneyland Drive, Anaheim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196486",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4559,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.0889727,
+                    44.2411946
+                ]
+            },
+            "properties": {
+                "name": "The 1000 Islands Cruet",
+                "area": "New York",
+                "address": "226 James ST, Clayton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451486",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7762,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.8055677,
+                    53.0750177
+                ]
+            },
+            "properties": {
+                "name": "Touristen-Information Center",
+                "area": "Germany",
+                "address": "Böttcherstraße 4",
+                "external_url": "http://209.221.138.252/Details.aspx?location=101078",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 459,
+                "last_updated": "2024-11-07"
             }
         }
     ]
