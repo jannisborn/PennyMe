@@ -3256,9 +3256,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412790",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6124,
-                "last_updated": "2024-12-29"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -38712,7 +38712,7 @@
                 "address": "7223 South Virginia Dare Trail., Nags Head",
                 "external_url": "http://209.221.138.252/Details.aspx?location=95439",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4134,
                 "last_updated": "2024-11-07"
@@ -49707,6 +49707,27 @@
                 "machine_status": "out-of-order",
                 "id": 6199,
                 "last_updated": "2025-03-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.9788274,
+                    51.1425099
+                ]
+            },
+            "properties": {
+                "name": "Naturschutz-Tierpark Görlitz",
+                "area": "Germany",
+                "address": "Zittauer Str. 43, 02826 Görlitz, Germany, Gorlitz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451658",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7766,
+                "last_updated": "2024-11-07"
             }
         }
     ]
