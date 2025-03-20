@@ -42464,10 +42464,10 @@
                 "address": "601 E Pratt St, Baltimore",
                 "external_url": "http://209.221.138.252/Details.aspx?location=372345",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5209,
-                "last_updated": "2024-10-18"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49771,6 +49771,111 @@
                 "id": 1340,
                 "last_updated": "2025-03-20",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.9444915,
+                    30.3927608
+                ]
+            },
+            "properties": {
+                "name": "Slap Ya Momma's Barbecue Restaurant",
+                "area": "Mississippi",
+                "address": "1785 Beach Blvd, Biloxi",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252199",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2044,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.164374,
+                    36.13201859999999
+                ]
+            },
+            "properties": {
+                "name": "Century Food Mart,",
+                "area": "Nevada",
+                "address": "3041 S Las Vegas Blvd #4, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451761",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7768,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.05402959999999,
+                    39.4798874
+                ]
+            },
+            "properties": {
+                "name": "Festival Country Indiana Visitor Center",
+                "area": "Indiana",
+                "address": "66 S. Water St., Franklin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451714",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7769,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.63854210000001,
+                    35.7818374
+                ]
+            },
+            "properties": {
+                "name": "North Carolina Museum of History",
+                "area": "North Carolina",
+                "address": "5 E Edenton St, Raleigh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=49675",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4144,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.7502228,
+                    13.4762824
+                ]
+            },
+            "properties": {
+                "name": "Che'lu ... It's about friendship",
+                "area": "Guam",
+                "address": "Building 163 and 164 Chamorrow Village, Agana, Mariana Islands",
+                "external_url": "http://209.221.138.252/Details.aspx?location=200477",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1741,
+                "last_updated": "2024-11-07"
             }
         }
     ]
