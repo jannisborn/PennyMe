@@ -3256,9 +3256,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412790",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6124,
-                "last_updated": "2024-12-29"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -7310,9 +7310,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6517,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-03-21"
             }
         },
         {
@@ -21752,8 +21752,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3833,
-                "last_updated": "2024-02-23",
-                "multimachine": 2
+                "last_updated": "2025-03-13",
+                "multimachine": 3
             }
         },
         {
@@ -35071,9 +35071,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=434937",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7310,
-                "last_updated": "2024-07-21"
+                "last_updated": "2025-03-19"
             }
         },
         {
@@ -38712,7 +38712,7 @@
                 "address": "7223 South Virginia Dare Trail., Nags Head",
                 "external_url": "http://209.221.138.252/Details.aspx?location=95439",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4134,
                 "last_updated": "2024-11-07"
@@ -41034,10 +41034,10 @@
                 "address": "200 Nineteenth Street North, Birmingham",
                 "external_url": "http://209.221.138.252/Details.aspx?location=171",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1701,
-                "last_updated": "2024-09-26"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42338,10 +42338,10 @@
                 "address": "300 Fremont Street, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=165962",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 4498,
-                "last_updated": "2024-11-08"
+                "last_updated": "2025-03-16"
             }
         },
         {
@@ -42464,10 +42464,10 @@
                 "address": "601 E Pratt St, Baltimore",
                 "external_url": "http://209.221.138.252/Details.aspx?location=372345",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5209,
-                "last_updated": "2024-10-18"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46002,9 +46002,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=252187",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2103,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-03-12"
             }
         },
         {
@@ -47569,10 +47569,10 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=97272",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3730,
-                "last_updated": "2025-01-31"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48598,7 +48598,7 @@
                 "address": "One Tranquility Base, Huntsville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=184",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1723,
                 "last_updated": "2024-11-07"
@@ -49345,6 +49345,558 @@
                 "machine_status": "available",
                 "id": 7758,
                 "last_updated": "2025-03-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1837131,
+                    41.38339029999999
+                ]
+            },
+            "properties": {
+                "name": "Supermercat Port",
+                "area": "Spain",
+                "address": "Avinguda del Marques de l'Argentera, Barcelona",
+                "external_url": "http://209.221.138.252/Details.aspx?location=331074",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5916,
+                "last_updated": "2025-03-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.184338,
+                    41.37683699999999
+                ]
+            },
+            "properties": {
+                "name": "LAquarium de Barcelona",
+                "area": "Spain",
+                "address": "Moll d'Espanya del Port Vell, Barcelona - Catalonia Region Barcelona Province",
+                "external_url": "http://209.221.138.252/Details.aspx?location=292069",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 285,
+                "last_updated": "2025-03-12",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.04564374606606,
+                    33.06019810004315
+                ]
+            },
+            "properties": {
+                "name": "Lake Bob Sandlin State Park",
+                "area": "Australia",
+                "address": "341 State Park Road 2117",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7759,
+                "last_updated": "2025-03-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.2838982,
+                    38.5061189
+                ]
+            },
+            "properties": {
+                "name": "Missouri Civil War Museum",
+                "area": "Missouri",
+                "address": "222 Worth Road, St. Louis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=268770",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1131,
+                "last_updated": "2025-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.02386708305227,
+                    33.058158289001355
+                ]
+            },
+            "properties": {
+                "name": "Lake Bob Sandlin State Park",
+                "area": "Australia",
+                "address": "341 State Park Road 2117 Pittsburg,Tx",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7760,
+                "last_updated": "2025-03-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.8710629,
+                    30.274554
+                ]
+            },
+            "properties": {
+                "name": "Recess! Toy Store",
+                "area": "Texas",
+                "address": "134 E Main St, Fredericksburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451382",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7761,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -108.5705414,
+                    39.064566
+                ]
+            },
+            "properties": {
+                "name": "Grand Junction Amtrak Station",
+                "area": "Colorado",
+                "address": "339 S. 1st Street, Grand Junction",
+                "external_url": "http://209.221.138.252/Details.aspx?location=336848",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1876,
+                "last_updated": "2025-03-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9226303,
+                    33.8091108
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Wetzel's Pretzels and Salt and Straw",
+                "area": "California",
+                "address": "1540 South Disneyland Drive, Anaheim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196486",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4559,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.0889727,
+                    44.2411946
+                ]
+            },
+            "properties": {
+                "name": "The 1000 Islands Cruet",
+                "area": "New York",
+                "address": "226 James ST, Clayton",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451486",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7762,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.8055677,
+                    53.0750177
+                ]
+            },
+            "properties": {
+                "name": "Touristen-Information Center",
+                "area": "Germany",
+                "address": "Böttcherstraße 4",
+                "external_url": "http://209.221.138.252/Details.aspx?location=101078",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 459,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.12905937281269,
+                    31.554817887522727
+                ]
+            },
+            "properties": {
+                "name": "Dr. Pepper Museum & Free Enterprise Institute",
+                "area": "Texas",
+                "address": "300 S 5th Street, Waco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=282567",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3821,
+                "last_updated": "2025-03-16",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9192231300452,
+                    33.80795130961631
+                ]
+            },
+            "properties": {
+                "name": "Finding dory",
+                "area": "American Samoa",
+                "address": "Elysian arcade",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7763,
+                "last_updated": "2025-03-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4858996,
+                    29.4259493
+                ]
+            },
+            "properties": {
+                "name": "The Alamo Gift Shop",
+                "area": "Texas",
+                "address": "300 Alamo Plaza, San Antonio",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2589",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3773,
+                "last_updated": "2025-03-17",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.0185738,
+                    38.1664001
+                ]
+            },
+            "properties": {
+                "name": "Otter Creek State Park",
+                "area": "Utah",
+                "address": "22 UT-22, Antimony",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451629",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7764,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.56993419999999,
+                    35.832979
+                ]
+            },
+            "properties": {
+                "name": "Beef Jerky Outlet",
+                "area": "Tennessee",
+                "address": "1811 Parkway, Sevierville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=69671",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6171,
+                "last_updated": "2025-03-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.12243491824879,
+                    -26.68236738314309
+                ]
+            },
+            "properties": {
+                "name": "sealife sunshine coast",
+                "area": "Australia",
+                "address": "Caravan Park, 100 Parkyn Parade, Mooloolaba QLD 4557, Australia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7765,
+                "last_updated": "2025-03-18",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4119338,
+                    31.0471893
+                ]
+            },
+            "properties": {
+                "name": "Maxwells General Store",
+                "area": "Georgia",
+                "address": "10 Main St, Jekyll Island",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=412096",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 6199,
+                "last_updated": "2025-03-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.9788274,
+                    51.1425099
+                ]
+            },
+            "properties": {
+                "name": "Naturschutz-Tierpark Görlitz",
+                "area": "Germany",
+                "address": "Zittauer Str. 43, 02826 Görlitz, Germany, Gorlitz",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451658",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7766,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.169050769085814,
+                    49.46472301998928
+                ]
+            },
+            "properties": {
+                "name": "Bad Dürkheim Fass",
+                "area": "Germany",
+                "address": "Sankt-Michaels-Allee 2, 67098 Bad Dürkheim, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7767,
+                "last_updated": "2025-03-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.8844114,
+                    53.227269
+                ]
+            },
+            "properties": {
+                "name": "Chester Zoo",
+                "area": "England",
+                "address": "Upton-by-Chester, CHESHIRE - Chester",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3556",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1340,
+                "last_updated": "2025-03-20",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.9444915,
+                    30.3927608
+                ]
+            },
+            "properties": {
+                "name": "Slap Ya Momma's Barbecue Restaurant",
+                "area": "Mississippi",
+                "address": "1785 Beach Blvd, Biloxi",
+                "external_url": "http://209.221.138.252/Details.aspx?location=252199",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2044,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.164374,
+                    36.13201859999999
+                ]
+            },
+            "properties": {
+                "name": "Century Food Mart,",
+                "area": "Nevada",
+                "address": "3041 S Las Vegas Blvd #4, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451761",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7768,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.05402959999999,
+                    39.4798874
+                ]
+            },
+            "properties": {
+                "name": "Festival Country Indiana Visitor Center",
+                "area": "Indiana",
+                "address": "66 S. Water St., Franklin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451714",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7769,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.63854210000001,
+                    35.7818374
+                ]
+            },
+            "properties": {
+                "name": "North Carolina Museum of History",
+                "area": "North Carolina",
+                "address": "5 E Edenton St, Raleigh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=49675",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4144,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.7502228,
+                    13.4762824
+                ]
+            },
+            "properties": {
+                "name": "Che'lu ... It's about friendship",
+                "area": "Guam",
+                "address": "Building 163 and 164 Chamorrow Village, Agana, Mariana Islands",
+                "external_url": "http://209.221.138.252/Details.aspx?location=200477",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1741,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.8675096,
+                    49.5727718
+                ]
+            },
+            "properties": {
+                "name": "Atlantis Indoor Leisure Pool",
+                "area": "Germany",
+                "address": "Würzburgerstraße 35, Herzogenaurach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=404237",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6330,
+                "last_updated": "2025-03-21"
             }
         }
     ]
