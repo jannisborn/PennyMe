@@ -22785,10 +22785,10 @@
                 "address": "Little Horton Lane, WEST YORKSHIRE - Bradford ",
                 "external_url": "http://209.221.138.252/Details.aspx?location=26766",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1595,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48703,7 +48703,7 @@
                 "address": "999 E Street, Washington DC",
                 "external_url": "http://209.221.138.252/Details.aspx?location=356168",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5468,
                 "last_updated": "2024-11-07"
@@ -50045,6 +50045,27 @@
                 "machine_status": "available",
                 "id": 7772,
                 "last_updated": "2025-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.5654048,
+                    28.294075
+                ]
+            },
+            "properties": {
+                "name": "Restaurants 7 Canadas",
+                "area": "Spain",
+                "address": "38300 LA Orotav, Santa Cruz de Tenerife, Tenerife",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451828",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7773,
+                "last_updated": "2024-11-07"
             }
         }
     ]
