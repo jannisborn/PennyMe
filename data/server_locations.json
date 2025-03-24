@@ -31854,9 +31854,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=254610",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7230,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50087,6 +50087,69 @@
                 "status": "unvisited",
                 "id": 4186,
                 "last_updated": "2025-03-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.5936505,
+                    30.268996
+                ]
+            },
+            "properties": {
+                "name": "Souvenir City #2",
+                "area": "Alabama",
+                "address": "25241 Perdido Beach Blvd, Orange Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5966,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.828687,
+                    21.2795701
+                ]
+            },
+            "properties": {
+                "name": "Haleiwa Town Shaved Ice ",
+                "area": "Hawaii",
+                "address": "2250 Kalakaua ave Unit LL108, Royal Hawaiian Ave, , Oahu - Honolulu ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451895",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7774,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.8691886,
+                    32.73433139999999
+                ]
+            },
+            "properties": {
+                "name": "Glover Garden",
+                "area": "Japan",
+                "address": "8-1 Minamiyamate-cho, Nagasaki",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451907",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7775,
+                "last_updated": "2024-11-07"
             }
         }
     ]
