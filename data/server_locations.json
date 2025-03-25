@@ -1300,11 +1300,11 @@
                 "area": "Tennessee",
                 "address": "386 Parkway, Gatlinburg, TN 37738, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452070",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6031,
-                "last_updated": "2023-08-23"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50192,6 +50192,69 @@
                 "status": "unvisited",
                 "id": 4884,
                 "last_updated": "2025-03-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.7716066,
+                    34.2894628
+                ]
+            },
+            "properties": {
+                "name": "Tupelo Buffalo Park & Zoo",
+                "area": "Mississippi",
+                "address": "2272 N Coley Rd , Tupelo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451986",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7777,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.52110259999999,
+                    35.7087578
+                ]
+            },
+            "properties": {
+                "name": "The Silver Galleon",
+                "area": "Tennessee",
+                "address": "1001 Parkway Suite #1, Gatlinburg",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2165",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4218,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5134972,
+                    35.7131778
+                ]
+            },
+            "properties": {
+                "name": "Mountain Mall",
+                "area": "Tennessee",
+                "address": "611 Parkway, Gatlinburg",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5335,
+                "last_updated": "2024-11-07"
             }
         }
     ]
