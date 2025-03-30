@@ -28763,10 +28763,10 @@
                 "address": "Fiedrichstrasse, Berlin",
                 "external_url": "http://209.221.138.252/Details.aspx?location=33876",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5681,
-                "last_updated": "2024-05-19"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -47189,10 +47189,10 @@
                 "address": "2800 Opryland Dr., Nashville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=289186",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4244,
-                "last_updated": "2025-01-22"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50297,6 +50297,111 @@
                 "status": "unvisited",
                 "id": 2202,
                 "last_updated": "2025-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.58212019999999,
+                    40.9777639
+                ]
+            },
+            "properties": {
+                "name": "Planktown Hardware",
+                "area": "Ohio",
+                "address": "8117 Planktown Road, Shiloh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452233",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7778,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.7313389,
+                    34.7013178
+                ]
+            },
+            "properties": {
+                "name": "Alpine Divine",
+                "area": "Georgia",
+                "address": "8683 GA-75, Helen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452190",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7779,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.9835377,
+                    37.1362281
+                ]
+            },
+            "properties": {
+                "name": "Olde General Store",
+                "area": "Kentucky",
+                "address": "802 Mammoth Cave Road, Cave City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2291",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3520,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    143.5046095,
+                    -38.6494052
+                ]
+            },
+            "properties": {
+                "name": "Otway Fly Tree Top Adventures",
+                "area": "Australia",
+                "address": "360 Phillips Track, SA - Ferguson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452230",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7780,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3899435,
+                    52.5091307
+                ]
+            },
+            "properties": {
+                "name": "Allied Checkpoint Store",
+                "area": "Germany",
+                "address": "Friedrichstraße 54, Berlin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452239",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7781,
+                "last_updated": "2024-11-07"
             }
         }
     ]
