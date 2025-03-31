@@ -527,10 +527,10 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=916",
                 "internal_url": "null",
-                "multimachine": 2,
+                "multimachine": 3,
                 "machine_status": "available",
                 "id": 4797,
-                "last_updated": "2024-02-17"
+                "last_updated": "2025-03-25"
             }
         },
         {
@@ -1300,11 +1300,11 @@
                 "area": "Tennessee",
                 "address": "386 Parkway, Gatlinburg, TN 37738, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452070",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6031,
-                "last_updated": "2023-08-23"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -5446,10 +5446,10 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "paywall": true,
+                "paywall": false,
                 "machine_status": "available",
                 "id": 6468,
-                "last_updated": "2023-10-18"
+                "last_updated": "2025-03-23"
             }
         },
         {
@@ -22785,10 +22785,10 @@
                 "address": "Little Horton Lane, WEST YORKSHIRE - Bradford ",
                 "external_url": "http://209.221.138.252/Details.aspx?location=26766",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1595,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -28763,10 +28763,10 @@
                 "address": "Fiedrichstrasse, Berlin",
                 "external_url": "http://209.221.138.252/Details.aspx?location=33876",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5681,
-                "last_updated": "2024-05-19"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -31854,9 +31854,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=254610",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7230,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -37196,10 +37196,10 @@
                 "address": "4607 Legendary Marina Drive, Destin",
                 "external_url": "http://209.221.138.252/Details.aspx?location=271751",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3292,
-                "last_updated": "2024-08-07"
+                "last_updated": "2025-03-23"
             }
         },
         {
@@ -43985,9 +43985,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=413055",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6220,
-                "last_updated": "2024-11-10"
+                "last_updated": "2025-03-26"
             }
         },
         {
@@ -47189,10 +47189,10 @@
                 "address": "2800 Opryland Dr., Nashville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=289186",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4244,
-                "last_updated": "2025-01-22"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -48703,7 +48703,7 @@
                 "address": "999 E Street, Washington DC",
                 "external_url": "http://209.221.138.252/Details.aspx?location=356168",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5468,
                 "last_updated": "2024-11-07"
@@ -49897,6 +49897,511 @@
                 "machine_status": "retired",
                 "id": 6330,
                 "last_updated": "2025-03-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.612482062522002,
+                    54.105896504073186
+                ]
+            },
+            "properties": {
+                "name": "Heimatmuseum",
+                "area": "Germany",
+                "address": "Dünenstraße 4, 18230 Rerik",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7770,
+                "last_updated": "2025-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.6152584,
+                    54.1062595
+                ]
+            },
+            "properties": {
+                "name": "Railway Station",
+                "area": "Germany",
+                "address": ", Rerik",
+                "external_url": "http://209.221.138.252/Details.aspx?location=333808",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5754,
+                "last_updated": "2025-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5713251,
+                    35.8038376
+                ]
+            },
+            "properties": {
+                "name": "The Island - Beef Jerky Outlet",
+                "area": "Tennessee",
+                "address": "131 The Island Dr. #9138B, Pigeon Forge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=226764",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4277,
+                "last_updated": "2025-03-22",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.05080358723774,
+                    28.02316616046747
+                ]
+            },
+            "properties": {
+                "name": "Goin’ Coastal Outfitters",
+                "area": "Texas",
+                "address": "103 N Austin St, Rockport, TX 78382, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7771,
+                "last_updated": "2025-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.3211324,
+                    32.7165418
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Texas",
+                "address": "506 West IH-20, Terrell",
+                "external_url": "http://209.221.138.252/Details.aspx?location=250426",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3809,
+                "last_updated": "2025-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.5643184,
+                    50.4351425
+                ]
+            },
+            "properties": {
+                "name": "Dartmouth Steam Railway, Queens Park Station",
+                "area": "England",
+                "address": "Queens Park Station Torbay Road, DEVON - Paignton",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107486",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1375,
+                "last_updated": "2025-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3769200778378428,
+                    54.81403907552071
+                ]
+            },
+            "properties": {
+                "name": "Hole in the wand",
+                "area": "Ukraine",
+                "address": "Unit 110 Dalton Park, Murton, Seaham SR7 9HU, UK",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7772,
+                "last_updated": "2025-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.5654048,
+                    28.294075
+                ]
+            },
+            "properties": {
+                "name": "Restaurants 7 Canadas",
+                "area": "Spain",
+                "address": "38300 LA Orotav, Santa Cruz de Tenerife, Tenerife",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451828",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7773,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.775973636575,
+                    35.60347270841638
+                ]
+            },
+            "properties": {
+                "name": "Cades Cove Store",
+                "area": "Tennessee",
+                "address": "Great Smoky Mountains National Park, Cades Cove",
+                "external_url": "http://209.221.138.252/Details.aspx?location=315708",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4186,
+                "last_updated": "2025-03-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.5936505,
+                    30.268996
+                ]
+            },
+            "properties": {
+                "name": "Souvenir City #2",
+                "area": "Alabama",
+                "address": "25241 Perdido Beach Blvd, Orange Beach",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5966,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.828687,
+                    21.2795701
+                ]
+            },
+            "properties": {
+                "name": "Haleiwa Town Shaved Ice ",
+                "area": "Hawaii",
+                "address": "2250 Kalakaua ave Unit LL108, Royal Hawaiian Ave, , Oahu - Honolulu ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451895",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7774,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.8691886,
+                    32.73433139999999
+                ]
+            },
+            "properties": {
+                "name": "Glover Garden",
+                "area": "Japan",
+                "address": "8-1 Minamiyamate-cho, Nagasaki",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451907",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7775,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.617068734846587,
+                    43.06947414820667
+                ]
+            },
+            "properties": {
+                "name": "Ulivo Ceramica Souvenir",
+                "area": "Italy",
+                "address": "P.za Santa Chiara, 5, 06081 Assisi PG, Italy",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7776,
+                "last_updated": "2025-03-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2340155,
+                    38.13819549999999
+                ]
+            },
+            "properties": {
+                "name": "Six Flags Discovery Kingdom (Formerly Marine World Africa USA)",
+                "area": "California",
+                "address": "1001 Fairgrounds Drive, Vallejo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=426",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4884,
+                "last_updated": "2025-03-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.7716066,
+                    34.2894628
+                ]
+            },
+            "properties": {
+                "name": "Tupelo Buffalo Park & Zoo",
+                "area": "Mississippi",
+                "address": "2272 N Coley Rd , Tupelo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=451986",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7777,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.52110259999999,
+                    35.7087578
+                ]
+            },
+            "properties": {
+                "name": "The Silver Galleon",
+                "area": "Tennessee",
+                "address": "1001 Parkway Suite #1, Gatlinburg",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2165",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4218,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5134972,
+                    35.7131778
+                ]
+            },
+            "properties": {
+                "name": "Mountain Mall",
+                "area": "Tennessee",
+                "address": "611 Parkway, Gatlinburg",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5335,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.9488987,
+                    34.2355004
+                ]
+            },
+            "properties": {
+                "name": "Krazy Mikez",
+                "area": "North Carolina",
+                "address": "1 North Front st, Wilmington",
+                "external_url": "http://209.221.138.252/Details.aspx?location=198893",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4161,
+                "last_updated": "2025-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.4521216,
+                    32.3585481
+                ]
+            },
+            "properties": {
+                "name": "Hunting Island State Park",
+                "area": "South Carolina",
+                "address": "2555 Sea Island PKWY, Hunting Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=18483",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2202,
+                "last_updated": "2025-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.58212019999999,
+                    40.9777639
+                ]
+            },
+            "properties": {
+                "name": "Planktown Hardware",
+                "area": "Ohio",
+                "address": "8117 Planktown Road, Shiloh",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452233",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7778,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.7313389,
+                    34.7013178
+                ]
+            },
+            "properties": {
+                "name": "Alpine Divine",
+                "area": "Georgia",
+                "address": "8683 GA-75, Helen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452190",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7779,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.9835377,
+                    37.1362281
+                ]
+            },
+            "properties": {
+                "name": "Olde General Store",
+                "area": "Kentucky",
+                "address": "802 Mammoth Cave Road, Cave City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2291",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3520,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    143.5046095,
+                    -38.6494052
+                ]
+            },
+            "properties": {
+                "name": "Otway Fly Tree Top Adventures",
+                "area": "Australia",
+                "address": "360 Phillips Track, SA - Ferguson",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452230",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7780,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3899435,
+                    52.5091307
+                ]
+            },
+            "properties": {
+                "name": "Allied Checkpoint Store",
+                "area": "Germany",
+                "address": "Friedrichstraße 54, Berlin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452239",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7781,
+                "last_updated": "2024-11-07"
             }
         }
     ]
