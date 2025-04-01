@@ -379,9 +379,9 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=3936",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4390,
-                "last_updated": "2024-01-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44876,7 +44876,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=446033",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7654,
                 "last_updated": "2024-11-07"
             }
@@ -50444,6 +50444,111 @@
                 "status": "unvisited",
                 "id": 4280,
                 "last_updated": "2025-04-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.6499793,
+                    39.3095135
+                ]
+            },
+            "properties": {
+                "name": "Gypsy Arcade",
+                "area": "Montana",
+                "address": "320 West Wallace St., Virginia City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=358208",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5372,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.5511605,
+                    38.5721018
+                ]
+            },
+            "properties": {
+                "name": "East Ivy on Main",
+                "area": "Utah",
+                "address": "82 S. Main Street, Moab",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452371",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7782,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.9093645,
+                    39.9266973
+                ]
+            },
+            "properties": {
+                "name": "Early Ford V-8 Foundation Museum",
+                "area": "Indiana",
+                "address": "2181 Rotunda Dr, Auburn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452388",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7783,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.01398329999999,
+                    40.7043886
+                ]
+            },
+            "properties": {
+                "name": "National Museum of the American Indian (The George Gustav Heye Center)",
+                "area": "New York",
+                "address": "1 Bowling Green,  , New York City (Lower Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452369",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7784,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.870146,
+                    55.80007070000001
+                ]
+            },
+            "properties": {
+                "name": "Vikingar!",
+                "area": "Scotland",
+                "address": "Greenock Road, Largs",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452390",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 780,
+                "last_updated": "2024-11-07"
             }
         }
     ]
