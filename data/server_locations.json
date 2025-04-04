@@ -28931,10 +28931,10 @@
                 "address": "1737 Post Street, West Mall, #326, San Francisco",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102621",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4821,
-                "last_updated": "2024-09-02"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50633,6 +50633,27 @@
                 "status": "unvisited",
                 "id": 148,
                 "last_updated": "2025-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.3076546,
+                    55.85359640000001
+                ]
+            },
+            "properties": {
+                "name": "Glasgow Rangers FC Superstore",
+                "area": "Scotland",
+                "address": "150 Edmiston Drive, Glasgow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=99553",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 766,
+                "last_updated": "2024-11-07"
             }
         }
     ]
