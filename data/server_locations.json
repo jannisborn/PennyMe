@@ -40465,10 +40465,10 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=93991",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3728,
-                "last_updated": "2024-09-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42297,9 +42297,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443323",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7592,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50696,6 +50696,27 @@
                 "status": "unvisited",
                 "id": 2441,
                 "last_updated": "2025-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.5993696,
+                    37.1753037
+                ]
+            },
+            "properties": {
+                "name": "Artesanía Dauro ",
+                "area": "Spain",
+                "address": "Pl. de Bib-Rambla, 16, Centro, Granada",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452639",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7785,
+                "last_updated": "2024-11-07"
             }
         }
     ]
