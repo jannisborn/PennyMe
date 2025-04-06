@@ -379,9 +379,9 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=3936",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4390,
-                "last_updated": "2024-01-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -28910,10 +28910,10 @@
                 "address": "1974 Green Oaks Rd, Fort Worth",
                 "external_url": "http://209.221.138.252/Details.aspx?location=282852",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3693,
-                "last_updated": "2024-08-06"
+                "last_updated": "2025-03-31"
             }
         },
         {
@@ -28931,10 +28931,10 @@
                 "address": "1737 Post Street, West Mall, #326, San Francisco",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102621",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4821,
-                "last_updated": "2024-09-02"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40465,10 +40465,10 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://209.221.138.252/Details.aspx?location=93991",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3728,
-                "last_updated": "2024-09-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42297,9 +42297,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443323",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7592,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44600,9 +44600,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=445483",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7647,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-04-05"
             }
         },
         {
@@ -44876,7 +44876,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=446033",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7654,
                 "last_updated": "2024-11-07"
             }
@@ -47738,9 +47738,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7726,
-                "last_updated": "2025-02-04"
+                "last_updated": "2025-04-02"
             }
         },
         {
@@ -50401,6 +50401,321 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7781,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.1417668,
+                    38.7166568
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Portugal",
+                "address": ", Lisboa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=416208",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6478,
+                "last_updated": "2025-03-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.57018070000001,
+                    35.8029896
+                ]
+            },
+            "properties": {
+                "name": "The Island - Sweet Candy Store",
+                "area": "Tennessee",
+                "address": "131 The Island Dr #9141, Pigeon Forge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=318216",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4280,
+                "last_updated": "2025-04-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.6499793,
+                    39.3095135
+                ]
+            },
+            "properties": {
+                "name": "Gypsy Arcade",
+                "area": "Montana",
+                "address": "320 West Wallace St., Virginia City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=358208",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5372,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.5511605,
+                    38.5721018
+                ]
+            },
+            "properties": {
+                "name": "East Ivy on Main",
+                "area": "Utah",
+                "address": "82 S. Main Street, Moab",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452371",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7782,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.9093645,
+                    39.9266973
+                ]
+            },
+            "properties": {
+                "name": "Early Ford V-8 Foundation Museum",
+                "area": "Indiana",
+                "address": "2181 Rotunda Dr, Auburn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452388",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7783,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.01398329999999,
+                    40.7043886
+                ]
+            },
+            "properties": {
+                "name": "National Museum of the American Indian (The George Gustav Heye Center)",
+                "area": "New York",
+                "address": "1 Bowling Green,  , New York City (Lower Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452369",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7784,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.870146,
+                    55.80007070000001
+                ]
+            },
+            "properties": {
+                "name": "Vikingar!",
+                "area": "Scotland",
+                "address": "Greenock Road, Largs",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452390",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 780,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.630405,
+                    41.8931028
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Illinois",
+                "address": "63 W. Ontario St., Chicago",
+                "external_url": "http://209.221.138.252/Details.aspx?location=369698",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5446,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    147.8506643,
+                    -43.1456085
+                ]
+            },
+            "properties": {
+                "name": "Port Arthur",
+                "area": "Australia",
+                "address": "Port Arthur Historic Site / Australian Convict Site, TAS - Port Arthur",
+                "external_url": "http://209.221.138.252/Details.aspx?location=207116",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2158,
+                "last_updated": "2025-04-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.3152531,
+                    -27.8635076
+                ]
+            },
+            "properties": {
+                "name": "Dreamworld Croc Country",
+                "area": "Australia",
+                "address": "Dreamworld Parkway, , QLD - Coomera",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452537",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2139,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.3657812,
+                    36.1476014
+                ]
+            },
+            "properties": {
+                "name": "Gibraltar Cruise Terminal",
+                "area": "Gibraltar",
+                "address": "Western Arm of North Mole Rd, Gilbraltar",
+                "external_url": "http://209.221.138.252/Details.aspx?location=307318",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 148,
+                "last_updated": "2025-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.3076546,
+                    55.85359640000001
+                ]
+            },
+            "properties": {
+                "name": "Glasgow Rangers FC Superstore",
+                "area": "Scotland",
+                "address": "150 Edmiston Drive, Glasgow",
+                "external_url": "http://209.221.138.252/Details.aspx?location=99553",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 766,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.420205999999999,
+                    36.719974
+                ]
+            },
+            "properties": {
+                "name": "Taberna Del Obispo",
+                "area": "Spain",
+                "address": "Plaza Obispo 2 Málaga, Málaga",
+                "external_url": "http://209.221.138.252/Details.aspx?location=181425",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 333,
+                "last_updated": "2025-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.9678512,
+                    43.0421238
+                ]
+            },
+            "properties": {
+                "name": "Miller Brewing Company Visitor Center",
+                "area": "Wisconsin",
+                "address": "4251 W. State St., Milwaukee",
+                "external_url": "http://209.221.138.252/Details.aspx?location=270964",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2441,
+                "last_updated": "2025-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.5993696,
+                    37.1753037
+                ]
+            },
+            "properties": {
+                "name": "Artesanía Dauro ",
+                "area": "Spain",
+                "address": "Pl. de Bib-Rambla, 16, Centro, Granada",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452639",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7785,
                 "last_updated": "2024-11-07"
             }
         }
