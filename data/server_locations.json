@@ -4667,9 +4667,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102201",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 144,
-                "last_updated": "2024-04-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -20598,10 +20598,10 @@
                 "address": "1801 West International Speedway Blvd., Daytona Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1836",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3285,
-                "last_updated": "2024-06-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -25886,10 +25886,10 @@
                 "address": "Main St in John Mackintosh Square, Gibraltar",
                 "external_url": "http://209.221.138.252/Details.aspx?location=319253",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 145,
-                "last_updated": "2024-04-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45872,10 +45872,10 @@
                 "address": "511 E. Adams St., Wisconsin Dells",
                 "external_url": "http://209.221.138.252/Details.aspx?location=24316",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2483,
-                "last_updated": "2024-12-24"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50803,6 +50803,111 @@
                 "id": 7788,
                 "last_updated": "2025-04-07",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.734543,
+                    43.252923
+                ]
+            },
+            "properties": {
+                "name": "Wilderness Trails Zoo",
+                "area": "Michigan",
+                "address": "11721 Gera Rd, Birch Run",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452774",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7789,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1611671,
+                    22.2870737
+                ]
+            },
+            "properties": {
+                "name": "Star Ferry Pier No. 7, Central",
+                "area": "Hong Kong",
+                "address": ", Hong Kong",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452724",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7790,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.7809305,
+                    1.4092358
+                ]
+            },
+            "properties": {
+                "name": "Rainforest Wild ASIA",
+                "area": "Singapore",
+                "address": "20 Mandai Lake Rd, Singapore 729825, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452777",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7791,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.61395,
+                    24.10984
+                ]
+            },
+            "properties": {
+                "name": "Taiwan Railway Company Store - Xinwuri Station",
+                "area": "Taiwan",
+                "address": "Floor 2, No. 26, Gaotie East 1st Rd, Wuri District, Taichung City, Taichung",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452721",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7792,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1616449,
+                    23.0007174
+                ]
+            },
+            "properties": {
+                "name": "Anping Old Street",
+                "area": "Taiwan",
+                "address": "No. 103, Yanping St, Anping District, Tainan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452722",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7793,
+                "last_updated": "2024-11-07"
             }
         }
     ]
