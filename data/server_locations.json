@@ -6868,9 +6868,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=417199",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6497,
-                "last_updated": "2025-01-15"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50972,6 +50972,48 @@
                 "status": "unvisited",
                 "id": 3015,
                 "last_updated": "2025-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.668325,
+                    45.5966543
+                ]
+            },
+            "properties": {
+                "name": "Jubitz Travel Center",
+                "area": "Oregon",
+                "address": "10210 North Vancouver Way, Portland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3947",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4380,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.4299583,
+                    39.89829719999999
+                ]
+            },
+            "properties": {
+                "name": "Mister Ed's Elephant Museum and Candy Emporium ",
+                "area": "Pennsylvania",
+                "address": "6019 Chambersburg Rd, Gettysburg ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452909",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7795,
+                "last_updated": "2024-11-07"
             }
         }
     ]
