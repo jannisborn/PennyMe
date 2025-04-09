@@ -51103,6 +51103,48 @@
                 "last_updated": "2025-04-09",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.7538275,
+                    40.1928753
+                ]
+            },
+            "properties": {
+                "name": "Harrisburg International Airport",
+                "area": "Pennsylvania",
+                "address": ", Harrisburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452946",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7796,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.9534244,
+                    21.3621169
+                ]
+            },
+            "properties": {
+                "name": "USS Missouri Memorial",
+                "area": "Hawaii",
+                "address": "Pearl Harbor, Oahu - Pearl Harbor",
+                "external_url": "http://209.221.138.252/Details.aspx?location=280962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3863,
+                "last_updated": "2024-11-07"
+            }
         }
     ]
 }
