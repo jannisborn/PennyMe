@@ -4667,9 +4667,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=102201",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 144,
-                "last_updated": "2024-04-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -6868,9 +6868,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=417199",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6497,
-                "last_updated": "2025-01-15"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -20598,10 +20598,10 @@
                 "address": "1801 West International Speedway Blvd., Daytona Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1836",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3285,
-                "last_updated": "2024-06-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -25167,10 +25167,10 @@
                 "address": "2131 Pan American Plaza, San Diego",
                 "external_url": "http://209.221.138.252/Details.aspx?location=322320",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 4764,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-04-10"
             }
         },
         {
@@ -25886,10 +25886,10 @@
                 "address": "Main St in John Mackintosh Square, Gibraltar",
                 "external_url": "http://209.221.138.252/Details.aspx?location=319253",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 145,
-                "last_updated": "2024-04-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -27390,10 +27390,10 @@
                 "address": "611 Parkway Floor A outside Aunt Mahalia's, Gatlinburg",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2155",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4207,
-                "last_updated": "2024-07-30"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -45872,10 +45872,10 @@
                 "address": "511 E. Adams St., Wisconsin Dells",
                 "external_url": "http://209.221.138.252/Details.aspx?location=24316",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2483,
-                "last_updated": "2024-12-24"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46148,7 +46148,7 @@
                 "address": "2865 Parkway, Pigeon Forge",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2659",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4272,
                 "last_updated": "2024-11-07"
@@ -50440,10 +50440,10 @@
                 "address": "131 The Island Dr #9141, Pigeon Forge",
                 "external_url": "http://209.221.138.252/Details.aspx?location=318216",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4280,
-                "last_updated": "2025-04-01"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -50716,6 +50716,517 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7785,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.4918801,
+                    33.457244
+                ]
+            },
+            "properties": {
+                "name": "Goldfield Ghost Town (Goldfield Station)",
+                "area": "Arizona",
+                "address": "4650 North Mammoth Mine Road, Apache Junction",
+                "external_url": "http://209.221.138.252/Details.aspx?location=357",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2609,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.29108445114238,
+                    38.63400963689403
+                ]
+            },
+            "properties": {
+                "name": "Saint Louis zoo south entrance",
+                "area": "Missouri",
+                "address": "One government drive",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7786,
+                "last_updated": "2025-04-07",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.493289513818908,
+                    53.49536920974083
+                ]
+            },
+            "properties": {
+                "name": "Energie Erlebnis Zentrum",
+                "area": "Germany",
+                "address": "Osterbusch 2, 26607 Aurich, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7787,
+                "last_updated": "2025-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.898306437681073,
+                    52.00751585879881
+                ]
+            },
+            "properties": {
+                "name": "Burger’s zoo",
+                "area": "Netherlands",
+                "address": "Burger’s zoo",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7788,
+                "last_updated": "2025-04-07",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.734543,
+                    43.252923
+                ]
+            },
+            "properties": {
+                "name": "Wilderness Trails Zoo",
+                "area": "Michigan",
+                "address": "11721 Gera Rd, Birch Run",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452774",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7789,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1611671,
+                    22.2870737
+                ]
+            },
+            "properties": {
+                "name": "Star Ferry Pier No. 7, Central",
+                "area": "Hong Kong",
+                "address": ", Hong Kong",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452724",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7790,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.7809305,
+                    1.4092358
+                ]
+            },
+            "properties": {
+                "name": "Rainforest Wild ASIA",
+                "area": "Singapore",
+                "address": "20 Mandai Lake Rd, Singapore 729825, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452777",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7791,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.61395,
+                    24.10984
+                ]
+            },
+            "properties": {
+                "name": "Taiwan Railway Company Store - Xinwuri Station",
+                "area": "Taiwan",
+                "address": "Floor 2, No. 26, Gaotie East 1st Rd, Wuri District, Taichung City, Taichung",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452721",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7792,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1616449,
+                    23.0007174
+                ]
+            },
+            "properties": {
+                "name": "Anping Old Street",
+                "area": "Taiwan",
+                "address": "No. 103, Yanping St, Anping District, Tainan",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452722",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7793,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.103541,
+                    51.583484
+                ]
+            },
+            "properties": {
+                "name": "Gower Heritage Centre",
+                "area": "Wales",
+                "address": "Y Felin Ddwr Parkmill, SOUTH WALES - Swansea",
+                "external_url": "http://209.221.138.252/Details.aspx?location=94517",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 17,
+                "last_updated": "2025-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.18515758694221,
+                    38.62433538758087
+                ]
+            },
+            "properties": {
+                "name": "The arch store",
+                "area": "Missouri",
+                "address": "Under the arch",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7794,
+                "last_updated": "2025-04-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.5570863,
+                    42.5183475
+                ]
+            },
+            "properties": {
+                "name": "Cayunga Nature Center",
+                "area": "New York",
+                "address": "1420 Taughannock Blvd, Ithaca",
+                "external_url": "http://209.221.138.252/Details.aspx?location=236389",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3015,
+                "last_updated": "2025-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.668325,
+                    45.5966543
+                ]
+            },
+            "properties": {
+                "name": "Jubitz Travel Center",
+                "area": "Oregon",
+                "address": "10210 North Vancouver Way, Portland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3947",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4380,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.4299583,
+                    39.89829719999999
+                ]
+            },
+            "properties": {
+                "name": "Mister Ed's Elephant Museum and Candy Emporium ",
+                "area": "Pennsylvania",
+                "address": "6019 Chambersburg Rd, Gettysburg ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452909",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7795,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1530359449214567,
+                    41.41323746210451
+                ]
+            },
+            "properties": {
+                "name": "Park Guell",
+                "area": "Spain",
+                "address": "Carrer  d’Olot",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 282,
+                "last_updated": "2025-04-09",
+                "multimachine": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.73438201556282,
+                    30.12500871536844
+                ]
+            },
+            "properties": {
+                "name": "St. Andrews State Park",
+                "area": "Florida",
+                "address": "4607 State Park Lane, Panama City Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=296987",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3431,
+                "last_updated": "2025-04-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.8051388,
+                    30.1752009
+                ]
+            },
+            "properties": {
+                "name": "Pineapple Willy's",
+                "area": "Florida",
+                "address": "9875 S. Thomas Drive, Panama City Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=84898",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3427,
+                "last_updated": "2025-04-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.86718599999999,
+                    30.2111442
+                ]
+            },
+            "properties": {
+                "name": "Gulf World Marine Park",
+                "area": "Florida",
+                "address": "15412 Front Beach Road, Panama City Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=227972",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3426,
+                "last_updated": "2025-04-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.7538275,
+                    40.1928753
+                ]
+            },
+            "properties": {
+                "name": "Harrisburg International Airport",
+                "area": "Pennsylvania",
+                "address": ", Harrisburg",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=452946",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7796,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.9534244,
+                    21.3621169
+                ]
+            },
+            "properties": {
+                "name": "USS Missouri Memorial",
+                "area": "Hawaii",
+                "address": "Pearl Harbor, Oahu - Pearl Harbor",
+                "external_url": "http://209.221.138.252/Details.aspx?location=280962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3863,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.9551224,
+                    26.454885
+                ]
+            },
+            "properties": {
+                "name": "Cheap Beach Stuff",
+                "area": "Florida",
+                "address": "320 Old San Carlos Blvd., Ft. Myers Beach",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=236481",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3305,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.017608779706245,
+                    51.73361497942678
+                ]
+            },
+            "properties": {
+                "name": "Rosstrappe / Gasthaus Königsruhe",
+                "area": "Germany",
+                "address": "Hirschgrundweg 1, 06502 Thale",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7797,
+                "last_updated": "2025-04-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.5253154,
+                    38.0010724
+                ]
+            },
+            "properties": {
+                "name": "Street Scene ",
+                "area": "Kentucky",
+                "address": "2575 Regency Road, Lexington ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453201",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7798,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.8158883,
+                    36.9937183
+                ]
+            },
+            "properties": {
+                "name": "Spa Resort Hawaiians",
+                "area": "Japan",
+                "address": "50 Warabidaira, Fujiwaramachi, Joban, Iwaki-shi, Fukushima",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453200",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7799,
                 "last_updated": "2024-11-07"
             }
         }
