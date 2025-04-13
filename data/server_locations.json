@@ -44174,10 +44174,10 @@
                 "address": "Dock 10, LANCASHIRE - Media City",
                 "external_url": "http://209.221.138.252/Details.aspx?location=294038",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1452,
-                "last_updated": "2024-11-11"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -51227,6 +51227,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7799,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.315843,
+                    41.7077166
+                ]
+            },
+            "properties": {
+                "name": "South Bend International Airport",
+                "area": "Indiana",
+                "address": "4477 Progress Dr, South Bend",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245520",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2295,
                 "last_updated": "2024-11-07"
             }
         }
