@@ -4688,9 +4688,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=387916",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6345,
-                "last_updated": "2024-10-04"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40677,9 +40677,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=7099",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7544,
-                "last_updated": "2025-03-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -51270,6 +51270,27 @@
                 "status": "unvisited",
                 "id": 4803,
                 "last_updated": "2025-04-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6626787,
+                    47.5945772
+                ]
+            },
+            "properties": {
+                "name": "The Wood Shop",
+                "area": "Washington",
+                "address": "721 Front Street, Leavenworth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1077",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5111,
+                "last_updated": "2024-11-07"
             }
         }
     ]
