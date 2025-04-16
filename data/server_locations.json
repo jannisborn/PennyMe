@@ -41580,10 +41580,10 @@
                 "address": "6855 Tylersville Rd., West Chester",
                 "external_url": "http://209.221.138.252/Details.aspx?location=194647",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2017,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49704,9 +49704,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412096",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6199,
-                "last_updated": "2025-03-18"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -51312,6 +51312,111 @@
                 "status": "unvisited",
                 "id": 3165,
                 "last_updated": "2025-04-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.884690399999999,
+                    51.4925612
+                ]
+            },
+            "properties": {
+                "name": "Zum Aquarium 3",
+                "area": "Germany",
+                "address": "Under der Brücke, Oberhausen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453361",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7800,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.2751656,
+                    5.2959898
+                ]
+            },
+            "properties": {
+                "name": "Penang International Airport",
+                "area": "Malaysia",
+                "address": "Lapangan Terbang Antarabangsa, Penang, Bayan Lepas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453419",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7801,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.68611,
+                    3.13417
+                ]
+            },
+            "properties": {
+                "name": "Kuala Lumpur Central Station",
+                "area": "Malaysia",
+                "address": "Kuala Lumpur Sentral, 50470 Kuala Lumpur, Federal Territory of Kuala Lumpur, Kuala Lumpur",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453414",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7802,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6693399,
+                    45.5974452
+                ]
+            },
+            "properties": {
+                "name": "Cascade Grill.",
+                "area": "Oregon",
+                "address": "10310 N Vancouver Way, Portland",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5221,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6618459,
+                    45.4736956
+                ]
+            },
+            "properties": {
+                "name": "Oaks Park Skating Rink",
+                "area": "Oregon",
+                "address": "7805 SE Oaks Park Way, Portland ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6095,
+                "last_updated": "2024-11-07"
             }
         }
     ]
