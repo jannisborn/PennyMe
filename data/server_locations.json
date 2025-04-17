@@ -46300,7 +46300,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=447628",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7692,
                 "last_updated": "2024-11-07"
             }
@@ -51416,6 +51416,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6095,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1534303,
+                    51.5352875
+                ]
+            },
+            "properties": {
+                "name": "ZSL London Zoo",
+                "area": "England",
+                "address": "Outer Circle Regent's Park, LONDON - Regent's Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453514",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7803,
                 "last_updated": "2024-11-07"
             }
         }
