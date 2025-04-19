@@ -11,6 +11,28 @@
                 ]
             },
             "properties": {
+                "name": "Toledo Zoo and Aquarium",
+                "area": "Ohio",
+                "address": "2700 Broadway Street, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=284070",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": -1,
+                "last_updated": -1
+            },
+            "problem": "http://209.221.138.252/Details.aspx?location=284070 used in multiple pins with different states, requires manual handling."
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    "N.A.",
+                    "N.A."
+                ]
+            },
+            "properties": {
                 "name": "Insectarium",
                 "area": "Pennsylvania",
                 "address": "8046 Frankford Avenue, Philadelphia",

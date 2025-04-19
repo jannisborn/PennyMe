@@ -1368,9 +1368,9 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=284070",
                 "internal_url": "null",
                 "paywall": true,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2014,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-04-15"
             }
         },
         {
@@ -1433,9 +1433,9 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=284070",
                 "internal_url": "null",
                 "paywall": true,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6036,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-04-15"
             }
         },
         {
@@ -4688,9 +4688,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=387916",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6345,
-                "last_updated": "2024-10-04"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -34259,8 +34259,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.1883096,
-                    45.46458320000001
+                    9.188481792554901,
+                    45.464400255252706
                 ]
             },
             "properties": {
@@ -34272,7 +34272,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7282,
-                "last_updated": "2024-07-07"
+                "last_updated": "2025-04-18"
             }
         },
         {
@@ -40677,9 +40677,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=7099",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7544,
-                "last_updated": "2025-03-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -41580,10 +41580,10 @@
                 "address": "6855 Tylersville Rd., West Chester",
                 "external_url": "http://209.221.138.252/Details.aspx?location=194647",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2017,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44174,10 +44174,10 @@
                 "address": "Dock 10, LANCASHIRE - Media City",
                 "external_url": "http://209.221.138.252/Details.aspx?location=294038",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1452,
-                "last_updated": "2024-11-11"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -46300,7 +46300,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=447628",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7692,
                 "last_updated": "2024-11-07"
             }
@@ -49704,9 +49704,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412096",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6199,
-                "last_updated": "2025-03-18"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -51228,6 +51228,323 @@
                 "machine_status": "available",
                 "id": 7799,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.315843,
+                    41.7077166
+                ]
+            },
+            "properties": {
+                "name": "South Bend International Airport",
+                "area": "Indiana",
+                "address": "4477 Progress Dr, South Bend",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245520",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2295,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4205556,
+                    37.8077778
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Jefferson St. - Bay Products Co.",
+                "area": "California",
+                "address": "496 Jefferson Street, San Francisco",
+                "external_url": "http://209.221.138.252/Details.aspx?location=720",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4803,
+                "last_updated": "2025-04-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6626787,
+                    47.5945772
+                ]
+            },
+            "properties": {
+                "name": "The Wood Shop",
+                "area": "Washington",
+                "address": "721 Front Street, Leavenworth",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1077",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5111,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2778063,
+                    44.9804887
+                ]
+            },
+            "properties": {
+                "name": "Target Field, Majestic Clubhouse Store",
+                "area": "Minnesota",
+                "address": "1 Twins Way, Minneapolis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=80455",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3165,
+                "last_updated": "2025-04-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.884690399999999,
+                    51.4925612
+                ]
+            },
+            "properties": {
+                "name": "Zum Aquarium 3",
+                "area": "Germany",
+                "address": "Under der Brücke, Oberhausen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453361",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7800,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.2751656,
+                    5.2959898
+                ]
+            },
+            "properties": {
+                "name": "Penang International Airport",
+                "area": "Malaysia",
+                "address": "Lapangan Terbang Antarabangsa, Penang, Bayan Lepas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453419",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7801,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.68611,
+                    3.13417
+                ]
+            },
+            "properties": {
+                "name": "Kuala Lumpur Central Station",
+                "area": "Malaysia",
+                "address": "Kuala Lumpur Sentral, 50470 Kuala Lumpur, Federal Territory of Kuala Lumpur, Kuala Lumpur",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453414",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7802,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6693399,
+                    45.5974452
+                ]
+            },
+            "properties": {
+                "name": "Cascade Grill.",
+                "area": "Oregon",
+                "address": "10310 N Vancouver Way, Portland",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5221,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6618459,
+                    45.4736956
+                ]
+            },
+            "properties": {
+                "name": "Oaks Park Skating Rink",
+                "area": "Oregon",
+                "address": "7805 SE Oaks Park Way, Portland ",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6095,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1534303,
+                    51.5352875
+                ]
+            },
+            "properties": {
+                "name": "ZSL London Zoo",
+                "area": "England",
+                "address": "Outer Circle Regent's Park, LONDON - Regent's Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453514",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7803,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.409669072455033,
+                    51.778751441258336
+                ]
+            },
+            "properties": {
+                "name": "Schloss corvey",
+                "area": "Germany",
+                "address": "Schloss Corvey, Corvey 1, 37671 Höxter, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7804,
+                "last_updated": "2025-04-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.1884318,
+                    45.46436584704187
+                ]
+            },
+            "properties": {
+                "name": "Milano Souvenir Piazza Duomo",
+                "area": "Italy",
+                "address": "Piazza del Duomo 17, Milano, Italy",
+                "external_url": "http://209.221.138.252/Details.aspx?location=190920",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 932,
+                "last_updated": "2025-04-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.25126610555816,
+                    36.6414023760909
+                ]
+            },
+            "properties": {
+                "name": "Apple tree mall machine #2",
+                "area": "Missouri",
+                "address": "1830 W 76 Country Blvd, Branson, MO 65616, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7805,
+                "last_updated": "2025-04-18",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.3670109193923055,
+                    50.05946003966151
+                ]
+            },
+            "properties": {
+                "name": "Funicular Tréport (Top)",
+                "area": "France",
+                "address": "8 Rue du Télécabine, 76470 Le Tréport, France",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7806,
+                "last_updated": "2025-04-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.836242940401652,
+                    39.6100724823784
+                ]
+            },
+            "properties": {
+                "name": "Natura Parc (Mallorca)",
+                "area": "Spain",
+                "address": "Ma-3011, KM 15, 400, 07142 Santa Eugènia, Balearic Islands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7807,
+                "last_updated": "2025-04-19",
+                "paywall": true
             }
         }
     ]
