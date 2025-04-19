@@ -31958,10 +31958,10 @@
                 "address": "45 Riverside Dr, Memphis",
                 "external_url": "http://209.221.138.252/Details.aspx?location=361174",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5341,
-                "last_updated": "2024-06-22",
+                "last_updated": "2024-11-07",
                 "paywall": true
             }
         },
@@ -51651,6 +51651,153 @@
                 "machine_status": "available",
                 "id": 7808,
                 "last_updated": "2025-04-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8773026,
+                    42.5989519
+                ]
+            },
+            "properties": {
+                "name": "Kawaii Bubble Tea",
+                "area": "Michigan",
+                "address": "75 North Main Street, Mt. Clemens",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=396503",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6129,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.14904419999999,
+                    42.4768358
+                ]
+            },
+            "properties": {
+                "name": "Detroit Zoological Park,",
+                "area": "Michigan",
+                "address": "8450 W 10 Mile Rd, Royal Oak",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2794",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7809,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.713413,
+                    41.5364999
+                ]
+            },
+            "properties": {
+                "name": "Marblehead Lighthouse State Park Museum",
+                "area": "Georgia",
+                "address": "10 Lighthouse Drive, Marblehead",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453691",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7810,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.298582,
+                    48.1664233
+                ]
+            },
+            "properties": {
+                "name": "Au Four Banal Souvenirs",
+                "area": "France",
+                "address": ", Riquewihr ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453575",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7811,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.0731276,
+                    39.6006801
+                ]
+            },
+            "properties": {
+                "name": "Concha da Nazaré",
+                "area": "Portugal",
+                "address": "Avenida da Republica 24, Nazaré",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453553",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7812,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.714552,
+                    40.415651
+                ]
+            },
+            "properties": {
+                "name": "Almudena Cathedral, Souvenirs Tienda Recuerdos",
+                "area": "Spain",
+                "address": " Calle Bailén, 10, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453571",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7813,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.992494,
+                    53.04304
+                ]
+            },
+            "properties": {
+                "name": "Techniquest Glyndwr, Science Discovery Museum",
+                "area": "Wales",
+                "address": "Mold Road, Glyndwr University Campus, , NORTH WALES - Wrexham ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93868",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7814,
+                "last_updated": "2024-11-07"
             }
         }
     ]
