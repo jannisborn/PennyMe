@@ -29585,10 +29585,10 @@
                 "address": "1700 Nations Drive  , Gurnee",
                 "external_url": "http://209.221.138.252/Details.aspx?location=295376",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1227,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -51883,6 +51883,111 @@
                 "machine_status": "available",
                 "id": 7818,
                 "last_updated": "2025-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.7144601,
+                    34.4409134
+                ]
+            },
+            "properties": {
+                "name": "Santa Barbara Museum of Natural History",
+                "area": "California",
+                "address": "2559 Puesta del Sol Road (Past the Mission), Santa Barbara",
+                "external_url": "http://209.221.138.252/Details.aspx?location=13807",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4841,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3328704,
+                    42.6958847
+                ]
+            },
+            "properties": {
+                "name": "Alexander Nevsky Cathedral",
+                "area": "Bulgaria",
+                "address": "Sofia Center, pl. \"Sveti Aleksandar Nevski\", 1000 Sofia, Bulgaria, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453703",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7819,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3313339,
+                    42.6965874
+                ]
+            },
+            "properties": {
+                "name": "Sofia Cathedral",
+                "area": "Bulgaria",
+                "address": "Sofia Center, ul. \"Paris\" 2, 1000 Sofia, Bulgaria, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453702",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7820,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3213433,
+                    42.6967242
+                ]
+            },
+            "properties": {
+                "name": "Sveta Nedelya",
+                "area": "Bulgaria",
+                "address": "Sofia Center, pl. \"Sveta Nedelya\" 20, 1000 Sofia, Bulgaria, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453704",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7821,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    130.4111666,
+                    33.5892034
+                ]
+            },
+            "properties": {
+                "name": "Taito Station Canal City Hakata",
+                "area": "Japan",
+                "address": "4F Canal City Hakata, 1-2-22 Sumiyoshi, Hakata, Fukuoka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350890",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2776,
+                "last_updated": "2024-11-07"
             }
         }
     ]
