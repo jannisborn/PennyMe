@@ -38755,9 +38755,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2493",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7495,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -52092,6 +52092,48 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7824,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5698326,
+                    40.43257029999999
+                ]
+            },
+            "properties": {
+                "name": "Mutianyu Great Wall",
+                "area": "China",
+                "address": "Huairou District,, Beijing",
+                "external_url": "http://209.221.138.252/Details.aspx?location=314599",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2940,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.825539899999999,
+                    39.6591585
+                ]
+            },
+            "properties": {
+                "name": "Mosteiro da Batalha (Batalha Monastery)",
+                "area": "Portugal",
+                "address": "Largo Infante Dom Henrique, Batalha",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453906",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7825,
                 "last_updated": "2024-11-07"
             }
         }
