@@ -14213,7 +14213,7 @@
                 ]
             },
             "properties": {
-                "name": "79790 Küssaberg",
+                "name": "Küssaburg",
                 "area": "Germany",
                 "address": "79790 Küssaberg, Germany",
                 "status": "unvisited",
@@ -14221,7 +14221,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6852,
-                "last_updated": "2023-11-05"
+                "last_updated": "2025-04-24"
             }
         },
         {
@@ -29585,10 +29585,10 @@
                 "address": "1700 Nations Drive  , Gurnee",
                 "external_url": "http://209.221.138.252/Details.aspx?location=295376",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1227,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -31958,10 +31958,10 @@
                 "address": "45 Riverside Dr, Memphis",
                 "external_url": "http://209.221.138.252/Details.aspx?location=361174",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5341,
-                "last_updated": "2024-06-22",
+                "last_updated": "2024-11-07",
                 "paywall": true
             }
         },
@@ -38755,9 +38755,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2493",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7495,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40677,9 +40677,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=7099",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7544,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-04-24"
             }
         },
         {
@@ -43985,9 +43985,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=413055",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6220,
-                "last_updated": "2025-03-26"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49959,8 +49959,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 4277,
-                "last_updated": "2025-03-22",
-                "multimachine": 2
+                "last_updated": "2025-04-26",
+                "multimachine": 1
             }
         },
         {
@@ -51476,10 +51476,10 @@
                 "address": "Piazza del Duomo 17, Milano, Italy",
                 "external_url": "http://209.221.138.252/Details.aspx?location=190920",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 932,
-                "last_updated": "2025-04-18"
+                "last_updated": "2025-04-19"
             }
         },
         {
@@ -51543,8 +51543,934 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7807,
+                "last_updated": "2025-04-22",
+                "paywall": false
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.1919265,
+                    45.4640976
+                ]
+            },
+            "properties": {
+                "name": "Duomo di Milano",
+                "area": "Italy",
+                "address": "P. za del Duomo Milano MI, Milano",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=398970",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6364,
                 "last_updated": "2025-04-19",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.184599,
+                    45.4663089
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Café Milano",
+                "area": "Italy",
+                "address": "Via Dante 5, Milan (Milano)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=406862",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6362,
+                "last_updated": "2025-04-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.1793325,
+                    45.4704762
+                ]
+            },
+            "properties": {
+                "name": "Castello Sforzesco",
+                "area": "Italy",
+                "address": "Piazza Castello, 20121 Milano MI, Italien, Milano",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=413956",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6363,
+                "last_updated": "2025-04-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.178346999999999,
+                    45.47146
+                ]
+            },
+            "properties": {
+                "name": "Castello Sforzesco - Leo Souvenirs",
+                "area": "Italy",
+                "address": "Viale Gadio, Parco Sempione, Castello Sforzesco, Milano, Italy",
+                "external_url": "http://209.221.138.252/Details.aspx?location=73082",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 933,
+                "last_updated": "2025-04-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.239462984698423,
+                    50.110085542833964
+                ]
+            },
+            "properties": {
+                "name": "Beilstein (Mosel)",
+                "area": "Germany",
+                "address": "Bachstraße 39, 56814 Beilstein, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7808,
+                "last_updated": "2025-04-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8773026,
+                    42.5989519
+                ]
+            },
+            "properties": {
+                "name": "Kawaii Bubble Tea",
+                "area": "Michigan",
+                "address": "75 North Main Street, Mt. Clemens",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=396503",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6129,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.14904419999999,
+                    42.4768358
+                ]
+            },
+            "properties": {
+                "name": "Detroit Zoological Park,",
+                "area": "Michigan",
+                "address": "8450 W 10 Mile Rd, Royal Oak",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2794",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7809,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.713413,
+                    41.5364999
+                ]
+            },
+            "properties": {
+                "name": "Marblehead Lighthouse State Park Museum",
+                "area": "Georgia",
+                "address": "10 Lighthouse Drive, Marblehead",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453691",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7810,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.298582,
+                    48.1664233
+                ]
+            },
+            "properties": {
+                "name": "Au Four Banal Souvenirs",
+                "area": "France",
+                "address": ", Riquewihr ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453575",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7811,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.0731276,
+                    39.6006801
+                ]
+            },
+            "properties": {
+                "name": "Concha da Nazaré",
+                "area": "Portugal",
+                "address": "Avenida da Republica 24, Nazaré",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453553",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7812,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.714552,
+                    40.415651
+                ]
+            },
+            "properties": {
+                "name": "Almudena Cathedral, Souvenirs Tienda Recuerdos",
+                "area": "Spain",
+                "address": " Calle Bailén, 10, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453571",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7813,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.992494,
+                    53.04304
+                ]
+            },
+            "properties": {
+                "name": "Techniquest Glyndwr, Science Discovery Museum",
+                "area": "Wales",
+                "address": "Mold Road, Glyndwr University Campus, , NORTH WALES - Wrexham ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=93868",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7814,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.343970098320119,
+                    50.33141160991836
+                ]
+            },
+            "properties": {
+                "name": "Vogelburg Weilrod",
+                "area": "Germany",
+                "address": "Vogelpark 1, 61276 Weilrod, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7815,
+                "last_updated": "2025-04-20",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.241362194799207,
+                    49.35530041426717
+                ]
+            },
+            "properties": {
+                "name": "Gemeinde Schwarzenbruck",
+                "area": "Germany",
+                "address": "Plärrer 1, 90592 Schwarzenbruck, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7816,
+                "last_updated": "2025-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.243586061810191,
+                    50.0642253170638
+                ]
+            },
+            "properties": {
+                "name": "Wildpark an den Eichen",
+                "area": "Germany",
+                "address": "Harald-Hamberg-Straße 33, 97422 Schweinfurt, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7817,
+                "last_updated": "2025-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.30585785247526,
+                    30.106833317359467
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee’s",
+                "area": "Texas",
+                "address": "1700 Highway 71 E Bastrop TX 78602 US",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7818,
+                "last_updated": "2025-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.7144601,
+                    34.4409134
+                ]
+            },
+            "properties": {
+                "name": "Santa Barbara Museum of Natural History",
+                "area": "California",
+                "address": "2559 Puesta del Sol Road (Past the Mission), Santa Barbara",
+                "external_url": "http://209.221.138.252/Details.aspx?location=13807",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4841,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3328704,
+                    42.6958847
+                ]
+            },
+            "properties": {
+                "name": "Alexander Nevsky Cathedral",
+                "area": "Bulgaria",
+                "address": "Sofia Center, pl. \"Sveti Aleksandar Nevski\", 1000 Sofia, Bulgaria, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453703",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7819,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3313339,
+                    42.6965874
+                ]
+            },
+            "properties": {
+                "name": "Sofia Cathedral",
+                "area": "Bulgaria",
+                "address": "Sofia Center, ul. \"Paris\" 2, 1000 Sofia, Bulgaria, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453702",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7820,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.3213433,
+                    42.6967242
+                ]
+            },
+            "properties": {
+                "name": "Sveta Nedelya",
+                "area": "Bulgaria",
+                "address": "Sofia Center, pl. \"Sveta Nedelya\" 20, 1000 Sofia, Bulgaria, Sofia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453704",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7821,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    130.4111666,
+                    33.5892034
+                ]
+            },
+            "properties": {
+                "name": "Taito Station Canal City Hakata",
+                "area": "Japan",
+                "address": "4F Canal City Hakata, 1-2-22 Sumiyoshi, Hakata, Fukuoka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350890",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2776,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.8911408,
+                    42.5237338
+                ]
+            },
+            "properties": {
+                "name": "Salem Witch Museum",
+                "area": "Massachusetts",
+                "address": "19 1/2 Washington Sq,, Salem",
+                "external_url": "http://209.221.138.252/Details.aspx?location=316702",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2921,
+                "last_updated": "2025-04-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.055815232590973,
+                    51.20370230656092
+                ]
+            },
+            "properties": {
+                "name": "Schloss Waldeck",
+                "area": "Germany",
+                "address": "Schloss Waldeck 1, 34513 Waldeck, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7822,
+                "last_updated": "2025-04-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.8793726,
+                    51.4933324
+                ]
+            },
+            "properties": {
+                "name": "LEGOLAND Discovery Centre Oberhausen",
+                "area": "Germany",
+                "address": "CentrO-Promenade 10, Oberhausen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453821",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7823,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    115.7488507,
+                    -32.0562643
+                ]
+            },
+            "properties": {
+                "name": "Fremantle Markets",
+                "area": "Australia",
+                "address": "Corner South Terrace & Henderson Street, Western Australia - Fremantle",
+                "external_url": "http://209.221.138.252/Details.aspx?location=247912",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2178,
+                "last_updated": "2025-04-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.6685946,
+                    43.0979665
+                ]
+            },
+            "properties": {
+                "name": "Arbanasi Village",
+                "area": "Bulgaria",
+                "address": "ul. \"Kapitan Pavel Gramadov\" 106, Arbanasi",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453902",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7824,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5698326,
+                    40.43257029999999
+                ]
+            },
+            "properties": {
+                "name": "Mutianyu Great Wall",
+                "area": "China",
+                "address": "Huairou District,, Beijing",
+                "external_url": "http://209.221.138.252/Details.aspx?location=314599",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2940,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.825539899999999,
+                    39.6591585
+                ]
+            },
+            "properties": {
+                "name": "Mosteiro da Batalha (Batalha Monastery)",
+                "area": "Portugal",
+                "address": "Largo Infante Dom Henrique, Batalha",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453906",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7825,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.174,
+                    25.776993
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Sky (cruise ship)",
+                "area": "Florida",
+                "address": "Port of Miami; Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=226448",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 3393,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.1600247,
+                    43.1871658
+                ]
+            },
+            "properties": {
+                "name": "Panega Eco Trail",
+                "area": "Bulgaria",
+                "address": "5770 Lukovit, Lukovit",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453999",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7826,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0437026,
+                    47.4937969
+                ]
+            },
+            "properties": {
+                "name": "Felix Kitchen and Bar",
+                "area": "Hungary",
+                "address": "Budapest, Ybl Miklós tér 9, 1013 Hungary, Budapest",
+                "external_url": "http://209.221.138.252/Details.aspx?location=363560",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5801,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.7133011,
+                    45.4562903
+                ]
+            },
+            "properties": {
+                "name": "Gardaland",
+                "area": "Italy",
+                "address": ", Ronchi",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=453995",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7827,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.1767798,
+                    41.3868927
+                ]
+            },
+            "properties": {
+                "name": "Mobles Baulies ",
+                "area": "Spain",
+                "address": "Carrer de Sant Pere Més Baix, 19, Ciutat Vella, Barcelona",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454006",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7828,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.04186249315433,
+                    32.968304759527086
+                ]
+            },
+            "properties": {
+                "name": "Texas General Store",
+                "area": "Texas",
+                "address": "3000 Grapevine Mills Pkwy Suite 400, Grapevine, TX 76051",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7829,
+                "last_updated": "2025-04-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.730064,
+                    37.970068
+                ]
+            },
+            "properties": {
+                "name": "Plaka/ Hotel Byron ",
+                "area": "Greece",
+                "address": "Vyronos 19, Athens",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454093",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7830,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.6623165,
+                    45.7034146
+                ]
+            },
+            "properties": {
+                "name": "Citta Alta Bergamo",
+                "area": "Italy",
+                "address": "Piazza Duomo 1, Bergamo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454096",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7831,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.82042694884388,
+                    53.96617585288878
+                ]
+            },
+            "properties": {
+                "name": "Karls Erlebnishof Warnsdorf",
+                "area": "Germany",
+                "address": "Fuchsbergstraße 15, 23626 Ratekau, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7832,
+                "last_updated": "2025-04-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.32469311647309,
+                    34.86554630459161
+                ]
+            },
+            "properties": {
+                "name": "Blue Ridge Scenic Railway Gift Shop",
+                "area": "Georgia",
+                "address": "241 Depot St, Blue Ridge, GA 30513, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7833,
+                "last_updated": "2025-04-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    130.3984725,
+                    33.591032
+                ]
+            },
+            "properties": {
+                "name": "Snoopy Town Shop Fukuoka",
+                "area": "Japan",
+                "address": "8F Fukuoka Parco 2-11-1 Tenjin, Chuo-ku, Fukuoka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=350949",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2775,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4342863,
+                    40.2033934
+                ]
+            },
+            "properties": {
+                "name": "A Miguelana Gift Shop",
+                "area": "Portugal",
+                "address": "Avenida João das Regras, 140, Coimbra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454163",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7834,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.428285299999999,
+                    40.208084
+                ]
+            },
+            "properties": {
+                "name": "Unnamed Clothing shop",
+                "area": "Portugal",
+                "address": "Rua Joaquim António de Aguiar, 52/54, Coimbra",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454164",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7835,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5311862,
+                    35.7951026
+                ]
+            },
+            "properties": {
+                "name": "Dollywood",
+                "area": "Tennessee",
+                "address": "2700 Dollywood Parks Blvd. , Pigeon Forge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2638",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4266,
+                "last_updated": "2025-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.16819573798641,
+                    47.58206803379279
+                ]
+            },
+            "properties": {
+                "name": "Kufstein - Römergasse",
+                "area": "Austria",
+                "address": "Römerhofgasse 6, 6330 Kufstein, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7836,
+                "last_updated": "2025-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.315542,
+                    -27.9121597
+                ]
+            },
+            "properties": {
+                "name": "Australian Outback Spectacular",
+                "area": "Australia",
+                "address": "Pacific Hwy Oxenford, QLD - Gold Coast",
+                "external_url": "http://209.221.138.252/Details.aspx?location=52026",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2141,
+                "last_updated": "2025-04-27"
             }
         }
     ]
