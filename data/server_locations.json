@@ -26035,10 +26035,10 @@
                 "address": "2601 E. Sunnyside Ave. (800 South), Salt Lake City",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1745",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2092,
-                "last_updated": "2024-04-07"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -27853,10 +27853,10 @@
                 "address": "490 S Franklin St, Juneau",
                 "external_url": "http://209.221.138.252/Details.aspx?location=329426",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1159,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -52513,6 +52513,27 @@
                 "status": "unvisited",
                 "id": 1133,
                 "last_updated": "2025-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.1417024,
+                    36.6334886
+                ]
+            },
+            "properties": {
+                "name": "Cherokee Nation Anna Mitchell Cultural Welcome Center",
+                "area": "Oklahoma",
+                "address": ", Vinita",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454240",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7837,
+                "last_updated": "2024-11-07"
             }
         }
     ]
