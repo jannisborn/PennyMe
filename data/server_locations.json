@@ -26800,10 +26800,10 @@
                 "address": "Crich, DERBYSHIRE- Matlock",
                 "external_url": "http://209.221.138.252/Details.aspx?location=27061",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1365,
-                "last_updated": "2024-04-20"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -39325,11 +39325,11 @@
                 "area": "Pennsylvania",
                 "address": "1 Great Wolf Dr, Scotrun",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=439596",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7510,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40971,10 +40971,10 @@
                 "address": "516 S Kirkwood Rd, St. Louis",
                 "external_url": "http://209.221.138.252/Details.aspx?location=12513",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1134,
-                "last_updated": "2025-04-27"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49427,10 +49427,10 @@
                 "address": "222 Worth Road, St. Louis",
                 "external_url": "http://209.221.138.252/Details.aspx?location=268770",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1131,
-                "last_updated": "2025-03-13"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -52533,6 +52533,90 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7837,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.48057969999999,
+                    43.3601031
+                ]
+            },
+            "properties": {
+                "name": "HB Provisions",
+                "area": "Maine",
+                "address": "15 Western Ave, Lower Village, Kennebunk",
+                "external_url": "http://209.221.138.252/Details.aspx?location=15605",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2030,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9120871,
+                    33.80488870000001
+                ]
+            },
+            "properties": {
+                "name": "Kip Barry's Cabaret",
+                "area": "California",
+                "address": "321 W. Katella Suite 139, Anaheim",
+                "external_url": "http://209.221.138.252/Details.aspx?location=270463",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4561,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.8615158,
+                    35.3877827
+                ]
+            },
+            "properties": {
+                "name": "Gifu-Kakamigahara Air and Space Museum",
+                "area": "Japan",
+                "address": "5-1 Shimokiri-cho, , Kakamigahara City, Gifu Prefecture",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454399",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7838,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7019848,
+                    35.6586719
+                ]
+            },
+            "properties": {
+                "name": "Shibuya Sky",
+                "area": "Japan",
+                "address": "14F Shibuya Scramble Square 2-24-12 Shibuya, Tokyo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454419",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7839,
                 "last_updated": "2024-11-07"
             }
         }
