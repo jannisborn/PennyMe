@@ -4751,9 +4751,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=404318",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6358,
-                "last_updated": "2024-08-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -22890,10 +22890,10 @@
                 "address": "Kincraig, Kingussie",
                 "external_url": "http://209.221.138.252/Details.aspx?location=97035",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 779,
-                "last_updated": "2024-03-03"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -52681,6 +52681,27 @@
                 "machine_status": "available",
                 "id": 7841,
                 "last_updated": "2025-05-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8082987,
+                    42.6039955
+                ]
+            },
+            "properties": {
+                "name": "Albergue Ave Fenix",
+                "area": "Spain",
+                "address": "C. Santiago, nº 10, 24500 Villafranca del Bierzo, León, España, Villafranca del Bierzo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454501",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7842,
+                "last_updated": "2024-11-07"
             }
         }
     ]
