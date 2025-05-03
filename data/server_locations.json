@@ -45576,7 +45576,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=446812",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7675,
                 "last_updated": "2024-11-07"
             }
@@ -52765,6 +52765,48 @@
                 "status": "unvisited",
                 "id": 5817,
                 "last_updated": "2025-05-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.6758837,
+                    39.6315161
+                ]
+            },
+            "properties": {
+                "name": "Loja Virginia",
+                "area": "Portugal",
+                "address": "Rua Jacinta Marto, 8, Fátima",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454593",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7844,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.199814,
+                    38.6974834
+                ]
+            },
+            "properties": {
+                "name": "Museu Nacional dos Coches (National Coach Museum)",
+                "area": "Portugal",
+                "address": "Praça Afonso de Albuquerque, Lisbon (Lisboa)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454583",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7845,
+                "last_updated": "2024-11-07"
             }
         }
     ]
