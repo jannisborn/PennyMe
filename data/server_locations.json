@@ -51552,21 +51552,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.1919265,
-                    45.4640976
+                    9.19192650000001,
+                    45.46409759999995
                 ]
             },
             "properties": {
-                "name": "Duomo di Milano",
+                "name": "Duomo di Milano / terrace",
                 "area": "Italy",
                 "address": "P. za del Duomo Milano MI, Milano",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398970",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6364,
-                "last_updated": "2025-04-19",
-                "paywall": true
+                "last_updated": "2025-05-07",
+                "paywall": true,
+                "multimachine": 2
             }
         },
         {
