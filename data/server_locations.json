@@ -38881,10 +38881,10 @@
                 "address": "65845 Cima Road, Nipton",
                 "external_url": "http://209.221.138.252/Details.aspx?location=256238",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4708,
-                "last_updated": "2024-08-31"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49109,7 +49109,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=238272",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7752,
                 "last_updated": "2024-11-07"
             }
@@ -52936,6 +52936,69 @@
                 "last_updated": "2025-05-05",
                 "multimachine": "3 +",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.1721861,
+                    38.7474791
+                ]
+            },
+            "properties": {
+                "name": "Cripple Creek & Victor Narrow Gauge Railroad",
+                "area": "Colorado",
+                "address": "520 E. Carr Avenue, Cripple Creek",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1061",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1838,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.7624867,
+                    43.5065168
+                ]
+            },
+            "properties": {
+                "name": "Sertoma Butterfly House & Marine Cove",
+                "area": "South Dakota",
+                "address": "4320 S. Oxbow Avenue, Sioux Falls",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245433",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1314,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.5562381,
+                    42.85162
+                ]
+            },
+            "properties": {
+                "name": "Whetstone Station Restaurant and Brewery ",
+                "area": "Vermont",
+                "address": "36 Bridge Street, Brattleboro",
+                "external_url": "http://209.221.138.252/Details.aspx?location=289867",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1272,
+                "last_updated": "2024-11-07"
             }
         }
     ]
