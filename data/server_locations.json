@@ -4688,9 +4688,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=387916",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6345,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-05-06"
             }
         },
         {
@@ -21771,10 +21771,10 @@
                 "address": "3000 44th St, Grandville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=188251",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2528,
-                "last_updated": "2024-06-23"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -30230,10 +30230,10 @@
                 "address": "3900 Las Vegas Boulevard, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=203390",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4514,
-                "last_updated": "2024-07-29"
+                "last_updated": "2025-05-10"
             }
         },
         {
@@ -38881,10 +38881,10 @@
                 "address": "65845 Cima Road, Nipton",
                 "external_url": "http://209.221.138.252/Details.aspx?location=256238",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4708,
-                "last_updated": "2024-08-31"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40125,9 +40125,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7530,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-05-08"
             }
         },
         {
@@ -46022,10 +46022,10 @@
                 "address": "6101 Seawall Blvd, Galveston",
                 "external_url": "http://209.221.138.252/Details.aspx?location=340222",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3701,
-                "last_updated": "2024-12-28"
+                "last_updated": "2025-05-09"
             }
         },
         {
@@ -46169,10 +46169,10 @@
                 "address": "2502 Seawall Blvd, Galveston",
                 "external_url": "http://209.221.138.252/Details.aspx?location=81347",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3704,
-                "last_updated": "2024-12-30"
+                "last_updated": "2025-05-09"
             }
         },
         {
@@ -49109,7 +49109,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=238272",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7752,
                 "last_updated": "2024-11-07"
             }
@@ -51552,21 +51552,22 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.1919265,
-                    45.4640976
+                    9.19192650000001,
+                    45.46409759999995
                 ]
             },
             "properties": {
-                "name": "Duomo di Milano",
+                "name": "Duomo di Milano / terrace",
                 "area": "Italy",
                 "address": "P. za del Duomo Milano MI, Milano",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=398970",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6364,
-                "last_updated": "2025-04-19",
-                "paywall": true
+                "last_updated": "2025-05-07",
+                "paywall": true,
+                "multimachine": 2
             }
         },
         {
@@ -52912,6 +52913,369 @@
                 "machine_status": "available",
                 "id": 7850,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.20351917082666,
+                    48.80585963351423
+                ]
+            },
+            "properties": {
+                "name": "Stuttgart Zoo",
+                "area": "Germany",
+                "address": "Wilhelma 36, 70376 Stuttgart, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7851,
+                "last_updated": "2025-05-05",
+                "multimachine": "3 +",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.1721861,
+                    38.7474791
+                ]
+            },
+            "properties": {
+                "name": "Cripple Creek & Victor Narrow Gauge Railroad",
+                "area": "Colorado",
+                "address": "520 E. Carr Avenue, Cripple Creek",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1061",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1838,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.7624867,
+                    43.5065168
+                ]
+            },
+            "properties": {
+                "name": "Sertoma Butterfly House & Marine Cove",
+                "area": "South Dakota",
+                "address": "4320 S. Oxbow Avenue, Sioux Falls",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245433",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1314,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.5562381,
+                    42.85162
+                ]
+            },
+            "properties": {
+                "name": "Whetstone Station Restaurant and Brewery ",
+                "area": "Vermont",
+                "address": "36 Bridge Street, Brattleboro",
+                "external_url": "http://209.221.138.252/Details.aspx?location=289867",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1272,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.860857778550447,
+                    47.9962644032393
+                ]
+            },
+            "properties": {
+                "name": "Dattler Schlossbergrestaurant",
+                "area": "Germany",
+                "address": "Am Schlossberg 3, 79102 Freiburg im Breisgau, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7852,
+                "last_updated": "2025-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.2744112,
+                    51.1858099
+                ]
+            },
+            "properties": {
+                "name": "Longleat Safari Wildlife Park and House",
+                "area": "England",
+                "address": "Longleat, Warminster, Wiltshire, WILTSHIRE - Longleat",
+                "external_url": "http://209.221.138.252/Details.aspx?location=112474",
+                "internal_url": "null",
+                "multimachine": 3,
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1601,
+                "last_updated": "2025-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.60300185892605,
+                    28.367823859501325
+                ]
+            },
+            "properties": {
+                "name": "Trader Jim’s",
+                "area": "Florida",
+                "address": "380 Meade Ave STE B, Cocoa Beach, FL 32931",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1847",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3273,
+                "last_updated": "2025-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.0142272,
+                    48.3415584
+                ]
+            },
+            "properties": {
+                "name": "Hungry Horse Dam Visitor Centre",
+                "area": "Montana",
+                "address": "100 Hungry Horse Dm Rd, Hungry Horse",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=454879",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7853,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.06299369999999,
+                    29.4290145
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Texas",
+                "address": "6201 Gulf Fwy, Texas City",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 3810,
+                "last_updated": "2025-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.82017950000001,
+                    29.2712758
+                ]
+            },
+            "properties": {
+                "name": "Rainforest Cafe",
+                "area": "Texas",
+                "address": "5310 Seawall Blvd. (53rd & Seawall), Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2435",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3715,
+                "last_updated": "2025-05-10",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.8098002,
+                    29.276318
+                ]
+            },
+            "properties": {
+                "name": "Ben and Jerry's",
+                "area": "Texas",
+                "address": "4408 Seawall Blvd, Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=81348",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3702,
+                "last_updated": "2025-05-09",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.66152974543803,
+                    30.357706208821334
+                ]
+            },
+            "properties": {
+                "name": "Javelina’s on Holland",
+                "area": "Texas",
+                "address": "101 W Holland Ave, Alpine, TX  79830",
+                "external_url": "http://209.221.138.252/Details.aspx?location=387718",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5998,
+                "last_updated": "2025-05-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.79511,
+                    29.3067
+                ]
+            },
+            "properties": {
+                "name": "LA King's Confectionery",
+                "area": "Texas",
+                "address": "2323 Strand, Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=196178",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3709,
+                "last_updated": "2025-05-09",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.67789226397753,
+                    46.69167785361051
+                ]
+            },
+            "properties": {
+                "name": "Spiez",
+                "area": "Switzerland",
+                "address": "Spiez",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7854,
+                "last_updated": "2025-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.1292329478308394,
+                    37.98364256929725
+                ]
+            },
+            "properties": {
+                "name": "Libreria Diocesana",
+                "area": "Spain",
+                "address": "Pl. Del Cardenal Belluga, 1, 30001 Murcia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7855,
+                "last_updated": "2025-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.0095939,
+                    50.3829772
+                ]
+            },
+            "properties": {
+                "name": "Dairyland Farm World",
+                "area": "England",
+                "address": "Tresillian Barton, CORNWALL - Newquay",
+                "external_url": "http://209.221.138.252/Details.aspx?location=107465",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1350,
+                "last_updated": "2025-05-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.07865319999999,
+                    32.93740750000001
+                ]
+            },
+            "properties": {
+                "name": "Texas General Store",
+                "area": "Texas",
+                "address": "406 South Main Street, Grapevine",
+                "external_url": "http://209.221.138.252/Details.aspx?location=292707",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3732,
+                "last_updated": "2025-05-11"
             }
         }
     ]
