@@ -3551,9 +3551,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=394408",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6162,
-                "last_updated": "2024-01-02"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40613,10 +40613,10 @@
                 "address": "5753 West Main Street, Salem",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1402",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4449,
-                "last_updated": "2024-09-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -53297,6 +53297,48 @@
                 "machine_status": "available",
                 "id": 7856,
                 "last_updated": "2025-05-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1903235,
+                    33.7526356
+                ]
+            },
+            "properties": {
+                "name": "Queen Mary",
+                "area": "California",
+                "address": "1126 Queens Hwy, Long Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1333",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4664,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.7215746,
+                    37.9779385
+                ]
+            },
+            "properties": {
+                "name": "Mule Trading Post",
+                "area": "Missouri",
+                "address": "1160 Dillon Outer RD, Rolla",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 1113,
+                "last_updated": "2024-11-07"
             }
         }
     ]
