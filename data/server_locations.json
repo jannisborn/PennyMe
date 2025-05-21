@@ -400,9 +400,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=73132",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 899,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49362,10 +49362,10 @@
                 "address": "Avinguda del Marques de l'Argentera, Barcelona",
                 "external_url": "http://209.221.138.252/Details.aspx?location=331074",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5916,
-                "last_updated": "2025-03-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -53800,6 +53800,153 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7866,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.61288359999999,
+                    41.511524
+                ]
+            },
+            "properties": {
+                "name": "Cleveland Museum of Natural History",
+                "area": "Ohio",
+                "address": "1 Wade Oval Drive, Cleveland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19754",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1957,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.6232477,
+                    34.2255037
+                ]
+            },
+            "properties": {
+                "name": "Wildlife Heritage Center Museum",
+                "area": "Oklahoma",
+                "address": "610 SW D St, Antlers",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455533",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7867,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.0730643,
+                    36.2641702
+                ]
+            },
+            "properties": {
+                "name": "Death Valley Marketplace",
+                "area": "Nevada",
+                "address": "3280 W Bell Vista Ave, Pahrump",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455684",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7868,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.3852056,
+                    47.9506094
+                ]
+            },
+            "properties": {
+                "name": "Rainforest Arts Center",
+                "area": "Washington",
+                "address": "35 North Forks Avenue, Forks",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455536",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7869,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8560406,
+                    1.28976
+                ]
+            },
+            "properties": {
+                "name": "Esplanade Mall",
+                "area": "Singapore",
+                "address": "8 Raffles Ave, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455583",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7870,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.7812684,
+                    1.4071539
+                ]
+            },
+            "properties": {
+                "name": "Mandai Bird Paradise",
+                "area": "Singapore",
+                "address": "20 Mandai Lake Road, Singapore ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455581",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7871,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.6808217,
+                    1.347064
+                ]
+            },
+            "properties": {
+                "name": "NTU North Spine Plaza",
+                "area": "Singapore",
+                "address": "76 Nanyang Dr, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455584",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7872,
                 "last_updated": "2024-11-07"
             }
         }
