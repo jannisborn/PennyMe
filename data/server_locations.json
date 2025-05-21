@@ -3551,9 +3551,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=394408",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6162,
-                "last_updated": "2024-01-02"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -37112,10 +37112,10 @@
                 "address": "Baylor University 501 M P Daniel Esplanade, Waco",
                 "external_url": "http://209.221.138.252/Details.aspx?location=379659",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 5386,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-05-18"
             }
         },
         {
@@ -40613,10 +40613,10 @@
                 "address": "5753 West Main Street, Salem",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1402",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4449,
-                "last_updated": "2024-09-21"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -40738,11 +40738,11 @@
                 "area": "England",
                 "address": "Hovertravel, Clarence Esplanade, Southsea, Portsmouth, Southsea PO5 3AD, UK",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455076",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7547,
-                "last_updated": "2024-09-22"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42761,9 +42761,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=443725",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7602,
-                "last_updated": "2024-10-22"
+                "last_updated": "2025-05-16"
             }
         },
         {
@@ -43118,10 +43118,10 @@
                 "address": "282 Derby Street, Salem",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2656",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2920,
-                "last_updated": "2024-10-29"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44323,11 +44323,11 @@
                 "area": "Slovenia",
                 "address": "Adamič-Lundrovo nabrežje 27, 1000 Ljubljana, Slovenia",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455343",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7641,
-                "last_updated": "2024-11-14",
+                "last_updated": "2024-11-07",
                 "paywall": true
             }
         },
@@ -44621,9 +44621,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=74233",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 918,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-05-15"
             }
         },
         {
@@ -49470,9 +49470,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=451382",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7761,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-05-18"
             }
         },
         {
@@ -53276,6 +53276,531 @@
                 "status": "unvisited",
                 "id": 3732,
                 "last_updated": "2025-05-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.9471115764783615,
+                    50.334392977864475
+                ]
+            },
+            "properties": {
+                "name": "Nürburgring",
+                "area": "Germany",
+                "address": "Nürburgring Boulevard 2, 53520 Nürburg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7856,
+                "last_updated": "2025-05-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1903235,
+                    33.7526356
+                ]
+            },
+            "properties": {
+                "name": "Queen Mary",
+                "area": "California",
+                "address": "1126 Queens Hwy, Long Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1333",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4664,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.7215746,
+                    37.9779385
+                ]
+            },
+            "properties": {
+                "name": "Mule Trading Post",
+                "area": "Missouri",
+                "address": "1160 Dillon Outer RD, Rolla",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 1113,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.1928209,
+                    38.6226188
+                ]
+            },
+            "properties": {
+                "name": "Busch Stadium / St. Louis Cardinals Baseball",
+                "area": "Missouri",
+                "address": "250 Stadium Plaza, St. Louis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3202",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1125,
+                "last_updated": "2025-05-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.7725825,
+                    38.9061115
+                ]
+            },
+            "properties": {
+                "name": "Six Flags America",
+                "area": "Maryland",
+                "address": "13710 Central Ave, Mitchellville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2544",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3620,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1423462,
+                    36.1701739
+                ]
+            },
+            "properties": {
+                "name": "In the Game - Fremont Street",
+                "area": "Nevada",
+                "address": "310 Fremont Street, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455309",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7857,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8513861,
+                    1.2874969
+                ]
+            },
+            "properties": {
+                "name": "Asian Civilisations Museum",
+                "area": "Singapore",
+                "address": "1 Empress Pl, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455195",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7858,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.9899436,
+                    1.358604
+                ]
+            },
+            "properties": {
+                "name": "Changi Airport",
+                "area": "Singapore",
+                "address": "60 Airport Blvd, Singapore ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455196",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7859,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.7736549,
+                    1.3014156
+                ]
+            },
+            "properties": {
+                "name": "Lee Kong Chian Natural History Museum",
+                "area": "Singapore",
+                "address": "2 Conservatory Dr, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455197",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7860,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1764706,
+                    36.0887734
+                ]
+            },
+            "properties": {
+                "name": "Mandalay Bay Hotel & Casino - Shark Reef",
+                "area": "Nevada",
+                "address": "3950 Las Vegas Boulveard South, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=223433",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4516,
+                "last_updated": "2025-05-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.4444745,
+                    27.0967841
+                ]
+            },
+            "properties": {
+                "name": "Shark Frenzy",
+                "area": "Florida",
+                "address": "262 Tamiami Trail South, Venice",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455428",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7861,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7311019,
+                    34.1667242
+                ]
+            },
+            "properties": {
+                "name": "Alllatoona Lake Project Center",
+                "area": "Georgia",
+                "address": "1138 GA Hwy 20 Spur, Cartersville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455427",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7862,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.4491509,
+                    35.2098688
+                ]
+            },
+            "properties": {
+                "name": "Sandia Crest House Gift Shop & Restaurant",
+                "area": "New Mexico",
+                "address": "701 Sandia Crest Rd., Sandia Park, NM 87047 Top of Sandia Crest Scenic Byway, 14 miles above Antonito, Sandia Park",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3486",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4941,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8901686,
+                    52.371561
+                ]
+            },
+            "properties": {
+                "name": "Amsterdam Experience",
+                "area": "Netherlands",
+                "address": "Nieuwezijds Voorburgwal 264, 1012 RS Amsterdam, Amsterdam",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 156,
+                "last_updated": "2025-05-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8966861,
+                    52.3744104
+                ]
+            },
+            "properties": {
+                "name": "Cannabis Museum Shop",
+                "area": "Netherlands",
+                "address": "Warmoesstraat 102, Amsterdam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=245464",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 167,
+                "last_updated": "2025-05-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.69065325185119,
+                    36.2011098571336
+                ]
+            },
+            "properties": {
+                "name": "Outdoor World / Bass Pro Shops",
+                "area": "Tennessee",
+                "address": "Opry Mills Mall  Opry Drive, Nashville",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7863,
+                "last_updated": "2025-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.87087,
+                    30.2745534
+                ]
+            },
+            "properties": {
+                "name": "Clear River's Ice Cream Parlor (Clear River Pecan Co)",
+                "area": "Texas",
+                "address": "138 E. Main St, Fredericksburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2376",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3696,
+                "last_updated": "2025-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.9306846,
+                    50.4899447
+                ]
+            },
+            "properties": {
+                "name": "Camel Creek Adventure Park",
+                "area": "England",
+                "address": "Tredinnick, Wadebridge, Cornwall, CORNWALL - Wadebridge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=272821",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1356,
+                "last_updated": "2025-05-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.71172729999999,
+                    35.3613868
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge",
+                "area": "North Carolina",
+                "address": "10175 Weddington Rd., Concord",
+                "external_url": "http://209.221.138.252/Details.aspx?location=54901",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4103,
+                "last_updated": "2025-05-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.6935926,
+                    36.2053233
+                ]
+            },
+            "properties": {
+                "name": "Opry Mills Mall - Nashville Aquarium",
+                "area": "Tennessee",
+                "address": "516 Opry Mills Drive, Nashville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2612",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4252,
+                "last_updated": "2025-05-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.8938788,
+                    42.52143119999999
+                ]
+            },
+            "properties": {
+                "name": "Salem Historical Tours/ Haunted Footsteps Ghost Tour",
+                "area": "Massachusetts",
+                "address": "8 Central Street, Salem",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455529",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7864,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2043459,
+                    37.4198888
+                ]
+            },
+            "properties": {
+                "name": "SLAC National Accelerator Laboratory",
+                "area": "California",
+                "address": "2575 Sand Hill Rd, Menlo Park, CA 94025, Menlo Park",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455580",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7865,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4825975,
+                    28.7379014
+                ]
+            },
+            "properties": {
+                "name": "Wekiwa Springs State Park",
+                "area": "Florida",
+                "address": "1800 Wekiwa Cir, , Apopka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=329059",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3265,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.15425499999999,
+                    41.105573
+                ]
+            },
+            "properties": {
+                "name": "Fort Wayne Children's Zoo",
+                "area": "Indiana",
+                "address": "3411 Sherman Boulevard, Fort Wayne",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2193",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2261,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.033362,
+                    38.8985822
+                ]
+            },
+            "properties": {
+                "name": "White House Gifts",
+                "area": "Washington DC",
+                "address": "701 15th St NW, Washington DC ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455585",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7866,
+                "last_updated": "2024-11-07"
             }
         }
     ]
