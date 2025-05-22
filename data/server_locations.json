@@ -42401,10 +42401,10 @@
                 "address": "Disney Springs Shopping Area, Lake Buena Vista",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1723",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3357,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -53947,6 +53947,69 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7872,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.350051,
+                    47.6116397
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line Ship Bliss",
+                "area": "Washington",
+                "address": "Pier 66  /  2225 Alaskan Way.  /  Bell Street Terminal, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455859",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7873,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.8641921,
+                    50.2316276
+                ]
+            },
+            "properties": {
+                "name": "Wildpark Schloss Tambach",
+                "area": "Germany",
+                "address": "Schlossallee 3 ·, Weitramsdorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455922",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7874,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8604859,
+                    36.5594616
+                ]
+            },
+            "properties": {
+                "name": "Tochigi Prefectural Museum",
+                "area": "Japan",
+                "address": "2-2, Mutsumi-cho, Utsunomiya, Tochigi",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455923",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7875,
                 "last_updated": "2024-11-07"
             }
         }
