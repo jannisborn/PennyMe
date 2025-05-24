@@ -400,9 +400,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=73132",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 899,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -42401,10 +42401,10 @@
                 "address": "Disney Springs Shopping Area, Lake Buena Vista",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1723",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3357,
-                "last_updated": "2024-08-28"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -49362,10 +49362,10 @@
                 "address": "Avinguda del Marques de l'Argentera, Barcelona",
                 "external_url": "http://209.221.138.252/Details.aspx?location=331074",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5916,
-                "last_updated": "2025-03-12"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -53314,10 +53314,10 @@
                 "address": "1126 Queens Hwy, Long Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1333",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "retired",
                 "id": 4664,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-05-22"
             }
         },
         {
@@ -53801,6 +53801,426 @@
                 "machine_status": "available",
                 "id": 7866,
                 "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.61288359999999,
+                    41.511524
+                ]
+            },
+            "properties": {
+                "name": "Cleveland Museum of Natural History",
+                "area": "Ohio",
+                "address": "1 Wade Oval Drive, Cleveland",
+                "external_url": "http://209.221.138.252/Details.aspx?location=19754",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1957,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.6232477,
+                    34.2255037
+                ]
+            },
+            "properties": {
+                "name": "Wildlife Heritage Center Museum",
+                "area": "Oklahoma",
+                "address": "610 SW D St, Antlers",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455533",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7867,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.0730643,
+                    36.2641702
+                ]
+            },
+            "properties": {
+                "name": "Death Valley Marketplace",
+                "area": "Nevada",
+                "address": "3280 W Bell Vista Ave, Pahrump",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455684",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7868,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.3852056,
+                    47.9506094
+                ]
+            },
+            "properties": {
+                "name": "Rainforest Arts Center",
+                "area": "Washington",
+                "address": "35 North Forks Avenue, Forks",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455536",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7869,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8560406,
+                    1.28976
+                ]
+            },
+            "properties": {
+                "name": "Esplanade Mall",
+                "area": "Singapore",
+                "address": "8 Raffles Ave, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455583",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7870,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.7812684,
+                    1.4071539
+                ]
+            },
+            "properties": {
+                "name": "Mandai Bird Paradise",
+                "area": "Singapore",
+                "address": "20 Mandai Lake Road, Singapore ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455581",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7871,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.6808217,
+                    1.347064
+                ]
+            },
+            "properties": {
+                "name": "NTU North Spine Plaza",
+                "area": "Singapore",
+                "address": "76 Nanyang Dr, Singapore",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455584",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7872,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.350051,
+                    47.6116397
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line Ship Bliss",
+                "area": "Washington",
+                "address": "Pier 66  /  2225 Alaskan Way.  /  Bell Street Terminal, Seattle",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455859",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7873,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.8641921,
+                    50.2316276
+                ]
+            },
+            "properties": {
+                "name": "Wildpark Schloss Tambach",
+                "area": "Germany",
+                "address": "Schlossallee 3 ·, Weitramsdorf",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455922",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7874,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8604859,
+                    36.5594616
+                ]
+            },
+            "properties": {
+                "name": "Tochigi Prefectural Museum",
+                "area": "Japan",
+                "address": "2-2, Mutsumi-cho, Utsunomiya, Tochigi",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455923",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7875,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.69377529113143,
+                    36.20547100560067
+                ]
+            },
+            "properties": {
+                "name": "Aquarium Restaurant",
+                "area": "Tennessee",
+                "address": "516 Opry Mills Dr, Nashville, TN 37214, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7876,
+                "last_updated": "2025-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.69813808077033,
+                    36.21761293890232
+                ]
+            },
+            "properties": {
+                "name": "Legends of Country Music Museum",
+                "area": "Tennessee",
+                "address": "2611 McGavock Pk, Nashville, TN 37214, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7877,
+                "last_updated": "2025-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.76242876000254,
+                    38.25764142451937
+                ]
+            },
+            "properties": {
+                "name": "Kentucky Science Center",
+                "area": "Kentucky",
+                "address": "725 W Main St, Louisville, KY 40202, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7878,
+                "last_updated": "2025-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.349283,
+                    50.1029156
+                ]
+            },
+            "properties": {
+                "name": "Geierlay hangbrug",
+                "area": "Germany",
+                "address": "Kastellaunerstrasse, Morsdorf",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 5742,
+                "last_updated": "2025-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.240585315109007,
+                    50.10970758365079
+                ]
+            },
+            "properties": {
+                "name": "Beilstein",
+                "area": "Germany",
+                "address": "Klosterstraße",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7879,
+                "last_updated": "2025-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.166139737211392,
+                    50.146336321209944
+                ]
+            },
+            "properties": {
+                "name": "Reichsburg",
+                "area": "Germany",
+                "address": "Bernstraße 8, 56812 Cochem, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7880,
+                "last_updated": "2025-05-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.7027747,
+                    3.1514732
+                ]
+            },
+            "properties": {
+                "name": "KL Upside Down House",
+                "area": "Malaysia",
+                "address": "off, Jalan Punchak Off Jalan P.Ramlee,, Kuala Lumpur",
+                "external_url": "http://209.221.138.252/Details.aspx?location=297665",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1748,
+                "last_updated": "2025-05-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.17452437868525,
+                    32.21636082982902
+                ]
+            },
+            "properties": {
+                "name": "Welcome to Georgia  rest area",
+                "area": "Georgia",
+                "address": "Welcome to Georgia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7881,
+                "last_updated": "2025-05-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.2730567,
+                    51.48683639999999
+                ]
+            },
+            "properties": {
+                "name": "St. Fagan's National History Museum Gift Store",
+                "area": "Wales",
+                "address": "St. Fagan's, SOUTH WALES - Cardiff - St Fagans",
+                "external_url": "http://209.221.138.252/Details.aspx?location=34927",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 15,
+                "last_updated": "2025-05-24"
+            }
+        },        
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.28079114117865,
+                    36.317595333125794
+                ]
+            },
+            "properties": {
+                "name": "Trolinger's BarBQ",
+                "area": "Tennessee",
+                "address": "2305 E Wood ST, Paris, Tennessee, US",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=394794",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6170,
+                "last_updated": "2025-05-24"
             }
         }
     ]
