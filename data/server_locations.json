@@ -32213,9 +32213,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=432779",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7239,
-                "last_updated": "2024-05-10"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -36523,11 +36523,11 @@
                 "area": "Pennsylvania",
                 "address": "778 Baltimore Street, Gettysburg",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=436274",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7353,
-                "last_updated": "2024-08-06"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -54201,7 +54201,7 @@
                 "id": 15,
                 "last_updated": "2025-05-24"
             }
-        },        
+        },
         {
             "type": "Feature",
             "geometry": {
@@ -54221,6 +54221,174 @@
                 "machine_status": "available",
                 "id": 6170,
                 "last_updated": "2025-05-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.65450729999999,
+                    35.7487988
+                ]
+            },
+            "properties": {
+                "name": "Rock Cafe",
+                "area": "Oklahoma",
+                "address": "114 W. Main St., Stroud",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456043",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7882,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.23034229999999,
+                    39.822391
+                ]
+            },
+            "properties": {
+                "name": "Gettysburg Tour Center",
+                "area": "Pennsylvania",
+                "address": "778 Baltimore Street, Gettysburg",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=7070",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3987,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.0188208,
+                    40.4382586
+                ]
+            },
+            "properties": {
+                "name": "Duquesne Incline",
+                "area": "Pennsylvania",
+                "address": "1220 Grandview Avenue, Pittsburgh",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4015",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4047,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.7764309,
+                    42.6768876
+                ]
+            },
+            "properties": {
+                "name": "Sparks Pinball Museum - Arcade & Bar",
+                "area": "Michigan",
+                "address": "33151 23 Mile Rd, Chesterfield",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456076",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7883,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.9912549,
+                    39.29952979999999
+                ]
+            },
+            "properties": {
+                "name": "Whittling Whimsy Cafe",
+                "area": "Illinois",
+                "address": "107 E Main St, Casey",
+                "external_url": "http://209.221.138.252/Details.aspx?location=291673",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1205,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.106011499999999,
+                    52.2607447
+                ]
+            },
+            "properties": {
+                "name": "Tower Gift Shop",
+                "area": "Ireland",
+                "address": "128 Parade Quay, Waterford - County Waterford",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456016",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7884,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.418713200000001,
+                    39.6037869
+                ]
+            },
+            "properties": {
+                "name": "Convento do Cristo (Convent of Christ)",
+                "area": "Portugal",
+                "address": "Igreja do Castelo Templário, Estrada do Convento, Tomar",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=455917",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7885,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.2318616,
+                    39.8234356
+                ]
+            },
+            "properties": {
+                "name": "Gettysburg Ghost Tours",
+                "area": "Pennsylvania",
+                "address": "47 Steinwehr Ave, Gettysburg",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 3983,
+                "last_updated": "2024-11-07"
             }
         }
     ]
