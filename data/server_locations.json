@@ -40760,7 +40760,7 @@
                 "address": "3215 S Rancho Dr, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=368007",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5419,
                 "last_updated": "2024-11-07"
@@ -46599,7 +46599,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=447893",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7700,
                 "last_updated": "2024-11-07"
             }
@@ -54388,6 +54388,27 @@
                 "machine_status": "retired",
                 "status": "retired",
                 "id": 3983,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.1470751,
+                    38.2918371
+                ]
+            },
+            "properties": {
+                "name": "Frontier Town Campground ",
+                "area": "Maryland",
+                "address": "8428 Stephen Decatur Highway, Berlin",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2472",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5210,
                 "last_updated": "2024-11-07"
             }
         }
