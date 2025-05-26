@@ -520,7 +520,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     func uploadImageWithTimeout(_ image: UIImage, timeout: TimeInterval) {
         var task: URLSessionDataTask?
         
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.6) else {
             print("Failed to convert image to data")
             hideLoadingView()
             return
