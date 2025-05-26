@@ -43795,10 +43795,10 @@
                 "address": "450 Fremont ST, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=380182",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5420,
-                "last_updated": "2024-11-08"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -54473,6 +54473,48 @@
                 "status": "unvisited",
                 "id": 4333,
                 "last_updated": "2025-05-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.36002119999999,
+                    40.9720929
+                ]
+            },
+            "properties": {
+                "name": "Hartville Kitchen Restaurant & Bakery",
+                "area": "Ohio",
+                "address": "1015 Edison St. NW, Hartville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456276",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7888,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.2383741,
+                    39.7329923
+                ]
+            },
+            "properties": {
+                "name": "Buffalo Bill's Grave, Pahaska Tepee Gift Shop",
+                "area": "Colorado",
+                "address": "987 Lookout Mountain Road, Golden",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1039",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1871,
+                "last_updated": "2024-11-07"
             }
         }
     ]
