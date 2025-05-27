@@ -28046,7 +28046,7 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=429279",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7168,
                 "last_updated": "2024-11-07"
             }
@@ -36251,10 +36251,10 @@
                 "address": "Pier 86, West 46th Street & 12th Avenue, New York City (Manhattan)",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3595",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3055,
-                "last_updated": "2024-07-31"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -54426,11 +54426,11 @@
                 "area": "Michigan",
                 "address": "110 W Cross St, Ypsilanti, MI 48197, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456594",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7886,
-                "last_updated": "2025-05-26"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -54537,6 +54537,111 @@
                 "id": 5627,
                 "last_updated": "2025-05-27",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.5476366,
+                    48.2761201
+                ]
+            },
+            "properties": {
+                "name": "Cedar Street Bridge Public Market",
+                "area": "Idaho",
+                "address": "334 No. 1st Avenue, Sandpoint",
+                "external_url": "http://209.221.138.252/Details.aspx?location=179360",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4324,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.2336133,
+                    39.7899507
+                ]
+            },
+            "properties": {
+                "name": "Indianapolis Motor Speedway and Museum",
+                "area": "Indiana",
+                "address": "4790 W 16th St, Indianapolis",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2138",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2270,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.77593499999999,
+                    43.6275548
+                ]
+            },
+            "properties": {
+                "name": "Paintball & Shooting Range",
+                "area": "Wisconsin",
+                "address": "118 Broadway, Wisconsin Dells",
+                "external_url": "http://209.221.138.252/Details.aspx?location=379722",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5498,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.2248011,
+                    51.2081466
+                ]
+            },
+            "properties": {
+                "name": "Belfort (Belfry & Carillon)",
+                "area": "Belgium",
+                "address": "Markt 7, Brugge (Bruges)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=232407",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 126,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.1321669,
+                    51.526916
+                ]
+            },
+            "properties": {
+                "name": "London Kings Cross station",
+                "area": "England",
+                "address": "London Kings Cross station, Euston Road, London, Greater London, N1 9AL, London",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456430",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7889,
+                "last_updated": "2024-11-07"
             }
         }
     ]
