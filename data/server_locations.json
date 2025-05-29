@@ -24177,9 +24177,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=425565",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7097,
-                "last_updated": "2024-03-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -44216,10 +44216,10 @@
                 "address": "900 Loggerhead Road, Fort Fisher",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3705",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4111,
-                "last_updated": "2024-11-11",
+                "last_updated": "2024-11-07",
                 "multimachine": 2,
                 "paywall": true
             }
@@ -54617,7 +54617,7 @@
                 "address": "Markt 7, Brugge (Bruges)",
                 "external_url": "http://209.221.138.252/Details.aspx?location=232407",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 126,
                 "last_updated": "2024-11-07"
@@ -54748,6 +54748,132 @@
                 "machine_status": "available",
                 "id": 7893,
                 "last_updated": "2025-05-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.8929208,
+                    45.6711894
+                ]
+            },
+            "properties": {
+                "name": "Locks Waterfront Grill (Cascade Locks Marine Park Visitors Center)",
+                "area": "Oregon",
+                "address": "299 SW Portage Road, Cascade Locks",
+                "status": "retired",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3980",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4346,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.3914822,
+                    27.8166064
+                ]
+            },
+            "properties": {
+                "name": "Sea Treasures",
+                "area": "Texas",
+                "address": "Corner of Surfside and Breakwater, Corpus Christi",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2095",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7894,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.721676699999999,
+                    51.0564608
+                ]
+            },
+            "properties": {
+                "name": "Belgian Heritage",
+                "area": "Belgium",
+                "address": "Kleine Vismarkt 5, Ghent (Gent)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456663",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7895,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.330705,
+                    47.5857044
+                ]
+            },
+            "properties": {
+                "name": "Château de Blois",
+                "area": "France",
+                "address": "Place du Château, CENTRE VAL DE LOIRE - Blois",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456649",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7896,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4761874,
+                    41.89631240000001
+                ]
+            },
+            "properties": {
+                "name": "Gelateria Rosario/Trattoria",
+                "area": "Italy",
+                "address": "13 Piazza Vittorio Emanuele",
+                "external_url": "http://209.221.138.252/Details.aspx?location=103562",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 973,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7030035,
+                    40.4166693
+                ]
+            },
+            "properties": {
+                "name": "From Madrid With Love store #2",
+                "area": "Spain",
+                "address": "Puerta del Sol, 6, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456662",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7897,
+                "last_updated": "2024-11-07"
             }
         }
     ]
