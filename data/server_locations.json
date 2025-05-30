@@ -54918,6 +54918,90 @@
                 "id": 5802,
                 "last_updated": "2025-05-30"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.3997126,
+                    51.2205191
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop",
+                "area": "Belgium",
+                "address": "Maalderijstraat, Antwerpen",
+                "external_url": "http://209.221.138.252/Details.aspx?location=271095",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 123,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.7258218,
+                    51.0530607
+                ]
+            },
+            "properties": {
+                "name": "SVNRS Souvenir Shop",
+                "area": "Belgium",
+                "address": "Sint-Baafsplein 70, Ghent (Gent)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456799",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7898,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.6914121,
+                    40.4245635
+                ]
+            },
+            "properties": {
+                "name": "Museo de Cera (Wax Museum) ",
+                "area": "Spain",
+                "address": "Paseo de Recoletos, 41, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456816",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7899,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7102486,
+                    40.4232977
+                ]
+            },
+            "properties": {
+                "name": "Nomad Museo Inmersivo",
+                "area": "Spain",
+                "address": "Gran Vía, 78, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=456811",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7900,
+                "last_updated": "2024-11-07"
+            }
         }
     ]
 }
