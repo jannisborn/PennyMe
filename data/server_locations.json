@@ -20386,10 +20386,10 @@
                 "address": "2202 Avenue K (Pier 21, Number 8), Galveston",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2437",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3716,
-                "last_updated": "2024-01-27"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -26779,10 +26779,10 @@
                 "address": "One Monument Circle, La Porte",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2511",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3749,
-                "last_updated": "2024-04-20"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -55210,6 +55210,69 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 891,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.8935176,
+                    34.8744626
+                ]
+            },
+            "properties": {
+                "name": "Fort Tejon State Historic Park",
+                "area": "California",
+                "address": "4201 Fort Tejon Rd, Lebec",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457049",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7905,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.773169,
+                    29.304306
+                ]
+            },
+            "properties": {
+                "name": "Mario's Seawall Italian Restaurant",
+                "area": "Texas",
+                "address": "628 Seawall Blvd, Galveston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=270074",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3710,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.12899220000001,
+                    31.5575916
+                ]
+            },
+            "properties": {
+                "name": "Bucees",
+                "area": "Texas",
+                "address": "4155 N General Bruce Dr, Temple, TX, Waco",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457028",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7906,
                 "last_updated": "2024-11-07"
             }
         }
