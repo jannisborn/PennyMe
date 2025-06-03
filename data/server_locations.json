@@ -30907,10 +30907,10 @@
                 "address": "107 North Grand Canyon Boulevard, Williams",
                 "external_url": "http://209.221.138.252/Details.aspx?location=239",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2733,
-                "last_updated": "2025-01-16"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -55273,6 +55273,111 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7906,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -159.4645785,
+                    21.9040184
+                ]
+            },
+            "properties": {
+                "name": "Kauai Chickens",
+                "area": "Hawaii",
+                "address": "3483 Weliweli Rd, Kauai - Koloa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457176",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7907,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.963113,
+                    -26.8357181
+                ]
+            },
+            "properties": {
+                "name": "Australia Zoo",
+                "area": "Australia",
+                "address": "Glass House Mountains Tourist Drive, QLD - Beerwah",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4960",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6283,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.744331,
+                    46.799375
+                ]
+            },
+            "properties": {
+                "name": "Galitzenklamm",
+                "area": "Austria",
+                "address": "Galitzenklamm 3, Amlach (near Lienz, Tyrol)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457151",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7908,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.9419641,
+                    52.3143713
+                ]
+            },
+            "properties": {
+                "name": "Amsterdam Arena",
+                "area": "Netherlands",
+                "address": "Arena Boulevard 1, Amsterdam",
+                "external_url": "http://209.221.138.252/Details.aspx?location=65314",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 154,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0283221,
+                    39.8566992
+                ]
+            },
+            "properties": {
+                "name": "Iglesia de Santo Tomé ",
+                "area": "Spain",
+                "address": "Placa del Conde, 4, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457148",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7909,
                 "last_updated": "2024-11-07"
             }
         }
