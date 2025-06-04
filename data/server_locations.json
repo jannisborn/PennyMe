@@ -45471,7 +45471,7 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=4534",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3853,
                 "last_updated": "2024-11-07"
             }
@@ -51097,10 +51097,10 @@
                 "address": "15412 Front Beach Road, Panama City Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=227972",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3426,
-                "last_updated": "2025-04-09",
+                "last_updated": "2024-11-07",
                 "paywall": true
             }
         },
@@ -55400,6 +55400,69 @@
                 "status": "unvisited",
                 "id": 964,
                 "last_updated": "2025-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.6970979,
+                    27.4645615
+                ]
+            },
+            "properties": {
+                "name": "Fish Hole Mini Golf",
+                "area": "Florida",
+                "address": "117 Bridge Street, Bradenton Beach",
+                "external_url": "http://209.221.138.252/Details.aspx?location=262255",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3268,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.40665729999999,
+                    44.28618590000001
+                ]
+            },
+            "properties": {
+                "name": "Lumberjack Johnny's Appletin",
+                "area": "Wisconsin",
+                "address": "2701 N. Oneida St, Appletin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457251",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7910,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.8529985,
+                    21.1926257
+                ]
+            },
+            "properties": {
+                "name": "Xel-Há Park",
+                "area": "Mexico",
+                "address": "Km. 240 Carretera Chetumal-Puerto Juárez local 1 y 2 módulo B, Solidaridad",
+                "external_url": "http://209.221.138.252/Details.aspx?location=355325",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5857,
+                "last_updated": "2024-11-07"
             }
         }
     ]
