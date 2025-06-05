@@ -50692,10 +50692,10 @@
                 "address": "4251 W. State St., Milwaukee",
                 "external_url": "http://209.221.138.252/Details.aspx?location=270964",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2441,
-                "last_updated": "2025-04-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -55484,6 +55484,27 @@
                 "status": "unvisited",
                 "id": 14,
                 "last_updated": "2025-06-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0294923,
+                    39.8555356
+                ]
+            },
+            "properties": {
+                "name": "Carlo's Cafeteria",
+                "area": "Spain",
+                "address": "Alamillos del Transito, Toledo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231586",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 389,
+                "last_updated": "2024-11-07"
             }
         }
     ]
