@@ -173,7 +173,7 @@ def location_differ(
     validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
     for i, area in enumerate(tqdm(areas)):
-        
+
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
         tqdm.set_description(f"Working on area:{i+1}/{len(areas)}: {area}")
