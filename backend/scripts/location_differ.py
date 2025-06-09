@@ -18,6 +18,7 @@ from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
 from thefuzz import process as fuzzysearch
+from tqdm import tqdm
 
 from pennyme.github_update import load_latest_json
 from pennyme.locations import COUNTRY_TO_CODE
@@ -171,9 +172,11 @@ def location_differ(
     total_changes, new, depr = 0, 0, 0
     validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
-    for i, area in enumerate(areas):
+    for i, area in enumerate(tqdm(areas)):
+
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
+        tqdm.set_description(f"Working on area:{i+1}/{len(areas)}: {area}")
 
         # Scraping data for that area
         area_id = COUNTRY_TO_CODE[area]
