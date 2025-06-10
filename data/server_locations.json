@@ -43606,9 +43606,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=444712",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7628,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -53293,11 +53293,11 @@
                 "area": "Germany",
                 "address": "Nürburgring Boulevard 2, 53520 Nürburg, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457594",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7856,
-                "last_updated": "2025-05-11"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -55785,6 +55785,132 @@
                 "status": "unvisited",
                 "id": 1559,
                 "last_updated": "2025-06-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.095882,
+                    64.5643831
+                ]
+            },
+            "properties": {
+                "name": "Historic Alaska Railroad Depot",
+                "area": "Alaska",
+                "address": "900 Front St, Nenana",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457588",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7915,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.3325628,
+                    39.5535342
+                ]
+            },
+            "properties": {
+                "name": "Glenwood Caverns Adventure Park",
+                "area": "Colorado",
+                "address": "51000 Two Rivers Plaza Rd, Glenwood Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1041",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1869,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.9438973,
+                    21.34275
+                ]
+            },
+            "properties": {
+                "name": "Turtle Cove Gift Shop - Bellows AFS",
+                "area": "Hawaii",
+                "address": "220 Tinker Ave., Oahu - Waimanalo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457689",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7916,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7032242,
+                    40.4146338
+                ]
+            },
+            "properties": {
+                "name": "From Madrid With Love store #4",
+                "area": "Spain",
+                "address": "Calle de Esparteros, 1, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457603",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7917,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0204962,
+                    39.8577545
+                ]
+            },
+            "properties": {
+                "name": "Alcazar de Toledo",
+                "area": "Spain",
+                "address": ", Toledo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=90312",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 388,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.021228499999999,
+                    39.8584688
+                ]
+            },
+            "properties": {
+                "name": "Gift Store",
+                "area": "Spain",
+                "address": "Cuesta De Carlos V, 5, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457607",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7918,
+                "last_updated": "2025-06-09"
             }
         }
     ]
