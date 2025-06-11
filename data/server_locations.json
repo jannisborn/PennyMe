@@ -2333,9 +2333,9 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=107276",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1388,
-                "last_updated": "2024-04-25"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -55910,6 +55910,69 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7918,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.018332,
+                    -27.473007
+                ]
+            },
+            "properties": {
+                "name": "Queensland Museum Science Center",
+                "area": "Australia",
+                "address": "Corner Grey & Melbourne Streets , QLD - Brisbane ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457751",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2135,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.7688135,
+                    45.6496045
+                ]
+            },
+            "properties": {
+                "name": "Coffee Piazza Grande",
+                "area": "Italy",
+                "address": "Via Malcanton, Trieste",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457755",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7919,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.8363009,
+                    40.0016228
+                ]
+            },
+            "properties": {
+                "name": "Regalos Maribel born",
+                "area": "Spain",
+                "address": "Carrer d'es Mirador, 28, Ciutadella",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457757",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7920,
                 "last_updated": "2025-06-09"
             }
         }
