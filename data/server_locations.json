@@ -2898,9 +2898,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=397261",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 6062,
-                "last_updated": "2023-10-14"
+                "last_updated": "2025-06-10"
             }
         },
         {
@@ -8255,9 +8255,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6563,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -16357,20 +16357,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    11.5421346,
-                    48.132594
+                    11.546705165959937,
+                    48.13792543772239
                 ]
             },
             "properties": {
                 "name": "Deutsches Museum",
                 "area": "Germany",
-                "address": "Am Bavariapark 5, 80339 München, Germany",
+                "address": "Museumsinsel 1, 80538 München, Germany",
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=282710",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 562,
-                "last_updated": "2023-11-12"
+                "last_updated": "2025-06-11"
             }
         },
         {
@@ -22618,8 +22618,9 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 715,
-                "last_updated": "2024-03-04",
-                "paywall": true
+                "last_updated": "2025-06-07",
+                "paywall": true,
+                "multimachine": 2
             }
         },
         {
@@ -29627,10 +29628,10 @@
                 "address": "789 Sixth Avenue (Gaslamp Area), San Diego",
                 "external_url": "http://209.221.138.252/Details.aspx?location=280212",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4774,
-                "last_updated": "2024-05-29"
+                "last_updated": "2025-06-06"
             }
         },
         {
@@ -31181,10 +31182,10 @@
                 "address": "1001 Heavenly Village Way, Unit 1B, South Lake Tahoe",
                 "external_url": "http://209.221.138.252/Details.aspx?location=375513",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 5259,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-06-07"
             }
         },
         {
@@ -35512,10 +35513,10 @@
                 "address": "401 Hot Springs Mountain Drive, Hot Springs",
                 "external_url": "http://209.221.138.252/Details.aspx?location=500",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 2304,
-                "last_updated": "2024-09-03"
+                "last_updated": "2025-06-10"
             }
         },
         {
@@ -43605,9 +43606,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=444712",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7628,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -47274,9 +47275,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7713,
-                "last_updated": "2025-01-24"
+                "last_updated": "2025-06-06"
             }
         },
         {
@@ -49511,7 +49512,7 @@
                 "address": "1540 South Disneyland Drive, Anaheim",
                 "external_url": "http://209.221.138.252/Details.aspx?location=196486",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4559,
                 "last_updated": "2024-11-07"
@@ -50692,10 +50693,10 @@
                 "address": "4251 W. State St., Milwaukee",
                 "external_url": "http://209.221.138.252/Details.aspx?location=270964",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2441,
-                "last_updated": "2025-04-05"
+                "last_updated": "2024-11-07"
             }
         },
         {
@@ -53292,11 +53293,11 @@
                 "area": "Germany",
                 "address": "Nürburgring Boulevard 2, 53520 Nürburg, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457594",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7856,
-                "last_updated": "2025-05-11"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -55484,6 +55485,432 @@
                 "status": "unvisited",
                 "id": 14,
                 "last_updated": "2025-06-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0294923,
+                    39.8555356
+                ]
+            },
+            "properties": {
+                "name": "Carlo's Cafeteria",
+                "area": "Spain",
+                "address": "Alamillos del Transito, Toledo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=231586",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 389,
+                "last_updated": "2024-11-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.425787016014274,
+                    46.25639643103688
+                ]
+            },
+            "properties": {
+                "name": "Lac Soutterrain",
+                "area": "Switzerland",
+                "address": "Rue du Lac 27, 1958 Saint-Léonard, Switzerland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7911,
+                "last_updated": "2025-06-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.71331865746644,
+                    43.42245148776747
+                ]
+            },
+            "properties": {
+                "name": "Across the street from the Welcome Center",
+                "area": "New York",
+                "address": "Beach Road, Lake George",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3623",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5474,
+                "last_updated": "2025-06-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.37415459829283,
+                    35.28253762077817
+                ]
+            },
+            "properties": {
+                "name": "Sully’s Gifts- Jack Daniel’s Souvenirs",
+                "area": "Tennessee",
+                "address": "42 Hiles St, Lynchburg, TN 37352, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7912,
+                "last_updated": "2025-06-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7257147,
+                    45.78180039999999
+                ]
+            },
+            "properties": {
+                "name": "Windjammer Gift / Candy Corner",
+                "area": "Michigan",
+                "address": "331 E. Central Avenue, Mackinaw City",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2817",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2559,
+                "last_updated": "2025-06-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.6260604,
+                    45.8559799
+                ]
+            },
+            "properties": {
+                "name": "Surrey Hills Carriage Museum Gift Shop",
+                "area": "Michigan",
+                "address": "7531 3rd St, Mackinac Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=2833",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5273,
+                "last_updated": "2025-06-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.61739779999999,
+                    45.8520988
+                ]
+            },
+            "properties": {
+                "name": "Fort Mackinac State Park - Sutler's Store",
+                "area": "Michigan",
+                "address": "7127 Huron Rd, Mackinac Island",
+                "external_url": "http://209.221.138.252/Details.aspx?location=100280",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2544,
+                "last_updated": "2025-06-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.9645738,
+                    41.3616222
+                ]
+            },
+            "properties": {
+                "name": "Mystic Seaport",
+                "area": "Connecticut",
+                "address": "75 Greenmanville Ave, Mystic",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1450",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1694,
+                "last_updated": "2025-06-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.22262359999999,
+                    41.4325631
+                ]
+            },
+            "properties": {
+                "name": "Nature's Art, The Dinosaur Place.",
+                "area": "Connecticut",
+                "address": "1650 Hartford-New London Turnpike, Montville",
+                "external_url": "http://209.221.138.252/Details.aspx?location=271086",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1690,
+                "last_updated": "2025-06-08",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.949067368053193,
+                    47.24740119367857
+                ]
+            },
+            "properties": {
+                "name": "Sárvárfürdő",
+                "area": "Hungary",
+                "address": "Sárvár, Rákóczi Ferenc u. 65, 9600 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7913,
+                "last_updated": "2025-06-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.0155922,
+                    53.4057174
+                ]
+            },
+            "properties": {
+                "name": "Campen Lighthouse",
+                "area": "Germany",
+                "address": "Leuchtturmstraße 5, Krummhörn",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457454",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7914,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.9106175,
+                    54.900914
+                ]
+            },
+            "properties": {
+                "name": "Devils' Museum",
+                "area": "Lithunia",
+                "address": "V. Putvinskio g. 64, Kaunas 44211, Lithuania",
+                "external_url": "http://209.221.138.252/Details.aspx?location=312630",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 794,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.990759899999999,
+                    53.62481
+                ]
+            },
+            "properties": {
+                "name": "Hamburg Airport",
+                "area": "Germany",
+                "address": "Flughafenstrasse 1",
+                "external_url": "http://209.221.138.252/Details.aspx?location=105812",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 495,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.1976838450761167,
+                    52.96196465801197
+                ]
+            },
+            "properties": {
+                "name": "Trentham Shopping Village",
+                "area": "England",
+                "address": "Stone Road,, STAFFORDSHIRE - Trentham",
+                "external_url": "http://209.221.138.252/Details.aspx?location=36854",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1559,
+                "last_updated": "2025-06-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.095882,
+                    64.5643831
+                ]
+            },
+            "properties": {
+                "name": "Historic Alaska Railroad Depot",
+                "area": "Alaska",
+                "address": "900 Front St, Nenana",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457588",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7915,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.3325628,
+                    39.5535342
+                ]
+            },
+            "properties": {
+                "name": "Glenwood Caverns Adventure Park",
+                "area": "Colorado",
+                "address": "51000 Two Rivers Plaza Rd, Glenwood Springs",
+                "external_url": "http://209.221.138.252/Details.aspx?location=1041",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1869,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.9438973,
+                    21.34275
+                ]
+            },
+            "properties": {
+                "name": "Turtle Cove Gift Shop - Bellows AFS",
+                "area": "Hawaii",
+                "address": "220 Tinker Ave., Oahu - Waimanalo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457689",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7916,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.7032242,
+                    40.4146338
+                ]
+            },
+            "properties": {
+                "name": "From Madrid With Love store #4",
+                "area": "Spain",
+                "address": "Calle de Esparteros, 1, Madrid",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457603",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7917,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.0204962,
+                    39.8577545
+                ]
+            },
+            "properties": {
+                "name": "Alcazar de Toledo",
+                "area": "Spain",
+                "address": ", Toledo",
+                "external_url": "http://209.221.138.252/Details.aspx?location=90312",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 388,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.021228499999999,
+                    39.8584688
+                ]
+            },
+            "properties": {
+                "name": "Gift Store",
+                "area": "Spain",
+                "address": "Cuesta De Carlos V, 5, Toledo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457607",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7918,
+                "last_updated": "2025-06-09"
             }
         }
     ]
