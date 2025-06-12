@@ -40126,9 +40126,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7530,
-                "last_updated": "2025-05-08"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -49110,9 +49110,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=238272",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7752,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -55973,6 +55973,90 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7920,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.953272,
+                    33.4476794
+                ]
+            },
+            "properties": {
+                "name": "Arizona Hall of Flame Museum",
+                "area": "Arizona",
+                "address": "6101 E. Van Buren St., Phoenix",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=63850",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7921,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.930301,
+                    32.781135
+                ]
+            },
+            "properties": {
+                "name": "Sheila's Shamrock",
+                "area": "South Carolina",
+                "address": "84 North Market Street, Charleston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3099",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2183,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1565537,
+                    36.1475119
+                ]
+            },
+            "properties": {
+                "name": "Stratosphere Hotel & Casino (Tower shops) - Las Vegas Magic Shop",
+                "area": "Nevada",
+                "address": "2000 Las Vegas Boulevard South suite E-14, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=68242",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4528,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4922309,
+                    41.8902102
+                ]
+            },
+            "properties": {
+                "name": "Colosseum",
+                "area": "Italy",
+                "address": ", Rome",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=16900",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7922,
                 "last_updated": "2025-06-09"
             }
         }
