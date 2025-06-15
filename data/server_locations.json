@@ -2333,9 +2333,9 @@
                 "external_url": "http://209.221.138.252/Details.aspx?location=107276",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1388,
-                "last_updated": "2024-04-25"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -35807,10 +35807,10 @@
                 "address": "1700 Highway 71 East, Bastrop",
                 "external_url": "http://209.221.138.252/Details.aspx?location=209282",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3654,
-                "last_updated": "2024-07-27"
+                "last_updated": "2025-06-15"
             }
         },
         {
@@ -40126,9 +40126,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7530,
-                "last_updated": "2025-05-08"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -48599,10 +48599,11 @@
                 "address": "One Tranquility Base, Huntsville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=184",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 1723,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-06-14",
+                "multimachine": 2
             }
         },
         {
@@ -49110,9 +49111,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=238272",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7752,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -55911,6 +55912,322 @@
                 "machine_status": "available",
                 "id": 7918,
                 "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.018332,
+                    -27.473007
+                ]
+            },
+            "properties": {
+                "name": "Queensland Museum Science Center",
+                "area": "Australia",
+                "address": "Corner Grey & Melbourne Streets , QLD - Brisbane ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457751",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2135,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.7688135,
+                    45.6496045
+                ]
+            },
+            "properties": {
+                "name": "Coffee Piazza Grande",
+                "area": "Italy",
+                "address": "Via Malcanton, Trieste",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457755",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7919,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.8363009,
+                    40.0016228
+                ]
+            },
+            "properties": {
+                "name": "Regalos Maribel born",
+                "area": "Spain",
+                "address": "Carrer d'es Mirador, 28, Ciutadella",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457757",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7920,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.953272,
+                    33.4476794
+                ]
+            },
+            "properties": {
+                "name": "Arizona Hall of Flame Museum",
+                "area": "Arizona",
+                "address": "6101 E. Van Buren St., Phoenix",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=63850",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7921,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.930301,
+                    32.781135
+                ]
+            },
+            "properties": {
+                "name": "Sheila's Shamrock",
+                "area": "South Carolina",
+                "address": "84 North Market Street, Charleston",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3099",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2183,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1565537,
+                    36.1475119
+                ]
+            },
+            "properties": {
+                "name": "Stratosphere Hotel & Casino (Tower shops) - Las Vegas Magic Shop",
+                "area": "Nevada",
+                "address": "2000 Las Vegas Boulevard South suite E-14, Las Vegas",
+                "external_url": "http://209.221.138.252/Details.aspx?location=68242",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4528,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4922309,
+                    41.8902102
+                ]
+            },
+            "properties": {
+                "name": "Colosseum",
+                "area": "Italy",
+                "address": ", Rome",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=16900",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7922,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.919026862729771,
+                    54.36518904899132
+                ]
+            },
+            "properties": {
+                "name": "The World of Beatrix Potter Attraction - 1",
+                "area": "England",
+                "address": "The Old Laundry, English Lake District, Cumbria - Bowness On Windermere",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3239",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6298,
+                "last_updated": "2025-06-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.166859,
+                    40.804906
+                ]
+            },
+            "properties": {
+                "name": "California Welcome Center Eureka",
+                "area": "California",
+                "address": "108 F St, Eureka",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457954",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7923,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1560579,
+                    36.1472414
+                ]
+            },
+            "properties": {
+                "name": "Stratosphere Hotel & Casino Tower Shops - Welcome to Las Vegas store",
+                "area": "Nevada",
+                "address": "2000 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=261795",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7924,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0759493,
+                    51.50811239999999
+                ]
+            },
+            "properties": {
+                "name": "Royal Fusiliers Regimental Museum",
+                "area": "England",
+                "address": "HM Tower of London (Tower Gateway or London Bridge tube stops), LONDON - Tower Hill ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3925",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7925,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.1182684,
+                    40.94801959999999
+                ]
+            },
+            "properties": {
+                "name": "The Shop/ Centro de Visitantes de Segovia",
+                "area": "Spain",
+                "address": "Pl. Azoguejo, 1, Segovia",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=457963",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7926,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.77628813127146,
+                    47.66979034251846
+                ]
+            },
+            "properties": {
+                "name": "North Idaho Museum",
+                "area": "Idaho",
+                "address": "712 E Young Ave, Coeur d'Alene, ID 83814, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7927,
+                "last_updated": "2025-06-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.82851339999999,
+                    40.2525999
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops Outdoor World",
+                "area": "Pennsylvania",
+                "address": "3501 Paxton Street, Harrisburg",
+                "external_url": "http://209.221.138.252/Details.aspx?location=4075",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3994,
+                "last_updated": "2025-06-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.2430011602739364,
+                    44.31238326300093
+                ]
+            },
+            "properties": {
+                "name": "Point Sublime",
+                "area": "France",
+                "address": "1469 P. Sublime, 48500 Massegros Causses Gorges, France",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7928,
+                "last_updated": "2025-06-15"
             }
         }
     ]
