@@ -28532,10 +28532,10 @@
                 "address": "5 Camber Road, Dockyard",
                 "external_url": "http://209.221.138.252/Details.aspx?location=408",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1684,
-                "last_updated": "2024-05-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -42549,10 +42549,10 @@
                 "address": "15500 US Highway 101 North (P.O. Box 96), Klamath",
                 "external_url": "http://209.221.138.252/Details.aspx?location=1343",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4653,
-                "last_updated": "2024-10-20"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -43415,7 +43415,7 @@
                 "address": "3528 South Maryland Parkway, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=263064",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4526,
                 "last_updated": "2025-06-09"
@@ -51712,11 +51712,11 @@
                 "area": "Georgia",
                 "address": "10 Lighthouse Drive, Marblehead",
                 "status": "unvisited",
-                "external_url": "http://209.221.138.252/Details.aspx?location=453691",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7810,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -56333,6 +56333,111 @@
                 "status": "unvisited",
                 "id": 5134,
                 "last_updated": "2025-06-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.33545339999999,
+                    46.4981259
+                ]
+            },
+            "properties": {
+                "name": "Soo Locks Boat Tours",
+                "area": "Michigan",
+                "address": "515 East Portage Avenue, Sault St. Marie",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458253",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7933,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3731798,
+                    33.7566739
+                ]
+            },
+            "properties": {
+                "name": "Martin Luther King Jr. National Historical Park",
+                "area": "Georgia",
+                "address": "450 Auburn Ave NE, Atlanta",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458246",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7934,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.84924579999999,
+                    40.7439678
+                ]
+            },
+            "properties": {
+                "name": "Queens Zoo",
+                "area": "New York",
+                "address": "53-51 111th Street, New York City (Queens)",
+                "external_url": "http://209.221.138.252/Details.aspx?location=3631",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3058,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.8843231,
+                    39.8225088
+                ]
+            },
+            "properties": {
+                "name": "Santuari de Lluc",
+                "area": "Spain",
+                "address": "Plaça dels Pelegrins, 1, Lluc",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458189",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7935,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.8204638,
+                    51.0543138
+                ]
+            },
+            "properties": {
+                "name": "Schwebebahn Bergstation ",
+                "area": "Germany",
+                "address": ", Dresden ",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5701,
+                "last_updated": "2025-06-09"
             }
         }
     ]
