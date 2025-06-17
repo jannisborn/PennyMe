@@ -4203,9 +4203,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=388431",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6287,
-                "last_updated": "2024-06-23"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -12621,11 +12621,11 @@
                 "area": "Germany",
                 "address": "82031 Grünwald, Germany",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458323",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6773,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -56480,6 +56480,111 @@
                 "status": "unvisited",
                 "id": 2947,
                 "last_updated": "2025-06-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.3734707,
+                    48.2084114
+                ]
+            },
+            "properties": {
+                "name": "Domkirche (St. Stephen's Cathedral)",
+                "area": "Austria",
+                "address": "Stephansplatz 3, Vienna (Wien)",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458328",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7936,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.192922,
+                    47.4776759
+                ]
+            },
+            "properties": {
+                "name": "Eisriesenwelt",
+                "area": "Austria",
+                "address": "Eishöhlenstraße 30, Werfen",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458325",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7937,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.119605,
+                    51.5013498
+                ]
+            },
+            "properties": {
+                "name": "Paddington Bear Experience",
+                "area": "England",
+                "address": ", London",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458306",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7938,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0877405,
+                    51.506487
+                ]
+            },
+            "properties": {
+                "name": "London Bridge Experience",
+                "area": "England",
+                "address": "2-4 Tooley Street, , LONDON - London Bridge",
+                "external_url": "http://209.221.138.252/Details.aspx?location=53729",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 1474,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.2515,
+                    35.3105903
+                ]
+            },
+            "properties": {
+                "name": "Water City ",
+                "area": "Greece",
+                "address": "Crete, Iraklio",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458294",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7939,
+                "last_updated": "2025-06-09"
             }
         }
     ]
