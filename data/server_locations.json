@@ -4329,9 +4329,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=48213",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4961,
-                "last_updated": "2023-10-14"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -48599,10 +48599,10 @@
                 "address": "One Tranquility Base, Huntsville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=184",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1723,
-                "last_updated": "2025-06-14",
+                "last_updated": "2025-06-09",
                 "multimachine": 2
             }
         },
@@ -56691,6 +56691,69 @@
                 "machine_status": "out-of-order",
                 "id": 2712,
                 "last_updated": "2025-06-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.251091,
+                    30.4047196
+                ]
+            },
+            "properties": {
+                "name": "Buc-cees",
+                "area": "Mississippi",
+                "address": "8245 Fire Tower Road, Pass Christian",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458486",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7941,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1689528,
+                    36.1221671
+                ]
+            },
+            "properties": {
+                "name": "Venetian Hotel & Casino - Welcome to Las Vegas Store",
+                "area": "Nevada",
+                "address": "3377 Las Vegas Boulevard , Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458487",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7942,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1929781,
+                    55.95019869999999
+                ]
+            },
+            "properties": {
+                "name": "Museum on the Mound",
+                "area": "Scotland",
+                "address": "The Mound, Edinburgh",
+                "external_url": "http://209.221.138.252/Details.aspx?location=198280",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 755,
+                "last_updated": "2025-06-09"
             }
         }
     ]
