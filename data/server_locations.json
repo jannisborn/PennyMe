@@ -42044,10 +42044,10 @@
                 "address": "4200 S. Freeway, Fort Worth",
                 "external_url": "http://209.221.138.252/Details.aspx?location=247418",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3691,
-                "last_updated": "2024-10-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -44154,10 +44154,10 @@
                 "address": "3717 Las Vegas Boulevard South suite 2Q and 3C, Las Vegas",
                 "external_url": "http://209.221.138.252/Details.aspx?location=189027",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4509,
-                "last_updated": "2024-11-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -56666,10 +56666,10 @@
                 "address": "1400 River Drive, Moline",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2016",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1239,
-                "last_updated": "2025-06-19"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -56796,6 +56796,27 @@
                 "machine_status": "retired",
                 "id": 4162,
                 "last_updated": "2025-06-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.8131461,
+                    54.25852519999999
+                ]
+            },
+            "properties": {
+                "name": "Marble Arch Caves",
+                "area": "Ireland",
+                "address": "43 Marlbank Rd, Legnabrocky Florencourt",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458592",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7943,
+                "last_updated": "2025-06-09"
             }
         }
     ]
