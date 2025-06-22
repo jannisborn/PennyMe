@@ -210,9 +210,9 @@
                 "status": "retired",
                 "external_url": "http://209.221.138.252/Details.aspx?location=48947",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4639,
-                "last_updated": "2024-01-17"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -3256,9 +3256,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=412790",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6124,
-                "last_updated": "2025-06-19"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -21004,10 +21004,10 @@
                 "address": "I-87 North Mile marker 103, Saugerties",
                 "external_url": "http://209.221.138.252/Details.aspx?location=335061",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3084,
-                "last_updated": "2024-02-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -30444,10 +30444,10 @@
                 "address": "110 North Ocean Boulevard, Myrtle Beach",
                 "external_url": "http://209.221.138.252/Details.aspx?location=3135",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2208,
-                "last_updated": "2024-05-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -56922,6 +56922,90 @@
                 "status": "unvisited",
                 "id": 5098,
                 "last_updated": "2025-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.507896,
+                    40.037976
+                ]
+            },
+            "properties": {
+                "name": "Turkey Hill Experience",
+                "area": "Pennsylvania",
+                "address": "301 Linden St , Columbia",
+                "external_url": "http://209.221.138.252/Details.aspx?location=104297",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3965,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.6168976,
+                    29.3210678
+                ]
+            },
+            "properties": {
+                "name": "Terlingua Trading Company",
+                "area": "Texas",
+                "address": "100 Ivey Rd, Terlingua",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458778",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7946,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.358433199999999,
+                    48.0763834
+                ]
+            },
+            "properties": {
+                "name": "L'Echoppe DE Merline",
+                "area": "France",
+                "address": "15 Rue des Marchands, Colmar",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458761",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7947,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    133.8777634,
+                    34.2130784
+                ]
+            },
+            "properties": {
+                "name": "New Reoma World",
+                "area": "Japan",
+                "address": "40-1 Kurikuma Nishi Ayauta-cho, Marugame, Kagawa",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458757",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7948,
+                "last_updated": "2025-06-09"
             }
         }
     ]
