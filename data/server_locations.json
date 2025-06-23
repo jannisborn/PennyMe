@@ -17150,9 +17150,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=107480",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1419,
-                "last_updated": "2024-06-13"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -32045,10 +32045,10 @@
                 "address": "2071 W. 4th St., Ontario",
                 "external_url": "http://209.221.138.252/Details.aspx?location=58402",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1997,
-                "last_updated": "2024-05-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -38483,9 +38483,9 @@
                 "status": "unvisited",
                 "external_url": "http://209.221.138.252/Details.aspx?location=438759",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7485,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -42654,10 +42654,10 @@
                 "address": "305 W Historic Rte 66, Adrian",
                 "external_url": "http://209.221.138.252/Details.aspx?location=349234",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3636,
-                "last_updated": "2024-10-21"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -53210,11 +53210,11 @@
                 "area": "Switzerland",
                 "address": "Spiez",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458933",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7854,
-                "last_updated": "2025-05-10"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -57113,6 +57113,111 @@
                 "machine_status": "out-of-order",
                 "id": 3639,
                 "last_updated": "2025-06-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.48593090000001,
+                    38.9776831
+                ]
+            },
+            "properties": {
+                "name": "Harbor Square Gift Shop",
+                "area": "Maryland",
+                "address": "Craig St, Annapolis, MD 21401, Annapolis ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458967",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7949,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.7101709,
+                    45.870117
+                ]
+            },
+            "properties": {
+                "name": "Minocqua (Gaslight Square)",
+                "area": "Wisconsin",
+                "address": "415 Oneida St, Minocqua",
+                "external_url": "http://209.221.138.252/Details.aspx?location=328336",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2447,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.4195684,
+                    53.6262134
+                ]
+            },
+            "properties": {
+                "name": "Schwerin ",
+                "area": "Germany",
+                "address": "Werderstraße 140, Schwerin",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=458884",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7950,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.4371326,
+                    34.6684528
+                ]
+            },
+            "properties": {
+                "name": "Universal City Walk, Hotel Kintetsu",
+                "area": "Japan",
+                "address": "6-2-68, Shimaya, Konohana-ku, Osaka",
+                "external_url": "http://209.221.138.252/Details.aspx?location=311957",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2816,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.8104425,
+                    40.9829888
+                ]
+            },
+            "properties": {
+                "name": "Istanbul Ataturk (domestic airport) ",
+                "area": "Turkey",
+                "address": ", Istanbul",
+                "external_url": "http://209.221.138.252/Details.aspx?location=291228",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 149,
+                "last_updated": "2025-06-09"
             }
         }
     ]
