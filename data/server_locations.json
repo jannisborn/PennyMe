@@ -29670,10 +29670,10 @@
                 "address": ", Beijing",
                 "external_url": "http://209.221.138.252/Details.aspx?location=317522",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2939,
-                "last_updated": "2024-06-01"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -31560,10 +31560,10 @@
                 "address": "7271 Main St., Mackinac Island",
                 "external_url": "http://209.221.138.252/Details.aspx?location=296690",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2550,
-                "last_updated": "2024-06-19"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -31644,10 +31644,10 @@
                 "address": "7463 Main St - Star Line Ferry Dock, Mackinac Island",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2832",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2546,
-                "last_updated": "2024-06-20"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -47380,10 +47380,10 @@
                 "address": "2475 Grand Blvd. Kansas City, MO",
                 "external_url": "http://209.221.138.252/Details.aspx?location=317512",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2938,
-                "last_updated": "2025-01-27"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -55610,10 +55610,10 @@
                 "address": "7531 3rd St, Mackinac Island",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2833",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5273,
-                "last_updated": "2025-06-08"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -56476,10 +56476,10 @@
                 "address": "Shanghai to Japan to South-Korea (Route), Shanghai",
                 "external_url": "http://209.221.138.252/Details.aspx?location=234539",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2947,
-                "last_updated": "2025-06-18"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -57240,6 +57240,27 @@
                 "id": 2228,
                 "last_updated": "2025-06-24",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5192833,
+                    34.6193026
+                ]
+            },
+            "properties": {
+                "name": "Miles Through Time Automotive Museum",
+                "area": "Georgia",
+                "address": "583 Grant St., Clarkesville",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=459113",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7951,
+                "last_updated": "2025-06-09"
             }
         }
     ]
