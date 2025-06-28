@@ -54661,10 +54661,10 @@
                 "address": "6th and Market Streets, Philadelphia",
                 "external_url": "http://209.221.138.252/Details.aspx?location=28680",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4034,
-                "last_updated": "2025-05-28"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -57620,6 +57620,48 @@
                 "machine_status": "available",
                 "id": 7959,
                 "last_updated": "2025-06-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.6799648,
+                    34.2599605
+                ]
+            },
+            "properties": {
+                "name": "Elvis Presleys Birthplace ",
+                "area": "Mississippi",
+                "address": "306 Elvis Presley Drive, Tupelo ",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=459637",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7960,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.29094189999999,
+                    29.09246419999999
+                ]
+            },
+            "properties": {
+                "name": "Chisholm Trail Heritage Museum",
+                "area": "Texas",
+                "address": "302 N Esplanade, Cuero",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=459645",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7961,
+                "last_updated": "2025-06-09"
             }
         }
     ]
