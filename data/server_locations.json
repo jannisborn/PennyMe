@@ -31644,7 +31644,7 @@
                 "address": "7463 Main St - Star Line Ferry Dock, Mackinac Island",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2832",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2546,
                 "last_updated": "2025-06-09"
@@ -47380,7 +47380,7 @@
                 "address": "2475 Grand Blvd. Kansas City, MO",
                 "external_url": "http://209.221.138.252/Details.aspx?location=317512",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2938,
                 "last_updated": "2025-06-09"
@@ -56876,10 +56876,10 @@
                 "address": "1545 Parkway, Sevierville",
                 "external_url": "http://209.221.138.252/Details.aspx?location=2671",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4289,
-                "last_updated": "2025-06-21"
+                "last_updated": "2025-06-09"
             }
         },
         {
@@ -57684,6 +57684,48 @@
                 "id": 7962,
                 "last_updated": "2025-06-29",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.8966252,
+                    47.4778882
+                ]
+            },
+            "properties": {
+                "name": "Minnesota Discovery Center",
+                "area": "Minnesota",
+                "address": "1005 Discovery Dr, Chisholm",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=397720",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6146,
+                "last_updated": "2025-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.5083667,
+                    27.5018417
+                ]
+            },
+            "properties": {
+                "name": "Laredo Convention & Visitors Bureau",
+                "area": "Texas",
+                "address": "101 Salinas Avenue, Laredo",
+                "status": "unvisited",
+                "external_url": "http://209.221.138.252/Details.aspx?location=459755",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7963,
+                "last_updated": "2025-06-09"
             }
         }
     ]
