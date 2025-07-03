@@ -9,7 +9,7 @@ def remove_html_and(x: str) -> str:
 
 
 # Mapping the areas to the country codes as in pennycollector.com
-# http://209.221.138.252/AreaList.aspx
+# http://locations.pennycollector.com/AreaList.aspx
 COUNTRY_TO_CODE = {
     " Private Rollers": 123,
     "Alabama": 41,
