@@ -10,7 +10,7 @@ from loguru import logger
 
 from .locations import COUNTRY_TO_CODE, remove_html_and
 
-WEBSITE_ROOT = "http://209.221.138.252/"
+WEBSITE_ROOT = "http://locations.pennycollector.com/"
 AREA_PREFIX = WEBSITE_ROOT + "Locations.aspx?area="
 AREA_SITE = WEBSITE_ROOT + "AreaList.aspx"
 DATE = datetime.today()
@@ -69,7 +69,7 @@ def validate_location_list(locations: List[str]) -> Tuple[bool, List[str]]:
 def get_raw_locations_from_location_website(website) -> List[bs4.element.Tag]:
     """
     Retrieves a list of locations from a website of any location, e.g.:
-    http://209.221.138.252/Locations.aspx?area=42
+    http://locations.pennycollector.com/Locations.aspx?area=42
 
     Args:
         website: The bs4 website content.
@@ -89,7 +89,7 @@ def get_location_list_from_location_website(
 ) -> List[List[str]]:
     """
     Retrieves a list of locations from a website of any location, e.g.:
-    http://209.221.138.252/Locations.aspx?area=42
+    http://locations.pennycollector.com/Locations.aspx?area=42
 
     Args:
         website: The bs4 website content.

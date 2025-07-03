@@ -16,7 +16,7 @@ from googlemaps import Client as GoogleMaps
 
 sys.path.append(".")
 
-WEB_PREFIX = "http://209.221.138.252/"
+WEB_PREFIX = "http://locations.pennycollector.com/"
 API_KEY = open("../../gpc_api_key.keypair", "r").read()
 GMAPS = GoogleMaps(API_KEY)
 
@@ -27,7 +27,7 @@ os.makedirs(root, exist_ok=True)
 
 for COUNTRY, CODE in COUNTRY_TO_CODE.items():
     area = COUNTRY.lower().replace(" ", "_")
-    url = "http://209.221.138.252/Locations.aspx?area=" + str(CODE)
+    url = "http://locations.pennycollector.com/Locations.aspx?area=" + str(CODE)
     mhtml = requests.get(url).content
     unicode_str = mhtml.decode("utf8")
     encoded_str = unicode_str.encode("ascii", "ignore")
