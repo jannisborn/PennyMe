@@ -123,7 +123,7 @@ def location_differ(
         country_to_titles[geojson["properties"]["area"]].append(
             geojson["properties"]["name"]
         )
-        if url == "null" or "209.221.138.252" not in url:
+        if url == "null" or "locations.pennycollector.com" not in url:
             entry = geojson["properties"].copy()
             entry["source"] = "Device"
             entry["data_idx"] = i
@@ -139,7 +139,7 @@ def location_differ(
             geojson["properties"]["name"]
         )
         url = geojson["properties"]["external_url"]
-        if "209.221.138.252" not in url:
+        if "locations.pennycollector.com" not in url:
             entry = geojson["properties"].copy()
             entry["source"] = "Server"
             entry["data_idx"] = i
