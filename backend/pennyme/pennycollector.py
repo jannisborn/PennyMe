@@ -138,7 +138,7 @@ def get_prelim_geojson(
     city = remove_html_and(raw_location[1].split("<td>")[1].split("</td>")[0])
     subtitle = subtitle + ", " + city
 
-    state = remove_html_and(raw_location[2].split('Center">')[1].split("</td>")[0])
+    state = remove_html_and(raw_location[2].split('center">')[1].split("</td>")[0])
     if state not in UNAVAILABLE_STATES:
         # States like 1p, 4p and everything else
         state = "available"
@@ -146,7 +146,7 @@ def get_prelim_geojson(
 
     # NOTE: This refers to the last update on the website. We dont exploit this
     # information atm, but it could be used to make inference faster.
-    updated = raw_location[4].split('Center">')[1].split("</td>")[0]
+    updated = raw_location[4].split('center">')[1].split("</td>")[0]
     month, day, year = updated.split("/")
     geojson = {
         "type": "Feature",
