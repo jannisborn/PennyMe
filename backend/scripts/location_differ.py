@@ -190,7 +190,6 @@ def location_differ(
         length = len(location_raw_list)
         for j, raw_location in enumerate(location_raw_list):
             # Convert to preliminary geo-json (no ID and no GPS coordinates)
-            breakpoint()
             geojson = get_prelim_geojson(raw_location, area, add_date=True)
 
             this_link = geojson["properties"]["external_url"]
