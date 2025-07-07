@@ -37937,10 +37937,10 @@
                 "address": "31900 Las Vegas Boulevard South, Primm",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2990",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5429,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -44918,11 +44918,11 @@
                 "area": "Minnesota",
                 "address": "60 E Broadway, Bloomington, MN 55425",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460305",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7656,
-                "last_updated": "2024-11-26"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -58633,6 +58633,48 @@
                 "status": "unvisited",
                 "id": 1552,
                 "last_updated": "2025-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7758352,
+                    36.1608755
+                ]
+            },
+            "properties": {
+                "name": "Patsy Cline Museum",
+                "area": "Tennessee",
+                "address": "119 Third Avenue South, Nashville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=268177",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4254,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.23922209999999,
+                    39.5650839
+                ]
+            },
+            "properties": {
+                "name": "Silver Mall (formerly Silver Sun)",
+                "area": "New Jersey",
+                "address": "210 North Bay Avenue, Beach Haven",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3467",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2383,
+                "last_updated": "2025-07-06"
             }
         }
     ]
