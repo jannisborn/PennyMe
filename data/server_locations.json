@@ -21689,8 +21689,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3246,
-                "last_updated": "2024-04-29",
-                "multimachine": 2
+                "last_updated": "2025-07-07",
+                "multimachine": 4
             }
         },
         {
@@ -22492,7 +22492,7 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 712,
-                "last_updated": "2025-01-06"
+                "last_updated": "2025-07-07"
             }
         },
         {
@@ -24621,10 +24621,10 @@
                 "address": "234 W. 42nd St., 3rd Floor, New York City (Manhattan)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=250087",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3044,
-                "last_updated": "2024-05-10"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -26496,8 +26496,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -89.0846085,
-                    42.2819407
+                    -112.02756524307769,
+                    34.7484801059126
                 ]
             },
             "properties": {
@@ -47360,10 +47360,10 @@
                 "address": "441 S. Main Street, Cherokee",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=20210",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4092,
-                "last_updated": "2025-01-25"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -51713,11 +51713,11 @@
                 "area": "Georgia",
                 "address": "10 Lighthouse Drive, Marblehead",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=453691",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7810,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -57988,20 +57988,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -93.05375656937603,
-                    34.51282394179077
+                    -93.05363421805723,
+                    34.51276715580821
                 ]
             },
             "properties": {
                 "name": "Mystic Ozark",
                 "area": "Arkansas",
-                "address": "491 Central Ave, Hot Springs, AR 71901, USA",
+                "address": "425 Central Ave, Hot Springs, AR 71901, USA",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7966,
-                "last_updated": "2025-07-04",
+                "last_updated": "2025-07-07",
                 "paywall": true
             }
         },
@@ -58066,6 +58066,573 @@
                 "status": "unvisited",
                 "id": 2905,
                 "last_updated": "2025-07-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.71177569999999,
+                    41.4575777
+                ]
+            },
+            "properties": {
+                "name": "Shores & Islands Ohio",
+                "area": "Ohio",
+                "address": "125 E Water St, Sandusky",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459955",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7968,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.0264037,
+                    40.04260000000001
+                ]
+            },
+            "properties": {
+                "name": "Insectarium",
+                "area": "Pennsylvania",
+                "address": "8046 Frankford Avenue, Philadelphia",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=204156",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7969,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.92175929999999,
+                    40.337547
+                ]
+            },
+            "properties": {
+                "name": "Reading City Hall",
+                "area": "Pennsylvania",
+                "address": "815 Washington St., Reading",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459963",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7970,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.9003141,
+                    43.8211696
+                ]
+            },
+            "properties": {
+                "name": "Badlands Ranch Store",
+                "area": "South Dakota",
+                "address": "21190 SD-240, Philip",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459977",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7971,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.74037589999999,
+                    32.5849231
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees Warner Robins Travel Center",
+                "area": "Georgia",
+                "address": "7001 Russell Parkway, Fort Valley (Warner Robbins)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=353308",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1638,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0896752,
+                    32.0812016
+                ]
+            },
+            "properties": {
+                "name": "True Grits Gift & Cards",
+                "area": "Georgia",
+                "address": "107 E. River Street, Savannah",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1860",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7972,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.92632429999999,
+                    38.3545558
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Virginia",
+                "address": "6500 Buc-ee's Blvd, Mt. Crawford",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459975",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7973,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.4976949,
+                    39.1081324
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "West Virginia",
+                "address": "1584 Blackwater Lodge Rd,, Davis",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460022",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7974,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.6799011,
+                    39.097248
+                ]
+            },
+            "properties": {
+                "name": "Piccolo Paulas Caffe",
+                "area": "West Virginia",
+                "address": "104 Walnut St, Parsons",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=380067",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5484,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.2298911,
+                    35.8032158
+                ]
+            },
+            "properties": {
+                "name": "Lexington Style Trimmings BBQ",
+                "area": "North Carolina",
+                "address": "1513 E. Center St. Ext., Lexington",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=59354",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4118,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.6914472,
+                    -34.7725106
+                ]
+            },
+            "properties": {
+                "name": "The Big Merino",
+                "area": "Australia",
+                "address": "88 Hume St, NSW - Goulburn",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=993",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 2115,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.595457199999999,
+                    50.70390769999999
+                ]
+            },
+            "properties": {
+                "name": "Walibi Belgium",
+                "area": "Belgium",
+                "address": "Bd de l'Europe 100, Wavre",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7975,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.72398299999999,
+                    45.419792
+                ]
+            },
+            "properties": {
+                "name": "Granby Zoo",
+                "area": "Canada",
+                "address": "525, rue Saint-Hubert, Quebec - Granby",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=47306",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5039,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3811746,
+                    54.9044161
+                ]
+            },
+            "properties": {
+                "name": "Sunderland Football Stadium",
+                "area": "England",
+                "address": ", TYNE & WEAR - Sunderland",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4284",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7976,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.0199323,
+                    35.2444403
+                ]
+            },
+            "properties": {
+                "name": "Owakudani Ropeway Station (Was at Hakone Ropeway- Sounzan Station)",
+                "area": "Japan",
+                "address": ", Hakone",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=244536",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2777,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    138.7688409,
+                    35.49823620000001
+                ]
+            },
+            "properties": {
+                "name": "Fujikyu Railway Kawaguchiko Station",
+                "area": "Japan",
+                "address": "3641 Funatsu, Fujikawaguchiko Minamitsurugun, Yamanashi",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460106",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7977,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.3482147,
+                    52.1518483
+                ]
+            },
+            "properties": {
+                "name": "Dierenpark (Zoo)",
+                "area": "Netherlands",
+                "address": "Barchman Wuytierslaan 224, Amersfoort",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=708",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 152,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.9021959,
+                    52.3841865
+                ]
+            },
+            "properties": {
+                "name": "This is Holland",
+                "area": "Netherlands",
+                "address": "Overhoeksplein 51, Amsterdam",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460027",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7978,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.4905747,
+                    51.9201875
+                ]
+            },
+            "properties": {
+                "name": "Kubus Souvenir Shop",
+                "area": "Netherlands",
+                "address": "Overblaak 82, Rotterdam",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459990",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7979,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.4732477,
+                    51.8981376
+                ]
+            },
+            "properties": {
+                "name": "SS Rotterdam",
+                "area": "Netherlands",
+                "address": "3e Katendrechtse Hoofd 25, Rotterdam",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460004",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7980,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.74047,
+                    32.584345
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees",
+                "area": "Georgia",
+                "address": ", Warner Robbins",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6200,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.4394159,
+                    60.1198297
+                ]
+            },
+            "properties": {
+                "name": "Harbor 360 Hotel",
+                "area": "Alaska",
+                "address": "1412 4th Avenue, Seward",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=303557",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1172,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.79309959999999,
+                    43.5954723
+                ]
+            },
+            "properties": {
+                "name": "Tommy Bartlett Exploratory",
+                "area": "Wisconsin",
+                "address": "560 Wisconsin Dells Parkway, Wisconsin Dells",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=956",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2480,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.24057710000001,
+                    44.854378
+                ]
+            },
+            "properties": {
+                "name": "Minnesot-ah!",
+                "area": "Minnesota",
+                "address": "157 E Broadway, Bloomington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460313",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7981,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2422148,
+                    44.8548651
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Minnesot-ah!",
+                "area": "Minnesota",
+                "address": "1st floor-East, Bloomington",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 3137,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.41165339999999,
+                    38.0257871
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Kentucky",
+                "address": "1510 Conservation Way, Lexington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=256519",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3529,
+                "last_updated": "2025-07-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.0413945,
+                    53.50439799999999
+                ]
+            },
+            "properties": {
+                "name": "Yorkshire Wildlife Park",
+                "area": "England",
+                "address": "Brockholes Lane, Branton, SOUTH YORKSHIRE - Doncaster",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=89957",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1552,
+                "last_updated": "2025-07-07"
             }
         }
     ]
