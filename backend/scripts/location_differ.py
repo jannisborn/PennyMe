@@ -172,11 +172,12 @@ def location_differ(
     total_changes, new, depr = 0, 0, 0
     validated_links = []
     problem_data = {"type": "FeatureCollection", "features": []}
-    for i, area in enumerate(tqdm(areas)):
+    pbar = tqdm(areas)
+    for i, area in enumerate(pbar):
 
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
-        tqdm.set_description(f"Working on area:{i+1}/{len(areas)}: {area}")
+        pbar.set_description(f"Working on area:{i+1}/{len(areas)}: {area}")
 
         # Scraping data for that area
         area_id = COUNTRY_TO_CODE[area]
