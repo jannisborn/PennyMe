@@ -18,125 +18,34 @@ import CoreLocation
 // variable defining how large the shown region is when changing coordinates
 let regionInMeters: Double = 100
 
-@available(iOS 13.0, *)
-struct MapViewRepresentable: UIViewRepresentable {
-    @Binding var mapType: MKMapType
-    @Binding var centerCoordinate: CLLocationCoordinate2D
-
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
-        mapView.delegate = context.coordinator
-        return mapView
-    }
-
-    func updateUIView(_ view: MKMapView, context: Context) {
-        view.mapType = mapType
-        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        view.setRegion(region, animated: true)
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: MapViewRepresentable
-
-        init(_ parent: MapViewRepresentable) {
-            self.parent = parent
-        }
-
-        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-            parent.centerCoordinate = mapView.centerCoordinate
-        }
-    }
+struct IdentifiableCoordinate: Identifiable {
+    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
 }
 
-
 @available(iOS 14.0, *)
-struct MapView: View {
-    @State private var region: MKCoordinateRegion
-    @State private var showDoneAlert = false
-    @Binding private var centerCoordinate: CLLocationCoordinate2D
-    @Environment(\.presentationMode) private var presentationMode
-    let initalCenterCoords: CLLocationCoordinate2D
-    @State private var mapType: MKMapType = .standard
+struct InteractiveMapView: View {
+    @Binding var selectedLocation: CLLocationCoordinate2D
 
-    
-    init(centerCoordinate: Binding<CLLocationCoordinate2D>, initialCenter: CLLocationCoordinate2D) {
-            _centerCoordinate = centerCoordinate
-            let regionTemp = MKCoordinateRegion(
-                center: initialCenter,
-                latitudinalMeters: regionInMeters,
-                longitudinalMeters: regionInMeters
-            )
-            _region = State(initialValue: regionTemp)
-            initalCenterCoords = initialCenter
+    @State private var region: MKCoordinateRegion
+
+    init(selectedLocation: Binding<CLLocationCoordinate2D>) {
+        _selectedLocation = selectedLocation
+        _region = State(initialValue: MKCoordinateRegion(
+            center: selectedLocation.wrappedValue,
+            span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        ))
     }
-    
+
     var body: some View {
-        ZStack {
-            // Custom MapViewRepresentable for map type switching
-            MapViewRepresentable(mapType: $mapType, centerCoordinate: $centerCoordinate)
-                .edgesIgnoringSafeArea(.all)
-            
-            // Overlay the marker at the center coordinate
-            Image(systemName: "mappin.circle.fill")
-                .foregroundColor(.red)
-                .font(.title)
-                .offset(y: -20) // Offset to position the marker correctly
-            
-            VStack{
-                Spacer()
-                Button("Finished") {
-                    showDoneAlert.toggle()
-                }
-                .padding(20)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-                .padding(.bottom, 20) // Padding at the bottom
-                .alert(isPresented: $showDoneAlert) {
-                    Alert(
-                        title: Text("Moved pin location successfully from (\(initalCenterCoords.latitude), \(initalCenterCoords.longitude)) to (\(centerCoordinate.latitude), \(centerCoordinate.longitude))."),
-                        primaryButton: .default(Text("Save")) {
-                            showDoneAlert = false
-                            self.presentationMode.wrappedValue.dismiss()
-                        },
-                        secondaryButton: .cancel(Text("Continue editing")) {
-                            showDoneAlert = false
-                        }
-                    )
-                }
-            }
-            VStack{
-                Spacer()
-                HStack{
-                    Button(
-                        action: {
-                            switch mapType {
-                            case .standard:
-                                mapType = .satellite
-                            case .satellite:
-                                mapType = .hybrid
-                            default:
-                                mapType = .standard
-                            }
-                        }){
-                            Image("map_symbol_without_border")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                .padding()
-                                .shadow(color: Color.black.opacity(0.25), radius: 2, x: 0, y: 2)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.leading, 2)
-                    Spacer()
-                }
-            }
-        }.ignoresSafeArea(.all) // Ignore safe area for the entire ZStack
+        Map(coordinateRegion: $region, annotationItems: [IdentifiableCoordinate(coordinate: selectedLocation)]) { item in
+            MapMarker(coordinate: item.coordinate, tint: .red)
+        }
+        .onChange(of: region.center) { newCenter in
+            selectedLocation = newCenter
+        }
+        .frame(height: 200)
+        .cornerRadius(10)
     }
 }
     
@@ -220,26 +129,13 @@ struct MachineChangedForm: View {
             }
             .padding(3)
             
-            // Display coordinates and make button to select them on map
-            let rounded_lat = String(format: "%.4f", selectedLocation.latitude)
-            let rounded_lon = String(format: "%.4f", selectedLocation.longitude)
-            //(selectedLocation.longitude * 1000).rounded() / 1000)
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Lat/lon: \(rounded_lat), \(rounded_lon)").padding(3)
-                Button(action: {
-                    isMapPresented = true
-                }) {
-                    Text("Change location on map")
-                        .padding()
-                        .foregroundColor(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.yellow)
-                        .cornerRadius(10)
-                }
-                .sheet(isPresented: $isMapPresented) {
-                    MapView(centerCoordinate: $selectedLocation, initialCenter: coords)
-                }.padding(3)
-            }.padding(3)
+            Section(header: Text("Change location").foregroundColor(.gray)) {
+                InteractiveMapView(selectedLocation: $selectedLocation)
+
+                Text("Lat: \(String(format: "%.4f", selectedLocation.latitude)), Lon: \(String(format: "%.4f", selectedLocation.longitude))")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
             
             // Area input field
             VStack(alignment: .leading, spacing: 5) {
