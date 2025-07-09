@@ -278,7 +278,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             }
             else {
                 let mailtostring = String(
-                    "mailto:wnina@ethz.ch?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
+                    "mailto:ninawiedemann999@gmail.com?subject=[PennyMe] - Change of machine \(pinData.id)&body=Dear PennyMe developers,\n\n I have noted a change of machine \(pinData.title!) (ID=\(pinData.id)).\n<b>Details:</b>:\n**PLEASE PROVIDE ANY IMPORTANT DETAILS HERE, e.g. STATUS CHANGE, CORRECT ADDRESS, GEOGRAPHIC COORDINATES, etc.\n\n With best regards,"
                 ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
                 UIApplication.shared.open(URL(string:mailtostring )!)
             }
