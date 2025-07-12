@@ -5959,9 +5959,9 @@
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=189339",
                 "internal_url": "null",
                 "multimachine": 3,
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1666,
-                "last_updated": "2024-06-29"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -59184,6 +59184,69 @@
                 "status": "unvisited",
                 "id": 296,
                 "last_updated": "2025-07-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3853689,
+                    39.5126731
+                ]
+            },
+            "properties": {
+                "name": "Central House of Brews",
+                "area": "Ohio",
+                "address": "2213 Central Ave, Middletown",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460812",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8000,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.0140718,
+                    41.4539789
+                ]
+            },
+            "properties": {
+                "name": "Fort Atkinson State Historical Park",
+                "area": "Nebraska",
+                "address": "201 S Seventh St, Fort Calhoun",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460819",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8001,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7889192,
+                    35.5415191
+                ]
+            },
+            "properties": {
+                "name": "JAL Sky Museum",
+                "area": "Japan",
+                "address": "JAL Maintenance Center1 3-5-1 Hanedakuko, Ota-ku, Tokyo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460753",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8002,
+                "last_updated": "2025-07-06"
             }
         }
     ]
