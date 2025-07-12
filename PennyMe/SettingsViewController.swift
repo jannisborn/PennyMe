@@ -78,7 +78,7 @@ class SettingsViewController: UITableViewController {
     
     @objc func reportProblem (sender: UIButton!){
         let mailtostring = String(
-            "mailto:wnina@ethz.ch?subject=[PennyMe] - Problem report&body=Dear PennyMe team,\n\n I would like to inform you about the following problem in your app:\n\n"
+            "mailto:ninawiedemann999@gmail.com?subject=[PennyMe] - Problem report&body=Dear PennyMe team,\n\n I would like to inform you about the following problem in your app:\n\n"
         ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
         UIApplication.shared.openURL(URL(string:mailtostring )!)
     }
