@@ -3930,9 +3930,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=406427",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6228,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -24473,10 +24473,10 @@
                 "address": "222 Fifth Avenue, Nashville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=256976",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5342,
-                "last_updated": "2024-08-28"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -26271,10 +26271,10 @@
                 "address": "15570 Interstate 35 (I-35 South Exit 220), Buda",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=4769",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3663,
-                "last_updated": "2024-04-10",
+                "last_updated": "2025-07-06",
                 "multimachine": 2
             }
         },
@@ -56794,9 +56794,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=34632",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4162,
-                "last_updated": "2025-06-20"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -59058,6 +59058,48 @@
                 "machine_status": "available",
                 "id": 7996,
                 "last_updated": "2025-07-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.2993955,
+                    41.7492425
+                ]
+            },
+            "properties": {
+                "name": "Pop's Culture Shoppe",
+                "area": "Pennsylvania",
+                "address": "25 Main Street, Wellsboro",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460476",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7997,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    143.866274,
+                    -37.575008
+                ]
+            },
+            "properties": {
+                "name": "Sovereign Hill ",
+                "area": "Australia",
+                "address": "Bradshaw St, VIC - Ballarat",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460757",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7998,
+                "last_updated": "2025-07-06"
             }
         }
     ]
