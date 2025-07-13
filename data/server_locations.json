@@ -5956,7 +5956,7 @@
                 "area": "Georgia",
                 "address": "107 E. River Street, Savannah",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=189339",
+                "external_url": "null",
                 "internal_url": "null",
                 "multimachine": 3,
                 "machine_status": "retired",
@@ -58208,7 +58208,7 @@
                 "area": "Virginia",
                 "address": "6500 Buc-ee's Blvd, Mt. Crawford",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459975",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7973,
@@ -59352,6 +59352,27 @@
                 "status": "retired",
                 "id": 3862,
                 "last_updated": "2025-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.9408615,
+                    38.3570713
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's ",
+                "area": "Vermont",
+                "address": ", MT Crawford",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460895",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8003,
+                "last_updated": "2025-07-06"
             }
         }
     ]
