@@ -296,9 +296,9 @@
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=284070",
                 "internal_url": "null",
                 "paywall": true,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2014,
-                "last_updated": "2025-04-15"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -318,9 +318,9 @@
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=284070",
                 "internal_url": "null",
                 "paywall": true,
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6036,
-                "last_updated": "2025-04-15"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -3767,9 +3767,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=435981",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7349,
-                "last_updated": "2025-04-30"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -21726,6 +21726,69 @@
                 "id": 8004,
                 "last_updated": "2025-07-14",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.042649,
+                    38.840653
+                ]
+            },
+            "properties": {
+                "name": "Summit House Gift Shop Pikes Peak Mountain",
+                "area": "Colorado",
+                "address": "Pikes Peak Highway, Pike National Forest",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=452",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1922,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.8459473,
+                    39.0033722
+                ]
+            },
+            "properties": {
+                "name": "Genoa Country Store",
+                "area": "Nevada",
+                "address": "2299 Main Street, Genoa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=357940",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5418,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.51955,
+                    43.833485
+                ]
+            },
+            "properties": {
+                "name": "Reptilia Vaughn",
+                "area": "Canada",
+                "address": "2501 Rutherford Rd, , Ontario - Concord",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460932",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8005,
+                "last_updated": "2025-07-06"
             }
         }
     ]
