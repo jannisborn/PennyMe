@@ -38,6 +38,9 @@ def merge_locations(all_file: Path):
     print(f"New all locations has {len(new_all['features'])} entries")
 
     # Delete entries from server locations that are older than youngest in all locations
+    # NOTE: This gives a grace period to users to update the app. If we skip this
+    #   step it means that users dont see server-location machines anymore unless they
+    #   update the app
 
     new_server = deepcopy(ser)
     new_server["features"] = []
