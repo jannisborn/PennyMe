@@ -3765,7 +3765,7 @@
                 "area": "Ohio",
                 "address": ", Peebles",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=435981",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7349,
@@ -21875,6 +21875,27 @@
                 "id": 3418,
                 "last_updated": "2025-07-15",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.9187827,
+                    23.8753852
+                ]
+            },
+            "properties": {
+                "name": "Sun Moon Lake - Ita Thao Shopping District",
+                "area": "Taiwan",
+                "address": "71 Yiyong St, Ho Lovable , Nantou County, Yuchi Township",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=460982",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8006,
+                "last_updated": "2025-07-06"
             }
         }
     ]
