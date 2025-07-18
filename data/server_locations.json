@@ -13068,10 +13068,10 @@
                 "address": "4650 North Mammoth Mine Road, Apache Junction",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=357",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2609,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -22339,6 +22339,48 @@
                 "status": "unvisited",
                 "id": 1783,
                 "last_updated": "2025-07-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.606523599844937,
+                    40.66654072293267
+                ]
+            },
+            "properties": {
+                "name": "Tina Maragno Souvenir Shop",
+                "area": "Italy",
+                "address": "Piazza Vittorio Veneto 42, Matera, Italy",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=291577",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 904,
+                "last_updated": "2025-07-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.8034992,
+                    23.5109539
+                ]
+            },
+            "properties": {
+                "name": "Alishan National Forest",
+                "area": "Taiwan",
+                "address": "Alishan Township, 38?, Chiayi County",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461234",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8016,
+                "last_updated": "2025-07-06"
             }
         }
     ]
