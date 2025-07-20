@@ -382,9 +382,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=397261",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6062,
-                "last_updated": "2025-06-10"
+                "last_updated": "2025-07-06"
             }
         },
         {
@@ -22636,6 +22636,27 @@
                 "machine_status": "available",
                 "id": 8023,
                 "last_updated": "2025-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.5225946,
+                    40.3713736
+                ]
+            },
+            "properties": {
+                "name": "Estes Park Aerial Tramway",
+                "area": "Colorado",
+                "address": "420 East Riverside Drive, Estes Park",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461356",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8024,
+                "last_updated": "2025-07-06"
             }
         }
     ]
