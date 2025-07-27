@@ -8848,9 +8848,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=7269",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6109,
-                "last_updated": "2025-01-04"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -16636,9 +16636,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=456076",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7883,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -23407,6 +23407,216 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3776,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9046818,
+                    33.6683871
+                ]
+            },
+            "properties": {
+                "name": "Orange County Fair and Event Center/ ",
+                "area": "California",
+                "address": "88 Fair Drive, Costa Mesa",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=409719",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6113,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8785956,
+                    42.59807860000001
+                ]
+            },
+            "properties": {
+                "name": "Clementines Pastries",
+                "area": "Michigan",
+                "address": "57 Macomb Place , Mt Clemens",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461838",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8041,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.349262,
+                    46.50106900000001
+                ]
+            },
+            "properties": {
+                "name": "Unnamed gift shop",
+                "area": "Michigan",
+                "address": "321 W. Portage Ave., Sault Ste. Marie",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461823",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8042,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.27167089999999,
+                    44.9833227
+                ]
+            },
+            "properties": {
+                "name": "SexWorld",
+                "area": "Minnesota",
+                "address": "241 2nd Ave N, Minneapolis",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=106175",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3164,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.5443361,
+                    37.6298888
+                ]
+            },
+            "properties": {
+                "name": "Natural Bridge Caverns",
+                "area": "Virginia",
+                "address": "15 Appledore Lane, Natural Bridge",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=52036",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4433,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.1203229,
+                    35.115895
+                ]
+            },
+            "properties": {
+                "name": "Kamogawa Seaworld",
+                "area": "Japan",
+                "address": "1464-18 Higashi-cho, Chiba - Kamogawa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=93635",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2757,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.1937474,
+                    34.6831635
+                ]
+            },
+            "properties": {
+                "name": "Kobe Port Museum (KPM)",
+                "area": "Japan",
+                "address": "7-2 Shinkocho, Kobe - Hyogo Prefecture",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461672",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8043,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.1866995,
+                    34.68263
+                ]
+            },
+            "properties": {
+                "name": "Kobe Port Tower",
+                "area": "Japan",
+                "address": "5-5 Hatobacho, Kobe - Hyogo Prefecture",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461686",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8044,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.1279256,
+                    34.6438947
+                ]
+            },
+            "properties": {
+                "name": "Kobe Suma Sea World (Suma Aqualife Park)",
+                "area": "Japan",
+                "address": ", Suma-ku - Kobe Prefecture",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461671",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8045,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.8850779,
+                    35.6267108
+                ]
+            },
+            "properties": {
+                "name": "Tokyo DisneySea",
+                "area": "Japan",
+                "address": "Tokyo DisneySea, Urayasu, Chiba Prefecture",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461750",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8046,
                 "last_updated": "2025-07-27"
             }
         }
