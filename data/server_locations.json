@@ -20833,11 +20833,11 @@
                 "area": "Georgia",
                 "address": ", Warner Robbins",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461963",
                 "internal_url": "null",
                 "machine_status": "out-of-order",
                 "id": 6200,
-                "last_updated": "2025-07-10"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -22547,10 +22547,10 @@
                 "address": "115 Northwest Boulevard, Coeur d'Alene",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=195167",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4313,
-                "last_updated": "2025-07-20"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -23702,6 +23702,48 @@
                 "machine_status": "available",
                 "id": 8048,
                 "last_updated": "2025-07-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6703686,
+                    35.4662414
+                ]
+            },
+            "properties": {
+                "name": "Charles Paddock Zoo",
+                "area": "California",
+                "address": "9305 Pismo Ave, Atascadero",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=380",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4566,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.0848956,
+                    36.0923737
+                ]
+            },
+            "properties": {
+                "name": "Lindos Main Square",
+                "area": "Greece",
+                "address": ", Rhodes Island - Lindos",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=461968",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8049,
+                "last_updated": "2025-07-27"
             }
         }
     ]
