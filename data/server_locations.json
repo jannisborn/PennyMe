@@ -17985,10 +17985,10 @@
                 "address": "75 Greenmanville Ave, Mystic",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1450",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1694,
-                "last_updated": "2025-06-08",
+                "last_updated": "2025-07-27",
                 "paywall": true
             }
         },
@@ -19714,11 +19714,11 @@
                 "area": "Tennessee",
                 "address": "810 W. Clinch St. Knoxville",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462137",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7955,
-                "last_updated": "2025-06-27"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -24000,6 +24000,27 @@
                 "machine_status": "retired",
                 "id": 4946,
                 "last_updated": "2025-07-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.9482365,
+                    37.0006581
+                ]
+            },
+            "properties": {
+                "name": "Fortaleza de Sagres",
+                "area": "Portugal",
+                "address": ", Sagres",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462139",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8054,
+                "last_updated": "2025-07-27"
             }
         }
     ]
