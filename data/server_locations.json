@@ -24233,6 +24233,29 @@
                 "last_updated": "2025-08-01",
                 "multimachine": "1?"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.119401723531303,
+                    53.11626703207014
+                ]
+            },
+            "properties": {
+                "name": "Snowdon",
+                "area": "Wales",
+                "address": "Snowdon Mountain Railway Llanberis Gwynedd LL55 4TU. Information.",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8059,
+                "last_updated": "2025-08-01",
+                "multimachine": 2,
+                "paywall": true
+            }
         }
     ]
 }
