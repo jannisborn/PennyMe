@@ -6933,9 +6933,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=445483",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7647,
-                "last_updated": "2025-04-05"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -24360,6 +24360,27 @@
                 "id": 8063,
                 "last_updated": "2025-08-01",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.119695,
+                    53.11583299999999
+                ]
+            },
+            "properties": {
+                "name": "Snowdon Mountain Railway",
+                "area": "Wales",
+                "address": "Llanberis, Caernarfon, NORTH WALES - Llanberis",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4200",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8064,
+                "last_updated": "2025-07-27"
             }
         }
     ]
