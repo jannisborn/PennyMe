@@ -24428,6 +24428,28 @@
                 "multimachine": 4,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2702332761923945,
+                    53.37159311710721
+                ]
+            },
+            "properties": {
+                "name": "Botanic Garden",
+                "area": "Ireland",
+                "address": "National Botanic Gardens, Botanic Rd, Glasnevin, Dublin 9, Ireland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8065,
+                "last_updated": "2025-08-02",
+                "paywall": true
+            }
         }
     ]
 }
