@@ -17,9 +17,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=105911",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6004,
-                "last_updated": "2025-06-21"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -3113,10 +3113,10 @@
                 "address": "1001 Heavenly Village Way, Unit 1B, South Lake Tahoe",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=375513",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5259,
-                "last_updated": "2025-06-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -15964,10 +15964,10 @@
                 "address": "138 E. Main St, Fredericksburg",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2376",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3696,
-                "last_updated": "2025-05-18"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -21045,10 +21045,10 @@
                 "address": "1501 Broadway, New York City (Manhattan)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=375807",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5475,
-                "last_updated": "2025-07-08"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -24599,6 +24599,132 @@
                 "status": "unvisited",
                 "id": 482,
                 "last_updated": "2025-08-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.0696444,
+                    26.6692496
+                ]
+            },
+            "properties": {
+                "name": "South Florida Science Center and Aquarium",
+                "area": "Florida",
+                "address": "4801 Dreher Trail North, West Palm Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1508",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3476,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9483855,
+                    39.0068062
+                ]
+            },
+            "properties": {
+                "name": "M.S. Dixie II",
+                "area": "Nevada",
+                "address": "760 Hwy 50, Zephyr Cove, Lake Tahoe",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=438168",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7467,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.6503237,
+                    39.3092543
+                ]
+            },
+            "properties": {
+                "name": "Old Time Photo",
+                "area": "Nevada",
+                "address": "56 N. C Street, Virginia City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=244233",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4543,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.650112,
+                    39.308722
+                ]
+            },
+            "properties": {
+                "name": "Wild Horse Gallery & Decor",
+                "area": "Nevada",
+                "address": "145 South C st Suite #D, Virginia City",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462400",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8067,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.6556083,
+                    39.7966611
+                ]
+            },
+            "properties": {
+                "name": "Illinois State Museum",
+                "area": "Illinois",
+                "address": "502 S Spring St , Springfield",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2001",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1258,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -13.8710081,
+                    28.7307086
+                ]
+            },
+            "properties": {
+                "name": "Fuerte Mart",
+                "area": "Spain",
+                "address": ", Corralejo ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462322",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8068,
+                "last_updated": "2025-07-27"
             }
         }
     ]
