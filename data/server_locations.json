@@ -13132,11 +13132,11 @@
                 "area": "Netherlands",
                 "address": "Burger’s zoo",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462503",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7788,
-                "last_updated": "2025-04-07",
+                "last_updated": "2025-07-27",
                 "paywall": true
             }
         },
@@ -24812,6 +24812,69 @@
                 "id": 8070,
                 "last_updated": "2025-08-04",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8336627,
+                    33.4166023
+                ]
+            },
+            "properties": {
+                "name": "Arizona Museum of Natural History (formally: Mesa Southwest Museum)",
+                "area": "Arizona",
+                "address": "53 N. MacDonald St., Mesa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=330",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2648,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    138.4393286,
+                    34.980186
+                ]
+            },
+            "properties": {
+                "name": "Shizuoka Municipal Nihondaira Zoo",
+                "area": "Japan",
+                "address": "1767-6 Ikeda, Suruga-ku,, Shizuoka City Suruga Ward, Shizuoka Pref. ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462515",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8071,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -25.4024703,
+                    37.8183649
+                ]
+            },
+            "properties": {
+                "name": "Gorreana Tea Factory",
+                "area": "Portugal",
+                "address": "EN1-1A, Maia, Sao Miguel",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462497",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8072,
+                "last_updated": "2025-07-27"
             }
         }
     ]
