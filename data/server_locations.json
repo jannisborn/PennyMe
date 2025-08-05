@@ -24829,7 +24829,7 @@
                 "address": "53 N. MacDonald St., Mesa",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=330",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2648,
                 "last_updated": "2025-07-27"
@@ -25022,6 +25022,69 @@
                 "machine_status": "available",
                 "id": 8077,
                 "last_updated": "2025-08-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.2050746,
+                    44.3901485
+                ]
+            },
+            "properties": {
+                "name": "Acadia Outdoors Store - Downtown Bar Harbor",
+                "area": "Maine",
+                "address": "45 Main St, Bar Harbor",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=296699",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8078,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -158.1235293,
+                    21.3393283
+                ]
+            },
+            "properties": {
+                "name": "Aulani, A Disney Resort & Spa",
+                "area": "Hawaii",
+                "address": "92-1185 Ali'inui Drive, Oahu - Kapolei",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462599",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8079,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.360941700000001,
+                    43.7292336
+                ]
+            },
+            "properties": {
+                "name": "Tourist Information",
+                "area": "France",
+                "address": "Place du Général de Gaulle, Eze Le Village",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=197005",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 70,
+                "last_updated": "2025-07-27"
             }
         }
     ]
