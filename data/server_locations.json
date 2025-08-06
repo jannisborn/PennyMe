@@ -25149,6 +25149,28 @@
                 "id": 8080,
                 "last_updated": "2025-08-06"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2794168902264,
+                    41.64780161899387
+                ]
+            },
+            "properties": {
+                "name": "Cape cod souvenir",
+                "area": "Massachusetts",
+                "address": "220 ocean street, Barnstable",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8081,
+                "last_updated": "2025-08-06",
+                "paywall": true
+            }
         }
     ]
 }
