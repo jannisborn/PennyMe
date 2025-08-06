@@ -4504,10 +4504,10 @@
                 "address": "516 S Kirkwood Rd, St. Louis",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=12513",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1134,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -11762,10 +11762,10 @@
                 "address": "222 Worth Road, St. Louis",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=268770",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1131,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -25191,6 +25191,48 @@
                 "status": "unvisited",
                 "id": 5963,
                 "last_updated": "2025-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.35413469999999,
+                    38.5496852
+                ]
+            },
+            "properties": {
+                "name": "Grant's Farm",
+                "area": "Missouri",
+                "address": "10501 Gravois Rd, St. Louis",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3200",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1128,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.5344501,
+                    38.5357317
+                ]
+            },
+            "properties": {
+                "name": "World Bird Sanctuary/ Lone Elk Park",
+                "area": "Missouri",
+                "address": "125 Bald Eagle Ridge Road, Valley Park (near St. Louis)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3197",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1141,
+                "last_updated": "2025-07-27"
             }
         }
     ]
