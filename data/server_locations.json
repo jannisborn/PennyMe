@@ -7763,9 +7763,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=446693",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7671,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -23470,7 +23470,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=461823",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 8042,
                 "last_updated": "2025-07-27"
             }
@@ -25467,6 +25467,48 @@
                 "machine_status": "available",
                 "id": 6059,
                 "last_updated": "2025-08-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.0996266,
+                    41.7860476
+                ]
+            },
+            "properties": {
+                "name": "Royal Peacock Opal Mines",
+                "area": "Nevada",
+                "address": "72330 Virgin Valley Rd, Denio",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462812",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8082,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.4715586,
+                    35.7989952
+                ]
+            },
+            "properties": {
+                "name": "Tokorozawa Aviation Museum",
+                "area": "Japan",
+                "address": "Namiki 1-13, , Tokorozawa City, Saitama Pref.",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462835",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8083,
+                "last_updated": "2025-07-27"
             }
         }
     ]
