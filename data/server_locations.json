@@ -22041,10 +22041,10 @@
                 "address": "242 E Main St,, Ashland",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=357903",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5214,
-                "last_updated": "2025-07-06"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -25355,10 +25355,10 @@
                 "address": "593 Briggs Road, TAS - Brighton",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=309322",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2156,
-                "last_updated": "2025-08-08"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -25978,6 +25978,48 @@
                 "machine_status": "available",
                 "id": 8092,
                 "last_updated": "2025-08-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.9163396,
+                    34.2412534
+                ]
+            },
+            "properties": {
+                "name": "Mountain Room Escapes",
+                "area": "California",
+                "address": "40588 Village Drive, Big Bear Lake",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462917",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8093,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.5211389,
+                    40.6952056
+                ]
+            },
+            "properties": {
+                "name": "Environmental Education Center, Lord Stirling Park",
+                "area": "New Jersey",
+                "address": "190 Lord Stirling Road, Basking Ridge",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=462888",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8094,
+                "last_updated": "2025-07-27"
             }
         }
     ]
