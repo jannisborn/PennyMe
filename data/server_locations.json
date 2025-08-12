@@ -22104,10 +22104,10 @@
                 "address": "Grand Teton National Park, Colter Bay",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=193369",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3107,
-                "last_updated": "2025-07-17"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -26126,6 +26126,48 @@
                 "id": 8096,
                 "last_updated": "2025-08-12",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5615921,
+                    41.2421557
+                ]
+            },
+            "properties": {
+                "name": "Winking Lizard Restaurant and Tavern",
+                "area": "Ohio",
+                "address": "1615 Main Street, Peninsula",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=457333",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8097,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0098534,
+                    40.7121365
+                ]
+            },
+            "properties": {
+                "name": "NY Loves Us",
+                "area": "New York",
+                "address": "30 Vesey St, New York City (Manhattan)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=375557",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5476,
+                "last_updated": "2025-07-27"
             }
         }
     ]
