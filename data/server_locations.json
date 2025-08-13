@@ -16112,10 +16112,10 @@
                 "address": "3411 Sherman Boulevard, Fort Wayne",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2193",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2261,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -26317,6 +26317,111 @@
                 "status": "unvisited",
                 "id": 84,
                 "last_updated": "2025-08-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -132.9571849,
+                    56.8131261
+                ]
+            },
+            "properties": {
+                "name": "Hammer & Wikan Hardware",
+                "area": "Alaska",
+                "address": "218 N. Nordic Drive, Petersburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463240",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8100,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.2061671,
+                    35.0678885
+                ]
+            },
+            "properties": {
+                "name": "Tennessee Valley Railroad Museum",
+                "area": "Tennessee",
+                "address": "4119 Cromwell Rd, Chattanooga",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=330258",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4194,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.162956899999999,
+                    50.1476599
+                ]
+            },
+            "properties": {
+                "name": "Historische Senfmühle Dehren Gmbh",
+                "area": "Germany",
+                "address": "Endertstraße 18, Cochem",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463176",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8101,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.165824599999999,
+                    50.1461062
+                ]
+            },
+            "properties": {
+                "name": "unnamed toy shop",
+                "area": "Germany",
+                "address": "Bernstraße 1, Cochem",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463177",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8102,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.1782918,
+                    36.8623243
+                ]
+            },
+            "properties": {
+                "name": "Sabores de Setenil",
+                "area": "Spain",
+                "address": "Av. del Carmen, 83, Setenil de las Bodegas",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463187",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8103,
+                "last_updated": "2025-07-27"
             }
         }
     ]
