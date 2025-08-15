@@ -5327,9 +5327,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=250813",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2063,
-                "last_updated": "2024-10-26"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -22041,7 +22041,7 @@
                 "address": "242 E Main St,, Ashland",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=357903",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5214,
                 "last_updated": "2025-07-27"
@@ -26507,6 +26507,111 @@
                 "machine_status": "retired",
                 "id": 6111,
                 "last_updated": "2025-08-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.9854896,
+                    36.1229851
+                ]
+            },
+            "properties": {
+                "name": "The Gathering Place",
+                "area": "Oklahoma",
+                "address": "2950 S. John Williams Way, Tulsa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=328778",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1809,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7122366,
+                    42.1956642
+                ]
+            },
+            "properties": {
+                "name": "North & East Co",
+                "area": "Oregon",
+                "address": "242 E Main St, Ashland",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463459",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8105,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.323391,
+                    51.128771
+                ]
+            },
+            "properties": {
+                "name": "Dover Castle Museum",
+                "area": "England",
+                "address": "Dover Castle, Kent - Dover",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463362",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8106,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3803399,
+                    52.5102629
+                ]
+            },
+            "properties": {
+                "name": "I Love Berlin store (Mall of Berlin)",
+                "area": "Germany",
+                "address": "Leipziger Platz 12/13, Berlin",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463437",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8107,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3880967,
+                    52.51661319999999
+                ]
+            },
+            "properties": {
+                "name": "Stadtrunfahrten Souvenirs",
+                "area": "Germany",
+                "address": "Unter den Linden 24, 10117 Berlin, Germany",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=259087",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 442,
+                "last_updated": "2025-07-27"
             }
         }
     ]
