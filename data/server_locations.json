@@ -20837,7 +20837,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=461963",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6200,
                 "last_updated": "2025-07-27"
             }
@@ -26889,6 +26889,69 @@
                 "last_updated": "2025-08-17",
                 "multimachine": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -135.3928138,
+                    57.1155382
+                ]
+            },
+            "properties": {
+                "name": "Sitka Sound Cruise Ship Terminal",
+                "area": "Alaska",
+                "address": "4513 Halibut Point Road. , Sitka",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463558",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8115,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0074329,
+                    38.8730102
+                ]
+            },
+            "properties": {
+                "name": "Nationals Park / Washington Nationals Baseball",
+                "area": "Washington DC",
+                "address": "1500 South Capitol Street, SE, Washington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=38927",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3241,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.3802624,
+                    52.5161619
+                ]
+            },
+            "properties": {
+                "name": "Brandenburg Gate Shop",
+                "area": "Germany",
+                "address": "Brandenburger Tor, Unter den Linden, 10117 Berlin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=49919",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 427,
+                "last_updated": "2025-07-27"
             }
         }
     ]
