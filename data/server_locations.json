@@ -11697,10 +11697,10 @@
                 "address": "Avinguda del Marques de l'Argentera, Barcelona",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=331074",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5916,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -27246,6 +27246,27 @@
                 "machine_status": "available",
                 "id": 8122,
                 "last_updated": "2025-08-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.1904556,
+                    55.9498297
+                ]
+            },
+            "properties": {
+                "name": "The Real Mary King's Close",
+                "area": "Scotland",
+                "address": "The Royal Mile 2 Warriston's Close, High Street, Edinburgh",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4191",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 760,
+                "last_updated": "2025-07-27"
             }
         }
     ]
