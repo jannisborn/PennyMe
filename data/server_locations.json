@@ -27587,6 +27587,70 @@
                 "id": 5493,
                 "last_updated": "2025-08-23"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.9559053,
+                    35.8674622
+                ]
+            },
+            "properties": {
+                "name": "Cherokee Heritage Center",
+                "area": "Oklahoma",
+                "address": "21192 S. Keeler Drive, Park Hill",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=55506",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1805,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.15943,
+                    39.9533113
+                ]
+            },
+            "properties": {
+                "name": "Reading Terminal Market",
+                "area": "Pennsylvania",
+                "address": "12th & Arch Streets, Philadelphia",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4018",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4043,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5176278,
+                    35.7078861
+                ]
+            },
+            "properties": {
+                "name": "Bear-Land General Store",
+                "area": "Tennessee",
+                "address": "305 Historic Nature Trl, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=416438",
+                "internal_url": "null",
+                "multimachine": 2,
+                "machine_status": "retired",
+                "id": 6481,
+                "last_updated": "2025-07-27"
+            }
         }
     ]
 }
