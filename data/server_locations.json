@@ -20352,11 +20352,11 @@
                 "area": "Slovenia",
                 "address": "46,05207°, 14,50910°",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464286",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7967,
-                "last_updated": "2025-07-14"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -25677,9 +25677,9 @@
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3183",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 1116,
-                "last_updated": "2025-08-09"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -27862,6 +27862,111 @@
                 "last_updated": "2025-08-26",
                 "multimachine": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8990564,
+                    33.3011275
+                ]
+            },
+            "properties": {
+                "name": "Crayola Experience",
+                "area": "Arizona",
+                "address": "Chandler Fashion Center Mall 3111 W Chandler Blvd, Chandler",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=317168",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2619,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.7953722,
+                    40.9605842
+                ]
+            },
+            "properties": {
+                "name": "Wildwood State Park - Beach Gift Shop",
+                "area": "New York",
+                "address": "790 Hulse Landing Rd, Wading River",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464297",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8135,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.6992065,
+                    44.5892308
+                ]
+            },
+            "properties": {
+                "name": "Devils Tower / Black Hills KOA",
+                "area": "Wyoming",
+                "address": "60 WY-110, Hulett",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464189",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8136,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -108.2466665,
+                    45.0534639
+                ]
+            },
+            "properties": {
+                "name": "Bighorn Canyon NRA S. District Visitor Center",
+                "area": "Wyoming",
+                "address": "20 US Hwy 14A, Lovell",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464290",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8137,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.2140034,
+                    38.4202478
+                ]
+            },
+            "properties": {
+                "name": "2970 Cabo Espichel",
+                "area": "Portugal",
+                "address": "2970, Portugal",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464184",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6855,
+                "last_updated": "2025-07-27"
             }
         }
     ]
