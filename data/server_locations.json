@@ -19400,10 +19400,10 @@
                 "address": "106 East Elkhorn Ave , Estes Park",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=342834",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1856,
-                "last_updated": "2025-06-23"
+                "last_updated": "2025-07-27"
             }
         },
         {
@@ -26165,7 +26165,7 @@
                 "address": "30 Vesey St, New York City (Manhattan)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=375557",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5476,
                 "last_updated": "2025-07-27"
@@ -29577,6 +29577,69 @@
                 "status": "unvisited",
                 "id": 5384,
                 "last_updated": "2025-09-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.7329257,
+                    36.1937732
+                ]
+            },
+            "properties": {
+                "name": "The Blue Whale of Catoosa ",
+                "area": "Oklahoma",
+                "address": "2600 US Route 66, Catoosa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=373277",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5189,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.4295755,
+                    38.0404024
+                ]
+            },
+            "properties": {
+                "name": "Bent's Old Fort National Historic Site",
+                "area": "Colorado",
+                "address": "35110 State Highway 194, La Junta",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464748",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8177,
+                "last_updated": "2025-07-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.6556277,
+                    35.9029869
+                ]
+            },
+            "properties": {
+                "name": "Lowes Foods (Mobile machine!!)",
+                "area": "North Carolina",
+                "address": "9600 Strickland Rd, Raleigh",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=326293",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4142,
+                "last_updated": "2025-07-27"
             }
         }
     ]
