@@ -4483,10 +4483,10 @@
                 "address": "71 N. Main, Moab",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1678",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2078,
-                "last_updated": "2024-11-30"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -9797,10 +9797,10 @@
                 "address": "One Terminal Drive, Middletown",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=204688",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4020,
-                "last_updated": "2025-01-27"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -11252,9 +11252,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=397581",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6310,
-                "last_updated": "2025-03-02"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -19759,10 +19759,10 @@
                 "address": "1436 Bay Street , Florence",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=65654",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4356,
-                "last_updated": "2025-06-27"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -22549,10 +22549,10 @@
                 "address": "115 Northwest Boulevard, Coeur d'Alene",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=195167",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4313,
-                "last_updated": "2025-08-29"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -26970,10 +26970,10 @@
                 "address": "1000 Cabelas Dr, Fort Mill",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=234777",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2192,
-                "last_updated": "2025-08-17"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -29746,6 +29746,363 @@
                 "status": "unvisited",
                 "id": 1181,
                 "last_updated": "2025-09-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.452146,
+                    39.538546
+                ]
+            },
+            "properties": {
+                "name": "Lake Logan Marina",
+                "area": "Ohio",
+                "address": "30443 Lake Logan Road, Logan",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=339674",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1980,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.7868442,
+                    40.4612113
+                ]
+            },
+            "properties": {
+                "name": "Giggle Gulch Candy Shop (Gondola Square)",
+                "area": "Colorado",
+                "address": "2305 Mt. Werner Road, Steamboat Springs",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=350660",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1931,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.512011,
+                    30.395995
+                ]
+            },
+            "properties": {
+                "name": "McGuire's Irish Pub of Destin",
+                "area": "Florida",
+                "address": "33 Harbor Boulevard, Destin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=73354",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3293,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9121928,
+                    40.9864452
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops (Formerly Cabelas)",
+                "area": "Utah",
+                "address": "391 W Cabela's Drive, Farmington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465021",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8178,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1662589,
+                    36.1387477
+                ]
+            },
+            "properties": {
+                "name": "Mini Mart / Souvenirs",
+                "area": "Nevada",
+                "address": "2830 Las Vegas S  (Corner of Circus Circus Dr), Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=351077",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4518,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.3847398,
+                    35.6148809
+                ]
+            },
+            "properties": {
+                "name": "Buffalo Bill's Resort & Casino",
+                "area": "Nevada",
+                "address": "31900 Las Vegas Boulevard South, Primm",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3008",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6227,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.47316339999999,
+                    36.9530369
+                ]
+            },
+            "properties": {
+                "name": "Lost River Cave",
+                "area": "Kentucky",
+                "address": "2818 Nashville Rd, Bowling Green",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2299",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3515,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.5946403,
+                    41.30609
+                ]
+            },
+            "properties": {
+                "name": "Laramie Area Visitor Center",
+                "area": "Wyoming",
+                "address": "800 S 3rd St, Laramie",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465149",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8179,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.4047214,
+                    50.6794052
+                ]
+            },
+            "properties": {
+                "name": "Domaine de la Bataille de Waterloo 1815 (Waterloo Battlefield Museum)",
+                "area": "Belgium",
+                "address": "Route du Lion 1815  B-1420, Braine-l'Alleud",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464918",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8180,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.6015548,
+                    51.0818685
+                ]
+            },
+            "properties": {
+                "name": "Plopsaqua De Panne",
+                "area": "Belgium",
+                "address": "De Pannelaan 68, 8660 De Panne, Belgium, De Panne",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464920",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8181,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.7245939,
+                    51.0534493
+                ]
+            },
+            "properties": {
+                "name": "Paparazzi De Gentenaar Souvenirs",
+                "area": "Belgium",
+                "address": "Mageleinstraat 1, Ghent (Gent)",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465374",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8182,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.1611392,
+                    44.3243678
+                ]
+            },
+            "properties": {
+                "name": "The Boatshop Cafe",
+                "area": "Canada",
+                "address": "125 Water St,, Ontario - Gananoque",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465387",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8183,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.3763983,
+                    51.0351782
+                ]
+            },
+            "properties": {
+                "name": "Rubiz",
+                "area": "France",
+                "address": "25 Pl. Jean Bart, 59140 Dunkerque, France, Dunkerque",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=464919",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8184,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.0244908,
+                    56.41343320000001
+                ]
+            },
+            "properties": {
+                "name": "Rundale Palace Museum (Rundales Pils muzejs)",
+                "area": "Latvia",
+                "address": "Pilsrundale, Rundales pagasts, Rundales novads, Bauska",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=213827",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 403,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.280266,
+                    52.1128813
+                ]
+            },
+            "properties": {
+                "name": "Legoland® Discovery Centre",
+                "area": "Netherlands",
+                "address": "Strandweg 13, The Hague (Den Haag) - Scheveningen",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465146",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8185,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    126.7554555,
+                    37.6635195
+                ]
+            },
+            "properties": {
+                "name": "Hanwha Aqua Planet Ilsan",
+                "area": "South Korea",
+                "address": "282 Hallyu World-ro, Ilsanseo-gu Goyang-si, Gyeonggi-do",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465059",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8186,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.0582827,
+                    37.513131
+                ]
+            },
+            "properties": {
+                "name": "Sea Life COEX, Seoul",
+                "area": "South Korea",
+                "address": "513 Yeongdong-daero, Gangnam District, Seoul",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465040",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8187,
+                "last_updated": "2025-09-12"
             }
         }
     ]
