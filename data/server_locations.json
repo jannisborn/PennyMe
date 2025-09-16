@@ -20078,10 +20078,10 @@
                 "address": "Kazinczy u. 14, Budapest",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=335678",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5804,
-                "last_updated": "2025-06-30"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30653,6 +30653,48 @@
                 "machine_status": "available",
                 "id": 8198,
                 "last_updated": "2025-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3798985,
+                    40.5495194
+                ]
+            },
+            "properties": {
+                "name": "The Allyn House",
+                "area": "Illinois",
+                "address": "1400 Mulholland St., Nauvoo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=30142",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1242,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3826543,
+                    40.5496331
+                ]
+            },
+            "properties": {
+                "name": "Zions Mercantile",
+                "area": "Illinois",
+                "address": "1240 Mulholland St., Nauvoo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465764",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8199,
+                "last_updated": "2025-09-12"
             }
         }
     ]
