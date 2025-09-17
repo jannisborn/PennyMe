@@ -6997,10 +6997,10 @@
                 "address": "6617 Padre Boulevard., South Padre Island",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2725",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3804,
-                "last_updated": "2024-11-19",
+                "last_updated": "2025-09-12",
                 "multimachine": 2
             }
         },
@@ -23193,10 +23193,10 @@
                 "address": "525 S. Winchester Boulevard, San Jose",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=575",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4827,
-                "last_updated": "2025-07-25"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30779,6 +30779,90 @@
                 "machine_status": "retired",
                 "id": 2122,
                 "last_updated": "2025-09-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.019163,
+                    44.9275013
+                ]
+            },
+            "properties": {
+                "name": "Mo's Seafood Restaurant",
+                "area": "Oregon",
+                "address": "860 SW 51st Street, Lincoln City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3964",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4369,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7263888,
+                    45.7806632
+                ]
+            },
+            "properties": {
+                "name": "Mackinaw Crossings Mall - Del Sol Color-Change store",
+                "area": "Michigan",
+                "address": "182 S Huron (Unit 25 Mackinaw Crossings), Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465818",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8201,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7265702,
+                    45.780765
+                ]
+            },
+            "properties": {
+                "name": "Mackinaw Crossings Mall - MackinAxe",
+                "area": "Michigan",
+                "address": "136 S Huron Ave, Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465817",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8202,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1652302,
+                    30.3293517
+                ]
+            },
+            "properties": {
+                "name": "The Red Bar",
+                "area": "Florida",
+                "address": "70 Hotz Ave, Santa Rosa Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465815",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8203,
+                "last_updated": "2025-09-12"
             }
         }
     ]
