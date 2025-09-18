@@ -25378,9 +25378,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3276",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 5325,
-                "last_updated": "2025-08-08"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30905,6 +30905,51 @@
                 "machine_status": "retired",
                 "id": 7557,
                 "last_updated": "2025-09-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4752315,
+                    41.8994516
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop (near the Pantheon) ",
+                "area": "Italy",
+                "address": "Via Giustiniani, 12 , Rome",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465866",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8204,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.856268694038387,
+                    46.68591137938555
+                ]
+            },
+            "properties": {
+                "name": "Interlaken ",
+                "area": "Switzerland",
+                "address": "Höheweg 35",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=27700",
+                "internal_url": "null",
+                "logs": {
+                    "2021-11-14": "Requires 2 CHF + 20 Rappen."
+                },
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 719,
+                "last_updated": "2025-09-12"
             }
         }
     ]
