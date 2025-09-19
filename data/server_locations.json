@@ -6997,10 +6997,10 @@
                 "address": "6617 Padre Boulevard., South Padre Island",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2725",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3804,
-                "last_updated": "2024-11-19",
+                "last_updated": "2025-09-12",
                 "multimachine": 2
             }
         },
@@ -12135,8 +12135,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -115.164374,
-                    36.13201859999999
+                    -115.16437400000001,
+                    36.132018599999995
                 ]
             },
             "properties": {
@@ -12146,9 +12146,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=451761",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7768,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-16"
             }
         },
         {
@@ -20078,10 +20078,10 @@
                 "address": "Kazinczy u. 14, Budapest",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=335678",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5804,
-                "last_updated": "2025-06-30"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -23193,10 +23193,10 @@
                 "address": "525 S. Winchester Boulevard, San Jose",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=575",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4827,
-                "last_updated": "2025-07-25"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -25378,9 +25378,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3276",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 5325,
-                "last_updated": "2025-08-08"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -27045,8 +27045,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -76.16139199999999,
-                    44.3245343
+                    -76.16139199999995,
+                    44.324534299999996
                 ]
             },
             "properties": {
@@ -27056,9 +27056,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=127664",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 4993,
-                "last_updated": "2025-07-27"
+                "last_updated": "2025-09-16"
             }
         },
         {
@@ -30548,6 +30548,408 @@
                 "status": "unvisited",
                 "id": 5410,
                 "last_updated": "2025-09-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.67705889999992,
+                    44.035465300000006
+                ]
+            },
+            "properties": {
+                "name": "White Mountain Visitor Center",
+                "area": "New Hampshire",
+                "address": "200 Kancamagus Highway, North Woodstock",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3386",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 5084,
+                "last_updated": "2025-09-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8874814,
+                    40.426184299999996
+                ]
+            },
+            "properties": {
+                "name": "Thanksgiving Point-Butterfly Biosphere",
+                "area": "Utah",
+                "address": "3003 N Thanksgiving Way, Lehi",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=320267",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2074,
+                "last_updated": "2025-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.88872400000001,
+                    40.42417100000001
+                ]
+            },
+            "properties": {
+                "name": "Thanksgiving Point - Farm Country",
+                "area": "Utah",
+                "address": "3003 N. Thanksgiving Way, Lehi",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=261019",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2072,
+                "last_updated": "2025-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.43215654105179,
+                    54.789214983611444
+                ]
+            },
+            "properties": {
+                "name": "Flensburg Souvenirs",
+                "area": "Germany",
+                "address": "Nordermarkt 5, 24937 Flensburg, Germany",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=427527",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6058,
+                "last_updated": "2025-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46763726271072,
+                    28.475404191888337
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios Store  inside back door",
+                "area": "Florida",
+                "address": "6000 universal blvd Orlando fl 32819",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8198,
+                "last_updated": "2025-09-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3798985,
+                    40.5495194
+                ]
+            },
+            "properties": {
+                "name": "The Allyn House",
+                "area": "Illinois",
+                "address": "1400 Mulholland St., Nauvoo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=30142",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1242,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.3826543,
+                    40.5496331
+                ]
+            },
+            "properties": {
+                "name": "Zions Mercantile",
+                "area": "Illinois",
+                "address": "1240 Mulholland St., Nauvoo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465764",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8199,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.770646999999974,
+                    51.44051699999999
+                ]
+            },
+            "properties": {
+                "name": "Legoland Discovery Center",
+                "area": "Germany",
+                "address": "Philosophenweg 23",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=65218",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 479,
+                "last_updated": "2025-09-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.200629229459081,
+                    55.94847945520409
+                ]
+            },
+            "properties": {
+                "name": "Edinburgh Castle",
+                "area": "Scotland",
+                "address": "Castle Hill (Beginning of Royal Mile), Edinburgh",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4188",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 749,
+                "last_updated": "2025-09-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.626459148533279,
+                    51.96495536048697
+                ]
+            },
+            "properties": {
+                "name": "I love Münster",
+                "area": "Germany",
+                "address": "Bergstraße 13, 48143 Münster, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8200,
+                "last_updated": "2025-09-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.07020590000016,
+                    -30.877177799999966
+                ]
+            },
+            "properties": {
+                "name": "Trial Bay Gaol",
+                "area": "Australia",
+                "address": "1 Caldwell Street, NSW - South West Rocks",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 2122,
+                "last_updated": "2025-09-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.019163,
+                    44.9275013
+                ]
+            },
+            "properties": {
+                "name": "Mo's Seafood Restaurant",
+                "area": "Oregon",
+                "address": "860 SW 51st Street, Lincoln City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3964",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4369,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7263888,
+                    45.7806632
+                ]
+            },
+            "properties": {
+                "name": "Mackinaw Crossings Mall - Del Sol Color-Change store",
+                "area": "Michigan",
+                "address": "182 S Huron (Unit 25 Mackinaw Crossings), Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465818",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8201,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.7265702,
+                    45.780765
+                ]
+            },
+            "properties": {
+                "name": "Mackinaw Crossings Mall - MackinAxe",
+                "area": "Michigan",
+                "address": "136 S Huron Ave, Mackinaw City",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465817",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8202,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.1652302,
+                    30.3293517
+                ]
+            },
+            "properties": {
+                "name": "The Red Bar",
+                "area": "Florida",
+                "address": "70 Hotz Ave, Santa Rosa Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465815",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8203,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.3076068052024,
+                    42.317311376105415
+                ]
+            },
+            "properties": {
+                "name": "Bank of Montpelier",
+                "area": "Idaho",
+                "address": "833 Washington Street, Montpelier Idaho",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=344000",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4319,
+                "last_updated": "2025-09-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.7356395,
+                    28.0816116
+                ]
+            },
+            "properties": {
+                "name": "Tenerife",
+                "area": "Spain",
+                "address": "Located in souvenir shop next to blue cactus restaurant , Costa Adeje",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=441969",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7557,
+                "last_updated": "2025-09-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.4752315,
+                    41.8994516
+                ]
+            },
+            "properties": {
+                "name": "Souvenir shop (near the Pantheon) ",
+                "area": "Italy",
+                "address": "Via Giustiniani, 12 , Rome",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465866",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8204,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.856268694038387,
+                    46.68591137938555
+                ]
+            },
+            "properties": {
+                "name": "Interlaken ",
+                "area": "Switzerland",
+                "address": "Höheweg 35",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=27700",
+                "internal_url": "null",
+                "logs": {
+                    "2021-11-14": "Requires 2 CHF + 20 Rappen."
+                },
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 719,
+                "last_updated": "2025-09-12"
             }
         }
     ]
