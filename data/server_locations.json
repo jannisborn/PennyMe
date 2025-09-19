@@ -697,9 +697,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=48213",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4961,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30796,7 +30796,7 @@
                 "address": "860 SW 51st Street, Lincoln City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3964",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4369,
                 "last_updated": "2025-09-12"
@@ -30949,6 +30949,70 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 719,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.947422,
+                    33.5660153
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Texas",
+                "address": "3030 W Loop 289, Lubbock",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=251717",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3753,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.3125806,
+                    -33.7320908
+                ]
+            },
+            "properties": {
+                "name": "Echo Point Information Centre",
+                "area": "Australia",
+                "address": "2780 Echo Point Rd, NSW - Katoomba",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=249104",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2116,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.5558444,
+                    51.1480859
+                ]
+            },
+            "properties": {
+                "name": "Banff Gondola to Sulphur Mountain",
+                "area": "Canada",
+                "address": "100 Mountain Ave, Banff, AB T1L 1B2, Canada",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4260",
+                "internal_url": "null",
+                "paywall": true,
+                "machine_status": "available",
+                "id": 4954,
                 "last_updated": "2025-09-12"
             }
         }
