@@ -27563,10 +27563,10 @@
                 "address": "Via Leopardi 4, Recanati, Milano, Italy",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=73138",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 952,
-                "last_updated": "2025-08-23"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30796,7 +30796,7 @@
                 "address": "860 SW 51st Street, Lincoln City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3964",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4369,
                 "last_updated": "2025-09-12"
@@ -31500,6 +31500,27 @@
                 "machine_status": "retired",
                 "id": 6178,
                 "last_updated": "2025-09-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.34634604174883,
+                    41.646052199506286
+                ]
+            },
+            "properties": {
+                "name": "1856 County Store",
+                "area": "Massachusetts",
+                "address": "555 Main St, Centerville , MA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6102,
+                "last_updated": "2025-09-12"
             }
         }
     ]
