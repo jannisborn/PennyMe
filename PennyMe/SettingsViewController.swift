@@ -80,7 +80,7 @@ class SettingsViewController: UITableViewController {
         let mailtostring = String(
             "mailto:ninawiedemann999@gmail.com?subject=[PennyMe] - Problem report&body=Dear PennyMe team,\n\n I would like to inform you about the following problem in your app:\n\n"
         ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
-        UIApplication.shared.openURL(URL(string:mailtostring )!)
+        UIApplication.shared.open(URL(string: mailtostring)!)
     }
     // Functions for Switches
     @objc func showUnvisitedMachines(sender:UISwitch!) {
