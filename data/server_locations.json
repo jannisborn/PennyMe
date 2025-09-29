@@ -3895,9 +3895,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=437539",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7453,
-                "last_updated": "2025-03-11"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -31863,6 +31863,48 @@
                 "machine_status": "retired",
                 "id": 6187,
                 "last_updated": "2025-09-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.7738313,
+                    -16.9184171
+                ]
+            },
+            "properties": {
+                "name": "Cairns Aquarium ",
+                "area": "Australia",
+                "address": "5 Florence St, Cairns City QLD, QLD - Cairns",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466470",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8226,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0313593,
+                    47.5008483
+                ]
+            },
+            "properties": {
+                "name": "Hospital in the Rock",
+                "area": "Hungary",
+                "address": "1012 Budapest, Lovas út 4/c, Budapest",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466413",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8227,
+                "last_updated": "2025-09-12"
             }
         }
     ]
