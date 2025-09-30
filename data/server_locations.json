@@ -11039,10 +11039,10 @@
                 "address": "999 E Street, Washington DC",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=356168",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5468,
-                "last_updated": "2025-08-01"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -31926,6 +31926,27 @@
                 "status": "unvisited",
                 "id": 4429,
                 "last_updated": "2025-09-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.767743899999998,
+                    43.81251229999999
+                ]
+            },
+            "properties": {
+                "name": "Ristorante Bar Lido Fontana",
+                "area": "Italy",
+                "address": "Lungomare Imperatrice, 39, Sanremo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466516",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8228,
+                "last_updated": "2025-09-12"
             }
         }
     ]
