@@ -1109,8 +1109,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -1.5537028,
-                    50.9481718
+                    -1.5537028000000725,
+                    50.94817179999999
                 ]
             },
             "properties": {
@@ -1120,9 +1120,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=107480",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1419,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-29"
             }
         },
         {
@@ -3895,9 +3895,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=437539",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7453,
-                "last_updated": "2025-03-11"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -11039,10 +11039,10 @@
                 "address": "999 E Street, Washington DC",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=356168",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5468,
-                "last_updated": "2025-08-01"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -20542,11 +20542,11 @@
                 "area": "Virginia",
                 "address": "6500 Buc-ee's Blvd, Mt. Crawford",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466359",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7973,
-                "last_updated": "2025-07-06"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -31554,7 +31554,7 @@
                 ]
             },
             "properties": {
-                "name": "Penny & Quarter",
+                "name": "kawaii bubble tea",
                 "area": "Michigan",
                 "address": "43301 Garfield Rd, Clinton Township, MI 48038, USA",
                 "status": "unvisited",
@@ -31562,7 +31562,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8215,
-                "last_updated": "2025-09-25",
+                "last_updated": "2025-09-30",
                 "multimachine": 2
             }
         },
@@ -31863,6 +31863,90 @@
                 "machine_status": "retired",
                 "id": 6187,
                 "last_updated": "2025-09-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.7738313,
+                    -16.9184171
+                ]
+            },
+            "properties": {
+                "name": "Cairns Aquarium ",
+                "area": "Australia",
+                "address": "5 Florence St, Cairns City QLD, QLD - Cairns",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466470",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8226,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0313593,
+                    47.5008483
+                ]
+            },
+            "properties": {
+                "name": "Hospital in the Rock",
+                "area": "Hungary",
+                "address": "1012 Budapest, Lovas út 4/c, Budapest",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466413",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8227,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.40492989999998,
+                    36.749859999999984
+                ]
+            },
+            "properties": {
+                "name": "Mabry Mill Restaurant and Gift Shop",
+                "area": "Virginia",
+                "address": "266 Mabry Mill Rd., Meadows of Dan",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=209384",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4429,
+                "last_updated": "2025-09-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.767743899999998,
+                    43.81251229999999
+                ]
+            },
+            "properties": {
+                "name": "Ristorante Bar Lido Fontana",
+                "area": "Italy",
+                "address": "Lungomare Imperatrice, 39, Sanremo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466516",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8228,
+                "last_updated": "2025-09-12"
             }
         }
     ]
