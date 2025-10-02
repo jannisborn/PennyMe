@@ -26294,10 +26294,10 @@
                 "address": "2205 N Kings Hwy, Myrtle Beach",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=329063",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2218,
-                "last_updated": "2025-08-13"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -32011,6 +32011,132 @@
                 "id": 1637,
                 "last_updated": "2025-10-02",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.8733572,
+                    43.1953083
+                ]
+            },
+            "properties": {
+                "name": "Lickees & Chewys",
+                "area": "New Hampshire",
+                "address": "53 Washington St Suite 100, Dover",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466594",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8231,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.16211899999999,
+                    41.1561163
+                ]
+            },
+            "properties": {
+                "name": "Crazy Pinz Entertainment Center",
+                "area": "Indiana",
+                "address": "1414 Northland Blvd., Fort Wayne",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466597",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8232,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.86585160000001,
+                    40.9688718
+                ]
+            },
+            "properties": {
+                "name": "Monroeville Community Park",
+                "area": "Indiana",
+                "address": "421 Monroe St, Monroeville ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466598",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8233,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.088967,
+                    44.2411182
+                ]
+            },
+            "properties": {
+                "name": "Cruet Olive Oils store",
+                "area": "New York",
+                "address": "226 James St., Clayton",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466696",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8234,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.908338,
+                    35.1723452
+                ]
+            },
+            "properties": {
+                "name": "Chubu Electric Power Mirai Tower. (Was Nagoya TV Tower)",
+                "area": "Japan",
+                "address": "6-15 Nishiki 3-chome, Naka-ku, Nagoya",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=93665",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8235,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.561957899999999,
+                    52.45687479999999
+                ]
+            },
+            "properties": {
+                "name": "Groeten uit IJmuiden",
+                "area": "Netherlands",
+                "address": "Kennemerboulevard 318, IJmuiden",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=264379",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 197,
+                "last_updated": "2025-09-12"
             }
         }
     ]
