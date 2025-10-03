@@ -2519,9 +2519,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=429498",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7172,
-                "last_updated": "2025-06-01"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -29364,10 +29364,10 @@
                 "address": "17155 W 44th Ave, Golden",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1036",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1872,
-                "last_updated": "2025-08-31"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -32161,6 +32161,27 @@
                 "id": 2198,
                 "last_updated": "2025-10-03",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.1713326,
+                    38.6786319
+                ]
+            },
+            "properties": {
+                "name": "Santuário do Cristo Rei",
+                "area": "Portugal",
+                "address": "Avenida do Cristo Rei, Almada",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466754",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8236,
+                "last_updated": "2025-09-12"
             }
         }
     ]
