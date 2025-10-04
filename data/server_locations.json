@@ -371,12 +371,12 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -86.93249338730745,
-                    34.728530879028334
+                    -86.93249338730739,
+                    34.72853087902831
                 ]
             },
             "properties": {
-                "name": "Bucee's",
+                "name": "Buc-ee’s Athens, AL",
                 "area": "Alabama",
                 "address": "2328 Lindsay Ln S, Athens",
                 "status": "unvisited",
@@ -384,7 +384,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6062,
-                "last_updated": "2025-08-07"
+                "last_updated": "2025-10-04"
             }
         },
         {
@@ -2519,9 +2519,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=429498",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7172,
-                "last_updated": "2025-06-01"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -4263,8 +4263,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -80.81257629999999,
-                    32.138651
+                    -80.81309789419042,
+                    32.13794266366145
                 ]
             },
             "properties": {
@@ -4276,7 +4276,9 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 2200,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-10-03",
+                "multimachine": 2,
+                "paywall": true
             }
         },
         {
@@ -4978,8 +4980,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -102.6727961,
-                    35.270672
+                    -102.67279609999999,
+                    35.270671999999976
                 ]
             },
             "properties": {
@@ -4988,10 +4990,10 @@
                 "address": "305 W Historic Rte 66, Adrian",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=349234",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3636,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-10-03"
             }
         },
         {
@@ -11242,8 +11244,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    2.337644,
-                    48.8606111
+                    2.337644000000003,
+                    48.860611099999986
                 ]
             },
             "properties": {
@@ -11253,9 +11255,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=397581",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6310,
-                "last_updated": "2025-09-12"
+                "last_updated": "2025-10-01"
             }
         },
         {
@@ -26294,10 +26296,10 @@
                 "address": "2205 N Kings Hwy, Myrtle Beach",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=329063",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2218,
-                "last_updated": "2025-08-13"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -29362,10 +29364,10 @@
                 "address": "17155 W 44th Ave, Golden",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1036",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1872,
-                "last_updated": "2025-08-31"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -31947,6 +31949,386 @@
                 "machine_status": "available",
                 "id": 8228,
                 "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.56085657489807,
+                    28.359483230023727
+                ]
+            },
+            "properties": {
+                "name": "Rock’n Rollercoaster Giftshop",
+                "area": "Florida",
+                "address": "Hollywood Studios",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8229,
+                "last_updated": "2025-10-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.56105900497526,
+                    28.359298781888953
+                ]
+            },
+            "properties": {
+                "name": "Rock’n Rollercoaster Giftshop",
+                "area": "Florida",
+                "address": "Hollywood Studios",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8230,
+                "last_updated": "2025-10-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.24271069999996,
+                    34.565352499999996
+                ]
+            },
+            "properties": {
+                "name": "Amicalola Falls State Park",
+                "area": "Georgia",
+                "address": "418 Amicalola Lodge Road, Dawsonville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1895",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1637,
+                "last_updated": "2025-10-02",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.8733572,
+                    43.1953083
+                ]
+            },
+            "properties": {
+                "name": "Lickees & Chewys",
+                "area": "New Hampshire",
+                "address": "53 Washington St Suite 100, Dover",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466594",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8231,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.16211899999999,
+                    41.1561163
+                ]
+            },
+            "properties": {
+                "name": "Crazy Pinz Entertainment Center",
+                "area": "Indiana",
+                "address": "1414 Northland Blvd., Fort Wayne",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466597",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8232,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.86585160000001,
+                    40.9688718
+                ]
+            },
+            "properties": {
+                "name": "Monroeville Community Park",
+                "area": "Indiana",
+                "address": "421 Monroe St, Monroeville ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466598",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8233,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.088967,
+                    44.2411182
+                ]
+            },
+            "properties": {
+                "name": "Cruet Olive Oils store",
+                "area": "New York",
+                "address": "226 James St., Clayton",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466696",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8234,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.908338,
+                    35.1723452
+                ]
+            },
+            "properties": {
+                "name": "Chubu Electric Power Mirai Tower. (Was Nagoya TV Tower)",
+                "area": "Japan",
+                "address": "6-15 Nishiki 3-chome, Naka-ku, Nagoya",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=93665",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8235,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.561957899999999,
+                    52.45687479999999
+                ]
+            },
+            "properties": {
+                "name": "Groeten uit IJmuiden",
+                "area": "Netherlands",
+                "address": "Kennemerboulevard 318, IJmuiden",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=264379",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 197,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.81253454472389,
+                    32.13900136639372
+                ]
+            },
+            "properties": {
+                "name": "Cinnamon Bear Store",
+                "area": "South Carolina",
+                "address": ", Hilton Head",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3128",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2198,
+                "last_updated": "2025-10-03",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.1713326,
+                    38.6786319
+                ]
+            },
+            "properties": {
+                "name": "Santuário do Cristo Rei",
+                "area": "Portugal",
+                "address": "Avenida do Cristo Rei, Almada",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466754",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8236,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.70265199999993,
+                    34.27190579999999
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Florence, SC",
+                "area": "South Carolina",
+                "address": "3390 North Williston Road, Florence",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=376532",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5300,
+                "last_updated": "2025-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.93183999999998,
+                    30.072076000000003
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Waller, TX",
+                "area": "Texas",
+                "address": "40900 U.S. 290, Waller",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=205691",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3823,
+                "last_updated": "2025-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.10061539999995,
+                    29.223050200000035
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's Daytona Each, FL",
+                "area": "Florida",
+                "address": "2330 Gateway N Dr,  (off LPGA Blvd. at I-95), Daytona Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=353047",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3280,
+                "last_updated": "2025-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.0155368584189,
+                    35.983286017417065
+                ]
+            },
+            "properties": {
+                "name": "Buc-ees Crossville, TN",
+                "area": "Tennessee",
+                "address": "2045 Genesis Road, Crossville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=387569",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5987,
+                "last_updated": "2025-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.20277739999999,
+                    32.74199689999996
+                ]
+            },
+            "properties": {
+                "name": "Marine Corps Recruit Depot",
+                "area": "California",
+                "address": "1600 Henderson Ave, San Diego",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=52015",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4776,
+                "last_updated": "2025-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.37651148311178,
+                    41.49475099990774
+                ]
+            },
+            "properties": {
+                "name": "Ohio Turnpike @ Blue Heron",
+                "area": "Ohio",
+                "address": "Mile 76 Westbound, Genoa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=7365",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1975,
+                "last_updated": "2025-10-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -69.61579869999996,
+                    44.57360839999998
+                ]
+            },
+            "properties": {
+                "name": "Hive",
+                "area": "Maine",
+                "address": "210 College Ave, Waterville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=375487",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5186,
+                "last_updated": "2025-10-04"
             }
         }
     ]
