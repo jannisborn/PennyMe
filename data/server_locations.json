@@ -31456,10 +31456,10 @@
                 "address": "Yankee Stadium, New York City (Bronx)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=39306",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3035,
-                "last_updated": "2025-09-24"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -32349,6 +32349,69 @@
                 "internal_url": "null",
                 "machine_status": "retired",
                 "id": 6369,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.9929351,
+                    38.5346794
+                ]
+            },
+            "properties": {
+                "name": "Fun Street Family Arcade",
+                "area": "Colorado",
+                "address": "243 F St., Salida",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466860",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8237,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.1415001,
+                    51.7891327
+                ]
+            },
+            "properties": {
+                "name": "Quedlinburg Marktplatz",
+                "area": "Germany",
+                "address": "Marktplatz downstairs, Quedlinburg ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466848",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8238,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.650966,
+                    39.570728
+                ]
+            },
+            "properties": {
+                "name": "Grab & Walk",
+                "area": "Spain",
+                "address": "Carrer de Jaume II, 31 Centre,, Palma",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466815",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8239,
                 "last_updated": "2025-09-12"
             }
         }
