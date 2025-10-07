@@ -11104,10 +11104,10 @@
                 "address": "USF - CityWalk, Orlando ",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=374794",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5360,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -19403,10 +19403,10 @@
                 "address": "106 East Elkhorn Ave , Estes Park",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=342834",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1856,
-                "last_updated": "2025-07-27"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -32690,6 +32690,69 @@
                 "status": "unvisited",
                 "id": 1643,
                 "last_updated": "2025-10-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1721488,
+                    36.1088418
+                ]
+            },
+            "properties": {
+                "name": "Harmon Corner - Rainforest Café",
+                "area": "Nevada",
+                "address": "3717 Las Vegas Boulevard South suite 275, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=241578",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4510,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.138529,
+                    41.310504
+                ]
+            },
+            "properties": {
+                "name": "Launching Pad Drive-in",
+                "area": "Illinois",
+                "address": "810 East Baltimore St., Wilmington",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=298063",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1265,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.9646982,
+                    -37.8213341
+                ]
+            },
+            "properties": {
+                "name": "Melbourne Skydeck",
+                "area": "Australia",
+                "address": "7 Riverside Quay, Southbank , Melbourne",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=466985",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8242,
+                "last_updated": "2025-09-12"
             }
         }
     ]
