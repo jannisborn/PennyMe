@@ -21490,15 +21490,15 @@
                 ]
             },
             "properties": {
-                "name": "Our story",
+                "name": "LJ Gift Shop",
                 "area": "Slovenia",
                 "address": "Trubarjeva cesta 14, 1000 Ljubljana, Slovenië",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7999,
-                "last_updated": "2025-07-12"
+                "last_updated": "2025-10-11"
             }
         },
         {
@@ -32816,6 +32816,177 @@
                 "status": "unvisited",
                 "id": 1252,
                 "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2506627,
+                    44.8606655
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Great Wolf Lodge",
+                "area": "Minnesota",
+                "address": "1700 American Boulevard East, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=284151",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3135,
+                "last_updated": "2025-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.75910027772322,
+                    32.78117633798171
+                ]
+            },
+            "properties": {
+                "name": "Reliant Energy Temporary Press",
+                "area": "Texas",
+                "address": "1314 Admiral Nimitz Cir, Dallas, TX 75223, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8243,
+                "last_updated": "2025-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.35017719999999,
+                    34.973391799999995
+                ]
+            },
+            "properties": {
+                "name": "Rock City Gardens Corn Maze",
+                "area": "Tennessee",
+                "address": ", Chattanooga",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2144",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 7053,
+                "last_updated": "2025-10-09",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.984118321551602,
+                    53.40418635313187
+                ]
+            },
+            "properties": {
+                "name": "Bluecoat museum Liverpool",
+                "area": "England",
+                "address": "School lane",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8244,
+                "last_updated": "2025-10-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.323898399999958,
+                    60.397036899999996
+                ]
+            },
+            "properties": {
+                "name": "Knut Skurveit",
+                "area": "Norway",
+                "address": "Bryggen 21, Bergen",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=254455",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 43,
+                "last_updated": "2025-10-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.764001514856243,
+                    53.69973093488292
+                ]
+            },
+            "properties": {
+                "name": "Schifffahrt Ratzeburger See",
+                "area": "Germany",
+                "address": "Schloßwiese 6, 23909 Ratzeburg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8245,
+                "last_updated": "2025-10-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.35517505431318,
+                    34.13761620073529
+                ]
+            },
+            "properties": {
+                "name": "Monsters",
+                "area": "California",
+                "address": "Universal Studios",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8246,
+                "last_updated": "2025-10-11",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.35505019005355,
+                    34.137921629776024
+                ]
+            },
+            "properties": {
+                "name": "Transformers",
+                "area": "California",
+                "address": "The Blues Brothers, Main Way Universal, North Hollywood, CA 91602, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8247,
+                "last_updated": "2025-10-11",
+                "paywall": true
             }
         }
     ]
