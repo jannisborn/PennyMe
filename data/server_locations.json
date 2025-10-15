@@ -16032,10 +16032,10 @@
                 "address": "516 Opry Mills Drive, Nashville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2612",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4252,
-                "last_updated": "2025-05-20"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -22703,9 +22703,9 @@
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=106375",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4243,
-                "last_updated": "2025-07-21"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -33178,6 +33178,174 @@
                 "status": "unvisited",
                 "id": 402,
                 "last_updated": "2025-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.2289196,
+                    42.4491593
+                ]
+            },
+            "properties": {
+                "name": "Lexington Visitors Center",
+                "area": "Massachusetts",
+                "address": "1875 Massachusetts Avenue, Lexington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467418",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8251,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.8908436,
+                    47.4685445
+                ]
+            },
+            "properties": {
+                "name": "Keweenaw Agate Shop",
+                "area": "Michigan",
+                "address": "439 Gratiot St, Copper Harbor",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467470",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8252,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.0101417,
+                    39.750183
+                ]
+            },
+            "properties": {
+                "name": "Elitch Gardens Theme Park",
+                "area": "Colorado",
+                "address": "2000 Elitch Circle, Denver",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1050",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1849,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.6553983,
+                    38.2614017
+                ]
+            },
+            "properties": {
+                "name": "Pueblo Zoo",
+                "area": "Colorado",
+                "address": "3455 Nuckolls Avenue, Pueblo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=442",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1923,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.3745785,
+                    37.0041371
+                ]
+            },
+            "properties": {
+                "name": "National Corvette Museum",
+                "area": "Kentucky",
+                "address": "350 Corvette Dr, Bowling Green",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2298",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3516,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.3367954,
+                    21.2446257
+                ]
+            },
+            "properties": {
+                "name": "Templo del Pocito y del Primer Milagro ",
+                "area": "Mexico",
+                "address": "Luis Moreno 30, Centro, 47000, San Juan de los Lagos, Jal, San Juan de los Lagos, Jalisco ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467492",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8253,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.59920269999999,
+                    18.5700602
+                ]
+            },
+            "properties": {
+                "name": "Montetaxco Hotel & Resort ",
+                "area": "Mexico",
+                "address": "Alfredo Checa Curi S/N, Lomas de Taxco, 40210 Taxco de Alarcón, Gro. , Taxco, Guerrero",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467493",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8254,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.6563436,
+                    42.3120398
+                ]
+            },
+            "properties": {
+                "name": "Dixboro General Store",
+                "area": "Michigan",
+                "address": "5206 Plymouth Rd, Dixboro",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2510,
+                "last_updated": "2025-09-12"
             }
         }
     ]
