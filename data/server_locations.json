@@ -7455,20 +7455,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -103.5111083,
-                    44.4145698
+                    -103.51110829999998,
+                    44.41456979999997
                 ]
             },
             "properties": {
                 "name": "Sturgis Photo & Gifts",
                 "area": "South Dakota",
-                "address": "1081 Main St, Sturgis ",
+                "address": "1081 Main St, Sturgis",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=446261",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7663,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-10-13"
             }
         },
         {
@@ -11711,8 +11711,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    2.184338,
-                    41.37683699999999
+                    2.1843379999999684,
+                    41.37683699999996
                 ]
             },
             "properties": {
@@ -11721,10 +11721,10 @@
                 "address": "Moll d'Espanya del Port Vell, Barcelona - Catalonia Region Barcelona Province",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=292069",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 285,
-                "last_updated": "2025-03-12",
+                "last_updated": "2025-10-15",
                 "paywall": true
             }
         },
@@ -12349,7 +12349,7 @@
                 "type": "Point",
                 "coordinates": [
                     -3.5643184,
-                    50.4351425
+                    50.435142499999984
                 ]
             },
             "properties": {
@@ -12358,10 +12358,10 @@
                 "address": "Queens Park Station Torbay Road, DEVON - Paignton",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=107486",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1375,
-                "last_updated": "2025-03-23"
+                "last_updated": "2025-10-15"
             }
         },
         {
@@ -13976,20 +13976,21 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.239462984698423,
-                    50.110085542833964
+                    7.239166657278639,
+                    50.10864031552673
                 ]
             },
             "properties": {
                 "name": "Beilstein (Mosel)",
                 "area": "Germany",
-                "address": "Bachstraße 39, 56814 Beilstein, Germany",
+                "address": "Burg meternich, 56814 Beilstein, Germany",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7808,
-                "last_updated": "2025-04-19"
+                "last_updated": "2025-10-15",
+                "paywall": true
             }
         },
         {
@@ -16031,10 +16032,10 @@
                 "address": "516 Opry Mills Drive, Nashville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2612",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4252,
-                "last_updated": "2025-05-20"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -21490,15 +21491,15 @@
                 ]
             },
             "properties": {
-                "name": "Our story",
+                "name": "LJ Gift Shop",
                 "area": "Slovenia",
                 "address": "Trubarjeva cesta 14, 1000 Ljubljana, Slovenië",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7999,
-                "last_updated": "2025-07-12"
+                "last_updated": "2025-10-11"
             }
         },
         {
@@ -22702,9 +22703,9 @@
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=106375",
                 "internal_url": "null",
                 "multimachine": 2,
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4243,
-                "last_updated": "2025-07-21"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -23133,9 +23134,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=461606",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 8034,
-                "last_updated": "2025-07-06"
+                "last_updated": "2025-10-14"
             }
         },
         {
@@ -25348,7 +25349,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    147.27115460000016,
+                    147.27115460000007,
                     -42.708675800000016
                 ]
             },
@@ -25358,10 +25359,10 @@
                 "address": "593 Briggs Road, TAS - Brighton",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=309322",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2156,
-                "last_updated": "2025-07-27"
+                "last_updated": "2025-10-14"
             }
         },
         {
@@ -32816,6 +32817,557 @@
                 "status": "unvisited",
                 "id": 1252,
                 "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2506627,
+                    44.8606655
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Great Wolf Lodge",
+                "area": "Minnesota",
+                "address": "1700 American Boulevard East, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=284151",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3135,
+                "last_updated": "2025-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.75910027772322,
+                    32.78117633798171
+                ]
+            },
+            "properties": {
+                "name": "Reliant Energy Temporary Press",
+                "area": "Texas",
+                "address": "1314 Admiral Nimitz Cir, Dallas, TX 75223, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8243,
+                "last_updated": "2025-10-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.35017719999999,
+                    34.973391799999995
+                ]
+            },
+            "properties": {
+                "name": "Rock City Gardens Corn Maze",
+                "area": "Tennessee",
+                "address": ", Chattanooga",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2144",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 7053,
+                "last_updated": "2025-10-09",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.984118321551602,
+                    53.40418635313187
+                ]
+            },
+            "properties": {
+                "name": "Bluecoat museum Liverpool",
+                "area": "England",
+                "address": "School lane",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8244,
+                "last_updated": "2025-10-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.323898399999958,
+                    60.397036899999996
+                ]
+            },
+            "properties": {
+                "name": "Knut Skurveit",
+                "area": "Norway",
+                "address": "Bryggen 21, Bergen",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=254455",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 43,
+                "last_updated": "2025-10-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.764001514856243,
+                    53.69973093488292
+                ]
+            },
+            "properties": {
+                "name": "Schifffahrt Ratzeburger See",
+                "area": "Germany",
+                "address": "Schloßwiese 6, 23909 Ratzeburg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8245,
+                "last_updated": "2025-10-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.35517505431318,
+                    34.13761620073529
+                ]
+            },
+            "properties": {
+                "name": "Monsters",
+                "area": "California",
+                "address": "Universal Studios",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8246,
+                "last_updated": "2025-10-11",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.35505019005355,
+                    34.137921629776024
+                ]
+            },
+            "properties": {
+                "name": "Transformers",
+                "area": "California",
+                "address": "The Blues Brothers, Main Way Universal, North Hollywood, CA 91602, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8247,
+                "last_updated": "2025-10-11",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.77421079999999,
+                    45.05682110000002
+                ]
+            },
+            "properties": {
+                "name": "Mount Angel Abby",
+                "area": "Oregon",
+                "address": "1 Abby Drive, St. Benedict",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=374106",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5223,
+                "last_updated": "2025-10-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.584473780869967,
+                    50.2829814405835
+                ]
+            },
+            "properties": {
+                "name": "Freizeitpark Lochmühle Maschine 2",
+                "area": "Germany",
+                "address": "Freizeitpark Lochmühle 1, 61273 Wehrheim, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8248,
+                "last_updated": "2025-10-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.6766742748096775,
+                    43.54226485657338
+                ]
+            },
+            "properties": {
+                "name": "Acuario bioparc",
+                "area": "Spain",
+                "address": "Playa De Poniente, S/N, 33212 Gijón, Asturias, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8249,
+                "last_updated": "2025-10-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.0451215,
+                    45.65862389999999
+                ]
+            },
+            "properties": {
+                "name": "Museum of the Rockies",
+                "area": "Montana",
+                "address": "600 W Kagy Blvd , Bozeman",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467256",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8250,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.7298716,
+                    34.7012506
+                ]
+            },
+            "properties": {
+                "name": "Alpine Festival of Arts and Crafts",
+                "area": "Georgia",
+                "address": "8600 N Main St, Helen",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=365599",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5391,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.6107342,
+                    -0.9097778
+                ]
+            },
+            "properties": {
+                "name": "Store along the waterfront ",
+                "area": "Ecuador",
+                "address": ", San Cristobal, Galapagos ",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=207307",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1611,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.2345458,
+                    49.4184667
+                ]
+            },
+            "properties": {
+                "name": "Office de Tourisme de Honfleur",
+                "area": "France",
+                "address": "Quai Lepaulmier, 14600 Honfleur",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=109468",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 86,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    147.43911230000003,
+                    -42.73636739999999
+                ]
+            },
+            "properties": {
+                "name": "Richmond Goal",
+                "area": "Australia",
+                "address": "37 Bathurst Street, TAS - Richmond",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=311317",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 2159,
+                "last_updated": "2025-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.298338399999988,
+                    43.53843870000001
+                ]
+            },
+            "properties": {
+                "name": "Split Airport",
+                "area": "Croatia",
+                "address": "Cesta Dr. Franje Tudmana 1270, Katel tafilic",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=313346",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 402,
+                "last_updated": "2025-10-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.2289196,
+                    42.4491593
+                ]
+            },
+            "properties": {
+                "name": "Lexington Visitors Center",
+                "area": "Massachusetts",
+                "address": "1875 Massachusetts Avenue, Lexington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467418",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8251,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.8908436,
+                    47.4685445
+                ]
+            },
+            "properties": {
+                "name": "Keweenaw Agate Shop",
+                "area": "Michigan",
+                "address": "439 Gratiot St, Copper Harbor",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467470",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8252,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.0101417,
+                    39.750183
+                ]
+            },
+            "properties": {
+                "name": "Elitch Gardens Theme Park",
+                "area": "Colorado",
+                "address": "2000 Elitch Circle, Denver",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1050",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1849,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.6553983,
+                    38.2614017
+                ]
+            },
+            "properties": {
+                "name": "Pueblo Zoo",
+                "area": "Colorado",
+                "address": "3455 Nuckolls Avenue, Pueblo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=442",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1923,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.3745785,
+                    37.0041371
+                ]
+            },
+            "properties": {
+                "name": "National Corvette Museum",
+                "area": "Kentucky",
+                "address": "350 Corvette Dr, Bowling Green",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2298",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3516,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.3367954,
+                    21.2446257
+                ]
+            },
+            "properties": {
+                "name": "Templo del Pocito y del Primer Milagro ",
+                "area": "Mexico",
+                "address": "Luis Moreno 30, Centro, 47000, San Juan de los Lagos, Jal, San Juan de los Lagos, Jalisco ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467492",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8253,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.59920269999999,
+                    18.5700602
+                ]
+            },
+            "properties": {
+                "name": "Montetaxco Hotel & Resort ",
+                "area": "Mexico",
+                "address": "Alfredo Checa Curi S/N, Lomas de Taxco, 40210 Taxco de Alarcón, Gro. , Taxco, Guerrero",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467493",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8254,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.6563436,
+                    42.3120398
+                ]
+            },
+            "properties": {
+                "name": "Dixboro General Store",
+                "area": "Michigan",
+                "address": "5206 Plymouth Rd, Dixboro",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2510,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.44911674192994,
+                    42.100783841453314
+                ]
+            },
+            "properties": {
+                "name": "Goeberts Pumpkin farm",
+                "area": "Anguilla",
+                "address": "42W813 Reinking Rd, Pingree Grove, IL 60140, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8255,
+                "last_updated": "2025-10-16",
+                "paywall": true
             }
         }
     ]
