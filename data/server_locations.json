@@ -550,9 +550,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=406427",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6228,
-                "last_updated": "2025-07-06"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -33641,6 +33641,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8263,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.7065004,
+                    37.2707317
+                ]
+            },
+            "properties": {
+                "name": "Everything Williamsburg",
+                "area": "Virginia",
+                "address": "415 W Duke of Gloucester St,  Colonial Williamsburg Merch,, Williamsburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=357432",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8264,
                 "last_updated": "2025-09-12"
             }
         }
