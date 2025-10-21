@@ -16810,7 +16810,7 @@
                 "address": "1162 Marine Drive Astoria, OR, Astoria",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=212211",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4333,
                 "last_updated": "2025-09-12"
@@ -33663,6 +33663,91 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8264,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.0985262,
+                    34.0142788
+                ]
+            },
+            "properties": {
+                "name": "Live Oak Canyon Pumpkin Patch",
+                "area": "California",
+                "address": "32335 Live Oak Canyon Rd , Redlands ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467951",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8265,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.5483193,
+                    37.6305886
+                ]
+            },
+            "properties": {
+                "name": "Camp Store off the Cedar Creek Trail,",
+                "area": "Virginia",
+                "address": "camp store is near the river, Natural Bridge",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467972",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8266,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.12628030915306,
+                    34.69220822848988
+                ]
+            },
+            "properties": {
+                "name": "Candy Edventures",
+                "area": "North Carolina",
+                "address": "650 W Corbett Ave, Swansboro, NC 28584, USA",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467948",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7011,
+                "last_updated": "2025-09-12",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    147.3163583,
+                    -35.7185806
+                ]
+            },
+            "properties": {
+                "name": "Holbrook Submarine Museum",
+                "area": "Australia",
+                "address": "15 Wallace Street, NSW - Holbrook",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467940",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8267,
                 "last_updated": "2025-09-12"
             }
         }
