@@ -21813,10 +21813,10 @@
                 "address": "2401 12th St. NW , Albuquerque",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=45674",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4909,
-                "last_updated": "2025-07-15"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34052,6 +34052,48 @@
                 "status": "unvisited",
                 "id": 1911,
                 "last_updated": "2025-10-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8261764,
+                    36.0441081
+                ]
+            },
+            "properties": {
+                "name": "Desert View Trading Post",
+                "area": "Arizona",
+                "address": "on the Eastern side of the south rim (Watch Tower area), Grand Canyon National Park, South Rim",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=286828",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2631,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.4324902,
+                    36.4180039
+                ]
+            },
+            "properties": {
+                "name": "Bookstore and More, Thira",
+                "area": "Greece",
+                "address": "25is Martiou 847 00 Thira Santorini Greece, Thira",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=441563",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7546,
+                "last_updated": "2025-09-12"
             }
         }
     ]
