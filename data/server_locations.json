@@ -210,9 +210,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=318213",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4282,
-                "last_updated": "2025-07-11",
+                "last_updated": "2025-09-12",
                 "multimachine": 2
             }
         },
@@ -4927,10 +4927,10 @@
                 "address": "Piazza del Colosseo / Metro 'B' Line Colosseo exit",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=37874",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 959,
-                "last_updated": "2024-10-21"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -5518,10 +5518,10 @@
                 "address": "296 Hanover Street, Boston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2717",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "retired",
                 "id": 2886,
-                "last_updated": "2024-10-29"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -28140,10 +28140,10 @@
                 "address": "239 Arch Street, Philadelphia",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=4043",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4030,
-                "last_updated": "2025-08-28"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34116,6 +34116,69 @@
                 "id": 2602,
                 "last_updated": "2025-10-24",
                 "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.80225539999999,
+                    27.9658258
+                ]
+            },
+            "properties": {
+                "name": "Winter's DolphinTale Adventure",
+                "area": "Florida",
+                "address": "300 Cleveland st, Clearwater",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=108963",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5349,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.4049435,
+                    36.749872
+                ]
+            },
+            "properties": {
+                "name": "Mabry Mill",
+                "area": "North Carolina",
+                "address": "266 Mabry mill rd, Meadows of Dan",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468113",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8276,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.5609666,
+                    18.0676542
+                ]
+            },
+            "properties": {
+                "name": "Jardines de México ",
+                "area": "Mexico",
+                "address": "Km 129 de la Autopista México -Acapulco a la altura de Tequesquitengo, 62900 Tehuixtla, Mor. 1 h y 40 min, Tehuixtla, Morelos ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468188",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8277,
+                "last_updated": "2025-09-12"
             }
         }
     ]
