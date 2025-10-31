@@ -3262,9 +3262,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=432779",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7239,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34717,6 +34717,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8290,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.8019942,
+                    17.7063154
+                ]
+            },
+            "properties": {
+                "name": "Leatherback Brewing Company",
+                "area": "US Virgin Islands",
+                "address": "9902 Industrial Park, Kingshill",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468443",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8291,
                 "last_updated": "2025-09-12"
             }
         }
