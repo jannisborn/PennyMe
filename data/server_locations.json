@@ -19151,11 +19151,11 @@
                 "area": "Ireland",
                 "address": "43 Marlbank Rd, Legnabrocky Florencourt",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=458592",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7943,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34823,6 +34823,48 @@
                 "status": "unvisited",
                 "id": 5766,
                 "last_updated": "2025-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.8827259,
+                    45.0434991
+                ]
+            },
+            "properties": {
+                "name": "Santa Lucía",
+                "area": "France",
+                "address": "2 Rue Chènebouterie, Le Puy-en-Velay",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=362756",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5650,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.8131461,
+                    54.25852519999999
+                ]
+            },
+            "properties": {
+                "name": "Marble Arch Cave ",
+                "area": "Northern Ireland",
+                "address": "43 Marlbank Road, COUNTY FERMANAGH - Enniskillen",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468620",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8294,
+                "last_updated": "2025-09-12"
             }
         }
     ]
