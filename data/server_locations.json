@@ -560,8 +560,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -92.917654,
-                    41.4064722
+                    -92.91765400000001,
+                    41.40647219999998
                 ]
             },
             "properties": {
@@ -571,9 +571,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379879",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 5470,
-                "last_updated": "2025-05-03"
+                "last_updated": "2025-10-28"
             }
         },
         {
@@ -3262,9 +3262,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=432779",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7239,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -3293,7 +3293,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -6.259458700000049,
+                    -6.259458699999946,
                     53.346666899999995
                 ]
             },
@@ -3303,10 +3303,10 @@
                 "address": "Westmoreland Street, , Dublin",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=96570",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 701,
-                "last_updated": "2025-09-14"
+                "last_updated": "2025-11-01"
             }
         },
         {
@@ -4286,8 +4286,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -115.17612570000001,
-                    36.11900100000004
+                    -115.17827660739293,
+                    36.11902255710898
                 ]
             },
             "properties": {
@@ -4297,9 +4297,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7530,
-                "last_updated": "2025-09-12"
+                "last_updated": "2025-11-03"
             }
         },
         {
@@ -16906,8 +16906,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -86.2336133,
-                    39.7899507
+                    -86.23361329999999,
+                    39.789950699999984
                 ]
             },
             "properties": {
@@ -16919,7 +16919,7 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2270,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-10-31"
             }
         },
         {
@@ -19151,11 +19151,11 @@
                 "area": "Ireland",
                 "address": "43 Marlbank Rd, Legnabrocky Florencourt",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=458592",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7943,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -26667,8 +26667,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -75.1962708,
-                    39.9719878
+                    -75.19627079999995,
+                    39.97198779999999
                 ]
             },
             "properties": {
@@ -26678,9 +26678,10 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4041,
-                "last_updated": "2025-08-16"
+                "last_updated": "2025-10-28",
+                "multimachine": 4
             }
         },
         {
@@ -27536,8 +27537,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -89.54655480000002,
-                    36.88792819999999
+                    -89.54667982951564,
+                    36.88606984417638
                 ]
             },
             "properties": {
@@ -27546,10 +27547,10 @@
                 "address": "2305 E. Malone Ave., Sikeston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3206",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 1115,
-                "last_updated": "2025-08-23"
+                "last_updated": "2025-10-28"
             }
         },
         {
@@ -33799,20 +33800,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.4179404,
-                    37.8110519
+                    -122.4069458573444,
+                    37.808692976630645
                 ]
             },
             "properties": {
-                "name": "Fisherman's Wharf - Pier 45 - SS Jeremiah O'Brien Liberty Ship",
+                "name": "Fisherman's Wharf - Pier 35 - SS Jeremiah O'Brien Liberty Ship",
                 "area": "California",
-                "address": "Berthed at Pier 45, San Francisco",
+                "address": "Berthed at Pier 35, San Francisco",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=631",
                 "internal_url": "null",
                 "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 4814,
-                "last_updated": "2025-10-24"
+                "last_updated": "2025-11-03"
             }
         },
         {
@@ -34441,6 +34442,535 @@
                 "last_updated": "2025-10-26",
                 "multimachine": 2,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.621607370798617,
+                    52.6176235404642
+                ]
+            },
+            "properties": {
+                "name": "Egmond aan Zee Souvenirs",
+                "area": "Netherlands",
+                "address": "Voorstraat 156a, 1931 AP Egmond aan Zee, Netherlands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8284,
+                "last_updated": "2025-10-27",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.303403888822956,
+                    48.86450226399719
+                ]
+            },
+            "properties": {
+                "name": "Bateaux Mouches",
+                "area": "France",
+                "address": "Port de la Conférence, Paris - Île-De-France,",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=335273",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5659,
+                "last_updated": "2025-10-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.8206232,
+                    35.9876863
+                ]
+            },
+            "properties": {
+                "name": "Grand Canyon West Visitor/Ticket Center",
+                "area": "Arizona",
+                "address": "5001 Diamond Bar Rd, Peach Springs",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468310",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8285,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4093299,
+                    37.8086487
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Pier 39 - Aquarium of the Bay",
+                "area": "California",
+                "address": "The Embarcadero at Beach Street, San Francisco",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=936",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8286,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51877619999999,
+                    35.8117255
+                ]
+            },
+            "properties": {
+                "name": "Parrot Mountain and Gardens ",
+                "area": "Tennessee",
+                "address": "1471 McCarter Hollows rd, Pigeon Forge",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468323",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8287,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.2266679,
+                    51.2052205
+                ]
+            },
+            "properties": {
+                "name": "Groeninge Museum",
+                "area": "Belgium",
+                "address": "Dijver 12, Brugge (Bruges)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=265347",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 129,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.2219027,
+                    49.4237373
+                ]
+            },
+            "properties": {
+                "name": "Point De Vue Remarquable",
+                "area": "France",
+                "address": "7-1 Rue Charrière de Grâce, NORMANDY - Honfleur",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=278866",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 87,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.054709,
+                    38.59874689999999
+                ]
+            },
+            "properties": {
+                "name": "Altea",
+                "area": "Spain",
+                "address": "Carrer d'alcoi, 1, Altea",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468305",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8288,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.38961399999997,
+                    29.722100399999984
+                ]
+            },
+            "properties": {
+                "name": "Houston Museum of Natural Science",
+                "area": "Texas",
+                "address": "1 Hermann Circle Drive, Houston",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2494",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3738,
+                "last_updated": "2025-10-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.164131950171738,
+                    46.617571889271396
+                ]
+            },
+            "properties": {
+                "name": "Maria Wörth",
+                "area": "Austria",
+                "address": "Pfarrpl. 2, 9082 Maria Wörth, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8289,
+                "last_updated": "2025-10-29",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46814940000002,
+                    28.4556296
+                ]
+            },
+            "properties": {
+                "name": "Pirate's Dinner Adventure",
+                "area": "Florida",
+                "address": "6400 Carrier Drive, Orlando",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1604",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5358,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.6695211,
+                    35.097284
+                ]
+            },
+            "properties": {
+                "name": "Old Town - Wild West T's & Gifts",
+                "area": "New Mexico",
+                "address": "401 San Felipe Street Northwest (Old Town), Albuquerque",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=14777",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5465,
+                "last_updated": "2025-09-12",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.1157984,
+                    46.1368867
+                ]
+            },
+            "properties": {
+                "name": "Abaliget denevérmúzeum",
+                "area": "Hungary",
+                "address": ", Abaliget",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468502",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8290,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.8019942,
+                    17.7063154
+                ]
+            },
+            "properties": {
+                "name": "Leatherback Brewing Company",
+                "area": "US Virgin Islands",
+                "address": "9902 Industrial Park, Kingshill",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468443",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8291,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.88737860115494,
+                    40.426191605403424
+                ]
+            },
+            "properties": {
+                "name": "Butterfly Biosphere",
+                "area": "Utah",
+                "address": "3003 Thanksgiving Wy, Lehi, UT 84043",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8292,
+                "last_updated": "2025-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.698877322786071,
+                    54.371379953422064
+                ]
+            },
+            "properties": {
+                "name": "Sellin Ost Bahnhof",
+                "area": "Germany",
+                "address": "B196 3, 18586 Sellin, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8293,
+                "last_updated": "2025-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.697971900501546,
+                    54.382697612683636
+                ]
+            },
+            "properties": {
+                "name": "Seebrücke Sellin",
+                "area": "Germany",
+                "address": "Seebrücke 1",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=74902",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 610,
+                "last_updated": "2025-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.700058700000023,
+                    54.384208499999986
+                ]
+            },
+            "properties": {
+                "name": "Sellin Pier",
+                "area": "Germany",
+                "address": ", Sellin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=333812",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5766,
+                "last_updated": "2025-11-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.8827259,
+                    45.0434991
+                ]
+            },
+            "properties": {
+                "name": "Santa Lucía",
+                "area": "France",
+                "address": "2 Rue Chènebouterie, Le Puy-en-Velay",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=362756",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5650,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.8131461,
+                    54.25852519999999
+                ]
+            },
+            "properties": {
+                "name": "Marble Arch Cave ",
+                "area": "Northern Ireland",
+                "address": "43 Marlbank Road, COUNTY FERMANAGH - Enniskillen",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468620",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8294,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.043832305864354,
+                    54.014953535944066
+                ]
+            },
+            "properties": {
+                "name": "Museum der Illusionen",
+                "area": "Germany",
+                "address": "Zum Achterwasser 4b, 17459 Ückeritz, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8295,
+                "last_updated": "2025-11-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.68112959514718,
+                    43.33530854285712
+                ]
+            },
+            "properties": {
+                "name": "Walmart",
+                "area": "New York",
+                "address": "891 US-9, Queensbury, NY 12804, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8296,
+                "last_updated": "2025-11-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.909806460392859,
+                    54.60797935807907
+                ]
+            },
+            "properties": {
+                "name": "RMS Titanic Museum",
+                "area": "Ireland",
+                "address": "Queen's Road 1 Olympic Way, Titanic Quarter, Belfast, Belfast",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6474,
+                "last_updated": "2025-11-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.053908192761517,
+                    50.115585322809515
+                ]
+            },
+            "properties": {
+                "name": "Basilika Vierzehnheiligen",
+                "area": "Germany",
+                "address": "Vierzehnheiligen 2, 96231 Bad Staffelstein",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8297,
+                "last_updated": "2025-11-02",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.151843322275878,
+                    48.531760023271836
+                ]
+            },
+            "properties": {
+                "name": "Landshut Castle",
+                "area": "Germany",
+                "address": "Landshut Castle",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=101287",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 444,
+                "last_updated": "2025-11-03"
             }
         }
     ]
