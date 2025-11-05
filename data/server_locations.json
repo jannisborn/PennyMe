@@ -889,9 +889,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=417199",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6497,
-                "last_updated": "2025-10-23"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -4297,9 +4297,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7530,
-                "last_updated": "2025-11-03"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -4780,10 +4780,10 @@
                 "address": "300 Fremont Street, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=165962",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4498,
-                "last_updated": "2025-03-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -12148,9 +12148,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=451761",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7768,
-                "last_updated": "2025-09-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -15399,10 +15399,10 @@
                 "address": "380 Meade Ave STE B, Cocoa Beach, FL 32931",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1847",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3273,
-                "last_updated": "2025-08-03"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34991,6 +34991,27 @@
                 "internal_url": "null",
                 "machine_status": "retired",
                 "id": 898,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.70185640000001,
+                    40.8198988
+                ]
+            },
+            "properties": {
+                "name": "University of Nebraska State Museum",
+                "area": "Nebraska",
+                "address": "645 N 14th St, Lincoln",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3339",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4174,
                 "last_updated": "2025-09-12"
             }
         }
