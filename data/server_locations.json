@@ -21051,10 +21051,10 @@
                 "address": "1501 Broadway, New York City (Manhattan)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=375807",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5475,
-                "last_updated": "2025-08-23"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -35141,6 +35141,27 @@
                 "status": "unvisited",
                 "id": 3138,
                 "last_updated": "2025-11-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.402681399999999,
+                    51.3159734
+                ]
+            },
+            "properties": {
+                "name": "Sauerländer Besucherbergwerk",
+                "area": "Germany",
+                "address": "Glück-Auf Str. 3, Bestwig",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469051",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8301,
+                "last_updated": "2025-09-12"
             }
         }
     ]
