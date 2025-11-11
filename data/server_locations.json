@@ -3134,10 +3134,10 @@
                 "address": "One Tram Way, Palm Springs",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=222613",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4722,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -19784,11 +19784,11 @@
                 "area": "Arkansas",
                 "address": "105 N. Main, Bentonville",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459444",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7957,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -35268,6 +35268,48 @@
                 "status": "unvisited",
                 "id": 4558,
                 "last_updated": "2025-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6714044,
+                    41.2926282
+                ]
+            },
+            "properties": {
+                "name": "Ohio Turnpike @ Great Lakes",
+                "area": "Ohio",
+                "address": "Mile 170 Westbound, Broadview Heights",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3858",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1949,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.5977277,
+                    50.3609039
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs Antica Möbelkunst Altstadt Lädchen",
+                "area": "Germany",
+                "address": "Firmungstraße 44 - 46, 56068 Koblenz, Alemania, Coblenz",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8304,
+                "last_updated": "2025-09-12"
             }
         }
     ]
