@@ -889,9 +889,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=417199",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6497,
-                "last_updated": "2025-10-23"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -4297,9 +4297,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7530,
-                "last_updated": "2025-11-03"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -4780,10 +4780,10 @@
                 "address": "300 Fremont Street, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=165962",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4498,
-                "last_updated": "2025-03-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -12148,9 +12148,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=451761",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7768,
-                "last_updated": "2025-09-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -15399,10 +15399,10 @@
                 "address": "380 Meade Ave STE B, Cocoa Beach, FL 32931",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1847",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3273,
-                "last_updated": "2025-08-03"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -21051,10 +21051,10 @@
                 "address": "1501 Broadway, New York City (Manhattan)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=375807",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5475,
-                "last_updated": "2025-08-23"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -25852,10 +25852,10 @@
                 "address": "One East Route 66, Flagstaff",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=207216",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2622,
-                "last_updated": "2025-08-10"
+                "last_updated": "2025-11-11"
             }
         },
         {
@@ -32501,9 +32501,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=407071",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6348,
-                "last_updated": "2025-10-06"
+                "last_updated": "2025-11-09"
             }
         },
         {
@@ -34971,6 +34971,303 @@
                 "status": "unvisited",
                 "id": 444,
                 "last_updated": "2025-11-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    17.238296,
+                    40.782902
+                ]
+            },
+            "properties": {
+                "name": "Basile / Angela Flowers & Gifts",
+                "area": "Italy",
+                "address": "Alberobello 70011, Via dell Indipendenza 1A Italy",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=292356",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 898,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.70185640000001,
+                    40.8198988
+                ]
+            },
+            "properties": {
+                "name": "University of Nebraska State Museum",
+                "area": "Nebraska",
+                "address": "645 N 14th St, Lincoln",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3339",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4174,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.4482428,
+                    27.8586604
+                ]
+            },
+            "properties": {
+                "name": "Sebastian Fishing Museum",
+                "area": "Florida",
+                "address": "9700 S Hwy A1A, Vero Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=468963",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8298,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.335082000000028,
+                    52.50481800000001
+                ]
+            },
+            "properties": {
+                "name": "Kaiser Wilhelm Memorial Church",
+                "area": "Germany",
+                "address": "Breitscheidplatz, 10789",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=259085",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 437,
+                "last_updated": "2025-11-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.14190064167629,
+                    33.811549986621856
+                ]
+            },
+            "properties": {
+                "name": "Stone Mountain/Davies/climb",
+                "area": "Georgia",
+                "address": "1000 Robert E Lee Blvd, Stone Mountain, GA 30083, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8299,
+                "last_updated": "2025-11-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.14524007351679,
+                    33.81103969388364
+                ]
+            },
+            "properties": {
+                "name": "Stone Mountain Toy Shop",
+                "area": "Georgia",
+                "address": "1000 Robert E Lee Blvd. Stone Mountain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8300,
+                "last_updated": "2025-11-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0539887,
+                    47.5008902
+                ]
+            },
+            "properties": {
+                "name": "St. Stephen's Basilica",
+                "area": "Hungary",
+                "address": "Szent István tér 1",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=23381",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 832,
+                "last_updated": "2025-11-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.24026485181537,
+                    44.85465956651232
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Minnesota Sea Life Aquarium (Was Underwater Adventures)",
+                "area": "Minnesota",
+                "address": "120 East Broadway, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3081",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3138,
+                "last_updated": "2025-11-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.402681399999999,
+                    51.3159734
+                ]
+            },
+            "properties": {
+                "name": "Sauerländer Besucherbergwerk",
+                "area": "Germany",
+                "address": "Glück-Auf Str. 3, Bestwig",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469051",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8301,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.14837429999999,
+                    36.114124700000026
+                ]
+            },
+            "properties": {
+                "name": "National Atomic Testing Museum",
+                "area": "Nevada",
+                "address": "755 East Flamingo Road, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=381791",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5424,
+                "last_updated": "2025-11-10",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.034071346433677,
+                    47.50093491306771
+                ]
+            },
+            "properties": {
+                "name": "The Fisherman’s Bastion",
+                "area": "Hungary",
+                "address": "Budapest, Tárnok u. 20-18, 1014 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8302,
+                "last_updated": "2025-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.932426220404848,
+                    37.01681539161441
+                ]
+            },
+            "properties": {
+                "name": "Oberon 2",
+                "area": "Portugal",
+                "address": "R. Vasco da Gama 27, 8000-282 Faro, Portugal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8303,
+                "last_updated": "2025-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.9324250135380305,
+                    37.016806331150505
+                ]
+            },
+            "properties": {
+                "name": "Oberon 2",
+                "area": "Portugal",
+                "address": "R. de Santo Antonio 67, Faro",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=407085",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6406,
+                "last_updated": "2025-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.92359870000001,
+                    33.809314800000024
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Tortilla Jo's restaurant (Was Monorail Entrance)",
+                "area": "California",
+                "address": "1510 South Disneyland Drive, Anaheim",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=203609",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4558,
+                "last_updated": "2025-11-10"
             }
         }
     ]
