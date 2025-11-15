@@ -3134,10 +3134,10 @@
                 "address": "One Tram Way, Palm Springs",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=222613",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4722,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -18332,9 +18332,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=63850",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7921,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -19784,11 +19784,11 @@
                 "area": "Arkansas",
                 "address": "105 N. Main, Bentonville",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459444",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7957,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -29470,13 +29470,13 @@
             "properties": {
                 "name": "Minnesota State Fair - Visit Duluth Booth",
                 "area": "Minnesota",
-                "address": "Minnesota State Fair, Como Avenue, Falcon Heights, Saint Anthony Park, MN 55108, United States of America",
+                "address": "1367 Cosgrove St",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=464617",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8173,
-                "last_updated": "2025-09-12"
+                "last_updated": "2025-11-15"
             }
         },
         {
@@ -35268,6 +35268,261 @@
                 "status": "unvisited",
                 "id": 4558,
                 "last_updated": "2025-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6714044,
+                    41.2926282
+                ]
+            },
+            "properties": {
+                "name": "Ohio Turnpike @ Great Lakes",
+                "area": "Ohio",
+                "address": "Mile 170 Westbound, Broadview Heights",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3858",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1949,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.5977277,
+                    50.3609039
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs Antica Möbelkunst Altstadt Lädchen",
+                "area": "Germany",
+                "address": "Firmungstraße 44 - 46, 56068 Koblenz, Alemania, Coblenz",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8304,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.14297599999999,
+                    19.4327339
+                ]
+            },
+            "properties": {
+                "name": "Kimoda (Barrio Chino) ",
+                "area": "Mexico",
+                "address": "Artículo 123, 19, Centro, Cuauhtémoc , Mexico City ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469262",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8305,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.13263769999999,
+                    19.4338725
+                ]
+            },
+            "properties": {
+                "name": "Parroquia de la Asunción Sagrario Metropolitano ",
+                "area": "Mexico",
+                "address": "Downtown Mexico City, Zocalo , Mexico City ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469266",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8306,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.450979604953199,
+                    50.08124161882692
+                ]
+            },
+            "properties": {
+                "name": "Machine",
+                "area": "Czech Republic",
+                "address": "Zizkov tower",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8307,
+                "last_updated": "2025-11-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.4001849435344,
+                    25.6154062097236
+                ]
+            },
+            "properties": {
+                "name": "Zoo Miami",
+                "area": "Florida",
+                "address": "12460 SW 152nd St, Miami, FL 33177, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8308,
+                "last_updated": "2025-11-14",
+                "multimachine": "several - unknown ",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.49990452071104,
+                    34.00761632695019
+                ]
+            },
+            "properties": {
+                "name": "Pier Machine 2",
+                "area": "California",
+                "address": "1535 Ocean Av",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8309,
+                "last_updated": "2025-11-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.16027918601819,
+                    25.77032141784898
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Pearl",
+                "area": "Florida",
+                "address": "1922-2298 N Cruise Blvd",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8310,
+                "last_updated": "2025-11-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.94563050000002,
+                    29.887263500000003
+                ]
+            },
+            "properties": {
+                "name": "Ingram Hall Texas State",
+                "area": "Texas",
+                "address": "W Woods St, San Marcos",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=317055",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3798,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.95661779999998,
+                    29.877733899999996
+                ]
+            },
+            "properties": {
+                "name": "Wonder World",
+                "area": "Texas",
+                "address": "1000 Prospect St., San Marcos",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=34070",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3801,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.62847799999994,
+                    35.61208849999995
+                ]
+            },
+            "properties": {
+                "name": "Snoopy Town Shop Futakotamagawa",
+                "area": "Japan",
+                "address": "Futakotamagawa Rise Town Front 6F 2-21-1 Tamagawa Setagaya, Tokyo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=291510",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2854,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3874499,
+                    33.75981629999994
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe - Atlanta",
+                "area": "Georgia",
+                "address": "215 Peachtree St NE, Atlanta",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1620,
+                "last_updated": "2025-11-15"
             }
         }
     ]
