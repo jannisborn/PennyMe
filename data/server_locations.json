@@ -9716,10 +9716,10 @@
                 "address": "2475 Grand Blvd. Kansas City, MO",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=317512",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2938,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -35671,6 +35671,48 @@
                 "status": "unvisited",
                 "id": 3648,
                 "last_updated": "2025-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.06779399999999,
+                    29.956488
+                ]
+            },
+            "properties": {
+                "name": "Jazz Funeral Store (Bourbon St.)",
+                "area": "Louisiana",
+                "address": "405 Bourbon Street, New Orleans",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2324",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3586,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.0194796,
+                    45.8218443
+                ]
+            },
+            "properties": {
+                "name": "Zagreb Zoo",
+                "area": "Croatia",
+                "address": "Maksimir Park, Zagreb",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=416743",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6954,
+                "last_updated": "2025-09-12"
             }
         }
     ]
