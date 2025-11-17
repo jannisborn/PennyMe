@@ -3134,10 +3134,10 @@
                 "address": "One Tram Way, Palm Springs",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=222613",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4722,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -3831,10 +3831,10 @@
                 "address": "Baylor University 501 M P Daniel Esplanade, Waco",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379659",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5386,
-                "last_updated": "2025-05-18"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -4221,8 +4221,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -93.21421409999999,
-                    36.6440054
+                    -93.2142449619273,
+                    36.64564410481013
                 ]
             },
             "properties": {
@@ -4234,7 +4234,7 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 1054,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-11-16"
             }
         },
         {
@@ -15453,7 +15453,7 @@
                 "type": "Point",
                 "coordinates": [
                     -94.82017950000001,
-                    29.2712758
+                    29.271275799999973
                 ]
             },
             "properties": {
@@ -15465,8 +15465,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3715,
-                "last_updated": "2025-05-10",
-                "multimachine": 3
+                "last_updated": "2025-11-17",
+                "multimachine": 2
             }
         },
         {
@@ -15517,8 +15517,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -94.79511,
-                    29.3067
+                    -94.79511000000001,
+                    29.30669999999999
                 ]
             },
             "properties": {
@@ -15530,8 +15530,8 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3709,
-                "last_updated": "2025-05-09",
-                "multimachine": 2
+                "last_updated": "2025-11-17",
+                "multimachine": 3
             }
         },
         {
@@ -18332,9 +18332,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=63850",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7921,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -19784,11 +19784,11 @@
                 "area": "Arkansas",
                 "address": "105 N. Main, Bentonville",
                 "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=459444",
+                "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7957,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -29463,8 +29463,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -93.08995779999995,
-                    44.95370289999997
+                    -93.17147670679039,
+                    44.97938481362933
                 ]
             },
             "properties": {
@@ -29476,7 +29476,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8173,
-                "last_updated": "2025-09-12"
+                "last_updated": "2025-11-15"
             }
         },
         {
@@ -35268,6 +35268,409 @@
                 "status": "unvisited",
                 "id": 4558,
                 "last_updated": "2025-11-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6714044,
+                    41.2926282
+                ]
+            },
+            "properties": {
+                "name": "Ohio Turnpike @ Great Lakes",
+                "area": "Ohio",
+                "address": "Mile 170 Westbound, Broadview Heights",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3858",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1949,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.5977277,
+                    50.3609039
+                ]
+            },
+            "properties": {
+                "name": "Souvenirs Antica Möbelkunst Altstadt Lädchen",
+                "area": "Germany",
+                "address": "Firmungstraße 44 - 46, 56068 Koblenz, Alemania, Coblenz",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8304,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.14297599999999,
+                    19.4327339
+                ]
+            },
+            "properties": {
+                "name": "Kimoda (Barrio Chino) ",
+                "area": "Mexico",
+                "address": "Artículo 123, 19, Centro, Cuauhtémoc , Mexico City ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469262",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8305,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.13263769999999,
+                    19.4338725
+                ]
+            },
+            "properties": {
+                "name": "Parroquia de la Asunción Sagrario Metropolitano ",
+                "area": "Mexico",
+                "address": "Downtown Mexico City, Zocalo , Mexico City ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469266",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8306,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.450979604953199,
+                    50.08124161882692
+                ]
+            },
+            "properties": {
+                "name": "Machine",
+                "area": "Czech Republic",
+                "address": "Zizkov tower",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8307,
+                "last_updated": "2025-11-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.4001849435344,
+                    25.6154062097236
+                ]
+            },
+            "properties": {
+                "name": "Zoo Miami",
+                "area": "Florida",
+                "address": "12460 SW 152nd St, Miami, FL 33177, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8308,
+                "last_updated": "2025-11-14",
+                "multimachine": "several - unknown ",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.49990452071104,
+                    34.00761632695019
+                ]
+            },
+            "properties": {
+                "name": "Pier Machine 2",
+                "area": "California",
+                "address": "1535 Ocean Av",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8309,
+                "last_updated": "2025-11-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.16027918601819,
+                    25.77032141784898
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Pearl",
+                "area": "Florida",
+                "address": "1922-2298 N Cruise Blvd",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8310,
+                "last_updated": "2025-11-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.94563050000002,
+                    29.887263500000003
+                ]
+            },
+            "properties": {
+                "name": "Ingram Hall Texas State",
+                "area": "Texas",
+                "address": "W Woods St, San Marcos",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=317055",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3798,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.95661779999998,
+                    29.877733899999996
+                ]
+            },
+            "properties": {
+                "name": "Wonder World",
+                "area": "Texas",
+                "address": "1000 Prospect St., San Marcos",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=34070",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3801,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.62847799999994,
+                    35.61208849999995
+                ]
+            },
+            "properties": {
+                "name": "Snoopy Town Shop Futakotamagawa",
+                "area": "Japan",
+                "address": "Futakotamagawa Rise Town Front 6F 2-21-1 Tamagawa Setagaya, Tokyo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=291510",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2854,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3874499,
+                    33.75981629999994
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe - Atlanta",
+                "area": "Georgia",
+                "address": "215 Peachtree St NE, Atlanta",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1620,
+                "last_updated": "2025-11-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.3537322,
+                    34.1361697
+                ]
+            },
+            "properties": {
+                "name": "Universal CityWalk - Production Central",
+                "area": "California",
+                "address": "Universal CityWalk, Universal City",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=365655",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5262,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.57346712882482,
+                    33.54602045003133
+                ]
+            },
+            "properties": {
+                "name": "Smokey the Bear",
+                "area": "New Mexico",
+                "address": "104 Smokey Bear Blvd, Capitan, NM 88316, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8311,
+                "last_updated": "2025-11-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.16485370000001,
+                    25.7343406
+                ]
+            },
+            "properties": {
+                "name": "Miami Seaquarium #2",
+                "area": "Florida",
+                "address": "4400 Rickenbacker Causeway, Key Biscayne",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=263188",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3318,
+                "last_updated": "2025-11-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.7732681999999,
+                    35.6980069
+                ]
+            },
+            "properties": {
+                "name": "Square Enix Cafe Tokyo",
+                "area": "Japan",
+                "address": "East-West Passage 1-6-1 Kanda Sakuma-cho Chiyoda-kuho, Tokyo - Akihabara",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=351317",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2865,
+                "last_updated": "2025-11-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.8806061899613,
+                    30.965148535325476
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee’s",
+                "area": "Texas",
+                "address": "205 N Fwy Service Rd, Madisonville, TX 77864, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8312,
+                "last_updated": "2025-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.48929547832348,
+                    29.427614272235335
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Texas",
+                "address": "111 W Crockett St, San Antonio",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=368823",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5382,
+                "multimachine": 3,
+                "last_updated": "2025-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.73737909999997,
+                    30.264631900000023
+                ]
+            },
+            "properties": {
+                "name": "Austin Visitor Center",
+                "area": "Texas",
+                "address": "103 E. 5th St., Austin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=226136",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3648,
+                "last_updated": "2025-11-17"
             }
         }
     ]
