@@ -18332,7 +18332,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=63850",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7921,
                 "last_updated": "2025-09-12"
             }
@@ -35755,6 +35755,27 @@
                 "status": "unvisited",
                 "id": 16,
                 "last_updated": "2025-11-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.94242779999999,
+                    43.5279629
+                ]
+            },
+            "properties": {
+                "name": "Cedar Valley Cheese Store",
+                "area": "Wisconsin",
+                "address": "W3115 Jay Rd, Belgium",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469444",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8313,
+                "last_updated": "2025-09-12"
             }
         }
     ]
