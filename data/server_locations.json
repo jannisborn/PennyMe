@@ -30148,7 +30148,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=413462",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6271,
                 "last_updated": "2025-09-12"
             }
@@ -30168,7 +30168,7 @@
                 "address": "116 Broadway, Wisconsin Dells",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379721",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5497,
                 "last_updated": "2025-09-12"
@@ -36009,6 +36009,27 @@
                 "machine_status": "retired",
                 "id": 7112,
                 "last_updated": "2025-11-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.307628,
+                    55.83089099999999
+                ]
+            },
+            "properties": {
+                "name": "The Burrell Collection",
+                "area": "Scotland",
+                "address": "2060 Pollokshaws Rd, Glasgow ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=99533",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8318,
+                "last_updated": "2025-09-12"
             }
         }
     ]
