@@ -9716,10 +9716,10 @@
                 "address": "2475 Grand Blvd. Kansas City, MO",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=317512",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2938,
-                "last_updated": "2025-06-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -16895,10 +16895,10 @@
                 "address": "334 No. 1st Avenue, Sandpoint",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=179360",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4324,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -18332,7 +18332,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=63850",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7921,
                 "last_updated": "2025-09-12"
             }
@@ -21157,10 +21157,10 @@
                 "address": "288 Bremner Boulevard, Ontario - Toronto",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=316758",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5028,
-                "last_updated": "2025-07-09"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -22757,8 +22757,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -2.217758,
-                    51.745734
+                    -96.65700021452372,
+                    35.74925509119879
                 ]
             },
             "properties": {
@@ -22770,7 +22770,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8026,
-                "last_updated": "2025-07-06"
+                "last_updated": "2025-11-20"
             }
         },
         {
@@ -35671,6 +35671,280 @@
                 "status": "unvisited",
                 "id": 3648,
                 "last_updated": "2025-11-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.06779399999999,
+                    29.956488
+                ]
+            },
+            "properties": {
+                "name": "Jazz Funeral Store (Bourbon St.)",
+                "area": "Louisiana",
+                "address": "405 Bourbon Street, New Orleans",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2324",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3586,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.0194796,
+                    45.8218443
+                ]
+            },
+            "properties": {
+                "name": "Zagreb Zoo",
+                "area": "Croatia",
+                "address": "Maksimir Park, Zagreb",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=416743",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6954,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.41357559999999,
+                    35.87563329999996
+                ]
+            },
+            "properties": {
+                "name": "Cameron Trading Post RV Park",
+                "area": "Arizona",
+                "address": "466 Highway 89, Cameron, Arizona",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=86317",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2616,
+                "last_updated": "2025-11-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.800080899999897,
+                    51.77751799999999
+                ]
+            },
+            "properties": {
+                "name": "Oakwood Amusement Park",
+                "area": "Wales",
+                "address": "Canaston Bridge, SOUTH WALES - Narbeth, Dyfed",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4201",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 16,
+                "last_updated": "2025-11-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.94242779999999,
+                    43.5279629
+                ]
+            },
+            "properties": {
+                "name": "Cedar Valley Cheese Store",
+                "area": "Wisconsin",
+                "address": "W3115 Jay Rd, Belgium",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469444",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8313,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    16.029259069149447,
+                    50.779632809935364
+                ]
+            },
+            "properties": {
+                "name": "Projekt Arado",
+                "area": "Poland",
+                "address": "Lubawska 1, 58-400 Kamienna Góra, Poland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8314,
+                "last_updated": "2025-11-21",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.122228654065502,
+                    51.153025260678895
+                ]
+            },
+            "properties": {
+                "name": "Karls Tregger Grill",
+                "area": "Germany",
+                "address": "Erdbeerstraße 1, 04720 Döbeln, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8315,
+                "last_updated": "2025-11-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.47550978390133,
+                    31.305941938368097
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee’s",
+                "area": "Bulgaria",
+                "address": "6900 Bucees Blvd, Brunswick, GA 31525, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8316,
+                "last_updated": "2025-11-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.3232366,
+                    35.016901700000005
+                ]
+            },
+            "properties": {
+                "name": "The International Towing & Recovery Hall of Fame & Museum",
+                "area": "Tennessee",
+                "address": "3315 Broad Street, Chattanooga",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=302681",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4195,
+                "last_updated": "2025-11-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3364522718414,
+                    29.938881962885574
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee’s - St. Augustine",
+                "area": "Florida",
+                "address": "200 World Commerce Pkwy, St. Augustine, FL 32092",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7271,
+                "last_updated": "2025-11-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0099911,
+                    29.230933499999978
+                ]
+            },
+            "properties": {
+                "name": "Ocean Walk 10 Movies (R/C Theaters)",
+                "area": "Florida",
+                "address": "250 N. Atlantic Avenue (Ocean Walk Shoppes), Daytona Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=36700",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3284,
+                "last_updated": "2025-11-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.130506,
+                    36.41304890000001
+                ]
+            },
+            "properties": {
+                "name": "North Rim Country Store",
+                "area": "Arizona",
+                "address": "6225 North Highway 67 Milepost 605, Grand Canyon National Park, North Rim",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=243067",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2629,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.99865120000001,
+                    39.961287800000015
+                ]
+            },
+            "properties": {
+                "name": "Ohio Statehouse Gift Shop",
+                "area": "Ohio",
+                "address": "Downtown Columbus, at 3rd and broad st, Columbus",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=26485",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1966,
+                "last_updated": "2025-11-23"
             }
         }
     ]
