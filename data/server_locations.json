@@ -30591,10 +30591,10 @@
                 "address": "3003 N Thanksgiving Way, Lehi",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=320267",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2074,
-                "last_updated": "2025-09-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30612,10 +30612,10 @@
                 "address": "3003 N. Thanksgiving Way, Lehi",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=261019",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2072,
-                "last_updated": "2025-09-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -36114,6 +36114,69 @@
                 "status": "unvisited",
                 "id": 2651,
                 "last_updated": "2025-11-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.942143,
+                    38.9593885
+                ]
+            },
+            "properties": {
+                "name": "Caesars Republic Lake Tahoe",
+                "area": "California",
+                "address": "Highway 50 at Stateline Ave, South Lake Tahoe",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469692",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8320,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.905531,
+                    52.4801595
+                ]
+            },
+            "properties": {
+                "name": "Birmingham Library",
+                "area": "England",
+                "address": "Birmingham, WEST MIDLANDS - Birmingham",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7166,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.1740078,
+                    50.6262544
+                ]
+            },
+            "properties": {
+                "name": "Fishermans Cottage ",
+                "area": "England",
+                "address": "Fishermans cottage, Shanklin esplanade (furthest end), Shanklin",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7477,
+                "last_updated": "2025-09-12"
             }
         }
     ]
