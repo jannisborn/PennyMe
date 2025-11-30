@@ -34072,7 +34072,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=286828",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2631,
                 "last_updated": "2025-09-12"
             }
@@ -36304,6 +36304,132 @@
                 "id": 2090,
                 "last_updated": "2025-11-30",
                 "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.2303137,
+                    34.7477705
+                ]
+            },
+            "properties": {
+                "name": "Donald W. Reynolds Recreation Center",
+                "area": "Oklahoma",
+                "address": "1005 N. Willow Street , Pauls Valley",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469823",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8323,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8252033,
+                    36.0427045
+                ]
+            },
+            "properties": {
+                "name": "Desert View Market and Deli",
+                "area": "Arizona",
+                "address": "1 AZ-64, Grand Canyon National Park, South Rim",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469840",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8324,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3147089,
+                    29.8923759
+                ]
+            },
+            "properties": {
+                "name": "Flagler College",
+                "area": "Florida",
+                "address": "74 King St, St. Augustine",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=246708",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3447,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.1713734,
+                    42.3275466
+                ]
+            },
+            "properties": {
+                "name": "Jurassic Gardens attraction",
+                "area": "Illinois",
+                "address": "27582 Volo Village Rd, Volo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469887",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8325,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8729324,
+                    43.0300026
+                ]
+            },
+            "properties": {
+                "name": "Herschell Carrousel Factory Museum",
+                "area": "New York",
+                "address": "180 Thompson St. , North Tonawanda",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469812",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8326,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.337166,
+                    42.866323
+                ]
+            },
+            "properties": {
+                "name": "National Historic Trails Interpretive Center",
+                "area": "Wyoming",
+                "address": "1501 North Poplar , Casper",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=246433",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3098,
+                "last_updated": "2025-09-12"
             }
         }
     ]
