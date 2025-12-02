@@ -8254,10 +8254,10 @@
                 "logs": {
                     "2021-11-14": "Exact GPS location is missing."
                 },
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "status": "unvisited",
                 "id": 634,
-                "last_updated": "2024-12-27"
+                "last_updated": "2025-11-23"
             }
         },
         {
@@ -23485,8 +23485,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -93.27167089999999,
-                    44.9833227
+                    -93.27167089999998,
+                    44.98332269999999
                 ]
             },
             "properties": {
@@ -23498,7 +23498,7 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3164,
-                "last_updated": "2025-07-27"
+                "last_updated": "2025-11-26"
             }
         },
         {
@@ -30148,7 +30148,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=413462",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 6271,
                 "last_updated": "2025-09-12"
             }
@@ -30168,7 +30168,7 @@
                 "address": "116 Broadway, Wisconsin Dells",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379721",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5497,
                 "last_updated": "2025-09-12"
@@ -30591,10 +30591,10 @@
                 "address": "3003 N Thanksgiving Way, Lehi",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=320267",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2074,
-                "last_updated": "2025-09-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -30612,10 +30612,10 @@
                 "address": "3003 N. Thanksgiving Way, Lehi",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=261019",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2072,
-                "last_updated": "2025-09-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34072,7 +34072,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=286828",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2631,
                 "last_updated": "2025-09-12"
             }
@@ -34747,7 +34747,7 @@
                 "type": "Point",
                 "coordinates": [
                     -111.88737860115494,
-                    40.426191605403424
+                    40.426191605403396
                 ]
             },
             "properties": {
@@ -34757,9 +34757,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 8292,
-                "last_updated": "2025-11-01"
+                "last_updated": "2025-11-24"
             }
         },
         {
@@ -35899,10 +35899,10 @@
                 "address": "250 N. Atlantic Avenue (Ocean Walk Shoppes), Daytona Beach",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=36700",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3284,
-                "last_updated": "2025-11-22"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -35945,6 +35945,554 @@
                 "status": "unvisited",
                 "id": 1966,
                 "last_updated": "2025-11-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.428591461169049,
+                    50.08010572213288
+                ]
+            },
+            "properties": {
+                "name": "Výtopna Railway Restaurant",
+                "area": "Czech Republic",
+                "address": "Václavské nám. 56/802, 110 00 Praha 1-Nové Město, Czechia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8317,
+                "last_updated": "2025-11-23",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.08674460000005,
+                    54.18468060000001
+                ]
+            },
+            "properties": {
+                "name": "Rostock-Warnemünde Westmole",
+                "area": "Germany",
+                "address": "53MP+VM Rostock, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6739,
+                "last_updated": "2025-11-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.9048689073673,
+                    32.80199420119954
+                ]
+            },
+            "properties": {
+                "name": "Mount Pleasant Memorial Waterfront Park",
+                "area": "South Carolina",
+                "address": "200 Wonder's Way, Charleston, SC 29403, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7112,
+                "last_updated": "2025-11-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.307628,
+                    55.83089099999999
+                ]
+            },
+            "properties": {
+                "name": "The Burrell Collection",
+                "area": "Scotland",
+                "address": "2060 Pollokshaws Rd, Glasgow ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=99533",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8318,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.7726717,
+                    34.9671402
+                ]
+            },
+            "properties": {
+                "name": "Fushimi-Inari Taisha (Outside)",
+                "area": "Japan",
+                "address": "46-1 Fushimi-ku, Fukakusa Inari Nakanocho, Kyoto (Fushimi-ku)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=269531",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2794,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.570529200000006,
+                    54.45522500000002
+                ]
+            },
+            "properties": {
+                "name": "Prenow Pier",
+                "area": "Germany",
+                "address": ", Prerow",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=333815",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5748,
+                "last_updated": "2025-11-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    14.128169789268789,
+                    45.81502304145681
+                ]
+            },
+            "properties": {
+                "name": "Predjama Castle",
+                "area": "Slovenia",
+                "address": "Predjama 2, 6230 Postojna, Slovenia",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8319,
+                "last_updated": "2025-11-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.20398879999999,
+                    37.007034200000014
+                ]
+            },
+            "properties": {
+                "name": "Monument Valley Trading Post (The View Hotel Gift Shop)",
+                "area": "Arizona",
+                "address": "4 miles east of Hwy 163, Monument Valley",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4514",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2651,
+                "last_updated": "2025-11-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.942143,
+                    38.9593885
+                ]
+            },
+            "properties": {
+                "name": "Caesars Republic Lake Tahoe",
+                "area": "California",
+                "address": "Highway 50 at Stateline Ave, South Lake Tahoe",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469692",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8320,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.905531,
+                    52.4801595
+                ]
+            },
+            "properties": {
+                "name": "Birmingham Library",
+                "area": "England",
+                "address": "Birmingham, WEST MIDLANDS - Birmingham",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7166,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.1740078,
+                    50.6262544
+                ]
+            },
+            "properties": {
+                "name": "Fishermans Cottage ",
+                "area": "England",
+                "address": "Fishermans cottage, Shanklin esplanade (furthest end), Shanklin",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7477,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.79890099999996,
+                    40.5614335
+                ]
+            },
+            "properties": {
+                "name": "Sol's Kit and Kaboodle Gift Shop",
+                "area": "Ohio",
+                "address": "West Main Street, Berlin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3861",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1947,
+                "last_updated": "2025-11-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.34702039999999,
+                    32.7892754
+                ]
+            },
+            "properties": {
+                "name": "Fort Worth Stockyards (horse & cattle trough)",
+                "area": "Texas",
+                "address": ", Fort Worth",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469790",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8321,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.730738,
+                    34.700914
+                ]
+            },
+            "properties": {
+                "name": "Alpine Vibes Jewelry & Rock Shop",
+                "area": "Georgia",
+                "address": "8635 N Main St, Helen",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469786",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8322,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.2373644,
+                    55.8511799
+                ]
+            },
+            "properties": {
+                "name": "People's Palace",
+                "area": "Scotland",
+                "address": "Glasgow Green, Glasgow ",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=99531",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 771,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4872906,
+                    29.425293999999994
+                ]
+            },
+            "properties": {
+                "name": "Louis Tussaud's Plaza Wax Museum",
+                "area": "Texas",
+                "address": "301 Alamo Plaza, San Antonio",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=83041",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3785,
+                "last_updated": "2025-11-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.01969789999998,
+                    41.16146939999998
+                ]
+            },
+            "properties": {
+                "name": "Hill Aerospace Museum",
+                "area": "Utah",
+                "address": "7961 Wardleigh Rd. (I-15 exit 338), Riverdale",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1682",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2090,
+                "last_updated": "2025-11-30",
+                "multimachine": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.2303137,
+                    34.7477705
+                ]
+            },
+            "properties": {
+                "name": "Donald W. Reynolds Recreation Center",
+                "area": "Oklahoma",
+                "address": "1005 N. Willow Street , Pauls Valley",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469823",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8323,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8252033,
+                    36.0427045
+                ]
+            },
+            "properties": {
+                "name": "Desert View Market and Deli",
+                "area": "Arizona",
+                "address": "1 AZ-64, Grand Canyon National Park, South Rim",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469840",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8324,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3147089,
+                    29.8923759
+                ]
+            },
+            "properties": {
+                "name": "Flagler College",
+                "area": "Florida",
+                "address": "74 King St, St. Augustine",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=246708",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3447,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.1713734,
+                    42.3275466
+                ]
+            },
+            "properties": {
+                "name": "Jurassic Gardens attraction",
+                "area": "Illinois",
+                "address": "27582 Volo Village Rd, Volo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469887",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8325,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8729324,
+                    43.0300026
+                ]
+            },
+            "properties": {
+                "name": "Herschell Carrousel Factory Museum",
+                "area": "New York",
+                "address": "180 Thompson St. , North Tonawanda",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469812",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8326,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.337166,
+                    42.866323
+                ]
+            },
+            "properties": {
+                "name": "National Historic Trails Interpretive Center",
+                "area": "Wyoming",
+                "address": "1501 North Poplar , Casper",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=246433",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3098,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.220759958248765,
+                    53.36509447671729
+                ]
+            },
+            "properties": {
+                "name": "Penny machine",
+                "area": "Netherlands",
+                "address": "Werkhaven 1, 8881 GD  West Terschelling",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8327,
+                "last_updated": "2025-12-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.3844231,
+                    49.15987639999999
+                ]
+            },
+            "properties": {
+                "name": "Centre Mondial de la Paix (World Peace Center)",
+                "area": "France",
+                "address": "Monseigneur Ginisty Place, GRAND EST / Verdun",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469928",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8328,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.1267891,
+                    43.6145842
+                ]
+            },
+            "properties": {
+                "name": "Marineland",
+                "area": "France",
+                "address": "RN 7 - 306 Av Mozart, Antibes",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=269567",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 60,
+                "last_updated": "2025-09-12"
             }
         }
     ]
