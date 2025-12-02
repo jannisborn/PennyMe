@@ -36494,6 +36494,48 @@
                 "id": 60,
                 "last_updated": "2025-09-12"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    170.7284334,
+                    -45.776181
+                ]
+            },
+            "properties": {
+                "name": "Royal Albatross Centre",
+                "area": "New Zealand",
+                "address": "1259 Harington Point Rd, Harington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8329,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.7857493,
+                    -41.2658237
+                ]
+            },
+            "properties": {
+                "name": "Interislander Ferries Aratere, Arahura, and Kaiitaki",
+                "area": "New Zealand",
+                "address": "Sails from Aotea Quay, 5 minutes north of Wellington Railway Station, Wellington to Picton",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=5597",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3885,
+                "last_updated": "2025-09-12"
+            }
         }
     ]
 }
