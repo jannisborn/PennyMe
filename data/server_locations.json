@@ -34628,10 +34628,10 @@
                 "address": "1 Hermann Circle Drive, Houston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2494",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3738,
-                "last_updated": "2025-10-29"
+                "last_updated": "2025-12-02"
             }
         },
         {
@@ -36492,6 +36492,196 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 60,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    170.7284334,
+                    -45.776181
+                ]
+            },
+            "properties": {
+                "name": "Royal Albatross Centre",
+                "area": "New Zealand",
+                "address": "1259 Harington Point Rd, Harington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8329,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.7857493,
+                    -41.2658237
+                ]
+            },
+            "properties": {
+                "name": "Interislander Ferries Aratere, Arahura, and Kaiitaki",
+                "area": "New Zealand",
+                "address": "Sails from Aotea Quay, 5 minutes north of Wellington Railway Station, Wellington to Picton",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=5597",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3885,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.235392383270488,
+                    47.42764417846306
+                ]
+            },
+            "properties": {
+                "name": "Geisterklamm Deutschland",
+                "area": "Austria",
+                "address": "Schanz 273a, 6105 Leutasch, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8330,
+                "last_updated": "2025-12-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.715845161389282,
+                    49.410097948887376
+                ]
+            },
+            "properties": {
+                "name": "Schloss Heidelberg",
+                "area": "Germany",
+                "address": "Schlosshof 1, 69117 Heidelberg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8331,
+                "last_updated": "2025-12-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.656144600000134,
+                    55.63814459999995
+                ]
+            },
+            "properties": {
+                "name": "The Blue Planet - Denmarks National Aquarium",
+                "area": "Denmark",
+                "address": "Jacob Fortlingsvej 1, Kastrup",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=228782",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 982,
+                "last_updated": "2025-12-03",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.5522559,
+                    39.8063642
+                ]
+            },
+            "properties": {
+                "name": "Extreme Go Kart Racing & Family Fun Center",
+                "area": "Missouri",
+                "address": "590 Park Lane, Chillicothe",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=382545",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5326,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.72789879999999,
+                    25.9734795
+                ]
+            },
+            "properties": {
+                "name": "Snook Inn Restaurant",
+                "area": "Florida",
+                "address": "1215 Bald Eagle Drive, Marco Island",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1709",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3380,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8610115,
+                    1.2846765
+                ]
+            },
+            "properties": {
+                "name": "Marina Bay Sands",
+                "area": "Singapore",
+                "address": "10 Bayfront Ave,, Singapore",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=294446",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3214,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2924516,
+                    22.6804143
+                ]
+            },
+            "properties": {
+                "name": "Dragon and Tiger Pagodas",
+                "area": "Taiwan",
+                "address": "No.9, Liantan Road, Kaohsiung City - Zouying District",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=333020",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2354,
                 "last_updated": "2025-09-12"
             }
         }
