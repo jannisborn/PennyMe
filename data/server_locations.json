@@ -26319,10 +26319,10 @@
                 "address": "13B Rue de Nesmond, NORMANDY - Bayeux",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=320019",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 84,
-                "last_updated": "2025-08-13"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -36893,6 +36893,27 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 4285,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.252313,
+                    49.287449
+                ]
+            },
+            "properties": {
+                "name": "Le Grand Bunker (Museum of the Atlantic Wall)",
+                "area": "France",
+                "address": "Avenue du 6 Juin, NORMANDY - Ouistreham",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470445",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8336,
                 "last_updated": "2025-09-12"
             }
         }
