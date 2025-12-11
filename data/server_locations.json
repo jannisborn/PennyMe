@@ -846,9 +846,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4647,
-                "last_updated": "2025-08-16",
+                "last_updated": "2025-12-08",
                 "paywall": false
             }
         },
@@ -26319,10 +26319,10 @@
                 "address": "13B Rue de Nesmond, NORMANDY - Bayeux",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=320019",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 84,
-                "last_updated": "2025-08-13"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -34628,10 +34628,10 @@
                 "address": "1 Hermann Circle Drive, Houston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2494",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3738,
-                "last_updated": "2025-10-29"
+                "last_updated": "2025-12-02"
             }
         },
         {
@@ -36492,6 +36492,491 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 60,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    170.7284334,
+                    -45.776181
+                ]
+            },
+            "properties": {
+                "name": "Royal Albatross Centre",
+                "area": "New Zealand",
+                "address": "1259 Harington Point Rd, Harington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=469962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8329,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.7857493,
+                    -41.2658237
+                ]
+            },
+            "properties": {
+                "name": "Interislander Ferries Aratere, Arahura, and Kaiitaki",
+                "area": "New Zealand",
+                "address": "Sails from Aotea Quay, 5 minutes north of Wellington Railway Station, Wellington to Picton",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=5597",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3885,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.235392383270488,
+                    47.42764417846306
+                ]
+            },
+            "properties": {
+                "name": "Geisterklamm Deutschland",
+                "area": "Austria",
+                "address": "Schanz 273a, 6105 Leutasch, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8330,
+                "last_updated": "2025-12-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.715845161389282,
+                    49.410097948887376
+                ]
+            },
+            "properties": {
+                "name": "Schloss Heidelberg",
+                "area": "Germany",
+                "address": "Schlosshof 1, 69117 Heidelberg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8331,
+                "last_updated": "2025-12-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.656144600000134,
+                    55.63814459999995
+                ]
+            },
+            "properties": {
+                "name": "The Blue Planet - Denmarks National Aquarium",
+                "area": "Denmark",
+                "address": "Jacob Fortlingsvej 1, Kastrup",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=228782",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 982,
+                "last_updated": "2025-12-03",
+                "multimachine": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.5522559,
+                    39.8063642
+                ]
+            },
+            "properties": {
+                "name": "Extreme Go Kart Racing & Family Fun Center",
+                "area": "Missouri",
+                "address": "590 Park Lane, Chillicothe",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=382545",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5326,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.72789879999999,
+                    25.9734795
+                ]
+            },
+            "properties": {
+                "name": "Snook Inn Restaurant",
+                "area": "Florida",
+                "address": "1215 Bald Eagle Drive, Marco Island",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1709",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3380,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8610115,
+                    1.2846765
+                ]
+            },
+            "properties": {
+                "name": "Marina Bay Sands",
+                "area": "Singapore",
+                "address": "10 Bayfront Ave,, Singapore",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=294446",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3214,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2924516,
+                    22.6804143
+                ]
+            },
+            "properties": {
+                "name": "Dragon and Tiger Pagodas",
+                "area": "Taiwan",
+                "address": "No.9, Liantan Road, Kaohsiung City - Zouying District",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=333020",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2354,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.9840996,
+                    53.4044289
+                ]
+            },
+            "properties": {
+                "name": "Bluecoat, The",
+                "area": "England",
+                "address": "School Lane, Liverpool , MERSEYSIDE - Liverpool",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470249",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8332,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.0524683,
+                    47.1808273
+                ]
+            },
+            "properties": {
+                "name": "l'Abbaye Royale de Fontevraud",
+                "area": "France",
+                "address": "Fontevraud-l'Abbaye,, Saumur",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=287708",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 113,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.082259,
+                    47.2626194
+                ]
+            },
+            "properties": {
+                "name": "Musée de la Cavalerie",
+                "area": "France",
+                "address": "Place Charles de Foucauld, Saumur",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=283414",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 114,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.63245424843173,
+                    41.92068000135716
+                ]
+            },
+            "properties": {
+                "name": "Penny press- primate house",
+                "area": "Illinois",
+                "address": "2001 N Clark St Chicago, IL  60614 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8333,
+                "last_updated": "2025-12-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.18963301230731,
+                    34.24820669554025
+                ]
+            },
+            "properties": {
+                "name": "Lake Arrowhead Tattoo",
+                "area": "California",
+                "address": "318 CA-173, Lake Arrowhead, CA 92352",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=418466",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6988,
+                "last_updated": "2025-12-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.91398954980694,
+                    34.240092262761614
+                ]
+            },
+            "properties": {
+                "name": "Stupidiotic Factory Outlet",
+                "area": "California",
+                "address": "40700 Village Dr, Big Bear Lake, CA 92315, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8334,
+                "last_updated": "2025-12-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.7945929999999592,
+                    51.562477099999995
+                ]
+            },
+            "properties": {
+                "name": "Steam Museum Of The Great Western Railways",
+                "area": "England",
+                "address": "Fire Fly Avenue, WILTSHIRE - Swindon",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=107478",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1603,
+                "last_updated": "2025-12-07",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.039262714842966,
+                    47.49597290530751
+                ]
+            },
+            "properties": {
+                "name": "Castle district near fountain",
+                "area": "Hungary",
+                "address": "Budapest, Szent György tér 4-5-6, 1014 Hungary",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8335,
+                "last_updated": "2025-12-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.157134099999975,
+                    52.30278670000001
+                ]
+            },
+            "properties": {
+                "name": "Burg Bentheim",
+                "area": "Germany",
+                "address": "Schlossstrasse",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=88074",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 412,
+                "last_updated": "2025-12-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.555183,
+                    35.788432
+                ]
+            },
+            "properties": {
+                "name": "Try My Nuts",
+                "area": "Tennessee",
+                "address": "100 Old Mill Ave, Pigeon Forge",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=318206",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4285,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.252313,
+                    49.287449
+                ]
+            },
+            "properties": {
+                "name": "Le Grand Bunker (Museum of the Atlantic Wall)",
+                "area": "France",
+                "address": "Avenue du 6 Juin, NORMANDY - Ouistreham",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470445",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8336,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.09578000000005,
+                    45.81917
+                ]
+            },
+            "properties": {
+                "name": "La Bottega di Alice - not in store.  To the left on the way to the funicular",
+                "area": "Italy",
+                "address": "Piazza Bonacossa, 8,",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=310929",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 906,
+                "last_updated": "2025-12-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.017156,
+                    48.534184
+                ]
+            },
+            "properties": {
+                "name": "Friday Harbor Drugs",
+                "area": "Washington",
+                "address": "210 W, Spring ST, Friday Harbor on San Juan Island",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470512",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8337,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.7421115,
+                    48.5814679
+                ]
+            },
+            "properties": {
+                "name": "Artal Souvenirs",
+                "area": "France",
+                "address": "31 Rue du Bain aux Plantes, GRAND EST / ALSACE - Strasbourg ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=84455",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8338,
                 "last_updated": "2025-09-12"
             }
         }
