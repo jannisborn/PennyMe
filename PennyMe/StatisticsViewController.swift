@@ -165,8 +165,13 @@ class StatisticsViewController: UIViewController {
         // if percent: sort by percentage
         if mode != "absolute" {
             topFiveCountries = visitedByArea.sorted {
-                let percentage1 = Double($0.value) / Double(machinesByArea[$0.key] ?? 1)
-                let percentage2 = Double($1.value) / Double(machinesByArea[$1.key] ?? 1)
+                // ensure it is at least 1
+                let totalMachines1 = max(machinesByArea[$0.key] ?? 0, 1)
+                let totalMachines2 = max(machinesByArea[$1.key] ?? 0, 1)
+                // compute percentage
+                let percentage1 = Double($0.value) / Double(totalMachines1)
+                let percentage2 = Double($1.value) / Double(totalMachines2)
+
                 return percentage1 > percentage2
             }.prefix(5)
         }
@@ -185,7 +190,8 @@ class StatisticsViewController: UIViewController {
                 barValue = Double(country.value)
             }
             else {
-                barValue = Double(country.value) / Double(machinesByArea[country.key]!) * 100
+                let totalMachinesCountry = max(machinesByArea[country.key] ?? 0, 1)
+                barValue = Double(country.value) / Double(totalMachinesCountry) * 100
             }
             let entry = BarChartDataEntry(x: Double(index), y: barValue)
             
