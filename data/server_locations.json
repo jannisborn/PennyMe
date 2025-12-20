@@ -8318,9 +8318,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=447209",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7687,
-                "last_updated": "2025-12-16"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -37484,6 +37484,27 @@
                 "status": "unvisited",
                 "id": 5367,
                 "last_updated": "2025-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.8663398,
+                    38.0511983
+                ]
+            },
+            "properties": {
+                "name": "Point Reyes National Seashore",
+                "area": "California",
+                "address": "1 Bear Valley Road, Point Reyes Station",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=258955",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4739,
+                "last_updated": "2025-09-12"
             }
         }
     ]
