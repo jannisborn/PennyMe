@@ -434,7 +434,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -121.8897436,
+                    -121.88974360000002,
                     37.33230210000001
                 ]
             },
@@ -445,9 +445,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=227234",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6125,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-12-14"
             }
         },
         {
@@ -3464,7 +3464,7 @@
                 "type": "Point",
                 "coordinates": [
                     9.188481792554901,
-                    45.464400255252706
+                    45.464400255252734
                 ]
             },
             "properties": {
@@ -3474,9 +3474,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=434169",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7282,
-                "last_updated": "2025-04-18"
+                "last_updated": "2025-12-13"
             }
         },
         {
@@ -3726,10 +3726,10 @@
                 "address": "604 N Adams St, Welsh",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=378078",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5174,
-                "last_updated": "2025-06-01"
+                "last_updated": "2025-12-17"
             }
         },
         {
@@ -5053,10 +5053,10 @@
                 "address": "323 Opry Mills Drive, Nashville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2615",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4250,
-                "last_updated": "2024-10-22"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -7361,9 +7361,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=446118",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7661,
-                "last_updated": "2025-07-17"
+                "last_updated": "2025-12-17"
             }
         },
         {
@@ -8308,7 +8308,7 @@
                 "type": "Point",
                 "coordinates": [
                     -118.3392957,
-                    34.1012704
+                    34.10127039999999
                 ]
             },
             "properties": {
@@ -8320,7 +8320,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7687,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -10241,11 +10241,11 @@
                 "area": "Austria",
                 "address": "Weiherburggasse 35, 6020 Innsbruck, Austria",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470908",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7730,
-                "last_updated": "2025-02-08"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -15770,20 +15770,21 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    103.9899436,
-                    1.358604
+                    103.98994359999999,
+                    1.3586039999999675
                 ]
             },
             "properties": {
                 "name": "Changi Airport",
                 "area": "Singapore",
-                "address": "60 Airport Blvd, Singapore ",
+                "address": "60 Airport Blvd, Singapore",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=455196",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7859,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-12-20",
+                "paywall": true
             }
         },
         {
@@ -16515,11 +16516,11 @@
                 "area": "Georgia",
                 "address": "Welcome to Georgia",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470543",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7881,
-                "last_updated": "2025-05-24"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -19405,7 +19406,7 @@
                 "address": "106 East Elkhorn Ave , Estes Park",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=342834",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1856,
                 "last_updated": "2025-09-12"
@@ -21889,8 +21890,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    120.9187827,
-                    23.8753852
+                    120.91942973449812,
+                    23.87740185108495
                 ]
             },
             "properties": {
@@ -21900,9 +21901,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=460982",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 8006,
-                "last_updated": "2025-07-06"
+                "last_updated": "2025-12-21"
             }
         },
         {
@@ -22036,8 +22037,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.7122366,
-                    42.1956642
+                    -122.71223660000003,
+                    42.19566419999997
                 ]
             },
             "properties": {
@@ -22049,7 +22050,7 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5214,
-                "last_updated": "2025-07-27"
+                "last_updated": "2025-12-12"
             }
         },
         {
@@ -35137,10 +35138,10 @@
                 "address": "120 East Broadway, Bloomington",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3081",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3138,
-                "last_updated": "2025-11-09"
+                "last_updated": "2025-12-18"
             }
         },
         {
@@ -36978,6 +36979,618 @@
                 "machine_status": "available",
                 "id": 8338,
                 "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.09485630000000426,
+                    51.5302888
+                ]
+            },
+            "properties": {
+                "name": "Navid Nuur Exhibition, Parasol Exhibition Unit",
+                "area": "England",
+                "address": "14 Wharf Rd  , LONDON - Islington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=182754",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1469,
+                "last_updated": "2025-12-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.869059,
+                    45.9185177
+                ]
+            },
+            "properties": {
+                "name": "SNC Les Sonnettes (Souvenirs Cadeaux)",
+                "area": "France",
+                "address": "174 Place Edmond Desailloud, AUVERGNE-RHôNE-ALPES - Chamonix",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=144101",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8339,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    128.56660552325476,
+                    35.85332169526201
+                ]
+            },
+            "properties": {
+                "name": "Daegu 83 Tower（83타워）",
+                "area": "South Korea",
+                "address": "200 Duryugongwon-ro, Dalseo District, Daegu, South Korea",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8340,
+                "last_updated": "2025-12-12",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.35086849999998,
+                    39.41227239999996
+                ]
+            },
+            "properties": {
+                "name": "Skunk Train Depot",
+                "area": "California",
+                "address": "299 East Commercial Street, Willits",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=10514",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 4891,
+                "last_updated": "2025-12-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2542375,
+                    36.6423739
+                ]
+            },
+            "properties": {
+                "name": "Trump Store",
+                "area": "Missouri",
+                "address": "1910 W 76 Country Blvd,, Branson",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470683",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8341,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.23227,
+                    44.373254
+                ]
+            },
+            "properties": {
+                "name": "Shelburne Museum",
+                "area": "Vermont",
+                "address": "6000 Shelburne Road, Shelburne",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1662",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1276,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.4720357,
+                    -21.1332178
+                ]
+            },
+            "properties": {
+                "name": "Archipel des Métiers d'Art",
+                "area": "France",
+                "address": "82 rue du père Boiteau , Cilaos",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=340101",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5645,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.02020479999997,
+                    29.547321899999993
+                ]
+            },
+            "properties": {
+                "name": "Kemah Boardwalk Aquarium - Restaurant",
+                "area": "Texas",
+                "address": "11 Kemah Waterfront St , Kemah",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=66674",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6192,
+                "last_updated": "2025-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.01904819999999,
+                    29.548005600000007
+                ]
+            },
+            "properties": {
+                "name": "Kemah Boardwalk - Bubba Gump Shrimp Company",
+                "area": "Texas",
+                "address": "#5 Kemah Boardwalk, Kemah",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=253730",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3747,
+                "last_updated": "2025-12-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.203028,
+                    40.0261844
+                ]
+            },
+            "properties": {
+                "name": "Amish House and Farm ",
+                "area": "Pennsylvania",
+                "address": "2395 Covered Bridge Drive, Lancaster",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470701",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8342,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.222891199999999,
+                    52.9147814
+                ]
+            },
+            "properties": {
+                "name": "Avondale Treetop Walk",
+                "area": "Ireland",
+                "address": "Beyond the Trees Avondale Avondale, Forest Park, Avondale, Rathdrum, Co. Wicklow, A67 P303, Ireland, County Wicklow - Rathdrum",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470694",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8343,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.5292640548045682,
+                    52.652443715554476
+                ]
+            },
+            "properties": {
+                "name": "The Gruffalo discovery land",
+                "area": "England",
+                "address": "Windows on The Wild, Twycross Zoo, Burton Rd, Little Orton, Atherstone CV9 3PX, UK",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8344,
+                "last_updated": "2025-12-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.2953516680646,
+                    35.236944424369526
+                ]
+            },
+            "properties": {
+                "name": "Brass Lantern",
+                "area": "Tennessee",
+                "address": "2290 Pulaski hwy Lawrenceburg,TN 38464",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8345,
+                "last_updated": "2025-12-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    147.97338940000003,
+                    -37.88232649999998
+                ]
+            },
+            "properties": {
+                "name": "Lakes Entrance Visitor Information Centre",
+                "area": "Australia",
+                "address": "2 Marine Parade, Lakes Entrance, Victoria, 3909, VIC - Lakes Entrance",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=399449",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6285,
+                "last_updated": "2025-12-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.23074830000003,
+                    39.83007989999998
+                ]
+            },
+            "properties": {
+                "name": "Antique Center of Gettysburg",
+                "area": "Pennsylvania",
+                "address": "30 Baltimore Street, Gettysburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3857",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3979,
+                "last_updated": "2025-12-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4924151,
+                    28.3870146
+                ]
+            },
+            "properties": {
+                "name": "Vineland Premium Outlet Mall, Disney's Character Warehouse (Outlet)",
+                "area": "Florida",
+                "address": "8200 Vineland Ave, Orlando",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=396651",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6179,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.3539086,
+                    43.2163404
+                ]
+            },
+            "properties": {
+                "name": "La 7eme Porte (The 7th door)",
+                "area": "France",
+                "address": "13 Bis rue Porte d'aude, OCCTAINE - Carcassonne",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=11491",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8346,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.3444831,
+                    48.2494853
+                ]
+            },
+            "properties": {
+                "name": "Château du Haut-Knigsbourg",
+                "area": "France",
+                "address": ", Orschwiller",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=84456",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8347,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.0710706,
+                    43.0922744
+                ]
+            },
+            "properties": {
+                "name": "Hersey's Chocolate World",
+                "area": "Canada",
+                "address": "5701 Falls Ave,  Niagara Falls",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470902",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8348,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.2619532,
+                    43.7101728
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe Nice",
+                "area": "France",
+                "address": "5 Prom. des Anglais, 06000 Nice, France",
+                "status": "retired",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6307,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.5794406,
+                    36.902722299999965
+                ]
+            },
+            "properties": {
+                "name": "Iron Rail Inn",
+                "area": "New Mexico",
+                "address": "501 Terrace Ave, Chama",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=294208",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4920,
+                "last_updated": "2025-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.985414609645233,
+                    53.54154615414564
+                ]
+            },
+            "properties": {
+                "name": "Philharmonie",
+                "area": "Germany",
+                "address": "Am Kaiserkai 60-62, 20457 Hamburg, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8349,
+                "last_updated": "2025-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.46291848785013,
+                    38.572995960699295
+                ]
+            },
+            "properties": {
+                "name": "Museum of transportation",
+                "area": "Missouri",
+                "address": "2933 Barrett Station Rd, St. Louis, MO 63122, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8350,
+                "last_updated": "2025-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.31151870000001,
+                    29.897861799999994
+                ]
+            },
+            "properties": {
+                "name": "Castillo de San Marcos",
+                "area": "Florida",
+                "address": "1 South Castillo Drive Saint Augustine , FL 32084 , St. Augustine",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=378783",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5367,
+                "last_updated": "2025-12-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.8663398,
+                    38.0511983
+                ]
+            },
+            "properties": {
+                "name": "Point Reyes National Seashore",
+                "area": "California",
+                "address": "1 Bear Valley Road, Point Reyes Station",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=258955",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4739,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.93021293081084,
+                    23.848925934648513
+                ]
+            },
+            "properties": {
+                "name": "Outside You Tan souvenir shop at Sun Moon Lake",
+                "area": "Taiwan",
+                "address": "No. 21, Shuishalian St, Yuchi Township, Nantou County, Taiwan 555",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8351,
+                "last_updated": "2025-12-21",
+                "multimachine": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.445815123731357,
+                    51.928398300358204
+                ]
+            },
+            "properties": {
+                "name": "Diergaarde Blijdorp Rotterdam Zoo Oceanium",
+                "area": "Netherlands",
+                "address": "Blijdorplaan 8, 3039 KE Rotterdam, Netherlands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8352,
+                "last_updated": "2025-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.444074391383086,
+                    51.927930676175656
+                ]
+            },
+            "properties": {
+                "name": "Diergaarde Blijdorp Rotterdam Zoo, Zee van Zoovenirs",
+                "area": "Netherlands",
+                "address": "Blijdorplaan 8, Rotterdam",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=30838",
+                "internal_url": "null",
+                "multimachine": 1,
+                "machine_status": "available",
+                "id": 224,
+                "last_updated": "2025-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.31316869999998,
+                    29.89450090000001
+                ]
+            },
+            "properties": {
+                "name": "St. George's Row Shops",
+                "area": "Florida",
+                "address": "106 St. George St., St. Augustine",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1553",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3457,
+                "last_updated": "2025-12-21"
             }
         }
     ]
