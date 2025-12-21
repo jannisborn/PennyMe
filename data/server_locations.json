@@ -32564,10 +32564,10 @@
                 "address": "1501 Broadway, New York City (Manhattan)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=50372",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3041,
-                "last_updated": "2025-10-06"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -37591,6 +37591,27 @@
                 "status": "unvisited",
                 "id": 3457,
                 "last_updated": "2025-12-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.7487466,
+                    47.4664908
+                ]
+            },
+            "properties": {
+                "name": "Basilique de Vézelay (Vézelay Basilica)",
+                "area": "France",
+                "address": "24 Rue Saint-Pierre, BOURGOGNE-FRANCHE-COMTÉ - Vèzelay ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470952",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8353,
+                "last_updated": "2025-09-12"
             }
         }
     ]
