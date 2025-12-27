@@ -5835,10 +5835,10 @@
                 "address": "155 allée du phare, Saint Clement des Baleines",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=339934",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5663,
-                "last_updated": "2024-10-30"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -38336,6 +38336,27 @@
                 "machine_status": "available",
                 "id": 8367,
                 "last_updated": "2025-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.66932489999999,
+                    27.765015
+                ]
+            },
+            "properties": {
+                "name": "Worlds Greatest Gift Shop ",
+                "area": "Florida",
+                "address": "2631 6th Ave S, St. Petersburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=471336",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8368,
+                "last_updated": "2025-09-12"
             }
         }
     ]
