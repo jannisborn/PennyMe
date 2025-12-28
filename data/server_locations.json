@@ -38386,8 +38386,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.047642206256214,
-                    47.795020369556184
+                    13.046659430019437,
+                    47.795249159336194
                 ]
             },
             "properties": {
@@ -38396,10 +38396,11 @@
                 "address": "Gift Shop, Courtyard",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=888",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1003,
-                "last_updated": "2025-12-28"
+                "last_updated": "2025-12-28",
+                "paywall": false
             }
         }
     ]
