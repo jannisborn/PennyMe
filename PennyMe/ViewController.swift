@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
     
-    @IBOutlet weak var settingsbutton: UIButton!
+    @IBOutlet weak var newMachineButton: UIButton!
     
     let regionInMeters: Double = 10000
     // Array for annotation database
@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 action: #selector(didTapSettings)
             )
         // new machine button
-         setupRoundIconButton(settingsbutton, systemName: "plus.circle", action: #selector(segueNewMachine))
+         setupRoundIconButton(newMachineButton, systemName: "plus.circle", action: #selector(segueNewMachine))
         // user stats button
         setupRoundIconButton(userStatsButton, systemName: "person.circle")
         // toggle map button
