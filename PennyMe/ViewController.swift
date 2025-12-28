@@ -120,14 +120,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         loadInitialData()
         addAnnotationsIteratively()
 
-        let button = UIButton()
-        button.frame = CGRect(x: 150, y: 150, width: 100, height: 50)
-        self.view.addSubview(button)
-        
-        addMapTrackingButton()
-        addSettingsButton()
-        toggleMapTypeButton()
-        initUserStatsButton()
+        // addMapTracking Button
+        setupRoundIconButton(
+            ownLocation,
+            systemName: "location",
+            action: #selector(centerMapOnUserButtonClicked)
+        )
+        // settings button
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "gearshape"),
+                style: .plain,
+                target: self,
+                action: #selector(didTapSettings)
+            )
+        // new machine button
+         setupRoundIconButton(settingsbutton, systemName: "plus.circle", action: #selector(segueNewMachine))
+        // user stats button
+        setupRoundIconButton(userStatsButton, systemName: "person.circle")
+        // toggle map button
+        setupRoundIconButton(toggleMapButton, systemName: "square.stack.3d.up.fill", action: #selector(changeMapType))
+
         
         // long gesture recognizer
         let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
@@ -150,6 +162,58 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
         self.newMachineAnnotation.append(annotation)
     }
+    
+    private func applyRoundIconButtonStyle(_ button: UIButton) {
+        // Common visuals
+        button.setTitle(nil, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.clipsToBounds = true
+        button.imageView?.contentMode = .scaleAspectFit
+
+        // Shadow (same for all)
+        button.layer.shadowColor = UIColor(white: 0.0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 0.0
+        button.layer.masksToBounds = false // required for shadow
+    }
+
+    private func setupRoundIconButton(
+        _ button: UIButton,
+        systemName: String,
+        action: Selector? = nil,
+    ) {
+        applyRoundIconButtonStyle(button)
+
+        let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large)
+        let image = UIImage(systemName: systemName, withConfiguration: config)
+        button.setImage(image, for: .normal)
+        button.tintColor = .black
+
+        if let action {
+            button.addTarget(self, action: action, for: .touchUpInside)
+        }
+
+        PennyMap.addSubview(button)
+    }
+
+    
+    @objc func segueNewMachine(sender: UIButton) {
+        if #available(iOS 14.0, *) {
+            // center on current location
+            if let coordinate = PennyMe.locationManager.location?.coordinate{
+                let swiftUIViewController = UIHostingController(rootView: NewMachineFormView(coordinate: coordinate)
+                )
+                present(swiftUIViewController, animated: true)
+            }
+        }
+    }
+    
+    @objc private func didTapSettings() {
+        performSegue(withIdentifier: "ShowSettingsViewController", sender: self)
+       }
+
     
     func removeNewMachinePin() -> Void {
         if !newMachineAnnotation.isEmpty {
@@ -226,84 +290,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         locationResult.dataSource = self
         searchController.searchBar.delegate = self
     }
-    
-    
-    // center to own location
-    func addMapTrackingButton(){
-        let image = UIImage(systemName: "location", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .bold, scale: .large))?.withTintColor(.white)
-        ownLocation.backgroundColor = .white
-        ownLocation.layer.cornerRadius = 0.5 * ownLocation.bounds.size.width
-        ownLocation.clipsToBounds = true
-        ownLocation.setImage(image, for: .normal)
-        ownLocation.imageView?.contentMode = .scaleAspectFit
-        ownLocation.addTarget(self, action: #selector(ViewController.centerMapOnUserButtonClicked), for: .touchUpInside)
-        
-        // Add shadow
-        ownLocation.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        ownLocation.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        ownLocation.layer.shadowOpacity = 1.0
-        ownLocation.layer.shadowRadius = 0.0
-        ownLocation.layer.masksToBounds = false
-        
-        PennyMap.addSubview(ownLocation)
-    }
-    
-    func addSettingsButton(){
-        let image = UIImage(systemName: "gearshape", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.gray)
-        settingsbutton.backgroundColor = .white
-        settingsbutton.layer.cornerRadius = 0.5 * settingsbutton.bounds.size.width
-        settingsbutton.clipsToBounds = true
-        settingsbutton.setImage(image, for: .normal)
-        settingsbutton.imageView?.contentMode = .scaleAspectFit
 
-        // Add shadow
-        settingsbutton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        settingsbutton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        settingsbutton.layer.shadowOpacity = 1.0
-        settingsbutton.layer.shadowRadius = 0.0
-        settingsbutton.layer.masksToBounds = false
-
-        PennyMap.addSubview(settingsbutton)
-    }
     
-    func initUserStatsButton(){
-        let image = UIImage(systemName: "person.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large))?.withTintColor(.gray)
-        userStatsButton.tintColor = .black
-        userStatsButton.backgroundColor = .white
-        userStatsButton.layer.cornerRadius = 0.5 * userStatsButton.bounds.size.width
-        userStatsButton.clipsToBounds = true
-        userStatsButton.setImage(image, for: .normal)
-        userStatsButton.imageView?.contentMode = .scaleAspectFit
-
-        // Add shadow
-        userStatsButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        userStatsButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        userStatsButton.layer.shadowOpacity = 1.0
-        userStatsButton.layer.shadowRadius = 0.0
-        userStatsButton.layer.masksToBounds = false
-        
-        PennyMap.addSubview(userStatsButton)
-        
-    }
-    
-    func toggleMapTypeButton(){
-        
-        var toggleMapImage:UIImage = UIImage(named: "map_symbol_without_border")!
-        toggleMapImage = toggleMapImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        toggleMapButton.setImage(toggleMapImage, for: .normal)
-        toggleMapButton.imageView?.contentMode = .scaleAspectFit
-        toggleMapButton.addTarget(self, action: #selector(changeMapType), for: .touchUpInside)
-        
-        // Add shadow
-        toggleMapButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        toggleMapButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        toggleMapButton.layer.shadowOpacity = 1.0
-        toggleMapButton.layer.shadowRadius = 0.0
-        toggleMapButton.layer.masksToBounds = false
-        toggleMapButton.layer.cornerRadius = 4.0
-        
-        self.view.addSubview(toggleMapButton)
-    }
 
     @objc func centerMapOnUserButtonClicked() {
         self.PennyMap.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
