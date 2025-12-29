@@ -21,7 +21,7 @@ jobs:
     - name: Install uv and dependencies
       run: |
         python -m pip install --upgrade uv
-        uv sync
+        cd backend && uv sync && cd ..
 
     - name: Check code formatting with black
       run: uv run black --check .
