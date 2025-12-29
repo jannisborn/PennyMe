@@ -240,7 +240,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             self.performSegue(withIdentifier: "bigImage", sender: self)
         }
         else{
-            chooseImage()
+            presentUploadAlert(highlighting: "machine")
         }
     }
     
@@ -420,32 +420,57 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    func chooseImage() {
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            // Create the alert controller
-            let alertController = UIAlertController(title: "Attention!", message: "Your image will be shown to all users of the app! Please be considerate. Upload an image of the penny machine, not just an image of a coin. With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.", preferredStyle: .alert)
+    func presentUploadAlert(highlighting word: String) {
+        guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else { return }
 
-            // Create the OK action
-            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                // Show the image picker
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .photoLibrary
-                imagePicker.allowsEditing = false
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-
-            // Create the cancel action
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-            }
-
-            // Add the actions to the alert controller
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
-
-            // Present the alert controller
-            self.present(alertController, animated: true, completion: nil)
+        // Choose central line depending on which word is highlighted
+        let centralLine: String
+        switch word.lowercased() {
+        case "machine":
+            centralLine = "Upload an image of the penny machine, not an image of a coin."
+        case "coin":
+            centralLine = "Upload an image of a pressed coin, not an image of the machine."
+        default:
+            centralLine = "Upload an image related to the pressed penny machine."
         }
+
+        // Full message
+        let message = """
+        Your image will be shown to all users of the app! Please be considerate.
+        \(centralLine)
+        With the upload, you grant the PennyMe team the unrestricted right to process, alter, share, distribute and publicly expose this image.
+        """
+
+        let alertController = UIAlertController(title: "Attention!", message: nil, preferredStyle: .alert)
+
+        // Attributed message with the chosen word in bold
+        let attributedMessage = NSMutableAttributedString(string: message)
+
+        if let range = message.range(of: word, options: .caseInsensitive) {
+            let nsRange = NSRange(range, in: message)
+            attributedMessage.addAttribute(.font,
+                                           value: UIFont.boldSystemFont(ofSize: 13),
+                                           range: nsRange)
+        }
+
+        alertController.setValue(attributedMessage, forKey: "attributedMessage")
+
+        // OK action → open picker
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+
+        // Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        self.present(alertController, animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
