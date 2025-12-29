@@ -22,7 +22,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var updatedLabel: UILabel! // this is actually the comment label
     @IBOutlet weak var statusPicker: UISegmentedControl!
     @IBOutlet weak var websiteCell: UITableViewCell!
-    @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var multiButton: UIButton!
@@ -32,6 +31,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var lastUpdatedLabel: UILabel!
     @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var machineStatusButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -50,6 +50,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     var imagePicker = UIImagePickerController()
     
+    var imageList: [UIImage] = []
+    private var pendingImageIndex: Int?
+    
     var artwork: Artwork? {
       didSet {
         configureView()
@@ -63,9 +66,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
+        overrideUserInterfaceStyle = .light
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -137,13 +138,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             subView.layer.zPosition = -1
             subView.alpha = 0.2
         }
-
-        // load image asynchronously
-        self.imageview.getImage(id: self.pinData.id)
-        // initialize tap gesture to enlarge image
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)));
-        self.imageview.isUserInteractionEnabled = true
-        self.imageview.addGestureRecognizer(tapGestureRecognizer)
         
         paywallButton.isHidden = true
         multiButton.isHidden = true
@@ -152,6 +146,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
         if self.pinData.multimachine > 1 {
             addMultimachineButton()
+        }
+        
+        // scroll view
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(pinData.numCoins + 1), height: scrollView.frame.height)
+        
+        // load images asynchronously
+        for photoInd in Range(0...pinData.numCoins) {
+            getImage(photoInd: photoInd)
         }
     }
     
@@ -233,16 +238,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 task.resume()
             }
         }
-    
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        if FOUNDIMAGE{
-            self.performSegue(withIdentifier: "bigImage", sender: self)
-        }
-        else{
-            presentUploadAlert(highlighting: "machine")
-        }
-    }
     
     func configureView() {
       if let artwork = artwork,
@@ -427,9 +422,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         let centralLine: String
         switch word.lowercased() {
         case "machine":
-            centralLine = "Upload an image of the penny machine, not an image of a coin."
+            centralLine = "Upload an image of the penny MACHINE, not an image of a coin."
         case "coin":
-            centralLine = "Upload an image of a pressed coin, not an image of the machine."
+            centralLine = "Upload an image of a pressed COIN, not an image of the machine."
         default:
             centralLine = "Upload an image related to the pressed penny machine."
         }
@@ -445,13 +440,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
         // Attributed message with the chosen word in bold
         let attributedMessage = NSMutableAttributedString(string: message)
-
-        if let range = message.range(of: word, options: .caseInsensitive) {
-            let nsRange = NSRange(range, in: message)
-            attributedMessage.addAttribute(.font,
-                                           value: UIFont.boldSystemFont(ofSize: 13),
-                                           range: nsRange)
-        }
 
         alertController.setValue(attributedMessage, forKey: "attributedMessage")
 
@@ -551,11 +539,15 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             return
         }
     
-
+        // get index of selected image
+        let coinIdx = pendingImageIndex ?? -1
+        
         // call flask method to upload the image
-        guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)") else {
+        guard let url = URL(string: flaskURL+"/upload_image?id=\(self.pinData.id)&coin_idx=\(coinIdx)") else {
             return
         }
+        
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
 
@@ -704,36 +696,83 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "bigImage") {
             let destinationViewController = segue.destination as! ZoomViewController
-            destinationViewController.image = self.imageview.image
-        }
+            destinationViewController.images = imageList
+            let currentPosition = scrollView.contentOffset.x / scrollView.frame.width
+            destinationViewController.scrollPosition = currentPosition        }
         
     }
     
-}
+    func getImage(photoInd: Int) {
+        let urlString: String = {
+            if photoInd > 0 {
+                // NOTE: you probably want ".jpg" here too (same as base)
+                return "\(imageURL)/\(pinData.id)_coin_\(photoInd-1).jpg"
+            } else {
+                return "\(imageURL)/\(pinData.id).jpg"
+            }
+        }()
 
-extension UIImageView {
-    func loadURL(url: URL) {
-        FOUNDIMAGE = false
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                    FOUNDIMAGE = true
+        guard let url = URL(string: urlString) else { return }
+
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            let downloadedImage: UIImage? = {
+                guard let data = try? Data(contentsOf: url) else { return nil }
+                return UIImage(data: data)
+            }()
+
+            DispatchQueue.main.async {
+                guard let self else { return }
+
+                let action: Selector
+                let finalImage: UIImage
+                if let downloadedImage {
+                    finalImage = downloadedImage
+                    action = #selector(self.enlargeImage(tapGestureRecognizer:))
+                    self.imageList.append(downloadedImage)
+                } else {
+                    // pick default
+                    let isCoin = urlString.contains("coin")
+                    finalImage = UIImage(named: isCoin ? "coin_image" : "machine_image")!
+                    action = isCoin ? #selector(self.startNewCoinUpload(tapGestureRecognizer:)) : #selector(self.startNewMachineUpload(tapGestureRecognizer:))
                 }
+
+                self.addImageToScrollView(image: finalImage, img_idx: photoInd, action: action)
             }
         }
-        // If link cannot be found, show default image
-        if !FOUNDIMAGE {
-            self.image = UIImage(named: "default_image")
-        }
+    }
+
+    
+    func addImageToScrollView(image: UIImage, img_idx: Int, action: Selector) {
+        let imageView = UIImageView(image: image)
+        imageView.tag = img_idx
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: action)
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFit
+        
+        scrollView.addSubview(imageView)
+        layoutImageView(imageView, index: img_idx)
     }
     
-    func getImage(id: String){
-        let link_to_image = "http://37.120.179.15:8000/\(id).jpg"
-        guard let imageUrl = URL(string: link_to_image) else { return }
-        self.loadURL(url: imageUrl)
+    func layoutImageView(_ imageView: UIImageView, index: Int) {
+            let xPosition = view.frame.width * CGFloat(index)
+            imageView.frame = CGRect(x: xPosition, y: 0, width: view.frame.width, height: scrollView.frame.height)
+        }
+    
+    @objc func enlargeImage(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.performSegue(withIdentifier: "bigImage", sender: self)
+    }
+    @objc func startNewCoinUpload(tapGestureRecognizer: UITapGestureRecognizer) {
+        // get index of tapped image
+        guard let tappedView = tapGestureRecognizer.view else { return }
+        pendingImageIndex = tappedView.tag - 1
+        presentUploadAlert(highlighting: "coin")
+    }
+    @objc func startNewMachineUpload(tapGestureRecognizer: UITapGestureRecognizer) {
+        // get index of tapped image
+        guard let tappedView = tapGestureRecognizer.view else { return }
+        pendingImageIndex = tappedView.tag - 1
+        presentUploadAlert(highlighting: "machine")
     }
 }
-
