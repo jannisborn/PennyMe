@@ -721,54 +721,49 @@ wheels = [
 name = "pennyme"
 source = { editable = "." }
 dependencies = [
+    { name = "black" },
     { name = "bs4" },
     { name = "flask" },
     { name = "geopandas" },
     { name = "googlemaps" },
     { name = "haversine" },
+    { name = "isort" },
     { name = "loguru" },
     { name = "numba" },
     { name = "overpy" },
     { name = "pandas" },
     { name = "pillow" },
+    { name = "pre-commit" },
     { name = "rembg", extra = ["cpu"] },
     { name = "requests" },
+    { name = "ruff" },
     { name = "slack" },
     { name = "thefuzz" },
     { name = "tqdm" },
 ]
 
-[package.optional-dependencies]
-dev = [
-    { name = "black" },
-    { name = "isort" },
-    { name = "pre-commit" },
-    { name = "ruff" },
-]
-
 [package.metadata]
 requires-dist = [
-    { name = "black", marker = "extra == 'dev'", specifier = ">=24.1.1" },
+    { name = "black", specifier = ">=24.1.1" },
     { name = "bs4" },
     { name = "flask" },
     { name = "geopandas" },
     { name = "googlemaps" },
     { name = "haversine" },
-    { name = "isort", marker = "extra == 'dev'", specifier = ">=5.9.3" },
+    { name = "isort", specifier = ">=5.9.3" },
     { name = "loguru" },
     { name = "numba", specifier = ">=0.62" },
     { name = "overpy" },
     { name = "pandas" },
     { name = "pillow" },
-    { name = "pre-commit", marker = "extra == 'dev'" },
+    { name = "pre-commit" },
     { name = "rembg", extras = ["cpu"], specifier = ">=2.0.69" },
     { name = "requests" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = "==0.1.6" },
+    { name = "ruff", specifier = "==0.1.6" },
     { name = "slack" },
     { name = "thefuzz" },
     { name = "tqdm" },
 ]
-provides-extras = ["dev"]
 
 [[package]]
 name = "pillow"

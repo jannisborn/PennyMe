@@ -24,8 +24,12 @@ jobs:
         cd backend && uv sync && cd ..
 
     - name: Check code formatting with black
-      run: uv run black --check .
+      run: |
+        source .venv/bin/activate
+        uv run black --check .
 
     - name: Check sanity of json files
-      run: uv run python .hooks/check_json.py
+      run: |
+        source .venv/bin/activate  
+        uv run python .hooks/check_json.py
 
