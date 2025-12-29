@@ -131,12 +131,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             statusPicker.tintColor = colForSegment
         }
         // color all the other segments with alpha=0.2
-        for (num, col) in zip([0, 1, 2], statusColors){
-            let subView = statusPicker.subviews[num] as UIView
-            subView.layer.backgroundColor = col.cgColor
-            subView.layer.zPosition = -1
-            subView.alpha = 0.2
-        }
+        statusPicker.selectedSegmentIndex = statusChoices.firstIndex(of: pinData.status) ?? 0
+        statusPicker.addTarget(self, action: #selector(statusChanged(_:)), for: .valueChanged)
+        applyStatusPickerStyle()
+
 
         // load image asynchronously
         self.imageview.getImage(id: self.pinData.id)
@@ -154,6 +152,27 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             addMultimachineButton()
         }
     }
+    
+    private func applyStatusPickerStyle() {
+        statusPicker.backgroundColor = .white
+
+        // Unselected text color
+        let normalAttrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black
+        ]
+        statusPicker.setTitleTextAttributes(normalAttrs, for: .normal)
+
+        let selectedTextColor: UIColor = (statusPicker.selectedSegmentIndex == 2) ? .black : .white
+        let selectedAttrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: selectedTextColor
+        ]
+        statusPicker.setTitleTextAttributes(selectedAttrs, for: .selected)
+
+        // Selected segment fill color
+        let col = statusColors[statusPicker.selectedSegmentIndex]
+        statusPicker.selectedSegmentTintColor = col
+    }
+
     
     func addPaywallButton() {
         paywallButton.isHidden = false
@@ -308,18 +327,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     @objc func statusChanged(_ sender: UISegmentedControl) {
         let status = statusChoices[sender.selectedSegmentIndex]
-        
         saveStatusChange(machineid: self.pinData.id, new_status: status)
-        
-        // change color for selected segment
-        let colForSegment = statusColors[sender.selectedSegmentIndex]
-        if #available(iOS 13.0, *) {
-            statusPicker.selectedSegmentTintColor = colForSegment
-        }
-        else{
-            statusPicker.tintColor = colForSegment
-        }
+        applyStatusPickerStyle()
     }
+
     
     @objc func addComment(){
         
