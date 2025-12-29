@@ -37,6 +37,11 @@ dependencies = [
   "loguru",
   "rembg[cpu]>=2.0.69",
   "numba>=0.62",
+  "ruff==0.1.6",
+  "black>=24.1.1",
+  "isort>=5.9.3",
+  "pre-commit",
+]
 ]
 
 classifiers = [
@@ -52,13 +57,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/jannisborn/pennyme"
 
-[project.optional-dependencies]
-dev = [
-  "ruff==0.1.6",
-  "black>=24.1.1",
-  "isort>=5.9.3",
-  "pre-commit",
-]
 
 [tool.setuptools]
 # Explicitly tell setuptools we are using packages discovered from the source tree
