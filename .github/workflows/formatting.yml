@@ -25,11 +25,11 @@ jobs:
 
     - name: Check code formatting with black
       run: |
-        source .venv/bin/activate
+        source backend/.venv/bin/activate
         uv run black --check .
 
     - name: Check sanity of json files
       run: |
-        source .venv/bin/activate  
+        source backend/.venv/bin/activate
         uv run python .hooks/check_json.py
 
