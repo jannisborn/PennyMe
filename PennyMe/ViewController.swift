@@ -134,9 +134,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 action: #selector(didTapSettings)
             )
         // new machine button
-         setupRoundIconButton(newMachineButton, systemName: "plus.circle", action: #selector(segueNewMachine))
+         setupRoundIconButton(newMachineButton, systemName: "plus", action: #selector(segueNewMachine))
         // user stats button
-        setupRoundIconButton(userStatsButton, systemName: "person.circle")
+        setupRoundIconButton(userStatsButton, systemName: "person")
         // toggle map button
         setupRoundIconButton(toggleMapButton, systemName: "square.stack.3d.up.fill", action: #selector(changeMapType))
 

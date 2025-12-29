@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="height" constant="50" id="3f5-Vi-bdK"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" image="plus.circle" catalog="system">
+                                <state key="normal" image="plus" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
                                     <color key="titleShadowColor" systemColor="labelColor"/>
                                 </state>
@@ -986,7 +986,7 @@
     <resources>
         <image name="location" catalog="system" width="128" height="119"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
-        <image name="plus.circle" catalog="system" width="128" height="123"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="120" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
