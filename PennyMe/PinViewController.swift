@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import SwiftUI
 
-var FOUNDIMAGE : Bool = false
 
 let flaskURL = "http://37.120.179.15:6006/"
 let imageURL = "http://37.120.179.15:8000/"
@@ -37,7 +36,21 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     let machineStatusColors: [String:UIColor] = ["available": .white, "out-of-order": .gray, "retired": .gray]
-    
+
+    private struct ImageItemViews {
+        let container: UIView
+        let imageView: UIImageView
+        let toggleContainer: UIView?     // nil for idx 0
+        let toggleLabel: UILabel?
+        let toggleSwitch: UISwitch?
+    }
+
+    private var imageItems: [Int: ImageItemViews] = [:]
+    private var collectedByIndex: [Int: Bool] = [:]
+    private var collectedKey: String {
+        "collectedCoins_\(pinData.id)"
+    }
+
     enum StatusChoice : String {
         case unvisited
         case visited
@@ -66,6 +79,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load user defaults (which coins are collected
+        loadCollectedFromDefaults()
+        
         overrideUserInterfaceStyle = .light
         
         imagePicker.delegate = self
@@ -157,6 +174,19 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         // load images asynchronously
         for photoInd in Range(0...pinData.numCoins) {
             getImage(photoInd: photoInd)
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        scrollView.contentSize = CGSize(
+            width: view.frame.width * CGFloat(pinData.numCoins + 1),
+            height: scrollView.frame.height
+        )
+
+        for idx in imageItems.keys.sorted() {
+            layoutImageItem(index: idx)
         }
     }
     
@@ -424,7 +454,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         case "machine":
             centralLine = "Upload an image of the penny MACHINE, not an image of a coin."
         case "coin":
-            centralLine = "Upload an image of a pressed COIN, not an image of the machine."
+            centralLine = "Upload an image of a pressed COIN (one at a time), not an image of the machine."
         default:
             centralLine = "Upload an image related to the pressed penny machine."
         }
@@ -507,7 +537,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             loadingView?.center = superview.center
         }
 
-//        view.addSubview(loadingView!)
     }
     
     func hideLoadingView() {
@@ -705,8 +734,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     func getImage(photoInd: Int) {
         let urlString: String = {
             if photoInd > 0 {
-                // NOTE: you probably want ".jpg" here too (same as base)
-                return "\(imageURL)/\(pinData.id)_coin_\(photoInd-1).jpg"
+                return "\(imageURL)/\(pinData.id)_coin_\(photoInd-1).png"
             } else {
                 return "\(imageURL)/\(pinData.id).jpg"
             }
@@ -740,35 +768,132 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             }
         }
     }
-
     
+    @objc private func collectedSwitchChanged(_ sender: UISwitch) {
+        // handle change of "collected"-toggle
+        collectedByIndex[sender.tag] = sender.isOn
+        saveCollectedToDefaults()
+    }
+
+    private func loadCollectedFromDefaults() {
+        let indices = (UserDefaults.standard.array(forKey: collectedKey) as? [Int]) ?? []
+        collectedByIndex = Dictionary(uniqueKeysWithValues: indices.map { ($0, true) })
+    }
+
+    private func saveCollectedToDefaults() {
+        let indices = collectedByIndex
+            .filter { $0.value }
+            .map { $0.key }
+            .sorted()
+        UserDefaults.standard.set(indices, forKey: collectedKey)
+    }
+
     func addImageToScrollView(image: UIImage, img_idx: Int, action: Selector) {
+        let container = UIView()
+        container.tag = img_idx
+
         let imageView = UIImageView(image: image)
         imageView.tag = img_idx
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: action)
-        imageView.addGestureRecognizer(tapGestureRecognizer)
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
-        
-        scrollView.addSubview(imageView)
-        layoutImageView(imageView, index: img_idx)
-    }
-    
-    func layoutImageView(_ imageView: UIImageView, index: Int) {
-            let xPosition = view.frame.width * CGFloat(index)
-            imageView.frame = CGRect(x: xPosition, y: 0, width: view.frame.width, height: scrollView.frame.height)
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        container.addSubview(imageView)
+
+        var toggleContainer: UIView? = nil
+        var toggleLabel: UILabel? = nil
+        var toggleSwitch: UISwitch? = nil
+
+        // Only coins (idx >= 1) get a toggle row
+        if img_idx >= 1 {
+            let tContainer = UIView()
+            tContainer.isUserInteractionEnabled = true
+
+            let label = UILabel()
+            label.text = "Collected"
+            label.font = .systemFont(ofSize: 14)
+            label.textColor = .secondaryLabel
+
+            let sw = UISwitch()
+            sw.tag = img_idx
+            sw.isOn = collectedByIndex[img_idx] ?? false
+            sw.addTarget(self, action: #selector(collectedSwitchChanged(_:)), for: .valueChanged)
+
+            tContainer.addSubview(label)
+            tContainer.addSubview(sw)
+
+            container.addSubview(tContainer)
+
+            toggleContainer = tContainer
+            toggleLabel = label
+            toggleSwitch = sw
         }
+
+        scrollView.addSubview(container)
+
+        imageItems[img_idx] = ImageItemViews(
+            container: container,
+            imageView: imageView,
+            toggleContainer: toggleContainer,
+            toggleLabel: toggleLabel,
+            toggleSwitch: toggleSwitch
+        )
+
+        layoutImageItem(index: img_idx)
+    }
+
+    
+    private func layoutImageItem(index: Int) {
+        guard let item = imageItems[index] else { return }
+
+        let pageWidth = view.frame.width
+        let pageHeight = scrollView.frame.height
+        let xPosition = pageWidth * CGFloat(index)
+
+        item.container.frame = CGRect(x: xPosition, y: 0, width: pageWidth, height: pageHeight)
+
+        let toggleHeight: CGFloat = (item.toggleContainer == nil) ? 0 : 44
+        let spacing: CGFloat = (toggleHeight == 0) ? 0 : 8
+
+        // Image uses remaining height above the toggle
+        item.imageView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: pageWidth,
+            height: pageHeight - toggleHeight - spacing
+        )
+
+        // Center label + switch under image
+        if let tContainer = item.toggleContainer,
+           let label = item.toggleLabel,
+           let sw = item.toggleSwitch {
+
+            label.sizeToFit()
+            let swSize = sw.intrinsicContentSize
+            let h = max(label.bounds.height, swSize.height)
+            let innerSpacing: CGFloat = 10
+
+            let totalWidth = label.bounds.width + innerSpacing + swSize.width
+            let x = (pageWidth - totalWidth) * 0.5
+            let y = pageHeight - toggleHeight + (toggleHeight - h) * 0.5
+
+            tContainer.frame = CGRect(x: x, y: y, width: totalWidth, height: h)
+            label.frame = CGRect(x: 0, y: (h - label.bounds.height) * 0.5, width: label.bounds.width, height: label.bounds.height)
+            sw.frame = CGRect(x: label.bounds.width + innerSpacing, y: (h - swSize.height) * 0.5, width: swSize.width, height: swSize.height)
+        }
+    }
     
     @objc func enlargeImage(tapGestureRecognizer: UITapGestureRecognizer)
     {
         self.performSegue(withIdentifier: "bigImage", sender: self)
     }
+    
     @objc func startNewCoinUpload(tapGestureRecognizer: UITapGestureRecognizer) {
         // get index of tapped image
         guard let tappedView = tapGestureRecognizer.view else { return }
         pendingImageIndex = tappedView.tag - 1
         presentUploadAlert(highlighting: "coin")
     }
+    
     @objc func startNewMachineUpload(tapGestureRecognizer: UITapGestureRecognizer) {
         // get index of tapped image
         guard let tappedView = tapGestureRecognizer.view else { return }
