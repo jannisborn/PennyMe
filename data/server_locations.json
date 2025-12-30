@@ -5835,10 +5835,10 @@
                 "address": "155 allée du phare, Saint Clement des Baleines",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=339934",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5663,
-                "last_updated": "2024-10-30"
+                "last_updated": "2025-09-12"
             }
         },
         {
@@ -7329,8 +7329,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.0461815,
-                    47.7964275
+                    13.046181500000081,
+                    47.796427499999986
                 ]
             },
             "properties": {
@@ -7340,9 +7340,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=446046",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7660,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-12-28"
             }
         },
         {
@@ -10127,8 +10127,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.4397113,
-                    47.7418278
+                    13.448433250394958,
+                    47.737320663532785
                 ]
             },
             "properties": {
@@ -10138,9 +10138,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=449325",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7727,
-                "last_updated": "2024-11-07"
+                "last_updated": "2025-12-29"
             }
         },
         {
@@ -27474,8 +27474,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    13.038776605565955,
-                    47.80069720062444
+                    13.038731614527029,
+                    47.8007455304137
                 ]
             },
             "properties": {
@@ -27487,8 +27487,8 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8127,
-                "last_updated": "2025-08-22",
-                "multimachine": 2
+                "last_updated": "2025-12-28",
+                "multimachine": 1
             }
         },
         {
@@ -38315,6 +38315,455 @@
                 "machine_status": "out-of-order",
                 "id": 7013,
                 "last_updated": "2025-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.12108834141695,
+                    26.462976339484563
+                ]
+            },
+            "properties": {
+                "name": "The Girls Strawberry U-Pick",
+                "area": "Florida",
+                "address": "14418 S Military Trl, Delray Beach, FL 33445, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8367,
+                "last_updated": "2025-12-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.66932489999999,
+                    27.765015
+                ]
+            },
+            "properties": {
+                "name": "Worlds Greatest Gift Shop ",
+                "area": "Florida",
+                "address": "2631 6th Ave S, St. Petersburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=471336",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8368,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.047592375272473,
+                    47.794754904813814
+                ]
+            },
+            "properties": {
+                "name": "Hohensalzburg Castle Burgschenke",
+                "area": "Austria",
+                "address": "Festung Hohensalzburg, Mönchsberg 34, 5020 Salzburg, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8369,
+                "last_updated": "2025-12-28",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.046659430019437,
+                    47.795249159336194
+                ]
+            },
+            "properties": {
+                "name": "Hohensalzburg Castle",
+                "area": "Austria",
+                "address": "Gift Shop, Courtyard",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=888",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1003,
+                "last_updated": "2025-12-28",
+                "paywall": false
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.046778352921354,
+                    47.79493882196531
+                ]
+            },
+            "properties": {
+                "name": "Fortress Hohensalzburg Puppet Museum",
+                "area": "Austria",
+                "address": "Festung Hohensalzburg, Mönchsberg 34, 5020 Salzburg, Austria",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8370,
+                "last_updated": "2025-12-28",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.891199048756769,
+                    36.50709849608617
+                ]
+            },
+            "properties": {
+                "name": "Malaga",
+                "area": "Spain",
+                "address": "Av. Duque de Ahumada, 14-16, 29602 Marbella, Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8371,
+                "last_updated": "2025-12-28",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.038783572574953,
+                    47.800655448665836
+                ]
+            },
+            "properties": {
+                "name": "Museum der Moderne 2",
+                "area": "Austria",
+                "address": "Am Mönchsberg 32, 5020 Salzburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8372,
+                "last_updated": "2025-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.12758619999990875,
+                    51.5072178
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe Rock Shop",
+                "area": "England",
+                "address": "225-229 Piccadilly, Criterion Building, LONDON - Piccadilly",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=422556",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7051,
+                "last_updated": "2025-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.16979090000007,
+                    35.15984800000001
+                ]
+            },
+            "properties": {
+                "name": "BUSAN X the SKY LCT Landmark Tower",
+                "area": "South Korea",
+                "address": "30, Dalmaji-gil, Haeundae-gu, Busan",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=402882",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6425,
+                "last_updated": "2025-12-28",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.733217495286766,
+                    28.07383017659675
+                ]
+            },
+            "properties": {
+                "name": "Beach front",
+                "area": "Spain",
+                "address": "Urbanización San Eugenio, 14D 38660 Adeje Santa Cruz de Tenerife, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8373,
+                "last_updated": "2025-12-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0849865,
+                    32.080052
+                ]
+            },
+            "properties": {
+                "name": "The Cinnamon Bear Country Store",
+                "area": "Georgia",
+                "address": "508 E. River Street, Savannah",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=364436",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5394,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.0715407,
+                    47.4905193
+                ]
+            },
+            "properties": {
+                "name": "Meme Múzeum",
+                "area": "Hungary",
+                "address": "József Utca 3. 3. Em. 22/A 1084, Budapest",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=415724",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6349,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.7780965,
+                    -41.2852716
+                ]
+            },
+            "properties": {
+                "name": "Wellington Museum",
+                "area": "New Zealand",
+                "address": "2 Jervois Quay, Wellington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=310751",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3884,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.225450599999999,
+                    57.47703319999999
+                ]
+            },
+            "properties": {
+                "name": "Inverness Museum and Art Gallery",
+                "area": "Scotland",
+                "address": "Castle Wynd, Inverness",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=262458",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 778,
+                "last_updated": "2025-09-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.63354013539514,
+                    41.9213657373907
+                ]
+            },
+            "properties": {
+                "name": "Lion house Lincoln park zoo",
+                "area": "Illinois",
+                "address": "2001 north Clark street",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8374,
+                "last_updated": "2025-12-29",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.63446050668462,
+                    41.920719126275536
+                ]
+            },
+            "properties": {
+                "name": "Small Mammal-Reptile House",
+                "area": "Illinois",
+                "address": "2001 North Clark Street",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8375,
+                "last_updated": "2025-12-29",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.370261626205664,
+                    49.82307791427603
+                ]
+            },
+            "properties": {
+                "name": "Falknerei Burg Rabenstein. Greifvogel- und Eulenpark.",
+                "area": "Germany",
+                "address": "Rabenstein 33, 95491 Ahorntal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8376,
+                "last_updated": "2025-12-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.433938770404009,
+                    47.77511950976365
+                ]
+            },
+            "properties": {
+                "name": "Scharfberg",
+                "area": "Austria",
+                "address": "Scharfberg, Unterrach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=422954",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5605,
+                "last_updated": "2025-12-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.442001199999973,
+                    57.324139899999984
+                ]
+            },
+            "properties": {
+                "name": "Urquhart Castle",
+                "area": "Scotland",
+                "address": "By Drumnadrochit, Drumnadrochit",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=269018",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 741,
+                "last_updated": "2025-12-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.884954312580025,
+                    52.36519960842181
+                ]
+            },
+            "properties": {
+                "name": "De Amsterdammer",
+                "area": "Netherlands",
+                "address": "Leidsestraat 75, 1017 NX Amsterdam, Netherlands",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8377,
+                "last_updated": "2025-12-29",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -16.615206448014572,
+                    28.258827963814444
+                ]
+            },
+            "properties": {
+                "name": "Mount Teide",
+                "area": "Spain",
+                "address": "Cañadas Tel Teide , Tenerife",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=289049",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 386,
+                "last_updated": "2025-12-30"
             }
         }
     ]
