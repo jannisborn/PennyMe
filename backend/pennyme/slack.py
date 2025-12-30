@@ -1,12 +1,16 @@
 import json
 import os
+from pathlib import Path
 from typing import Dict
 
+import numpy as np
 from loguru import logger
 from PIL import Image, ImageOps
+from rembg import remove
 from slack import WebClient
 from slack.errors import SlackApiError
 
+from pennyme.images import count_foreground_objects, is_coin
 from pennyme.utils import ALL_LOCATIONS
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
@@ -61,6 +65,15 @@ def process_uploaded_image(img_path: str, basewidth: int = 1000):
     # resize
     hsize = int((float(img.size[1]) * float(wpercent)))
     img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+
+    # Remove image
+    Path.unklink(img_path)
+
+    # If image is a coin, apply background separation
+    if "coin" in img_path:
+        img = remove(img)
+        img_path = img_path.replace(".jpg", ".png")
+
     img.save(img_path, quality=95)
 
 
