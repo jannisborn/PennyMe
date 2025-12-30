@@ -86,8 +86,9 @@ struct NewMachineFormView: View {
     @State private var address: String = ""
     @State private var area: String = ""
     @State private var paywall: Bool = false
-    @State private var multimachine: String = ""
+    @State private var multimachine: String = "1"
     @State private var showFinishedAlert = false
+    @State private var selectedLocation: CLLocationCoordinate2D
     @State private var displayResponse: String = ""
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
     @State private var selectedImage: UIImage? = nil
@@ -100,6 +101,7 @@ struct NewMachineFormView: View {
 
     init(coordinate: CLLocationCoordinate2D) {
         coords = coordinate
+        _selectedLocation = State(initialValue: coords)
         // Observe keyboard frame changes
         keyboardObserver = NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
             .compactMap { $0.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect }
@@ -110,33 +112,38 @@ struct NewMachineFormView: View {
 
     var body: some View {
         ScrollView{
-        VStack {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Add a new machine")
+                .font(.title3)
+                .padding(.bottom, 4)
+                .frame(maxWidth: .infinity, alignment: .center)
+
             // Name input field
             TextField("Machine title", text: $name)
-                .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             // Email input field
             TextField("Address", text: $address)
-                .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            // location
+            Section() {
+                InteractiveMapView(selectedLocation: $selectedLocation)
+
+                Text("Lat: \(String(format: "%.4f", selectedLocation.latitude)), Lon: \(String(format: "%.4f", selectedLocation.longitude))")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
             
             // Area input field
             TextField("Area (Country or US state)", text: $area)
-                .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            // Multimachine input field
-//            Text("Multi-machines? (Change if there are multiple machines)")
-            TextField("Number of machines (leave empty if 1)", text: $multimachine)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+
             
             // Paywall checkbox
             Toggle(isOn: $paywall) {
                             Text("Is there a fee / paywall?")
                         }
-                        .padding()
             
             // Button to open the ImagePicker when tapped
             Button(action: {
@@ -202,10 +209,7 @@ struct NewMachineFormView: View {
         if name == "" || address == "" || area == "" || selectedImage == nil {
             finishLoading(message: "Please enter all information & upload image")
         } else {
-            // correct multimachine information
-            if multimachine == "" {
-                multimachine = "1"
-            }
+
             // upload image and make request
             if let image = selectedImage! as UIImage ?? nil {
                 //  Convert the image to a data object
@@ -222,8 +226,8 @@ struct NewMachineFormView: View {
                     URLQueryItem(name: "area", value: area),
                     URLQueryItem(name: "multimachine", value: multimachine),
                     URLQueryItem(name:"paywall", value: String(paywall)),
-                    URLQueryItem(name: "lon_coord", value: "\(coords.longitude)"),
-                    URLQueryItem(name: "lat_coord", value: "\(coords.latitude)"),
+                    URLQueryItem(name: "lon_coord", value: "\(selectedLocation.longitude)"),
+                    URLQueryItem(name: "lat_coord", value: "\(selectedLocation.latitude)"),
                 ]
                 urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
                 var request = URLRequest(url: urlComponents.url!)
