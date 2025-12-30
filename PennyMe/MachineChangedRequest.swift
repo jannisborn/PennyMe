@@ -61,7 +61,6 @@ struct MachineChangedForm: View {
     @State private var address: String = ""
     @State private var area: String = ""
     @State private var paywall: Bool = false
-    @State private var multimachine: String = ""
     @State private var selectedSegment: Int = 0
     @State private var lonLat: String = ""
     
@@ -87,7 +86,6 @@ struct MachineChangedForm: View {
         _address = State(initialValue: pinData.address)
         _area = State(initialValue: pinData.area)
         _paywall = State(initialValue: pinData.paywall)
-        _multimachine = State(initialValue: String(pinData.multimachine))
         
         let lonLatConverted = "\(coords.latitude)° N, \(coords.longitude)° O".replacingOccurrences(of: ".", with: ",")
         _lonLat = State(initialValue: lonLatConverted)
@@ -145,13 +143,6 @@ struct MachineChangedForm: View {
             }
             .padding(3)
             
-            // Multimachine input field
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Number of machines").foregroundColor(Color.gray)
-                TextField("Number of machines", text: $multimachine)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-            }
-            .padding(3)
             
             // Paywall checkbox
             Toggle(isOn: $paywall) {
@@ -214,7 +205,7 @@ struct MachineChangedForm: View {
         isLoading = true
         
         // check if any field is empty
-        if name == "" || address == "" || area == "" || multimachine == "" {
+        if name == "" || address == "" || area == "" {
             finishLoading(message: "Please do not leave empty fields.")
             return
         }
@@ -228,7 +219,6 @@ struct MachineChangedForm: View {
         if (name == pinDataStored.title!) &&
             (address == pinDataStored.address) &&
             (area == pinDataStored.area) &&
-            (multimachine == String(pinDataStored.multimachine)) && 
             (paywall == pinDataStored.paywall) &&
             (lat_coord == pinDataStored.coordinate.latitude) &&
             (lon_coord == pinDataStored.coordinate.longitude) &&
@@ -244,7 +234,7 @@ struct MachineChangedForm: View {
             URLQueryItem(name: "title", value: name),
             URLQueryItem(name: "address", value: address),
             URLQueryItem(name: "area", value: area),
-            URLQueryItem(name: "multimachine", value: multimachine),
+            URLQueryItem(name: "multimachine", value: String(pinDataStored.multimachine)),
             URLQueryItem(name:"paywall", value: String(paywall)),
             URLQueryItem(name: "lon_coord", value: "\(lon_coord)"),
             URLQueryItem(name: "lat_coord", value: "\(lat_coord)"),
