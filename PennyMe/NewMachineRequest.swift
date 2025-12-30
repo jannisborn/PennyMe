@@ -86,7 +86,7 @@ struct NewMachineFormView: View {
     @State private var address: String = ""
     @State private var area: String = ""
     @State private var paywall: Bool = false
-    @State private var multimachine: String = ""
+    @State private var multimachine: String = "1"
     @State private var showFinishedAlert = false
     @State private var selectedLocation: CLLocationCoordinate2D
     @State private var displayResponse: String = ""
@@ -138,11 +138,7 @@ struct NewMachineFormView: View {
             // Area input field
             TextField("Area (Country or US state)", text: $area)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            // Multimachine input field
-//            Text("Multi-machines? (Change if there are multiple machines)")
-            TextField("Number of machines (leave empty if 1)", text: $multimachine)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+
             
             // Paywall checkbox
             Toggle(isOn: $paywall) {
@@ -213,10 +209,7 @@ struct NewMachineFormView: View {
         if name == "" || address == "" || area == "" || selectedImage == nil {
             finishLoading(message: "Please enter all information & upload image")
         } else {
-            // correct multimachine information
-            if multimachine == "" {
-                multimachine = "1"
-            }
+
             // upload image and make request
             if let image = selectedImage! as UIImage ?? nil {
                 //  Convert the image to a data object
