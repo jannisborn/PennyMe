@@ -99,16 +99,20 @@ def upload_image():
         return jsonify({"error": f"Unknown coin index {coin_idx_str}"}), 400
 
     if coin_idx == -1:
-        img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+        fname_suffix = ""
         msg = "Image uploaded for machine"
     else:
-        img_path = os.path.join(PATH_IMAGES, f"{machine_id}_coin_{coin_idx}.jpg")
+        fname_suffix = f"_coin_{coin_idx}"
         msg = f"Image uploaded for coin {coin_idx} for machine"
+
+    img_path = os.path.join(PATH_IMAGES, f"{machine_id}{fname_suffix}.jpg")
     request.files["image"].save(img_path)
     process_uploaded_image(img_path)
 
     # send message to slack
-    image_slack(machine_id, ip=ip_address, img_slack_text=msg)
+    image_slack(
+        machine_id, ip=ip_address, fname_suffix=fname_suffix, img_slack_text=msg
+    )
 
     return "Image uploaded successfully"
 

@@ -77,6 +77,7 @@ def process_uploaded_image(img_path: str, basewidth: int = 1000):
 def image_slack(
     machine_id: int,
     ip: str,
+    fname_suffix: str = "",
     m_name: str = None,
     img_slack_text: str = "Image uploaded for machine",
 ):
@@ -86,6 +87,7 @@ def image_slack(
     Args:
         machine_id: The ID of the machine.
         ip: The IP address of the user.
+        fname_suffix: The suffix of the filename ("" or "_coin_x"). Defaults to "".
         m_name: The name of the machine. Defaults to None.
         img_slack_text: The text to display in the Slack message. Defaults to "Image uploaded for machine".
 
@@ -99,6 +101,7 @@ def image_slack(
             return
         m_name = MACHINE_NAMES[int(machine_id)]
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
+    filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
         CLIENT.chat_postMessage(
             channel="#pennyme_uploads",
@@ -112,7 +115,7 @@ def image_slack(
                         "text": text,
                         "emoji": True,
                     },
-                    "image_url": f"{IMG_PORT}{machine_id}.jpg",
+                    "image_url": f"{IMG_PORT}{machine_id}{fname_suffix}.{filetype}",
                     "alt_text": text,
                 }
             ],
