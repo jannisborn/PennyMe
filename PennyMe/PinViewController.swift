@@ -169,7 +169,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(pinData.numCoins + 1), height: scrollView.frame.height)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(pinData.numCoins + 1), height: scrollView.frame.height)
         
         // load images asynchronously
         for photoInd in Range(0...pinData.numCoins) {
@@ -181,7 +181,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         super.viewDidLayoutSubviews()
 
         scrollView.contentSize = CGSize(
-            width: view.frame.width * CGFloat(pinData.numCoins + 1),
+            width: scrollView.frame.width * CGFloat(pinData.numCoins + 1),
             height: scrollView.frame.height
         )
 
@@ -760,7 +760,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 } else {
                     // pick default
                     let isCoin = urlString.contains("coin")
-                    finalImage = UIImage(named: isCoin ? "coin_image" : "machine_image")!
+                    finalImage = UIImage(named: isCoin ? "coin_Image" : "machine_image")!
                     action = isCoin ? #selector(self.startNewCoinUpload(tapGestureRecognizer:)) : #selector(self.startNewMachineUpload(tapGestureRecognizer:))
                 }
 
@@ -845,7 +845,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private func layoutImageItem(index: Int) {
         guard let item = imageItems[index] else { return }
 
-        let pageWidth = view.frame.width
+        let pageWidth = scrollView.frame.width
         let pageHeight = scrollView.frame.height
         let xPosition = pageWidth * CGFloat(index)
 
