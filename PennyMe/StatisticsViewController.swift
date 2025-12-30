@@ -161,10 +161,10 @@ class StatisticsViewController: UIViewController {
     
     func setupBarChart(mode: String) {
         // Sort the dictionary and get the top 5 countries
-        var topFiveCountries = visitedByArea.sorted { $0.value > $1.value }.prefix(5)
+        var topCountries = visitedByArea.sorted { $0.value > $1.value } // .prefix(5)
         // if percent: sort by percentage
         if mode != "absolute" {
-            topFiveCountries = visitedByArea.sorted {
+            topCountries = visitedByArea.sorted {
                 // ensure it is at least 1
                 let totalMachines1 = max(machinesByArea[$0.key] ?? 0, 1)
                 let totalMachines2 = max(machinesByArea[$1.key] ?? 0, 1)
@@ -173,7 +173,7 @@ class StatisticsViewController: UIViewController {
                 let percentage2 = Double($1.value) / Double(totalMachines2)
 
                 return percentage1 > percentage2
-            }.prefix(5)
+            } // .prefix(5)
         }
 
         // Create entries for the bar chart
@@ -184,7 +184,7 @@ class StatisticsViewController: UIViewController {
         // Assign colors to each bar
         var barColors: [UIColor] = []
         
-        for (index, country) in topFiveCountries.reversed().enumerated() {
+        for (index, country) in topCountries.reversed().enumerated() {
             var barValue: Double = 0
             if mode == "absolute" {
                 barValue = Double(country.value)
@@ -204,6 +204,19 @@ class StatisticsViewController: UIViewController {
             // append size for scaling
             nameSizes.append(contentsOf: formattedName.components(separatedBy: "\n"))
             barColors.append(colorForValue(value: Int(barValue), mode: mode))
+        }
+        
+        // If there is no data, show a friendly placeholder and bail out.
+        guard !topCountries.isEmpty else {
+            barChartView.data = nil
+            barChartView.clear()
+
+            barChartView.noDataText = "No collected countries yet."
+            barChartView.noDataFont = .systemFont(ofSize: 16)
+            barChartView.noDataTextColor = .secondaryLabel
+
+            barChartView.notifyDataSetChanged()
+            return
         }
 
         // Calculate the longest country name with line breaks and update padding accordingly
@@ -230,7 +243,18 @@ class StatisticsViewController: UIViewController {
         data.barWidth = 0.5 // Smaller bars, default is 1.0
         
         barChartView.data = data
+        // Refresh the chart
+        barChartView.notifyDataSetChanged()
+        
         barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+        
+        // Make it scrollable (show only N bars at a time)
+        let visibleBars = min(5, barChartEntries.count)   // choose what looks good
+        barChartView.dragEnabled = true
+        barChartView.setScaleEnabled(true)
+        barChartView.scaleXEnabled = false
+        barChartView.scaleYEnabled = true
+        barChartView.setVisibleXRangeMaximum(Double(visibleBars))
 
         // Customize the x-axis labels (which is now the vertical axis) with country names
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: countryNames)
@@ -256,9 +280,11 @@ class StatisticsViewController: UIViewController {
         barChartView.legend.enabled = false
         
         barChartView.data?.setDrawValues(true)
-
-        // Refresh the chart
-        barChartView.notifyDataSetChanged()
+        
+        let lastIndex = max(0, barChartEntries.count)
+        DispatchQueue.main.async {
+            self.barChartView.moveViewTo(xValue: 0, yValue: Double(lastIndex), axis: .left)
+        }
     }
 
     func insertLineBreaksInCountryName(_ name: String, maxLength: Int) -> String {
