@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Dict
 from loguru import logger
 from PIL import Image, ImageOps
-from rembg import remove
+from rembg import remove, new_session
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
@@ -68,7 +68,7 @@ def process_uploaded_image(img_path: str, basewidth: int = 1000):
 
     # If image is a coin, apply background separation
     if "coin" in img_path:
-        img = remove(img)
+        img = remove(img, session=new_session("u2netp"))
         img_path = img_path.replace(".jpg", ".png")
 
     img.save(img_path, quality=95)
