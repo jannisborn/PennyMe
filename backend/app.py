@@ -287,6 +287,13 @@ def create_machine():
         properties_dict["multimachine"] = multimachine
     if paywall:
         properties_dict["paywall"] = paywall
+    num_coins = request.args.get("num_coins")
+    if num_coins is not None:
+        try:
+            properties_dict["num_coins"] = int(num_coins)
+        except ValueError:
+            pass  # ignore if not integer
+
     # add new item to json
     new_machine_entry = {
         "type": "Feature",

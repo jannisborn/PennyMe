@@ -87,6 +87,7 @@ struct NewMachineFormView: View {
     @State private var area: String = ""
     @State private var paywall: Bool = false
     @State private var multimachine: String = "1"
+    @State private var numCoins: String = ""
     @State private var showFinishedAlert = false
     @State private var selectedLocation: CLLocationCoordinate2D
     @State private var displayResponse: String = ""
@@ -138,7 +139,10 @@ struct NewMachineFormView: View {
             // Area input field
             TextField("Area (Country or US state)", text: $area)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-
+            
+            // Number coins textfield checkbox
+            TextField("Number of coin designs (e.g. 4)", text: $numCoins)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             
             // Paywall checkbox
             Toggle(isOn: $paywall) {
@@ -206,7 +210,7 @@ struct NewMachineFormView: View {
     // Function to handle the submission of the request
     private func submitRequest() {
         isLoading = true
-        if name == "" || address == "" || area == "" || selectedImage == nil {
+        if name == "" || address == "" || area == "" || selectedImage == nil || numCoins == "" {
             finishLoading(message: "Please enter all information & upload image")
         } else {
 
@@ -226,10 +230,12 @@ struct NewMachineFormView: View {
                     URLQueryItem(name: "area", value: area),
                     URLQueryItem(name: "multimachine", value: multimachine),
                     URLQueryItem(name:"paywall", value: String(paywall)),
+                    URLQueryItem(name:"num_coins", value: numCoins),
                     URLQueryItem(name: "lon_coord", value: "\(selectedLocation.longitude)"),
                     URLQueryItem(name: "lat_coord", value: "\(selectedLocation.latitude)"),
                 ]
                 urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+
                 var request = URLRequest(url: urlComponents.url!)
                 request.httpMethod = "POST"
                 
