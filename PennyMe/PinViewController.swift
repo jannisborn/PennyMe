@@ -233,7 +233,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         showSimpleAlert(title: "Paywall!", text: "You probably have to pay a fee to see this penny machine. \nPress the 'Report Change' button to update this information.")
     }
     @objc func multimachineButtonTapped(sender: UIButton!) {
-        showSimpleAlert(title: "Multi-machine!", text: "There are \(self.pinData.multimachine) penny machines in this location. \nPress the 'Report Change' button to update the number of machines.")
+        showSimpleAlert(title: "Multi-machine!", text: "There are \(self.pinData.multimachine) penny machines in this location. \nPlease add new machines in the correct locations!")
     }
     @objc func statusButtonTapped(sender: UIButton!) {
         showSimpleAlert(title: "Machine is \(self.pinData.machineStatus)", text: "Machine can be available, out-of-order (temporarily unavailable) or retired (permanently unavailable).\nPress the 'Report Change' button to update the machine status.")
