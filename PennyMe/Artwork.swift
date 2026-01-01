@@ -24,8 +24,9 @@ class Artwork: NSObject, MKAnnotation {
     let paywall: Bool
     let multimachine: Int
     var machineStatus: String
+    let numCoins: Int
     
-    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String) {
+    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int) {
         self.title = title
         self.address = address
         self.coordinate = coordinate
@@ -38,6 +39,7 @@ class Artwork: NSObject, MKAnnotation {
         self.paywall = paywall
         self.area = area
         self.machineStatus = machineStatus
+        self.numCoins = numCoins
         
         super.init()
     }
@@ -61,6 +63,7 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         area = String((properties["area"] as? String)!)
+        numCoins = properties["num_coins"] as? Int ?? 4
       
         // machine is per default active and unvisited
         machineStatus = "available"

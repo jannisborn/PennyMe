@@ -1,2 +1,74 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pennyme"
+dynamic = ["version"]
+
+description = "backend for app for collecting pressed pennys"
+readme = { file = "README.md", content-type = "text/markdown" }
+
+# NOTE: pick the correct license here. Your setup.py says "GPL-3.0 license"
+# while the classifier says "MIT License". Adjust as needed.
+license = { text = "GPL-3.0-only" }
+
+authors = [
+  { name = "Jannis Born", email = "jannis.born@gmx.de" },
+]
+
+keywords = ["iOS App Store", "App", "Pressed Penny", "Collecting", "Coins"]
+
+requires-python = ">=3.12"
+
+dependencies = [
+  "requests",
+  "bs4",
+  "googlemaps",
+  "tqdm",
+  "pandas",
+  "flask",
+  "Pillow",
+  "thefuzz",
+  "haversine",
+  "overpy",
+  "geopandas",
+  "loguru",
+  "rembg[cpu]>=2.0.69",
+  "numba>=0.62",
+  "ruff==0.1.6",
+  "black>=24.1.1",
+  "isort>=5.9.3",
+  "pre-commit",
+  "slack-sdk>=3.39.0",
+  "waitress",
+  "typer>=0.21.0",
+]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/jannisborn/pennyme"
+
+
+[tool.setuptools]
+# Explicitly tell setuptools we are using packages discovered from the source tree
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pennyme*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "pennyme.__version__" }
+
 [tool.isort]
 known_local_folder = ["pennyme"]

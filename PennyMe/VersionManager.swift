@@ -26,7 +26,7 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Bug fixes and improvements.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "You can now upload pictures of coins and track your collected coins! Add a new machine via the + button.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }

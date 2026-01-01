@@ -12,10 +12,9 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
-from thefuzz import process as fuzzysearch
-
 from scripts.location_differ import location_differ
 from scripts.open_diff_pull_request import open_differ_pr
+from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import (
     get_latest_commit_time,
@@ -86,6 +85,7 @@ def add_comment():
 def upload_image():
     """Receives an image and saves it to the server."""
     machine_id = str(request.args.get("id"))
+    coin_idx_str = request.args.get("coin_idx", "-1")
     ip_address = request.remote_addr
     if ip_address in blocked_ips:
         return jsonify({"error": "User IP address is blocked"}), 403
@@ -93,12 +93,26 @@ def upload_image():
     if "image" not in request.files:
         return jsonify({"error": "No image file found"}), 400
 
-    img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+    try:
+        coin_idx = int(coin_idx_str)
+    except Exception:
+        return jsonify({"error": f"Unknown coin index {coin_idx_str}"}), 400
+
+    if coin_idx == -1:
+        fname_suffix = ""
+        msg = "Image uploaded for machine"
+    else:
+        fname_suffix = f"_coin_{coin_idx}"
+        msg = f"Image uploaded for coin {coin_idx} for machine"
+
+    img_path = os.path.join(PATH_IMAGES, f"{machine_id}{fname_suffix}.jpg")
     request.files["image"].save(img_path)
     process_uploaded_image(img_path)
 
     # send message to slack
-    image_slack(machine_id, ip=ip_address)
+    image_slack(
+        machine_id, ip=ip_address, fname_suffix=fname_suffix, img_slack_text=msg
+    )
 
     return "Image uploaded successfully"
 
@@ -205,7 +219,7 @@ def address_to_coordinates(address: str, area: str, title: str) -> (bool, tuple)
 
 @app.route("/create_machine", methods=["POST"])
 def create_machine():
-    """Receives a comment and adds it to the json file."""
+    """Receives a new machine"""
     title = str(request.args.get("title")).strip()
     address = str(request.args.get("address")).strip()
     area = str(request.args.get("area")).strip()
