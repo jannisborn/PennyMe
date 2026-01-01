@@ -2329,10 +2329,10 @@
                 "address": "Jodenbreestraat 4, 1011 NK Amsterdam",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5862,
-                "last_updated": "2025-07-09"
+                "last_updated": "2025-12-30"
             }
         },
         {
@@ -10132,15 +10132,15 @@
                 ]
             },
             "properties": {
-                "name": "Yacht",
+                "name": "Yachthafen St Wolfgang",
                 "area": "Austria",
-                "address": ", Sankt Wolfgang im Salzkammergut",
+                "address": "Sankt Wolfgang im Salzkammergut",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=449325",
                 "internal_url": "null",
                 "machine_status": "retired",
                 "id": 7727,
-                "last_updated": "2025-12-29"
+                "last_updated": "2025-12-30"
             }
         },
         {
@@ -11935,9 +11935,9 @@
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7763,
-                "last_updated": "2025-03-17"
+                "last_updated": "2025-12-31"
             }
         },
         {
@@ -33727,9 +33727,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=467948",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "out-of-order",
                 "id": 7011,
-                "last_updated": "2025-09-12",
+                "last_updated": "2025-12-31",
                 "paywall": true
             }
         },
@@ -38691,15 +38691,15 @@
                 ]
             },
             "properties": {
-                "name": "Scharfberg",
+                "name": "Schafberg Summit",
                 "area": "Austria",
-                "address": "Scharfberg, Unterrach",
+                "address": "Schafberg, Unterrach",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=422954",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 5605,
-                "last_updated": "2025-12-29"
+                "last_updated": "2025-12-30"
             }
         },
         {
@@ -38764,6 +38764,181 @@
                 "status": "unvisited",
                 "id": 386,
                 "last_updated": "2025-12-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.4186632142713345,
+                    36.7200198094501
+                ]
+            },
+            "properties": {
+                "name": "Cathedral",
+                "area": "Spain",
+                "address": "C. Cañón, 11, Distrito Centro, 29015 Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8378,
+                "last_updated": "2025-12-30",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.048891538368631,
+                    51.651698643692576
+                ]
+            },
+            "properties": {
+                "name": "Efteling Oude Marskramer",
+                "area": "Netherlands",
+                "address": "Efteling",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8379,
+                "last_updated": "2025-12-30",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.89357040000002,
+                    36.6033382
+                ]
+            },
+            "properties": {
+                "name": "Custom House",
+                "area": "California",
+                "address": "1416 9th Street, Monterey",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=306201",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4691,
+                "last_updated": "2025-12-30",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.420104594905435,
+                    36.72103682834184
+                ]
+            },
+            "properties": {
+                "name": "The Little Market",
+                "area": "Spain",
+                "address": "Calle Sta. María, 23, Distrito Centro, 29015 Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8380,
+                "last_updated": "2025-12-31",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.420885036490319,
+                    36.72106617863061
+                ]
+            },
+            "properties": {
+                "name": "Near Cathedral",
+                "area": "Spain",
+                "address": "Calle Sta. María, 14, Distrito Centro, 29015 Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8381,
+                "last_updated": "2025-12-31",
+                "multimachine": 2,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.4208703584883695,
+                    36.721065425255546
+                ]
+            },
+            "properties": {
+                "name": "Cathedral",
+                "area": "Spain",
+                "address": "Calle Sta. María, 14, Distrito Centro, 29015 Málaga, Spain",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8382,
+                "last_updated": "2025-12-31",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.05224439999998,
+                    32.54474650000002
+                ]
+            },
+            "properties": {
+                "name": "The Authentic Bonnie and Clyde Museum",
+                "area": "Louisiana",
+                "address": "2419 Main St,, Gibsland",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=398919",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6066,
+                "last_updated": "2025-12-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.8070488,
+                    33.9233344
+                ]
+            },
+            "properties": {
+                "name": "Hadley's Fruit & Nut Orchard",
+                "area": "California",
+                "address": "48980 Seminole Dr., Cabazon",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1431",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8383,
+                "last_updated": "2025-12-31"
             }
         }
     ]
