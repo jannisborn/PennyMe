@@ -42,6 +42,7 @@ dependencies = [
   "pre-commit",
   "slack-sdk>=3.39.0",
   "waitress",
+  "typer>=0.21.0",
 ]
 
 classifiers = [
