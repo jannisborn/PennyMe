@@ -63,7 +63,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     var imagePicker = UIImagePickerController()
     
-    var imageList: [UIImage] = []
+    var imageDict: [Int: UIImage] = [:]
     private var pendingImageIndex: Int?
     
     var artwork: Artwork? {
@@ -736,9 +736,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "bigImage") {
             let destinationViewController = segue.destination as! ZoomViewController
-            destinationViewController.images = imageList
-            let currentPosition = scrollView.contentOffset.x / scrollView.frame.width
-            destinationViewController.scrollPosition = currentPosition        }
+            if let idx = pendingImageIndex {
+                destinationViewController.image = imageDict[idx]
+            }
+        }
         
     }
     
@@ -767,7 +768,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 if let downloadedImage {
                     finalImage = downloadedImage
                     action = #selector(self.enlargeImage(tapGestureRecognizer:))
-                    self.imageList.append(downloadedImage)
+                    self.imageDict[photoInd] = downloadedImage
                 } else {
                     // pick default
                     let isCoin = urlString.contains("coin")
@@ -895,6 +896,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     @objc func enlargeImage(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        guard let tappedView = tapGestureRecognizer.view else { return }
+        pendingImageIndex = tappedView.tag
         self.performSegue(withIdentifier: "bigImage", sender: self)
     }
     
