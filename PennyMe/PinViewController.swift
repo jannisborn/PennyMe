@@ -31,6 +31,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var machineStatusButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -173,6 +174,18 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         for photoInd in Range(0...pinData.numCoins) {
             getImage(photoInd: photoInd)
         }
+        
+        // pageControl instead of scroll indicator
+        pageControl.numberOfPages = pinData.numCoins + 1
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .label
+        pageControl.pageIndicatorTintColor = .systemGray3
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.backgroundColor = UIColor.white // .withAlphaComponent()
+        pageControl.layer.cornerRadius = 10
+        pageControl.layer.masksToBounds = true
+        scrollView.showsHorizontalScrollIndicator = false
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -188,6 +201,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        pageControl.currentPage = page
+    }
+
     private func applyStatusPickerStyle() {
         statusPicker.backgroundColor = .white
 
