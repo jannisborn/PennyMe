@@ -534,8 +534,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -81.4509587,
-                    28.4755669
+                    -81.45095870000003,
+                    28.475566899999965
                 ]
             },
             "properties": {
@@ -545,9 +545,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=429498",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7172,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-07"
             }
         },
         {
@@ -766,8 +766,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -97.1213879,
-                    31.5475092
+                    -97.12138789999996,
+                    31.547509200000015
                 ]
             },
             "properties": {
@@ -776,10 +776,10 @@
                 "address": "Baylor University 501 M P Daniel Esplanade, Waco",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379659",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5386,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-09"
             }
         },
         {
@@ -5148,11 +5148,11 @@
                 "area": "Washington DC",
                 "address": "512 10th St NW, Washington, DC 20004, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=471926",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8062,
-                "last_updated": "2025-08-01",
+                "last_updated": "2026-01-03",
                 "paywall": true
             }
         },
@@ -5558,9 +5558,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=443418",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7596,
-                "last_updated": "2025-08-04"
+                "last_updated": "2026-01-09"
             }
         },
         {
@@ -6959,9 +6959,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=457333",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8097,
-                "last_updated": "2025-09-21"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -10904,8 +10904,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    127.0582827,
-                    37.513131
+                    127.05828270000009,
+                    37.513130999999994
                 ]
             },
             "properties": {
@@ -10917,7 +10917,8 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8187,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-10",
+                "paywall": true
             }
         },
         {
@@ -12216,7 +12217,7 @@
                 "type": "Point",
                 "coordinates": [
                     -87.92084310000003,
-                    43.04065819999997
+                    43.040658199999946
                 ]
             },
             "properties": {
@@ -12228,8 +12229,9 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 2443,
-                "last_updated": "2025-09-24",
-                "multimachine": 5
+                "last_updated": "2026-01-05",
+                "multimachine": 5,
+                "paywall": true
             }
         },
         {
@@ -16217,7 +16219,7 @@
                 ]
             },
             "properties": {
-                "name": "Pier Machine 2",
+                "name": "Santa Monica Pier Machine 2",
                 "area": "California",
                 "address": "1535 Ocean Av",
                 "status": "unvisited",
@@ -16225,7 +16227,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8309,
-                "last_updated": "2025-11-14"
+                "last_updated": "2026-01-10"
             }
         },
         {
@@ -17309,8 +17311,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    170.7284334,
-                    -45.776181
+                    170.72843340000009,
+                    -45.77618100000001
                 ]
             },
             "properties": {
@@ -17320,9 +17322,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=469962",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 8329,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-09"
             }
         },
         {
@@ -19139,11 +19141,11 @@
                 "area": "Florida",
                 "address": "14418 S Military Trl, Delray Beach, FL 33445, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=197413",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8367,
-                "last_updated": "2025-12-27"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -19747,6 +19749,555 @@
                 "machine_status": "available",
                 "id": 8383,
                 "last_updated": "2025-12-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.43019819999999,
+                    39.0252414
+                ]
+            },
+            "properties": {
+                "name": "Serpent Mound Gift Shop",
+                "area": "Ohio",
+                "address": "3850 State Route 73, Peebles",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=465506",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8384,
+                "last_updated": "2025-12-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.739556,
+                    32.519008
+                ]
+            },
+            "properties": {
+                "name": "Louisiana Boardwalk - Fuddruckers",
+                "area": "Louisiana",
+                "address": "Building E5 in the Elements, Shreveport",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=241912",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3595,
+                "last_updated": "2025-12-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.89563869999998,
+                    39.78104509999998
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops Outdoor World",
+                "area": "Colorado",
+                "address": "7970 Northfield Boulevard, Denver",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=9490",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1840,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46976772574943,
+                    28.476690776126485
+                ]
+            },
+            "properties": {
+                "name": "The Mummy",
+                "area": "Florida",
+                "address": "6000 Universal Blvd, Orlando, FL 32819",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8385,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46848472738073,
+                    28.476395055182856
+                ]
+            },
+            "properties": {
+                "name": "Transformers",
+                "area": "Florida",
+                "address": "6000 Universal Blvd, Orlando, FL 32819",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8386,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.88887029999997,
+                    40.437688899999976
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Utah",
+                "address": "2502 Cabelas Boulevard, Lehi",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=7448",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2069,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.32528967059609,
+                    47.55484379584415
+                ]
+            },
+            "properties": {
+                "name": "Georgetown Brewing Co.",
+                "area": "Washington",
+                "address": "5300 Denver Ave S, Seattle, WA 98108, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8387,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    148.15797230000007,
+                    -37.495411699999984
+                ]
+            },
+            "properties": {
+                "name": "Buchan Caves Reserve Visitor Centre",
+                "area": "Australia",
+                "address": "98 Caves Rd, Buchan VIC 3885, VIC - Buchan",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=399251",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6284,
+                "last_updated": "2026-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5461728556547,
+                    28.370135738771243
+                ]
+            },
+            "properties": {
+                "name": "China Pavilion",
+                "area": "Florida",
+                "address": "Epcot China Pavilion",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8388,
+                "last_updated": "2026-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.54634820506057,
+                    28.36904354526531
+                ]
+            },
+            "properties": {
+                "name": "Outpost Pavilion",
+                "area": "Florida",
+                "address": "200 Epcot Center Dr, Orlando, FL 32836, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8389,
+                "last_updated": "2026-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.70190015848393,
+                    40.651220691011815
+                ]
+            },
+            "properties": {
+                "name": "Planet Regalos",
+                "area": "Spain",
+                "address": "Calle Reyes Catholico 9",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8390,
+                "last_updated": "2026-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.50865289999997,
+                    44.41457100000002
+                ]
+            },
+            "properties": {
+                "name": "Sturgis Motorcycle Museum and Hall of Fame",
+                "area": "South Dakota",
+                "address": "999 Main Street, Sturgis",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=341998",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "retired",
+                "id": 1317,
+                "last_updated": "2026-01-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9441579,
+                    40.6781784
+                ]
+            },
+            "properties": {
+                "name": "Keith Superstore ",
+                "area": "Mississippi",
+                "address": ", Brooklyn",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=471875",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8391,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.75966435884409,
+                    34.870947177885064
+                ]
+            },
+            "properties": {
+                "name": "Red Rock Impressions",
+                "area": "Arizona",
+                "address": "285 Jordan Rd Unit 1 Sedona, AZ 86336 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8392,
+                "last_updated": "2026-01-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.76031679411153,
+                    34.870776402409305
+                ]
+            },
+            "properties": {
+                "name": "Rojo Rock",
+                "area": "Arizona",
+                "address": "244 N State Route 89A Sedona, AZ  86336 United States",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8393,
+                "last_updated": "2026-01-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.213378371297608,
+                    38.69250017193559
+                ]
+            },
+            "properties": {
+                "name": "Gift Shop",
+                "area": "Portugal",
+                "address": "Doca Do Bom Sucesso 1400-038",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8394,
+                "last_updated": "2026-01-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.66342539926892,
+                    33.50282017958448
+                ]
+            },
+            "properties": {
+                "name": "Pressed Penny Souvenir",
+                "area": "California",
+                "address": "31661 Camino Capistrano, San Juan Capistrano, CA 92675, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8395,
+                "last_updated": "2026-01-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.10253910000002,
+                    37.512597099999994
+                ]
+            },
+            "properties": {
+                "name": "Jamsil Lotte World Tower",
+                "area": "South Korea",
+                "address": "05551, 300 Olympic-ro, Songpa-gu, Seoul",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=285696",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2108,
+                "last_updated": "2026-01-10",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.1048655000001,
+                    37.51348560000001
+                ]
+            },
+            "properties": {
+                "name": "Lotte World Aquarium",
+                "area": "South Korea",
+                "address": "300, Olympic-ro, Songpa-gu, Seoul",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=433208",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7253,
+                "last_updated": "2026-01-10",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.33011696075388,
+                    34.10136329238891
+                ]
+            },
+            "properties": {
+                "name": "Hollywood Souvenir Outlet",
+                "area": "California",
+                "address": "6408 Hollywood Blvd, Hollywood",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=308785",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4643,
+                "last_updated": "2026-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.49964690000002,
+                    34.007606700000004
+                ]
+            },
+            "properties": {
+                "name": "Santa Monica Pier Bait-Tackle",
+                "area": "California",
+                "address": "404 Santa Monica Pier, Santa Monica",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=249684",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4856,
+                "last_updated": "2026-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.213247158930768,
+                    38.69256824296047
+                ]
+            },
+            "properties": {
+                "name": "Souvenir Shop",
+                "area": "Portugal",
+                "address": "Unnamed Road, 1400-038 Lisboa, Portogallo",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8396,
+                "last_updated": "2026-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.14674985979958,
+                    36.60666450709955
+                ]
+            },
+            "properties": {
+                "name": "Stovepipe Wells General Store & The Nugget Gift Shop",
+                "area": "California",
+                "address": "Highway 190 Stovepipe Wells Village, Death Valley National Park",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4610,
+                "last_updated": "2026-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.58382070191293,
+                    37.74690442983717
+                ]
+            },
+            "properties": {
+                "name": "Yosemite village store",
+                "area": "California",
+                "address": "Yosemite National Park, Yosemite",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=414",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4897,
+                "last_updated": "2026-01-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.17424,
+                    25.7775797
+                ]
+            },
+            "properties": {
+                "name": "Norwegian Cruise Line - Spirit (cruise ship)",
+                "area": "Florida",
+                "address": "South America Way, Dodge Island, Miami",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=311320",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 3394,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.07204170000001,
+                    38.1496189
+                ]
+            },
+            "properties": {
+                "name": "Made: By the People, For the People",
+                "area": "Virginia",
+                "address": "15 E Beverly St, Staunton",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=472370",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8397,
+                "last_updated": "2026-01-03"
             }
         }
     ]
