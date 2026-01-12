@@ -18674,10 +18674,10 @@
                 "address": "3790 South Las Vegas Boulevard, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=300780",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4522,
-                "last_updated": "2025-12-23",
+                "last_updated": "2026-01-03",
                 "multimachine": 1
             }
         },
@@ -20424,6 +20424,27 @@
                 "status": "unvisited",
                 "id": 4520,
                 "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3029145,
+                    46.0511013
+                ]
+            },
+            "properties": {
+                "name": "Lone Fir Cafe",
+                "area": "Washington",
+                "address": "16806 Lewis River Road [WA 503], Mount St. Helens - Cougar",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=472460",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8398,
+                "last_updated": "2026-01-03"
             }
         }
     ]
