@@ -362,7 +362,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     func checkMachineShouldBeVisible(status: String, machineStatus: String) -> Bool {
         //checks based on the status and the current user defaults whether a machine should be visible
         // should be shown if available and status toggle is on, or if not available and retired toggle is on
-        return ((includedStates.contains(status) && (machineStatus == "available")) || (includedStates.contains("retired") && (machineStatus != "available")))
+        return (includedStates.contains(status) || (includedStates.contains("retired") && (machineStatus != "available")))
     }
     
     func check_json_dict(){
