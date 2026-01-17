@@ -56,22 +56,23 @@ def process_uploaded_image(img_path: str, basewidth: int = 1000):
     """
     img = Image.open(img_path)
     img = ImageOps.exif_transpose(img)
+
+    # Resize only if needed.
     wpercent = basewidth / float(img.size[0])
-    if wpercent > 1:
-        return "Image uploaded successfully, no resize necessary"
-    # resize
-    hsize = int((float(img.size[1]) * float(wpercent)))
-    img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+    if wpercent <= 1:
+        hsize = int((float(img.size[1]) * float(wpercent)))
+        img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
 
-    # Remove image
-    Path.unlink(img_path)
-
-    # If image is a coin, apply background separation
+    # If image is a coin, apply background separation and always save as PNG.
+    output_path = img_path
     if "coin" in img_path:
         img = remove(img, session=new_session("u2netp"))
-        img_path = img_path.replace(".jpg", ".png")
+        output_path = img_path.replace(".jpg", ".png")
 
-    img.save(img_path, quality=95)
+    if output_path != img_path and os.path.exists(img_path):
+        os.remove(img_path)
+
+    img.save(output_path, quality=95)
 
 
 def image_slack(
@@ -102,27 +103,6 @@ def image_slack(
         m_name = MACHINE_NAMES[int(machine_id)]
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
     filetype = "png" if "coin" in fname_suffix else "jpg"
-    
-    # Try uploading the image file directly to Slack 
-    local_img_path = os.path.join(
-        os.path.dirname(THIS_PATH), "..", "..", "..", "images",
-        f"{machine_id}{fname_suffix}.{filetype}")
-    try:
-        # files_upload requires a file-like object
-        with open(local_img_path, "rb") as img_file:
-            CLIENT.files_upload(
-                channels="#pennyme_uploads",
-                file=img_file,
-                filename=os.path.basename(local_img_path),
-                initial_comment=text,
-                title=text,
-            )
-        return
-    except Exception as upload_exc:
-        # Warn and fall back to sending a message with an image URL block
-        logger.warning(
-            f"files_upload failed ({upload_exc}); falling back to image_url blocks"
-        )
     try:
         CLIENT.chat_postMessage(
             channel="#pennyme_uploads",
@@ -142,7 +122,7 @@ def image_slack(
             ],
         )
     except SlackApiError as e:
-        logger.error("Error sending message: %s", e)
+        print("Error sending message: ", e)
         assert e.response["ok"] is False
         assert e.response["error"]
         raise e
