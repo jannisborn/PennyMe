@@ -1,10 +1,10 @@
 import json
 import os
-from pathlib import Path
 from typing import Dict
+
 from loguru import logger
 from PIL import Image, ImageOps
-from rembg import remove, new_session
+from rembg import new_session, remove
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 

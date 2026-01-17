@@ -19,7 +19,7 @@ authors = [
 
 keywords = ["iOS App Store", "App", "Pressed Penny", "Collecting", "Coins"]
 
-requires-python = ">=3.12"
+requires-python = "==3.12"
 
 dependencies = [
   "requests",
