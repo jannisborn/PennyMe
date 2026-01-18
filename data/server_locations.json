@@ -102,9 +102,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=227234",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6125,
-                "last_updated": "2025-12-14"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -884,9 +884,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=440532",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7530,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -1666,10 +1666,10 @@
                 "address": "USF - CityWalk, Orlando ",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=374794",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5360,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -9129,6 +9129,28 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    10.7498004,
+                    47.557574
+                ]
+            },
+            "properties": {
+                "name": "Neuschwanstein Castle (Schloss Neuschwanstein)",
+                "area": "Germany",
+                "address": "Neuschwansteinstraße 20",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=23238",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "multimachine": 4,
+                "id": 615,
+                "last_updated": "2021-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     7.8008043707999,
                     53.690416644040475
                 ]
@@ -12314,9 +12336,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=390523",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6178,
-                "last_updated": "2025-09-24"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -12508,9 +12530,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=370",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 8221,
-                "last_updated": "2025-09-12"
+                "last_updated": "2026-01-03"
             }
         },
         {
@@ -15439,10 +15461,10 @@
                 "address": "1 Hermann Circle Drive, Houston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2494",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3738,
-                "last_updated": "2025-12-02"
+                "last_updated": "2026-01-17"
             }
         },
         {
@@ -18096,15 +18118,15 @@
                 ]
             },
             "properties": {
-                "name": "Antique Center of Gettysburg",
+                "name": "Baltimore Street Books & Antiques",
                 "area": "Pennsylvania",
-                "address": "30 Baltimore Street, Gettysburg",
+                "address": "28 Baltimore Street, Gettysburg",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3857",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3979,
-                "last_updated": "2025-12-18"
+                "last_updated": "2026-01-15"
             }
         },
         {
@@ -18674,10 +18696,10 @@
                 "address": "3790 South Las Vegas Boulevard, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=300780",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4522,
-                "last_updated": "2025-12-23",
+                "last_updated": "2026-01-03",
                 "multimachine": 1
             }
         },
@@ -20221,27 +20243,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -117.14674985979958,
-                    36.60666450709955
-                ]
-            },
-            "properties": {
-                "name": "Stovepipe Wells General Store & The Nugget Gift Shop",
-                "area": "California",
-                "address": "Highway 190 Stovepipe Wells Village, Death Valley National Park",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "retired",
-                "id": 4610,
-                "last_updated": "2026-01-10"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -119.58382070191293,
                     37.74690442983717
                 ]
@@ -20298,6 +20299,407 @@
                 "machine_status": "available",
                 "id": 8397,
                 "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.08411109999996,
+                    33.981043999999976
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops",
+                "area": "Georgia",
+                "address": "5900 Sugarloaf Parkway (Discover Mills Mall), Lawrenceville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1879",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1645,
+                "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.83399789999996,
+                    36.12983699999998
+                ]
+            },
+            "properties": {
+                "name": "Natural Science Center of Greensboro",
+                "area": "North Carolina",
+                "address": "4301 Lawndale Dr, Greensboro",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3700",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4112,
+                "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1449737,
+                    36.17004720000002
+                ]
+            },
+            "properties": {
+                "name": "Downtown Las Vegas - Golden Nugget Hotel Casino",
+                "area": "Nevada",
+                "address": "129 Fremont Street, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=10479",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4499,
+                "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1560579,
+                    36.14724140000001
+                ]
+            },
+            "properties": {
+                "name": "Stratosphere Hotel & Casino Tower Shops - Welcome to Las Vegas store",
+                "area": "Nevada",
+                "address": "2000 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=261795",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 7924,
+                "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.16872945849731,
+                    36.117609791037744
+                ]
+            },
+            "properties": {
+                "name": "LINQ Hotel & Casino High Roller",
+                "area": "Nevada",
+                "address": "3545 Las Vegas Blvd South, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=225755",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4513,
+                "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1740094,
+                    36.10149949999998
+                ]
+            },
+            "properties": {
+                "name": "New York New York Hotel & Casino - Big Apple Coaster Store",
+                "area": "Nevada",
+                "address": "3790 South Las Vegas Boulevard, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=246057",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4520,
+                "last_updated": "2026-01-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3029145,
+                    46.0511013
+                ]
+            },
+            "properties": {
+                "name": "Lone Fir Cafe",
+                "area": "Washington",
+                "address": "16806 Lewis River Road [WA 503], Mount St. Helens - Cougar",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=472460",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8398,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    172.54787330000002,
+                    -43.54630649999999
+                ]
+            },
+            "properties": {
+                "name": "Wigram Airforce Mueseum of New Zealand",
+                "area": "New Zealand",
+                "address": "45 Harvard Avenue, Hornby, Christchurch",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=240337",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3871,
+                "last_updated": "2026-01-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -156.43607439999997,
+                    20.894597999999984
+                ]
+            },
+            "properties": {
+                "name": "Maui Kahului Airport",
+                "area": "Hawaii",
+                "address": "Kahului Airport Road, Maui - Kahului",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1978",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3835,
+                "last_updated": "2026-01-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.00438317346847,
+                    35.39738125386189
+                ]
+            },
+            "properties": {
+                "name": "Manuelito Visitor Information Center",
+                "area": "New Mexico",
+                "address": "East I-40, Exit 3, Manuelito",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=199931",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4935,
+                "last_updated": "2026-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.87649864199759,
+                    44.34754020834667
+                ]
+            },
+            "properties": {
+                "name": "High Falls Gorge",
+                "area": "New York",
+                "address": "4761 NY-86, Wilmington, NY 12997, Wilmington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=443292",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7591,
+                "last_updated": "2026-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.22604060951778,
+                    39.81147829956574
+                ]
+            },
+            "properties": {
+                "name": "Gettysburg National Military Park Mueseum & Visitor Center",
+                "area": "Japan",
+                "address": "1195 Baltimore Pike, Gettysburg, PA 17325, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8399,
+                "last_updated": "2026-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.23029309999994,
+                    39.822417199999975
+                ]
+            },
+            "properties": {
+                "name": "Gettysburg Tours",
+                "area": "Pennsylvania",
+                "address": "778 Baltimore Street, Gettysburg",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7353,
+                "last_updated": "2026-01-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.5729482,
+                    35.1545638
+                ]
+            },
+            "properties": {
+                "name": "Golden Nugget Hotel & Casino",
+                "area": "Nevada",
+                "address": "2300 South Casino Drive , Laughlin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=66885",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5428,
+                "last_updated": "2026-01-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.80733199999999,
+                    24.55907
+                ]
+            },
+            "properties": {
+                "name": "Key West Aquarium",
+                "area": "Florida",
+                "address": "1 Whitehead Street, Key West",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1792",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3322,
+                "last_updated": "2026-01-16",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.177410988664775,
+                    40.95308074007908
+                ]
+            },
+            "properties": {
+                "name": "Faca a sua propta medalha",
+                "area": "Portugal",
+                "address": "Areinho, 4540, Portugal",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8400,
+                "last_updated": "2026-01-16",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4374652,
+                    29.42702010000002
+                ]
+            },
+            "properties": {
+                "name": "AT&T Center  (Was SBC Center)",
+                "area": "Texas",
+                "address": "One AT&T Center Parkway, San Antonio",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2636",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3775,
+                "last_updated": "2026-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -156.69447449999998,
+                    20.921410499999975
+                ]
+            },
+            "properties": {
+                "name": "Whalers Village - Food Court (Lower Level)",
+                "area": "Hawaii",
+                "address": "2435 Kaanapali Pkwy,, Maui - Lahaina",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=398789",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6217,
+                "last_updated": "2026-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.95661479999995,
+                    42.1105673
+                ]
+            },
+            "properties": {
+                "name": "Malden Travel Plaza",
+                "area": "New York",
+                "address": "I-87 North Mile marker 103, Saugerties",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=335061",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3084,
+                "last_updated": "2026-01-17"
             }
         }
     ]
