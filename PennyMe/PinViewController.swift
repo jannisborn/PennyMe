@@ -31,6 +31,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var machineStatusButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var pinData : Artwork!
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
@@ -63,7 +64,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     var imagePicker = UIImagePickerController()
     
-    var imageList: [UIImage] = []
+    var imageDict: [Int: UIImage] = [:]
     private var pendingImageIndex: Int?
     
     var artwork: Artwork? {
@@ -173,6 +174,18 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         for photoInd in Range(0...pinData.numCoins) {
             getImage(photoInd: photoInd)
         }
+        
+        // pageControl instead of scroll indicator
+        pageControl.numberOfPages = pinData.numCoins + 1
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .label
+        pageControl.pageIndicatorTintColor = .systemGray3
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.backgroundColor = UIColor.white // .withAlphaComponent()
+        pageControl.layer.cornerRadius = 10
+        pageControl.layer.masksToBounds = true
+        scrollView.showsHorizontalScrollIndicator = false
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -188,6 +201,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        pageControl.currentPage = page
+    }
+
     private func applyStatusPickerStyle() {
         statusPicker.backgroundColor = .white
 
@@ -736,9 +754,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "bigImage") {
             let destinationViewController = segue.destination as! ZoomViewController
-            destinationViewController.images = imageList
-            let currentPosition = scrollView.contentOffset.x / scrollView.frame.width
-            destinationViewController.scrollPosition = currentPosition        }
+            if let idx = pendingImageIndex {
+                destinationViewController.image = imageDict[idx]
+            }
+        }
         
     }
     
@@ -767,7 +786,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 if let downloadedImage {
                     finalImage = downloadedImage
                     action = #selector(self.enlargeImage(tapGestureRecognizer:))
-                    self.imageList.append(downloadedImage)
+                    self.imageDict[photoInd] = downloadedImage
                 } else {
                     // pick default
                     let isCoin = urlString.contains("coin")
@@ -895,6 +914,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     @objc func enlargeImage(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        guard let tappedView = tapGestureRecognizer.view else { return }
+        pendingImageIndex = tappedView.tag
         self.performSegue(withIdentifier: "bigImage", sender: self)
     }
     
