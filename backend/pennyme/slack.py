@@ -94,7 +94,7 @@ def process_uploaded_image(
         pad = 20
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
-        img.save(img_path, quality=95)
+        img.save(output_path, quality=95)
         return 200, "OK", str(img_path)
 
     img.save(output_path, quality=95)
