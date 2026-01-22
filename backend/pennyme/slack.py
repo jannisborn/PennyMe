@@ -71,7 +71,7 @@ def process_uploaded_image(
     if wpercent <= 1:
         hsize = int((float(img.size[1]) * float(wpercent)))
         img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
-        
+
     Path.unlink(img_path)
 
     # If image is a coin, apply background separation and always save as PNG.
