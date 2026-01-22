@@ -60,16 +60,18 @@ def process_uploaded_image(
     Args:
         img_path: The path to save the image to.
         basewidth: width of rescaled image, defaults to 1000. Used to be 400.
+        min_area: minimal pixel count for a connected-area to be counted in coin
+            foreground separation.
+
+    Returns:
+        String with success message
     """
     img = ImageOps.exif_transpose(Image.open(img_path))
-
-    # Resize only if needed.
     wpercent = basewidth / float(img.size[0])
     if wpercent <= 1:
         hsize = int((float(img.size[1]) * float(wpercent)))
         img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
-
-    # Remove temporarily saved image
+        
     Path.unlink(img_path)
 
     # If image is a coin, apply background separation and always save as PNG.
