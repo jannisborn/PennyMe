@@ -174,7 +174,6 @@ def location_differ(
     problem_data = {"type": "FeatureCollection", "features": []}
     pbar = tqdm(areas)
     for i, area in enumerate(pbar):
-
         if area == " Private Rollers" or area == "_Collector Books_":
             continue
         pbar.set_description(f"Working on area:{i+1}/{len(areas)}: {area}")
@@ -284,9 +283,9 @@ def location_differ(
                                 )
                             # Retire machine
                             for entry in device_dict[this_link]:
-                                entry["properties"]["machine_status"] = (
-                                    UNAVAILABLE_MAPPER[this_state]
-                                )
+                                entry["properties"][
+                                    "machine_status"
+                                ] = UNAVAILABLE_MAPPER[this_state]
                                 entry["properties"]["last_updated"] = today
                                 server_data["features"].append(entry)
                                 changes += 1
@@ -433,9 +432,9 @@ def location_differ(
                                 )
 
                             for entry in device_dict[this_link]:
-                                entry["properties"]["machine_status"] = (
-                                    UNAVAILABLE_MAPPER[this_state]
-                                )
+                                entry["properties"][
+                                    "machine_status"
+                                ] = UNAVAILABLE_MAPPER[this_state]
                                 entry["properties"]["last_updated"] = today
                                 entry["properties"]["name"] = entry["properties"][
                                     "name"
