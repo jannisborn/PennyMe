@@ -16,6 +16,16 @@ def merge_locations(all_file: Path):
     with open(server_file, "r") as f:
         ser = json.load(f)
 
+    # Remove status field if still present (this was deprecated)
+    for entry in ser['features']:
+        if 'status' in entry['properties'].keys():
+            del entry['properties']['status']  
+
+    for entry in ser['features']:
+        if 'status' in entry['properties'].keys():
+            del entry['properties']['status']
+        
+
     ls, la = len(ser["features"]), len(alll["features"])
     print(f"All locations has {la} entries, server locations {ls}")
 
