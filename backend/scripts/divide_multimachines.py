@@ -59,8 +59,7 @@ def jitter_lonlat(lon, lat, radius_m=20.0, rng=None):
 
 
 def fix_strings(text):
-
-    if text in ['.', '?', '1x3 prints (I only got 2/3)']:
+    if text in [".", "?", "1x3 prints (I only got 2/3)"]:
         return 1
     try:
         num = int(text)
@@ -72,7 +71,11 @@ def fix_strings(text):
 
 def set_coords_in_properties(props, lon, lat):
     # Update only fields that already exist (keeps schema stable)
-    if "coordinates" in props and isinstance(props["coordinates"], (list, tuple)) and len(props["coordinates"]) == 2:
+    if (
+        "coordinates" in props
+        and isinstance(props["coordinates"], (list, tuple))
+        and len(props["coordinates"]) == 2
+    ):
         props["coordinates"] = [float(lon), float(lat)]
 
     if "lon" in props:
@@ -94,10 +97,14 @@ def assert_unique_ids(features, label):
         from collections import Counter
 
         dupes = [k for k, v in Counter(ids).items() if v > 1]
-        raise ValueError(f"{label}: duplicate IDs found (showing up to 20): {dupes[:20]}")
+        raise ValueError(
+            f"{label}: duplicate IDs found (showing up to 20): {dupes[:20]}"
+        )
 
 
-def split_multimachines(features, *, next_id, ids_to_skip, already_split_ids, jitter_radius_m, max_machines):
+def split_multimachines(
+    features, *, next_id, ids_to_skip, already_split_ids, jitter_radius_m, max_machines
+):
     """
     - Removes 'multimachine' from the source machine if present.
     - If multimachine > 1 and ID not skipped and not already split in this pass:
@@ -142,9 +149,14 @@ def split_multimachines(features, *, next_id, ids_to_skip, already_split_ids, ji
 
                     # jitter coordinates (deterministic per (orig_id, machine_index))
                     new_coords = jitter_lonlat(
-                        old_coords[0], old_coords[1], radius_m=jitter_radius_m, rng=(mid * 1000 + k)
+                        old_coords[0],
+                        old_coords[1],
+                        radius_m=jitter_radius_m,
+                        rng=(mid * 1000 + k),
                     )
-                    set_coords_in_properties(new_properties, new_coords[0], new_coords[1])
+                    set_coords_in_properties(
+                        new_properties, new_coords[0], new_coords[1]
+                    )
 
                     new_dict = {
                         "type": "Feature",
@@ -170,13 +182,15 @@ server_before = len(ser_locs["features"])
 server_already_split = set()
 server_ids_to_skip = set()
 
-new_ser_locs, server_new_machines_for_all, next_id, server_split_ids = split_multimachines(
-    ser_locs["features"],
-    next_id=next_id,
-    ids_to_skip=server_ids_to_skip,
-    already_split_ids=server_already_split,
-    jitter_radius_m=15.0,
-    max_machines=MAX_MACHINES,
+new_ser_locs, server_new_machines_for_all, next_id, server_split_ids = (
+    split_multimachines(
+        ser_locs["features"],
+        next_id=next_id,
+        ids_to_skip=server_ids_to_skip,
+        already_split_ids=server_already_split,
+        jitter_radius_m=15.0,
+        max_machines=MAX_MACHINES,
+    )
 )
 
 ser_locs["features"] = new_ser_locs
@@ -209,7 +223,9 @@ assert_unique_ids(all_locs["features"], "all_locations")
 n_split_ids_total = len(set(server_split_ids) | set(all_split_ids))
 n_new_machines_total = len(server_new_machines_for_all) + len(all_new_machines)
 
-print(f"Split {n_split_ids_total} IDs total ({len(server_split_ids)} from server, {len(all_split_ids)} from all)")
+print(
+    f"Split {n_split_ids_total} IDs total ({len(server_split_ids)} from server, {len(all_split_ids)} from all)"
+)
 print(f"Added {n_new_machines_total} new machines total")
 print(f"Server locations: {server_before} -> {server_after} features (kept minimal)")
 print(f"All locations:    {all_before} -> {all_after} features")
@@ -218,7 +234,7 @@ print(f"All locations:    {all_before} -> {all_after} features")
 with open("data/all_locations_new.json", "w") as f:
     json.dump(all_locs, f, ensure_ascii=False, indent=4)
 
-with open(server_file.replace('.json', '_new.json'), "w") as f:
+with open(server_file.replace(".json", "_new.json"), "w") as f:
     json.dump(ser_locs, f, ensure_ascii=False, indent=4)
 
 print("Wrote updated files: data/all_locations.json and data/server_locations.json")

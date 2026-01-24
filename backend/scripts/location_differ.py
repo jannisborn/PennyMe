@@ -283,9 +283,9 @@ def location_differ(
                                 )
                             # Retire machine
                             for entry in device_dict[this_link]:
-                                entry["properties"][
-                                    "machine_status"
-                                ] = UNAVAILABLE_MAPPER[this_state]
+                                entry["properties"]["machine_status"] = (
+                                    UNAVAILABLE_MAPPER[this_state]
+                                )
                                 entry["properties"]["last_updated"] = today
                                 server_data["features"].append(entry)
                                 changes += 1
@@ -432,9 +432,9 @@ def location_differ(
                                 )
 
                             for entry in device_dict[this_link]:
-                                entry["properties"][
-                                    "machine_status"
-                                ] = UNAVAILABLE_MAPPER[this_state]
+                                entry["properties"]["machine_status"] = (
+                                    UNAVAILABLE_MAPPER[this_state]
+                                )
                                 entry["properties"]["last_updated"] = today
                                 entry["properties"]["name"] = entry["properties"][
                                     "name"
