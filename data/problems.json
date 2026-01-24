@@ -11,6 +11,28 @@
                 ]
             },
             "properties": {
+                "name": "Knott's Berry Farm",
+                "area": "California",
+                "address": "8039 Beach Blvd, Buena Park",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=374543",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": -1,
+                "last_updated": -1
+            },
+            "problem": "http://locations.pennycollector.com/Details.aspx?location=374543 used in multiple pins with different states, requires manual handling."
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    "N.A.",
+                    "N.A."
+                ]
+            },
+            "properties": {
                 "name": "Mammoth General Store",
                 "area": "Wyoming",
                 "address": "1 Mammoth Upper Loop Road (U.S. 89), Yellowstone National Park - Mammoth Hot Springs",
