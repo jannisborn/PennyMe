@@ -8356,10 +8356,10 @@
                 "address": "2305 E. Malone Ave., Sikeston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3206",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1115,
-                "last_updated": "2025-10-28"
+                "last_updated": "2026-01-17"
             }
         },
         {
@@ -13068,12 +13068,12 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -81.10061539999995,
-                    29.223050200000035
+                    -81.10020480900084,
+                    29.22103351347931
                 ]
             },
             "properties": {
-                "name": "Buc-ee's Daytona Each, FL",
+                "name": "Buc-ee's Daytona Beach, FL",
                 "area": "Florida",
                 "address": "2330 Gateway N Dr,  (off LPGA Blvd. at I-95), Daytona Beach",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=353047",
@@ -13081,7 +13081,7 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 3280,
-                "last_updated": "2025-10-04"
+                "last_updated": "2026-01-19"
             }
         },
         {
@@ -14643,10 +14643,10 @@
                 "address": "Berthed at Pier 35, San Francisco",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=631",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4814,
-                "last_updated": "2025-11-03"
+                "last_updated": "2026-01-20"
             }
         },
         {
@@ -16665,14 +16665,14 @@
             },
             "properties": {
                 "name": "Buc-ee’s",
-                "area": "Bulgaria",
+                "area": "Georgia",
                 "address": "6900 Bucees Blvd, Brunswick, GA 31525, USA",
                 "status": "unvisited",
                 "external_url": "null",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8316,
-                "last_updated": "2025-11-22"
+                "last_updated": "2026-01-19"
             }
         },
         {
@@ -20700,6 +20700,345 @@
                 "status": "unvisited",
                 "id": 3084,
                 "last_updated": "2026-01-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.20764239616793,
+                    38.62815551321891
+                ]
+            },
+            "properties": {
+                "name": "St Louis Aquarium at Union Station - Machine 2",
+                "area": "Missouri",
+                "address": "201 S 18th St, St. Louis, MO 63103, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8402,
+                "last_updated": "2026-01-18",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.29713007510863,
+                    37.18075037101225
+                ]
+            },
+            "properties": {
+                "name": "Wonders of wildlife",
+                "area": "Missouri",
+                "address": "K",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8403,
+                "last_updated": "2026-01-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.11464117838803,
+                    31.552107796225815
+                ]
+            },
+            "properties": {
+                "name": "Jeanes Discovery Center Mayborn Museum Complex",
+                "area": "Texas",
+                "address": "1300 S University Parks Dr, Waco, TX 76706, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8404,
+                "last_updated": "2026-01-19",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.63968809999996,
+                    24.91462429999996
+                ]
+            },
+            "properties": {
+                "name": "World Wide Sportsman (Bass Pro Shop)",
+                "area": "Florida",
+                "address": "81576 Overseas Highway, Islamorada",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1804",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 3314,
+                "last_updated": "2026-01-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.0675384,
+                    47.34739639999998
+                ]
+            },
+            "properties": {
+                "name": "Alderbrook Resort and Spa",
+                "area": "Washington",
+                "address": "10 E Alderbrook Dr., Union",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=432959",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7244,
+                "last_updated": "2026-01-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9043681,
+                    40.7664943
+                ]
+            },
+            "properties": {
+                "name": "Candy Barrel at the Gateway Mall",
+                "area": "Utah",
+                "address": "152 S Rio Grande, Salt Lake City",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=472893",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8405,
+                "last_updated": "2026-01-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.38163692336283,
+                    28.55218255007376
+                ]
+            },
+            "properties": {
+                "name": "Florida Cracker Kitchen",
+                "area": "Florida",
+                "address": "962 E Jefferson St, Brooksville, FL 34601, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8406,
+                "last_updated": "2026-01-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.26667400000001,
+                    33.88270699999995
+                ]
+            },
+            "properties": {
+                "name": "March Field Air Museum",
+                "area": "California",
+                "address": "22550 Van Buren Blvd, Riverside",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 4746,
+                "last_updated": "2026-01-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    126.93983260000007,
+                    37.519464699999986
+                ]
+            },
+            "properties": {
+                "name": "63 Building",
+                "area": "South Korea",
+                "address": "60 Yeouido- dong, Yeongdeungpo-gu, Seoul",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=60928",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2106,
+                "last_updated": "2026-01-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.36496515227833,
+                    41.42220744600592
+                ]
+            },
+            "properties": {
+                "name": "The Olive Scene",
+                "area": "Ohio",
+                "address": "5512 Liberty Ave, Vermilion, OH 44089, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8408,
+                "last_updated": "2026-01-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.739556,
+                    32.519008
+                ]
+            },
+            "properties": {
+                "name": "Louisiana Boardwalk - Fuddruckers",
+                "area": "Louisiana",
+                "address": "390 Plaza Loop Dr, Bossier City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=16098",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3566,
+                "last_updated": "2026-01-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.7177768,
+                    38.481613
+                ]
+            },
+            "properties": {
+                "name": "Red Cedar Inn",
+                "area": "Missouri",
+                "address": "1047 East Osage, Pacific",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=472980",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8409,
+                "last_updated": "2026-01-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.1744774789162,
+                    36.101906929663535
+                ]
+            },
+            "properties": {
+                "name": "New York Hotel and Casino",
+                "area": "Nevada",
+                "address": "3790 South Las Vegas Boulevard, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=377045",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5425,
+                "last_updated": "2026-01-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.488773083518351,
+                    51.17979906731363
+                ]
+            },
+            "properties": {
+                "name": "Kahler Asten",
+                "area": "Germany",
+                "address": "Rothaarsteig",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8410,
+                "last_updated": "2026-01-24",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.6616243709928,
+                    30.35774966432533
+                ]
+            },
+            "properties": {
+                "name": "Javelinas on Holland",
+                "area": "Texas",
+                "address": "101 W. Holland Avenue, 79830",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=427799",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7138,
+                "last_updated": "2026-01-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.146298000000025,
+                    51.318260099999954
+                ]
+            },
+            "properties": {
+                "name": "Sea-Life Marine Park",
+                "area": "Belgium",
+                "address": "Koning Albert 1 laan 116, Blankenberge",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=48798",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 124,
+                "last_updated": "2026-01-24"
             }
         }
     ]
