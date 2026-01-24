@@ -1,7 +1,10 @@
 import json
 import os
-from typing import Dict
+from typing import Dict, Optional, Tuple
+from pathlib import Path
 
+import cv2
+import numpy as np
 from loguru import logger
 from PIL import Image, ImageOps
 from rembg import new_session, remove
@@ -46,33 +49,58 @@ def reload_server_data() -> Dict[str, str]:
     return MACHINE_NAMES
 
 
-def process_uploaded_image(img_path: str, basewidth: int = 1000):
+def process_uploaded_image(
+    img_path: str,
+    basewidth: int = 1000,
+    min_area: int = 2000,
+) -> Tuple[int, str, Optional[str]]:
     """
     Optimizes an image for size/quality and re-saves it to the server.
 
     Args:
         img_path: The path to save the image to.
         basewidth: width of rescaled image, defaults to 1000. Used to be 400.
-    """
-    img = Image.open(img_path)
-    img = ImageOps.exif_transpose(img)
+        min_area: minimal pixel count for a connected-area to be counted in coin
+            foreground separation.
 
-    # Resize only if needed.
+    Returns:
+        String with success message
+    """
+    img = ImageOps.exif_transpose(Image.open(img_path))
     wpercent = basewidth / float(img.size[0])
     if wpercent <= 1:
         hsize = int((float(img.size[1]) * float(wpercent)))
         img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
 
+    Path.unlink(img_path)
+
     # If image is a coin, apply background separation and always save as PNG.
     output_path = img_path
     if "coin" in img_path:
         img = remove(img, session=new_session("u2netp"))
+        # Coin images are saved as PNG to support transparency
         output_path = img_path.replace(".jpg", ".png")
 
-    if output_path != img_path and os.path.exists(img_path):
-        os.remove(img_path)
+        # Return error if more than one connected comp
+        m = (np.array(img)[:, :, 3] > 15).astype(np.uint8)
+        n, _, s, _ = cv2.connectedComponentsWithStats(m, 8)
+        keep = np.where(s[1:, 4] >= min_area)[0] + 1
+
+        if keep.size == 0:
+            return 422, "No foreground object found", None
+        if keep.size > 1:
+            return 409, f"Multiple foreground objects found ({keep.size})", None
+
+        # Crop coin out of the image
+        x, y, w, h = map(int, s[int(keep[0]), :4])
+        pad = 20
+
+        img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
+        img.save(output_path, quality=95)
+        return 200, "OK", str(img_path)
 
     img.save(output_path, quality=95)
+    return 200, "OK", str(img_path)
 
 
 def image_slack(
