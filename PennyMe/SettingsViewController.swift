@@ -30,7 +30,7 @@ class SettingsViewController: UITableViewController {
         "unvisitedSwitch": true,
         "visitedSwitch": true,
         "markedSwitch": true,
-        "retiredSwitch": false,
+        "retiredSwitch": true,
         "clusterPinSwitch": false
     ]
     
