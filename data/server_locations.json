@@ -1146,9 +1146,9 @@
                 "address": "129 Fremont Street, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=10479",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4499,
-                "last_updated": "2026-01-12"
+                "last_updated": "2026-01-20"
             }
         },
         {
@@ -1186,9 +1186,9 @@
                 "address": "3545 Las Vegas Blvd South, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=225755",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4513,
-                "last_updated": "2026-01-12"
+                "last_updated": "2026-01-20"
             }
         },
         {
@@ -1206,9 +1206,9 @@
                 "address": "3790 South Las Vegas Boulevard, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=246057",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4520,
-                "last_updated": "2026-01-12"
+                "last_updated": "2026-01-20"
             }
         },
         {
@@ -2115,6 +2115,27 @@
                 "status": "unvisited",
                 "id": 3441,
                 "last_updated": "2026-01-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.2108966,
+                    38.9115919
+                ]
+            },
+            "properties": {
+                "name": "Eisenhower Presidential Library, Museum & Boyhood Home",
+                "area": "Kansas",
+                "address": "200 S.E. 4th, Abilene",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4691",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3921,
+                "last_updated": "2026-01-20"
             }
         }
     ]
