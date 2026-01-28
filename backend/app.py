@@ -289,7 +289,6 @@ def create_machine():
         "name": title,
         "area": area,
         "address": address,
-        "status": "unvisited",
         "external_url": "null",
         "internal_url": "null",
         "machine_status": "available",

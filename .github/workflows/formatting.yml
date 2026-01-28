@@ -23,10 +23,10 @@ jobs:
         python -m pip install --upgrade uv
         cd backend && uv sync && cd ..
 
-    - name: Check code formatting with black
+    - name: Check formatting and linting with ruff
       run: |
         source backend/.venv/bin/activate
-        uv run black --check .
+        cd backend && uv run ruff format --check . && cd ..
 
     - name: Check sanity of json files
       run: |
