@@ -1,7 +1,7 @@
 import json
 import os
-from pathlib import Path
 from typing import Dict, Optional, Tuple
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -68,20 +68,18 @@ def process_uploaded_image(
     """
     img = ImageOps.exif_transpose(Image.open(img_path))
     wpercent = basewidth / float(img.size[0])
-    if wpercent > 1:
-        return "Image uploaded successfully, no resize necessary"
-    # resize
-    hsize = int((float(img.size[1]) * float(wpercent)))
-    img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+    if wpercent <= 1:
+        hsize = int((float(img.size[1]) * float(wpercent)))
+        img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
 
-    # Remove raw image
     Path.unlink(img_path)
 
-    # If image is a coin, apply background separation
+    # If image is a coin, apply background separation and always save as PNG.
+    output_path = img_path
     if "coin" in img_path:
         img = remove(img, session=new_session("u2netp"))
         # Coin images are saved as PNG to support transparency
-        img_path = img_path.replace(".jpg", ".png")
+        output_path = img_path.replace(".jpg", ".png")
 
         # Return error if more than one connected comp
         m = (np.array(img)[:, :, 3] > 15).astype(np.uint8)
@@ -98,10 +96,10 @@ def process_uploaded_image(
         pad = 20
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
-        img.save(img_path)
+        img.save(output_path, quality=95)
         return 200, "OK", str(img_path)
 
-    img.save(img_path, quality=95)
+    img.save(output_path, quality=95)
     return 200, "OK", str(img_path)
 
 
