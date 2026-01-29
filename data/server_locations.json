@@ -2343,6 +2343,47 @@
                 "id": 3273,
                 "last_updated": "2026-01-29"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.49744880000003,
+                    34.008997199999996
+                ]
+            },
+            "properties": {
+                "name": "Santa Monica Pier - Playland Arcade",
+                "area": "California",
+                "address": "350 Santa Monica Pier, Santa Monica",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=529",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5258,
+                "last_updated": "2026-01-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.2988232,
+                    40.55705469999999
+                ]
+            },
+            "properties": {
+                "name": "Sea Quest Woodbridge",
+                "area": "New Jersey",
+                "address": "250 Woodbridge Center Drive, Woodbridge",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=332990",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2409,
+                "last_updated": "2026-01-27"
+            }
         }
     ]
 }
