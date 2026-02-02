@@ -3,6 +3,7 @@ import os
 import queue
 import random
 import traceback
+import copy
 from datetime import datetime
 from threading import Thread
 from typing import Any, Dict
@@ -357,7 +358,7 @@ def change_machine():
         msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:\n"
 
     # Start new dictionary
-    updated_machine_entry = existing_machine_infos.copy()
+    updated_machine_entry = copy.deepcopy(existing_machine_infos)
     updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
         " "
     )[0]
