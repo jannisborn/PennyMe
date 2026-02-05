@@ -52,6 +52,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         "collectedCoins_\(pinData.id)"
     }
 
+    private let titleIndexPath = IndexPath(row: 0, section: 0)
+    private let addressIndexPath = IndexPath(row: 0, section: 3)
+    private let coordinateIndexPath = IndexPath(row: 1, section: 3)
+    private let lastUpdatedIndexPath = IndexPath(row: 2, section: 3)
+    private struct ConsumedLongPress {
+        let indexPath: IndexPath
+        let time: CFTimeInterval
+    }
+    private var consumedLongPress: ConsumedLongPress?
+    private let copyFeedback = UINotificationFeedbackGenerator()
+
     enum StatusChoice : String {
         case unvisited
         case visited
@@ -118,6 +129,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         addressLabel.numberOfLines = 3
         addressLabel.text = "Address: \(self.pinData.address)"
         lastUpdatedLabel.text = "Last updated: \(self.pinData.last_updated)"
+
+        copyFeedback.prepare()
+
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressToCopy(_:)))
+        longPress.minimumPressDuration = 0.5
+        tableView.addGestureRecognizer(longPress)
         
         // get machine status
         machineStatusButton.setTitle("Machine \(self.pinData.machineStatus)", for: .normal)
@@ -318,7 +335,24 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if (indexPath.section == 3) && (indexPath.row == 0) {
+        defer { tableView.deselectRow(at: indexPath, animated: true) }
+
+        if let consumed = consumedLongPress,
+           consumed.indexPath == indexPath,
+           (CFAbsoluteTimeGetCurrent() - consumed.time) < 1.0 {
+            // A long-press already handled this cell (avoid double actions).
+            consumedLongPress = nil
+            return
+        }
+
+        if indexPath == titleIndexPath {
+            // Copy title on any tap
+            let title = (self.pinData.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !title.isEmpty else { return }
+            copyToPasteboard(title)
+        }
+        else if indexPath == addressIndexPath {
+            // Tap address opens Maps; copy is via long-press.
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             self.pinData.mapItem().openInMaps(launchOptions: launchOptions)
         }
@@ -345,14 +379,66 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 UIApplication.shared.open(URL(string:mailtostring )!)
             }
         }
-        else if (indexPath.section ==  3) && (indexPath.row == 1) {
-            // Copy coordinate section
-
-            UIPasteboard.general.string = String(format : "%f, %f", self.pinData.coordinate.latitude, self.pinData.coordinate.longitude
+        else if indexPath == coordinateIndexPath {
+            // Copy coordinates on any tap
+            let coords = String(
+                format : "%f, %f",
+                self.pinData.coordinate.latitude,
+                self.pinData.coordinate.longitude
             )
-            showConfirmationMessage(message: "Copied!", duration: 1.5)
+            copyToPasteboard(coords)
         }
     }
+
+    @objc private func handleLongPressToCopy(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else { return }
+
+        let location = gesture.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return }
+
+        if indexPath == addressIndexPath {
+            let address = self.pinData.address.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !address.isEmpty else { return }
+            copyToPasteboard(address)
+            consumeLongPress(at: indexPath)
+        } else if indexPath == lastUpdatedIndexPath {
+            let lastUpdated = self.pinData.last_updated.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !lastUpdated.isEmpty else { return }
+            copyToPasteboard(lastUpdated)
+            consumeLongPress(at: indexPath)
+        } else if indexPath == coordinateIndexPath {
+            // Coordinates are copyable on any press (tap or long-press).
+            let coords = String(
+                format : "%f, %f",
+                self.pinData.coordinate.latitude,
+                self.pinData.coordinate.longitude
+            )
+            copyToPasteboard(coords)
+            consumeLongPress(at: indexPath)
+        }
+    }
+
+    private func copyToPasteboard(_ string: String) {
+        UIPasteboard.general.string = string
+        copyFeedback.notificationOccurred(.success)
+        copyFeedback.prepare()
+        showConfirmationMessage(message: "Copied!", duration: 1.5)
+    }
+
+    private func consumeLongPress(at indexPath: IndexPath) {
+        let now = CFAbsoluteTimeGetCurrent()
+        consumedLongPress = ConsumedLongPress(indexPath: indexPath, time: now)
+
+        // Clear automatically in case the table view doesn't emit a selection callback.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self else { return }
+            guard let consumed = self.consumedLongPress else { return }
+            if consumed.indexPath == indexPath && (CFAbsoluteTimeGetCurrent() - consumed.time) >= 1.0 {
+                self.consumedLongPress = nil
+            }
+        }
+    }
+
 
     
     func showConfirmationMessage(message: String, duration: Double) {
