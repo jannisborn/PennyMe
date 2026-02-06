@@ -3285,21 +3285,83 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    8.54332500000007,
-                    47.37029599999995
+                    -93.254188,
+                    44.9755212
                 ]
             },
             "properties": {
-                "name": "Wasserkirche in Zurich",
-                "area": "Switzerland",
-                "address": "Teddy's Souvenir shop, Limmatquai 34, 8001 Zurich, Switzerland",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=103894",
+                "name": "Open Book",
+                "area": "Minnesota",
+                "address": "1011 South Washington Avenue, Minneapolis ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473450",
                 "internal_url": "null",
                 "machine_status": "available",
+                "id": 8933,
+                "last_updated": "2026-02-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.7687029,
+                    35.5442027
+                ]
+            },
+            "properties": {
+                "name": "Dale Earnhardt Incorporated (D.E.I.)",
+                "area": "North Carolina",
+                "address": "1675 Coddle Creek Hwy, Mooresville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3680",
+                "internal_url": "null",
+                "machine_status": "retired",
                 "status": "unvisited",
-                "id": 712,
-                "last_updated": "2026-02-06",
-                "num_coins": 2
+                "id": 4129,
+                "last_updated": "2026-02-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.1363873,
+                    29.1859997
+                ]
+            },
+            "properties": {
+                "name": "Grandpa Joe's Candy Shop",
+                "area": "Florida",
+                "address": "20 SE Broadway St, Ocala",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473400",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8934,
+                "last_updated": "2026-02-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.242881,
+                    36.083516
+                ]
+            },
+            "properties": {
+                "name": "Old Salem Museum and Gardens",
+                "area": "North Carolina",
+                "address": "900 Old Salem Rd., Winston - Salem",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=34632",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4162,
+                "last_updated": "2026-02-06"
             }
         }
     ]
