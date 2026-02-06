@@ -1,11 +1,13 @@
+import copy
 import json
 import os
 import queue
 import random
 import traceback
-import copy
 from datetime import datetime
+from pathlib import Path
 from threading import Thread
+from time import sleep
 from typing import Any, Dict
 
 import pandas as pd
@@ -13,8 +15,6 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
-from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
 from thefuzz import process as fuzzysearch
 
 from pennyme.github_update import (
@@ -32,6 +32,8 @@ from pennyme.slack import (
     process_uploaded_image,
 )
 from pennyme.utils import find_machine_in_database, setup_locdiffer_logger
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -108,14 +110,28 @@ def upload_image():
 
     img_path = os.path.join(PATH_IMAGES, f"{machine_id}{fname_suffix}.jpg")
     request.files["image"].save(img_path)
-    process_uploaded_image(img_path)
+    code, msg, saved_path = process_uploaded_image(img_path)
 
+    if code != 200:
+        image_slack(
+            machine_id,
+            ip=ip_address,
+            fname_suffix=fname_suffix,
+            img_slack_text=msg,
+            filetype="jpg",
+        )
+        # Delete image since there was an error
+        sleep(1)
+        Path(saved_path).unlink()
+        return jsonify({"error": msg}), code
+
+    Path(img_path).unlink()
     # send message to slack
     image_slack(
         machine_id, ip=ip_address, fname_suffix=fname_suffix, img_slack_text=msg
     )
 
-    return "Image uploaded successfully"
+    return jsonify({"message": "Image uploaded successfully"}), 200
 
 
 def save_comment(comment: str, ip: str, machine_id: int):
@@ -171,7 +187,7 @@ def process_machine_entry(
         os.rename(tmp_img_path, img_path)
 
         # Upload the image
-        process_uploaded_image(img_path)
+        code, msg, img_path = process_uploaded_image(img_path)
 
         title = new_machine_entry["properties"]["name"]
         # Send message to slack
