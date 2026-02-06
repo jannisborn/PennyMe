@@ -87,6 +87,7 @@ struct NewMachineFormView: View {
     @State private var area: String = ""
     @State private var paywall: Bool = false
     @State private var multimachine: String = "1"
+    @State private var numCoins: Int = 4
     @State private var showFinishedAlert = false
     @State private var selectedLocation: CLLocationCoordinate2D
     @State private var displayResponse: String = ""
@@ -144,6 +145,13 @@ struct NewMachineFormView: View {
             Toggle(isOn: $paywall) {
                             Text("Is there a fee / paywall?")
                         }
+        
+            // Number of coins
+            Stepper(value: $numCoins, in: 1...10) {
+                Text("Number of coin designs: \(numCoins)")
+            }
+            .padding(.vertical)
+
             
             // Button to open the ImagePicker when tapped
             Button(action: {
@@ -226,6 +234,7 @@ struct NewMachineFormView: View {
                     URLQueryItem(name: "area", value: area),
                     URLQueryItem(name: "multimachine", value: multimachine),
                     URLQueryItem(name:"paywall", value: String(paywall)),
+                    URLQueryItem(name:"num_coins", value: String(numCoins)),
                     URLQueryItem(name: "lon_coord", value: "\(selectedLocation.longitude)"),
                     URLQueryItem(name: "lat_coord", value: "\(selectedLocation.latitude)"),
                 ]
