@@ -638,9 +638,30 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 }
                 return
             }
-            // If the request is successful, display the success message
-            DispatchQueue.main.async {
-                self.handleResponse(type: "image", success: true, error: nil)
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error", message: "Something went wrong. Please try again.")
+                }
+                return
+            }
+
+            let statusCode = httpResponse.statusCode
+            if 200 ..< 300 ~= statusCode {
+                // If the request is successful, display the success message
+                DispatchQueue.main.async {
+                    self.handleResponse(type: "image", success: true, error: nil)
+                }
+            } else {
+                var backendError = "Upload failed. Please try again."
+                if let responseData = data,
+                   let json = try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any],
+                   let errorString = json?["error"] as? String {
+                    backendError = errorString
+                }
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error", message: backendError)
+                }
             }
         }
         task?.resume()
