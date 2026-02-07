@@ -61,6 +61,7 @@ struct MachineChangedForm: View {
     @State private var address: String = ""
     @State private var area: String = ""
     @State private var paywall: Bool = false
+    @State private var numCoins: Int = 4
     @State private var selectedSegment: Int = 0
     @State private var lonLat: String = ""
     
@@ -86,6 +87,7 @@ struct MachineChangedForm: View {
         _address = State(initialValue: pinData.address)
         _area = State(initialValue: pinData.area)
         _paywall = State(initialValue: pinData.paywall)
+        _numCoins = State(initialValue: pinData.numCoins)
         
         let lonLatConverted = "\(coords.latitude)° N, \(coords.longitude)° O".replacingOccurrences(of: ".", with: ",")
         _lonLat = State(initialValue: lonLatConverted)
@@ -149,6 +151,12 @@ struct MachineChangedForm: View {
                             Text("Is there a fee / paywall?").foregroundColor(Color.gray)
                         }
                         .padding(3)
+            
+            // Number of coins
+            Stepper(value: $numCoins, in: 1...10) {
+                Text("Number of coin designs: \(numCoins)")
+            }
+            .padding(.vertical)
             
             // Status segment control
             VStack(alignment: .leading, spacing: 5) {
@@ -220,6 +228,7 @@ struct MachineChangedForm: View {
             (address == pinDataStored.address) &&
             (area == pinDataStored.area) &&
             (paywall == pinDataStored.paywall) &&
+            (numCoins == pinDataStored.numCoins) &&
             (lat_coord == pinDataStored.coordinate.latitude) &&
             (lon_coord == pinDataStored.coordinate.longitude) &&
             (statusNew == pinDataStored.machineStatus) {
@@ -236,13 +245,14 @@ struct MachineChangedForm: View {
             URLQueryItem(name: "area", value: area),
             URLQueryItem(name: "multimachine", value: String(pinDataStored.multimachine)),
             URLQueryItem(name:"paywall", value: String(paywall)),
+            URLQueryItem(name:"num_coins", value: String(numCoins)),
             URLQueryItem(name: "lon_coord", value: "\(lon_coord)"),
             URLQueryItem(name: "lat_coord", value: "\(lat_coord)"),
             URLQueryItem(name: "status", value: statusNew),
         ]
         urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         var request = URLRequest(url: urlComponents.url!)
-     
+
         request.httpMethod = "POST"
         
         // Create a URLSessionDataTask to send the request
