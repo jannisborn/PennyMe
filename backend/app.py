@@ -103,14 +103,15 @@ def upload_image():
 
     if coin_idx == -1:
         fname_suffix = ""
-        msg = "Image uploaded for machine"
+        msg = "Machine image"
     else:
         fname_suffix = f"_coin_{coin_idx}"
-        msg = f"Image uploaded for coin {coin_idx} for machine"
+        msg = f"Coin {coin_idx}, machine"
 
     img_path = os.path.join(PATH_IMAGES, f"{machine_id}{fname_suffix}.jpg")
     request.files["image"].save(img_path)
-    code, msg, saved_path = process_uploaded_image(img_path)
+    code, msg_prefix, saved_path = process_uploaded_image(img_path)
+    msg = f"{msg_prefix} - {msg}"
 
     if code != 200:
         image_slack(
