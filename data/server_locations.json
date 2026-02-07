@@ -1894,9 +1894,9 @@
                 "area": "Washington",
                 "address": "50 Massachusetts Ave NE, Washington, DC 20002, USA",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=92266",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 8906,
                 "last_updated": "2026-01-24"
             }
@@ -2632,8 +2632,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8050,
-                "last_updated": "2026-01-30",
-                "multimachine": 4
+                "last_updated": "2026-01-30"
             }
         },
         {
@@ -3139,26 +3138,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -77.0064440189773,
-                    38.89776144220829
-                ]
-            },
-            "properties": {
-                "name": "Union Station Washington - Machine 2",
-                "area": "Washington DC",
-                "address": "50 Massachusetts Ave NE, Washington, DC 20001, USA",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": 8928,
-                "last_updated": "2026-02-03"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     -73.97398820000002,
                     40.7813241
                 ]
@@ -3186,10 +3165,10 @@
                 ]
             },
             "properties": {
-                "name": "American Museum of National History - Cosmic Shop",
+                "name": "American Museum of Natural History - Cosmic Shop",
                 "area": "New York",
                 "address": "American Museum of Natural History",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=24985",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8929,
@@ -3207,10 +3186,10 @@
                 ]
             },
             "properties": {
-                "name": "American Museum of National History",
+                "name": "American Museum of Natural History - First floor museum shop",
                 "area": "New York",
                 "address": "79th Street at Central Park West, New York City",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=24985",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8930,
@@ -3228,10 +3207,10 @@
                 ]
             },
             "properties": {
-                "name": "American Museum of National History - First floor gift shop",
+                "name": "American Museum of Natural History - First floor gift shop",
                 "area": "New York",
                 "address": "79th Street at Central Park West, New York City",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=24985",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8931,
