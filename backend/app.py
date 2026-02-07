@@ -298,6 +298,8 @@ def create_machine():
         # just put the multimachine as a string, we need to correct it then
         multimachine = str(request.args.get("multimachine"))
 
+    num_coins = int(request.args.get("num_coins", 4))
+
     paywall = True if request.args.get("paywall") == "true" else False
 
     # put properties into dictionary
@@ -312,9 +314,11 @@ def create_machine():
         "id": tmp_id,  # to be updated later
         "last_updated": str(datetime.today()).split(" ")[0],
     }
-    # add multimachine or paywall only if not defaults
+    # add multimachine, num_coins or paywall only if not defaults
     if multimachine != 1:
         properties_dict["multimachine"] = multimachine
+    if num_coins != 4:
+        properties_dict["num_coins"] = num_coins
     if paywall:
         properties_dict["paywall"] = paywall
     # add new item to json
@@ -426,7 +430,13 @@ def change_machine():
         updated_machine_entry["properties"]["paywall"] = paywall_new
         msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
 
-    # Case 6: address and / or location changed --> check for their correspondence
+    # Case 6: Number of coins changed
+    num_coins_new = int(request.args.get("num_coins"))
+    if num_coins_new != existing_machine_infos["properties"].get("num_coins", 4):
+        updated_machine_entry["properties"]["num_coins"] = num_coins_new
+        msg += f"\t Number of coins from: {existing_machine_infos['properties'].get('num_coins', 4)} to: {num_coins_new}\n"
+
+    # Case 7: address and / or location changed --> check for their correspondence
     (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
     address_okay = True  # by default okay

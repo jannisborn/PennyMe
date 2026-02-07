@@ -63,7 +63,6 @@ class Artwork: NSObject, MKAnnotation {
         last_updated = (properties["last_updated"] as? String)!
         id = String((properties["id"] as? Int)!)
         area = String((properties["area"] as? String)!)
-        numCoins = properties["num_coins"] as? Int ?? 4
       
         // machine is per default active and unvisited
         machineStatus = "available"
@@ -86,6 +85,12 @@ class Artwork: NSObject, MKAnnotation {
             paywall = paywall_val
         } else {
             paywall = false
+        }
+        // number of coins - change if exists in dict
+        if let numCoinsVal = properties["num_coins"] as? Int {
+            numCoins = numCoinsVal
+        } else {
+            numCoins = 4
         }
         
         text = title! + address + id
