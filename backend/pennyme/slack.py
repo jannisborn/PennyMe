@@ -1,7 +1,7 @@
 import json
 import os
-from typing import Dict, Optional, Tuple
 from pathlib import Path
+from typing import Dict, Optional, Tuple
 
 import cv2
 import numpy as np
@@ -53,7 +53,7 @@ def process_uploaded_image(
     img_path: str,
     basewidth: int = 1000,
     min_area: int = 2000,
-) -> Tuple[int, str, Optional[str]]:
+) -> Tuple[int, str, str]:
     """
     Optimizes an image for size/quality and re-saves it to the server.
 
@@ -72,8 +72,6 @@ def process_uploaded_image(
         hsize = int((float(img.size[1]) * float(wpercent)))
         img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
 
-    Path.unlink(img_path)
-
     # If image is a coin, apply background separation and always save as PNG.
     output_path = img_path
     if "coin" in img_path:
@@ -87,9 +85,9 @@ def process_uploaded_image(
         keep = np.where(s[1:, 4] >= min_area)[0] + 1
 
         if keep.size == 0:
-            return 422, "No foreground object found", None
+            return 422, "No foreground object found", img_path
         if keep.size > 1:
-            return 409, f"Multiple foreground objects found ({keep.size})", None
+            return 409, f"Multiple foreground objects found ({keep.size})", img_path
 
         # Crop coin out of the image
         x, y, w, h = map(int, s[int(keep[0]), :4])
@@ -97,10 +95,10 @@ def process_uploaded_image(
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
         img.save(output_path, quality=95)
-        return 200, "OK", str(img_path)
+        return 200, "OK", output_path
 
     img.save(output_path, quality=95)
-    return 200, "OK", str(img_path)
+    return 200, "OK", output_path
 
 
 def image_slack(
@@ -109,6 +107,7 @@ def image_slack(
     fname_suffix: str = "",
     m_name: str = None,
     img_slack_text: str = "Image uploaded for machine",
+    filetype: Optional[str] = None,
 ):
     """
     Post an image to Slack.
@@ -130,7 +129,8 @@ def image_slack(
             return
         m_name = MACHINE_NAMES[int(machine_id)]
     text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
-    filetype = "png" if "coin" in fname_suffix else "jpg"
+    if not filetype:
+        filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
         CLIENT.chat_postMessage(
             channel="#pennyme_uploads",
