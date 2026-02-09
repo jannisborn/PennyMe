@@ -33,10 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 alertTintColor: .systemBlue,
                 appName: "PennyMe",
                 alertTitle: "Update Available!",
-                alertMessage: "A new version is available. Please update to continue.",
+                alertMessage: "A new version of PennyMe is available. Please update to continue.",
                 updateButtonTitle: "Update",
-                nextTimeButtonTitle: "No Thanks",
-                skipButtonTitle: "Skip"
+                nextTimeButtonTitle: "Next time",
+                skipButtonTitle: "Skip this version"
             )
             
         
