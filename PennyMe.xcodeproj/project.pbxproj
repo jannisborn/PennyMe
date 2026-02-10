@@ -700,12 +700,13 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 837476512CB0918000812146 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
+		};
 		83E627E62B265A9A002FE18B /* Siren */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 83E627E52B265A9A002FE18B /* XCRemoteSwiftPackageReference "Siren" */;
 			productName = Siren;
 		};
 /* End XCSwiftPackageProductDependency section */
-	};
+
 	rootObject = 9F9F31992300B40900C0E854 /* Project object */;
 }
