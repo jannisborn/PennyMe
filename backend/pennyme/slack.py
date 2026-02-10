@@ -95,6 +95,8 @@ def process_uploaded_image(
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
         img.save(output_path, quality=95)
+        # delete orignal image with jpg filetype
+        Path(img_path).unlink()
         return 200, "OK", output_path
 
     img.save(output_path, quality=95)
