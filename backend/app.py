@@ -126,7 +126,6 @@ def upload_image():
         Path(saved_path).unlink()
         return jsonify({"error": msg}), code
 
-    Path(img_path).unlink()
     # send message to slack
     image_slack(
         machine_id, ip=ip_address, fname_suffix=fname_suffix, img_slack_text=msg
