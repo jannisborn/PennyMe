@@ -683,7 +683,7 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.1.0;
-			}
+			};
 		};
 		83E627E52B265A9A002FE18B /* XCRemoteSwiftPackageReference "Siren" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -692,7 +692,7 @@
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.1.2;
 			};
-		}
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -707,6 +707,6 @@
 			productName = Siren;
 		};
 /* End XCSwiftPackageProductDependency section */
-
+	};
 	rootObject = 9F9F31992300B40900C0E854 /* Project object */;
 }
