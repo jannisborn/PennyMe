@@ -9,7 +9,7 @@ import Siren
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -18,7 +18,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Override point for customization after application launch.
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         UNUserNotificationCenter.current().delegate = self
-        Siren.shared.wail() // Line 2
+
+            let siren = Siren.shared
+            
+            
+            siren.rulesManager = RulesManager(
+                majorUpdateRules: .critical,
+                minorUpdateRules: .default,
+                patchUpdateRules: .default,
+                revisionUpdateRules: .default
+            )
+            
+            siren.presentationManager = PresentationManager(
+                alertTintColor: .systemBlue,
+                appName: "PennyMe",
+                alertTitle: "Update Available!",
+                alertMessage: "A new version of PennyMe is available. Please update to continue.",
+                updateButtonTitle: "Update",
+                nextTimeButtonTitle: "Next time",
+                skipButtonTitle: "Skip this version"
+            )
+            
+        
+        siren.wail()
+
         
         return true
     }
@@ -56,4 +79,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
 
 }
-

@@ -11,7 +11,6 @@ import MapKit
 import CoreLocation
 import Contacts
 import SwiftUI
-import Siren
 
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
@@ -88,10 +87,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
         // Do any additional setup after loading the view, typically from a nib.
         artworks = Artwork.artworks()
-
-        let siren = Siren.shared
-        siren.rulesManager = RulesManager(globalRules: .critical)
-        siren.wail()
 
         // Set up search bar
         searchController.searchResultsUpdater = self
