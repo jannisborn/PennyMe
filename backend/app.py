@@ -432,7 +432,7 @@ def change_machine():
         msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
 
     # Case 6: Number of coins changed
-    num_coins_new = int(request.args.get("num_coins"))
+    num_coins_new = int(request.args.get("num_coins", 4))
     if num_coins_new != existing_machine_infos["properties"].get("num_coins", 4):
         updated_machine_entry["properties"]["num_coins"] = num_coins_new
         msg += f"\t Number of coins from: {existing_machine_infos['properties'].get('num_coins', 4)} to: {num_coins_new}\n"
