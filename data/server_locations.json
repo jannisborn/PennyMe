@@ -3657,6 +3657,69 @@
                 "last_updated": "2026-02-10",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0118736,
+                    29.1389153
+                ]
+            },
+            "properties": {
+                "name": "Giuseppe's Steel City Pizza ",
+                "area": "Florida",
+                "address": "3658 S Nova Rd, Port Orange",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473634",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8942,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.955197,
+                    40.692861
+                ]
+            },
+            "properties": {
+                "name": "Valley Fair Mall, The Candy Barrel",
+                "area": "Utah",
+                "address": "3601 S 2700 W, West Valley City",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2104,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.29094189999999,
+                    29.09246419999999
+                ]
+            },
+            "properties": {
+                "name": "Chisholm Trail Heritage Museum",
+                "area": "Texas",
+                "address": "302 N Esplanade, Cuero",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7961,
+                "last_updated": "2026-02-10"
+            }
         }
     ]
 }
