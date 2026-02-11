@@ -88,7 +88,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         // Do any additional setup after loading the view, typically from a nib.
         artworks = Artwork.artworks()
 
-        
         // Set up search bar
         searchController.searchResultsUpdater = self
         // Results should be displayed in same searchbar as used for searching
