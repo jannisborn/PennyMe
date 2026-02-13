@@ -3826,6 +3826,48 @@
                 "last_updated": "2026-02-13",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3164285,
+                    28.3842104
+                ]
+            },
+            "properties": {
+                "name": "Amazon Fulfillment Center MCO1",
+                "area": "Florida",
+                "address": "12340 Boggy Creek Rd., Orlando ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473688",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8947,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7622399,
+                    39.2863176
+                ]
+            },
+            "properties": {
+                "name": "Spencer Pride Community Center ",
+                "area": "Indiana",
+                "address": "17 E Franklin St, Spencer ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473687",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8948,
+                "last_updated": "2026-02-10"
+            }
         }
     ]
 }
