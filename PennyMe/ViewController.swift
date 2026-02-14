@@ -88,7 +88,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         // Do any additional setup after loading the view, typically from a nib.
         artworks = Artwork.artworks()
 
-        
         // Set up search bar
         searchController.searchResultsUpdater = self
         // Results should be displayed in same searchbar as used for searching
@@ -361,8 +360,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     
     func checkMachineShouldBeVisible(status: String, machineStatus: String) -> Bool {
         //checks based on the status and the current user defaults whether a machine should be visible
-        // should be shown if available and status toggle is on, or if not available and retired toggle is on
-        return (includedStates.contains(status) || (includedStates.contains("retired") && (machineStatus != "available")))
+        // Case 1: machine is not retired, user status (visited / marked / unvisited) corresponds to what is selected on the settings screen OR machine is retired and status is visited / marked
+        // Case 2: machine is retired and retired machines are selected to be shown on the settings screen
+        return ((includedStates.contains(status) && (machineStatus == "available" || status != "unvisited")) || (includedStates.contains("retired") && (machineStatus != "available")))
     }
     
     func check_json_dict(){

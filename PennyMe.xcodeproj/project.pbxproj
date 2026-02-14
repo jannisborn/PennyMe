@@ -16,6 +16,7 @@
 		83E4551F2A705829003D0D8A /* NewMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4551E2A705829003D0D8A /* NewMachine.swift */; };
 		83E455212A705D67003D0D8A /* NewMachineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E455202A705D67003D0D8A /* NewMachineRequest.swift */; };
 		83F2DA682AF6DC6E0002B47A /* MachineChangedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2DA672AF6DC6E0002B47A /* MachineChangedRequest.swift */; };
+		83E627E72B265A9A002FE18B /* Siren in Frameworks */ = {isa = PBXBuildFile; productRef = 83E627E62B265A9A002FE18B /* Siren */; };
 		9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F421AB2261B9755004197B4 /* ArtworkViews.swift */; };
 		9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F612053230CAC2300F1D9DE /* Artwork.swift */; };
 		9F70CCEA231850DC003AED89 /* all_locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F70CCE9231850DC003AED89 /* all_locations.json */; };
@@ -84,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				837476532CB0918000812146 /* DGCharts in Frameworks */,
+				83E627E72B265A9A002FE18B /* Siren in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +197,7 @@
 			name = PennyMe;
 			packageProductDependencies = (
 				837476522CB0918000812146 /* DGCharts */,
+				83E627E62B265A9A002FE18B /* Siren */,
 			);
 			productName = PennyMe;
 			productReference = 9F9F31A12300B40900C0E854 /* PennyMe.app */;
@@ -275,6 +278,7 @@
 			mainGroup = 9F9F31982300B40900C0E854;
 			packageReferences = (
 				837476512CB0918000812146 /* XCRemoteSwiftPackageReference "Charts" */,
+				83E627E52B265A9A002FE18B /* XCRemoteSwiftPackageReference "Siren" */,
 			);
 			productRefGroup = 9F9F31A22300B40900C0E854 /* Products */;
 			projectDirPath = "";
@@ -514,11 +518,12 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PennyMe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PennyMe;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.21;
+				MARKETING_VERSION = 1.23;
 				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -535,11 +540,12 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PennyMe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PennyMe;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.21;
+				MARKETING_VERSION = 1.23;
 				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -679,6 +685,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		83E627E52B265A9A002FE18B /* XCRemoteSwiftPackageReference "Siren" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArtSabintsev/Siren.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -686,6 +700,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 837476512CB0918000812146 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
+		};
+		83E627E62B265A9A002FE18B /* Siren */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83E627E52B265A9A002FE18B /* XCRemoteSwiftPackageReference "Siren" */;
+			productName = Siren;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
