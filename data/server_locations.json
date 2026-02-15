@@ -2814,9 +2814,9 @@
                 "address": "4400 Rickenbacker Causeway, Key Biscayne",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=263188",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3318,
-                "last_updated": "2026-01-30"
+                "last_updated": "2026-02-15"
             }
         },
         {
@@ -3362,6 +3362,638 @@
                 "machine_status": "out-of-order",
                 "id": 5601,
                 "last_updated": "2026-02-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.832091000000042,
+                    50.86438789999999
+                ]
+            },
+            "properties": {
+                "name": "Wij zijn Valkenburg (De Geulpoort)",
+                "area": "Netherlands",
+                "address": "Bogaardlaan 1a, Valkenburg aan de Geul",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=376649",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5875,
+                "last_updated": "2026-02-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.552521658770114,
+                    43.398512658813296
+                ]
+            },
+            "properties": {
+                "name": "Grafidea",
+                "area": "Italy",
+                "address": "Via Leopardi 4, Recanati, Italy",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=73138",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 952,
+                "last_updated": "2026-02-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.965506294323694,
+                    47.83768770590937
+                ]
+            },
+            "properties": {
+                "name": "Lokwelt Freilassing",
+                "area": "Germany",
+                "address": "Westendstraße 5, 83395 Freilassing, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8935,
+                "last_updated": "2026-02-07",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.07065879999999,
+                    35.26868969999996
+                ]
+            },
+            "properties": {
+                "name": "Alien Fresh Jerky",
+                "area": "California",
+                "address": "72242 Baker Boulevard, Baker",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=47032",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4571,
+                "last_updated": "2026-02-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.6177166,
+                    32.7227365
+                ]
+            },
+            "properties": {
+                "name": "Rebel and Rove",
+                "area": "Arizona",
+                "address": "299 S Main St, Yuma",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473500",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8936,
+                "last_updated": "2026-02-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.45730657467913,
+                    41.90017032619642
+                ]
+            },
+            "properties": {
+                "name": "Vatican side entrance",
+                "area": "Vatican City State",
+                "address": "Largo di Porta Cavalleggeri, 1, 00165 Roma RM, Italy",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8937,
+                "last_updated": "2026-02-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.4679466299402,
+                    28.479045758548985
+                ]
+            },
+            "properties": {
+                "name": "Simpsons Universal Studios Florida",
+                "area": "Florida",
+                "address": "Springfield: Home of the Simpsons, 6000 Universal Blvd, Orlando, FL 32819, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8938,
+                "last_updated": "2026-02-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46274540672054,
+                    28.474458045165864
+                ]
+            },
+            "properties": {
+                "name": "Woody Woodpecker Universal Studios Florida",
+                "area": "Florida",
+                "address": "5855 Universal Blvd, Orlando, FL 32819, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8939,
+                "last_updated": "2026-02-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46267627923979,
+                    28.4744277692197
+                ]
+            },
+            "properties": {
+                "name": "Minions Universal Studios",
+                "area": "Florida",
+                "address": "5855 Universal Blvd, Orlando, FL 32819, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8940,
+                "last_updated": "2026-02-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.96333440000001,
+                    33.38480999999997
+                ]
+            },
+            "properties": {
+                "name": "Sea Life Aquarium",
+                "area": "Arizona",
+                "address": "5000 Arizona Mills  Circle, Tempe",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=75097",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2699,
+                "last_updated": "2026-02-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.20117842828033,
+                    33.581973061344975
+                ]
+            },
+            "properties": {
+                "name": "La Crab Shack",
+                "area": "Arizona",
+                "address": "4803 E Ray Road, Phoenix AZ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=412960",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6086,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.071422600000001,
+                    52.334327200000004
+                ]
+            },
+            "properties": {
+                "name": "Kasteel Muiderslot",
+                "area": "Netherlands",
+                "address": "Herengracht 1 , Muiden",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=343252",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5869,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.57568800000004,
+                    48.13642800000003
+                ]
+            },
+            "properties": {
+                "name": "München Alter Peter",
+                "area": "Germany",
+                "address": "Rindermarkt 1, 80331 München",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=794",
+                "internal_url": "null",
+                "paywall": true,
+                "logs": {
+                    "2021-11-14": "There is several machines on different levels on the stairs to the tower. Watch out for the entrance hours. Machines should require 1 Euro and 5 Cents. "
+                },
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 563,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.58109616412881,
+                    28.418305287133585
+                ]
+            },
+            "properties": {
+                "name": "Town Square Theatre",
+                "area": "Florida",
+                "address": "Magic Kingdom Town Square TheatreGolden Oak, FL 32836, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8941,
+                "last_updated": "2026-02-10",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.0118736,
+                    29.1389153
+                ]
+            },
+            "properties": {
+                "name": "Giuseppe's Steel City Pizza ",
+                "area": "Florida",
+                "address": "3658 S Nova Rd, Port Orange",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473634",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8942,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.955197,
+                    40.692861
+                ]
+            },
+            "properties": {
+                "name": "Valley Fair Mall, The Candy Barrel",
+                "area": "Utah",
+                "address": "3601 S 2700 W, West Valley City",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2104,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.29094189999999,
+                    29.09246419999999
+                ]
+            },
+            "properties": {
+                "name": "Chisholm Trail Heritage Museum",
+                "area": "Texas",
+                "address": "302 N Esplanade, Cuero",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7961,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.32387649999997,
+                    30.3898669
+                ]
+            },
+            "properties": {
+                "name": "Baytowne Wharf",
+                "area": "Florida",
+                "address": ", Miramar Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=432970",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 7241,
+                "last_updated": "2026-02-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.5894675762175,
+                    28.358667397709777
+                ]
+            },
+            "properties": {
+                "name": "Yak & Yeti",
+                "area": "Florida",
+                "address": "Disneyworld Animal Kingdom, inside the Yak & Yeti restaurant",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8943,
+                "last_updated": "2026-02-13",
+                "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.24075803622475,
+                    50.552024158848575
+                ]
+            },
+            "properties": {
+                "name": "Monschau Altstadt( Eifel)",
+                "area": "Germany",
+                "address": "Stadtstraße 59, 52156 Monschau, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8944,
+                "last_updated": "2026-02-13",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.4571901427520855,
+                    49.496780899130485
+                ]
+            },
+            "properties": {
+                "name": "Archälogiepark Römische Villa Borg",
+                "area": "Germany",
+                "address": "Im Meeswald 1, 66706 Perl, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8945,
+                "last_updated": "2026-02-13",
+                "num_coins": 1,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.540580859169956,
+                    49.501997616257924
+                ]
+            },
+            "properties": {
+                "name": "Baumwipfelpfad Saarschleife",
+                "area": "Germany",
+                "address": "Cloef-Atrium, Mettlach66693 Mettlach, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8946,
+                "last_updated": "2026-02-13",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3164285,
+                    28.3842104
+                ]
+            },
+            "properties": {
+                "name": "Amazon Fulfillment Center MCO1",
+                "area": "Florida",
+                "address": "12340 Boggy Creek Rd., Orlando ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473688",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8947,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7622399,
+                    39.2863176
+                ]
+            },
+            "properties": {
+                "name": "Spencer Pride Community Center ",
+                "area": "Indiana",
+                "address": "17 E Franklin St, Spencer ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473687",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8948,
+                "last_updated": "2026-02-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.16772588576356,
+                    36.11415721345083
+                ]
+            },
+            "properties": {
+                "name": "Paris Hotel Casino (Lick Candy Store)",
+                "area": "Nevada",
+                "address": "3643 Las Vegas Boulevard South, Las Vegas",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=377240",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5427,
+                "last_updated": "2026-02-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.9261635,
+                    33.962617299999984
+                ]
+            },
+            "properties": {
+                "name": "North Carolina Aquarium at Fort Fisher",
+                "area": "North Carolina",
+                "address": "900 Loggerhead Road, Fort Fisher",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3705",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4111,
+                "last_updated": "2026-02-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.92618153573001,
+                    33.962857698707815
+                ]
+            },
+            "properties": {
+                "name": "Fort Fisher",
+                "area": "North Carolina",
+                "address": "900 Loggerhead Road, Wilmington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=400759",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6266,
+                "last_updated": "2026-02-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.92613852225078,
+                    33.96255773967914
+                ]
+            },
+            "properties": {
+                "name": "North Carolina Aquarium at Fort Fisher * Machine 2",
+                "area": "North Carolina",
+                "address": "900 Loggerhead Road, Fort Fisher",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3705",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 8716,
+                "last_updated": "2026-02-14",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.0191738,
+                    40.539348099999984
+                ]
+            },
+            "properties": {
+                "name": "Pony Express Dental",
+                "area": "Utah",
+                "address": "5396 w Daybreak Parkway, South Jordan",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=305362",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2093,
+                "last_updated": "2026-02-14"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.32113239999995,
+                    32.716541799999995
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's",
+                "area": "Texas",
+                "address": "506 West IH-20, Terrell",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=250426",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3809,
+                "last_updated": "2026-02-15"
             }
         }
     ]
