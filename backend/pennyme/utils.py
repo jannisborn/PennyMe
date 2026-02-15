@@ -74,8 +74,15 @@ def get_next_free_machine_id(
     all_ids = [i["properties"]["id"] for i in all_locations["features"]]
     server_ids = [i["properties"]["id"] for i in server_locations]
 
-    # identify picture IDs
-    pic_ids = [int(im.split(".")[0]) for im in os.listdir(PATH_IMAGES) if "jpg" in im]
+    # identify picture IDs (ignore coin IDs)
+    pic_ids = [
+        int(stem_ext[0])
+        for name in os.listdir(PATH_IMAGES)
+        if "coin" not in name.lower()
+        and os.path.isfile(os.path.join(PATH_IMAGES, name))
+        and (stem_ext := os.path.splitext(name))[1].lower() in {".jpg", ".jpeg", ".png"}
+        and stem_ext[0].lstrip("-").isdigit()
+    ]
 
     max_id_all = max(all_ids) if len(all_ids) > 0 else 0
     max_id_server = max(server_ids) if len(server_ids) > 0 else 0
