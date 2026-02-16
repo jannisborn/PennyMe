@@ -3970,9 +3970,9 @@
                 "address": "5396 w Daybreak Parkway, South Jordan",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=305362",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 2093,
-                "last_updated": "2026-02-16"
+                "last_updated": "2026-02-15"
             }
         },
         {
@@ -4140,6 +4140,47 @@
                 "machine_status": "out-of-order",
                 "id": 7772,
                 "last_updated": "2026-02-16"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.618561,
+                    38.0896931
+                ]
+            },
+            "properties": {
+                "name": "Colorado Welcome Center at Lamar",
+                "area": "Colorado",
+                "address": "109 East Beech Street, Lamar",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=473907",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8952,
+                "last_updated": "2026-02-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.01904819999999,
+                    29.548005600000007
+                ]
+            },
+            "properties": {
+                "name": "Kemah Boardwalk - Bubba Gump Shrimp Company",
+                "area": "Texas",
+                "address": "#5 Kemah Boardwalk, Kemah",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=253730",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3747,
+                "last_updated": "2026-02-15"
             }
         }
     ]
