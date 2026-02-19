@@ -4749,6 +4749,28 @@
                 "last_updated": "2026-02-19",
                 "num_coins": 5
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9428078,
+                    39.74752609999998
+                ]
+            },
+            "properties": {
+                "name": "Denver Museum Of Nature & Science",
+                "area": "Colorado",
+                "address": "2001 Colorado Boulevard, Denver",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=32543",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1846,
+                "last_updated": "2026-02-19",
+                "paywall": true
+            }
         }
     ]
 }
