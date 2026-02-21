@@ -2194,9 +2194,9 @@
                 "address": "136 S Huron Ave, Mackinaw City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=465817",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8202,
-                "last_updated": "2026-01-20"
+                "last_updated": "2026-02-19"
             }
         },
         {
@@ -5324,6 +5324,48 @@
                 "machine_status": "available",
                 "id": 8976,
                 "last_updated": "2026-02-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.15226779999999,
+                    31.499156
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Texas",
+                "address": "2700 Market Place Dr, Waco",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=257038",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3819,
+                "last_updated": "2026-02-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0168023,
+                    40.7034401
+                ]
+            },
+            "properties": {
+                "name": "Castle Clinton National Park Store",
+                "area": "New York",
+                "address": ", New York City (Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=474111",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8977,
+                "last_updated": "2026-02-19"
             }
         }
     ]
