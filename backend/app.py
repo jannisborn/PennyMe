@@ -104,6 +104,14 @@ def upload_image():
         fname_suffix = ""
         msg = "Machine image"
     else:
+        # Fill frontend slots left to right
+        for idx in range(100):
+            if not os.path.exists(
+                os.path.join(PATH_IMAGES, f"{machine_id}_coin_{idx}.png")
+            ):
+                if coin_idx > idx:
+                    coin_idx = idx
+                break
         fname_suffix = f"_coin_{coin_idx}"
         msg = f"Coin {coin_idx}, machine"
 
