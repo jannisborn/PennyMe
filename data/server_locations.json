@@ -6424,6 +6424,28 @@
                 "last_updated": "2026-03-02",
                 "num_coins": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.861300357851538,
+                    50.45941972901403
+                ]
+            },
+            "properties": {
+                "name": "Citadelle de Namur",
+                "area": "Belgium",
+                "address": "Route Merveilleuse 64, Namur",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9004,
+                "last_updated": "2026-03-02",
+                "num_coins": 2,
+                "paywall": true
+            }
         }
     ]
 }
