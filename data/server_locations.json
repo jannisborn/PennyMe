@@ -6807,6 +6807,28 @@
                 "last_updated": "2026-03-02",
                 "num_coins": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.859414893125225,
+                    50.93251677141024
+                ]
+            },
+            "properties": {
+                "name": "Schloss Weesenstein",
+                "area": "Germany",
+                "address": "Am Schloßberg 1C, 01809 Müglitztal, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9022,
+                "last_updated": "2026-03-02",
+                "num_coins": 1,
+                "paywall": true
+            }
         }
     ]
 }
