@@ -6743,6 +6743,28 @@
                 "last_updated": "2026-03-02",
                 "num_coins": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.674412523295433,
+                    50.796466370289146
+                ]
+            },
+            "properties": {
+                "name": "Fort Eben-Emael",
+                "area": "Belgium",
+                "address": "Rue du Fort 40, Eben-Emael",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9019,
+                "last_updated": "2026-03-02",
+                "num_coins": 2,
+                "paywall": true
+            }
         }
     ]
 }
