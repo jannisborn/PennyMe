@@ -6381,6 +6381,28 @@
                 "last_updated": "2026-03-02",
                 "num_coins": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.493196765460513,
+                    50.67380231194913
+                ]
+            },
+            "properties": {
+                "name": "Fort Loncin",
+                "area": "Belgium",
+                "address": "Rue des Héros 15, 4431 Ans, Belgium",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9002,
+                "last_updated": "2026-03-02",
+                "num_coins": 2,
+                "paywall": true
+            }
         }
     ]
 }
