@@ -3410,7 +3410,7 @@
                 "type": "Point",
                 "coordinates": [
                     -116.07065879999999,
-                    35.26868969999996
+                    35.26868969999993
                 ]
             },
             "properties": {
@@ -3419,10 +3419,11 @@
                 "address": "72242 Baker Boulevard, Baker",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=47032",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4571,
-                "last_updated": "2026-02-07"
+                "last_updated": "2026-03-06",
+                "num_coins": 3
             }
         },
         {
