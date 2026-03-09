@@ -7164,6 +7164,68 @@
                 "paywall": true,
                 "num_coins": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.23166219999993,
+                    39.8236844
+                ]
+            },
+            "properties": {
+                "name": "Haunted Gettysburg Tours / Gettysburg Souvenirs & Gifts",
+                "area": "Pennsylvania",
+                "address": "27 Steinwehr Ave, Gettysburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=397159",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6105,
+                "last_updated": "2026-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.409821,
+                    37.80867300000001
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Pier 39 - Lefty's SF at Pier 39",
+                "area": "California",
+                "address": "Pier 39, Space G05-D, San Francisco",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=213710",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4809,
+                "last_updated": "2026-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.3376933,
+                    28.9479185
+                ]
+            },
+            "properties": {
+                "name": "Louis P. Thursby House",
+                "area": "Florida",
+                "address": "Blue Springs State Park, Orange City",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3400,
+                "last_updated": "2026-02-25"
+            }
         }
     ]
 }
