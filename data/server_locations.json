@@ -4578,10 +4578,10 @@
                 "address": "3003 North Thanksgiving Way, Lehi",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1677",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2070,
-                "last_updated": "2026-02-17"
+                "last_updated": "2026-02-25"
             }
         },
         {
@@ -7309,6 +7309,48 @@
                 "machine_status": "available",
                 "id": 5981,
                 "last_updated": "2026-03-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.7364992,
+                    30.2677586
+                ]
+            },
+            "properties": {
+                "name": "13th floor (was Beerland)",
+                "area": "Texas",
+                "address": "711 Red River St, Auston",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=474806",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9032,
+                "last_updated": "2026-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.29569839999999,
+                    32.4807153
+                ]
+            },
+            "properties": {
+                "name": "Tyler State Park",
+                "area": "Texas",
+                "address": "789 Park Road 16, Tyler",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=474745",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9033,
+                "last_updated": "2026-02-25"
             }
         }
     ]
