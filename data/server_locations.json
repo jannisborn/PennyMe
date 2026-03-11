@@ -7519,6 +7519,47 @@
                 "last_updated": "2026-03-11",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.9660068,
+                    44.166968
+                ]
+            },
+            "properties": {
+                "name": "The Brick Store",
+                "area": "New Hampshire",
+                "address": "21 Lisbon Rd, Bath",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=290113",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5061,
+                "last_updated": "2026-02-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.67705889999992,
+                    44.035465300000006
+                ]
+            },
+            "properties": {
+                "name": "White Mountain Visitor Center",
+                "area": "New Hampshire",
+                "address": "200 Kancamagus Highway, North Woodstock",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3386",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5084,
+                "last_updated": "2026-02-25"
+            }
         }
     ]
 }
