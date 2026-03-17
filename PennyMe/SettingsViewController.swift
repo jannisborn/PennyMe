@@ -156,7 +156,7 @@ class SettingsViewController: UITableViewController {
             return "Send push notification if a new penny machine is less than \(Int(self.radiusSlider.value)) km away. Location services must be set to 'Always' in settings. Attention: The app must be opened regularly to keep the location updates running."
         }
         if section == 2{
-            return "Tell us if 1) there is a problem wit the app, 2) if you found a new machine that is not listed, or 3) a machine has changed"
+            return "Tell us if there is a problem with the app! To update a penny machine, please use `Report Change` at the bottom of the machine view."
         }
         return ""
     }
