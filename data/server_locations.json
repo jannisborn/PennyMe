@@ -4830,10 +4830,10 @@
                 "address": "5801 Wilshire Boulevard, Los Angeles - La Brea",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1317",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4674,
-                "last_updated": "2026-02-19"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -4851,10 +4851,10 @@
                 "address": "5801 Wilshire Boulevard, Los Angeles - La Brea",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1317",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 8560,
-                "last_updated": "2026-02-19"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -8351,6 +8351,27 @@
                 "machine_status": "retired",
                 "id": 7957,
                 "last_updated": "2026-03-17"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.11332399999999,
+                    38.2433488
+                ]
+            },
+            "properties": {
+                "name": "James Madison Museum",
+                "area": "Virginia",
+                "address": "Caroline Street, Orange",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=270968",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4442,
+                "last_updated": "2026-03-15"
             }
         }
     ]
