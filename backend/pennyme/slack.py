@@ -77,7 +77,9 @@ def process_uploaded_image(
     if "coin" in img_path:
         img = remove(img, session=new_session("u2netp"))
         # Coin images are saved as PNG to support transparency
-        output_path = img_path.replace(".jpg", ".png")
+        in_path = Path(img_path)
+        out_path = in_path.with_suffix(".png")
+        output_path = str(out_path)
 
         # Return error if more than one connected comp
         m = (np.array(img)[:, :, 3] > 15).astype(np.uint8)
@@ -95,8 +97,9 @@ def process_uploaded_image(
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
         img.save(output_path, quality=95)
-        # delete orignal image with jpg filetype
-        Path(img_path).unlink()
+        # delete original image if we wrote to a different path
+        if out_path != in_path:
+            in_path.unlink()
         return 200, "OK", output_path
 
     img.save(output_path, quality=95)

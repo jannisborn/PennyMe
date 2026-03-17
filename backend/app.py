@@ -8,15 +8,13 @@ from datetime import datetime
 from pathlib import Path
 from threading import Thread
 from time import sleep
-from typing import Any, Dict
+from typing import Any, Dict, Tuple
 
 import pandas as pd
 from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
-from thefuzz import process as fuzzysearch
-
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -34,6 +32,7 @@ from pennyme.slack import (
 from pennyme.utils import find_machine_in_database, setup_locdiffer_logger
 from scripts.location_differ import location_differ
 from scripts.open_diff_pull_request import open_differ_pr
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -105,6 +104,14 @@ def upload_image():
         fname_suffix = ""
         msg = "Machine image"
     else:
+        # Fill frontend slots left to right
+        for idx in range(100):
+            if not os.path.exists(
+                os.path.join(PATH_IMAGES, f"{machine_id}_coin_{idx}.png")
+            ):
+                if coin_idx > idx:
+                    coin_idx = idx
+                break
         fname_suffix = f"_coin_{coin_idx}"
         msg = f"Coin {coin_idx}, machine"
 
@@ -170,6 +177,8 @@ def process_machine_entry(
         ip_address: The IP address of the user.
     """
 
+    title = new_machine_entry.get("properties", {}).get("name", "<unknown>")
+    address = new_machine_entry.get("properties", {}).get("address", "<unknown>")
     try:
         # Wait for cron job to finish and until 5 min passed since last commit
         wait()
@@ -189,7 +198,6 @@ def process_machine_entry(
         # Upload the image
         code, msg, img_path = process_uploaded_image(img_path)
 
-        title = new_machine_entry["properties"]["name"]
         # Send message to slack
         image_slack(
             new_machine_id,
@@ -198,13 +206,17 @@ def process_machine_entry(
             img_slack_text="New machine proposed:",
         )
     except Exception as e:
-        address = new_machine_entry["properties"]["address"]
+        logger.exception(
+            f"Error when processing machine entry: {title}, {address}: {e}"
+        )
         message_slack_raw(
-            text=f"Error when processing machine entry: {title}, {address} ({e})",
+            text=f"Error when processing machine entry: {title}, {address} ({type(e).__name__}: {e})",
         )
 
 
-def address_to_coordinates(address: str, area: str, title: str) -> (bool, tuple):
+def address_to_coordinates(
+    address: str, area: str, title: str
+) -> Tuple[bool, Tuple[float, float]]:
     """
     Geocode address (inputting address, area and title) and return coordinates if found
 
