@@ -2773,9 +2773,9 @@
                 "address": "6816 Hollywood Blvd, Hollywood",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=447209",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7687,
-                "last_updated": "2026-01-30"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -8579,6 +8579,48 @@
                 "machine_status": "available",
                 "id": 9051,
                 "last_updated": "2026-03-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.9227081,
+                    33.8088118
+                ]
+            },
+            "properties": {
+                "name": "Downtown Disney - Disney's Wonderful World of Sweets",
+                "area": "California",
+                "address": "South Disneyland Drive, Anaheim",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=448957",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7714,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.3433288,
+                    35.0059466
+                ]
+            },
+            "properties": {
+                "name": "Lookout Mountain Incline Railway",
+                "area": "Tennessee",
+                "address": "827 East Brow Road, Chattanooga - Lookout Mountain",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2145",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5334,
+                "last_updated": "2026-03-15"
             }
         }
     ]
