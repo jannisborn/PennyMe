@@ -8809,6 +8809,69 @@
                 "num_coins": 8,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.8535009,
+                    35.3662933
+                ]
+            },
+            "properties": {
+                "name": "The Boat Yard / Dragon Bay (was Crazy Otters, & Morro Bay Candy Co)",
+                "area": "California",
+                "address": "845 Embarcadero Suite D, Morro Bay",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=201100",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4700,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.305826,
+                    29.8119219
+                ]
+            },
+            "properties": {
+                "name": "Gulf County Welcome Center",
+                "area": "Florida",
+                "address": "150 Captain Freds Pl, Port St Joe",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=475277",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9059,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.0063269,
+                    46.7284714
+                ]
+            },
+            "properties": {
+                "name": "University of Idaho Vandal Store",
+                "area": "Idaho",
+                "address": "710 S Deakin St, Moscow",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=475261",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9060,
+                "last_updated": "2026-03-15"
+            }
         }
     ]
 }
