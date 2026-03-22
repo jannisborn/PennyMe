@@ -1550,9 +1550,9 @@
                 "address": "81576 Overseas Highway, Islamorada",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1804",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 3314,
-                "last_updated": "2026-01-19"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -7973,7 +7973,7 @@
                 "address": "1 Bass Pro Drive, Memphis",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=53695",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4231,
                 "last_updated": "2026-03-15"
@@ -9298,6 +9298,69 @@
                 "machine_status": "out-of-order",
                 "id": 5259,
                 "last_updated": "2026-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.74218309999999,
+                    32.5204147
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops",
+                "area": "Louisiana",
+                "address": "100 Bass Pro Drive, Bossier City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2345",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3565,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.06217529999999,
+                    42.36629629999999
+                ]
+            },
+            "properties": {
+                "name": "TD Garden",
+                "area": "Massachusetts",
+                "address": "Causeway Street, Boston",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=66677",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2894,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.07865319999999,
+                    32.93740750000001
+                ]
+            },
+            "properties": {
+                "name": "Texas General Store",
+                "area": "Texas",
+                "address": "406 South Main Street, Grapevine",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=292707",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3732,
+                "last_updated": "2026-03-15"
             }
         }
     ]
