@@ -9195,6 +9195,28 @@
                 "last_updated": "2026-03-22",
                 "num_coins": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.890834925807127,
+                    51.7505057749095
+                ]
+            },
+            "properties": {
+                "name": "Rappbodetalsperre",
+                "area": "Germany",
+                "address": "Rappbodetalsperre38889 Heimburg, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9065,
+                "last_updated": "2026-03-22",
+                "num_coins": 3,
+                "paywall": true
+            }
         }
     ]
 }
