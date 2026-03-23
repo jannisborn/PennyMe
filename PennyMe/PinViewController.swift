@@ -12,7 +12,7 @@ import SwiftUI
 
 
 let flaskURL = "http://37.120.179.15:6006/"
-let imageURL = "http://37.120.179.15:8000/"
+let imageURL = "https://pennyme.duckdns.org/"
 
 @available(iOS 13.0, *)
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
