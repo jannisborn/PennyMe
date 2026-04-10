@@ -12170,6 +12170,28 @@
                 "num_coins": 3,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.05626690000001,
+                    38.87185679999999
+                ]
+            },
+            "properties": {
+                "name": "The Pentagon Visitor Center",
+                "area": "Virginia",
+                "address": "The Pentagon, Arlington",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=104518",
+                "internal_url": "null",
+                "paywall": true,
+                "machine_status": "retired",
+                "id": 4406,
+                "last_updated": "2026-04-10"
+            }
         }
     ]
 }
