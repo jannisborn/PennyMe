@@ -12192,6 +12192,48 @@
                 "id": 4406,
                 "last_updated": "2026-04-10"
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6536048,
+                    41.8835943
+                ]
+            },
+            "properties": {
+                "name": "McDonald's Headquarters",
+                "area": "Illinois",
+                "address": "110 N Carpenter St, Chicago",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=476361",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9114,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0230716,
+                    38.892861
+                ]
+            },
+            "properties": {
+                "name": "National Archives",
+                "area": "Washington DC",
+                "address": "700 Constitution Ave NW, Washington DC",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=476321",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9115,
+                "last_updated": "2026-04-09"
+            }
         }
     ]
 }
