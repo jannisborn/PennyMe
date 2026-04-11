@@ -12275,6 +12275,28 @@
                 "last_updated": "2026-04-11",
                 "num_coins": 1
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.336714828554173,
+                    50.205259884798465
+                ]
+            },
+            "properties": {
+                "name": "Burg Eltz",
+                "area": "Germany",
+                "address": "Burg Eltz 1, 56294 Wierschem, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9118,
+                "last_updated": "2026-04-11",
+                "num_coins": 1,
+                "paywall": true
+            }
         }
     ]
 }
