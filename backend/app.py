@@ -51,6 +51,11 @@ with open("ip_comment_dict.json", "r") as f:
     IP_COMMENT_DICT = json.load(f)
 
 
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"}), 200
+
+
 @app.route("/add_comment", methods=["GET"])
 def add_comment():
     """Receives a comment and adds it to the json file."""
