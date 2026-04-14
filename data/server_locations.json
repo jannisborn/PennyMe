@@ -623,9 +623,9 @@
                 "address": "Building E5 in the Elements, Shreveport",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=241912",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3595,
-                "last_updated": "2025-12-31"
+                "last_updated": "2026-04-09"
             }
         },
         {
@@ -5863,9 +5863,9 @@
                 "address": "5331 Old HWY 11, Hattiesburg",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=430892",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7198,
-                "last_updated": "2026-02-28"
+                "last_updated": "2026-04-09"
             }
         },
         {
@@ -12787,6 +12787,88 @@
                 "last_updated": "2026-04-14",
                 "num_coins": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9761953,
+                    40.7586117
+                ]
+            },
+            "properties": {
+                "name": "St. Patrick's Cathedral",
+                "area": "New York",
+                "address": "5th Avenue between 50th/51st, New York City (Manhattan)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=194272",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3054,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.04450039999995,
+                    40.68924939999996
+                ]
+            },
+            "properties": {
+                "name": "Statue of Liberty National Monument",
+                "area": "New York",
+                "address": "Liberty Island, New York Harbor",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4559",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3060,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.8972159,
+                    52.3764879
+                ]
+            },
+            "properties": {
+                "name": "The Bulldog Store",
+                "area": "Netherlands",
+                "address": "Damrak 21, Amsterdam",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5859,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.1611392,
+                    44.3243678
+                ]
+            },
+            "properties": {
+                "name": "The Boatshop Cafe",
+                "area": "Canada",
+                "address": "125 Water St,, Ontario - Gananoque",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8183,
+                "last_updated": "2026-04-09"
             }
         }
     ]
