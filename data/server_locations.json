@@ -440,9 +440,9 @@
                 "address": "28 Baltimore Street, Gettysburg",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3857",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3979,
-                "last_updated": "2026-01-15"
+                "last_updated": "2026-03-27"
             }
         },
         {
@@ -1188,7 +1188,8 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 4513,
-                "last_updated": "2026-03-21"
+                "last_updated": "2026-03-31",
+                "num_coins": 8
             }
         },
         {
@@ -1550,9 +1551,9 @@
                 "address": "81576 Overseas Highway, Islamorada",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1804",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 3314,
-                "last_updated": "2026-01-19"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -2338,9 +2339,9 @@
                 "address": "350 Santa Monica Pier, Santa Monica",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=529",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 5258,
-                "last_updated": "2026-01-27"
+                "last_updated": "2026-03-28"
             }
         },
         {
@@ -2813,10 +2814,10 @@
                 "address": "6408 Hollywood Blvd, Hollywood",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=386954",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5970,
-                "last_updated": "2026-02-01"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -3554,20 +3555,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -112.2037792,
-                    33.58293139999995
+                    -111.97993348270313,
+                    33.31893046086469
                 ]
             },
             "properties": {
                 "name": "La Crab Shack",
                 "area": "Arizona",
-                "address": "6750 W Peoria Ave 127, Peoria",
+                "address": "4803 East Ray Road suite 103 Phoenix, AZ",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=412960",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6086,
-                "last_updated": "2026-03-15"
+                "last_updated": "2026-04-05"
             }
         },
         {
@@ -3866,7 +3867,8 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 5427,
-                "last_updated": "2026-03-21"
+                "last_updated": "2026-04-01",
+                "num_coins": 8
             }
         },
         {
@@ -5571,9 +5573,9 @@
                 "address": "8635 N Main St, Helen",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=469786",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8322,
-                "last_updated": "2026-02-22"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -5715,10 +5717,10 @@
                 "address": "1 Coxcomb Drive, Astoria",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=315892",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4332,
-                "last_updated": "2026-02-25"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -7056,10 +7058,10 @@
                 "address": "One Tranquility Base, Huntsville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=184",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 8742,
-                "last_updated": "2026-03-08"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -7232,8 +7234,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -117.00704783035393,
-                    46.72883459196088
+                    -117.00649494457159,
+                    46.728460103313864
                 ]
             },
             "properties": {
@@ -7244,8 +7246,8 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9031,
-                "last_updated": "2026-03-09",
-                "paywall": true
+                "last_updated": "2026-04-07",
+                "paywall": false
             }
         },
         {
@@ -7953,9 +7955,9 @@
                 "address": "3717 S Las Vegas Blvd, Las Vegas, NV 89109, USA",
                 "external_url": "null",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 9040,
-                "last_updated": "2026-03-15"
+                "last_updated": "2026-04-09"
             }
         },
         {
@@ -7973,7 +7975,7 @@
                 "address": "1 Bass Pro Drive, Memphis",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=53695",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4231,
                 "last_updated": "2026-03-15"
@@ -8638,9 +8640,9 @@
                 "address": "755 East Flamingo Road, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=381791",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5424,
-                "last_updated": "2026-03-19"
+                "last_updated": "2026-03-15"
             }
         },
         {
@@ -8648,8 +8650,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -92.98396202636742,
-                    45.318017652973396
+                    -102.24152012640502,
+                    43.99264343486501
                 ]
             },
             "properties": {
@@ -8660,7 +8662,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9052,
-                "last_updated": "2026-03-20"
+                "last_updated": "2026-03-29"
             }
         },
         {
@@ -8668,8 +8670,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -92.9830851728929,
-                    45.31935085839823
+                    -102.24194108361206,
+                    43.99285670841821
                 ]
             },
             "properties": {
@@ -8680,7 +8682,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9053,
-                "last_updated": "2026-03-20"
+                "last_updated": "2026-03-31"
             }
         },
         {
@@ -9128,6 +9130,3002 @@
                 "id": 9064,
                 "last_updated": "2026-03-22",
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.8901661,
+                    33.543846399999985
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge",
+                "area": "Arizona",
+                "address": "7333 North Pima Rd. , Scottsdale",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=328816",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2674,
+                "last_updated": "2026-03-22",
+                "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.3841760175669,
+                    35.763477571724394
+                ]
+            },
+            "properties": {
+                "name": "Pokemon Store - Narita International Airport Terminal 1",
+                "area": "Japan",
+                "address": "4F Narita Airport Terminal 1 1-1 Goryobokujo Sanrizuka, Narita, Chiba Prefecture, Narita",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=255287",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2803,
+                "last_updated": "2026-03-22",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    140.39012551246566,
+                    35.76818219307389
+                ]
+            },
+            "properties": {
+                "name": "Pokemon Store Narita Airport",
+                "area": "Japan",
+                "address": "4th Floor Terminal 2 Narita Airport, Chiba",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=294885",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2752,
+                "last_updated": "2026-04-06",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.890834925807127,
+                    51.7505057749095
+                ]
+            },
+            "properties": {
+                "name": "Rappbodetalsperre",
+                "area": "Germany",
+                "address": "Rappbodetalsperre38889 Heimburg, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9065,
+                "last_updated": "2026-03-22",
+                "num_coins": 3,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.10504709343732,
+                    43.96635808400103
+                ]
+            },
+            "properties": {
+                "name": "Mo’s Seafood",
+                "area": "Oregon",
+                "address": "1436 Bay St, Florence, OR 97439, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 8018,
+                "last_updated": "2026-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.35689549999998,
+                    43.90985489999996
+                ]
+            },
+            "properties": {
+                "name": "Newberry National Volcanic Monument - Lava Lands Visitor's Center",
+                "area": "Oregon",
+                "address": "58201 S Hwy 97, Bend",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=294601",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4341,
+                "last_updated": "2026-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.74025299999991,
+                    44.3528529
+                ]
+            },
+            "properties": {
+                "name": "Ben & Jerry's Ice Cream Factory",
+                "area": "Vermont",
+                "address": "1281 Waterbury-Stowe Road (Route 100), Waterbury",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1668",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1278,
+                "last_updated": "2026-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.94373759999995,
+                    38.95532020000001
+                ]
+            },
+            "properties": {
+                "name": "Blue Pebbles",
+                "area": "California",
+                "address": "1001 Heavenly Village Way, Unit 1B, South Lake Tahoe",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=375513",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 5259,
+                "last_updated": "2026-03-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.74218309999999,
+                    32.5204147
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops",
+                "area": "Louisiana",
+                "address": "100 Bass Pro Drive, Bossier City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2345",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3565,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.06217529999999,
+                    42.36629629999999
+                ]
+            },
+            "properties": {
+                "name": "TD Garden",
+                "area": "Massachusetts",
+                "address": "Causeway Street, Boston",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=66677",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2894,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.07865319999999,
+                    32.93740750000001
+                ]
+            },
+            "properties": {
+                "name": "Texas General Store",
+                "area": "Texas",
+                "address": "406 South Main Street, Grapevine",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=292707",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3732,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.17175640000002,
+                    36.0829833
+                ]
+            },
+            "properties": {
+                "name": "Harley-Davidson of Las Vegas",
+                "area": "Nevada",
+                "address": "5191 Las Vegas Boulevard South, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=249557",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4508,
+                "last_updated": "2026-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.38151856744558,
+                    37.850280535645915
+                ]
+            },
+            "properties": {
+                "name": "WomanMade Products",
+                "area": "Germany",
+                "address": "91 Fall St. Seneca Falls",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8171,
+                "last_updated": "2026-03-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.17214879999999,
+                    36.1088418
+                ]
+            },
+            "properties": {
+                "name": "Harmon Corner - Rainforest Café",
+                "area": "Nevada",
+                "address": "3717 Las Vegas Boulevard South suite 275, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=241578",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4510,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.25592241783109,
+                    41.62290003536105
+                ]
+            },
+            "properties": {
+                "name": "Indiana Dinosaur Museum",
+                "area": "Indiana",
+                "address": "7102 Lincolnway W Hwy, South Bend, IN 46628",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9066,
+                "last_updated": "2026-04-09",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.54679099999998,
+                    41.61977000000001
+                ]
+            },
+            "properties": {
+                "name": "Golden Spike National Historic Site",
+                "area": "Utah",
+                "address": "National Historic Site, Promontory",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=47367",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2087,
+                "last_updated": "2026-03-25",
+                "num_coins": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.67220799999997,
+                    41.98783400000002
+                ]
+            },
+            "properties": {
+                "name": "Barton's Club 93 Hotel & Casino",
+                "area": "Nevada",
+                "address": "1002 US Highway 93, Jackpot",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=7385",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4486,
+                "last_updated": "2026-03-25",
+                "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.48470440000003,
+                    42.48335470000002
+                ]
+            },
+            "properties": {
+                "name": "Twin Falls Airport",
+                "area": "Idaho",
+                "address": "492 Airport Loop, Twin Falls",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1989",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4328,
+                "last_updated": "2026-03-25",
+                "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.47039700000002,
+                    42.584223
+                ]
+            },
+            "properties": {
+                "name": "Herrett Center for Arts and Science",
+                "area": "Idaho",
+                "address": "315 Falls Avenue, Twin Falls",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=237829",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4326,
+                "last_updated": "2026-03-25",
+                "num_coins": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.17550461821538,
+                    37.25378592063387
+                ]
+            },
+            "properties": {
+                "name": "Dixie Caverns",
+                "area": "Virginia",
+                "address": "5753 West Main Street, Salem",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1402",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4449,
+                "last_updated": "2026-03-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.96457380000003,
+                    41.36162220000002
+                ]
+            },
+            "properties": {
+                "name": "Mystic Seaport",
+                "area": "Connecticut",
+                "address": "75 Greenmanville Ave, Mystic",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1450",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1694,
+                "last_updated": "2026-03-25",
+                "paywall": false
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.95266489999999,
+                    41.3733894
+                ]
+            },
+            "properties": {
+                "name": "Mystic Aquarium & Institute for Exploration",
+                "area": "Connecticut",
+                "address": "55 Coogan Boulevard, Mystic",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1453",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1692,
+                "last_updated": "2026-03-25",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2135224,
+                    36.6414441
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shops, Branson Landing",
+                "area": "Missouri",
+                "address": "1 Bass Pro Drive, Branson",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=27218",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1051,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.2730567000000086,
+                    51.4868364
+                ]
+            },
+            "properties": {
+                "name": "St. Fagan's National History Museum Gift Store",
+                "area": "Wales",
+                "address": "St. Fagan's, SOUTH WALES - Cardiff - St Fagans",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=34927",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 15,
+                "last_updated": "2026-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.65562600000003,
+                    36.6770285
+                ]
+            },
+            "properties": {
+                "name": "National Steinbeck Center",
+                "area": "California",
+                "address": "1 Main Street, Salinas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1191",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4760,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.95909489999998,
+                    38.949129100000036
+                ]
+            },
+            "properties": {
+                "name": "Empanash",
+                "area": "California",
+                "address": "900 Ski Run Blvd #106, South Lake Tahoe",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=438020",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 7459,
+                "last_updated": "2026-03-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9786736,
+                    40.7587402
+                ]
+            },
+            "properties": {
+                "name": "Rockerfeller Center- Kelly Wall Temp Art Exhibit",
+                "area": "New York",
+                "address": "630 5th ave, NYC (Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=475623",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9067,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.32995380000001,
+                    35.78060629999999
+                ]
+            },
+            "properties": {
+                "name": "Ragged Point Inn & Resort Mini Mart",
+                "area": "California",
+                "address": "19019 Cabrillo Highway (Highway 1), Ragged Point (near San Simeon)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1243",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4740,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.94376666398338,
+                    38.95529775845967
+                ]
+            },
+            "properties": {
+                "name": "Pappy’s",
+                "area": "California",
+                "address": "1026 Heavenly Village Way, South Lake Tahoe, CA 96150, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 8066,
+                "last_updated": "2026-03-27",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.32255093664591,
+                    35.0185018210701
+                ]
+            },
+            "properties": {
+                "name": "Towing museum",
+                "area": "Liechtenstein",
+                "address": "3315 broad st Chattanooga TN37408",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9068,
+                "last_updated": "2026-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.6778425,
+                    35.2564235
+                ]
+            },
+            "properties": {
+                "name": "SLO Ranch Market",
+                "area": "California",
+                "address": "851 Froom Ranch Way, San Luis Obispo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=475683",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9069,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7763954,
+                    36.1577547
+                ]
+            },
+            "properties": {
+                "name": "Hatch Show Print Shop",
+                "area": "Tennessee",
+                "address": "224 5th Ave S, Nashville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=229042",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4245,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.8339664,
+                    33.0305674
+                ]
+            },
+            "properties": {
+                "name": "Crayola Experience",
+                "area": "Texas",
+                "address": "6121 W Park Blvd, Suite A100, Plano",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=289205",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3770,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.66932489999995,
+                    27.765014999999984
+                ]
+            },
+            "properties": {
+                "name": "Worlds Greatest Gift Shop",
+                "area": "Florida",
+                "address": "2631 6th Ave S, St. Petersburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=471336",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8368,
+                "last_updated": "2026-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.7581415,
+                    39.317804299999956
+                ]
+            },
+            "properties": {
+                "name": "Harpers Ferry National Historical Park",
+                "area": "West Virginia",
+                "address": "171 Shoreline Dr (visitor center), Harpers Ferry",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=418365",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6984,
+                "last_updated": "2026-03-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.32340309793068,
+                    35.01676745295981
+                ]
+            },
+            "properties": {
+                "name": "International Towing and Recovery Museum",
+                "area": "Tennessee",
+                "address": "3315 Broad St, Chattanooga, TN 37408, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9070,
+                "last_updated": "2026-03-28",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.00527029999998,
+                    40.469555700000036
+                ]
+            },
+            "properties": {
+                "name": "Miller Park Zoo",
+                "area": "Illinois",
+                "address": "1020 South Morris Avenue, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2108",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1201,
+                "last_updated": "2026-03-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.05828270000009,
+                    37.513130999999994
+                ]
+            },
+            "properties": {
+                "name": "COEX aquarium",
+                "area": "South Korea",
+                "address": "Yeongdongdae-ro 513 Basement 1, Seoul, Gangnam",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 5911,
+                "last_updated": "2026-03-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.1458816,
+                    39.9483452
+                ]
+            },
+            "properties": {
+                "name": "Museum of The American Revolution",
+                "area": "Pennsylvania",
+                "address": "101 South Third St. , Philadelphia",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=268493",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4036,
+                "last_updated": "2026-03-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.691091141949919,
+                    37.088948010903906
+                ]
+            },
+            "properties": {
+                "name": "Lagos Marina",
+                "area": "Portugal",
+                "address": "Passeio dos Descobrimentos, 8600-302 Lagos, Portugal",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9071,
+                "last_updated": "2026-03-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.3258045,
+                    38.49709059999998
+                ]
+            },
+            "properties": {
+                "name": "Royal Gorge Dinosaur Experience",
+                "area": "Colorado",
+                "address": "44895 W U.S. 50, Cañon City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=320908",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1820,
+                "last_updated": "2026-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.32240589999996,
+                    38.46324709999999
+                ]
+            },
+            "properties": {
+                "name": "Royal Gorge Bridge & Park",
+                "area": "Colorado",
+                "address": "4218 Fremont County Road 3A, Cañon City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=763",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1819,
+                "last_updated": "2026-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.00406190000002,
+                    33.65520629999999
+                ]
+            },
+            "properties": {
+                "name": "Huntington Beach Pier",
+                "area": "California",
+                "address": ", Huntington Beach",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4647,
+                "last_updated": "2026-03-29",
+                "paywall": false
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.63012819999999,
+                    33.32137579999999
+                ]
+            },
+            "properties": {
+                "name": "Billy the Kid Scenic Byway Visitor Center",
+                "area": "New Mexico",
+                "address": "841 Highway 70 West, Ruidoso Downs",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3487",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4940,
+                "last_updated": "2026-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.19319066899845,
+                    28.027942764888405
+                ]
+            },
+            "properties": {
+                "name": "Dinosaur World",
+                "area": "Florida",
+                "address": "5442 Harvey Tew Rd, Plant City, FL 33565, USA",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 7649,
+                "last_updated": "2026-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.19220560000001,
+                    28.028052800000026
+                ]
+            },
+            "properties": {
+                "name": "Dinosaur World",
+                "area": "Florida",
+                "address": "5145 Harvey Tew Road (I-4 exit 17), Plant City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=10887",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3434,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.77632350857482,
+                    47.669837668601936
+                ]
+            },
+            "properties": {
+                "name": "Museum of North Idaho",
+                "area": "Idaho",
+                "address": "720 East Young Avenue pCoeur d'Alene",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=195167",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4313,
+                "last_updated": "2026-03-29",
+                "num_coins": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6501103457874,
+                    30.753698774726697
+                ]
+            },
+            "properties": {
+                "name": "Georgia Welcome Center",
+                "area": "Georgia",
+                "address": "1973 Haddock Rd, Kingsland, GA 31548",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9072,
+                "last_updated": "2026-03-29",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.43733551216133,
+                    42.59176833268932
+                ]
+            },
+            "properties": {
+                "name": "Geneva Gifts @Christine's - duplicate",
+                "area": "Wisconsin",
+                "address": "858 Main St, Lake Geneva",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=97699",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2428,
+                "last_updated": "2026-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.7799236463858,
+                    47.6735606930923
+                ]
+            },
+            "properties": {
+                "name": "Magpie Souvenirs",
+                "area": "Idaho",
+                "address": "423 Sherman Ave, Coeur d'Alene, ID 83814, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9073,
+                "last_updated": "2026-03-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.04903448432966,
+                    47.58583293678307
+                ]
+            },
+            "properties": {
+                "name": "Palace of Miracles (Csodak Palotaja)",
+                "area": "Hungary",
+                "address": "1039, Budapest, Mátyás király út 24",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=773",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 831,
+                "last_updated": "2026-03-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.197601277761779,
+                    41.386470940897034
+                ]
+            },
+            "properties": {
+                "name": "La Rotonda Port Olympic Souvenir Shop",
+                "area": "Spain",
+                "address": "Carrer de la Marina, 16 First Floor, Barcelona - Catalonia Region Barcelona Province",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=319699",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6428,
+                "last_updated": "2026-03-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.94432470000001,
+                    38.9562465
+                ]
+            },
+            "properties": {
+                "name": "Powder House Ski & Snowboard",
+                "area": "California",
+                "address": "4045 Lake Tahoe Boulevard, South Lake Tahoe",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=282551",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 4875,
+                "last_updated": "2026-03-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.51508969999999,
+                    35.4635103
+                ]
+            },
+            "properties": {
+                "name": "Paycom Center ",
+                "area": "Oklahoma",
+                "address": "208 Thunder Drive, Oklahoma City ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=451247",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9074,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.71223660000003,
+                    42.19566419999997
+                ]
+            },
+            "properties": {
+                "name": "North and East Co.",
+                "area": "Oregon",
+                "address": "242 E Main St,, Ashland",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=357903",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5214,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7122366,
+                    42.1956642
+                ]
+            },
+            "properties": {
+                "name": "North & East Co",
+                "area": "Oregon",
+                "address": "242 E Main St, Ashland",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=463459",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8105,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8488019,
+                    42.6547174
+                ]
+            },
+            "properties": {
+                "name": "Biggs Bar & Grill",
+                "area": "Michigan",
+                "address": "48265 Gratiot, Chesterfield",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=475788",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9075,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.18001480000002,
+                    32.684833400000024
+                ]
+            },
+            "properties": {
+                "name": "The Bay Company",
+                "area": "California",
+                "address": "1106 Orange Avenue, Coronado",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=262231",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4605,
+                "last_updated": "2026-03-30"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.83558394530763,
+                    36.09011666874444
+                ]
+            },
+            "properties": {
+                "name": "Grandfather mountain animal center",
+                "area": "North Carolina",
+                "address": "2050 blowing rock highway",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9076,
+                "last_updated": "2026-03-31",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.30454047224384,
+                    28.097198347028282
+                ]
+            },
+            "properties": {
+                "name": "Wild Florida airboat dock",
+                "area": "Florida",
+                "address": "2900 Lake Cypress Rd, Kenansville, FL 34739, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9077,
+                "last_updated": "2026-03-31",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.27895020000001,
+                    43.619924499999975
+                ]
+            },
+            "properties": {
+                "name": "Pojo's Family Fun Center",
+                "area": "Idaho",
+                "address": "7736 West Fairview Avenue, Boise",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1984",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4307,
+                "last_updated": "2026-04-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.90157900000001,
+                    39.411019
+                ]
+            },
+            "properties": {
+                "name": "Weston Bend Candle Co",
+                "area": "Missouri",
+                "address": "424 Main St, Weston",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=332376",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 1142,
+                "last_updated": "2026-04-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.42338649999999,
+                    39.09376049999999
+                ]
+            },
+            "properties": {
+                "name": "Home of Harry S. Truman",
+                "area": "Missouri",
+                "address": ", Independence",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=394734",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6160,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.49568946286144,
+                    48.3923178711942
+                ]
+            },
+            "properties": {
+                "name": "Restless and refurbished",
+                "area": "Washington",
+                "address": "103 morris street, la Conner Washington",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9078,
+                "last_updated": "2026-04-01"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.70959060000001,
+                    51.46678840000002
+                ]
+            },
+            "properties": {
+                "name": "Jurassic Store Fossil World",
+                "area": "Canada",
+                "address": "105 1 St W, Drumheller, AB , Alberta, Drumheller",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=379872",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5620,
+                "last_updated": "2026-04-02"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.17231359999995,
+                    36.10884250000001
+                ]
+            },
+            "properties": {
+                "name": "Harmon Corner - Bubba Gump Shrimp Company",
+                "area": "Nevada",
+                "address": "3717 Las Vegas Boulevard South suite 2Q and 3C, Las Vegas",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=189027",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4509,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.18104827790992,
+                    40.5293304876933
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Industrial History",
+                "area": "Pennsylvania",
+                "address": "602 E. 2nd Street, Bethlehem PA 18015",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9080,
+                "last_updated": "2026-04-03",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.409370545007365,
+                    52.51548809724664
+                ]
+            },
+            "properties": {
+                "name": "Park Inn",
+                "area": "Germany",
+                "address": "Alexanderpl. 7, 10178 Berlin",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9081,
+                "last_updated": "2026-04-03",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46940314702995,
+                    28.4726505921514
+                ]
+            },
+            "properties": {
+                "name": "Universal Studios (cat in the hat)",
+                "area": "Florida",
+                "address": "Nearby Address: Florida Center, Orlando, FL 32819",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9082,
+                "last_updated": "2026-04-04",
+                "num_coins": 10,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.49561250000001,
+                    48.39242109999999
+                ]
+            },
+            "properties": {
+                "name": "Nasty Jack's Antiques",
+                "area": "Washington",
+                "address": "103 Morris Street - P.O. Box 251, La Conner",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=256208",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5104,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.78531140000001,
+                    49.3024727
+                ]
+            },
+            "properties": {
+                "name": "Harrison Hot Springs",
+                "area": "Canada",
+                "address": ", BC - Harrison Hot Springs",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=243150",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4968,
+                "last_updated": "2026-04-04",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.712438494181441,
+                    56.438036283093226
+                ]
+            },
+            "properties": {
+                "name": "The green welly stop",
+                "area": "Ukraine",
+                "address": "FK208RY",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9083,
+                "last_updated": "2026-04-04",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.355990094950197,
+                    52.01263089317035
+                ]
+            },
+            "properties": {
+                "name": "Oude kerk",
+                "area": "Netherlands",
+                "address": "HH Geestkerkhof 25, 2611 HP Delft, Netherlands",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8278,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.360910800000001,
+                    52.01238259999996
+                ]
+            },
+            "properties": {
+                "name": "Nieuwe Kerk (New Church)",
+                "area": "Netherlands",
+                "address": "Markt Square 80, Delft",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=95254",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 181,
+                "last_updated": "2026-04-04",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.02783199999998,
+                    29.26501999999999
+                ]
+            },
+            "properties": {
+                "name": "Big Shark",
+                "area": "Florida",
+                "address": "2715 N. Atlantic Avenue, Daytona Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1834",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3279,
+                "last_updated": "2026-04-04",
+                "num_coins": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.44058102400073,
+                    54.421860585112526
+                ]
+            },
+            "properties": {
+                "name": "Souvenir Münzen",
+                "area": "Germany",
+                "address": "Rugardweg",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9084,
+                "last_updated": "2026-04-04",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.702551534568807,
+                    39.538053354994396
+                ]
+            },
+            "properties": {
+                "name": "Grutas de Mira de aire",
+                "area": "Portugal",
+                "address": "R. 10 de Abril 691, 2485 Mira de Aire, Portugal",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9085,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.702551534568807,
+                    39.538053354994396
+                ]
+            },
+            "properties": {
+                "name": "Grutas de Mira de aire",
+                "area": "Portugal",
+                "address": "R. 10 de Abril 691, 2485 Mira de Aire, Portugal",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9086,
+                "last_updated": "2026-04-04",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.706728584623514,
+                    39.54050390726789
+                ]
+            },
+            "properties": {
+                "name": "Grutas mira de aire",
+                "area": "Portugal",
+                "address": "Av. dr Luciano Justo Ramos n°470",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9087,
+                "last_updated": "2026-04-04",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.687420444922706,
+                    53.51180401548076
+                ]
+            },
+            "properties": {
+                "name": "Blaue Weisse Flotte - Souvenirs",
+                "area": "Germany",
+                "address": "Strandstraße 3, 17192 Waren (Müritz), Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9088,
+                "last_updated": "2026-04-04",
+                "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.67854591925295,
+                    30.697007986957946
+                ]
+            },
+            "properties": {
+                "name": "Temporary Welcome Center Machine",
+                "area": "Florida",
+                "address": "751829 Interstate 95 Yulee",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9089,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.53419053856508,
+                    35.79443698923988
+                ]
+            },
+            "properties": {
+                "name": "Sweet Shoppe",
+                "area": "Tennessee",
+                "address": "2700 Dollywood Parks Blvd, Pigeon Forge, TN 37863, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9090,
+                "last_updated": "2026-04-04",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.98280817196718,
+                    39.33506485040416
+                ]
+            },
+            "properties": {
+                "name": "Grandpa Joe’s Candy Shop",
+                "area": "Ohio",
+                "address": "80 N Paint St, Chillicothe, OH 45601, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9091,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.99907674665194,
+                    39.96111878008727
+                ]
+            },
+            "properties": {
+                "name": "Ohio State House",
+                "area": "Ohio",
+                "address": "1 Capitol Sq, Columbus, OH 43215",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9092,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.79314209999995,
+                    42.85286599999999
+                ]
+            },
+            "properties": {
+                "name": "Hogback Mountain Scenic Lookout",
+                "area": "Vermont",
+                "address": "7627 Vermont Route 9, Wilmington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1650",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 1279,
+                "last_updated": "2026-04-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.61504589999997,
+                    42.475472599999996
+                ]
+            },
+            "properties": {
+                "name": "Yankee Candle Village",
+                "area": "Massachusetts",
+                "address": "25 Greenfield Road, Route 5 and 10, South Deerfield",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4420",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2926,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.70650039999995,
+                    37.2707317
+                ]
+            },
+            "properties": {
+                "name": "Everything Williamsburg",
+                "area": "Virginia",
+                "address": "415 W Duke of Gloucester St,  Colonial Williamsburg Merch,, Williamsburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=357432",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8264,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.095882,
+                    64.5643831
+                ]
+            },
+            "properties": {
+                "name": "Historic Alaska Railroad Depot",
+                "area": "Alaska",
+                "address": "900 Front St, Nenana",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=457588",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7915,
+                "last_updated": "2026-04-05",
+                "num_coins": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.46866789165759,
+                    28.473759335940198
+                ]
+            },
+            "properties": {
+                "name": "Photography Store",
+                "area": "Florida",
+                "address": "Islands of adventures",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9093,
+                "last_updated": "2026-04-05",
+                "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.03571169999998,
+                    51.045775099999986
+                ]
+            },
+            "properties": {
+                "name": "Calgary Zoo",
+                "area": "Canada",
+                "address": "1300 Zoo Road NE, Alberta - Calgary",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4257",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4956,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.02860167453282,
+                    51.04572274551343
+                ]
+            },
+            "properties": {
+                "name": "Calgary Zoo",
+                "area": "Canada",
+                "address": "In the Kitamba Cafe building",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9094,
+                "last_updated": "2026-04-05",
+                "num_coins": 8,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.6461034320298,
+                    37.23625756451348
+                ]
+            },
+            "properties": {
+                "name": "England main entrance Right outside adventure photo",
+                "area": "Virginia",
+                "address": "1 Busch Gardens Blvd, Williamsburg, VA 23185, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 8122,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40774879570981,
+                    44.975689063439575
+                ]
+            },
+            "properties": {
+                "name": "Crystal Cave, machine 1",
+                "area": "Wisconsin",
+                "address": "W965 State Road 29, Spring Valley, WI , 54767",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9095,
+                "last_updated": "2026-04-05",
+                "num_coins": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40866665857195,
+                    44.97426114082084
+                ]
+            },
+            "properties": {
+                "name": "Crystal Cave, machine 2",
+                "area": "Wisconsin",
+                "address": "W965 State Road 29, Spring Valley, WI , 54767",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9096,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40833995415026,
+                    44.97503485994144
+                ]
+            },
+            "properties": {
+                "name": "Crystal Cave, machine 3",
+                "area": "Wisconsin",
+                "address": "W965 State Road 29, Spring Valley, WI , 54767",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9097,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40835449266794,
+                    44.975050765028456
+                ]
+            },
+            "properties": {
+                "name": "Great Wolf Lodge Water Park",
+                "area": "Minnesota",
+                "address": "1700 American Boulevard East, Bloomington, MN , 55425",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9098,
+                "last_updated": "2026-04-05",
+                "num_coins": 8,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.68334033424332,
+                    53.51373315660362
+                ]
+            },
+            "properties": {
+                "name": "Muritz Strandstrasse",
+                "area": "Germany",
+                "address": ", Waren",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=334329",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5780,
+                "last_updated": "2026-04-05",
+                "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.252046,
+                    44.833261
+                ]
+            },
+            "properties": {
+                "name": "Crystal Cave",
+                "area": "Wisconsin",
+                "address": "W965 State Road 29, Spring Valley",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=947",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2459,
+                "last_updated": "2026-04-05",
+                "num_coins": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.24211089999999,
+                    44.85479849999999
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Legacy Toys",
+                "area": "Minnesota",
+                "address": "301 North Garden - Level 3 N301, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=368358",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5292,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.24139071121635,
+                    44.854481463924934
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Nickelodeon Universe #6",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=45780",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 3140,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40833339691842,
+                    44.97502789538414
+                ]
+            },
+            "properties": {
+                "name": "MOA - Nickelodeon Universe (machine 6)",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington, MN , 55425",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9099,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40834951113028,
+                    44.9750358211934
+                ]
+            },
+            "properties": {
+                "name": "MOA - Nickelodeon Universe (machine 7)",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington, MN , 55425",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9100,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40835520173673,
+                    44.97504934974567
+                ]
+            },
+            "properties": {
+                "name": "MOA - Nickelodeon Universe (machine 8)",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington, MN , 55425",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9101,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40835610406253,
+                    44.97505150206063
+                ]
+            },
+            "properties": {
+                "name": "MOA - Nickelodeon Universe (machine 9)",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington, MN , 55425",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9102,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.40835648519813,
+                    44.97505242407819
+                ]
+            },
+            "properties": {
+                "name": "MOA - Nickelodeon Universe (machine 10)",
+                "area": "Minnesota",
+                "address": "5000 Center Court, Bloomington, MN , 55425",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9103,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.64521319797528,
+                    37.23619956410708
+                ]
+            },
+            "properties": {
+                "name": "Abby‘s cad cadabbys treasure truth",
+                "area": "Virginia",
+                "address": "1 Busch Gardens Blvd, Williamsburg, VA 23185, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 8121,
+                "last_updated": "2026-04-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.610547268240621,
+                    54.40394814146546
+                ]
+            },
+            "properties": {
+                "name": "Jugendherberge Binz",
+                "area": "Germany",
+                "address": "Strandpromenade 35A, 18609 Binz, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9104,
+                "last_updated": "2026-04-05",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.74289770000003,
+                    51.46886
+                ]
+            },
+            "properties": {
+                "name": "Fossil World",
+                "area": "Canada",
+                "address": "1381 North Dinosaur Trail, Alberta, Drumheller",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=325040",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4962,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.42742919999999,
+                    43.14080810000002
+                ]
+            },
+            "properties": {
+                "name": "Wildlife Safari",
+                "area": "Oregon",
+                "address": "1790 Safari Road, Winston",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3920",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4403,
+                "last_updated": "2026-04-06",
+                "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.17524378149871,
+                    32.712834832885584
+                ]
+            },
+            "properties": {
+                "name": "San Diego Harbor - Old Town Trolley Tours of San Diego",
+                "area": "California",
+                "address": "996 N. Harbor Dr, San Diego",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=244707",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4786,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.80482600000003,
+                    45.42042399999997
+                ]
+            },
+            "properties": {
+                "name": "Tillamook Naval Air Station Museum",
+                "area": "Oregon",
+                "address": "6030 Hangar Road , Tillamook",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3926",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4401,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.4746750692097,
+                    44.32291384620974
+                ]
+            },
+            "properties": {
+                "name": "New Ulm Civic Center (Was Hermann Heights Monument)",
+                "area": "Minnesota",
+                "address": "14 Monument Street, New Ulm",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=21278",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5296,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.64729536282901,
+                    37.23574619590517
+                ]
+            },
+            "properties": {
+                "name": "Ireland Collectible Pennies Busch Gardens",
+                "area": "Virginia",
+                "address": "One Busch Gardens Blvd, Williamsburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1619",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 8637,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.01909399670994,
+                    44.927503759425164
+                ]
+            },
+            "properties": {
+                "name": "Mo’s Seafood and Chowder",
+                "area": "Oregon",
+                "address": "860 SW 51st St Lincoln City, OR  97367 United States",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "id": 8091,
+                "last_updated": "2026-04-06",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.811922599999916,
+                    52.69956819999997
+                ]
+            },
+            "properties": {
+                "name": "Bunratty Castle & Folk Park",
+                "area": "Ireland",
+                "address": "Brown's Pawnbroker building in village street (building C), COUNTY CLARE - Bunratty",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=203746",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 683,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -10.271039599999972,
+                    52.14111179999999
+                ]
+            },
+            "properties": {
+                "name": "Dingle's Bakery",
+                "area": "Ireland",
+                "address": "Green Street Opp Church , Dingle",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=59491",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 699,
+                "last_updated": "2026-04-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.90130390000002,
+                    36.61704490000001
+                ]
+            },
+            "properties": {
+                "name": "Cannery Row - Mackerel Jack's Trading Co.",
+                "area": "California",
+                "address": "799 Cannery Row, Monterey",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1302",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 4687,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.702266,
+                    35.6898815
+                ]
+            },
+            "properties": {
+                "name": "Exbar Tokyo Plus Shinjuku",
+                "area": "Japan",
+                "address": "B1F World Building 3-35-8Shinjuku, Shinjuku-ku, Tokyo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=471070",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 8361,
+                "last_updated": "2026-04-06",
+                "num_coins": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.66464279999994,
+                    35.20289509999999
+                ]
+            },
+            "properties": {
+                "name": "Lowell Observatory",
+                "area": "Arizona",
+                "address": "1400 W Mars Hill Rd, Flagstaff",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=241011",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2623,
+                "last_updated": "2026-04-06",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.13117119999993,
+                    39.94608679999998
+                ]
+            },
+            "properties": {
+                "name": "Adventure Aquarium (formerly New Jersey State Aquarium)",
+                "area": "New Jersey",
+                "address": "1 Riverside Drive, Camden",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3466",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2384,
+                "last_updated": "2026-04-07",
+                "num_coins": 10
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.33803249999994,
+                    40.1335257
+                ]
+            },
+            "properties": {
+                "name": "Elmwood Park Zoo",
+                "area": "Pennsylvania",
+                "address": "1661 Harding Boulevard, Norristown",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4047",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4025,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.090964789790917,
+                    54.17253515491366
+                ]
+            },
+            "properties": {
+                "name": "Pier 7 by Karl's",
+                "area": "Germany",
+                "address": "Am Passagierkai 1 Seebad Warnemünde, 18119 Rostock, Deutschland",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=195840",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 633,
+                "last_updated": "2026-04-08",
+                "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.24065879999999,
+                    44.853528200000014
+                ]
+            },
+            "properties": {
+                "name": "Mall of America - Rainforest Cafe",
+                "area": "Minnesota",
+                "address": "102 South Avenue, Bloomington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3084",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3141,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.59721910000002,
+                    34.425330499999966
+                ]
+            },
+            "properties": {
+                "name": "Six Flags Magic Mountain/Hurricane Harbor",
+                "area": "California",
+                "address": "26101 Magic Mountain Parkway, Valencia",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=430",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4883,
+                "last_updated": "2026-04-07",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.90028888090696,
+                    36.615776982378286
+                ]
+            },
+            "properties": {
+                "name": "Cannery Row - Steinbeck Plaza",
+                "area": "California",
+                "address": "685 Cannery Row, Monterey",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=19050",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4690,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.90039290397876,
+                    36.616354464212534
+                ]
+            },
+            "properties": {
+                "name": "Cannery Row - Monterey's Finest",
+                "area": "California",
+                "address": "700 Cannery Row H1, Monterey",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=400843",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6118,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.0312917,
+                    44.384138899999996
+                ]
+            },
+            "properties": {
+                "name": "National Eagle Center",
+                "area": "Minnesota",
+                "address": "50 Pembroke Ave S, , Wabasha",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=382617",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 5298,
+                "last_updated": "2026-04-07",
+                "num_coins": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.8931781566586,
+                    36.603896900620825
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Dockside",
+                "area": "California",
+                "address": "#1 Old, Fishermans Wharf, Monterey",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=343453",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4692,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.46536879999995,
+                    47.14562150000002
+                ]
+            },
+            "properties": {
+                "name": "Gooseberry Falls State Park Visitor Center",
+                "area": "Minnesota",
+                "address": "3206 Hwy 61, Two Harbors",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=14384",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3187,
+                "last_updated": "2026-04-07",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.66365479999997,
+                    47.0259497
+                ]
+            },
+            "properties": {
+                "name": "Two Harbors Area Chamber Of Commerce \"Tourist Information\" Center",
+                "area": "Minnesota",
+                "address": "1330 MN-61, Two Harbors",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=430674",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7195,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.09242199999998,
+                    46.779961800000024
+                ]
+            },
+            "properties": {
+                "name": "Lake Superior Maritime Visitor Center",
+                "area": "Minnesota",
+                "address": "600 Canal Park Dr, Duluth, MN 55802, United States",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=408929",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6014,
+                "last_updated": "2026-04-07",
+                "num_coins": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.66930277397566,
+                    27.76499883289508
+                ]
+            },
+            "properties": {
+                "name": "5801 Print House & Gift Shop",
+                "area": "Florida",
+                "address": "2631 6th Ave S, St. Petersburg, FL 33712, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9105,
+                "last_updated": "2026-04-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.50575420247434,
+                    48.387670218874234
+                ]
+            },
+            "properties": {
+                "name": "Nasty Jack's Antiques",
+                "area": "Australia",
+                "address": "103 E Morris St la connor, WA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9106,
+                "last_updated": "2026-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.01684103499998,
+                    48.53243264670387
+                ]
+            },
+            "properties": {
+                "name": "Whale Museum",
+                "area": "Australia",
+                "address": "62 1st Street N, Friday Harbor, WA 98250",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9107,
+                "last_updated": "2026-04-08",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.60668467749699,
+                    41.866408655059544
+                ]
+            },
+            "properties": {
+                "name": "Adler Planetarium",
+                "area": "Illinois",
+                "address": "1300 S. DuSable Lake Shore Dr Chicago, IL 60605 United States",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9108,
+                "last_updated": "2026-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.086732625566878,
+                    54.18469262654626
+                ]
+            },
+            "properties": {
+                "name": "Rostock Warnemünde Westmole",
+                "area": "Germany",
+                "address": "54,18474° N, 12,08685° O",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9109,
+                "last_updated": "2026-04-08",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.403690499999954,
+                    52.5201544
+                ]
+            },
+            "properties": {
+                "name": "Aqua Dom & Sealife Berlin",
+                "area": "Germany",
+                "address": "Spandauer StraBe 3",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=91119",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 422,
+                "last_updated": "2026-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.086148341899802,
+                    54.17889137288834
+                ]
+            },
+            "properties": {
+                "name": "Leuchturm Warnemünde",
+                "area": "Germany",
+                "address": "Seebad Warnemünde, Seepromenade 1, 18119 Rostock, Deutschland",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=195719",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 632,
+                "last_updated": "2026-04-08",
+                "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    12.139553299999989,
+                    54.088513899999995
+                ]
+            },
+            "properties": {
+                "name": "Neuer Markt 12",
+                "area": "Germany",
+                "address": "Neuer Markt 12, 18055 Rostock, Germany",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6938,
+                "last_updated": "2026-04-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.815831332283234,
+                    51.661195963073695
+                ]
+            },
+            "properties": {
+                "name": "Tierpark Hamm",
+                "area": "Germany",
+                "address": "Grünstraße 158, 59063 Hamm, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9110,
+                "last_updated": "2026-04-08",
+                "num_coins": 2,
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.6829428,
+                    45.5623353
+                ]
+            },
+            "properties": {
+                "name": "Lumberjack Steam Train",
+                "area": "Wisconsin",
+                "address": "5068 US Hwy 8, Laona",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=476261",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9111,
+                "last_updated": "2026-03-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.337754699999994,
+                    52.507919600000015
+                ]
+            },
+            "properties": {
+                "name": "Berlin Zoological Garden",
+                "area": "Germany",
+                "address": "Tiergarten",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=83318",
+                "internal_url": "null",
+                "machine_status": "out-of-order",
+                "status": "unvisited",
+                "id": 426,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.38593020000003,
+                    35.61026739999995
+                ]
+            },
+            "properties": {
+                "name": "Primm Valley Resort & Casino",
+                "area": "Nevada",
+                "address": "31900 Las Vegas Boulevard South, Primm",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2990",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5429,
+                "last_updated": "2026-04-09"
             }
         }
     ]
