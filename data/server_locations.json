@@ -9720,10 +9720,10 @@
                 "address": "19019 Cabrillo Highway (Highway 1), Ragged Point (near San Simeon)",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1243",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4740,
-                "last_updated": "2026-03-15"
+                "last_updated": "2026-04-09"
             }
         },
         {
@@ -13515,6 +13515,48 @@
                 "id": 6588,
                 "last_updated": "2026-04-19",
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.0706972,
+                    39.7417583
+                ]
+            },
+            "properties": {
+                "name": "Casa Bonita Restaurant",
+                "area": "Colorado",
+                "address": "6715 West Colfax Avenue, Lakewood",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1059",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 1890,
+                "last_updated": "2026-04-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.5241458,
+                    35.3234854
+                ]
+            },
+            "properties": {
+                "name": "The L&N Depot & Museum",
+                "area": "Tennessee",
+                "address": "727 Tennesse Ave South, Etowah",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=269639",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9141,
+                "last_updated": "2026-04-09"
             }
         }
     ]
