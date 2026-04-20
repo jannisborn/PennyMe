@@ -460,76 +460,105 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         loadServerLocations()
     }
     
-    func loadServerLocations(){
+    func loadServerLocations() {
         isLoadingServerLocations = true
-        // load from server
-        let link_to_json = "http://37.120.179.15:8000/server_locations.json"
-        guard let jsonURL = URL(string: link_to_json) else { return }
         
-        DispatchQueue.global().async { [weak self] in
-          if let serverJsonData = try? Data(contentsOf: jsonURL) {
-                do{
-                    let serverJsonAsMap = try MKGeoJSONDecoder()
-                        .decode(serverJsonData)
-                        .compactMap { $0 as? MKGeoJSONFeature }
-                    let pinsFromServer = serverJsonAsMap.compactMap(Artwork.init)
-                    var pinsFromServerList: [Artwork] = []
-                    pinsFromServerList.append(contentsOf: pinsFromServer)
+        guard let url = URL(string: "https://pennyme.duckdns.org/server_locations.json") else {
+            isLoadingServerLocations = false
+            return
+        }
+        
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 15
+        config.timeoutIntervalForResource = 30
+        
+        let session = URLSession(configuration: config)
+        
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            // Network error
+            if let error = error {
+                print("Network error:", error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.isLoadingServerLocations = false
+                    self.showServerNotLoadedAlert()
+                }
+                return
+            }
+            
+            // No data
+            guard let data = data else {
+                print("No data received from server")
+                DispatchQueue.main.async {
+                    self.isLoadingServerLocations = false
+                    self.showServerNotLoadedAlert()
+                }
+                return
+            }
+            
+            do {
+                let features = try MKGeoJSONDecoder()
+                    .decode(data)
+                    .compactMap { $0 as? MKGeoJSONFeature }
                 
-                    DispatchQueue.main.async {
-                        // remove all artworks
-                        self?.PennyMap.removeAnnotations(self?.artworks ?? [])
-                        
-                        // update artwork list
-                        for pin in pinsFromServerList{
-                            // Case 1: pin already exists
-                            let pinIndex = self?.pinIdDict[pin.id]
-                            if (pinIndex != nil){
-                                // overwrite the pin in the list
-                                self?.artworks[pinIndex!] = pin
-                            }
-                            // Case 2: pin is new
-                            else{
-                                // add to list and to dictionary
-                                self?.artworks.append(pin)
-                                self?.pinIdDict[pin.id] = (self?.artworks.count ?? 0) - 1
-                            }
-                        }
-                        // re-add annotations here
-                        self?.isVisible = [:]
-                        self?.addAnnotationsIteratively()
-                        
-                        // count how many machines we have in total
-                        totalMachines = 0
-                        machinesByArea = [:]
-                        for machine in self!.artworks {
-                            if machine.machineStatus != "retired" {
-                                totalMachines += 1
-                                machinesByArea[machine.area, default: 0] += 1
-                            }
-                        }
-                        
-                        // check colours of the pins with user annotations
-                        self?.check_json_dict()
-                        //                        }
-                        self?.lastDataLoad = Date()
-                        self?.isLoadingServerLocations = false
-                    }
-                } catch {
-                    self?.isLoadingServerLocations = false
-                    // this is an error on our side
-                    print("Error in decoding the server locations json file")
+                let pins = features.compactMap(Artwork.init)
+                
+                DispatchQueue.main.async {
+                    self.handleLoadedPins(pins)
                 }
                 
-            }
-            else {
-                self?.isLoadingServerLocations = false
+            } catch {
+                print("Decoding error:", error)
                 DispatchQueue.main.async {
-                    self?.showServerNotLoadedAlert()
+                    self.isLoadingServerLocations = false
                 }
             }
         }
+        
+        task.resume()
     }
+    
+    private func handleLoadedPins(_ pinsFromServer: [Artwork]) {
+        
+        // remove all current annotations
+        PennyMap.removeAnnotations(artworks)
+        
+        // update artwork list
+        for pin in pinsFromServer {
+            
+            if let index = pinIdDict[pin.id] {
+                // Case 1: existing pin → overwrite
+                artworks[index] = pin
+            } else {
+                // Case 2: new pin → append
+                artworks.append(pin)
+                pinIdDict[pin.id] = artworks.count - 1
+            }
+        }
+        
+        // reset visibility + re-add annotations
+        isVisible = [:]
+        addAnnotationsIteratively()
+        
+        // recompute stats
+        totalMachines = 0
+        machinesByArea = [:]
+        
+        for machine in artworks {
+            if machine.machineStatus != "retired" {
+                totalMachines += 1
+                machinesByArea[machine.area, default: 0] += 1
+            }
+        }
+        
+        // update UI-related state
+        check_json_dict()
+        
+        lastDataLoad = Date()
+        isLoadingServerLocations = false
+    }
+    
     private func showServerNotLoadedAlert() {
         let alertController = UIAlertController(title:"Offline mode", message:"The pin information is outdated since the latest data could not be loaded. Check your internet connection.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
