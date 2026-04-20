@@ -3,9 +3,11 @@ import os
 import sys
 from contextlib import contextmanager
 from copy import deepcopy
+from math import cos, radians
 from typing import Any, Dict, List, Tuple
 
 import requests
+from haversine import haversine
 from loguru import logger
 
 from pennyme.pennycollector import DAY, MONTH, YEAR
@@ -17,8 +19,16 @@ THIS_PATH = os.path.abspath(__file__)
 PATH_MACHINES = os.path.join(
     os.path.dirname(THIS_PATH), "..", "..", "data", "all_locations.json"
 )
-with open(PATH_MACHINES, "r", encoding="latin-1") as infile:
+PATH_SERVER_MACHINES = os.path.join(
+    os.path.dirname(THIS_PATH), "..", "..", "data", "server_locations.json"
+)
+with open(PATH_MACHINES, "r", encoding="utf-8") as infile:
     ALL_LOCATIONS = json.load(infile)
+if os.path.exists(PATH_SERVER_MACHINES):
+    with open(PATH_SERVER_MACHINES, "r", encoding="utf-8") as infile:
+        SERVER_LOCATIONS = json.load(infile)
+else:
+    SERVER_LOCATIONS = {"features": []}
 
 
 def find_machine_in_database(
@@ -89,6 +99,57 @@ def get_next_free_machine_id(
     max_id_pics = max(pic_ids) if len(pic_ids) > 0 else 0
 
     return max([max_id_all, max_id_server, max_id_pics]) + 1
+
+
+def get_nearby_machines(
+    lat: float, lon: float, area: str, radius_m: int = 150
+) -> List[Dict]:
+    """Find machines near a coordinate.
+
+    Args:
+        lat: Latitude of the submitted machine.
+        lon: Longitude of the submitted machine.
+        area: Area of the submitted machine.
+        radius_m: Search radius in meters.
+
+    Returns:
+        Nearby machine summaries sorted by ascending distance.
+    """
+
+    radius_km = radius_m / 1000
+    lat_delta = radius_km / 111
+    lon_delta = radius_km / (111 * max(abs(cos(radians(lat))), 0.01))
+    machines = {
+        machine["properties"]["id"]: machine for machine in ALL_LOCATIONS["features"]
+    }
+    for machine in SERVER_LOCATIONS["features"]:
+        machines[machine["properties"]["id"]] = machine
+
+    nearby = []
+    for machine in machines.values():
+        props = machine["properties"]
+        if props["area"] != area:
+            continue
+        machine_lon, machine_lat = machine["geometry"]["coordinates"]
+        # Michael's trick
+        if not (
+            lat - lat_delta <= machine_lat <= lat + lat_delta
+            and lon - lon_delta <= machine_lon <= lon + lon_delta
+        ):
+            continue
+        distance_m = 1000 * haversine((lat, lon), (machine_lat, machine_lon))
+        if distance_m < radius_m:
+            nearby.append(
+                {
+                    "id": props["id"],
+                    "name": props["name"],
+                    "address": props["address"],
+                    "area": props["area"],
+                    "machine_status": props.get("machine_status", "available"),
+                    "distance_m": round(distance_m),
+                }
+            )
+    return sorted(nearby, key=lambda machine: machine["distance_m"])
 
 
 def verify_remaining_machines(
