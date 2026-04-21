@@ -10426,10 +10426,10 @@
                 "address": "424 Main St, Weston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=332376",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1142,
-                "last_updated": "2026-04-01"
+                "last_updated": "2026-04-21"
             }
         },
         {
@@ -11446,10 +11446,10 @@
                 "address": "6030 Hangar Road , Tillamook",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3926",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4401,
-                "last_updated": "2026-04-06"
+                "last_updated": "2026-04-21"
             }
         },
         {
@@ -13850,6 +13850,27 @@
                 "id": 2898,
                 "last_updated": "2026-04-21",
                 "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6570448,
+                    41.948603
+                ]
+            },
+            "properties": {
+                "name": "Chicago Cubs Official Sports Store",
+                "area": "Illinois",
+                "address": "3637 N Clark St, Chicago",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=238272",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7752,
+                "last_updated": "2026-04-21"
             }
         }
     ]
