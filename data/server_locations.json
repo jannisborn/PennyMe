@@ -14061,6 +14061,69 @@
                 "last_updated": "2026-04-23",
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.57786109999999,
+                    27.333325
+                ]
+            },
+            "properties": {
+                "name": "Mote Marine Rescue Center",
+                "area": "Florida",
+                "address": "1600 Ken Thompson Parkway, Sarasota",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1541",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3442,
+                "last_updated": "2026-04-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.451898,
+                    27.3804755
+                ]
+            },
+            "properties": {
+                "name": "Mote Science Education Aquarium (Mote SEA)",
+                "area": "Florida",
+                "address": "225 University Town Center Drive, Sarasota",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=477232",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9154,
+                "last_updated": "2026-04-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.7240497,
+                    40.8562746
+                ]
+            },
+            "properties": {
+                "name": "Nebraska State Patrol",
+                "area": "Nebraska",
+                "address": "4600 Innovation Drive, Lincoln",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=477212",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9155,
+                "last_updated": "2026-04-21"
+            }
         }
     ]
 }
