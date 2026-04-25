@@ -202,11 +202,41 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         if #available(iOS 14.0, *) {
             // center on current location
             if let coordinate = PennyMe.locationManager.location?.coordinate{
-                let swiftUIViewController = UIHostingController(rootView: NewMachineFormView(coordinate: coordinate)
-                )
+                let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: coordinate))
                 present(swiftUIViewController, animated: true)
             }
         }
+    }
+
+    @available(iOS 14.0, *)
+    private func newMachineForm(coordinate: CLLocationCoordinate2D) -> NewMachineFormView {
+        NewMachineFormView(
+            coordinate: coordinate,
+            areaChoices: Array(Set(artworks.map { $0.area })).sorted(),
+            openExistingMachine: { [weak self] machineID in
+                self?.dismiss(animated: true) {
+                    self?.openMachine(machineID: machineID)
+                }
+            },
+            isExistingMachineVisible: { [weak self] machineID in
+                self?.isMachineVisible(machineID: machineID) ?? true
+            }
+        )
+    }
+
+    private func openMachine(machineID: String) {
+        guard let pinIndex = pinIdDict[machineID] else { return }
+        selectedPin = artworks[pinIndex]
+        let center = selectedPin!.coordinate
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        PennyMap.setRegion(region, animated: true)
+        performSegue(withIdentifier: "ShowPinViewController", sender: self)
+    }
+
+    private func isMachineVisible(machineID: String) -> Bool {
+        guard let pinIndex = pinIdDict[machineID] else { return true }
+        let machine = artworks[pinIndex]
+        return checkMachineShouldBeVisible(status: machine.status, machineStatus: machine.machineStatus)
     }
     
     @objc private func didTapSettings() {
@@ -647,8 +677,7 @@ extension ViewController: MKMapViewDelegate {
         // first option: it's a new machine pin - present form
         if let newmachine = annotation as? NewMachine {
             if #available(iOS 14.0, *) {
-                let swiftUIViewController = UIHostingController(rootView: NewMachineFormView(coordinate: newmachine.coordinate)
-                )
+                let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: newmachine.coordinate))
                 present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
                 
             }

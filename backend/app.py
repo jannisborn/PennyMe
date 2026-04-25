@@ -15,6 +15,11 @@ from flask import Flask, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
+from thefuzz import process as fuzzysearch
+
+from scripts.location_differ import location_differ
+from scripts.open_diff_pull_request import open_differ_pr
+
 from pennyme.github_update import (
     get_latest_commit_time,
     load_latest_json,
@@ -29,10 +34,11 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
-from pennyme.utils import find_machine_in_database, setup_locdiffer_logger
-from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
-from thefuzz import process as fuzzysearch
+from pennyme.utils import (
+    find_machine_in_database,
+    get_nearby_machines,
+    setup_locdiffer_logger,
+)
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -253,7 +259,11 @@ def address_to_coordinates(
 
 @app.route("/create_machine", methods=["POST"])
 def create_machine():
-    """Receives a new machine"""
+    """Receive and queue a new machine submission.
+
+    Returns:
+        JSON response with success, validation error, or nearby-machine warning.
+    """
     title = str(request.args.get("title")).strip()
     address = str(request.args.get("address")).strip()
     area = str(request.args.get("area")).strip()
@@ -274,6 +284,37 @@ def create_machine():
         float(request.args.get("lon_coord")),
         float(request.args.get("lat_coord")),
     )
+    nearby_machines = get_nearby_machines(location[1], location[0], area)
+    for machine in nearby_machines:
+        _, score = fuzzysearch.extract(title, [machine["name"]], limit=1)[0]
+        if score > 90:
+            return (
+                jsonify(
+                    {
+                        "error": "This machine already exists",
+                        "duplicate_machine": {**machine, "title_match_score": score},
+                    }
+                ),
+                409,
+            )
+
+    if request.args.get("ignore_nearby") != "true" and nearby_machines:
+        nearby_lines = [
+            f"{machine['distance_m']}m: {machine['name']} ({machine['machine_status']})"
+            for machine in nearby_machines
+        ]
+        return (
+            jsonify(
+                {
+                    "error": f"{len(nearby_machines)} nearby machines found:\n"
+                    + "\n".join(nearby_lines)
+                    + "\n\nDo you still want to submit this machine?",
+                    "nearby_machines": nearby_machines,
+                }
+            ),
+            409,
+        )
+
     # Verify that address matches coordinates
     found_coords, (lat, lng) = address_to_coordinates(address, area, title)
     if not found_coords:
