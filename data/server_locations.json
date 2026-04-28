@@ -4768,10 +4768,10 @@
                 "address": "2001 Colorado Boulevard, Denver",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=32543",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1846,
-                "last_updated": "2026-03-17",
+                "last_updated": "2026-04-27",
                 "paywall": true
             }
         },
@@ -14793,6 +14793,110 @@
                 "machine_status": "available",
                 "id": 8033,
                 "last_updated": "2026-04-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.958312,
+                    32.1664164
+                ]
+            },
+            "properties": {
+                "name": "Rolling Thru Time Auto Museum",
+                "area": "Arizona",
+                "address": "4750 South Park Avenue, Tucson",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=477648",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9172,
+                "last_updated": "2026-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51835059999999,
+                    35.7118158
+                ]
+            },
+            "properties": {
+                "name": "Gatinburg Sky Lift  (to the top of Crockett Mountain)",
+                "area": "Tennessee",
+                "address": "765 Parkway, Gatlinburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=55918",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4204,
+                "last_updated": "2026-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.91765400000001,
+                    41.40647219999998
+                ]
+            },
+            "properties": {
+                "name": "Jaarsma Bakery",
+                "area": "Iowa",
+                "address": "727 Franklin Street, Pella",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=379879",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5470,
+                "last_updated": "2026-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.4036502,
+                    42.6007437
+                ]
+            },
+            "properties": {
+                "name": "Timber Ridge Lodge & Waterpark",
+                "area": "Wisconsin",
+                "address": "7020 Grand Geneva Way, Lake Geneva",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=323824",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2429,
+                "last_updated": "2026-04-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -130.3279953,
+                    54.31174189999999
+                ]
+            },
+            "properties": {
+                "name": "Gary's Lock & Security Shop Ltd",
+                "area": "Canada",
+                "address": "617 2 Ave W, BC - Prince Rupert",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7568,
+                "last_updated": "2026-04-27"
             }
         }
     ]
