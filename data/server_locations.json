@@ -15605,6 +15605,47 @@
                 "num_coins": 2,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.4284338,
+                    43.8871599
+                ]
+            },
+            "properties": {
+                "name": "Rattlesnake Jakes (Shop in the Keystone Mall)",
+                "area": "South Dakota",
+                "address": "804 Highway 16A, Keystone Mall #9, Keystone",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2895",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1298,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.0258483,
+                    38.89635359999999
+                ]
+            },
+            "properties": {
+                "name": "Hard Rock Cafe",
+                "area": "Washington DC",
+                "address": "999 E Street, Washington DC",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=356168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5468,
+                "last_updated": "2026-04-29"
+            }
         }
     ]
 }
