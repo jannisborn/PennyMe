@@ -3566,9 +3566,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=412960",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6086,
-                "last_updated": "2026-04-05"
+                "last_updated": "2026-04-29"
             }
         },
         {
@@ -15775,6 +15775,132 @@
                 "last_updated": "2026-05-03",
                 "num_coins": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.68391220000001,
+                    29.6488903
+                ]
+            },
+            "properties": {
+                "name": "Top Dollar Pawn",
+                "area": "Louisiana",
+                "address": "4843 LA 182, Houma",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=477894",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9187,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.72464,
+                    35.171356
+                ]
+            },
+            "properties": {
+                "name": "La Cita Restaurant",
+                "area": "New Mexico",
+                "address": "820 S 1ST ST, Tucumcari",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=477828",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9188,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.3919688,
+                    27.813759
+                ]
+            },
+            "properties": {
+                "name": "Texas State Aquarium",
+                "area": "Texas",
+                "address": "2710 North Shoreline Blvd, Corpus Christi",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3675,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.39191849846382,
+                    27.813730763872368
+                ]
+            },
+            "properties": {
+                "name": "Texas State Aquarium * Machine 2",
+                "area": "Texas",
+                "address": "2710 North Shoreline Blvd, Corpus Christi",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 8598,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.3919688,
+                    27.813759
+                ]
+            },
+            "properties": {
+                "name": "Texas State Aquarium",
+                "area": "Texas",
+                "address": "2710 North Shoreline Blvd, Corpus Christi",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3675,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.39191849846382,
+                    27.813730763872368
+                ]
+            },
+            "properties": {
+                "name": "Texas State Aquarium * Machine 2",
+                "area": "Texas",
+                "address": "2710 North Shoreline Blvd, Corpus Christi",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 8598,
+                "last_updated": "2026-04-29"
             }
         }
     ]
