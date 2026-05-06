@@ -8933,10 +8933,10 @@
                 "address": "3900 Las Vegas Blvd, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=387329",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5989,
-                "last_updated": "2026-04-25",
+                "last_updated": "2026-05-05",
                 "num_coins": 6
             }
         },
@@ -15923,6 +15923,89 @@
                 "id": 1355,
                 "last_updated": "2026-05-04",
                 "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -156.43738000923258,
+                    20.893153635325707
+                ]
+            },
+            "properties": {
+                "name": "Muai airport",
+                "area": "Hawaii",
+                "address": "1 Kahului Airport, Kahului, HI 96732, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9189,
+                "last_updated": "2026-05-05"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.393075560067032,
+                    57.36446622226482
+                ]
+            },
+            "properties": {
+                "name": "Lochness clansman gift shop",
+                "area": "Scotland",
+                "address": "Clansman Hotel, Inverness IV3 8AU, UK",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9190,
+                "last_updated": "2026-05-05",
+                "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.8262645,
+                    30.082569
+                ]
+            },
+            "properties": {
+                "name": "Cabela's World's Foremost Outfitter",
+                "area": "Texas",
+                "address": "15570 Interstate 35 (I-35 South Exit 220), Buda",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4769",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3663,
+                "last_updated": "2026-04-29"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.82623548410713,
+                    30.082601970371943
+                ]
+            },
+            "properties": {
+                "name": "Cabela's World's Foremost Outfitter * Machine 2",
+                "area": "Texas",
+                "address": "15570 Interstate 35 (I-35 South Exit 220), Buda",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=4769",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 8692,
+                "last_updated": "2026-04-29"
             }
         }
     ]
