@@ -9360,10 +9360,10 @@
                 "address": "406 South Main Street, Grapevine",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=292707",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3732,
-                "last_updated": "2026-04-29"
+                "last_updated": "2026-05-08"
             }
         },
         {
@@ -16762,6 +16762,48 @@
                 "id": 3349,
                 "last_updated": "2026-05-11",
                 "num_coins": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.3083078,
+                    32.9609981
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Texas",
+                "address": "12901 Cabela Drive (I-35 W Exit 65 / I-35 at TX 170), Fort Worth",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=5619",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3687,
+                "last_updated": "2026-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.1680593,
+                    41.6030606
+                ]
+            },
+            "properties": {
+                "name": "Bass Pro Shop",
+                "area": "Indiana",
+                "address": "6425 Daniel Burnham Dr., Portage",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=26211",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2288,
+                "last_updated": "2026-05-08"
             }
         }
     ]
