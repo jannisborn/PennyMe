@@ -17346,6 +17346,28 @@
                 "last_updated": "2026-05-19",
                 "num_coins": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.285698042312552,
+                    50.738025156628325
+                ]
+            },
+            "properties": {
+                "name": "Wilhelmsturm",
+                "area": "Germany",
+                "address": "Schloßberg 20, 35683 Dillenburg, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9214,
+                "last_updated": "2026-05-19",
+                "num_coins": 2,
+                "paywall": true
+            }
         }
     ]
 }
