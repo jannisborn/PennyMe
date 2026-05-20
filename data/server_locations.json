@@ -9508,10 +9508,10 @@
                 "address": "492 Airport Loop, Twin Falls",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1989",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4328,
-                "last_updated": "2026-03-25",
+                "last_updated": "2026-05-08",
                 "num_coins": 2
             }
         },
@@ -17537,6 +17537,47 @@
                 "id": 9216,
                 "last_updated": "2026-05-20",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.7060382,
+                    45.5180102
+                ]
+            },
+            "properties": {
+                "name": "Washington Park - International Rose Test Garden (Rose Garden Store)",
+                "area": "Oregon",
+                "address": "850 SW Rose Garden Way, Portland",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=62810",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4384,
+                "last_updated": "2026-05-08"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.23227,
+                    44.373254
+                ]
+            },
+            "properties": {
+                "name": "Shelburne Museum",
+                "area": "Vermont",
+                "address": "6000 Shelburne Road, Shelburne",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1662",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1276,
+                "last_updated": "2026-05-08"
             }
         }
     ]
