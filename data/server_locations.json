@@ -18064,6 +18064,89 @@
                 "num_coins": 8,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2587875,
+                    53.3465858
+                ]
+            },
+            "properties": {
+                "name": "National Wax Museum Plus",
+                "area": "Ireland",
+                "address": "22-25 Westmoreland Street, Dublin, Temple Bar 2 ",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 708,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.0759493,
+                    51.50811239999999
+                ]
+            },
+            "properties": {
+                "name": "Tower Of London",
+                "area": "England",
+                "address": "Tower Hill, LONDON - Tower Hill",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7061,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.3811746,
+                    54.9044161
+                ]
+            },
+            "properties": {
+                "name": "Sunderland Football Stadium",
+                "area": "England",
+                "address": ", TYNE & WEAR - Sunderland",
+                "status": "unvisited",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7976,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.260309699999978,
+                    53.3498053
+                ]
+            },
+            "properties": {
+                "name": "Carrolls Irish gift shop",
+                "area": "Ireland",
+                "address": "Westmoreland, Dublin",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6358,
+                "last_updated": "2026-05-22"
+            }
         }
     ]
 }
