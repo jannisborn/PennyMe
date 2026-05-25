@@ -5990,10 +5990,10 @@
                 "address": "2050 Parkway, Pigeon Forge",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=355732",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5346,
-                "last_updated": "2026-03-02"
+                "last_updated": "2026-05-22"
             }
         },
         {
@@ -8642,9 +8642,9 @@
                 "address": "755 East Flamingo Road, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=381791",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5424,
-                "last_updated": "2026-04-11"
+                "last_updated": "2026-05-22"
             }
         },
         {
@@ -8934,10 +8934,10 @@
                 "address": "3900 Las Vegas Blvd, Las Vegas",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=387329",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5989,
-                "last_updated": "2026-05-05",
+                "last_updated": "2026-05-22",
                 "num_coins": 6
             }
         },
@@ -18488,11 +18488,11 @@
                 "name": "CCC / POW Camp",
                 "area": "Utah",
                 "address": "598 E Main St, Salina, UT 84654, USA",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=479232",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9238,
-                "last_updated": "2026-05-25"
+                "last_updated": "2026-05-22"
             }
         },
         {
@@ -18513,6 +18513,152 @@
                 "machine_status": "available",
                 "id": 9239,
                 "last_updated": "2026-05-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -69.6284755,
+                    43.8507492
+                ]
+            },
+            "properties": {
+                "name": "Shirts by the Bay",
+                "area": "Maine",
+                "address": "56 Commercial St, Boothbay Harbor",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=362112",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5184,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.7774455,
+                    36.16069299999999
+                ]
+            },
+            "properties": {
+                "name": "Nudie's Honky Tonk",
+                "area": "Tennessee",
+                "address": "409 Broadway, Nashville",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=263122",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4249,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.1878898,
+                    25.7852621
+                ]
+            },
+            "properties": {
+                "name": "Phillip & Patricia Frost Museum of Science",
+                "area": "Florida",
+                "address": ", Miami",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=479271",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9240,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.1303207,
+                    32.2002948
+                ]
+            },
+            "properties": {
+                "name": "Andersonville National Historic Site",
+                "area": "Georgia",
+                "address": "760 POW Rd, Andersonville",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=393377",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6197,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.2531958,
+                    42.2132384
+                ]
+            },
+            "properties": {
+                "name": "Cary Dairy",
+                "area": "Illinois",
+                "address": "395 Cary Algonquin road, unit E, Cary",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=400168",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6234,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6067829,
+                    41.866333
+                ]
+            },
+            "properties": {
+                "name": "Adler Planetarium",
+                "area": "Illinois",
+                "address": "1300 South Lake Shore Drive, Chicago",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2104",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1207,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.60682427098189,
+                    41.86630849678877
+                ]
+            },
+            "properties": {
+                "name": "Adler Planetarium * Machine 2",
+                "area": "Illinois",
+                "address": "1300 South Lake Shore Drive, Chicago",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2104",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 8767,
+                "last_updated": "2026-05-22"
             }
         }
     ]
