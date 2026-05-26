@@ -18810,6 +18810,47 @@
                 "last_updated": "2026-05-26",
                 "num_coins": 6
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.05656618188972,
+                    34.7788043112674
+                ]
+            },
+            "properties": {
+                "name": "Verde Canyon Railroad",
+                "area": "Arizona",
+                "address": "300 N. Broadway, Clarkdale  (Camp Verde)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=352",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2620,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3951098,
+                    33.763382
+                ]
+            },
+            "properties": {
+                "name": "Georgia Aquarium",
+                "area": "Georgia",
+                "address": "225 Baker Street, Atlanta",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=13967",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1619,
+                "last_updated": "2026-05-22"
+            }
         }
     ]
 }
