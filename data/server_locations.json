@@ -11573,10 +11573,10 @@
                 "address": "799 Cannery Row, Monterey",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1302",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4687,
-                "last_updated": "2026-04-07"
+                "last_updated": "2026-05-22"
             }
         },
         {
@@ -18953,6 +18953,27 @@
                 "machine_status": "available",
                 "id": 9243,
                 "last_updated": "2026-05-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.6418004,
+                    37.72750490000001
+                ]
+            },
+            "properties": {
+                "name": "Great Sand Dunes National Park",
+                "area": "Colorado",
+                "address": "11500 Hwy. 150, Mosca",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=196446",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1913,
+                "last_updated": "2026-05-22"
             }
         }
     ]
