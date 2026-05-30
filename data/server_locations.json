@@ -16234,10 +16234,10 @@
                 "address": "142 Saint George Street, St Augustine",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=373434",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5365,
-                "last_updated": "2026-05-08"
+                "last_updated": "2026-05-22"
             }
         },
         {
@@ -19081,6 +19081,47 @@
                 "last_updated": "2026-05-29",
                 "paywall": true,
                 "num_coins": 10
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2377709,
+                    38.0721506
+                ]
+            },
+            "properties": {
+                "name": "The World Famous Clown Motel",
+                "area": "Nevada",
+                "address": "521 N Main St, Tonopah",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=406427",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6228,
+                "last_updated": "2026-05-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.6431798,
+                    43.9032043
+                ]
+            },
+            "properties": {
+                "name": "Colter Bay Gift Shop and Grocery Store ",
+                "area": "Wyoming",
+                "address": "Colter Bay Marina Road, Moran",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=479670",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9244,
+                "last_updated": "2026-05-22"
             }
         }
     ]
