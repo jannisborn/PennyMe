@@ -12699,9 +12699,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=258628",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 1171,
-                "last_updated": "2026-04-12",
+                "last_updated": "2026-06-03",
                 "num_coins": 1
             }
         },
@@ -19401,10 +19401,10 @@
                 "address": "30 Front Street, Ketchikan",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=218",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1163,
-                "last_updated": "2026-06-01"
+                "last_updated": "2026-06-03"
             }
         },
         {
@@ -19699,7 +19699,7 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379935",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "id": 5511,
                 "last_updated": "2026-06-03"
             }
@@ -19894,6 +19894,130 @@
                 "id": 4178,
                 "last_updated": "2026-06-03",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.4396349,
+                    60.121707
+                ]
+            },
+            "properties": {
+                "name": "Alaska Railroad Terminal",
+                "area": "Alaska",
+                "address": "408 Port Ave,, Seward",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=386946",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5969,
+                "last_updated": "2026-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.4394159,
+                    60.1198297
+                ]
+            },
+            "properties": {
+                "name": "Harbor 360 Hotel",
+                "area": "Alaska",
+                "address": "1412 4th Avenue, Seward",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=303557",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1172,
+                "last_updated": "2026-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.65151449999999,
+                    35.5145971
+                ]
+            },
+            "properties": {
+                "name": "Farmtruck & AZN Museum",
+                "area": "Oklahoma",
+                "address": "7824 NW 39th Expressway, Bethany",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=479824",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9248,
+                "last_updated": "2026-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62536629999997,
+                    41.938099100000024
+                ]
+            },
+            "properties": {
+                "name": "Plimoth Patuxet Museums (formerly Plimoth Plantation)",
+                "area": "Massachusetts",
+                "address": "137 Warren Avenue, Plymouth",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2673",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 2914,
+                "last_updated": "2026-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.1352746,
+                    31.6863849
+                ]
+            },
+            "properties": {
+                "name": "Hellfighters USA Motorcycle Shop",
+                "area": "Mississippi",
+                "address": "325 S. Magnolia Street, Laurel",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=480019",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9249,
+                "last_updated": "2026-06-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.85318889999999,
+                    29.2505778
+                ]
+            },
+            "properties": {
+                "name": "Galveston Fishing Pier",
+                "area": "Texas",
+                "address": "9001 Seawall Boulevard, Galveston",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=245658",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 3705,
+                "last_updated": "2026-06-03"
             }
         }
     ]
