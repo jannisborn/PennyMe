@@ -66,28 +66,6 @@
                 "last_updated": -1
             },
             "problem": "http://locations.pennycollector.com/Details.aspx?location=92266 used in multiple pins with different states, requires manual handling."
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    "N.A.",
-                    "N.A."
-                ]
-            },
-            "properties": {
-                "name": "Mammoth General Store",
-                "area": "Wyoming",
-                "address": "1 Mammoth Upper Loop Road (U.S. 89), Yellowstone National Park - Mammoth Hot Springs",
-                "status": "unvisited",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=369286",
-                "internal_url": "null",
-                "machine_status": "Gone",
-                "id": -1,
-                "last_updated": -1
-            },
-            "problem": "http://locations.pennycollector.com/Details.aspx?location=369286 used in multiple pins with different states, requires manual handling."
         }
     ]
 }
