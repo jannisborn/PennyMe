@@ -10595,10 +10595,10 @@
                 "address": "103 Morris Street - P.O. Box 251, La Conner",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=256208",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 5104,
-                "last_updated": "2026-04-04"
+                "last_updated": "2026-06-04"
             }
         },
         {
@@ -18744,9 +18744,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=206303",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4389,
-                "last_updated": "2026-05-26"
+                "last_updated": "2026-06-04"
             }
         },
         {
@@ -20670,6 +20670,26 @@
                 "id": 2345,
                 "last_updated": "2026-06-07",
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.02020479999997,
+                    29.547321899999993
+                ]
+            },
+            "properties": {
+                "name": "Kemah Boardwalk Aquarium - Restaurant",
+                "area": "Texas",
+                "address": "11 Kemah Waterfront St , Kemah",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=66674",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6192,
+                "last_updated": "2026-06-04"
             }
         }
     ]
