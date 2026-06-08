@@ -6954,10 +6954,10 @@
                 "address": "366 Jefferson St., San Francisco",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=84004",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4804,
-                "last_updated": "2026-03-10"
+                "last_updated": "2026-06-04"
             }
         },
         {
@@ -17093,9 +17093,9 @@
                 "address": "2861 Parkway, Pigeon Forge",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=318213",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 8778,
-                "last_updated": "2026-05-16"
+                "last_updated": "2026-06-04"
             }
         },
         {
@@ -17113,9 +17113,9 @@
                 "address": "2861 Parkway, Pigeon Forge",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=318213",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4282,
-                "last_updated": "2026-05-16"
+                "last_updated": "2026-06-04"
             }
         },
         {
@@ -20883,6 +20883,109 @@
                 "id": 4172,
                 "last_updated": "2026-06-08",
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.7329257,
+                    36.1937732
+                ]
+            },
+            "properties": {
+                "name": "The Blue Whale of Catoosa",
+                "area": "Oklahoma",
+                "address": "2600 US Route 66, Catoosa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=373277",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5189,
+                "last_updated": "2026-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.96334305686032,
+                    36.74035881056484
+                ]
+            },
+            "properties": {
+                "name": "Grant Grove Village Gift Shop",
+                "area": "California",
+                "address": "86728 CA-180, Hume, CA 93628, Verenigde Staten",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1345",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4652,
+                "last_updated": "2026-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.418575,
+                    37.8081666
+                ]
+            },
+            "properties": {
+                "name": "Fisherman's Wharf - Jefferson St. - Only in California",
+                "area": "California",
+                "address": "366 Jefferson Street, San Francisco",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=480341",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9259,
+                "last_updated": "2026-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.7624867,
+                    43.5065168
+                ]
+            },
+            "properties": {
+                "name": "Sertoma Butterfly House & Marine Cove",
+                "area": "South Dakota",
+                "address": "4320 S. Oxbow Avenue, Sioux Falls",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=245433",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1314,
+                "last_updated": "2026-06-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.0516821,
+                    35.1396263
+                ]
+            },
+            "properties": {
+                "name": "Sundries Candy",
+                "area": "Tennessee",
+                "address": "200A Beale Street, Memphis",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=398141",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6168,
+                "last_updated": "2026-06-04"
             }
         }
     ]
