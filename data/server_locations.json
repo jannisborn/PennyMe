@@ -21220,6 +21220,90 @@
                 "last_updated": "2026-06-10",
                 "num_coins": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.0987654,
+                    44.6575268
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone IMAX Theatre",
+                "area": "Montana",
+                "address": "101 South Canyon, West Yellowstone",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3312",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2981,
+                "last_updated": "2026-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.76461119999999,
+                    38.9604955
+                ]
+            },
+            "properties": {
+                "name": "Pink Elephant Antique Mall",
+                "area": "Illinois",
+                "address": "908 Vereran's Memorial DR, Livingston",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=480541",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9262,
+                "last_updated": "2026-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8259479,
+                    44.4593593
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone - Old Faithful Lodge Gift Shop",
+                "area": "Wyoming",
+                "address": "West Entrance Road, Yellowstone National Park",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=662",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 3126,
+                "last_updated": "2026-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.387046,
+                    44.892078
+                ]
+            },
+            "properties": {
+                "name": "Yellowstone - Tower Falls General Store",
+                "area": "Wyoming",
+                "address": "1 Dunraven Pass Road, Tower Falls, Yellowstone National Park",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=223410",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3127,
+                "last_updated": "2026-06-09"
+            }
         }
     ]
 }
