@@ -20226,10 +20226,10 @@
                 "address": "Atlantic Ave and Summer St in Dewey Square, Boston",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=80599",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2893,
-                "last_updated": "2026-06-05"
+                "last_updated": "2026-06-09"
             }
         },
         {
@@ -21474,6 +21474,47 @@
                 "machine_status": "retired",
                 "id": 6274,
                 "last_updated": "2026-06-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.61869089999999,
+                    45.8488096
+                ]
+            },
+            "properties": {
+                "name": "Island Bookstore (#2)",
+                "area": "Michigan",
+                "address": "7301 Main Street , Mackinac Island",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=343396",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2548,
+                "last_updated": "2026-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.82900889999998,
+                    34.69964930000001
+                ]
+            },
+            "properties": {
+                "name": "North Carolina Aquarium at Pine Knoll Shores",
+                "area": "North Carolina",
+                "address": "1 Roosevelt Blvd. , Pine Knoll Shores",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3743",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4139,
+                "last_updated": "2026-06-09"
             }
         }
     ]
