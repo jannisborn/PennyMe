@@ -10595,10 +10595,10 @@
                 "address": "103 Morris Street - P.O. Box 251, La Conner",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=256208",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5104,
-                "last_updated": "2026-06-04"
+                "last_updated": "2026-06-09"
             }
         },
         {
@@ -21580,6 +21580,26 @@
                 "id": 4387,
                 "last_updated": "2026-06-12",
                 "num_coins": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.09932679999997,
+                    44.65909350000001
+                ]
+            },
+            "properties": {
+                "name": "Eagle's Curios",
+                "area": "Montana",
+                "address": "3 North Canyon Street (P.O. Box 280 West Yellowstone MT 59758-028), West Yellowstone",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=404110",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6187,
+                "last_updated": "2026-06-09"
             }
         }
     ]
