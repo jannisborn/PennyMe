@@ -8977,11 +8977,11 @@
                 "name": "Only in Newport general store",
                 "area": "Oregon",
                 "address": "635 SW Bay Blvd., Newport, OR 97365, USA",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=375814",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9062,
-                "last_updated": "2026-03-21"
+                "last_updated": "2026-06-09"
             }
         },
         {
@@ -21491,7 +21491,7 @@
                 "address": "7301 Main Street , Mackinac Island",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=343396",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2548,
                 "last_updated": "2026-06-09"
@@ -21769,6 +21769,27 @@
                 "status": "unvisited",
                 "id": 5101,
                 "last_updated": "2026-06-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.06611509999999,
+                    27.8289026
+                ]
+            },
+            "properties": {
+                "name": "Moby Dick's Souvenir Shop",
+                "area": "Texas",
+                "address": "517 S. Alister St, Port Aransas ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=480846",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9266,
+                "last_updated": "2026-06-09"
             }
         }
     ]
