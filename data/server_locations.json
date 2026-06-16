@@ -22323,6 +22323,27 @@
                 "num_coins": 3,
                 "paywall": true
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.12155942229123,
+                    49.059109105910906
+                ]
+            },
+            "properties": {
+                "name": "Bergwerk Silberberg",
+                "area": "Germany",
+                "address": "Silberberg 28, 94249 Bodenmais-Silberberg, Germany",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9275,
+                "last_updated": "2026-06-16",
+                "num_coins": 2
+            }
         }
     ]
 }
