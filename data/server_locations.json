@@ -18785,10 +18785,10 @@
                 "address": "90999 S Willamette Street, Coburg",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=376822",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5219,
-                "last_updated": "2026-05-26"
+                "last_updated": "2026-06-09"
             }
         },
         {
@@ -22680,6 +22680,27 @@
                 "id": 438,
                 "last_updated": "2026-06-17",
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -108.1955556,
+                    43.6519444
+                ]
+            },
+            "properties": {
+                "name": "Star Plunge Pools",
+                "area": "Wyoming",
+                "address": "115 Big Springs Dr., Thermopolis",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3120,
+                "last_updated": "2026-06-09"
             }
         }
     ]
