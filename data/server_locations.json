@@ -21429,9 +21429,9 @@
                 "address": "323 Opry Mills Drive, Nashville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2615",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4250,
-                "last_updated": "2026-06-11"
+                "last_updated": "2026-06-09"
             }
         },
         {
@@ -22848,6 +22848,68 @@
                 "status": "unvisited",
                 "id": 4488,
                 "last_updated": "2026-06-18"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -135.3129778,
+                    59.4561535
+                ]
+            },
+            "properties": {
+                "name": "Skagway Outlet Store (SOS)",
+                "area": "Alaska",
+                "address": "7th & Broadway, Skagway",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=205",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1181,
+                "last_updated": "2026-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.7241466,
+                    39.6949404
+                ]
+            },
+            "properties": {
+                "name": "Georgetown Loop Railroad, Silver Plume Depot",
+                "area": "Colorado",
+                "address": "825 Railroad Avenue, Silver Plume",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=17574",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1926,
+                "last_updated": "2026-06-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.8292436,
+                    44.4586009
+                ]
+            },
+            "properties": {
+                "name": "Old Faithful Visitor and Education Center Gift Shop",
+                "area": "Wyoming",
+                "address": "View Avenue, Yellowstone National Park - Old Faithful",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=435829",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7361,
+                "last_updated": "2026-06-09"
             }
         }
     ]
