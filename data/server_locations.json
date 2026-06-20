@@ -15048,9 +15048,9 @@
                 "address": "1525 West Highway 76, Branson",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3276",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 5325,
-                "last_updated": "2026-04-29"
+                "last_updated": "2026-06-19"
             }
         },
         {
@@ -23844,6 +23844,26 @@
                 "status": "unvisited",
                 "id": 3730,
                 "last_updated": "2026-06-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.017156,
+                    48.534184
+                ]
+            },
+            "properties": {
+                "name": "Friday Harbor Drugs",
+                "area": "Washington",
+                "address": "210 W, Spring ST, Friday Harbor on San Juan Island",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=470512",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8337,
+                "last_updated": "2026-06-19"
             }
         }
     ]
