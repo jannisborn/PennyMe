@@ -10013,10 +10013,10 @@
                 "address": "4218 Fremont County Road 3A, Cañon City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=763",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1819,
-                "last_updated": "2026-03-29"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -10826,11 +10826,11 @@
                 "name": "Temporary Welcome Center Machine",
                 "area": "Florida",
                 "address": "751829 Interstate 95 Yulee",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481573",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9089,
-                "last_updated": "2026-04-04"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -18040,10 +18040,10 @@
                 "address": "78 South Main St., Moab",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=110195",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2079,
-                "last_updated": "2026-05-23"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -24488,7 +24488,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=435302",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7320,
                 "last_updated": "2026-06-22"
             }
@@ -24744,6 +24744,195 @@
                 "machine_status": "retired",
                 "id": 6156,
                 "last_updated": "2026-06-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.7931651,
+                    40.5611748
+                ]
+            },
+            "properties": {
+                "name": "Sheiyah Market ",
+                "area": "Ohio",
+                "address": "4755 OH-39, Berlin, OH 44610, Berlin",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481577",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9314,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.9309997,
+                    39.4001065
+                ]
+            },
+            "properties": {
+                "name": "Tecumseh Outdoor Drama",
+                "area": "Ohio",
+                "address": "5968 Marietta Rd, Chillicothe",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481556",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9315,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.3738674,
+                    33.4572643
+                ]
+            },
+            "properties": {
+                "name": "Buc-ee's #72",
+                "area": "Arizona",
+                "address": "1001 North Bullard Avenue, Goodyear",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481579",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9316,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.3261246,
+                    42.4378679
+                ]
+            },
+            "properties": {
+                "name": "Oregon Pour Authority & Pizza Studio",
+                "area": "Oregon",
+                "address": "235 SE 7th Street Suite 2, Grants Pass",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=340202",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4363,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6975904,
+                    45.53543029999999
+                ]
+            },
+            "properties": {
+                "name": "The Freakybuttrue Peculiarium and Museum",
+                "area": "Oregon",
+                "address": "2234 NW Thurman St, Portland",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481549",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9317,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.6135054,
+                    42.0380332
+                ]
+            },
+            "properties": {
+                "name": "Six Flags New England (formerly Riverside Park)",
+                "area": "Massachusetts",
+                "address": "Route 159, 1623 Main Street, Agawam",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2719",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2883,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.5117751,
+                    35.7130829
+                ]
+            },
+            "properties": {
+                "name": "Anakeesta",
+                "area": "Tennessee",
+                "address": "576 Parkway, Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481563",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9318,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.26502599999999,
+                    41.724062
+                ]
+            },
+            "properties": {
+                "name": "O'Connell's Jellystone Park & Camp-Resort",
+                "area": "Illinois",
+                "address": "970 Green Wing Road), Amboy",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=346082",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1193,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.58118139999999,
+                    35.6982402
+                ]
+            },
+            "properties": {
+                "name": "Cabela's (Garner)",
+                "area": "North Carolina",
+                "address": "201 Cabela Drive, Garner",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=236545",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6262,
+                "last_updated": "2026-06-22"
             }
         }
     ]
