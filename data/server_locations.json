@@ -1127,9 +1127,9 @@
                 "address": "4301 Lawndale Dr, Greensboro",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3700",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 4112,
-                "last_updated": "2026-01-12"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -25119,10 +25119,10 @@
                 "address": "101 N Broad Street, Thomasville",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=367391",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5395,
-                "last_updated": "2026-06-24"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -25354,6 +25354,171 @@
                 "machine_status": "available",
                 "id": 9323,
                 "last_updated": "2026-06-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9800787,
+                    33.3188931
+                ]
+            },
+            "properties": {
+                "name": "LA Crab Shack (Ahwatukee)",
+                "area": "Arizona",
+                "address": "4803 East Ray Road Suite #103 , Phoenix",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481772",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9324,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.0111967,
+                    44.97748319999999
+                ]
+            },
+            "properties": {
+                "name": "Beachcomber Gifts",
+                "area": "Oregon",
+                "address": "1736 NE Highway 101, Lincoln City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3965",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4368,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.80823269999999,
+                    45.8742279
+                ]
+            },
+            "properties": {
+                "name": "Mystery Spot",
+                "area": "Michigan",
+                "address": "150 Martin Lk. Rd., St. Ignace",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=30058",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2597,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.20521160000003,
+                    39.665538099999985
+                ]
+            },
+            "properties": {
+                "name": "Red Rocks Park and Amphitheatre",
+                "area": "Colorado",
+                "address": "18300 Visitors Center Drive, Morrison",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=449",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 1911,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.57019249999999,
+                    35.8035243
+                ]
+            },
+            "properties": {
+                "name": "The Island Tiki General Store",
+                "area": "Tennessee",
+                "address": "131 Island Dr., Pigeon Forge",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=233075",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9325,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.0202048,
+                    29.5473219
+                ]
+            },
+            "properties": {
+                "name": "Kemah Boardwalk ",
+                "area": "Texas",
+                "address": "215 Kipp Ave, Kemah",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2506",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9326,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -86.01256049999999,
+                    40.0464649
+                ]
+            },
+            "properties": {
+                "name": "Logan Village Mall",
+                "area": "Indiana",
+                "address": "977 Logan Street, Noblesville ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481740",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9327,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.41165339999999,
+                    38.0257871
+                ]
+            },
+            "properties": {
+                "name": "Cabela's",
+                "area": "Kentucky",
+                "address": "1510 Conservation Way, Lexington",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=256519",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 3529,
+                "last_updated": "2026-06-22"
             }
         }
     ]
