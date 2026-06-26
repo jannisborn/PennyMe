@@ -24805,7 +24805,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=481579",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 9316,
                 "last_updated": "2026-06-22"
             }
@@ -25140,10 +25140,10 @@
                 "address": "400 Esplanade Ave, New Orleans",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=364985",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5173,
-                "last_updated": "2026-06-24"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -25560,6 +25560,27 @@
                 "machine_status": "available",
                 "id": 9328,
                 "last_updated": "2026-06-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.51071669999999,
+                    36.6523437
+                ]
+            },
+            "properties": {
+                "name": "Those Were the Days Memory Barn",
+                "area": "Missouri",
+                "address": "3615 W. Hwy. 76, Branson",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=257864",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1074,
+                "last_updated": "2026-06-22"
             }
         }
     ]
