@@ -25536,10 +25536,10 @@
                 "address": "2910 E Platte Ave, Colorado Springs",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1016",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1829,
-                "last_updated": "2026-06-26"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -25903,6 +25903,27 @@
                 "status": "unvisited",
                 "id": 2382,
                 "last_updated": "2026-06-27"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6781804,
+                    36.1323753
+                ]
+            },
+            "properties": {
+                "name": "Sunset Tees & Hattery",
+                "area": "North Carolina",
+                "address": "1117 Main St., Blowing Rock",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3735",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4083,
+                "last_updated": "2026-06-22"
             }
         }
     ]
