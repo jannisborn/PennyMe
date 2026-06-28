@@ -4644,9 +4644,9 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=93991",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "retired",
                 "id": 3728,
-                "last_updated": "2026-06-20"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -23823,10 +23823,10 @@
                 "address": "3000 Grapevine Mills Pkwy , Grapevine",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2488",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3729,
-                "last_updated": "2026-06-20"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -23844,10 +23844,10 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=97272",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3730,
-                "last_updated": "2026-06-20"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -26224,6 +26224,27 @@
                 "status": "unvisited",
                 "id": 2975,
                 "last_updated": "2026-06-28"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.5482126,
+                    39.4334877
+                ]
+            },
+            "properties": {
+                "name": "Hocking Hills State Park",
+                "area": "Ohio",
+                "address": ", Logan",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=481962",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9332,
+                "last_updated": "2026-06-22"
             }
         }
     ]
