@@ -15881,10 +15881,10 @@
                 "address": "1 Atlantic Ocean, Atlantic City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=203617",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2380,
-                "last_updated": "2026-05-03"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -25900,10 +25900,10 @@
                 "address": "2201 Boardwalk Avenue, Atlantic City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3468",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2382,
-                "last_updated": "2026-06-27"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -27138,6 +27138,47 @@
                 "id": 9355,
                 "last_updated": "2026-07-02",
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.8651057,
+                    34.9496852
+                ]
+            },
+            "properties": {
+                "name": "Calico Rock Shop & Calico Leatherworks",
+                "area": "California",
+                "address": "36625 Ghost Town Rd (Off Interstate 15), Yermo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=337260",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4895,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.418454,
+                    39.36172299999999
+                ]
+            },
+            "properties": {
+                "name": "Showboat",
+                "area": "New Jersey",
+                "address": "801 Boardwalk, Atlantic City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=410977",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6237,
+                "last_updated": "2026-06-22"
             }
         }
     ]
