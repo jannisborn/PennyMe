@@ -22807,10 +22807,10 @@
                 "address": "Shenandoah National Park - Big Meadows WaysideSkyline Drive - Milepost 51, Luray ( Front Royal )",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=12624",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4426,
-                "last_updated": "2026-06-18"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -27285,6 +27285,48 @@
                 "status": "unvisited",
                 "id": 1213,
                 "last_updated": "2026-07-04"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.3077141,
+                    40.1581312
+                ]
+            },
+            "properties": {
+                "name": "LITITZ springs Park Visitors Center",
+                "area": "Pennsylvania",
+                "address": "BROAD STREET, Lititz",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482221",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9357,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9867106,
+                    40.7574529
+                ]
+            },
+            "properties": {
+                "name": "Ben and Jerry's Ice Cream Shop",
+                "area": "New York",
+                "address": "200 W 44th St., New York City (Manhattan)",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=107453",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3040,
+                "last_updated": "2026-06-22"
             }
         }
     ]
