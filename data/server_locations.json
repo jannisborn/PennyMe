@@ -16051,9 +16051,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=395574",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 6084,
-                "last_updated": "2026-06-20"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -20400,9 +20400,9 @@
                 "address": "8400 31st St, Brookfield, IL 60513, USA",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2106",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 1203,
-                "last_updated": "2026-06-04"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -20420,9 +20420,9 @@
                 "address": "8400 31st St, Brookfield, IL 60513, USA",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2106",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8839,
-                "last_updated": "2026-06-04"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -20440,9 +20440,9 @@
                 "address": "8400 31st St, Brookfield, IL 60513, USA",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2106",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8840,
-                "last_updated": "2026-06-04"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -20460,9 +20460,9 @@
                 "address": "8400 31st St, Brookfield, IL 60513, USA",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2106",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8841,
-                "last_updated": "2026-06-04"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -20480,9 +20480,9 @@
                 "address": "8400 31st St, Brookfield, IL 60513, USA",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2106",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 8842,
-                "last_updated": "2026-06-04"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -27620,6 +27620,68 @@
                 "id": 9369,
                 "last_updated": "2026-07-06",
                 "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.7029719,
+                    40.4360996
+                ]
+            },
+            "properties": {
+                "name": "Centennial Village Museum & Gardens",
+                "area": "Colorado",
+                "address": "1475 A St., Greeley",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=81363",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1879,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.6897869,
+                    40.424702
+                ]
+            },
+            "properties": {
+                "name": "Greeley HIstory Museum",
+                "area": "Colorado",
+                "address": "714 8th St, Greeley",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482325",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9370,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.050176,
+                    38.8892686
+                ]
+            },
+            "properties": {
+                "name": "Lincoln Memorial Book Store",
+                "area": "Washington DC",
+                "address": "2 Lincoln Memorial Cir NW, Washington DC",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=417892",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6947,
+                "last_updated": "2026-06-22"
             }
         }
     ]
