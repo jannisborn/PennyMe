@@ -99,6 +99,28 @@
                 ]
             },
             "properties": {
+                "name": "Smithsonian National Museum of Natural History",
+                "area": "Washington DC",
+                "address": "10th Street & Constitution Avenue, N.W., MRC 189, Washington DC",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=994",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": -1,
+                "last_updated": -1
+            },
+            "problem": "http://locations.pennycollector.com/Details.aspx?location=994 used in multiple pins with different dates, requires manual handling."
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    "N.A.",
+                    "N.A."
+                ]
+            },
+            "properties": {
                 "name": "Union Station",
                 "area": "Washington DC",
                 "address": "2 West/40 Massachusetts Ave., NE, Washington DC",
