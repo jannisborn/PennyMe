@@ -19407,10 +19407,10 @@
                 "address": "30 Front Street, Ketchikan",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=218",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1163,
-                "last_updated": "2026-06-11"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -27914,6 +27914,90 @@
                 "status": "unvisited",
                 "id": 804,
                 "last_updated": "2026-07-09"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -131.644501,
+                    55.339807
+                ]
+            },
+            "properties": {
+                "name": "Christmas in Alaska",
+                "area": "Alaska",
+                "address": "300 Spruce Mill Way, Ketchikan",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482446",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9371,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -131.6440827,
+                    55.3398117
+                ]
+            },
+            "properties": {
+                "name": "Ketchikan Outlet Store",
+                "area": "Alaska",
+                "address": "5 Salmon Landing, Ketchikan",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=41716",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 1164,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61108159999999,
+                    43.1750603
+                ]
+            },
+            "properties": {
+                "name": "Saxony Imports",
+                "area": "Maine",
+                "address": "10 Railroad Avenue, York Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=358249",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5187,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.6784038,
+                    45.5199509
+                ]
+            },
+            "properties": {
+                "name": "Rocket Fizz Soda Pop and Candy Shop",
+                "area": "Oregon",
+                "address": "535 SW 6th Avenue, Portland",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=267751",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4383,
+                "last_updated": "2026-06-22"
             }
         }
     ]
