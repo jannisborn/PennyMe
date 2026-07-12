@@ -319,9 +319,9 @@
                 "address": "650 W Corbett Ave, Swansboro, NC 28584, USA",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=467948",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7011,
-                "last_updated": "2025-12-31",
+                "last_updated": "2026-06-22",
                 "paywall": true
             }
         },
@@ -2049,10 +2049,10 @@
                 "address": "202 E Hersheypark Drive, Hershey",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=103530",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4002,
-                "last_updated": "2026-07-07"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -21752,10 +21752,10 @@
                 "address": "4601 Sheridan Blvd (I-70&Sheridan), Denver",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1054",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1852,
-                "last_updated": "2026-06-13"
+                "last_updated": "2026-06-22"
             }
         },
         {
@@ -24534,7 +24534,7 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=460305",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7656,
                 "last_updated": "2026-06-22"
             }
@@ -28665,6 +28665,193 @@
                 "machine_status": "out-of-order",
                 "id": 8466,
                 "last_updated": "2026-07-12"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.3898523,
+                    33.5264365
+                ]
+            },
+            "properties": {
+                "name": "Tortilla Flat Museum ",
+                "area": "Arizona",
+                "address": "1 Main Street, Tortilla Flat",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482503",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9388,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.1297276,
+                    44.6522362
+                ]
+            },
+            "properties": {
+                "name": "Mio Flea Market ",
+                "area": "Michigan",
+                "address": "317 m33, Mio",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482534",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9389,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.55219600000001,
+                    37.007103599999944
+                ]
+            },
+            "properties": {
+                "name": "Iron Skillet",
+                "area": "Missouri",
+                "address": "4240 Missouri 43, Joplin",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=182316",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 1095,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.51699189999997,
+                    35.7122965
+                ]
+            },
+            "properties": {
+                "name": "Jonathan's, The Bear Necessities",
+                "area": "Tennessee",
+                "address": "733 Parkway, Gatlinburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=107948",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4206,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.52110259999999,
+                    35.7087578
+                ]
+            },
+            "properties": {
+                "name": "The Silver Galleon",
+                "area": "Tennessee",
+                "address": "1001 Parkway Suite #1, Gatlinburg",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2165",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4218,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.8286136,
+                    21.2924718
+                ]
+            },
+            "properties": {
+                "name": "Waiola Shave Ice",
+                "area": "Hawaii",
+                "address": "2135 Waiola St, Oahu - Waiola",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=156897",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9390,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.87101919999999,
+                    41.80018279999999
+                ]
+            },
+            "properties": {
+                "name": "Amana Colonies - General Store",
+                "area": "Iowa",
+                "address": "4423 220th Trail, Amana",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2220",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2327,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.9339694,
+                    42.725691
+                ]
+            },
+            "properties": {
+                "name": "Bank of Star Valley",
+                "area": "Wyoming",
+                "address": "384 S Washington St, Afton",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482556",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9391,
+                "last_updated": "2026-06-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -108.1970015,
+                    43.6522326
+                ]
+            },
+            "properties": {
+                "name": "Hot Springs State Bath House",
+                "area": "Wyoming",
+                "address": "168 Tepee St, Thermopolis",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482524",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9392,
+                "last_updated": "2026-06-22"
             }
         }
     ]
