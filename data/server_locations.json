@@ -3718,9 +3718,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=432970",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7241,
-                "last_updated": "2026-02-12"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -28869,10 +28869,10 @@
                 "address": "1402 S IH-45 , Ennis",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=369220",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 5378,
-                "last_updated": "2026-07-12"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -28960,6 +28960,27 @@
                 "last_updated": "2026-07-13",
                 "paywall": true,
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.7588218,
+                    38.8435892
+                ]
+            },
+            "properties": {
+                "name": "Estate Collectibles, Citadel Mall Upper Level",
+                "area": "Colorado",
+                "address": "750 Citadel Drive East, Colorado Springs",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=403178",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6136,
+                "last_updated": "2026-07-13"
             }
         }
     ]
