@@ -33,6 +33,28 @@
                 ]
             },
             "properties": {
+                "name": "San Francisco Zoo",
+                "area": "California",
+                "address": "Sloat Blvd., San Francisco",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=77176",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": -1,
+                "last_updated": -1
+            },
+            "problem": "http://locations.pennycollector.com/Details.aspx?location=77176 used in multiple pins with different states, requires manual handling."
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    "N.A.",
+                    "N.A."
+                ]
+            },
+            "properties": {
                 "name": "Walt Disney World, *Magic Kingdom*",
                 "area": "Florida",
                 "address": "Magic Kingdom Resort, Lake Buena Vista",
