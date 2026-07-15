@@ -15883,10 +15883,10 @@
                 "address": "1 Atlantic Ocean, Atlantic City",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=203617",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 2380,
-                "last_updated": "2026-06-22"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -29254,6 +29254,90 @@
                 "machine_status": "available",
                 "id": 9398,
                 "last_updated": "2026-07-15"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.8819491,
+                    33.7156173
+                ]
+            },
+            "properties": {
+                "name": "Broadway at the Beach - Klig's Kites",
+                "area": "South Carolina",
+                "address": "1325 Celebrity Circle, #M146, Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=3140",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7312,
+                "last_updated": "2026-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.68544899999999,
+                    33.823037
+                ]
+            },
+            "properties": {
+                "name": "Professor Hacker's Dinosaur Adventure Golf",
+                "area": "South Carolina",
+                "address": "701 Hwy 17 S, North Myrtle Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482841",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9399,
+                "last_updated": "2026-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.2228519,
+                    48.4427459
+                ]
+            },
+            "properties": {
+                "name": "Glacier Park Lodge",
+                "area": "Montana",
+                "address": "499 MT-49, East Glacier Park",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=482896",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9400,
+                "last_updated": "2026-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.4716971,
+                    29.4533152
+                ]
+            },
+            "properties": {
+                "name": "DoSeum Children's Museum (Was San Antonio Children's Museum)",
+                "area": "Texas",
+                "address": "2800 Broadway St, San Antonio ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2616",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9401,
+                "last_updated": "2026-07-13"
             }
         }
     ]
