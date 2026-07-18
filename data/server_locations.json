@@ -8314,9 +8314,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=437169",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7474,
-                "last_updated": "2026-03-17"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -25965,10 +25965,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3796,
-                "last_updated": "2026-06-28",
+                "last_updated": "2026-07-13",
                 "paywall": true
             }
         },
@@ -25987,10 +25987,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 8731,
-                "last_updated": "2026-06-28",
+                "last_updated": "2026-07-13",
                 "paywall": true
             }
         },
@@ -26009,10 +26009,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 8729,
-                "last_updated": "2026-06-28",
+                "last_updated": "2026-07-13",
                 "paywall": true
             }
         },
@@ -26031,10 +26031,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 8730,
-                "last_updated": "2026-06-28",
+                "last_updated": "2026-07-13",
                 "paywall": true
             }
         },
@@ -26477,10 +26477,10 @@
                 "address": "1202 E. Route 66, Tucumcari",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=234073",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4950,
-                "last_updated": "2026-06-30"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -29871,6 +29871,68 @@
                 "id": 9411,
                 "last_updated": "2026-07-18",
                 "num_coins": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.7657553,
+                    39.9159598
+                ]
+            },
+            "properties": {
+                "name": "World Famous Tree House",
+                "area": "California",
+                "address": "74800 N. U.S. Hwy 101, Piercy",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1249",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4729,
+                "last_updated": "2026-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.35086849999998,
+                    39.41227239999996
+                ]
+            },
+            "properties": {
+                "name": "Skunk Train Depot",
+                "area": "California",
+                "address": "299 East Commercial Street, Willits",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=10514",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4891,
+                "last_updated": "2026-07-13"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.382869,
+                    38.1020693
+                ]
+            },
+            "properties": {
+                "name": "Morton Travel Plaza",
+                "area": "West Virginia",
+                "address": "Milepost 72 Northbound on I-77 (West Virginia Turnpike), Morton",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=968",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3901,
+                "last_updated": "2026-07-13"
             }
         }
     ]
