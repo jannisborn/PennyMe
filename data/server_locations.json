@@ -7687,10 +7687,10 @@
                 "address": "47 Municipal Wharf , Santa Cruz",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=539",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 4850,
-                "last_updated": "2026-03-14"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -27283,10 +27283,10 @@
                 "address": "600 East Grand Avenue, Chicago",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2079",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1213,
-                "last_updated": "2026-07-04"
+                "last_updated": "2026-07-13"
             }
         },
         {
@@ -30139,6 +30139,26 @@
                 "machine_status": "available",
                 "id": 483,
                 "last_updated": "2026-07-19"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9483855,
+                    39.0068062
+                ]
+            },
+            "properties": {
+                "name": "M.S. Dixie II",
+                "area": "Nevada",
+                "address": "760 Hwy 50, Zephyr Cove, Lake Tahoe",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=438168",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 7467,
+                "last_updated": "2026-07-13"
             }
         }
     ]
