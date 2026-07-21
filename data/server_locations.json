@@ -1552,9 +1552,9 @@
                 "address": "81576 Overseas Highway, Islamorada",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1804",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 3314,
-                "last_updated": "2026-03-15"
+                "last_updated": "2026-07-20"
             }
         },
         {
@@ -30345,6 +30345,172 @@
                 "last_updated": "2026-07-21",
                 "num_coins": 3,
                 "paywall": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.28668210000001,
+                    41.651687599999995
+                ]
+            },
+            "properties": {
+                "name": "Kandy Korner Gift Store",
+                "area": "Massachusetts",
+                "address": "474 Main Street, Hyannis",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2694",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2905,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.7401364,
+                    40.8637631
+                ]
+            },
+            "properties": {
+                "name": "Mauch Chunk Ink",
+                "area": "Pennsylvania",
+                "address": "68 Broadway, Jim Thorpe",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=314600",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4007,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.1955383,
+                    39.9714959
+                ]
+            },
+            "properties": {
+                "name": "Philadelphia Zoo",
+                "area": "Pennsylvania",
+                "address": "3400 West Girard Avenue, Philadelphia",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=395400",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 6108,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.1661338,
+                    38.6827047
+                ]
+            },
+            "properties": {
+                "name": "The Folsom City Zoo Sanctuary",
+                "area": "California",
+                "address": "403 Stafford Street, Folsom",
+                "status": "retired",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=45922",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 5239,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.5060193,
+                    38.5786506
+                ]
+            },
+            "properties": {
+                "name": "Capital General store",
+                "area": "California",
+                "address": "1019 2nd street, Sacramento",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483020",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9428,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.5657516,
+                    36.4863668
+                ]
+            },
+            "properties": {
+                "name": "Sequoia Nat Forest and Giant Sequoia Nat Monument- Stony Creek Lodge",
+                "area": "California",
+                "address": "Generals Highway, Sequoia Nat'l Park",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=514",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9429,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.05667059999999,
+                    38.5380046
+                ]
+            },
+            "properties": {
+                "name": "Rhodes Five & Dime",
+                "area": "Delaware",
+                "address": "Boardwalk, Bethany Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1479",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2238,
+                "last_updated": "2026-07-20"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.27438839999999,
+                    36.6323471
+                ]
+            },
+            "properties": {
+                "name": "Pirates Cove",
+                "area": "Missouri",
+                "address": "2901 Green Mountain Drive, Branson",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483293",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9430,
+                "last_updated": "2026-07-20"
             }
         }
     ]
