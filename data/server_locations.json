@@ -30324,6 +30324,28 @@
                 "last_updated": "2026-07-21",
                 "num_coins": 2
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.559604902867569,
+                    43.00871033872715
+                ]
+            },
+            "properties": {
+                "name": "Lugo",
+                "area": "Spain",
+                "address": "Rua do merlo",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9427,
+                "last_updated": "2026-07-21",
+                "num_coins": 3,
+                "paywall": true
+            }
         }
     ]
 }
