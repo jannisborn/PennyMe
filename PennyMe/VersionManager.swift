@@ -26,11 +26,14 @@ class VersionManager {
     
     func showVersionInfoAlertIfNeeded() {
         if shouldShowVersionInfo() {
-            let alert = UIAlertController(title: "PennyMe v\(currentVersion ?? "")", message: "Create your digital coin collection (swipe right in the machine view to upload coin pictures)! Now you can also report changes of the number of coin designs, and copy title and address of machines.", preferredStyle: .alert)
+            let alert = UIAlertController(
+                title: "PennyMe v\(currentVersion ?? "")",
+                message: "Create your digital coin collection by uploading coin pictures from each machine view. You can report changes to the number of coin designs and copy machine titles and addresses. Version 2.0 also adds community-safety reporting, contributor blocking, and updated legal information while keeping PennyMe account-free.",
+                preferredStyle: .alert
+            )
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
     
 }
-

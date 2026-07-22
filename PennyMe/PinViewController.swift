@@ -62,6 +62,61 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     private var consumedLongPress: ConsumedLongPress?
     private let copyFeedback = UINotificationFeedbackGenerator()
+    private let blockedContributors = BlockedContributorsStore()
+    private var contentOwners: [String: String] = [:]
+
+    private enum ModerationTarget {
+        case visibleImage(Int)
+        case comments
+        case listing
+
+        var kind: String {
+            switch self {
+            case .visibleImage: return "image"
+            case .comments: return "comment"
+            case .listing: return "machine"
+            }
+        }
+
+        var identifier: String {
+            switch self {
+            case .visibleImage(let page):
+                return page == 0 ? "machine" : "coin_\(page - 1)"
+            case .comments:
+                return "all"
+            case .listing:
+                return "listing"
+            }
+        }
+
+        var contentKey: String {
+            return "\(kind):\(identifier)"
+        }
+    }
+
+    private enum ReportReason: String, CaseIterable {
+        case spamScam = "Spam / Scam"
+        case harassment = "Harassment"
+        case sexualContent = "Sexual content"
+        case hate = "Hate speech"
+        case violence = "Violence or threats"
+        case other = "Other objectionable content"
+
+        var apiValue: String {
+            switch self {
+            case .spamScam: return "spam_scam"
+            case .harassment: return "harassment"
+            case .sexualContent: return "sexual_content"
+            case .hate: return "hate"
+            case .violence: return "violence"
+            case .other: return "other"
+            }
+        }
+    }
+
+    private func localContentKey(_ serverContentKey: String) -> String {
+        return "\(pinData.id):\(serverContentKey)"
+    }
 
     enum StatusChoice : String {
         case unvisited
@@ -91,6 +146,23 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let reportButton = UIBarButtonItem(
+            image: reportFlagIcon(),
+            style: .plain,
+            target: self,
+            action: #selector(showContentSafetyActions)
+        )
+        reportButton.tintColor = .red
+        reportButton.accessibilityLabel = "Report content"
+        reportButton.accessibilityIdentifier = "reportContentButton"
+        navigationItem.rightBarButtonItem = reportButton
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(blockedContentDidChange),
+            name: .blockedContentDidChange,
+            object: nil
+        )
         
         // Load user defaults (which coins are collected
         loadCollectedFromDefaults()
@@ -104,14 +176,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         updatedLabel.numberOfLines = 0
         updatedLabel.contentMode = .scaleToFill
 
-        loadComments(completionBlock:
-        {
-            (output) in
-            DispatchQueue.main.async {
-                self.updatedLabel.text = output
-                self.tableView.reloadData()
-            }
-        })
         // textfield
         commentTextField.attributedPlaceholder = NSAttributedString(
             string: "Type your comment here")
@@ -187,11 +251,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(pinData.numCoins + 1), height: scrollView.frame.height)
         
-        // load images asynchronously
-        for photoInd in Range(0...pinData.numCoins) {
-            getImage(photoInd: photoInd)
-        }
-        
         // pageControl instead of scroll indicator
         pageControl.numberOfPages = pinData.numCoins + 1
         pageControl.currentPage = 0
@@ -203,6 +262,48 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         pageControl.layer.masksToBounds = true
         scrollView.showsHorizontalScrollIndicator = false
 
+        loadModerationManifestAndContent()
+
+    }
+
+    private func reportFlagIcon() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 29, height: 29))
+        let image = renderer.image { _ in
+            UIColor.black.setFill()
+
+            // A heavier pole stays legible at navigation-bar size.
+            let pole = UIBezierPath(
+                roundedRect: CGRect(x: 4, y: 2, width: 4, height: 25),
+                cornerRadius: 2
+            )
+            pole.fill()
+
+            let flag = UIBezierPath()
+            flag.move(to: CGPoint(x: 7.5, y: 4.5))
+            flag.addCurve(
+                to: CGPoint(x: 25, y: 6),
+                controlPoint1: CGPoint(x: 13, y: 3),
+                controlPoint2: CGPoint(x: 20, y: 7.2)
+            )
+            flag.addLine(to: CGPoint(x: 22, y: 10.8))
+            flag.addLine(to: CGPoint(x: 25, y: 16))
+            flag.addCurve(
+                to: CGPoint(x: 7.5, y: 14.5),
+                controlPoint1: CGPoint(x: 19.5, y: 17.5),
+                controlPoint2: CGPoint(x: 13, y: 13)
+            )
+            flag.close()
+            flag.fill()
+        }
+        return image.withRenderingMode(.alwaysTemplate)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc private func blockedContentDidChange() {
+        loadModerationManifestAndContent()
     }
     
     override func viewDidLayoutSubviews() {
@@ -284,6 +385,260 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
             present(alertController, animated: true, completion: nil)
     }
+
+    private func loadModerationManifestAndContent() {
+        guard let url = URL(string: flaskURL + "moderation/manifest/\(pinData.id)") else {
+            loadCommunityContent()
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 5
+        request.addAnonymousUserHeader()
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, _ in
+            guard let self = self else { return }
+            if let data = data,
+               let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let owners = json?["owners"] as? [String: String] {
+                self.contentOwners = owners
+            }
+            self.loadCommunityContent()
+        }
+        task.resume()
+    }
+
+    private func loadCommunityContent() {
+        loadComments { [weak self] output in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.updatedLabel.text = output
+                self.tableView.reloadData()
+            }
+        }
+        for photoIndex in 0...pinData.numCoins {
+            getImage(photoInd: photoIndex)
+        }
+    }
+
+    @objc private func showContentSafetyActions() {
+        let page = max(0, min(pageControl.currentPage, pinData.numCoins))
+        let imageTarget = ModerationTarget.visibleImage(page)
+        let sheet = UIAlertController(
+            title: "Content Safety",
+            message: "Report objectionable content or block the contributor of an image.",
+            preferredStyle: .actionSheet
+        )
+        sheet.addAction(UIAlertAction(title: "Report Visible Image", style: .default) { _ in
+            self.chooseReportReason(for: imageTarget, blockContributor: false)
+        })
+        sheet.addAction(UIAlertAction(title: "Report Public Comments", style: .default) { _ in
+            self.chooseReportReason(for: .comments, blockContributor: false)
+        })
+        sheet.addAction(UIAlertAction(title: "Report Machine Listing", style: .default) { _ in
+            self.chooseReportReason(for: .listing, blockContributor: false)
+        })
+        sheet.addAction(UIAlertAction(title: "Block Contributor", style: .destructive) { _ in
+            self.chooseImageContributorToBlock()
+        })
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if let popover = sheet.popoverPresentationController {
+            popover.barButtonItem = navigationItem.rightBarButtonItem
+        }
+        present(sheet, animated: true)
+    }
+
+    private func chooseImageContributorToBlock() {
+        let imageIndices = imageDict.keys.sorted()
+        guard !imageIndices.isEmpty else {
+            showAlert(
+                title: "No Image Available",
+                message: "A contributed image must finish loading before its contributor can be blocked."
+            )
+            return
+        }
+
+        let sheet = UIAlertController(
+            title: "Select an Image",
+            message: "Choose the submitted image whose contributor you want to block.",
+            preferredStyle: .actionSheet
+        )
+        for index in imageIndices {
+            let title = index == 0 ? "Machine image" : "Coin image \(index)"
+            sheet.addAction(UIAlertAction(title: title, style: .default) { _ in
+                self.chooseReportReason(
+                    for: ModerationTarget.visibleImage(index),
+                    blockContributor: true
+                )
+            })
+        }
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if let popover = sheet.popoverPresentationController {
+            popover.barButtonItem = navigationItem.rightBarButtonItem
+        }
+        present(sheet, animated: true)
+    }
+
+    private func chooseReportReason(for target: ModerationTarget, blockContributor: Bool) {
+        let sheet = UIAlertController(
+            title: blockContributor ? "Why are you blocking this contributor?" : "Why are you reporting this content?",
+            message: "Reports are reviewed within several working days.",
+            preferredStyle: .actionSheet
+        )
+        for reason in ReportReason.allCases {
+            sheet.addAction(UIAlertAction(title: reason.rawValue, style: .default) { _ in
+                if blockContributor {
+                    self.confirmBlock(target: target, reason: reason)
+                } else {
+                    self.submitModerationReport(target: target, reason: reason, blockContributor: false)
+                }
+            })
+        }
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if let popover = sheet.popoverPresentationController {
+            popover.barButtonItem = navigationItem.rightBarButtonItem
+        }
+        present(sheet, animated: true)
+    }
+
+    private func confirmBlock(target: ModerationTarget, reason: ReportReason) {
+        let alert = UIAlertController(
+            title: "Block Contributor?",
+            message: "All attributed images and comments from this contributor will be hidden throughout PennyMe on this device. While content is not deleted, useful information may appear missing to you!  You can reverse this in Settings → Blocked content. PennyMe will also receive a report for review within several working days.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Block & Report", style: .destructive) { _ in
+            self.submitModerationReport(target: target, reason: reason, blockContributor: true)
+        })
+        present(alert, animated: true)
+    }
+
+    private func submitModerationReport(
+        target: ModerationTarget,
+        reason: ReportReason,
+        blockContributor: Bool
+    ) {
+        if blockContributor {
+            blockedContributors.block(
+                contributorID: contentOwners[target.contentKey],
+                contentKey: localContentKey(target.contentKey)
+            )
+            applyBlockedContent()
+        }
+
+        guard let url = URL(string: flaskURL + "report_content") else { return }
+        let payload: [String: Any] = [
+            "machine_id": pinData.id,
+            "target_kind": target.kind,
+            "target_id": target.identifier,
+            "reason": reason.apiValue,
+            "block_contributor": blockContributor
+        ]
+        guard let body = try? JSONSerialization.data(withJSONObject: payload) else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.timeoutInterval = 15
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addAnonymousUserHeader()
+        request.httpBody = body
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self else { return }
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            guard error == nil, 200..<300 ~= statusCode else {
+                DispatchQueue.main.async {
+                    let message = self.reportDeliveryFailureMessage(
+                        statusCode: statusCode,
+                        data: data,
+                        error: error,
+                        contentWasBlocked: blockContributor
+                    )
+                    self.showAlert(title: "Report Not Sent", message: message)
+                }
+                return
+            }
+
+            if blockContributor,
+               let data = data,
+               let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let contributorID = json?["contributor_id"] as? String {
+                self.contentOwners[target.contentKey] = contributorID
+                self.blockedContributors.block(
+                    contributorID: contributorID,
+                    contentKey: self.localContentKey(target.contentKey)
+                )
+            }
+
+            DispatchQueue.main.async {
+                if blockContributor {
+                    self.applyBlockedContent()
+                    self.showAlert(
+                        title: "Contributor Blocked",
+                        message: "Their content is hidden and the report was sent to PennyMe."
+                    )
+                } else {
+                    self.showAlert(
+                        title: "Report Sent",
+                        message: "Thank you. PennyMe will review this report within several working days."
+                    )
+                }
+            }
+        }
+        task.resume()
+    }
+
+    private func reportDeliveryFailureMessage(
+        statusCode: Int,
+        data: Data?,
+        error: Error?,
+        contentWasBlocked: Bool
+    ) -> String {
+        let prefix = contentWasBlocked
+            ? "The content is hidden on this device, but the report was not delivered. "
+            : "The report was not delivered. "
+
+        if statusCode == 404 {
+            return prefix + "PennyMe's reporting service is currently unavailable (HTTP 404). Please try again later."
+        }
+        if let data = data,
+           let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+           let backendMessage = json?["error"] as? String {
+            return prefix + backendMessage
+        }
+        if statusCode > 0 {
+            return prefix + "The server returned HTTP \(statusCode). Please try again later."
+        }
+        if let error = error {
+            return prefix + error.localizedDescription
+        }
+        return prefix + "Please try again later."
+    }
+
+    private func applyBlockedContent() {
+        for (index, item) in imageItems {
+            let key = ModerationTarget.visibleImage(index).contentKey
+            guard blockedContributors.isBlocked(
+                contributorID: contentOwners[key],
+                contentKey: localContentKey(key)
+            ) else { continue }
+
+            item.imageView.gestureRecognizers?.forEach { item.imageView.removeGestureRecognizer($0) }
+            item.imageView.image = UIImage(systemName: "eye.slash")
+            item.imageView.tintColor = .secondaryLabel
+            item.imageView.contentMode = .center
+            item.imageView.backgroundColor = .secondarySystemBackground
+            imageDict.removeValue(forKey: index)
+        }
+
+        loadComments { [weak self] output in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.updatedLabel.text = output
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
         let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
@@ -295,6 +650,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             if let url = URL(string: urlEncodedStringRequest){
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: url) {[weak self](data, response, error) in
+                    guard let self = self else { return }
                     guard let data = data else { return }
                     let results = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                     if let results_ = results as? Dictionary<String, String> {
@@ -305,6 +661,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                         var isFirst = true
                         for date in sortedDates {
                             if let value = results_[date]{
+                                let key = "comment:\(date)"
+                                if self.blockedContributors.isBlocked(
+                                    contributorID: self.contentOwners[key],
+                                    contentKey: self.localContentKey(key)
+                                ) {
+                                    continue
+                                }
                                 let dateStringArr = date.split(separator: " ")
                                 let dateString = dateStringArr.first ?? ""
                                 if isFirst==false {
@@ -316,7 +679,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                                 displayString += "\(dateString): \(value)"
                             }
                         }
-                        completionBlock(displayString ?? "No comments yet")
+                        if displayString.isEmpty {
+                            displayString = results_.isEmpty
+                                ? "No comments yet"
+                                : "Comments from blocked contributors are hidden."
+                        }
+                        completionBlock(displayString)
                     }
                 }
                 task.resume()
@@ -462,7 +830,14 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     
     @objc func addComment(){
-        
+        let comment = (commentTextField.text ?? "")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !comment.isEmpty else { return }
+        if let reason = TextModeration.blockReason(comment) {
+            showAlert(title: "Comment Not Submitted", message: reason)
+            return
+        }
+
         let uploadTimeout: TimeInterval = 10
         let alertController = UIAlertController(
             title: "Attention!",
@@ -472,19 +847,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
         // Create the OK action
         let okAction = UIAlertAction(title: "OK, add comment!", style: .default) { (_) in
-            
-            var comment = self.commentTextField.text
-            if comment?.count ?? 0 > 0 {
-                self.commentTextField.text = ""
-                self.commentTextField.attributedPlaceholder = NSAttributedString(
-                    string: "Your comment will be shown soon!")
-                
-                let loadingMessage = "Processing comment...\nPlease wait up to \(Int(uploadTimeout)) seconds!"
-                self.showLoadingView(withMessage: loadingMessage)
-                self.uploadCommentWithTimeout(comment!, timeout:uploadTimeout)
+            self.commentTextField.text = ""
+            self.commentTextField.attributedPlaceholder = NSAttributedString(
+                string: "Your comment will be shown soon!")
 
-
-            }
+            let loadingMessage = "Processing comment...\nPlease wait up to \(Int(uploadTimeout)) seconds!"
+            self.showLoadingView(withMessage: loadingMessage)
+            self.uploadCommentWithTimeout(comment, timeout:uploadTimeout)
         }
 
         // Create the cancel action
@@ -508,7 +877,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         let requestString = "/add_comment?comment=\(comment)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let urlEncodedStringRequest = flaskURL + requestString!
         if let url = URL(string: urlEncodedStringRequest){
-            let task = URLSession.shared.dataTask(with: url) {[weak self](data, response, error) in
+            var request = URLRequest(url: url)
+            request.addAnonymousUserHeader()
+            let task = URLSession.shared.dataTask(with: request) {[weak self](data, response, error) in
             // Create a URLSessionDataTask to send the request
                 guard let self = self else { return }
                 
@@ -527,8 +898,21 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     }
                     return
                 }
-                
-                // If the request is successful, display the success message
+
+                guard let httpResponse = response as? HTTPURLResponse,
+                      200..<300 ~= httpResponse.statusCode else {
+                    var message = "The comment could not be submitted."
+                    if let data = data,
+                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let backendMessage = json?["error"] as? String {
+                        message = backendMessage
+                    }
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Comment Not Submitted", message: message)
+                    }
+                    return
+                }
+
                 DispatchQueue.main.async {
                     self.handleResponse(type: "comment", success: true, error: nil)
                 }
@@ -694,6 +1078,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.addAnonymousUserHeader()
 
         // Add the image data to the request body
         let boundary = UUID().uuidString
@@ -888,9 +1273,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             DispatchQueue.main.async {
                 guard let self else { return }
 
-                let action: Selector
+                let action: Selector?
                 let finalImage: UIImage
-                if let downloadedImage {
+                let contentKey = ModerationTarget.visibleImage(photoInd).contentKey
+                if self.blockedContributors.isBlocked(
+                    contributorID: self.contentOwners[contentKey],
+                    contentKey: self.localContentKey(contentKey)
+                ) {
+                    finalImage = UIImage(systemName: "eye.slash")!
+                    action = nil
+                    self.imageDict.removeValue(forKey: photoInd)
+                } else if let downloadedImage {
                     finalImage = downloadedImage
                     action = #selector(self.enlargeImage(tapGestureRecognizer:))
                     self.imageDict[photoInd] = downloadedImage
@@ -925,7 +1318,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         UserDefaults.standard.set(indices, forKey: collectedKey)
     }
 
-    func addImageToScrollView(image: UIImage, img_idx: Int, action: Selector) {
+    func addImageToScrollView(image: UIImage, img_idx: Int, action: Selector?) {
+        imageItems[img_idx]?.container.removeFromSuperview()
         let container = UIView()
         container.tag = img_idx
 
@@ -933,7 +1327,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         imageView.tag = img_idx
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        if let action = action {
+            imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        } else {
+            imageView.tintColor = .secondaryLabel
+            imageView.contentMode = .center
+            imageView.backgroundColor = .secondarySystemBackground
+        }
         container.addSubview(imageView)
 
         var toggleContainer: UIView? = nil

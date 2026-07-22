@@ -8,10 +8,10 @@ from datetime import datetime
 from pathlib import Path
 from threading import Thread
 from time import sleep
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
 from loguru import logger
@@ -28,6 +28,13 @@ from pennyme.github_update import (
     wait,
 )
 from pennyme.locations import COUNTRIES
+from pennyme.moderation import (
+    ModerationReport,
+    ModerationStore,
+    parse_report_request,
+    text_block_reason,
+    validate_report,
+)
 from pennyme.slack import (
     image_slack,
     message_slack,
@@ -47,31 +54,71 @@ request_queue = queue.Queue()
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
 PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
+MODERATION = ModerationStore(
+    Path(os.path.join("..", "content_attribution.json")),
+    Path(os.path.join("..", "moderation_reports.jsonl")),
+)
 GM_CLIENT = GoogleMaps(open("../../gpc_api_key.keypair", "r").read())
 
-with open("blocked_ips.json", "r") as infile:
-    # NOTE: blocking an IP requires restart of app.py via waitress
-    blocked_ips = json.load(infile)
+with open("blocked_contributors.json", "r") as infile:
+    # Digests copied from confirmed moderation reports; reload requires restart.
+    blocked_contributors = json.load(infile)
 
-with open("ip_comment_dict.json", "r") as f:
-    IP_COMMENT_DICT = json.load(f)
+
+def anonymous_user_id() -> str:
+    """Read the account-free installation identifier from the request.
+
+    Returns:
+        The trimmed installation identifier, or an empty string when the client
+        did not send the ``X-PennyMe-Anonymous-ID`` header.
+    """
+    return request.headers.get("X-PennyMe-Anonymous-ID", "").strip()
+
+
+def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
+    """Check whether the current request is denied from contributing.
+
+    Returns:
+        A JSON response and HTTP 403 status when the installation is blocked,
+        or ``None`` when posting may continue.
+    """
+    contributor_id = MODERATION.contributor_id(anonymous_user_id())
+    if contributor_id is not None and contributor_id in blocked_contributors:
+        return jsonify({"error": "Posting access from this device is blocked"}), 403
+    return None
 
 
 @app.route("/health", methods=["GET"])
-def health():
+def health() -> Tuple[Response, int]:
+    """Return a lightweight service health response.
+
+    Returns:
+        A JSON response and HTTP 200 status.
+    """
     return jsonify({"status": "ok"}), 200
 
 
 @app.route("/add_comment", methods=["GET"])
-def add_comment():
-    """Receives a comment and adds it to the json file."""
+def add_comment() -> Tuple[Response, int]:
+    """Validate and publish a comment for one machine.
+
+    The request supplies ``id`` and ``comment`` query parameters and may supply
+    the account-free installation ID header used for private attribution.
+
+    Returns:
+        A JSON response paired with HTTP 200 on success, HTTP 403 for a blocked
+        contributor, or HTTP 422 when the text filter rejects the comment.
+    """
 
     comment = str(request.args.get("comment"))
     machine_id = str(request.args.get("id"))
 
-    ip_address = request.remote_addr
-    if ip_address in blocked_ips:
-        return jsonify({"error": "User IP address is blocked"}), 403
+    if blocked := blocked_contributor_response():
+        return blocked
+
+    reason = text_block_reason(comment)
+    if reason:
+        return jsonify({"error": reason}), 422
 
     path_machine_comments = os.path.join(PATH_COMMENTS, f"{machine_id}.json")
     if os.path.exists(path_machine_comments):
@@ -81,28 +128,40 @@ def add_comment():
     else:
         all_comments = {}
 
-    all_comments[str(datetime.now())] = comment
+    comment_timestamp = str(datetime.now())
+    all_comments[comment_timestamp] = comment
 
     with open(path_machine_comments, "w") as outfile:
         json.dump(all_comments, outfile, indent=4)
 
-    # send message to slack
-    message_slack(machine_id, comment, ip=ip_address)
+    MODERATION.record_content(
+        machine_id,
+        MODERATION.content_key("comment", comment_timestamp),
+        anonymous_user_id(),
+    )
 
-    save_comment(comment, ip_address, machine_id)
+    # send message to slack
+    message_slack(machine_id, comment)
 
     return jsonify({"message": "Success!"}), 200
 
 
 @app.route("/upload_image", methods=["POST"])
-def upload_image():
-    """Receives an image and saves it to the server."""
+def upload_image() -> Tuple[Response, int]:
+    """Validate, process, and publish an uploaded machine or coin image.
+
+    The multipart request supplies an ``image`` file, an ``id`` query parameter,
+    and optionally ``coin_idx``. A ``coin_idx`` of ``-1`` identifies the machine
+    image; non-negative values identify coin image slots.
+
+    Returns:
+        A JSON response paired with HTTP 200 on success, or an appropriate 4xx
+        status when posting is blocked or the image cannot be accepted.
+    """
     machine_id = str(request.args.get("id"))
     coin_idx_str = request.args.get("coin_idx", "-1")
-    ip_address = request.remote_addr
-    if ip_address in blocked_ips:
-        return jsonify({"error": "User IP address is blocked"}), 403
-
+    if blocked := blocked_contributor_response():
+        return blocked
     if "image" not in request.files:
         return jsonify({"error": "No image file found"}), 400
 
@@ -134,7 +193,6 @@ def upload_image():
     if code != 200:
         image_slack(
             machine_id,
-            ip=ip_address,
             fname_suffix=fname_suffix,
             img_slack_text=msg,
             filetype="jpg",
@@ -144,48 +202,127 @@ def upload_image():
         Path(saved_path).unlink()
         return jsonify({"error": msg}), code
 
-    # send message to slack
-    image_slack(
-        machine_id, ip=ip_address, fname_suffix=fname_suffix, img_slack_text=msg
+    target_id = "machine" if coin_idx == -1 else f"coin_{coin_idx}"
+    MODERATION.record_content(
+        machine_id,
+        MODERATION.content_key("image", target_id),
+        anonymous_user_id(),
     )
+
+    # send message to slack
+    image_slack(machine_id, fname_suffix=fname_suffix, img_slack_text=msg)
 
     return jsonify({"message": "Image uploaded successfully"}), 200
 
 
-def save_comment(comment: str, ip: str, machine_id: int):
-    """
-    Saves a comment to the json file.
+@app.route("/moderation/manifest/<machine_id>", methods=["GET"])
+def moderation_manifest(machine_id: str) -> Tuple[Response, int]:
+    """Return contributor pseudonyms used for device-local content blocking.
 
     Args:
-        comment: The comment to save.
-        ip: The IP address of the user.
-        machine_id: The ID of the machine.
+        machine_id: Machine whose reportable content should be described.
+
+    Returns:
+        A JSON mapping from content keys to viewer-scoped contributor IDs with
+        HTTP 200, or an error with HTTP 400 when the installation ID is missing.
     """
-    # Create dict hierarchy if needed
-    if ip not in IP_COMMENT_DICT.keys():
-        IP_COMMENT_DICT[ip] = {}
-    if machine_id not in IP_COMMENT_DICT[ip].keys():
-        IP_COMMENT_DICT[ip][machine_id] = {}
+    viewer_id = MODERATION.contributor_id(anonymous_user_id())
+    if viewer_id is None:
+        return jsonify({"error": "Missing anonymous installation identifier"}), 400
+    return jsonify({"owners": MODERATION.manifest(machine_id, viewer_id)}), 200
 
-    # Add comment
-    IP_COMMENT_DICT[ip][machine_id][str(datetime.now())] = comment
 
-    # Resave the file
-    with open("ip_comment_dict.json", "w") as f:
-        json.dump(IP_COMMENT_DICT, f, indent=4)
+@app.route("/report_content", methods=["POST"])
+def report_content() -> Tuple[Response, int]:
+    """Record a content report and notify maintainers in Slack.
+
+    The JSON or form body must contain ``machine_id``, ``target_kind``,
+    ``target_id``, and ``reason``. The optional ``block_contributor`` boolean
+    records whether the reporter also hid that contributor on their device.
+
+    Returns:
+        A JSON response and HTTP 201 containing the viewer-scoped contributor
+        ID and Slack delivery status. Invalid input returns HTTP 400. A Slack
+        delivery failure does not discard the durable report or fail the call.
+    """
+    report_request = parse_report_request(
+        request.get_json(silent=True) or request.form.to_dict()
+    )
+    machine_id = report_request["machine_id"]
+    target_kind = report_request["target_kind"]
+    target_id = report_request["target_id"]
+    reason = report_request["reason"]
+    block_contributor = report_request["block_contributor"]
+
+    if not machine_id or not target_id:
+        return jsonify({"error": "Missing report target"}), 400
+    if error := validate_report(target_kind, reason):
+        return jsonify({"error": error}), 400
+
+    reporter_id = MODERATION.contributor_id(anonymous_user_id())
+    if reporter_id is None:
+        return jsonify({"error": "Missing anonymous installation identifier"}), 400
+
+    content_key = MODERATION.content_key(target_kind, target_id)
+    contributor = MODERATION.resolve_content(machine_id, content_key)
+    report: ModerationReport = {
+        "machine_id": machine_id,
+        "content_key": content_key,
+        "reason": reason,
+        "block_contributor": bool(block_contributor),
+        "contributor_id": contributor["contributor_id"],
+        "reporter_id": reporter_id,
+    }
+    MODERATION.record_report(report)
+
+    action = "REPORT + LOCAL BLOCK" if block_contributor else "REPORT"
+    alert_text = (
+        f"<!channel> UGC {action}: machine {machine_id}, {content_key}, "
+        f"reason={reason}, "
+        f"contributor={contributor['contributor_id']}, reporter={reporter_id}. "
+        "Review and remove/eject within several working days."
+    )
+    slack_notified = False
+    try:
+        message_slack_raw(alert_text)
+        slack_notified = True
+    except Exception:
+        # The durable report was already written; a temporary Slack outage must not
+        # make the client believe that its local block failed.
+        logger.exception("Could not send moderation report to Slack")
+
+    return (
+        jsonify(
+            {
+                "message": "Report received",
+                "contributor_id": MODERATION.block_id(
+                    contributor["contributor_id"], reporter_id
+                ),
+                "content_key": content_key,
+                "slack_notified": slack_notified,
+            }
+        ),
+        201,
+    )
 
 
 def process_machine_entry(
-    new_machine_entry: Dict[str, Any], tmp_img_path: str, ip_address: str
-):
-    """
-    Process a new machine entry (upload image, send message to slack, etc.)
-    Typically executed from a thread to avoid clash with cron job
+    new_machine_entry: Dict[str, Any],
+    tmp_img_path: str,
+    installation_id: str,
+) -> None:
+    """Publish a queued machine submission and record its contributor.
+
+    This function runs in the background worker so it can wait for repository
+    jobs without blocking the HTTP request.
 
     Args:
         new_machine_entry: The new machine entry to process.
         tmp_img_path: Temporary path to the image.
-        ip_address: The IP address of the user.
+        installation_id: Random installation identifier supplied by the app.
+
+    Returns:
+        None. Processing errors are logged and sent to Slack.
     """
 
     title = new_machine_entry.get("properties", {}).get("name", "<unknown>")
@@ -209,10 +346,19 @@ def process_machine_entry(
         # Upload the image
         code, msg, img_path = process_uploaded_image(img_path)
 
+        MODERATION.record_content(
+            str(new_machine_id),
+            MODERATION.content_key("machine", "listing"),
+            installation_id,
+        )
+        MODERATION.record_content(
+            str(new_machine_id),
+            MODERATION.content_key("image", "machine"),
+            installation_id,
+        )
         # Send message to slack
         image_slack(
             new_machine_id,
-            ip=ip_address,
             m_name=title,
             img_slack_text="New machine proposed:",
         )
@@ -258,15 +404,22 @@ def address_to_coordinates(
 
 
 @app.route("/create_machine", methods=["POST"])
-def create_machine():
+def create_machine() -> Tuple[Response, int]:
     """Receive and queue a new machine submission.
 
     Returns:
-        JSON response with success, validation error, or nearby-machine warning.
+        A JSON response and HTTP status describing success, a validation error,
+        a duplicate, or a nearby-machine warning.
     """
+    if blocked := blocked_contributor_response():
+        return blocked
+
     title = str(request.args.get("title")).strip()
     address = str(request.args.get("address")).strip()
     area = str(request.args.get("area")).strip()
+
+    if reason := text_block_reason(title):
+        return jsonify({"error": reason}), 422
 
     # Identify area
     area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
@@ -385,15 +538,16 @@ def create_machine():
         "geometry": {"type": "Point", "coordinates": location},
         "properties": properties_dict,
     }
-    ip_address = request.remote_addr
-
     tmp_path = os.path.join(PATH_IMAGES, f"{tmp_id}.jpg")
     request.files["image"].save(tmp_path)
 
     message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
     # Add to queue
     request_queue.put(
-        (process_machine_entry, (new_machine_entry, tmp_path, ip_address))
+        (
+            process_machine_entry,
+            (new_machine_entry, tmp_path, anonymous_user_id()),
+        )
     )
     if not address_okay:
         if address != orig_address:
@@ -408,10 +562,19 @@ def create_machine():
 
 
 @app.route("/change_machine", methods=["POST"])
-def change_machine():
+def change_machine() -> Tuple[Response, int]:
+    """Validate and queue a change to an existing machine.
+
+    The request query parameters describe the machine ID, title, address, area,
+    status, coordinates, and optional machine attributes.
+
+    Returns:
+        A JSON response and HTTP status describing acceptance, invalid input, or
+        a warning that the submitted address and coordinates do not correspond.
     """
-    Receives a request for change of a machine and commits to the `DATA_BRANCH`.
-    """
+    if blocked := blocked_contributor_response():
+        return blocked
+
     machine_id = int(request.args.get("id"))
     title = str(request.args.get("title")).strip()
     address = str(request.args.get("address")).strip()
@@ -419,7 +582,8 @@ def change_machine():
     status = str(request.args.get("status")).strip()
     latitude = float(request.args.get("lat_coord"))
     longitude = float(request.args.get("lon_coord"))
-    ip = request.remote_addr
+    if reason := text_block_reason(title):
+        return jsonify({"error": reason}), 422
 
     # Load server locations and find existing machine info
     server_locations, latest_commit_sha = load_latest_json()
@@ -528,7 +692,7 @@ def change_machine():
     slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
     message_slack_raw(text=slack_message)
 
-    request_queue.put((process_machine_change, (updated_machine_entry, ip, msg)))
+    request_queue.put((process_machine_change, (updated_machine_entry, msg)))
 
     # return warning if the address and coordinates do not correspond
     if not address_okay:

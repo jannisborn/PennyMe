@@ -405,6 +405,10 @@ struct NewMachineFormView: View {
     // Function to handle the submission of the request
     private func submitRequest(ignoreNearby: Bool = false) {
         isLoading = true
+        if let reason = TextModeration.blockReason(name) {
+            finishLoading(message: reason)
+            return
+        }
         if name == "" || address == "" || submittedArea == "" || selectedImage == nil {
             finishLoading(message: "Please enter all information & upload image")
         } else {
@@ -433,6 +437,7 @@ struct NewMachineFormView: View {
                 urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
                 var request = URLRequest(url: urlComponents.url!)
                 request.httpMethod = "POST"
+                request.addAnonymousUserHeader()
                 
                 // Add the image data to the request body
                 let boundary = UUID().uuidString

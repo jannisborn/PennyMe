@@ -253,19 +253,19 @@ def wait(time_to_wait: int = 5, check_cronjob: bool = True):
 
 
 def process_machine_change(
-    updated_machine_entry: dict,
-    ip_address: str,
+    updated_machine_entry: Dict[str, Any],
     change_message: str,
     wait_buffer_min: int = 5,
-):
-    """
-    Process a machine change request by modifying the server locations file
+) -> None:
+    """Process a machine change by modifying the server locations file.
 
     Args:
         updated_machine_entry: Dictionary with user provided machine information
-        ip_address: IP address of user
         change_message: commit message describing which fields were changed
         wait_buffer_min: Time to wait between edits. Defaults to 5.
+
+    Returns:
+        None.
     """
     wait(wait_buffer_min)
 
