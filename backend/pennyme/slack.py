@@ -30,6 +30,23 @@ MACHINE_NAMES = {
 }
 
 
+def save_image(
+    img: Image.Image, output_path: str, max_size_bytes: int = 500 * 1024
+) -> None:
+    """Save an image, shrinking it until it fits within the byte limit."""
+    while True:
+        img.save(output_path, quality=95, optimize=True)
+        if Path(output_path).stat().st_size <= max_size_bytes:
+            return
+        if img.size == (1, 1):
+            Path(output_path).unlink()
+            raise ValueError(f"Could not compress image below {max_size_bytes} bytes")
+        img.thumbnail(
+            tuple(max(1, dimension // 2) for dimension in img.size),
+            Image.Resampling.LANCZOS,
+        )
+
+
 def reload_server_data() -> Dict[str, str]:
     """
     Reloads the server data from the json file and extracts specific information, e.g.,
@@ -67,10 +84,7 @@ def process_uploaded_image(
         String with success message
     """
     img = ImageOps.exif_transpose(Image.open(img_path))
-    wpercent = basewidth / float(img.size[0])
-    if wpercent <= 1:
-        hsize = int((float(img.size[1]) * float(wpercent)))
-        img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+    img.thumbnail((basewidth, basewidth), Image.Resampling.LANCZOS)
 
     # If image is a coin, apply background separation and always save as PNG.
     output_path = img_path
@@ -96,13 +110,13 @@ def process_uploaded_image(
         pad = 20
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
-        img.save(output_path, quality=95)
+        save_image(img, output_path)
         # delete original image if we wrote to a different path
         if out_path != in_path:
             in_path.unlink()
         return 200, "OK", output_path
 
-    img.save(output_path, quality=95)
+    save_image(img, output_path)
     return 200, "OK", output_path
 
 
