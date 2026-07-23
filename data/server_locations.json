@@ -1007,9 +1007,9 @@
                 "address": "404 Santa Monica Pier, Santa Monica",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=249684",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 4856,
-                "last_updated": "2026-01-10"
+                "last_updated": "2026-07-22"
             }
         },
         {
@@ -30871,6 +30871,48 @@
                 "machine_status": "available",
                 "id": 9437,
                 "last_updated": "2026-07-23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.61191699999999,
+                    39.28141490000001
+                ]
+            },
+            "properties": {
+                "name": "Maryland Science Center",
+                "area": "Maryland",
+                "address": "601 Light Street, Baltimore",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2561",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3609,
+                "last_updated": "2026-07-22"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.7743614,
+                    38.945846
+                ]
+            },
+            "properties": {
+                "name": "George Orthodontics",
+                "area": "Colorado",
+                "address": "7770 N Union Blvd, Suite B, Colorado Springs",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=196082",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5281,
+                "last_updated": "2026-07-22"
             }
         }
     ]
