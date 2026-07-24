@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from pennyme.moderation import (
     ModerationStore,
@@ -74,6 +75,48 @@ class ModerationStoreTests(unittest.TestCase):
         other_viewer = self.store.block_id(contributor, "viewer-b")
         self.assertEqual(first, second)
         self.assertNotEqual(first, other_viewer)
+
+    def test_repeated_manifests_reuse_the_attribution_cache(self):
+        self.store.attribution_path.write_text(
+            json.dumps(
+                {
+                    "42": {
+                        "image:machine": {
+                            "contributor_id": "contributor-a",
+                            "updated_at": "2026-07-24T00:00:00+00:00",
+                        }
+                    },
+                    "43": {
+                        "image:machine": {
+                            "contributor_id": "contributor-b",
+                            "updated_at": "2026-07-24T00:00:00+00:00",
+                        }
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+
+        with patch("pennyme.moderation.json.load", wraps=json.load) as json_load:
+            first = self.store.manifest("42", viewer_id="viewer-a")
+            second = self.store.manifest("42", viewer_id="viewer-a")
+
+        self.assertEqual(first, second)
+        self.assertEqual(json_load.call_count, 1)
+
+    def test_listing_manifest_returns_only_listing_owners(self):
+        listing_contributor = self.store.record_content(
+            "42", "machine:listing", "listing-installation"
+        )
+        self.store.record_content("42", "image:machine", "image-installation")
+        self.store.record_content("43", "comment:now", "comment-installation")
+
+        manifest = self.store.listing_manifest(viewer_id="viewer-a")
+
+        self.assertEqual(
+            manifest,
+            {"42": self.store.block_id(listing_contributor, "viewer-a")},
+        )
 
     def test_legacy_clients_are_scoped_to_individual_content(self):
         first = self.store.record_content("42", "comment:a", "")

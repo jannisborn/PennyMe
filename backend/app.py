@@ -232,6 +232,20 @@ def moderation_manifest(machine_id: str) -> Tuple[Response, int]:
     return jsonify({"owners": MODERATION.manifest(machine_id, viewer_id)}), 200
 
 
+@app.route("/moderation/listing_manifest", methods=["GET"])
+def moderation_listing_manifest() -> Tuple[Response, int]:
+    """Return contributor pseudonyms for attributed machine listings.
+
+    Returns:
+        A JSON mapping from machine IDs to viewer-scoped contributor IDs with
+        HTTP 200, or an error with HTTP 400 when the installation ID is missing.
+    """
+    viewer_id = MODERATION.contributor_id(anonymous_user_id())
+    if viewer_id is None:
+        return jsonify({"error": "Missing anonymous installation identifier"}), 400
+    return jsonify({"owners": MODERATION.listing_manifest(viewer_id)}), 200
+
+
 @app.route("/report_content", methods=["POST"])
 def report_content() -> Tuple[Response, int]:
     """Record a content report and notify maintainers in Slack.

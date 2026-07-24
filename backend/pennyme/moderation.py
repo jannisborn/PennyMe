@@ -208,6 +208,8 @@ class ModerationStore:
         self.attribution_path = Path(attribution_path)
         self.reports_path = Path(reports_path)
         self._lock = threading.Lock()
+        self._attribution_cache: Optional[Dict[str, Dict[str, Any]]] = None
+        self._attribution_mtime_ns: Optional[int] = None
 
     @staticmethod
     def content_key(target_kind: str, target_id: str) -> str:
@@ -294,8 +296,13 @@ class ModerationStore:
             "updated_at": utc_now(),
         }
         with self._lock:
-            data = self._read_attribution()
-            machine = data.setdefault(str(machine_id), {})
+            current = self._read_attribution()
+            data = dict(current)
+            existing_machine = current.get(str(machine_id), {})
+            machine = (
+                dict(existing_machine) if isinstance(existing_machine, dict) else {}
+            )
+            data[str(machine_id)] = machine
             machine[content_key] = entry
             self._atomic_write_json(self.attribution_path, data)
         return contributor_id
@@ -320,6 +327,37 @@ class ModerationStore:
             elif isinstance(value, str):
                 # Backward compatibility if an early deployment stored only IDs.
                 manifest[key] = self.block_id(value, viewer_id)
+        return manifest
+
+    def listing_manifest(self, viewer_id: str) -> Dict[str, str]:
+        """Return owners for all user-contributed machine listings.
+
+        The attribution JSON is cached by :meth:`_read_attribution`, so this
+        global pass does not repeatedly parse the file. Each machine contributes
+        at most one entry to the response.
+
+        Args:
+            viewer_id: Internal contributor digest of the requesting installation.
+
+        Returns:
+            A mapping from machine IDs to viewer-scoped block pseudonyms. Machines
+            without attributed listing content are omitted.
+        """
+        with self._lock:
+            attribution = self._read_attribution()
+
+        manifest: Dict[str, str] = {}
+        listing_key = self.content_key("machine", "listing")
+        for machine_id, machine in attribution.items():
+            if not isinstance(machine, dict):
+                continue
+            value = machine.get(listing_key)
+            if isinstance(value, dict) and value.get("contributor_id"):
+                manifest[str(machine_id)] = self.block_id(
+                    str(value["contributor_id"]), viewer_id
+                )
+            elif isinstance(value, str):
+                manifest[str(machine_id)] = self.block_id(value, viewer_id)
         return manifest
 
     def resolve_content(self, machine_id: str, content_key: str) -> ResolvedContent:
@@ -361,21 +399,43 @@ class ModerationStore:
                 outfile.write(line + "\n")
 
     def _read_attribution(self) -> Dict[str, Dict[str, Any]]:
-        """Load the complete private attribution mapping.
+        """Return the private attribution mapping, reloading only when changed.
 
         Returns:
             The stored machine-to-content attribution mapping. A missing,
             malformed, or non-object JSON file is treated as an empty mapping.
+            Repeated reads reuse an in-memory cache while the file modification
+            timestamp remains unchanged.
         """
+        try:
+            mtime_ns = self.attribution_path.stat().st_mtime_ns
+        except FileNotFoundError:
+            self._attribution_cache = {}
+            self._attribution_mtime_ns = None
+            return self._attribution_cache
+
+        if (
+            self._attribution_cache is not None
+            and self._attribution_mtime_ns == mtime_ns
+        ):
+            return self._attribution_cache
+
         try:
             with self.attribution_path.open("r", encoding="utf-8") as infile:
                 value = json.load(infile)
-                return value if isinstance(value, dict) else {}
-        except (FileNotFoundError, json.JSONDecodeError):
-            return {}
+                data = value if isinstance(value, dict) else {}
+        except FileNotFoundError:
+            self._attribution_cache = {}
+            self._attribution_mtime_ns = None
+            return self._attribution_cache
+        except json.JSONDecodeError:
+            data = {}
 
-    @staticmethod
-    def _atomic_write_json(path: Path, value: Dict[str, Any]) -> None:
+        self._attribution_cache = data
+        self._attribution_mtime_ns = mtime_ns
+        return data
+
+    def _atomic_write_json(self, path: Path, value: Dict[str, Any]) -> None:
         """Replace a JSON file atomically using a sibling temporary file.
 
         Args:
@@ -394,6 +454,9 @@ class ModerationStore:
                 json.dump(value, outfile, ensure_ascii=False, indent=2, sort_keys=True)
                 outfile.write("\n")
             os.replace(temporary_name, path)
+            if path == self.attribution_path:
+                self._attribution_cache = value
+                self._attribution_mtime_ns = path.stat().st_mtime_ns
         except Exception:
             try:
                 os.unlink(temporary_name)

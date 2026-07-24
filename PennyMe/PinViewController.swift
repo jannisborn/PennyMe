@@ -64,6 +64,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private let copyFeedback = UINotificationFeedbackGenerator()
     private let blockedContributors = BlockedContributorsStore()
     private var contentOwners: [String: String] = [:]
+    private var hasLoadedModerationManifest = false
+    private var needsBlockedContentRefresh = false
 
     private enum ModerationTarget {
         case visibleImage(Int)
@@ -303,7 +305,24 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
 
     @objc private func blockedContentDidChange() {
-        loadModerationManifestAndContent()
+        guard isDisplayingMachine else {
+            needsBlockedContentRefresh = true
+            return
+        }
+        loadCommunityContent()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard needsBlockedContentRefresh, hasLoadedModerationManifest else { return }
+        needsBlockedContentRefresh = false
+        loadCommunityContent()
+    }
+
+    private var isDisplayingMachine: Bool {
+        guard isViewLoaded, view.window != nil else { return false }
+        guard let navigationController = navigationController else { return true }
+        return navigationController.visibleViewController === self
     }
     
     override func viewDidLayoutSubviews() {
@@ -388,7 +407,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     private func loadModerationManifestAndContent() {
         guard let url = URL(string: flaskURL + "moderation/manifest/\(pinData.id)") else {
-            loadCommunityContent()
+            hasLoadedModerationManifest = true
+            if isDisplayingMachine {
+                loadCommunityContent()
+            } else {
+                needsBlockedContentRefresh = true
+            }
             return
         }
 
@@ -397,12 +421,27 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         request.addAnonymousUserHeader()
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, _ in
             guard let self = self else { return }
-            if let data = data,
-               let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-               let owners = json?["owners"] as? [String: String] {
-                self.contentOwners = owners
+            let owners: [String: String]
+            if let data,
+               let json = try? JSONSerialization.jsonObject(
+                   with: data,
+                   options: []
+               ) as? [String: Any],
+               let responseOwners = json?["owners"] as? [String: String] {
+                owners = responseOwners
+            } else {
+                owners = [:]
             }
-            self.loadCommunityContent()
+            DispatchQueue.main.async {
+                self.contentOwners = owners
+                self.hasLoadedModerationManifest = true
+                if self.isDisplayingMachine {
+                    self.needsBlockedContentRefresh = false
+                    self.loadCommunityContent()
+                } else {
+                    self.needsBlockedContentRefresh = true
+                }
+            }
         }
         task.resume()
     }
@@ -503,7 +542,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private func confirmBlock(target: ModerationTarget, reason: ReportReason) {
         let alert = UIAlertController(
             title: "Block Contributor?",
-            message: "All attributed images and comments from this contributor will be hidden throughout PennyMe on this device. While content is not deleted, useful information may appear missing to you!  You can reverse this in Settings → Blocked content. PennyMe will also receive a report for review within several working days.",
+            message: "All attributed machine listings, images, and comments from this contributor will be hidden throughout PennyMe on this device. While content is not deleted, useful information may appear missing to you! You can reverse this in Settings → Blocked content. PennyMe will also receive a report for review within several working days.",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -572,7 +611,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
             DispatchQueue.main.async {
                 if blockContributor {
-                    self.applyBlockedContent()
                     self.showAlert(
                         title: "Contributor Blocked",
                         message: "Their content is hidden and the report was sent to PennyMe."
@@ -616,19 +654,15 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
 
     private func applyBlockedContent() {
-        for (index, item) in imageItems {
+        let blockedContent = blockedContributors.snapshot()
+        for index in imageItems.keys {
             let key = ModerationTarget.visibleImage(index).contentKey
-            guard blockedContributors.isBlocked(
+            guard blockedContent.isBlocked(
                 contributorID: contentOwners[key],
                 contentKey: localContentKey(key)
             ) else { continue }
 
-            item.imageView.gestureRecognizers?.forEach { item.imageView.removeGestureRecognizer($0) }
-            item.imageView.image = UIImage(systemName: "eye.slash")
-            item.imageView.tintColor = .secondaryLabel
-            item.imageView.contentMode = .center
-            item.imageView.backgroundColor = .secondarySystemBackground
-            imageDict.removeValue(forKey: index)
+            showBlockedImagePlaceholder(at: index)
         }
 
         loadComments { [weak self] output in
@@ -642,6 +676,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     
     func loadComments(completionBlock: @escaping (String) -> Void) -> Void {
         let urlEncodedStringRequest = imageURL + "comments/\(self.pinData.id).json"
+        let blockedContent = blockedContributors.snapshot()
+        let owners = contentOwners
+        let machineID = pinData.id
         
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -662,9 +699,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                         for date in sortedDates {
                             if let value = results_[date]{
                                 let key = "comment:\(date)"
-                                if self.blockedContributors.isBlocked(
-                                    contributorID: self.contentOwners[key],
-                                    contentKey: self.localContentKey(key)
+                                if blockedContent.isBlocked(
+                                    contributorID: owners[key],
+                                    contentKey: "\(machineID):\(key)"
                                 ) {
                                     continue
                                 }
@@ -1254,6 +1291,20 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     func getImage(photoInd: Int) {
+        let contentKey = ModerationTarget.visibleImage(photoInd).contentKey
+        if blockedContributors.isBlocked(
+            contributorID: contentOwners[contentKey],
+            contentKey: localContentKey(contentKey)
+        ) {
+            addImageToScrollView(
+                image: UIImage(systemName: "eye.slash")!,
+                img_idx: photoInd,
+                action: nil
+            )
+            showBlockedImagePlaceholder(at: photoInd)
+            return
+        }
+
         let urlString: String = {
             if photoInd > 0 {
                 return "\(imageURL)/\(pinData.id)_coin_\(photoInd-1).png"
@@ -1273,17 +1324,22 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             DispatchQueue.main.async {
                 guard let self else { return }
 
-                let action: Selector?
-                let finalImage: UIImage
-                let contentKey = ModerationTarget.visibleImage(photoInd).contentKey
                 if self.blockedContributors.isBlocked(
                     contributorID: self.contentOwners[contentKey],
                     contentKey: self.localContentKey(contentKey)
                 ) {
-                    finalImage = UIImage(systemName: "eye.slash")!
-                    action = nil
-                    self.imageDict.removeValue(forKey: photoInd)
-                } else if let downloadedImage {
+                    self.addImageToScrollView(
+                        image: UIImage(systemName: "eye.slash")!,
+                        img_idx: photoInd,
+                        action: nil
+                    )
+                    self.showBlockedImagePlaceholder(at: photoInd)
+                    return
+                }
+
+                let action: Selector?
+                let finalImage: UIImage
+                if let downloadedImage {
                     finalImage = downloadedImage
                     action = #selector(self.enlargeImage(tapGestureRecognizer:))
                     self.imageDict[photoInd] = downloadedImage
@@ -1378,6 +1434,34 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         layoutImageItem(index: img_idx)
     }
 
+    private func showBlockedImagePlaceholder(at index: Int) {
+        guard let item = imageItems[index] else { return }
+
+        item.imageView.gestureRecognizers?.forEach {
+            item.imageView.removeGestureRecognizer($0)
+        }
+        item.imageView.image = UIImage(systemName: "eye.slash")
+        item.imageView.tintColor = .secondaryLabel
+        item.imageView.contentMode = .center
+        item.imageView.backgroundColor = .secondarySystemBackground
+        imageDict.removeValue(forKey: index)
+
+        if !item.container.subviews.contains(where: {
+            $0.accessibilityIdentifier == "blockedContentMessage"
+        }) {
+            let label = UILabel()
+            label.text = "You blocked this content"
+            label.font = .preferredFont(forTextStyle: .footnote)
+            label.textColor = .secondaryLabel
+            label.textAlignment = .center
+            label.adjustsFontForContentSizeCategory = true
+            label.accessibilityIdentifier = "blockedContentMessage"
+            item.container.addSubview(label)
+        }
+
+        layoutImageItem(index: index)
+    }
+
     
     private func layoutImageItem(index: Int) {
         guard let item = imageItems[index] else { return }
@@ -1398,6 +1482,21 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             width: pageWidth,
             height: pageHeight - toggleHeight - spacing
         )
+
+        if let label = item.container.subviews
+            .compactMap({ $0 as? UILabel })
+            .first(where: { $0.accessibilityIdentifier == "blockedContentMessage" }) {
+            let horizontalPadding: CGFloat = 16
+            let labelHeight = label.sizeThatFits(
+                CGSize(width: pageWidth - 2 * horizontalPadding, height: .greatestFiniteMagnitude)
+            ).height
+            label.frame = CGRect(
+                x: horizontalPadding,
+                y: item.imageView.frame.midY + 24,
+                width: pageWidth - 2 * horizontalPadding,
+                height: labelHeight
+            )
+        }
 
         // Center label + switch under image
         if let tContainer = item.toggleContainer,

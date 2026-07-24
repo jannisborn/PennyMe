@@ -117,6 +117,7 @@ struct NewMachineFormView: View {
     let areaChoices: [String]
     let openExistingMachine: ((String) -> Void)?
     let isExistingMachineVisible: ((String) -> Bool)?
+    let isExistingMachineBlocked: ((String) -> Bool)?
     // Properties to hold user input
     @State private var name: String = ""
     @State private var address: String = ""
@@ -143,12 +144,14 @@ struct NewMachineFormView: View {
         coordinate: CLLocationCoordinate2D,
         areaChoices: [String] = [],
         openExistingMachine: ((String) -> Void)? = nil,
-        isExistingMachineVisible: ((String) -> Bool)? = nil
+        isExistingMachineVisible: ((String) -> Bool)? = nil,
+        isExistingMachineBlocked: ((String) -> Bool)? = nil
     ) {
         coords = coordinate
         self.areaChoices = areaChoices
         self.openExistingMachine = openExistingMachine
         self.isExistingMachineVisible = isExistingMachineVisible
+        self.isExistingMachineBlocked = isExistingMachineBlocked
         _selectedLocation = State(initialValue: coords)
         // Observe keyboard frame changes
         keyboardObserver = NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
@@ -275,21 +278,27 @@ struct NewMachineFormView: View {
                 warningBox {
                     Text("This machine already exists")
                         .font(.headline)
-                    machineLine(duplicateMachine)
-                    if ["out-of-order", "retired"].contains(duplicateMachine.status) {
-                        Text("Cool! You re-discovered a machine that was marked as \(duplicateMachine.status).")
-                        Text("Please change its status to 'Active'.")
-                    }
-                    if isExistingMachineVisible?(duplicateMachine.machineID) == false {
-                        Text("You didn't see this machine on the map because in your settings you toggled \(duplicateMachine.status) machines to be invisible.")
+                    if isExistingMachineBlocked?(duplicateMachine.machineID) == true {
+                        Text("You blocked this machine listing.")
                             .font(.footnote)
                             .foregroundColor(.secondary)
-                    }
-                    Button(action: {
-                        self.duplicateMachine = nil
-                        openExistingMachine?(duplicateMachine.machineID)
-                    }) {
-                        primaryButtonLabel("Open existing machine")
+                    } else {
+                        machineLine(duplicateMachine)
+                        if ["out-of-order", "retired"].contains(duplicateMachine.status) {
+                            Text("Cool! You re-discovered a machine that was marked as \(duplicateMachine.status).")
+                            Text("Please change its status to 'Active'.")
+                        }
+                        if isExistingMachineVisible?(duplicateMachine.machineID) == false {
+                            Text("You didn't see this machine on the map because in your settings you toggled \(duplicateMachine.status) machines to be invisible.")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                        }
+                        Button(action: {
+                            self.duplicateMachine = nil
+                            openExistingMachine?(duplicateMachine.machineID)
+                        }) {
+                            primaryButtonLabel("Open existing machine")
+                        }
                     }
                     Button(action: {
                         self.duplicateMachine = nil
@@ -304,8 +313,17 @@ struct NewMachineFormView: View {
                         .font(.headline)
                     Text("This may already be in PennyMe. Do you still want to submit this machine?")
                     VStack(alignment: .leading, spacing: 8) {
-                        ForEach(nearbyMachines) { machine in
+                        ForEach(nearbyMachines.filter {
+                            isExistingMachineBlocked?($0.machineID) != true
+                        }) { machine in
                             machineLine(machine)
+                        }
+                        if nearbyMachines.contains(where: {
+                            isExistingMachineBlocked?($0.machineID) == true
+                        }) {
+                            Text("Some nearby machine listings are hidden because you blocked their contributors.")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
                         }
                     }
                     Button(action: {

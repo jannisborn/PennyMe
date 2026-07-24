@@ -382,6 +382,19 @@ enum TextModeration {
     }
 }
 
+struct BlockedContentSnapshot {
+    fileprivate let contributorIDs: Set<String>
+    fileprivate let contentKeys: Set<String>
+
+    func isBlocked(contributorID: String?, contentKey: String) -> Bool {
+        if contentKeys.contains(contentKey) {
+            return true
+        }
+        guard let contributorID = contributorID else { return false }
+        return contributorIDs.contains(contributorID)
+    }
+}
+
 final class BlockedContributorsStore {
     private let defaults: UserDefaults
     private let contributorsKey = "moderation.blockedContributorIDs"
@@ -408,11 +421,17 @@ final class BlockedContributorsStore {
     }
 
     func isBlocked(contributorID: String?, contentKey: String) -> Bool {
-        if blockedContentKeys().contains(contentKey) {
-            return true
-        }
-        guard let contributorID = contributorID else { return false }
-        return blockedContributorIDs().contains(contributorID)
+        return snapshot().isBlocked(
+            contributorID: contributorID,
+            contentKey: contentKey
+        )
+    }
+
+    func snapshot() -> BlockedContentSnapshot {
+        return BlockedContentSnapshot(
+            contributorIDs: blockedContributorIDs(),
+            contentKeys: blockedContentKeys()
+        )
     }
 
     func blockedContributorIDs() -> Set<String> {
