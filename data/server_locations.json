@@ -19705,9 +19705,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379935",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 5511,
-                "last_updated": "2026-06-03"
+                "last_updated": "2026-07-26"
             }
         },
         {
@@ -31455,6 +31455,235 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 2221,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.8207429,
+                    41.6542158
+                ]
+            },
+            "properties": {
+                "name": "Adventure Bay",
+                "area": "Ohio",
+                "address": "380 Main Street , Put-in-Bay",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=59048",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 2003,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.27333459999997,
+                    44.33855589999998
+                ]
+            },
+            "properties": {
+                "name": "Hulls Cove Visitor Center",
+                "area": "Maine",
+                "address": "25 visitors center road, Bar Harbor",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=370304",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5183,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.2050746,
+                    44.3901485
+                ]
+            },
+            "properties": {
+                "name": "Acadia Outdoors Store - Downtown Bar Harbor",
+                "area": "Maine",
+                "address": "45 Main St, Bar Harbor",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=296699",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8078,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.1877548,
+                    35.2511522
+                ]
+            },
+            "properties": {
+                "name": "Poozeum Museum ",
+                "area": "Arizona",
+                "address": "109 W Railroad Ave, Williams",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483418",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9451,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.1783499,
+                    38.6776724
+                ]
+            },
+            "properties": {
+                "name": "Folsom History Museum, Pioneer Village",
+                "area": "California",
+                "address": "198 Wool St, Folsom",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=256291",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4622,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.9001349,
+                    36.6167558
+                ]
+            },
+            "properties": {
+                "name": "Cannery Row - Bubba Gump Shrimp Company",
+                "area": "California",
+                "address": "720 Cannery Row, Monterey",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=53678",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 4683,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9772566,
+                    38.9048832
+                ]
+            },
+            "properties": {
+                "name": "North Pole Colorado Santas Workshop",
+                "area": "Colorado",
+                "address": "5050 Pikes Peak Hwy, Cascade",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483508",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9452,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.91874649999994,
+                    33.66450980000002
+                ]
+            },
+            "properties": {
+                "name": "Jurassic Mini Golf",
+                "area": "South Carolina",
+                "address": "2205 N Kings Hwy, Myrtle Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=329063",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 2218,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.5993311,
+                    43.766169
+                ]
+            },
+            "properties": {
+                "name": "Mountain Kids Toy Company",
+                "area": "South Dakota",
+                "address": "528 Mt Rushmore Rd, Custer",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=380473",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5313,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.461494,
+                    27.949577
+                ]
+            },
+            "properties": {
+                "name": "Glazer Children's Museum",
+                "area": "Florida",
+                "address": "110 W Gasparilla Plaza,, Tampa",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=100658",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3466,
+                "last_updated": "2026-07-26"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.960556,
+                    33.4747658
+                ]
+            },
+            "properties": {
+                "name": "Augusta Museum of History",
+                "area": "Georgia",
+                "address": "560 Reynolds Street, Augusta",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483459",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9453,
                 "last_updated": "2026-07-26"
             }
         }
