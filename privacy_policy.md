@@ -1,63 +1,52 @@
+# PennyMe Privacy Policy
 
+Last updated: July 22, 2026
 
-***PennyMe - Privacy Policy:***
+PennyMe is a free, account-free app operated by Jannis Born and Nina Wiedemann. This policy explains the limited information processed when you use the app.
 
-Jannis Born & Nina Wiedemann built the PennyMe app as a Free app. This SERVICE is provided by us at no cost and is intended for use as is.
+## Information we process
 
-This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
+PennyMe does not require an account, name, email address, or social profile. The app and service may process:
 
-PennyMe does not collect any user information. Since I do not collect any user information, I do not distribute any user information to any entity or anyone. I also don’t retain any user information. Hence, no user information is collected, distributed, used, shared or retained. As far as email contacts are concerned, your email address is never shared with any other entity. 
+- A random installation identifier created by the app and stored in the device Keychain. It is sent only with contributions and safety reports.
+- Content you choose to submit, the affected machine, submission time, and moderation/report details.
+- Location information you choose to use for map features or include in a machine contribution. Ordinary map location is used on the device; submitted machine coordinates are sent to the service.
+- Basic technical log information needed to operate, secure, and diagnose the service.
 
+## Why we process it
 
+We have to process this information to align with the requirements of the Apple AppStore. We use this information only to operate PennyMe, publish requested contributions, prevent spam and abuse, investigate reports, remove objectionable content, block abusive contributors, secure the service, and fix technical problems. We do not use it for advertising and do not sell it.
 
-Please contact me at jannis.born@gmx.de with any questions concerning the privacy policy.
+For device-local blocking, the service converts the installation identifier into a one-way pseudonym. Other users can receive that pseudonym so their app can hide content from the same contributor. They do not receive the installation identifier. Older content without an installation identifier is blocked only as an individual content item.
 
-© Jannis Born, Nina Wiedemann (2022)
+## Service providers and disclosure
 
+We use hosting infrastructure to operate PennyMe and Slack to alert the maintainers about contributions and safety reports. These providers process information only to provide those services and are expected to protect it consistently with this policy. We may also disclose information when required by law or when reasonably necessary to protect users, the public, or the service.
 
-**Information Collection and Use**
+## Retention and deletion
 
-The app does use third party services that collect information used to identify you. However, in some cases we do link the user to the use of other apps (Apple Maps to navigate to a machine or Safari/browser to display further information). In these cases, PennyMe does not collect any information from these third-party apps about the user.
+Public contributions are retained while they remain useful to PennyMe. Private contribution attribution is retained while the related content is published and as reasonably necessary to investigate abuse. Moderation reports and enforcement records may be retained for up to 24 months, or longer when needed for security, repeat-abuse prevention, or legal obligations. Anonymous contributor digests on the abuse denylist are retained while the restriction is necessary.
 
-**Log Data**
+You can request correction or deletion of a contribution or associated moderation data by emailing [jannis.born@gmx.de](mailto:jannis.born@gmx.de) and identifying the machine and content. Because PennyMe has no accounts and does not know your identity, we may need enough information to locate and verify the requested contribution.
 
-I want to inform you that whenever you use our Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.
+## Security
 
-**Cookies**
+We use reasonable technical and organizational measures to protect information. No internet transmission or storage system can be guaranteed completely secure.
 
-Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+## Children
 
-This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+PennyMe is not directed to children under 13, and we do not knowingly collect personal information from children under 13. A parent or guardian can contact us to request deletion.
 
-**Service Providers**
+## External links and services
 
-I may employ third-party companies and individuals due to the following reasons:
+PennyMe may open third-party services such as Apple Maps or a web browser. Their privacy practices are governed by their own policies.
 
-*   To facilitate our Service;
-*   To provide the Service on our behalf;
-*   To perform Service-related services; or
-*   To assist us in analyzing how our Service is used.
+## Changes
 
-I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+We may update this policy as the service changes. The latest version and its effective date will be published with the project.
 
-**Security**
+## Contact
 
-I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+For privacy questions or requests, contact [jannis.born@gmx.de](mailto:jannis.born@gmx.de).
 
-**Links to Other Sites**
-
-This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
-
-**Children’s Privacy**
-
-These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13\. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do necessary actions.
-
-**Changes to This Privacy Policy**
-
-I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
-
-**Contact Us**
-
-If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact me at jannis.born@gmx.de.
-
-This privacy policy page was created at [privacypolicytemplate.net](https://privacypolicytemplate.net) and modified/generated by [App Privacy Policy Generator](https://app-privacy-policy-generator.firebaseapp.com/)
+© 2026 Jannis Born and Nina Wiedemann. All rights reserved.

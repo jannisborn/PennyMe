@@ -1,0 +1,36 @@
+name: Backend tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up UV and Python
+        uses: astral-sh/setup-uv@v9.0.0
+        with:
+          python-version: "3.12"
+          working-directory: backend
+          enable-cache: true
+          cache-dependency-glob: |
+            backend/pyproject.toml
+            backend/uv.lock
+
+      - name: Install backend dependencies
+        run: uv sync --locked
+
+      - name: Run backend tests
+        run: uv run --locked python -m unittest discover -s tests -v

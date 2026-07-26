@@ -47,6 +47,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var selectedPin: Artwork?
     var isLoadingServerLocations: Bool = false
     var lastDataLoad: Date?
+    private let blockedContributors = BlockedContributorsStore()
+    private var listingOwners: [String: String] = [:]
+    private var blockedMachineIDs: Set<String> = []
+    private var appliedBlockedContributorIDs: Set<String> = []
+    private var appliedBlockedContentKeys: Set<String> = []
+    private var hasAppliedBlockedListingState = false
+    private var hasLoadedListingManifest = false
+    private var isLoadingListingManifest = false
+    private var lastListingManifestAttempt: Date?
+    private var needsListingFilterRefresh = false
     
     // variables to handle the toggles on the Settings screen
     var includedStates : [String] = []
@@ -118,6 +128,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         // load data
         loadInitialData()
         addAnnotationsIteratively()
+        loadListingModerationManifestIfNeeded()
 
         // addMapTracking Button
         setupRoundIconButton(
@@ -220,6 +231,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             },
             isExistingMachineVisible: { [weak self] machineID in
                 self?.isMachineVisible(machineID: machineID) ?? true
+            },
+            isExistingMachineBlocked: { [weak self] machineID in
+                self?.blockedMachineIDs.contains(machineID) ?? false
             }
         )
     }
@@ -236,7 +250,90 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     private func isMachineVisible(machineID: String) -> Bool {
         guard let pinIndex = pinIdDict[machineID] else { return true }
         let machine = artworks[pinIndex]
-        return checkMachineShouldBeVisible(status: machine.status, machineStatus: machine.machineStatus)
+        return checkMachineShouldBeVisible(
+            status: machine.status,
+            machineStatus: machine.machineStatus
+        )
+    }
+
+    private func loadListingModerationManifestIfNeeded() {
+        guard !hasLoadedListingManifest, !isLoadingListingManifest else { return }
+        let blockedContributorIDs = blockedContributors.blockedContributorIDs()
+        let hasBlockedListing = blockedContributors.blockedContentKeys().contains {
+            $0.hasSuffix(":machine:listing")
+        }
+        guard !blockedContributorIDs.isEmpty || hasBlockedListing else { return }
+        if let lastAttempt = lastListingManifestAttempt,
+           Date().timeIntervalSince(lastAttempt) < 60 {
+            return
+        }
+        guard let url = URL(string: flaskURL + "moderation/listing_manifest") else {
+            return
+        }
+
+        isLoadingListingManifest = true
+        lastListingManifestAttempt = Date()
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 10
+        request.addAnonymousUserHeader()
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, _ in
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            let owners: [String: String]?
+            if 200..<300 ~= statusCode,
+               let data,
+               let json = try? JSONSerialization.jsonObject(
+                   with: data,
+                   options: []
+               ) as? [String: Any] {
+                owners = json?["owners"] as? [String: String]
+            } else {
+                owners = nil
+            }
+
+            DispatchQueue.main.async {
+                guard let self else { return }
+                self.isLoadingListingManifest = false
+                guard let owners else { return }
+                self.listingOwners = owners
+                self.hasLoadedListingManifest = true
+                if self.viewIfLoaded?.window != nil,
+                   self.navigationController?.visibleViewController === self {
+                    self.refreshBlockedListingFilter(force: true)
+                } else {
+                    self.needsListingFilterRefresh = true
+                }
+            }
+        }.resume()
+    }
+
+    private func refreshBlockedListingFilter(force: Bool = false) {
+        let contributorIDs = blockedContributors.blockedContributorIDs()
+        let contentKeys = blockedContributors.blockedContentKeys()
+        guard force
+                || !hasAppliedBlockedListingState
+                || contributorIDs != appliedBlockedContributorIDs
+                || contentKeys != appliedBlockedContentKeys else {
+            return
+        }
+
+        appliedBlockedContributorIDs = contributorIDs
+        appliedBlockedContentKeys = contentKeys
+        hasAppliedBlockedListingState = true
+
+        let blockedContent = blockedContributors.snapshot()
+        let updatedBlockedMachineIDs = Set(listingOwners.compactMap { machineID, owner in
+            blockedContent.isBlocked(
+                contributorID: owner,
+                contentKey: "\(machineID):machine:listing"
+            ) ? machineID : nil
+        })
+        guard updatedBlockedMachineIDs != blockedMachineIDs else { return }
+
+        blockedMachineIDs = updatedBlockedMachineIDs
+        addAnnotationsIteratively()
+        if isFiltering, let searchText = searchController.searchBar.text {
+            filterContentForSearchText(searchText)
+        }
     }
     
     @objc private func didTapSettings() {
@@ -253,6 +350,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadListingModerationManifestIfNeeded()
+        refreshBlockedListingFilter(force: needsListingFilterRefresh)
+        needsListingFilterRefresh = false
 
         //  Check whether reload has to be triggered
         // only triggered if it's not already running
@@ -300,7 +400,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     func addAnnotationsIteratively() {
         for artwork in artworks {
             // check if this machine should be visible based on the status
-            let shouldBeShown = checkMachineShouldBeVisible(status: artwork.status, machineStatus: artwork.machineStatus)
+            let shouldBeShown = !blockedMachineIDs.contains(artwork.id)
+                && checkMachineShouldBeVisible(
+                    status: artwork.status,
+                    machineStatus: artwork.machineStatus
+                )
             if (!(isVisible[artwork.id] ?? false)) && shouldBeShown {
                 PennyMap.addAnnotation(artwork)
                 isVisible[artwork.id] = true
@@ -444,7 +548,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                     }
                     
                     // check if machine should be displayed based on settings
-                    let shouldDisplayMachine = checkMachineShouldBeVisible(status: personalStatus, machineStatus: machine.machineStatus)
+                    let shouldDisplayMachine = !blockedMachineIDs.contains(machine.id)
+                        && checkMachineShouldBeVisible(
+                            status: personalStatus,
+                            machineStatus: machine.machineStatus
+                        )
                     
                     // remove machine in any case because we need the new pin colour
                     PennyMap.removeAnnotation(machine)
@@ -604,7 +712,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     // Implements the search itself
     func filterContentForSearchText(_ searchText: String, category: Artwork? = nil) {
         filteredArtworks = artworks.filter {
-            (artwork: Artwork) -> Bool in return artwork.text.lowercased().contains(searchText.lowercased())
+            (artwork: Artwork) -> Bool in
+            return !blockedMachineIDs.contains(artwork.id)
+                && artwork.text.lowercased().contains(searchText.lowercased())
         }
         filteredArtworks = filteredArtworks.sorted(by: {$0.title! < $1.title! })
         
@@ -843,7 +953,11 @@ extension ViewController: CLLocationManagerDelegate {
             }
 
             // Check whether the pin is in the square
-            if minLon < lon && lon < maxLon && artwork.status == "unvisited" && artwork.machineStatus == "available"{
+            if minLon < lon
+                && lon < maxLon
+                && !blockedMachineIDs.contains(artwork.id)
+                && artwork.status == "unvisited"
+                && artwork.machineStatus == "available" {
                 let distInKm = haversineDinstance(la1: curLat, lo1: curLon, la2: lat, lo2: lon)/1000
                 // check whether in circle
                 if distInKm < radius{

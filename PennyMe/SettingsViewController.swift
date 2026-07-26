@@ -26,6 +26,8 @@ class SettingsViewController: UITableViewController {
     
     static var hasChanged = false
     static var clusterHasChanged = false
+    private let legalIndexPath = IndexPath(row: 0, section: 3)
+    private let blockedContentIndexPath = IndexPath(row: 1, section: 3)
     let default_switches: [String: Bool] = [
         "unvisitedSwitch": true,
         "visitedSwitch": true,
@@ -81,6 +83,70 @@ class SettingsViewController: UITableViewController {
             "mailto:ninawiedemann999@gmail.com?subject=[PennyMe] - Problem report&body=Dear PennyMe team,\n\n I would like to inform you about the following problem in your app:\n\n"
         ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "error"
         UIApplication.shared.open(URL(string: mailtostring)!)
+    }
+
+    private func showLegalDocuments() {
+        let sheet = UIAlertController(
+            title: "PennyMe Legal",
+            message: "Review the documents that govern community contributions and privacy.",
+            preferredStyle: .actionSheet
+        )
+        sheet.addAction(UIAlertAction(title: "Terms of Use", style: .default) { _ in
+            self.openLegalDocument(named: "terms_of_use", title: "Terms of Use")
+        })
+        sheet.addAction(UIAlertAction(title: "Privacy Policy", style: .default) { _ in
+            self.openLegalDocument(named: "privacy_policy", title: "Privacy Policy")
+        })
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if let popover = sheet.popoverPresentationController {
+            let sourceView: UIView
+            if let cell = tableView.cellForRow(at: legalIndexPath) {
+                sourceView = cell
+            } else {
+                sourceView = tableView
+            }
+            popover.sourceView = sourceView
+            popover.sourceRect = sourceView.bounds
+        }
+        present(sheet, animated: true)
+    }
+
+    private func openLegalDocument(named name: String, title: String) {
+        let controller = LegalDocumentViewController(documentName: name, title: title)
+        if let navigationController = navigationController {
+            navigationController.pushViewController(controller, animated: true)
+        } else {
+            let navigationController = UINavigationController(rootViewController: controller)
+            controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(dismissPresentedController)
+            )
+            present(navigationController, animated: true)
+        }
+    }
+
+    @objc private func dismissPresentedController() {
+        dismiss(animated: true)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer { tableView.deselectRow(at: indexPath, animated: true) }
+        if indexPath == legalIndexPath {
+            showLegalDocuments()
+        } else if indexPath == blockedContentIndexPath {
+            let controller = BlockedContentViewController()
+            if let navigationController = navigationController {
+                navigationController.pushViewController(controller, animated: true)
+            } else {
+                controller.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                    barButtonSystemItem: .done,
+                    target: self,
+                    action: #selector(dismissPresentedController)
+                )
+                present(UINavigationController(rootViewController: controller), animated: true)
+            }
+        }
     }
     // Functions for Switches
     @objc func showUnvisitedMachines(sender:UISwitch!) {
@@ -155,10 +221,9 @@ class SettingsViewController: UITableViewController {
         if section == 1{
             return "Send push notification if a new penny machine is less than \(Int(self.radiusSlider.value)) km away. Location services must be set to 'Always' in settings. Attention: The app must be opened regularly to keep the location updates running."
         }
-        if section == 2{
+        if section == 4{
             return "Tell us if there is a problem with the app! To update a penny machine, please use `Report Change` at the bottom of the machine view."
         }
-        return ""
+        return nil
     }
 }
-

@@ -121,22 +121,23 @@ def process_uploaded_image(
 
 
 def image_slack(
-    machine_id: int,
-    ip: str,
+    machine_id: int | str,
     fname_suffix: str = "",
-    m_name: str = None,
+    m_name: Optional[str] = None,
     img_slack_text: str = "Image uploaded for machine",
     filetype: Optional[str] = None,
-):
-    """
-    Post an image to Slack.
+) -> None:
+    """Post an image to Slack.
 
     Args:
         machine_id: The ID of the machine.
-        ip: The IP address of the user.
         fname_suffix: The suffix of the filename ("" or "_coin_x"). Defaults to "".
         m_name: The name of the machine. Defaults to None.
         img_slack_text: The text to display in the Slack message. Defaults to "Image uploaded for machine".
+        filetype: Explicit uploaded image file extension, when known.
+
+    Returns:
+        None.
 
     Raises:
         e: SlackApiError
@@ -147,7 +148,7 @@ def image_slack(
             logger.error(f"Posting image, but ID {machine_id} not found in server data")
             return
         m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
+    text = f"{img_slack_text} {machine_id} - {m_name}"
     if not filetype:
         filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
@@ -175,14 +176,15 @@ def image_slack(
         raise e
 
 
-def message_slack(machine_id: str, comment_text: str, ip: str):
-    """
-    Send a message to Slack.
+def message_slack(machine_id: str, comment_text: str) -> None:
+    """Send a comment notification to Slack.
 
     Args:
         machine_id: The ID of the machine, given as a string.
         comment_text: The comment to send.
-        ip: The IP address of the user.
+
+    Returns:
+        None.
 
     Raises:
         e: SlackApiError, if the message could not be sent.
@@ -194,7 +196,10 @@ def message_slack(machine_id: str, comment_text: str, ip: str):
     m_name = MACHINE_NAMES[int(machine_id)]
     prefix = m_name.split("Status=")[0]
     postfix = "Status=" + m_name.split("Status=")[-1]
-    text = f"New comment for machine {machine_id} - {prefix}: {comment_text} (from {ip}. Machine: {postfix}"
+    text = (
+        f"New comment for machine {machine_id} - {prefix}: "
+        f"{comment_text}. Machine: {postfix}"
+    )
 
     message_slack_raw(text)
 
