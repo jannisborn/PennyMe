@@ -242,6 +242,36 @@ def test_create_machine() -> None:
     print(f"  INFO  Response {r.status_code}: {r.json()}")
 
 
+def test_change_machine_slackbot() -> None:
+    """Just submits a change so we can see the Slackbot notification in #pennyme_approvals."""
+    print("\n--- /change_machine ---")
+
+    # First fetch the current state so we send back valid data
+    r = requests.get(f"{BASE}/machines", timeout=30)
+    features = r.json()["features"]
+    machine = next(f for f in features if f["properties"]["id"] == TEST_MACHINE_ID)
+    props = machine["properties"]
+    lng, lat = machine["geometry"]["coordinates"]
+
+    # Toggle status: available → out-of-order, or back
+    current_status = props["machine_status"]
+    new_status = "out-of-order" if current_status == "available" else "available"
+
+    params = {
+        "id": TEST_MACHINE_ID,
+        "title": props["name"],
+        "address": props["address"],
+        "area": props["area"],
+        "status": new_status,
+        "lat_coord": lat,
+        "lon_coord": lng,
+        "multimachine": props.get("multimachine", 1),
+        "num_coins": props.get("num_coins", 4),
+        "paywall": "true" if props.get("paywall") else "false",
+    }
+    r = requests.post(f"{BASE}/change_machine", params=params, timeout=30)
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -257,5 +287,7 @@ if __name__ == "__main__":
     test_machines()
     test_change_machine()
     test_create_machine()
+
+    # test_change_machine_slackbot()
 
     print("\nAll tests passed.")

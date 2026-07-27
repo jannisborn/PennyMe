@@ -40,6 +40,7 @@ dependencies = [
   "black>=24.1.1",
   "isort>=5.9.3",
   "pre-commit",
+  "slack-bolt>=1.21.0",
   "slack-sdk>=3.39.0",
   "waitress",
   "typer>=0.21.0",

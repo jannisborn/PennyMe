@@ -38,8 +38,10 @@ from pennyme.moderation import (
 from pennyme.slack import (
     image_slack,
     message_slack,
+    message_slack_pending_change,
     message_slack_raw,
     process_uploaded_image,
+    start_socket_mode_handler,
 )
 from pennyme.utils import setup_locdiffer_logger
 
@@ -543,7 +545,13 @@ def create_machine() -> Tuple[Response, int]:
     tmp_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}_tmp.jpg")
     request.files["image"].save(tmp_path)
 
-    message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
+    message_slack_pending_change(
+        change_id=pending_id,
+        change_type="create",
+        title=title,
+        area=area,
+        change_summary=f"Address: {address}",
+    )
     request_queue.put(
         (
             process_pending_image,
@@ -687,13 +695,12 @@ def change_machine() -> Tuple[Response, int]:
 
     area = updated_machine_entry["properties"]["area"]
     url = updated_machine_entry["properties"]["external_url"]
-    slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
-    message_slack_raw(text=slack_message)
 
     # Record the proposed change for maintainer review — do not apply yet.
     props = updated_machine_entry["properties"]
     lng_new, lat_new = updated_machine_entry["geometry"]["coordinates"]
-    insert_pending_change_full(
+    change_summary = msg.lstrip(":\n").strip()
+    pending_id = insert_pending_change_full(
         machine_id=machine_id,
         change_type="update",
         machine_fields={
@@ -712,7 +719,15 @@ def change_machine() -> Tuple[Response, int]:
             "source": props.get("source", "user"),
         },
         submitted_by=anonymous_user_id(),
-        change_summary=msg.lstrip(":\n").strip(),
+        change_summary=change_summary,
+    )
+    message_slack_pending_change(
+        change_id=pending_id,
+        change_type="update",
+        title=title,
+        area=area,
+        change_summary=f"at {url}\n{change_summary}",
+        machine_id=machine_id,
     )
 
     # return warning if the address and coordinates do not correspond
@@ -793,6 +808,9 @@ def worker():
 
 # Start the worker thread
 Thread(target=worker, daemon=True).start()
+
+# Start the Slack Socket Mode handler (interactive buttons)
+start_socket_mode_handler()
 
 
 def create_app():
