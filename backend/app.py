@@ -19,13 +19,11 @@ from scripts.location_differ import location_differ
 
 from pennyme.database import (
     dump_machines_to_file,
-    get_all_approved_machines_geojson,
+    get_all_machines_geojson,
     get_machine_as_geojson,
     get_nearby_machines_db,
     has_open_pending_change,
-    insert_machine,
-    insert_pending_change,
-    update_machine_from_geojson,
+    insert_pending_change_full,
     upsert_machines_from_file,
 )
 from pennyme.github_update import wait
@@ -93,7 +91,7 @@ def machines() -> Tuple[Response, int]:
     Returns:
         A GeoJSON FeatureCollection with HTTP 200.
     """
-    return jsonify(get_all_approved_machines_geojson()), 200
+    return jsonify(get_all_machines_geojson()), 200
 
 
 @app.route("/health", methods=["GET"])
@@ -328,19 +326,19 @@ def report_content() -> Tuple[Response, int]:
     )
 
 
-def process_machine_entry(
-    machine_id: int,
+def process_pending_image(
+    pending_id: int,
     tmp_img_path: str,
     installation_id: str,
 ) -> None:
-    """Process the image upload for a newly inserted machine.
+    """Process the image upload for a new pending machine submission.
 
-    The machine row must already exist in the database (approved=False).
-    This function runs in the background worker so slow image operations do
-    not block the HTTP request.
+    Runs in the background worker so slow image operations do not block
+    the HTTP request.  The image is stored as ``pending_{pending_id}.jpg``
+    so the approver can rename it to ``{machine_id}.jpg`` on approval.
 
     Args:
-        machine_id: Database ID of the newly inserted machine.
+        pending_id: ID of the pending_changes row.
         tmp_img_path: Temporary path where the uploaded image was saved.
         installation_id: Random installation identifier supplied by the app.
 
@@ -348,17 +346,15 @@ def process_machine_entry(
         None. Processing errors are logged and sent to Slack.
     """
     try:
-        # Move image from temporary to permanent path
-        img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
+        img_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}.jpg")
         os.rename(tmp_img_path, img_path)
 
-        # Process (resize / background-remove) the image
         code, msg_prefix, saved_path = process_uploaded_image(img_path)
-        msg = f"{msg_prefix} - New machine"
+        msg = f"{msg_prefix} - New machine pending"
 
         if code != 200:
             image_slack(
-                machine_id,
+                pending_id,
                 img_slack_text=msg,
                 filetype="jpg",
             )
@@ -366,24 +362,14 @@ def process_machine_entry(
             Path(saved_path).unlink(missing_ok=True)
             return
 
-        MODERATION.record_content(
-            str(machine_id),
-            MODERATION.content_key("machine", "listing"),
-            installation_id,
-        )
-        MODERATION.record_content(
-            str(machine_id),
-            MODERATION.content_key("image", "machine"),
-            installation_id,
-        )
         image_slack(
-            machine_id,
-            img_slack_text="New machine proposed:",
+            pending_id,
+            img_slack_text="New machine proposed (pending review):",
         )
     except Exception as e:
-        logger.exception(f"Error when processing machine entry {machine_id}: {e}")
+        logger.exception(f"Error when processing pending image {pending_id}: {e}")
         message_slack_raw(
-            text=f"Error when processing machine entry {machine_id} ({type(e).__name__}: {e})",
+            text=f"Error when processing pending image {pending_id} ({type(e).__name__}: {e})",
         )
 
 
@@ -532,43 +518,36 @@ def create_machine() -> Tuple[Response, int]:
     paywall = True if request.args.get("paywall") == "true" else False
     last_updated = str(datetime.today()).split(" ")[0]
 
-    # Insert into DB immediately to obtain the real machine ID.
-    # The machine is approved=False until a maintainer reviews it.
-    new_machine_id = insert_machine(
-        name=title,
-        area=area,
-        address=address,
-        latitude=location[1],
-        longitude=location[0],
-        machine_status="available",
-        multimachine=multimachine,
-        num_coins=num_coins,
-        paywall=paywall,
-        last_updated=last_updated,
-        source="user",
-        approved=False,
-    )
-    insert_pending_change(
-        new_machine_id,
-        "create",
-        {
+    # Insert as pending change (create). The machine is not added to the
+    # machines table until a maintainer approves the pending change.
+    pending_id = insert_pending_change_full(
+        machine_id=None,
+        change_type="create",
+        machine_fields={
             "name": title,
             "area": area,
             "address": address,
             "latitude": location[1],
             "longitude": location[0],
+            "machine_status": "available",
+            "multimachine": multimachine,
+            "num_coins": num_coins,
+            "paywall": paywall,
+            "last_updated": last_updated,
+            "source": "user",
         },
-        anonymous_user_id(),
+        submitted_by=anonymous_user_id(),
+        change_summary="new machine",
     )
 
-    tmp_path = os.path.join(PATH_IMAGES, f"{new_machine_id}_tmp.jpg")
+    tmp_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}_tmp.jpg")
     request.files["image"].save(tmp_path)
 
     message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
     request_queue.put(
         (
-            process_machine_entry,
-            (new_machine_id, tmp_path, anonymous_user_id()),
+            process_pending_image,
+            (pending_id, tmp_path, anonymous_user_id()),
         )
     )
     if not address_okay:
@@ -711,14 +690,29 @@ def change_machine() -> Tuple[Response, int]:
     slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
     message_slack_raw(text=slack_message)
 
-    # Apply the change directly to the database and record it for audit
-    update_machine_from_geojson(updated_machine_entry)
-    insert_pending_change(
-        machine_id,
-        "update",
-        updated_machine_entry,
-        anonymous_user_id(),
-        status="approved",
+    # Record the proposed change for maintainer review — do not apply yet.
+    props = updated_machine_entry["properties"]
+    lng_new, lat_new = updated_machine_entry["geometry"]["coordinates"]
+    insert_pending_change_full(
+        machine_id=machine_id,
+        change_type="update",
+        machine_fields={
+            "name": props["name"],
+            "area": props["area"],
+            "address": props["address"],
+            "latitude": lat_new,
+            "longitude": lng_new,
+            "machine_status": props.get("machine_status", "available"),
+            "multimachine": props.get("multimachine", 1),
+            "num_coins": props.get("num_coins", 4),
+            "paywall": props.get("paywall", False),
+            "external_url": props.get("external_url"),
+            "internal_url": props.get("internal_url"),
+            "last_updated": props.get("last_updated"),
+            "source": props.get("source", "user"),
+        },
+        submitted_by=anonymous_user_id(),
+        change_summary=msg.lstrip(":\n").strip(),
     )
 
     # return warning if the address and coordinates do not correspond
