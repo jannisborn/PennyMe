@@ -121,7 +121,7 @@ def process_uploaded_image(
 
 
 def image_slack(
-    machine_id: int | str,
+    machine_id: int,
     fname_suffix: str = "",
     m_name: Optional[str] = None,
     img_slack_text: str = "Image uploaded for machine",

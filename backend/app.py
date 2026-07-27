@@ -2,15 +2,13 @@ import copy
 import json
 import os
 import queue
-import random
 import traceback
 from datetime import datetime
 from pathlib import Path
 from threading import Thread
 from time import sleep
-from typing import Any, Dict, Optional, Tuple
+from typing import Optional, Tuple
 
-import pandas as pd
 from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import haversine
@@ -18,15 +16,19 @@ from loguru import logger
 from thefuzz import process as fuzzysearch
 
 from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
 
-from pennyme.github_update import (
-    get_latest_commit_time,
-    load_latest_json,
-    process_machine_change,
-    push_newmachine_to_github,
-    wait,
+from pennyme.database import (
+    dump_machines_to_file,
+    get_all_approved_machines_geojson,
+    get_machine_as_geojson,
+    get_nearby_machines_db,
+    has_open_pending_change,
+    insert_machine,
+    insert_pending_change,
+    update_machine_from_geojson,
+    upsert_machines_from_file,
 )
+from pennyme.github_update import wait
 from pennyme.locations import COUNTRIES
 from pennyme.moderation import (
     ModerationReport,
@@ -41,11 +43,7 @@ from pennyme.slack import (
     message_slack_raw,
     process_uploaded_image,
 )
-from pennyme.utils import (
-    find_machine_in_database,
-    get_nearby_machines,
-    setup_locdiffer_logger,
-)
+from pennyme.utils import setup_locdiffer_logger
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -86,6 +84,16 @@ def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
     if contributor_id is not None and contributor_id in blocked_contributors:
         return jsonify({"error": "Posting access from this device is blocked"}), 403
     return None
+
+
+@app.route("/machines", methods=["GET"])
+def machines() -> Tuple[Response, int]:
+    """Return all approved machines as a GeoJSON FeatureCollection.
+
+    Returns:
+        A GeoJSON FeatureCollection with HTTP 200.
+    """
+    return jsonify(get_all_approved_machines_geojson()), 200
 
 
 @app.route("/health", methods=["GET"])
@@ -321,67 +329,61 @@ def report_content() -> Tuple[Response, int]:
 
 
 def process_machine_entry(
-    new_machine_entry: Dict[str, Any],
+    machine_id: int,
     tmp_img_path: str,
     installation_id: str,
 ) -> None:
-    """Publish a queued machine submission and record its contributor.
+    """Process the image upload for a newly inserted machine.
 
-    This function runs in the background worker so it can wait for repository
-    jobs without blocking the HTTP request.
+    The machine row must already exist in the database (approved=False).
+    This function runs in the background worker so slow image operations do
+    not block the HTTP request.
 
     Args:
-        new_machine_entry: The new machine entry to process.
-        tmp_img_path: Temporary path to the image.
+        machine_id: Database ID of the newly inserted machine.
+        tmp_img_path: Temporary path where the uploaded image was saved.
         installation_id: Random installation identifier supplied by the app.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
     """
-
-    title = new_machine_entry.get("properties", {}).get("name", "<unknown>")
-    address = new_machine_entry.get("properties", {}).get("address", "<unknown>")
     try:
-        # Wait for cron job to finish and until 5 min passed since last commit
-        wait()
-
-        # Backup machine data
-        tmp_id = new_machine_entry["properties"]["id"]
-        with open(os.path.join("..", "data", f"{tmp_id}.json"), "w") as f:
-            json.dump(new_machine_entry, f, indent=4)
-
-        # We can add machine
-        new_machine_id = push_newmachine_to_github(new_machine_entry)
-
-        # Move the image file from temporary to permanent path
-        img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+        # Move image from temporary to permanent path
+        img_path = os.path.join(PATH_IMAGES, f"{machine_id}.jpg")
         os.rename(tmp_img_path, img_path)
 
-        # Upload the image
-        code, msg, img_path = process_uploaded_image(img_path)
+        # Process (resize / background-remove) the image
+        code, msg_prefix, saved_path = process_uploaded_image(img_path)
+        msg = f"{msg_prefix} - New machine"
+
+        if code != 200:
+            image_slack(
+                machine_id,
+                img_slack_text=msg,
+                filetype="jpg",
+            )
+            sleep(1)
+            Path(saved_path).unlink(missing_ok=True)
+            return
 
         MODERATION.record_content(
-            str(new_machine_id),
+            str(machine_id),
             MODERATION.content_key("machine", "listing"),
             installation_id,
         )
         MODERATION.record_content(
-            str(new_machine_id),
+            str(machine_id),
             MODERATION.content_key("image", "machine"),
             installation_id,
         )
-        # Send message to slack
         image_slack(
-            new_machine_id,
-            m_name=title,
+            machine_id,
             img_slack_text="New machine proposed:",
         )
     except Exception as e:
-        logger.exception(
-            f"Error when processing machine entry: {title}, {address}: {e}"
-        )
+        logger.exception(f"Error when processing machine entry {machine_id}: {e}")
         message_slack_raw(
-            text=f"Error when processing machine entry: {title}, {address} ({type(e).__name__}: {e})",
+            text=f"Error when processing machine entry {machine_id} ({type(e).__name__}: {e})",
         )
 
 
@@ -451,7 +453,7 @@ def create_machine() -> Tuple[Response, int]:
         float(request.args.get("lon_coord")),
         float(request.args.get("lat_coord")),
     )
-    nearby_machines = get_nearby_machines(location[1], location[0], area)
+    nearby_machines = get_nearby_machines_db(location[1], location[0], area)
     for machine in nearby_machines:
         _, score = fuzzysearch.extract(title, [machine["name"]], limit=1)[0]
         if score > 90:
@@ -519,48 +521,54 @@ def create_machine() -> Tuple[Response, int]:
 
     try:
         multimachine = int(request.args.get("multimachine"))
-    except ValueError:
-        # just put the multimachine as a string, we need to correct it then
-        multimachine = str(request.args.get("multimachine"))
+    except (ValueError, TypeError):
+        logger.warning(
+            f"Invalid multimachine value '{request.args.get('multimachine')}' for "
+            f"new machine '{title}', defaulting to 1"
+        )
+        multimachine = 1
 
     num_coins = int(request.args.get("num_coins", 4))
-
     paywall = True if request.args.get("paywall") == "true" else False
+    last_updated = str(datetime.today()).split(" ")[0]
 
-    # put properties into dictionary
-    tmp_id = random.randint(-(2**16), -1)
-    properties_dict = {
-        "name": title,
-        "area": area,
-        "address": address,
-        "external_url": "null",
-        "internal_url": "null",
-        "machine_status": "available",
-        "id": tmp_id,  # to be updated later
-        "last_updated": str(datetime.today()).split(" ")[0],
-    }
-    # add multimachine, num_coins or paywall only if not defaults
-    if multimachine != 1:
-        properties_dict["multimachine"] = multimachine
-    if num_coins != 4:
-        properties_dict["num_coins"] = num_coins
-    if paywall:
-        properties_dict["paywall"] = paywall
-    # add new item to json
-    new_machine_entry = {
-        "type": "Feature",
-        "geometry": {"type": "Point", "coordinates": location},
-        "properties": properties_dict,
-    }
-    tmp_path = os.path.join(PATH_IMAGES, f"{tmp_id}.jpg")
+    # Insert into DB immediately to obtain the real machine ID.
+    # The machine is approved=False until a maintainer reviews it.
+    new_machine_id = insert_machine(
+        name=title,
+        area=area,
+        address=address,
+        latitude=location[1],
+        longitude=location[0],
+        machine_status="available",
+        multimachine=multimachine,
+        num_coins=num_coins,
+        paywall=paywall,
+        last_updated=last_updated,
+        source="user",
+        approved=False,
+    )
+    insert_pending_change(
+        new_machine_id,
+        "create",
+        {
+            "name": title,
+            "area": area,
+            "address": address,
+            "latitude": location[1],
+            "longitude": location[0],
+        },
+        anonymous_user_id(),
+    )
+
+    tmp_path = os.path.join(PATH_IMAGES, f"{new_machine_id}_tmp.jpg")
     request.files["image"].save(tmp_path)
 
     message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
-    # Add to queue
     request_queue.put(
         (
             process_machine_entry,
-            (new_machine_entry, tmp_path, anonymous_user_id()),
+            (new_machine_id, tmp_path, anonymous_user_id()),
         )
     )
     if not address_okay:
@@ -599,18 +607,15 @@ def change_machine() -> Tuple[Response, int]:
     if reason := text_block_reason(title):
         return jsonify({"error": reason}), 422
 
-    # Load server locations and find existing machine info
-    server_locations, latest_commit_sha = load_latest_json()
-    (
-        existing_machine_infos,
-        index_in_server_locations,
-    ) = find_machine_in_database(machine_id, server_locations["features"])
+    # Load existing machine from database
+    try:
+        existing_machine_infos = get_machine_as_geojson(machine_id)
+    except KeyError:
+        return jsonify({"error": f"Machine {machine_id} not found"}), 404
 
     msg = ":\n"
 
-    latest_commit = get_latest_commit_time("main")
-    latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
-    if latest_change.date() >= latest_commit.date():
+    if has_open_pending_change(machine_id):
         msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:\n"
 
     # Start new dictionary
@@ -673,7 +678,7 @@ def change_machine() -> Tuple[Response, int]:
         msg += f"\t Number of coins from: {existing_machine_infos['properties'].get('num_coins', 4)} to: {num_coins_new}\n"
 
     # Case 7: address and / or location changed --> check for their correspondence
-    (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
+    lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
     address_okay = True  # by default okay
     # if address or coordinates were changed, compare them and return warning if needed
@@ -706,7 +711,15 @@ def change_machine() -> Tuple[Response, int]:
     slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
     message_slack_raw(text=slack_message)
 
-    request_queue.put((process_machine_change, (updated_machine_entry, msg)))
+    # Apply the change directly to the database and record it for audit
+    update_machine_from_geojson(updated_machine_entry)
+    insert_pending_change(
+        machine_id,
+        "update",
+        updated_machine_entry,
+        anonymous_user_id(),
+        status="approved",
+    )
 
     # return warning if the address and coordinates do not correspond
     if not address_okay:
@@ -743,6 +756,9 @@ def run_location_differ():
         # Make sure all preceding jobs are finished
         wait()
 
+        # Export the current DB state so location_differ can read it as a file
+        dump_machines_to_file(old_json_file)
+
         location_differ(
             output_folder="/root/PennyMe/new_data",
             device_json="/root/PennyMe/data/all_locations.json",
@@ -750,11 +766,11 @@ def run_location_differ():
             api_key=os.getenv("GCLOUD_KEY"),
             load_from_github=True,
         )
-        open_differ_pr(
-            locations_path=new_json_file, problems_path=new_problems_json_file
-        )
 
-        # Move files
+        # Reload the merged output back into the database
+        upsert_machines_from_file(new_json_file)
+
+        # Move debug files for inspection (keep them out of the working dir)
         os.rename(
             new_problems_json_file,
             os.path.join(debug_path, os.path.basename(new_problems_json_file)),
