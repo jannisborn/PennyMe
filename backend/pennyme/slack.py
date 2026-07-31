@@ -30,6 +30,23 @@ MACHINE_NAMES = {
 }
 
 
+def save_image(
+    img: Image.Image, output_path: str, max_size_bytes: int = 500 * 1024
+) -> None:
+    """Save an image, shrinking it until it fits within the byte limit."""
+    while True:
+        img.save(output_path, quality=95, optimize=True)
+        if Path(output_path).stat().st_size <= max_size_bytes:
+            return
+        if img.size == (1, 1):
+            Path(output_path).unlink()
+            raise ValueError(f"Could not compress image below {max_size_bytes} bytes")
+        img.thumbnail(
+            tuple(max(1, dimension // 2) for dimension in img.size),
+            Image.Resampling.LANCZOS,
+        )
+
+
 def reload_server_data() -> Dict[str, str]:
     """
     Reloads the server data from the json file and extracts specific information, e.g.,
@@ -67,10 +84,7 @@ def process_uploaded_image(
         String with success message
     """
     img = ImageOps.exif_transpose(Image.open(img_path))
-    wpercent = basewidth / float(img.size[0])
-    if wpercent <= 1:
-        hsize = int((float(img.size[1]) * float(wpercent)))
-        img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+    img.thumbnail((basewidth, basewidth), Image.Resampling.LANCZOS)
 
     # If image is a coin, apply background separation and always save as PNG.
     output_path = img_path
@@ -96,33 +110,34 @@ def process_uploaded_image(
         pad = 20
 
         img = img.crop((max(0, x - pad), max(0, y - pad), x + w + pad, y + h + pad))
-        img.save(output_path, quality=95)
+        save_image(img, output_path)
         # delete original image if we wrote to a different path
         if out_path != in_path:
             in_path.unlink()
         return 200, "OK", output_path
 
-    img.save(output_path, quality=95)
+    save_image(img, output_path)
     return 200, "OK", output_path
 
 
 def image_slack(
-    machine_id: int,
-    ip: str,
+    machine_id: int | str,
     fname_suffix: str = "",
-    m_name: str = None,
+    m_name: Optional[str] = None,
     img_slack_text: str = "Image uploaded for machine",
     filetype: Optional[str] = None,
-):
-    """
-    Post an image to Slack.
+) -> None:
+    """Post an image to Slack.
 
     Args:
         machine_id: The ID of the machine.
-        ip: The IP address of the user.
         fname_suffix: The suffix of the filename ("" or "_coin_x"). Defaults to "".
         m_name: The name of the machine. Defaults to None.
         img_slack_text: The text to display in the Slack message. Defaults to "Image uploaded for machine".
+        filetype: Explicit uploaded image file extension, when known.
+
+    Returns:
+        None.
 
     Raises:
         e: SlackApiError
@@ -133,7 +148,7 @@ def image_slack(
             logger.error(f"Posting image, but ID {machine_id} not found in server data")
             return
         m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"{img_slack_text} {machine_id} - {m_name} (from {ip})"
+    text = f"{img_slack_text} {machine_id} - {m_name}"
     if not filetype:
         filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
@@ -161,14 +176,15 @@ def image_slack(
         raise e
 
 
-def message_slack(machine_id: str, comment_text: str, ip: str):
-    """
-    Send a message to Slack.
+def message_slack(machine_id: str, comment_text: str) -> None:
+    """Send a comment notification to Slack.
 
     Args:
         machine_id: The ID of the machine, given as a string.
         comment_text: The comment to send.
-        ip: The IP address of the user.
+
+    Returns:
+        None.
 
     Raises:
         e: SlackApiError, if the message could not be sent.
@@ -180,7 +196,10 @@ def message_slack(machine_id: str, comment_text: str, ip: str):
     m_name = MACHINE_NAMES[int(machine_id)]
     prefix = m_name.split("Status=")[0]
     postfix = "Status=" + m_name.split("Status=")[-1]
-    text = f"New comment for machine {machine_id} - {prefix}: {comment_text} (from {ip}. Machine: {postfix}"
+    text = (
+        f"New comment for machine {machine_id} - {prefix}: "
+        f"{comment_text}. Machine: {postfix}"
+    )
 
     message_slack_raw(text)
 

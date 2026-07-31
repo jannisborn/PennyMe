@@ -12,38 +12,42 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    private var didStartCommunityGate = false
+    private var didCheckForUpdates = false
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+        // Create the account-free contributor identifier before any UGC request.
+        _ = AppSession.anonymousUserID
         UNUserNotificationCenter.current().delegate = self
-
-            let siren = Siren.shared
-            
-            
-            siren.rulesManager = RulesManager(
-                majorUpdateRules: .critical,
-                minorUpdateRules: .default,
-                patchUpdateRules: .default,
-                revisionUpdateRules: .default
-            )
-            
-            siren.presentationManager = PresentationManager(
-                alertTintColor: .systemBlue,
-                appName: "PennyMe",
-                alertTitle: "Update Available!",
-                alertMessage: "A new version of PennyMe is available. Please update to continue.",
-                updateButtonTitle: "Update",
-                nextTimeButtonTitle: "Next time",
-                skipButtonTitle: "Skip this version"
-            )
-            
-        
-        siren.wail()
-
-        
         return true
+    }
+
+    private func checkForUpdates() {
+        guard !didCheckForUpdates else { return }
+        didCheckForUpdates = true
+
+        UIApplication.shared.registerUserNotificationSettings(
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        )
+
+        let siren = Siren.shared
+        siren.rulesManager = RulesManager(
+            majorUpdateRules: .critical,
+            minorUpdateRules: .default,
+            patchUpdateRules: .default,
+            revisionUpdateRules: .default
+        )
+        siren.presentationManager = PresentationManager(
+            alertTintColor: .systemBlue,
+            appName: "PennyMe",
+            alertTitle: "Update Available!",
+            alertMessage: "A new version of PennyMe is available. Please update to continue.",
+            updateButtonTitle: "Update",
+            nextTimeButtonTitle: "Next time",
+            skipButtonTitle: "Skip this version"
+        )
+        siren.wail()
     }
 // Insert this to enable foreground notifications
 //    func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -70,7 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        guard !didStartCommunityGate,
+              let rootViewController = window?.rootViewController else {
+            return
+        }
+        didStartCommunityGate = true
+        CommunityTermsGate.start(from: rootViewController) { [weak self] in
+            self?.checkForUpdates()
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

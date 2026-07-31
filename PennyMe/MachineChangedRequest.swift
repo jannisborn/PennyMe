@@ -211,6 +211,10 @@ struct MachineChangedForm: View {
     // Function to handle the submission of the request
     private func submitRequest() {
         isLoading = true
+        if let reason = TextModeration.blockReason(name) {
+            finishLoading(message: reason)
+            return
+        }
         
         // check if any field is empty
         if name == "" || address == "" || area == "" {
@@ -254,6 +258,7 @@ struct MachineChangedForm: View {
         var request = URLRequest(url: urlComponents.url!)
 
         request.httpMethod = "POST"
+        request.addAnonymousUserHeader()
         
         // Create a URLSessionDataTask to send the request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
