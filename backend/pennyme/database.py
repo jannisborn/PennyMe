@@ -7,14 +7,14 @@ Callers must handle exceptions explicitly.
 from __future__ import annotations
 
 import json
-from math import cos, radians
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import geopandas as gpd
 import psycopg2
 import psycopg2.extras
-from haversine import haversine
 from loguru import logger
+from sqlalchemy import create_engine
 
 # login.json lives in the backend/ directory (one level up from this package)
 _LOGIN_PATH = Path(__file__).resolve().parent.parent / "db_login.json"
@@ -50,16 +50,15 @@ CREATE TABLE IF NOT EXISTS machines (
     name           TEXT    NOT NULL,
     area           TEXT    NOT NULL,
     address        TEXT    NOT NULL,
-    latitude       REAL    NOT NULL,
-    longitude      REAL    NOT NULL,
+    geom           geometry(Point, 4326) NOT NULL,
     machine_status TEXT    NOT NULL DEFAULT 'available',
+    status TEXT    NOT NULL DEFAULT 'unvisited',
     multimachine   INTEGER NOT NULL DEFAULT 1,
     num_coins      INTEGER NOT NULL DEFAULT 4,
     paywall        BOOLEAN NOT NULL DEFAULT FALSE,
     external_url   TEXT,
     internal_url   TEXT,
-    last_updated   DATE    NOT NULL,
-    source         TEXT    NOT NULL DEFAULT 'pennycollector'
+    last_updated   DATE    NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS pending_changes (
@@ -78,7 +77,6 @@ CREATE TABLE IF NOT EXISTS pending_changes (
     external_url   TEXT,
     internal_url   TEXT,
     last_updated   DATE      NOT NULL,
-    source         TEXT      NOT NULL DEFAULT 'user',
     submitted_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     reviewed_at    TIMESTAMP,
     submitted_by   TEXT,
@@ -86,6 +84,8 @@ CREATE TABLE IF NOT EXISTS pending_changes (
     status         TEXT      NOT NULL DEFAULT 'open',
     image_path     TEXT
 );
+
+CREATE INDEX IF NOT EXISTS machines_geom_gist ON machines USING GIST (geom);
 """
 
 
@@ -120,6 +120,22 @@ def get_connection() -> psycopg2.extensions.connection:
     with open(_LOGIN_PATH, "r") as f:
         login = json.load(f)
     return psycopg2.connect(**login)
+
+
+_engine = None
+
+
+def get_engine():
+    """Return a cached SQLAlchemy engine used by geopandas operations."""
+    global _engine
+    if _engine is None:
+        with open(_LOGIN_PATH) as f:
+            login = json.load(f)
+        url = "postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}".format(
+            **login
+        )
+        _engine = create_engine(url)
+    return _engine
 
 
 # ---------------------------------------------------------------------------
@@ -174,7 +190,11 @@ def get_machine_as_geojson(machine_id: int) -> dict:
     """
     with get_connection() as conn:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
-            cur.execute("SELECT * FROM machines WHERE id = %s", (machine_id,))
+            cur.execute(
+                "SELECT *, ST_X(geom) AS longitude, ST_Y(geom) AS latitude"
+                " FROM machines WHERE id = %s",
+                (machine_id,),
+            )
             row = cur.fetchone()
     if row is None:
         raise KeyError(f"Machine {machine_id} not found in database")
@@ -187,14 +207,12 @@ def get_all_machines_geojson() -> dict:
     Raises:
         psycopg2.Error: On any database error.
     """
-    with get_connection() as conn:
-        with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
-            cur.execute("SELECT * FROM machines ORDER BY id")
-            rows = cur.fetchall()
-    return {
-        "type": "FeatureCollection",
-        "features": [_row_to_geojson_feature(dict(r)) for r in rows],
-    }
+    gdf = gpd.read_postgis(
+        "SELECT * FROM machines ORDER BY id",
+        get_engine(),
+        geom_col="geom",
+    )
+    return json.loads(gdf.to_json())
 
 
 def has_open_pending_change(machine_id: int) -> bool:
@@ -218,51 +236,41 @@ def get_nearby_machines_db(
 ) -> List[Dict]:
     """Return approved machines within *radius_m* metres of the given point.
 
-    Uses a bounding-box pre-filter followed by exact haversine distance check.
+    Uses a PostGIS ``ST_DWithin`` query on a GIST-indexed geography column for
+    efficient indexed radius lookup, with exact geodesic distances via
+    ``ST_Distance``.
 
     Raises:
         psycopg2.Error: On any database error.
     """
-    radius_km = radius_m / 1000
-    lat_delta = radius_km / 111
-    lon_delta = radius_km / (111 * max(abs(cos(radians(lat))), 0.01))
-
     with get_connection() as conn:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
             cur.execute(
                 """
-                SELECT id, name, address, area, machine_status, latitude, longitude
+                SELECT id, name, address, area, machine_status,
+                       ST_Distance(geom::geography,
+                                   ST_MakePoint(%(lon)s, %(lat)s)::geography) AS distance_m
                 FROM machines
                 WHERE area = %(area)s
-                  AND latitude  BETWEEN %(lat_min)s AND %(lat_max)s
-                  AND longitude BETWEEN %(lng_min)s AND %(lng_max)s
+                  AND ST_DWithin(geom::geography,
+                                 ST_MakePoint(%(lon)s, %(lat)s)::geography,
+                                 %(radius_m)s)
+                ORDER BY distance_m
                 """,
-                {
-                    "area": area,
-                    "lat_min": lat - lat_delta,
-                    "lat_max": lat + lat_delta,
-                    "lng_min": lon - lon_delta,
-                    "lng_max": lon + lon_delta,
-                },
+                {"lat": lat, "lon": lon, "area": area, "radius_m": radius_m},
             )
             rows = cur.fetchall()
-
-    nearby = []
-    for row in rows:
-        row = dict(row)
-        distance_m = 1000 * haversine((lat, lon), (row["latitude"], row["longitude"]))
-        if distance_m < radius_m:
-            nearby.append(
-                {
-                    "id": row["id"],
-                    "name": row["name"],
-                    "address": row["address"],
-                    "area": row["area"],
-                    "machine_status": row["machine_status"],
-                    "distance_m": round(distance_m),
-                }
-            )
-    return sorted(nearby, key=lambda m: m["distance_m"])
+    return [
+        {
+            "id": row["id"],
+            "name": row["name"],
+            "address": row["address"],
+            "area": row["area"],
+            "machine_status": row["machine_status"],
+            "distance_m": round(row["distance_m"]),
+        }
+        for row in rows
+    ]
 
 
 # ---------------------------------------------------------------------------
@@ -289,17 +297,25 @@ def update_machine_fields(machine_id: int, fields: dict) -> None:
     if unknown:
         raise ValueError(f"Unknown machine column(s): {unknown}")
 
-    # Build SET clause from the whitelisted column names.
-    # Using named placeholders avoids any injection risk even if a column name
-    # contained a quote (which the whitelist already prevents).
-    set_clauses = ", ".join(f'"{k}" = %({k})s' for k in fields)
+    has_lat = "latitude" in fields
+    has_lon = "longitude" in fields
+    if has_lat != has_lon:
+        raise ValueError("latitude and longitude must be supplied together")
+
     params = dict(fields)
     params["_machine_id"] = machine_id
+
+    set_parts = []
+    if has_lat:
+        set_parts.append("geom = ST_MakePoint(%(longitude)s, %(latitude)s)")
+    set_parts += [
+        f'"{ k}" = %({k})s' for k in fields if k not in ("latitude", "longitude")
+    ]
 
     with get_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
-                f"UPDATE machines SET {set_clauses} WHERE id = %(_machine_id)s",
+                f"UPDATE machines SET {', '.join(set_parts)} WHERE id = %(_machine_id)s",
                 params,
             )
             if cur.rowcount == 0:
@@ -375,13 +391,13 @@ def insert_pending_change_full(
                     machine_id, change_type,
                     name, area, address, latitude, longitude,
                     machine_status, multimachine, num_coins, paywall,
-                    external_url, internal_url, last_updated, source,
+                    external_url, internal_url, last_updated,
                     submitted_by, change_summary
                 ) VALUES (
                     %(machine_id)s, %(change_type)s,
                     %(name)s, %(area)s, %(address)s, %(latitude)s, %(longitude)s,
                     %(machine_status)s, %(multimachine)s, %(num_coins)s, %(paywall)s,
-                    %(external_url)s, %(internal_url)s, %(last_updated)s, %(source)s,
+                    %(external_url)s, %(internal_url)s, %(last_updated)s,
                     %(submitted_by)s, %(change_summary)s
                 ) RETURNING id
                 """,
@@ -400,7 +416,6 @@ def insert_pending_change_full(
                     "external_url": ext_url,
                     "internal_url": int_url,
                     "last_updated": machine_fields.get("last_updated"),
-                    "source": machine_fields.get("source", "user"),
                     "submitted_by": submitted_by or None,
                     "change_summary": change_summary,
                 },
@@ -437,21 +452,6 @@ def approve_pending_change(change_id: int) -> int:
         ValueError: If an update change has no machine_id.
         psycopg2.Error: On any database error.
     """
-    _MACHINE_COLS = (
-        "name",
-        "area",
-        "address",
-        "latitude",
-        "longitude",
-        "machine_status",
-        "multimachine",
-        "num_coins",
-        "paywall",
-        "external_url",
-        "internal_url",
-        "last_updated",
-        "source",
-    )
     with get_connection() as conn:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
             cur.execute("SELECT * FROM pending_changes WHERE id = %s", (change_id,))
@@ -462,11 +462,20 @@ def approve_pending_change(change_id: int) -> int:
 
         with conn.cursor() as cur:
             if change["change_type"] == "create":
-                cols = ", ".join(_MACHINE_COLS)
-                placeholders = ", ".join(f"%({c})s" for c in _MACHINE_COLS)
                 cur.execute(
-                    f"INSERT INTO machines ({cols}) VALUES ({placeholders}) RETURNING id",
-                    {c: change[c] for c in _MACHINE_COLS},
+                    """
+                    INSERT INTO machines (
+                        name, area, address, geom,
+                        machine_status, multimachine, num_coins, paywall,
+                        external_url, internal_url, last_updated
+                    ) VALUES (
+                        %(name)s, %(area)s, %(address)s,
+                        ST_MakePoint(%(longitude)s, %(latitude)s),
+                        %(machine_status)s, %(multimachine)s, %(num_coins)s, %(paywall)s,
+                        %(external_url)s, %(internal_url)s, %(last_updated)s
+                    ) RETURNING id
+                    """,
+                    change,
                 )
                 machine_id = cur.fetchone()[0]
             else:
@@ -475,15 +484,23 @@ def approve_pending_change(change_id: int) -> int:
                     raise ValueError(
                         f"Update pending change {change_id} has no machine_id"
                     )
-                set_clause = ", ".join(
-                    f"{c} = %({c})s" for c in _MACHINE_COLS if c != "source"
-                )
                 cur.execute(
-                    f"UPDATE machines SET {set_clause} WHERE id = %(machine_id)s",
-                    {
-                        **{c: change[c] for c in _MACHINE_COLS if c != "source"},
-                        "machine_id": machine_id,
-                    },
+                    """
+                    UPDATE machines SET
+                        name           = %(name)s,
+                        area           = %(area)s,
+                        address        = %(address)s,
+                        geom           = ST_MakePoint(%(longitude)s, %(latitude)s),
+                        machine_status = %(machine_status)s,
+                        multimachine   = %(multimachine)s,
+                        num_coins      = %(num_coins)s,
+                        paywall        = %(paywall)s,
+                        external_url   = %(external_url)s,
+                        internal_url   = %(internal_url)s,
+                        last_updated   = %(last_updated)s
+                    WHERE id = %(machine_id)s
+                    """,
+                    {**change, "machine_id": machine_id},
                 )
                 if cur.rowcount == 0:
                     raise KeyError(f"Machine {machine_id} not found for update")
@@ -562,29 +579,27 @@ def upsert_machines_from_file(path: str) -> None:
                 cur.execute(
                     """
                     INSERT INTO machines (
-                        id, name, area, address, latitude, longitude,
+                        id, name, area, address, geom,
                         machine_status, multimachine, num_coins, paywall,
-                        external_url, internal_url, last_updated, source
+                        external_url, internal_url, last_updated
                     ) VALUES (
-                        %(id)s, %(name)s, %(area)s, %(address)s, %(lat)s, %(lng)s,
+                        %(id)s, %(name)s, %(area)s, %(address)s,
+                        ST_MakePoint(%(lng)s, %(lat)s),
                         %(machine_status)s, %(multimachine)s, %(num_coins)s, %(paywall)s,
-                        %(external_url)s, %(internal_url)s, %(last_updated)s,
-                        %(source)s
+                        %(external_url)s, %(internal_url)s, %(last_updated)s
                     )
                     ON CONFLICT (id) DO UPDATE SET
                         name           = EXCLUDED.name,
                         area           = EXCLUDED.area,
                         address        = EXCLUDED.address,
-                        latitude       = EXCLUDED.latitude,
-                        longitude      = EXCLUDED.longitude,
+                        geom           = EXCLUDED.geom,
                         machine_status = EXCLUDED.machine_status,
                         multimachine   = EXCLUDED.multimachine,
                         num_coins      = EXCLUDED.num_coins,
                         paywall        = EXCLUDED.paywall,
                         external_url   = EXCLUDED.external_url,
                         internal_url   = EXCLUDED.internal_url,
-                        last_updated   = EXCLUDED.last_updated,
-                        source         = EXCLUDED.source
+                        last_updated   = EXCLUDED.last_updated
                     """,
                     {
                         "id": props["id"],
@@ -600,7 +615,6 @@ def upsert_machines_from_file(path: str) -> None:
                         "external_url": _normalise_url(props.get("external_url")),
                         "internal_url": _normalise_url(props.get("internal_url")),
                         "last_updated": props.get("last_updated"),
-                        "source": props.get("source", "pennycollector"),
                     },
                 )
         conn.commit()
