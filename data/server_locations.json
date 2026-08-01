@@ -25713,9 +25713,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=461135",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 8010,
-                "last_updated": "2026-06-27"
+                "last_updated": "2026-07-31"
             }
         },
         {
@@ -32324,6 +32324,27 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -70.89141930000005,
+                    42.5204357
+                ]
+            },
+            "properties": {
+                "name": "Salem Witch Village #1",
+                "area": "Massachusetts",
+                "address": "282 Derby Street, Salem",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2656",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 2920,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -110.7185596,
                     43.65341340000001
                 ]
@@ -32337,6 +32358,46 @@
                 "internal_url": "null",
                 "machine_status": "retired",
                 "id": 3117,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.543413887771498,
+                    47.36980791557831
+                ]
+            },
+            "properties": {
+                "name": "Test machine",
+                "area": "Germany",
+                "address": "Möhrlistrasse 62, 8006 Zürich",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9463,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -106.66219279359042,
+                    35.07767526287966
+                ]
+            },
+            "properties": {
+                "name": "Test 2",
+                "area": "New Mexico",
+                "address": "Band Shell, Albuquerque, NM 87102, USA",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9464,
                 "last_updated": "2026-07-31"
             }
         },
