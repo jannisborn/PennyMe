@@ -5025,11 +5025,11 @@
                 "area": "Florida",
                 "address": "1486 buena vista dr, Lake Buena Vista, Florida 32830",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483866",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7108,
-                "last_updated": "2026-02-19"
+                "last_updated": "2026-07-31"
             }
         },
         {
@@ -21182,9 +21182,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=3037",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 2511,
-                "last_updated": "2026-06-10",
+                "last_updated": "2026-07-31",
                 "num_coins": 1
             }
         },
@@ -26331,9 +26331,9 @@
                 "address": "18 US-50, Stateline",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=105911",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 6004,
-                "last_updated": "2026-06-29",
+                "last_updated": "2026-07-31",
                 "num_coins": 1
             }
         },
@@ -32962,6 +32962,89 @@
                 "status": "unvisited",
                 "id": 5366,
                 "last_updated": "2026-08-03"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2443611,
+                    45.5395694
+                ]
+            },
+            "properties": {
+                "name": "Vista House",
+                "area": "Oregon",
+                "address": "40700 E Historic Columbia River Highway, Corbett",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=323414",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 4350,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.7994263,
+                    27.8001832
+                ]
+            },
+            "properties": {
+                "name": "Alligator and Wildlife Discovery Center",
+                "area": "Florida",
+                "address": "12973 Village Blvd, Suites A-J, Madiera Beach",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=398595",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 6176,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.9772,
+                    40.75282
+                ]
+            },
+            "properties": {
+                "name": "Grand Central Madison",
+                "area": "New York",
+                "address": ", New York City (Manhattan)",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483901",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9477,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.1386744,
+                    35.7792547
+                ]
+            },
+            "properties": {
+                "name": "Deadwood",
+                "area": "North Carolina",
+                "address": "2302 eds grocery rd, Williamston",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=483872",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9478,
+                "last_updated": "2026-07-31"
             }
         }
     ]
