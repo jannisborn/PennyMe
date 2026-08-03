@@ -507,15 +507,6 @@ def create_machine() -> Tuple[Response, int]:
                 if postal_code not in address:
                     address += out[0]["formatted_address"]
 
-    try:
-        multimachine = int(request.args.get("multimachine"))
-    except (ValueError, TypeError):
-        logger.warning(
-            f"Invalid multimachine value '{request.args.get('multimachine')}' for "
-            f"new machine '{title}', defaulting to 1"
-        )
-        multimachine = 1
-
     num_coins = int(request.args.get("num_coins", 4))
     paywall = True if request.args.get("paywall") == "true" else False
     last_updated = str(datetime.today()).split(" ")[0]
@@ -532,7 +523,6 @@ def create_machine() -> Tuple[Response, int]:
             "latitude": location[1],
             "longitude": location[0],
             "machine_status": "available",
-            "multimachine": multimachine,
             "num_coins": num_coins,
             "paywall": paywall,
             "last_updated": last_updated,
@@ -639,17 +629,7 @@ def change_machine() -> Tuple[Response, int]:
         msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
         updated_machine_entry["properties"]["name"] = title
 
-    # Case 4: multimachine changed
-    try:
-        multimachine_new = int(request.args.get("multimachine"))
-    except ValueError:
-        return jsonify({"error": "Multimachine must be 1 (default) or larger"}), 400
-    if multimachine_new < 1:
-        return jsonify({"error": "Multimachine must be 1 (default) or larger"}), 400
-    multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
-    if multimachine_new != multimachine_old:
-        updated_machine_entry["properties"]["multimachine"] = multimachine_new
-        msg += f"\tMultimachine from: {multimachine_old} to: {multimachine_new}\n"
+    # Case 4: multimachine changed - deprecated
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
@@ -710,7 +690,6 @@ def change_machine() -> Tuple[Response, int]:
             "latitude": lat_new,
             "longitude": lng_new,
             "machine_status": props.get("machine_status", "available"),
-            "multimachine": props.get("multimachine", 1),
             "num_coins": props.get("num_coins", 4),
             "paywall": props.get("paywall", False),
             "external_url": props.get("external_url"),

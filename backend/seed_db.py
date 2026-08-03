@@ -43,7 +43,9 @@ def main() -> None:
     if table_exists("machines"):
         logger.warning("Table 'machines' already exists.")
         response = (
-            input("Do you want to drop the 'machines' table? (yes/no): ")
+            input(
+                "Do you want to drop the 'machines' and 'pending_changes' tables? (yes/no): "
+            )
             .strip()
             .lower()
         )
@@ -51,9 +53,10 @@ def main() -> None:
         if response in ("yes", "y"):
             with get_connection() as conn:
                 with conn.cursor() as cur:
+                    cur.execute("DROP TABLE pending_changes")
                     cur.execute("DROP TABLE machines")
                 conn.commit()
-            logger.info("Table 'machines' dropped successfully.")
+            logger.info("Tables 'machines' and 'pending_changes' dropped successfully.")
         else:
             logger.info(
                 "Keeping existing 'machines' table. Proceeding with create_tables()."
@@ -90,7 +93,6 @@ def main() -> None:
     gdf["num_coins"] = gdf["num_coins"].astype(int)
     gdf.fillna({"paywall": False}, inplace=True)
     gdf["paywall"] = gdf["paywall"].astype(bool)
-    # print(gdf[["num_coins", "paywall"]].head(5))
 
     gdf.to_postgis("machines", get_engine(), if_exists="append", index=False)
 

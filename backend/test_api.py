@@ -27,6 +27,7 @@ BASE = "http://localhost:5000"
 # Pick a machine ID from the database (server_locations.json).
 # Updated to use a real seeded ID instead of an all_locations-only machine.
 TEST_MACHINE_ID = 8202
+SECOND_TEST_MACHINE_ID = 5893
 
 
 def ok(label: str) -> None:
@@ -84,13 +85,21 @@ def test_machines() -> None:
 # ---------------------------------------------------------------------------
 # /change_machine  (status change on the test machine)
 # ---------------------------------------------------------------------------
-def test_change_machine() -> None:
+def test_change_machine(machine_id) -> None:
     print("\n--- /change_machine ---")
 
     # First fetch the current state so we send back valid data
     r = requests.get(f"{BASE}/machines", timeout=30)
     features = r.json()["features"]
-    machine = next(f for f in features if f["properties"]["id"] == TEST_MACHINE_ID)
+    machine = next((f for f in features if f["properties"]["id"] == machine_id), None)
+
+    # If machine not found in /machines table yet, skip test with info message
+    if machine is None:
+        print(
+            f"  INFO  Machine {machine_id} not yet in /machines table (only in all_locations)"
+        )
+        return
+
     props = machine["properties"]
     lng, lat = machine["geometry"]["coordinates"]
 
@@ -99,14 +108,13 @@ def test_change_machine() -> None:
     new_status = "out-of-order" if current_status == "available" else "available"
 
     params = {
-        "id": TEST_MACHINE_ID,
+        "id": machine_id,
         "title": props["name"],
         "address": props["address"],
         "area": props["area"],
         "status": new_status,
         "lat_coord": lat,
         "lon_coord": lng,
-        "multimachine": props.get("multimachine", 1),
         "num_coins": props.get("num_coins", 4),
         "paywall": "true" if props.get("paywall") else "false",
     }
@@ -118,7 +126,7 @@ def test_change_machine() -> None:
     pending = [
         p
         for p in get_open_pending_changes()
-        if p["machine_id"] == TEST_MACHINE_ID and p["change_type"] == "update"
+        if p["machine_id"] == machine_id and p["change_type"] == "update"
     ]
     check(
         "pending change created",
@@ -130,7 +138,7 @@ def test_change_machine() -> None:
     # Status in /machines must still be the original (not applied yet)
     r2 = requests.get(f"{BASE}/machines", timeout=30)
     before_approve = next(
-        f for f in r2.json()["features"] if f["properties"]["id"] == TEST_MACHINE_ID
+        f for f in r2.json()["features"] if f["properties"]["id"] == machine_id
     )
     check(
         "not applied before approval",
@@ -142,7 +150,7 @@ def test_change_machine() -> None:
     approve_pending_change(change_id)
     r3 = requests.get(f"{BASE}/machines", timeout=30)
     after_approve = next(
-        f for f in r3.json()["features"] if f["properties"]["id"] == TEST_MACHINE_ID
+        f for f in r3.json()["features"] if f["properties"]["id"] == machine_id
     )
     check(
         "status updated after approval",
@@ -156,13 +164,13 @@ def test_change_machine() -> None:
     revert_pending = [
         p
         for p in get_open_pending_changes()
-        if p["machine_id"] == TEST_MACHINE_ID and p["change_type"] == "update"
+        if p["machine_id"] == machine_id and p["change_type"] == "update"
     ]
     if revert_pending:
         approve_pending_change(revert_pending[0]["id"])
 
     print(
-        f"  INFO  Toggled {TEST_MACHINE_ID}: {current_status} → {new_status} → {current_status}"
+        f"  INFO  Toggled {machine_id}: {current_status} → {new_status} → {current_status}"
     )
 
 
@@ -189,14 +197,13 @@ def test_create_machine() -> None:
         b"\x03\xff\xd9"
     )
 
-    test_title = "Test Machine (automated test)"
+    test_title = "Test machine"
     params = {
         "title": test_title,
-        "address": "1 Infinite Loop, Cupertino, CA",
-        "area": "California",
-        "lat_coord": 37.331741,
-        "lon_coord": -122.030333,
-        "multimachine": 1,
+        "address": "Pariser Platz, Berlin, Germany",
+        "area": "Germany",
+        "lat_coord": 52.520008,
+        "lon_coord": 13.404954,
         "num_coins": 4,
         "paywall": "false",
         "ignore_nearby": "true",
@@ -265,7 +272,6 @@ def test_change_machine_slackbot() -> None:
         "status": new_status,
         "lat_coord": lat,
         "lon_coord": lng,
-        "multimachine": props.get("multimachine", 1),
         "num_coins": props.get("num_coins", 4),
         "paywall": "true" if props.get("paywall") else "false",
     }
@@ -285,7 +291,8 @@ if __name__ == "__main__":
 
     test_health()
     test_machines()
-    test_change_machine()
+    test_change_machine(TEST_MACHINE_ID)
+    test_change_machine(SECOND_TEST_MACHINE_ID)
     test_create_machine()
 
     # test_change_machine_slackbot()
