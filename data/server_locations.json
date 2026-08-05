@@ -9090,9 +9090,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=455309",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 7857,
-                "last_updated": "2026-07-05",
+                "last_updated": "2026-07-31",
                 "num_coins": 8
             }
         },
@@ -33620,6 +33620,48 @@
                 "id": 9492,
                 "last_updated": "2026-08-05",
                 "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.921526,
+                    34.912119
+                ]
+            },
+            "properties": {
+                "name": "Edwards Air Force Test Museum ",
+                "area": "California",
+                "address": "405 S. Rosamond Blvd., Edwards AFB ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484046",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9493,
+                "last_updated": "2026-07-31"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.2542622,
+                    44.0058304
+                ]
+            },
+            "properties": {
+                "name": "Black Hills National Forest",
+                "area": "South Dakota",
+                "address": "8221 Mt Rushmore Rd, Rapid City",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=386243",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 5321,
+                "last_updated": "2026-07-31"
             }
         }
     ]
