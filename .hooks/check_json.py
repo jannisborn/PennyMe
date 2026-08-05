@@ -7,12 +7,12 @@ from typing import Any, Dict, List
 
 def check_data(data: List[Dict[str, Any]], name: str):
     for x in data["features"]:
-        assert isinstance(
-            x["geometry"]["coordinates"][0], float
-        ), f"In {name} file did not find float for coordinates for ID = {x['properties']['id']}"
-        assert isinstance(
-            x["geometry"]["coordinates"][1], float
-        ), f"In {name} file did not find float for coordinates for ID = {x['properties']['id']}"
+        assert isinstance(x["geometry"]["coordinates"][0], float), (
+            f"In {name} file did not find float for coordinates for ID = {x['properties']['id']}"
+        )
+        assert isinstance(x["geometry"]["coordinates"][1], float), (
+            f"In {name} file did not find float for coordinates for ID = {x['properties']['id']}"
+        )
 
 
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))

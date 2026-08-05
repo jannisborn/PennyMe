@@ -33,8 +33,9 @@ class ProcessUploadedImageTest(unittest.TestCase):
                 patch("pennyme.slack.new_session", return_value=object()),
                 patch(
                     "pennyme.slack.remove",
-                    side_effect=lambda processed_image,
-                    session: processed_image.convert("RGBA"),
+                    side_effect=lambda processed_image, session: (
+                        processed_image.convert("RGBA")
+                    ),
                 ) as remove,
             ):
                 code, _, saved_path = process_uploaded_image(str(coin_path))
