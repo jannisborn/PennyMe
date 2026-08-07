@@ -30488,10 +30488,10 @@
                 "address": "Boardwalk, Bethany Beach",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1479",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 2238,
-                "last_updated": "2026-07-20"
+                "last_updated": "2026-08-06"
             }
         },
         {
@@ -34297,6 +34297,131 @@
                 "status": "unvisited",
                 "id": 2113,
                 "last_updated": "2026-08-07"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.2061271,
+                    44.39115109999999
+                ]
+            },
+            "properties": {
+                "name": "Bar Harbor Pick a Pearl ",
+                "area": "Maine",
+                "address": "37 West St. , Bar Harbor ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484163",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9506,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.02756524307769,
+                    34.7484801059126
+                ]
+            },
+            "properties": {
+                "name": "Main Street Mercantile",
+                "area": "Arizona",
+                "address": "1020 N Main St A, Cottonwood",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=427372",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 7135,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -78.763648,
+                    39.64951800000001
+                ]
+            },
+            "properties": {
+                "name": "Western Maryland Scenic Railroad",
+                "area": "Maryland",
+                "address": "I 68 exit 43C or P.O. Box 1168, Cumberland",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2553",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 3615,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.4700316,
+                    39.1345544
+                ]
+            },
+            "properties": {
+                "name": "Main Street Mama's",
+                "area": "Colorado",
+                "address": "327 4th Street, Hugo",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=97019",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1881,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.9440467,
+                    41.1913012
+                ]
+            },
+            "properties": {
+                "name": "Weber State University",
+                "area": "Utah",
+                "address": "3848 Harrison Blvd, Ogden ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=185648",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9507,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -109.55979160000001,
+                    44.94277569999999
+                ]
+            },
+            "properties": {
+                "name": "Top of the World Resort",
+                "area": "Wyoming",
+                "address": "2823 Highway 212, Cody",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=242474",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 3105,
+                "last_updated": "2026-08-06"
             }
         }
     ]
