@@ -35358,7 +35358,7 @@
                 "last_updated": "2026-08-10"
             }
         },
-                {
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -35376,6 +35376,28 @@
                 "machine_status": "available",
                 "id": 9526,
                 "last_updated": "2026-08-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.78387639999995,
+                    37.22477699999998
+                ]
+            },
+            "properties": {
+                "name": "Jamestown Settlement",
+                "area": "Virginia",
+                "address": "2110 Jamestown Road, Route 31 S, Williamsburg",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1214",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 4464,
+                "last_updated": "2026-08-10",
+                "num_coins": 8
             }
         }
     ]
