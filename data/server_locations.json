@@ -4645,9 +4645,9 @@
                 "address": "3000 Grapevine Mills Pkwy, Grapevine",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=93991",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "id": 3728,
-                "last_updated": "2026-06-22"
+                "last_updated": "2026-08-06"
             }
         },
         {
@@ -23315,10 +23315,10 @@
                 "address": "340 WY-110, Devils Tower National Monument",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=299592",
                 "internal_url": "null",
-                "machine_status": "retired",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3110,
-                "last_updated": "2026-06-20"
+                "last_updated": "2026-08-06"
             }
         },
         {
@@ -29849,10 +29849,10 @@
                 "address": "318 E. Houston Street, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2592",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 3778,
-                "last_updated": "2026-07-18"
+                "last_updated": "2026-08-06"
             }
         },
         {
@@ -32187,9 +32187,9 @@
                 "address": "1000 Cabelas Dr, Fort Mill",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=234777",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 2192,
-                "last_updated": "2026-07-30"
+                "last_updated": "2026-08-06"
             }
         },
         {
@@ -35629,6 +35629,68 @@
                 "status": "retired",
                 "id": 4544,
                 "last_updated": "2026-08-10"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1903235,
+                    33.7526356
+                ]
+            },
+            "properties": {
+                "name": "Queen Mary",
+                "area": "California",
+                "address": "1126 Queens Hwy, Long Beach",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1333",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "retired",
+                "id": 4664,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -111.0451215,
+                    45.65862389999999
+                ]
+            },
+            "properties": {
+                "name": "Museum of the Rockies",
+                "area": "Montana",
+                "address": "600 W Kagy Blvd , Bozeman",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=467256",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "id": 8250,
+                "last_updated": "2026-08-06"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.45745889999999,
+                    37.9382873
+                ]
+            },
+            "properties": {
+                "name": "Wallops Visitor Center",
+                "area": "Virginia",
+                "address": "175 Chincoteague Road, Wallops Island",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484225",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9534,
+                "last_updated": "2026-08-06"
             }
         }
     ]
