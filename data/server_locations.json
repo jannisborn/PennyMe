@@ -1774,9 +1774,9 @@
                 "address": "101 W. Holland Avenue, 79830",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=427799",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 7138,
-                "last_updated": "2026-01-24"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -25968,10 +25968,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 3796,
-                "last_updated": "2026-07-13",
+                "last_updated": "2026-08-11",
                 "paywall": true
             }
         },
@@ -25990,10 +25990,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 8731,
-                "last_updated": "2026-07-13",
+                "last_updated": "2026-08-11",
                 "paywall": true
             }
         },
@@ -26012,10 +26012,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 8729,
-                "last_updated": "2026-07-13",
+                "last_updated": "2026-08-11",
                 "paywall": true
             }
         },
@@ -26034,10 +26034,10 @@
                 "address": "600 Hemisfair Plaza Way, San Antonio",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=16082",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 8730,
-                "last_updated": "2026-07-13",
+                "last_updated": "2026-08-11",
                 "paywall": true
             }
         },
@@ -27431,10 +27431,10 @@
                 "address": "1800 Highway 18, Bypass, Hot Springs",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=2888",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "status": "unvisited",
                 "id": 1294,
-                "last_updated": "2026-07-05"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -30869,11 +30869,11 @@
                 "name": "Interstate State Park",
                 "area": "Wisconsin",
                 "address": "851 State Hwy 35 St. Croix, WI 54024",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484465",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 9437,
-                "last_updated": "2026-07-23"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -36011,6 +36011,26 @@
                 "id": 355,
                 "last_updated": "2026-08-12",
                 "num_coins": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.130506,
+                    36.41304890000001
+                ]
+            },
+            "properties": {
+                "name": "North Rim Country Store",
+                "area": "Arizona",
+                "address": "6225 North Highway 67 Milepost 605, Grand Canyon National Park, North Rim",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=243067",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 2629,
+                "last_updated": "2026-08-11"
             }
         }
     ]
