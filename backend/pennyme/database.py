@@ -42,7 +42,8 @@ from shapely.geometry import Point
 
 # login.json lives in the backend/ directory (one level up from this package)
 _LOGIN_PATH = Path(__file__).resolve().parent.parent / "db_login.json"
-assert _LOGIN_PATH.exists(), f"Missing database login file: {_LOGIN_PATH}"
+if not _LOGIN_PATH.exists():
+    logger.warning(f"Missing database login file: {_LOGIN_PATH}")
 
 # Whitelist of column names that callers may update via update_machine_fields.
 # Never derive this set from user input.
