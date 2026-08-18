@@ -46,7 +46,7 @@ dependencies = [
   "waitress",
   "typer>=0.21.0",
   "psycopg2-binary>=2.9.6",
-  "geoalchemy2"
+  "geoalchemy2",
   "pytest>=9.1.1",
 ]
 
