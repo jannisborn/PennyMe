@@ -37243,6 +37243,26 @@
                 "last_updated": "2026-08-18",
                 "num_coins": 3
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    8.546389361272716,
+                    47.39109765036874
+                ]
+            },
+            "properties": {
+                "name": "Test machine",
+                "area": "Switzerland",
+                "address": "Möhrlistrasse 74, 8006 Zürich, Switzerland",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9567,
+                "last_updated": "2026-08-18"
+            }
         }
     ]
 }
