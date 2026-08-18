@@ -4,11 +4,12 @@ import sys
 from contextlib import contextmanager
 from copy import deepcopy
 from math import cos, radians
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import requests
 from haversine import haversine
 from loguru import logger
+from thefuzz import process as fuzzysearch
 
 from pennyme.pennycollector import DAY, MONTH, YEAR
 
@@ -150,6 +151,37 @@ def get_nearby_machines(
                 }
             )
     return sorted(nearby, key=lambda machine: machine["distance_m"])
+
+
+def find_machine_name_conflict(
+    title: str, nearby_machines: List[Dict]
+) -> Tuple[Optional[str], Optional[Dict], Optional[int]]:
+    """Find an exact or fuzzy title conflict among nearby machines.
+
+    Exact matches compare lowercased, stripped names and take priority over fuzzy
+    matches. This lets callers present a known duplicate differently from a title
+    that merely needs to be made more distinct.
+
+    Args:
+        title: The proposed machine name.
+        nearby_machines: Machine summaries returned by ``get_nearby_machines``.
+
+    Returns:
+        A tuple of conflict kind (``exact`` or ``similar``), matching machine, and
+        fuzzy score. All values are ``None`` when there is no conflict.
+    """
+
+    normalized_title = title.strip().lower()
+    for machine in nearby_machines:
+        if machine["name"].strip().lower() == normalized_title:
+            return "exact", machine, 100
+
+    for machine in nearby_machines:
+        _, score = fuzzysearch.extract(title, [machine["name"]], limit=1)[0]
+        if score > 90:
+            return "similar", machine, score
+
+    return None, None, None
 
 
 def verify_remaining_machines(

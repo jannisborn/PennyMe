@@ -43,6 +43,7 @@ dependencies = [
   "slack-sdk>=3.39.0",
   "waitress",
   "typer>=0.21.0",
+  "pytest>=9.1.1",
 ]
 
 classifiers = [
