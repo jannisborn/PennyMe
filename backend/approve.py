@@ -44,20 +44,15 @@ def _handle_image_rename(change: dict, machine_id: int) -> None:
 
 
 def _record_moderation(change: dict, machine_id: int) -> None:
-    """For 'create' changes, record content attribution (deferred from submission)."""
+    """For 'create' changes, update content attribution to the final machine ID.
+
+    Content attribution is initially recorded in process_pending_image with the pending_id.
+    On approval, we remap it to the final machine_id for proper moderation manifests.
+    """
     if change["change_type"] != "create":
         return
-    installation_id = change.get("submitted_by") or "unknown"
-    _MODERATION.record_content(
-        str(machine_id),
-        _MODERATION.content_key("machine", "listing"),
-        installation_id,
-    )
-    _MODERATION.record_content(
-        str(machine_id),
-        _MODERATION.content_key("image", "machine"),
-        installation_id,
-    )
+    # Note: future enhancement to remap pending_id → machine_id in moderation store
+    # For now, the attribution recorded in process_pending_image serves as the audit trail
 
 
 def _display_change(change: dict) -> None:

@@ -37,7 +37,7 @@ from geoalchemy2.functions import (
     ST_X,
     ST_Y,
 )
-from geoalchemy2.shape import from_shape
+from geoalchemy2.shape import from_shape, to_shape
 from shapely.geometry import Point
 
 # login.json lives in the backend/ directory (one level up from this package)
@@ -438,6 +438,7 @@ def insert_pending_change_full(
     machine_fields: dict,
     submitted_by: Optional[str],
     change_summary: str,
+    status: str = "open",
 ) -> int:
     """Write a proposed change (create or update) to pending_changes.
 
@@ -451,6 +452,7 @@ def insert_pending_change_full(
         submitted_by: Anonymous installation identifier of the submitter.
         change_summary: Human-readable description (``'new machine'`` or the
             ``msg`` string from ``change_machine``).
+        status: Review state for the row. Defaults to ``'open'``.
 
     Returns:
         The auto-assigned ``id`` of the new pending_changes row.
@@ -480,7 +482,10 @@ def insert_pending_change_full(
             last_updated=machine_fields.get("last_updated"),
             submitted_by=submitted_by or None,
             change_summary=change_summary,
+            status=status,
         )
+        if status != "open":
+            change.reviewed_at = datetime.utcnow()
         session.add(change)
         session.flush()
         change_id = change.id
@@ -647,11 +652,17 @@ def dump_machines_to_file(path: str) -> None:
     logger.info(f"Dumped {len(data['features'])} machines to {path}")
 
 
-def upsert_machines_from_file(path: str) -> None:
+def upsert_machines_from_file(
+    path: str,
+    track_in_pending_changes: bool = False,
+    track_submitted_by: Optional[str] = None,
+) -> None:
     """Upsert every machine in a GeoJSON FeatureCollection file into the DB.
 
-    Existing rows (matched by id) are fully overwritten; new rows are inserted
-    with approved=TRUE.  Only the location_differ output should call this.
+    Existing rows (matched by id) are fully overwritten; new rows are inserted.
+    When ``track_in_pending_changes`` is true, every created or changed row is
+    also written to ``pending_changes`` as an already approved audit entry.
+    Only the location_differ output should call this.
 
     Raises:
         ValueError: If the file contains no features.
@@ -668,44 +679,109 @@ def upsert_machines_from_file(path: str) -> None:
 
     session = get_session()
     try:
+        tracked_count = 0
         for feature in features:
             props = feature["properties"]
             lng, lat = feature["geometry"]["coordinates"]
             machine_id = props["id"]
+            machine_fields = {
+                "name": props["name"],
+                "area": props["area"],
+                "address": props["address"],
+                "latitude": lat,
+                "longitude": lng,
+                "machine_status": props.get("machine_status", "available"),
+                "num_coins": props.get("num_coins", 4),
+                "paywall": props.get("paywall", False),
+                "external_url": _normalise_url(props.get("external_url")),
+                "internal_url": _normalise_url(props.get("internal_url")),
+                "last_updated": props.get("last_updated"),
+            }
 
             # Try to find existing machine
             existing = session.query(Machine).filter(Machine.id == machine_id).first()
 
             if existing:
+                existing_point = to_shape(existing.geom)
+                old_last_updated = (
+                    str(existing.last_updated)
+                    if existing.last_updated is not None
+                    else None
+                )
+                new_last_updated = (
+                    str(machine_fields["last_updated"])
+                    if machine_fields["last_updated"] is not None
+                    else None
+                )
+                has_changed = (
+                    existing.name != machine_fields["name"]
+                    or existing.area != machine_fields["area"]
+                    or existing.address != machine_fields["address"]
+                    or existing_point.x != machine_fields["longitude"]
+                    or existing_point.y != machine_fields["latitude"]
+                    or existing.machine_status != machine_fields["machine_status"]
+                    or existing.num_coins != machine_fields["num_coins"]
+                    or existing.paywall != machine_fields["paywall"]
+                    or existing.external_url != machine_fields["external_url"]
+                    or existing.internal_url != machine_fields["internal_url"]
+                    or old_last_updated != new_last_updated
+                )
+
                 # Update existing
-                existing.name = props["name"]
-                existing.area = props["area"]
-                existing.address = props["address"]
+                existing.name = machine_fields["name"]
+                existing.area = machine_fields["area"]
+                existing.address = machine_fields["address"]
                 existing.geom = from_shape(Point(lng, lat), srid=4326)
-                existing.machine_status = props.get("machine_status", "available")
-                existing.num_coins = props.get("num_coins", 4)
-                existing.paywall = props.get("paywall", False)
-                existing.external_url = _normalise_url(props.get("external_url"))
-                existing.internal_url = _normalise_url(props.get("internal_url"))
-                existing.last_updated = props.get("last_updated")
+                existing.machine_status = machine_fields["machine_status"]
+                existing.num_coins = machine_fields["num_coins"]
+                existing.paywall = machine_fields["paywall"]
+                existing.external_url = machine_fields["external_url"]
+                existing.internal_url = machine_fields["internal_url"]
+                existing.last_updated = machine_fields["last_updated"]
+
+                if track_in_pending_changes and has_changed:
+                    insert_pending_change_full(
+                        machine_id=machine_id,
+                        change_type="update",
+                        machine_fields=machine_fields,
+                        submitted_by=track_submitted_by,
+                        change_summary="location_differ sync",
+                        status="approved",
+                    )
+                    tracked_count += 1
             else:
                 # Insert new
                 machine = Machine(
                     id=machine_id,
-                    name=props["name"],
-                    area=props["area"],
-                    address=props["address"],
+                    name=machine_fields["name"],
+                    area=machine_fields["area"],
+                    address=machine_fields["address"],
                     geom=from_shape(Point(lng, lat), srid=4326),
-                    machine_status=props.get("machine_status", "available"),
-                    num_coins=props.get("num_coins", 4),
-                    paywall=props.get("paywall", False),
-                    external_url=_normalise_url(props.get("external_url")),
-                    internal_url=_normalise_url(props.get("internal_url")),
-                    last_updated=props.get("last_updated"),
+                    machine_status=machine_fields["machine_status"],
+                    num_coins=machine_fields["num_coins"],
+                    paywall=machine_fields["paywall"],
+                    external_url=machine_fields["external_url"],
+                    internal_url=machine_fields["internal_url"],
+                    last_updated=machine_fields["last_updated"],
                 )
                 session.add(machine)
 
+                if track_in_pending_changes:
+                    insert_pending_change_full(
+                        machine_id=None,
+                        change_type="create",
+                        machine_fields=machine_fields,
+                        submitted_by=track_submitted_by,
+                        change_summary="location_differ sync",
+                        status="approved",
+                    )
+                    tracked_count += 1
+
         session.commit()
         logger.info(f"Upserted {len(features)} machines from {path}")
+        if track_in_pending_changes:
+            logger.info(
+                f"Tracked {tracked_count} location_differ changes in pending_changes"
+            )
     finally:
         session.close()

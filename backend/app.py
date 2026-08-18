@@ -88,7 +88,7 @@ def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
 
 @app.route("/machines", methods=["GET"])
 def machines() -> Tuple[Response, int]:
-    """Return all approved machines as a GeoJSON FeatureCollection.
+    """Return all approved server machines as a GeoJSON FeatureCollection.
 
     Returns:
         A GeoJSON FeatureCollection with HTTP 200.
@@ -333,7 +333,7 @@ def process_pending_image(
     tmp_img_path: str,
     installation_id: str,
 ) -> None:
-    """Process the image upload for a new pending machine submission.
+    """Process the image upload for a new pending machine submission and record contributor.
 
     Runs in the background worker so slow image operations do not block
     the HTTP request.  The image is stored as ``pending_{pending_id}.jpg``
@@ -363,6 +363,17 @@ def process_pending_image(
             sleep(1)
             Path(saved_path).unlink(missing_ok=True)
             return
+
+        MODERATION.record_content(
+            str(pending_id),
+            MODERATION.content_key("machine", "listing"),
+            installation_id,
+        )
+        MODERATION.record_content(
+            str(pending_id),
+            MODERATION.content_key("image", "machine"),
+            installation_id,
+        )
 
         image_slack(
             pending_id,
@@ -756,7 +767,11 @@ def run_location_differ():
         )
 
         # Reload the merged output back into the database
-        upsert_machines_from_file(new_json_file)
+        upsert_machines_from_file(
+            new_json_file,
+            track_in_pending_changes=True,
+            track_submitted_by="location_differ",
+        )
 
         # Move debug files for inspection (keep them out of the working dir)
         os.rename(
