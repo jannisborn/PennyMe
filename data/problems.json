@@ -55,6 +55,28 @@
                 ]
             },
             "properties": {
+                "name": "Space Needle - Gatlinburg Arcade",
+                "area": "Tennessee",
+                "address": "115 Historic Nature Trail , Gatlinburg",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=2166",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": -1,
+                "last_updated": -1
+            },
+            "problem": "http://locations.pennycollector.com/Details.aspx?location=2166 used in multiple pins with different states, requires manual handling."
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    "N.A.",
+                    "N.A."
+                ]
+            },
+            "properties": {
                 "name": "Walt Disney World, *Magic Kingdom*",
                 "area": "Florida",
                 "address": "Magic Kingdom Resort, Lake Buena Vista",
@@ -131,7 +153,7 @@
                 "id": -1,
                 "last_updated": -1
             },
-            "problem": "http://locations.pennycollector.com/Details.aspx?location=994 used in multiple pins with different dates, requires manual handling."
+            "problem": "http://locations.pennycollector.com/Details.aspx?location=994 used in multiple pins with different states, requires manual handling."
         },
         {
             "type": "Feature",
