@@ -43,7 +43,12 @@ from pennyme.slack import (
     process_uploaded_image,
     start_socket_mode_handler,
 )
-from pennyme.utils import setup_locdiffer_logger
+from pennyme.utils import (
+    find_machine_in_database,
+    find_machine_name_conflict,
+    get_nearby_machines,
+    setup_locdiffer_logger,
+)
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -452,20 +457,41 @@ def create_machine() -> Tuple[Response, int]:
         float(request.args.get("lon_coord")),
         float(request.args.get("lat_coord")),
     )
-    nearby_machines = get_nearby_machines_db(location[1], location[0], area)
-    for machine in nearby_machines:
-        _, score = fuzzysearch.extract(title, [machine["name"]], limit=1)[0]
-        if score > 90:
-            return (
-                jsonify(
-                    {
-                        "error": "This machine already exists",
-                        "duplicate_machine": {**machine, "title_match_score": score},
-                    }
-                ),
-                409,
-            )
+    name_match_machines = get_nearby_machines_db(
+        location[1], location[0], area, radius_m=500
+    )
+    conflict_kind, conflict_machine, score = find_machine_name_conflict(
+        title, name_match_machines
+    )
+    if conflict_kind == "exact":
+        return (
+            jsonify(
+                {
+                    "error": "A machine with this exact name already exists nearby",
+                    "duplicate_machine": {
+                        **conflict_machine,
+                        "title_match_score": score,
+                    },
+                }
+            ),
+            409,
+        )
+    if conflict_kind == "similar":
+        return (
+            jsonify(
+                {
+                    "error": f"A similarly named machine '{conflict_machine['name']}' already exists. Pick a more distinct name.",
+                    "similar_machine": {
+                        **conflict_machine,
+                        "title_match_score": score,
+                    },
+                }
+            ),
+            409,
+        )
 
+    # Preserve the generic proximity warning at its existing 150 metre radius.
+    nearby_machines = get_nearby_machines(location[1], location[0], area)
     if request.args.get("ignore_nearby") != "true" and nearby_machines:
         nearby_lines = [
             f"{machine['distance_m']}m: {machine['name']} ({machine['machine_status']})"
