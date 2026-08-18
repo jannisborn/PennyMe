@@ -33,4 +33,7 @@ jobs:
         run: uv sync --locked
 
       - name: Run backend tests
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
         run: uv run --locked python -m unittest discover -s tests -v
