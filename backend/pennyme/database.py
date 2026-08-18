@@ -23,7 +23,6 @@ from sqlalchemy import (
     Boolean,
     Date,
     DateTime,
-    ForeignKey,
     cast,
 )
 from sqlalchemy.ext.declarative import declarative_base
@@ -96,7 +95,9 @@ class PendingChange(Base):
     __tablename__ = "pending_changes"
 
     id = Column(Integer, primary_key=True)
-    machine_id = Column(Integer, ForeignKey("machines.id"), nullable=True)
+    machine_id = Column(
+        Integer, nullable=True
+    )  # no FK — may reference all_locations IDs not in machines table
     change_type = Column(String, nullable=False, default="update")
     name = Column(String, nullable=False)
     area = Column(String, nullable=False)

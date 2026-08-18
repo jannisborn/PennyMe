@@ -131,15 +131,18 @@ def image_slack(
     m_name: Optional[str] = None,
     img_slack_text: str = "Image uploaded for machine",
     filetype: Optional[str] = None,
+    pending: bool = False,
 ) -> None:
     """Post an image to Slack.
 
     Args:
-        machine_id: The ID of the machine.
+        machine_id: The ID of the machine (or pending_changes row when pending=True).
         fname_suffix: The suffix of the filename ("" or "_coin_x"). Defaults to "".
         m_name: The name of the machine. Defaults to None.
         img_slack_text: The text to display in the Slack message. Defaults to "Image uploaded for machine".
         filetype: Explicit uploaded image file extension, when known.
+        pending: When True, the image is a pending submission — uses pending_{machine_id}
+            as the filename and posts to #pennyme_approvals.
 
     Returns:
         None.
@@ -147,18 +150,27 @@ def image_slack(
     Raises:
         e: SlackApiError
     """
-    if m_name is None:
-        MACHINE_NAMES = reload_server_data()
-        if int(machine_id) not in MACHINE_NAMES.keys():
-            logger.error(f"Posting image, but ID {machine_id} not found in server data")
-            return
-        m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"{img_slack_text} {machine_id} - {m_name}"
+    if pending:
+        fname_base = f"pending_{machine_id}"
+        channel = "#pennyme_approvals"
+        text = f"{img_slack_text} (pending #{machine_id})"
+    else:
+        fname_base = str(machine_id)
+        channel = "#pennyme_uploads"
+        if m_name is None:
+            MACHINE_NAMES = reload_server_data()
+            if int(machine_id) not in MACHINE_NAMES.keys():
+                logger.error(
+                    f"Posting image, but ID {machine_id} not found in server data"
+                )
+                return
+            m_name = MACHINE_NAMES[int(machine_id)]
+        text = f"{img_slack_text} {machine_id} - {m_name}"
     if not filetype:
         filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
         CLIENT.chat_postMessage(
-            channel="#pennyme_uploads",
+            channel=channel,
             text=text,
             username="PennyMe",
             blocks=[
@@ -169,7 +181,7 @@ def image_slack(
                         "text": text,
                         "emoji": True,
                     },
-                    "image_url": f"{IMG_PORT}{machine_id}{fname_suffix}.{filetype}",
+                    "image_url": f"{IMG_PORT}{fname_base}{fname_suffix}.{filetype}",
                     "alt_text": text,
                 }
             ],

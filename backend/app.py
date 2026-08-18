@@ -20,7 +20,6 @@ from scripts.location_differ import location_differ
 from pennyme.database import (
     dump_machines_to_file,
     get_all_machines_geojson,
-    get_machine_as_geojson,
     get_nearby_machines_db,
     has_open_pending_change,
     insert_pending_change_full,
@@ -383,6 +382,7 @@ def process_pending_image(
         image_slack(
             pending_id,
             img_slack_text="New machine proposed (pending review):",
+            pending=True,
         )
     except Exception as e:
         logger.exception(f"Error when processing pending image {pending_id}: {e}")
@@ -621,10 +621,8 @@ def change_machine() -> Tuple[Response, int]:
     if reason := text_block_reason(title):
         return jsonify({"error": reason}), 422
 
-    # Load existing machine from database
-    try:
-        existing_machine_infos = get_machine_as_geojson(machine_id)
-    except KeyError:
+    existing_machine_infos = find_machine_in_database(machine_id)
+    if existing_machine_infos is None:
         return jsonify({"error": f"Machine {machine_id} not found"}), 404
 
     msg = ":\n"

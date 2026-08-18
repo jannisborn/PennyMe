@@ -32,37 +32,27 @@ else:
     SERVER_LOCATIONS = {"features": []}
 
 
-def find_machine_in_database(
-    machine_id: int, server_locations: List[Dict]
-) -> Tuple[Dict[str, Any], int]:
+def find_machine_in_database(machine_id: int) -> Optional[Dict[str, Any]]:
     """
-    Returns the machine information either from server_locations (if available) or
-    from all_locations, as well as a boolean indicating where the entry is located
+    Returns the machine feature for the given ID, checking the database first
+    and falling back to all_locations.json.
 
     Args:
         machine_id: ID of machine to search for
-        server_locations: List of read-in server_locations.json content
 
     Returns:
-        existing_machine_entry (dict): feature of machine
-        index_in_server_locations (int): index if found in the server locations json,
-                else -1
+        GeoJSON feature dict, or None if not found anywhere.
     """
-    existing_machine_entry = None
-    index_in_server_locations = -1
-    # search in server locations
-    for i, machine_entry in enumerate(server_locations):
+    from pennyme.database import get_machine_as_geojson
+
+    try:
+        return get_machine_as_geojson(machine_id)
+    except KeyError:
+        pass
+    for machine_entry in ALL_LOCATIONS["features"]:
         if machine_entry["properties"]["id"] == machine_id:
-            existing_machine_entry = machine_entry
-            index_in_server_locations = i
-            break
-    # search in all_locations
-    if index_in_server_locations < 0:
-        for machine_entry in ALL_LOCATIONS["features"]:
-            if machine_entry["properties"]["id"] == machine_id:
-                existing_machine_entry = machine_entry
-                break
-    return existing_machine_entry, index_in_server_locations
+            return machine_entry
+    return None
 
 
 def get_next_free_machine_id(
