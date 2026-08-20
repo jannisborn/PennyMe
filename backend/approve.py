@@ -91,12 +91,17 @@ def approve_all() -> None:
     logger.info(f"Approving {len(changes)} pending change(s)…")
     for change in changes:
         try:
-            machine_id = approve_pending_change(change["id"])
-            _handle_image_rename(change, machine_id)
-            _record_moderation(change, machine_id)
+            result = approve_pending_change(change["id"])
+            if not result.applied:
+                logger.warning(
+                    f"Pending change #{change['id']} was already {result.status}; skipping."
+                )
+                continue
+            _handle_image_rename(change, result.machine_id)
+            _record_moderation(change, result.machine_id)
             logger.info(
                 f"Approved pending change #{change['id']} "
-                f"({change['change_type']}) → machine {machine_id}"
+                f"({change['change_type']}) → machine {result.machine_id}"
             )
         except Exception as exc:
             logger.error(f"Failed to approve pending change #{change['id']}: {exc}")
@@ -132,11 +137,15 @@ def approve_one_by_one() -> None:
 
         if raw == "a":
             try:
-                machine_id = approve_pending_change(change["id"])
-                _handle_image_rename(change, machine_id)
-                _record_moderation(change, machine_id)
+                result = approve_pending_change(change["id"])
+                if not result.applied:
+                    print(f"  Already {result.status}; skipping.")
+                    skipped += 1
+                    continue
+                _handle_image_rename(change, result.machine_id)
+                _record_moderation(change, result.machine_id)
                 print(
-                    f"  Approved → machine {machine_id}"
+                    f"  Approved → machine {result.machine_id}"
                     + (" (new)" if change["change_type"] == "create" else "")
                 )
                 approved += 1
@@ -145,7 +154,11 @@ def approve_one_by_one() -> None:
                 logger.error(f"Failed to approve pending change #{change['id']}: {exc}")
         else:  # raw == "r"
             try:
-                reject_pending_change(change["id"])
+                result = reject_pending_change(change["id"])
+                if not result.applied:
+                    print(f"  Already {result.status}; skipping.")
+                    skipped += 1
+                    continue
                 print("  Rejected.")
                 rejected += 1
             except Exception as exc:

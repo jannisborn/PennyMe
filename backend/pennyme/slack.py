@@ -241,14 +241,18 @@ def handle_approve_change(ack, body, respond) -> None:
     change_id = int(body["actions"][0]["value"])
     user_name = body.get("user", {}).get("name", "unknown")
     try:
-        machine_id = approve_pending_change(change_id)
-        result_text = (
-            f":white_check_mark: Pending change #{change_id} *approved* by "
-            f"{user_name} — machine ID {machine_id}."
-        )
+        result = approve_pending_change(change_id)
     except (KeyError, ValueError) as e:
         result_text = f":warning: Error approving change #{change_id}: {e}"
         logger.error(result_text)
+    else:
+        if result.applied:
+            result_text = (
+                f":white_check_mark: Pending change #{change_id} *approved* by "
+                f"{user_name} — machine ID {result.machine_id}."
+            )
+        else:
+            result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
     respond(replace_original=True, text=result_text)
 
 
@@ -259,11 +263,15 @@ def handle_reject_change(ack, body, respond) -> None:
     change_id = int(body["actions"][0]["value"])
     user_name = body.get("user", {}).get("name", "unknown")
     try:
-        reject_pending_change(change_id)
-        result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
+        result = reject_pending_change(change_id)
     except KeyError as e:
         result_text = f":warning: Error rejecting change #{change_id}: {e}"
         logger.error(result_text)
+    else:
+        if result.applied:
+            result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
+        else:
+            result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
     respond(replace_original=True, text=result_text)
 
 

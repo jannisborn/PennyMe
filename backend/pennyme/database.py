@@ -7,6 +7,7 @@ Callers must handle exceptions explicitly.
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from datetime import datetime
@@ -61,6 +62,28 @@ _ALLOWED_MACHINE_FIELDS = frozenset(
         "last_updated",
     }
 )
+_PLAIN_PENDING_CHANGE_FIELDS = (
+    "name",
+    "area",
+    "address",
+    "machine_status",
+    "num_coins",
+    "paywall",
+    "last_updated",
+)
+# Machine columns copied verbatim from a PendingChange row when it is approved.
+_MACHINE_SYNC_FIELDS = (
+    "name",
+    "area",
+    "address",
+    "geom",
+    "machine_status",
+    "num_coins",
+    "paywall",
+    "external_url",
+    "internal_url",
+    "last_updated",
+)
 
 
 # ---------------------------------------------------------------------------
@@ -87,6 +110,23 @@ class Machine(Base):
     external_url = Column(String, nullable=True)
     internal_url = Column(String, nullable=True)
     last_updated = Column(Date, nullable=False)
+
+    @classmethod
+    def from_dict(cls, machine_id: int, fields: dict) -> "Machine":
+        """Construct a Machine from a normalised machine-fields dict (see `_geojson_feature_to_machine_fields`)."""
+        return cls(
+            id=machine_id,
+            name=fields["name"],
+            area=fields["area"],
+            address=fields["address"],
+            geom=from_shape(Point(fields["longitude"], fields["latitude"]), srid=4326),
+            machine_status=fields["machine_status"],
+            num_coins=fields["num_coins"],
+            paywall=fields["paywall"],
+            external_url=fields["external_url"],
+            internal_url=fields["internal_url"],
+            last_updated=fields["last_updated"],
+        )
 
 
 class PendingChange(Base):
@@ -115,6 +155,45 @@ class PendingChange(Base):
     change_summary = Column(String, nullable=False)
     status = Column(String, nullable=False, default="open")
     image_path = Column(String, nullable=True)
+
+    @property
+    def lat_lon(self) -> tuple[float, float]:
+        """Return (latitude, longitude) for the stored PostGIS geometry."""
+        point = to_shape(self.geom)
+        return point.y, point.x
+
+    @classmethod
+    def from_dict(
+        cls,
+        machine_id: Optional[int],
+        change_type: str,
+        machine_fields: dict,
+        submitted_by: Optional[str],
+        change_summary: str,
+        status: str = "open",
+    ) -> "PendingChange":
+        """Construct a PendingChange from the normalized machine-field dict."""
+        point = Point(
+            float(machine_fields["longitude"]), float(machine_fields["latitude"])
+        )
+        change = cls(
+            machine_id=machine_id,
+            change_type=change_type,
+            name=machine_fields["name"],
+            area=machine_fields["area"],
+            address=machine_fields["address"],
+            geom=from_shape(point, srid=4326),
+            submitted_by=submitted_by or None,
+            change_summary=change_summary,
+            status=status,
+        )
+        for field in _PLAIN_PENDING_CHANGE_FIELDS:
+            setattr(change, field, machine_fields.get(field))
+        change.external_url = _normalise_url(machine_fields.get("external_url"))
+        change.internal_url = _normalise_url(machine_fields.get("internal_url"))
+        if status != "open":
+            change.reviewed_at = datetime.utcnow()
+        return change
 
 
 def create_tables() -> None:
@@ -208,6 +287,25 @@ def _normalise_url(value: Optional[str]) -> str:
     if value is None:
         return "null"
     return "null" if value == "null" else value
+
+
+def _geojson_feature_to_machine_fields(feature: dict) -> Dict[str, Any]:
+    """Normalise a GeoJSON Feature's properties into a machine-fields dict."""
+    props = feature["properties"]
+    lng, lat = feature["geometry"]["coordinates"]
+    return {
+        "name": props["name"],
+        "area": props["area"],
+        "address": props["address"],
+        "latitude": lat,
+        "longitude": lng,
+        "machine_status": props.get("machine_status", "available"),
+        "num_coins": props.get("num_coins", 4),
+        "paywall": props.get("paywall", False),
+        "external_url": _normalise_url(props.get("external_url")),
+        "internal_url": _normalise_url(props.get("internal_url")),
+        "last_updated": props.get("last_updated"),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -440,28 +538,51 @@ def update_machine_from_geojson(feature: dict) -> None:
         KeyError: If the machine is not found.
         psycopg2.Error: On any database error.
     """
-    props = feature["properties"]
-    lng, lat = feature["geometry"]["coordinates"]
-    machine_id = props["id"]
-    fields = {
-        "name": props["name"],
-        "area": props["area"],
-        "address": props["address"],
-        "latitude": lat,
-        "longitude": lng,
-        "machine_status": props.get("machine_status", "available"),
-        "num_coins": props.get("num_coins", 4),
-        "paywall": props.get("paywall", False),
-        "external_url": _normalise_url(props.get("external_url")),
-        "internal_url": _normalise_url(props.get("internal_url")),
-        "last_updated": props.get("last_updated"),
-    }
-    update_machine_fields(machine_id, fields)
+    machine_id = feature["properties"]["id"]
+    update_machine_fields(machine_id, _geojson_feature_to_machine_fields(feature))
 
 
 # ---------------------------------------------------------------------------
 # Write operations – pending_changes
 # ---------------------------------------------------------------------------
+
+
+def merge_pending_change_values(
+    existing_change: Any,
+    machine_fields: dict,
+    new_change_summary: str,
+    submitted_by: Optional[str],
+) -> None:
+    """Merge a newly submitted change into a pre-existing open pending row.
+
+    The newest value for each field wins, but the review summary and submitter
+    metadata are preserved in a cumulative form so multiple edits for the same
+    machine are not lost.
+    """
+    for field in _PLAIN_PENDING_CHANGE_FIELDS:
+        if field in machine_fields:
+            setattr(existing_change, field, machine_fields[field])
+
+    if (
+        "latitude" in machine_fields or "longitude" in machine_fields
+    ) and machine_fields.get("latitude") is not None:
+        existing_change.geom = from_shape(
+            Point(
+                float(machine_fields["longitude"]), float(machine_fields["latitude"])
+            ),
+            srid=4326,
+        )
+
+    for field in ("external_url", "internal_url"):
+        if field in machine_fields:
+            setattr(existing_change, field, _normalise_url(machine_fields.get(field)))
+
+    existing_change.change_summary = (
+        f"{existing_change.change_summary}; {new_change_summary}"
+    )
+    existing_change.submitted_by = f"{existing_change.submitted_by}; {submitted_by}"
+    existing_change.status = "open"
+    existing_change.reviewed_at = None
 
 
 def insert_pending_change_full(
@@ -476,6 +597,11 @@ def insert_pending_change_full(
 
     The row holds the full proposed machine state so the approver can apply
     it directly without re-reading the request.
+
+    If a machine already has an open pending change, the new change is merged
+    into that row instead of creating a second pending proposal. This preserves
+    unrelated edits from multiple contributors while ensuring the reviewer sees
+    the latest combined pending state.
 
     Args:
         machine_id: Existing machine ID for updates, None for new machines.
@@ -493,31 +619,40 @@ def insert_pending_change_full(
         psycopg2.Error: On any database error.
     """
 
-    ext_url = _normalise_url(machine_fields.get("external_url"))
-    int_url = _normalise_url(machine_fields.get("internal_url"))
-
     session = get_session()
     try:
-        point = Point(machine_fields["longitude"], machine_fields["latitude"])
-        change = PendingChange(
+        if (
+            machine_id is not None
+            and status == "open"
+            and has_open_pending_change(machine_id)
+        ):
+            existing_change = (
+                session.query(PendingChange)
+                .filter(
+                    (PendingChange.machine_id == machine_id)
+                    & (PendingChange.status == "open")
+                )
+                .order_by(PendingChange.submitted_at.desc())
+                .first()
+            )
+            if existing_change is not None:
+                merge_pending_change_values(
+                    existing_change,
+                    machine_fields,
+                    change_summary,
+                    submitted_by,
+                )
+                session.commit()
+                return existing_change.id
+
+        change = PendingChange.from_dict(
             machine_id=machine_id,
             change_type=change_type,
-            name=machine_fields["name"],
-            area=machine_fields["area"],
-            address=machine_fields["address"],
-            geom=from_shape(point, srid=4326),
-            machine_status=machine_fields.get("machine_status", "available"),
-            num_coins=machine_fields.get("num_coins", 4),
-            paywall=machine_fields.get("paywall", False),
-            external_url=ext_url,
-            internal_url=int_url,
-            last_updated=machine_fields.get("last_updated"),
-            submitted_by=submitted_by or None,
+            machine_fields=machine_fields,
+            submitted_by=submitted_by,
             change_summary=change_summary,
             status=status,
         )
-        if status != "open":
-            change.reviewed_at = datetime.utcnow()
         session.add(change)
         session.flush()
         change_id = change.id
@@ -550,12 +685,8 @@ def get_open_pending_changes() -> List[Dict]:
                 "name": c.name,
                 "area": c.area,
                 "address": c.address,
-                "latitude": session.query(ST_Y(PendingChange.geom))
-                .filter(PendingChange.id == c.id)
-                .scalar(),
-                "longitude": session.query(ST_X(PendingChange.geom))
-                .filter(PendingChange.id == c.id)
-                .scalar(),
+                "latitude": c.lat_lon[0],
+                "longitude": c.lat_lon[1],
                 "machine_status": c.machine_status,
                 "num_coins": c.num_coins,
                 "paywall": c.paywall,
@@ -575,19 +706,41 @@ def get_open_pending_changes() -> List[Dict]:
         session.close()
 
 
-def approve_pending_change(change_id: int) -> int:
+@dataclass
+class ReviewResult:
+    """Outcome of a call to `approve_pending_change` or `reject_pending_change`.
+
+    ``applied`` is False when the change had already been reviewed earlier —
+    this is an expected, normal outcome (e.g. a Slack button clicked twice),
+    not an error, so callers can branch on it without a try/except.
+    """
+
+    applied: bool
+    status: str
+    machine_id: Optional[int] = None
+
+
+def _copy_pending_change_to_machine(change: "PendingChange", machine: Machine) -> None:
+    """Copy every `_MACHINE_SYNC_FIELDS` column from *change* onto *machine*."""
+    for field in _MACHINE_SYNC_FIELDS:
+        setattr(machine, field, getattr(change, field))
+
+
+def approve_pending_change(change_id: int) -> ReviewResult:
     """Apply a pending change to the machines table and mark it approved.
 
-    For ``create`` changes the machine row is inserted and its new ID returned.
-    For ``update`` changes the existing row is updated and the existing ID
-    is returned.
+    For ``create`` changes a new machine row is inserted; for ``update``
+    changes the existing row is overwritten, or seeded from all_locations.json
+    and inserted with that ID if the machine only existed there. If the
+    change was already reviewed, nothing is modified and
+    ``ReviewResult.applied`` is False.
 
     Raises:
-        KeyError: If the pending change or the target machine is not found.
+        KeyError: If the pending change is not found, or an update change
+            targets a machine not found in the database or all_locations.json.
         ValueError: If an update change has no machine_id.
         psycopg2.Error: On any database error.
     """
-
     session = get_session()
     try:
         change = (
@@ -595,57 +748,49 @@ def approve_pending_change(change_id: int) -> int:
         )
         if change is None:
             raise KeyError(f"Pending change {change_id} not found")
+        if change.status != "open":
+            return ReviewResult(applied=False, status=change.status)
 
         if change.change_type == "create":
-            # Create new machine
-            machine = Machine(
-                name=change.name,
-                area=change.area,
-                address=change.address,
-                geom=change.geom,
-                machine_status=change.machine_status,
-                num_coins=change.num_coins,
-                paywall=change.paywall,
-                external_url=change.external_url,
-                internal_url=change.internal_url,
-                last_updated=change.last_updated,
-            )
+            machine = Machine()
+            _copy_pending_change_to_machine(change, machine)
             session.add(machine)
             session.flush()
             machine_id = machine.id
         else:
-            # Update existing machine
             machine_id = change.machine_id
             if machine_id is None:
                 raise ValueError(f"Update pending change {change_id} has no machine_id")
 
             machine = session.query(Machine).filter(Machine.id == machine_id).first()
             if machine is None:
-                raise KeyError(f"Machine {machine_id} not found for update")
+                # Machine may only exist in the app-bundled all_locations.json
+                # (never migrated into the machines table). Seed the row from
+                # there so it starts from the real baseline, then the pending
+                # change is applied on top below.
+                from pennyme.utils import find_machine_in_database
 
-            machine.name = change.name
-            machine.area = change.area
-            machine.address = change.address
-            machine.geom = change.geom
-            machine.machine_status = change.machine_status
-            machine.num_coins = change.num_coins
-            machine.paywall = change.paywall
-            machine.external_url = change.external_url
-            machine.internal_url = change.internal_url
-            machine.last_updated = change.last_updated
+                base_feature = find_machine_in_database(machine_id)
+                if base_feature is None:
+                    raise KeyError(f"Machine {machine_id} not found for update")
+                fields = _geojson_feature_to_machine_fields(base_feature)
+                machine = Machine.from_dict(machine_id, fields)
+                session.add(machine)
+            _copy_pending_change_to_machine(change, machine)
 
-        # Mark the change as approved
         change.status = "approved"
         change.reviewed_at = datetime.utcnow()
-
         session.commit()
-        return machine_id
+        return ReviewResult(applied=True, status="approved", machine_id=machine_id)
     finally:
         session.close()
 
 
-def reject_pending_change(change_id: int) -> None:
+def reject_pending_change(change_id: int) -> ReviewResult:
     """Mark a pending change as rejected without touching the machines table.
+
+    If the change was already reviewed, nothing is modified and
+    ``ReviewResult.applied`` is False.
 
     Raises:
         KeyError: If the pending change is not found.
@@ -658,10 +803,13 @@ def reject_pending_change(change_id: int) -> None:
         )
         if change is None:
             raise KeyError(f"Pending change {change_id} not found")
+        if change.status != "open":
+            return ReviewResult(applied=False, status=change.status)
 
         change.status = "rejected"
         change.reviewed_at = datetime.utcnow()
         session.commit()
+        return ReviewResult(applied=True, status="rejected")
     finally:
         session.close()
 
@@ -713,22 +861,9 @@ def upsert_machines_from_file(
     try:
         tracked_count = 0
         for feature in features:
-            props = feature["properties"]
             lng, lat = feature["geometry"]["coordinates"]
-            machine_id = props["id"]
-            machine_fields = {
-                "name": props["name"],
-                "area": props["area"],
-                "address": props["address"],
-                "latitude": lat,
-                "longitude": lng,
-                "machine_status": props.get("machine_status", "available"),
-                "num_coins": props.get("num_coins", 4),
-                "paywall": props.get("paywall", False),
-                "external_url": _normalise_url(props.get("external_url")),
-                "internal_url": _normalise_url(props.get("internal_url")),
-                "last_updated": props.get("last_updated"),
-            }
+            machine_id = feature["properties"]["id"]
+            machine_fields = _geojson_feature_to_machine_fields(feature)
 
             # Try to find existing machine
             existing = session.query(Machine).filter(Machine.id == machine_id).first()
@@ -783,19 +918,7 @@ def upsert_machines_from_file(
                     tracked_count += 1
             else:
                 # Insert new
-                machine = Machine(
-                    id=machine_id,
-                    name=machine_fields["name"],
-                    area=machine_fields["area"],
-                    address=machine_fields["address"],
-                    geom=from_shape(Point(lng, lat), srid=4326),
-                    machine_status=machine_fields["machine_status"],
-                    num_coins=machine_fields["num_coins"],
-                    paywall=machine_fields["paywall"],
-                    external_url=machine_fields["external_url"],
-                    internal_url=machine_fields["internal_url"],
-                    last_updated=machine_fields["last_updated"],
-                )
+                machine = Machine.from_dict(machine_id, machine_fields)
                 session.add(machine)
 
                 if track_in_pending_changes:

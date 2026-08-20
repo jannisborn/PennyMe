@@ -12,7 +12,7 @@ from typing import Optional, Tuple
 
 from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
-from haversine import haversine
+from haversine import haversine, Unit
 from loguru import logger
 from thefuzz import process as fuzzysearch
 
@@ -57,6 +57,9 @@ request_queue = queue.Queue()
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
 PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
+# Below this, treat coordinates as unchanged — avoids false positives from
+# float round-tripping through the DB rather than an actual edit.
+LOCATION_CHANGE_THRESHOLD_M = 1
 MODERATION = ModerationStore(
     Path(os.path.join("..", "content_attribution.json")),
     Path(os.path.join("..", "moderation_reports.jsonl")),
@@ -684,12 +687,17 @@ def change_machine() -> Tuple[Response, int]:
     lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
     address_okay = True  # by default okay
-    # if address or coordinates were changed, compare them and return warning if needed
-    if latitude != lat_old or longitude != lng_old or address != old_address:
+    address_changed = address != old_address
+    location_changed = (
+        haversine((lat_old, lng_old), (latitude, longitude), unit=Unit.METERS)
+        > LOCATION_CHANGE_THRESHOLD_M
+    )
+    # if address or coordinates were meaningfully changed, compare them and return warning if needed
+    if location_changed or address_changed:
         # Verify that address matches coordinates
         found_coords, (lat, lng) = address_to_coordinates(address, area, title)
         # if address was changed but is not found (error only if address was changed)
-        if (not found_coords) and address != old_address:
+        if (not found_coords) and address_changed:
             return jsonify({"error": "Google Maps does not know this address"}), 400
 
         dist = haversine((lat, lng), (latitude, longitude))
@@ -698,9 +706,9 @@ def change_machine() -> Tuple[Response, int]:
         # adapt dictionary entries
         updated_machine_entry["properties"]["address"] = address
         updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
-        if address != old_address:
+        if address_changed:
             msg += f"\tAddress from: {old_address} to: {address}\n"
-        if latitude != lat_old or longitude != lng_old:
+        if location_changed:
             msg += f"\t Location from: {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
     if "from" not in msg:
