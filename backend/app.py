@@ -1,3 +1,4 @@
+import autoroot  # noqa: F401  # initializes repo root
 import copy
 import json
 import os

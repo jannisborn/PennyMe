@@ -183,8 +183,8 @@ def _row_to_geojson_feature(row: dict) -> dict:
         "name": row["name"],
         "area": row["area"],
         "address": row["address"],
-        "external_url": row["external_url"] or "null",
-        "internal_url": row["internal_url"] or "null",
+        "external_url": row.get("external_url") or "null",
+        "internal_url": row.get("internal_url") or "null",
         "machine_status": row["machine_status"],
         "id": row["id"],
         "last_updated": str(row["last_updated"]),
@@ -203,9 +203,11 @@ def _row_to_geojson_feature(row: dict) -> dict:
     }
 
 
-def _normalise_url(value: Optional[str]) -> Optional[str]:
-    """Return None for missing/null URL strings, otherwise the raw value."""
-    return None if value in (None, "null") else value
+def _normalise_url(value: Optional[str]) -> str:
+    """Return a string value for URL fields, using "null" when unset."""
+    if value is None:
+        return "null"
+    return "null" if value == "null" else value
 
 
 # ---------------------------------------------------------------------------
@@ -269,7 +271,36 @@ def get_all_machines_geojson() -> dict:
     gdf["last_updated"] = gdf["last_updated"].map(
         lambda value: value.isoformat() if pd.notna(value) else None
     )
+    # The iOS app expects URL fields to be strings, never JSON null/None.
+    for col in ("external_url", "internal_url"):
+        gdf[col] = gdf[col].fillna("null").replace({"None": "null"})
     return json.loads(gdf.to_json())
+
+
+def get_machine_display_names() -> Dict[int, str]:
+    """Return a Slack-friendly display string per machine ID.
+
+    Only queries the columns needed to build the string, avoiding the cost of
+    reading geometry and other unused columns for every machine.
+
+    Raises:
+        psycopg2.Error: On any database error.
+    """
+    session = get_session()
+    try:
+        rows = session.query(
+            Machine.id,
+            Machine.name,
+            Machine.area,
+            Machine.machine_status,
+            Machine.external_url,
+        ).all()
+        return {
+            row.id: f"{row.name} ({row.area}) Status={row.machine_status} at: {row.external_url or 'null'}"
+            for row in rows
+        }
+    finally:
+        session.close()
 
 
 def has_open_pending_change(machine_id: int) -> bool:

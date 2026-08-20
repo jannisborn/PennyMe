@@ -1,4 +1,3 @@
-import json
 import os
 from pathlib import Path
 from threading import Thread
@@ -14,17 +13,17 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-from pennyme.database import approve_pending_change, reject_pending_change
+from pennyme.database import (
+    approve_pending_change,
+    get_machine_display_names,
+    reject_pending_change,
+)
 from pennyme.utils import ALL_LOCATIONS
 
 CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 SLACK_APP = App(token=os.environ["SLACK_TOKEN"])
 IMG_PORT = "http://37.120.179.15:8000/"
 THIS_PATH = os.path.abspath(__file__)
-# Construct paths based on the location of the current script
-PATH_SERVER_LOCATION = os.path.join(
-    os.path.dirname(THIS_PATH), "..", "..", "..", "images", "server_locations.json"
-)
 
 MACHINE_NAMES = {
     elem["properties"][
@@ -54,20 +53,12 @@ def save_image(
 
 def reload_server_data() -> Dict[str, str]:
     """
-    Reloads the server data from the json file and extracts specific information, e.g.,
-    to display in Slack.
+    Reloads the machine display names from the database, e.g., to display in Slack.
 
     Returns:
         Dictionary with machine IDs as keys and machine names as values.
     """
-    # add server location IDs
-    with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
-        d = json.load(infile)
-    for elem in d["features"]:
-        MACHINE_NAMES[elem["properties"]["id"]] = (
-            f"{elem['properties']['name']} ({elem['properties']['area']})"
-            + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
-        )
+    MACHINE_NAMES.update(get_machine_display_names())
     return MACHINE_NAMES
 
 

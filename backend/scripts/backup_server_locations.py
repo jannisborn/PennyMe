@@ -1,5 +1,4 @@
-from __future__ import annotations
-
+import autoroot  # noqa: F401  # initializes repo root
 import json
 import os
 import sys
@@ -9,7 +8,7 @@ from pathlib import Path
 from pennyme.database import get_all_machines_geojson
 
 MAIN_PATH = os.path.join("..", "..", "images")
-DAILY_BACKUP_PATH = os.path.join(MAIN_PATH, "backup_server_locations")
+DAILY_BACKUP_PATH = Path(os.path.join(MAIN_PATH, "backup_server_locations"))
 KEEP_DAYS = 20
 
 # Allow running this script from any working directory.
