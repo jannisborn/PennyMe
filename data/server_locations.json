@@ -20719,9 +20719,9 @@
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=439560",
                 "internal_url": "null",
-                "machine_status": "out-of-order",
+                "machine_status": "available",
                 "id": 7514,
-                "last_updated": "2026-06-07"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -38324,6 +38324,48 @@
                 "status": "unvisited",
                 "id": 1326,
                 "last_updated": "2026-08-21"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.962489,
+                    32.948179
+                ]
+            },
+            "properties": {
+                "name": "McGinn's Hwy 82 Country Store ",
+                "area": "New Mexico",
+                "address": "37 US-82, Alamogordo",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484867",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9593,
+                "last_updated": "2026-08-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.5633467,
+                    42.6049876
+                ]
+            },
+            "properties": {
+                "name": "Kay's Burden Lake Restaurant",
+                "area": "New York",
+                "address": "10 Walsh Ln, Averill Park",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484854",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9594,
+                "last_updated": "2026-08-11"
             }
         }
     ]
