@@ -133,6 +133,7 @@ struct NewMachineFormView: View {
     @State private var isImagePickerPresented: Bool = false
     @State private var showAlert = false
     @State private var duplicateMachine: NearbyMachine? = nil
+    @State private var similarMachine: NearbyMachine? = nil
     @State private var nearbyMachines: [NearbyMachine] = []
     @State private var nearbyConfirmationPending = false
     @State private var isLoading = false
@@ -276,7 +277,7 @@ struct NewMachineFormView: View {
             if let duplicateMachine = duplicateMachine {
                 warningBackdrop
                 warningBox {
-                    Text("This machine already exists")
+                    Text("A machine with this exact name already exists nearby")
                         .font(.headline)
                     if isExistingMachineBlocked?(duplicateMachine.machineID) == true {
                         Text("You blocked this machine listing.")
@@ -304,6 +305,17 @@ struct NewMachineFormView: View {
                         self.duplicateMachine = nil
                     }) {
                         secondaryButtonLabel("Cancel")
+                    }
+                }
+            } else if let similarMachine = similarMachine {
+                warningBackdrop
+                warningBox {
+                    Text("A similarly named machine '\(similarMachine.name)' already exists. Pick a more distinct name.")
+                        .font(.headline)
+                    Button(action: {
+                        self.similarMachine = nil
+                    }) {
+                        primaryButtonLabel("Change name")
                     }
                 }
             } else if nearbyConfirmationPending {
@@ -395,6 +407,7 @@ struct NewMachineFormView: View {
         DispatchQueue.main.async {
             displayResponse = message
             duplicateMachine = nil
+            similarMachine = nil
             nearbyConfirmationPending = false
             showAlert = true
             isLoading = false
@@ -405,6 +418,17 @@ struct NewMachineFormView: View {
     private func showDuplicateMachine(machine: NearbyMachine) {
         DispatchQueue.main.async {
             duplicateMachine = machine
+            similarMachine = nil
+            nearbyConfirmationPending = false
+            isLoading = false
+        }
+    }
+
+    // Ask for a more distinct title while preserving the form's current input.
+    private func showSimilarMachine(machine: NearbyMachine) {
+        DispatchQueue.main.async {
+            duplicateMachine = nil
+            similarMachine = machine
             nearbyConfirmationPending = false
             isLoading = false
         }
@@ -414,6 +438,7 @@ struct NewMachineFormView: View {
     private func confirmNearbyMachines(machines: [NearbyMachine]) {
         DispatchQueue.main.async {
             duplicateMachine = nil
+            similarMachine = nil
             nearbyMachines = machines
             nearbyConfirmationPending = true
             isLoading = false
@@ -502,6 +527,12 @@ struct NewMachineFormView: View {
                                            let duplicateJSON = json["duplicate_machine"] as? [String: Any],
                                            let duplicateMachine = NearbyMachine(json: duplicateJSON) {
                                             showDuplicateMachine(machine: duplicateMachine)
+                                            return
+                                        }
+                                        if statusCode == 409,
+                                           let similarJSON = json["similar_machine"] as? [String: Any],
+                                           let similarMachine = NearbyMachine(json: similarJSON) {
+                                            showSimilarMachine(machine: similarMachine)
                                             return
                                         }
                                         if statusCode == 409,
