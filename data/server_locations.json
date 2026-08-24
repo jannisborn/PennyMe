@@ -1611,11 +1611,11 @@
                 "name": "Florida Cracker Kitchen",
                 "area": "Florida",
                 "address": "962 E Jefferson St, Brooksville, FL 34601, USA",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484898",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 8406,
-                "last_updated": "2026-01-21"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -4835,10 +4835,10 @@
                 "address": "5801 Wilshire Boulevard, Los Angeles - La Brea",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1317",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 4674,
-                "last_updated": "2026-03-15"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -4856,10 +4856,10 @@
                 "address": "5801 Wilshire Boulevard, Los Angeles - La Brea",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=1317",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "status": "unvisited",
                 "id": 8560,
-                "last_updated": "2026-03-15"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -19710,9 +19710,9 @@
                 "status": "retired",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=379935",
                 "internal_url": "null",
-                "machine_status": "available",
+                "machine_status": "retired",
                 "id": 5511,
-                "last_updated": "2026-07-26"
+                "last_updated": "2026-08-11"
             }
         },
         {
@@ -38792,6 +38792,46 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    -1.7943487850641318,
+                    51.56446874897506
+                ]
+            },
+            "properties": {
+                "name": "Steam Museum of The Great Western Railway",
+                "area": "England",
+                "address": "Fire Fly Avenue, Swindon, SN2 2EY",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9605,
+                "last_updated": "2026-08-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -5.24283301915433,
+                    50.25253742585926
+                ]
+            },
+            "properties": {
+                "name": "Cornwall Gold",
+                "area": "England",
+                "address": "The Track, New Portreath Rd, Redruth TR16 4HN, UK",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9606,
+                "last_updated": "2026-08-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -85.2019773,
                     46.60537829999999
                 ]
@@ -38806,6 +38846,90 @@
                 "status": "unvisited",
                 "id": 2580,
                 "last_updated": "2026-08-24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -148.8992737,
+                    63.7473701
+                ]
+            },
+            "properties": {
+                "name": "The Canyon Gift Co",
+                "area": "Alaska",
+                "address": "MP 238.6, Denali National Park",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=77869",
+                "internal_url": "null",
+                "machine_status": "retired",
+                "status": "unvisited",
+                "id": 1154,
+                "last_updated": "2026-08-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.2886635,
+                    34.0171448
+                ]
+            },
+            "properties": {
+                "name": "Exposition Park - Natural History Museum",
+                "area": "California",
+                "address": "900 Exposition Boulevard, Los Angeles",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=1314",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9607,
+                "last_updated": "2026-08-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.5838533,
+                    42.95214199999999
+                ]
+            },
+            "properties": {
+                "name": "New Hope Mills Cafe & Store",
+                "area": "New York",
+                "address": "York Street, Auburn ",
+                "status": "unvisited",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=484970",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9608,
+                "last_updated": "2026-08-11"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.6015896,
+                    43.1524853
+                ]
+            },
+            "properties": {
+                "name": "National Museum of Play (formally Strong Museum)",
+                "area": "New York",
+                "address": "1 Manhattan Square Drive, Rochester",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=78918",
+                "internal_url": "null",
+                "machine_status": "available",
+                "status": "unvisited",
+                "id": 3079,
+                "last_updated": "2026-08-11"
             }
         }
     ]
