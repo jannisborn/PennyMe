@@ -23456,7 +23456,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -118.00003610,
+                    -118.0000361,
                     33.84445779
                 ]
             },
@@ -23522,7 +23522,7 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -118.00005210,
+                    -118.0000521,
                     33.84453281
                 ]
             },
@@ -38972,6 +38972,26 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 1356,
+                "last_updated": "2026-08-25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.52460443625151,
+                    39.17020120099443
+                ]
+            },
+            "properties": {
+                "name": "hello kitty and friends",
+                "area": "Maryland",
+                "address": "Interstate 95 at Mile Marker 81.9, Aberdeen",
+                "external_url": "null",
+                "internal_url": "null",
+                "machine_status": "available",
+                "id": 9609,
                 "last_updated": "2026-08-25"
             }
         }
