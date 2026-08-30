@@ -10,7 +10,6 @@ from PIL import Image, ImageOps
 from rembg import new_session, remove
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
 from pennyme.database import (
@@ -20,8 +19,8 @@ from pennyme.database import (
 )
 from pennyme.utils import ALL_LOCATIONS
 
-CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
 SLACK_APP = App(token=os.environ["SLACK_TOKEN"])
+CLIENT = SLACK_APP.client
 IMG_PORT = "http://37.120.179.15:8000/"
 THIS_PATH = os.path.abspath(__file__)
 

@@ -20,6 +20,7 @@ from scripts.location_differ import location_differ
 
 from pennyme.database import (
     dump_machines_to_file,
+    find_machine_in_database,
     get_all_machines_geojson,
     get_nearby_machines_db,
     has_open_pending_change,
@@ -44,7 +45,6 @@ from pennyme.slack import (
     start_socket_mode_handler,
 )
 from pennyme.utils import (
-    find_machine_in_database,
     find_machine_name_conflict,
     get_nearby_machines,
     setup_locdiffer_logger,

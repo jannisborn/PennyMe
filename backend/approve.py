@@ -18,7 +18,6 @@ from pennyme.database import (
 from pennyme.moderation import ModerationStore
 
 # Adjust these paths to match the server layout
-_PATH_IMAGES = Path(os.path.join("..", "images"))
 _MODERATION = ModerationStore(
     Path(os.path.join("..", "content_attribution.json")),
     Path(os.path.join("..", "moderation_reports.jsonl")),
@@ -28,19 +27,6 @@ _MODERATION = ModerationStore(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
-
-
-def _handle_image_rename(change: dict, machine_id: int) -> None:
-    """For 'create' changes, rename pending_{change_id}.jpg → {machine_id}.jpg."""
-    if change["change_type"] != "create":
-        return
-    src = _PATH_IMAGES / f"pending_{change['id']}.jpg"
-    dst = _PATH_IMAGES / f"{machine_id}.jpg"
-    if src.exists():
-        src.rename(dst)
-        logger.info(f"Renamed {src} → {dst}")
-    else:
-        logger.warning(f"Expected pending image {src} not found; skipping rename")
 
 
 def _record_moderation(change: dict, machine_id: int) -> None:
@@ -97,7 +83,6 @@ def approve_all() -> None:
                     f"Pending change #{change['id']} was already {result.status}; skipping."
                 )
                 continue
-            _handle_image_rename(change, result.machine_id)
             _record_moderation(change, result.machine_id)
             logger.info(
                 f"Approved pending change #{change['id']} "
@@ -142,7 +127,6 @@ def approve_one_by_one() -> None:
                     print(f"  Already {result.status}; skipping.")
                     skipped += 1
                     continue
-                _handle_image_rename(change, result.machine_id)
                 _record_moderation(change, result.machine_id)
                 print(
                     f"  Approved → machine {result.machine_id}"

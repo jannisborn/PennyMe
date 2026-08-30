@@ -32,29 +32,6 @@ else:
     SERVER_LOCATIONS = {"features": []}
 
 
-def find_machine_in_database(machine_id: int) -> Optional[Dict[str, Any]]:
-    """
-    Returns the machine feature for the given ID, checking the database first
-    and falling back to all_locations.json.
-
-    Args:
-        machine_id: ID of machine to search for
-
-    Returns:
-        GeoJSON feature dict, or None if not found anywhere.
-    """
-    from pennyme.database import get_machine_as_geojson
-
-    try:
-        return get_machine_as_geojson(machine_id)
-    except KeyError:
-        pass
-    for machine_entry in ALL_LOCATIONS["features"]:
-        if machine_entry["properties"]["id"] == machine_id:
-            return machine_entry
-    return None
-
-
 def get_next_free_machine_id(
     all_locations_path: str, server_locations: List[Dict]
 ) -> int:
