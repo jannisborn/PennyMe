@@ -19,6 +19,7 @@ from loguru import logger
 from sqlalchemy import (
     create_engine,
     Column,
+    Float,
     Integer,
     String,
     Boolean,
@@ -63,11 +64,12 @@ _PLAIN_PENDING_CHANGE_FIELDS = (
     "last_updated",
 )
 # Machine columns copied verbatim from a PendingChange row when it is approved.
+# (location is handled separately via `latitude`/`longitude`, see
+# `_copy_pending_change_to_machine`.)
 _MACHINE_SYNC_FIELDS = (
     "name",
     "area",
     "address",
-    "geom",
     "machine_status",
     "num_coins",
     "paywall",
@@ -121,7 +123,13 @@ class Machine(Base):
 
 
 class PendingChange(Base):
-    """ORM model for a proposed machine change awaiting approval."""
+    """ORM model for a proposed machine change awaiting approval.
+
+    Each row is an independent patch: for 'update' changes, only the columns
+    that were actually submitted are set — every other machine-mirror column
+    is NULL, meaning "unchanged". 'create' changes always carry every field,
+    since there is no baseline machine row to patch.
+    """
 
     __tablename__ = "pending_changes"
 
@@ -130,16 +138,20 @@ class PendingChange(Base):
         Integer, nullable=True
     )  # no FK — may reference all_locations IDs not in machines table
     change_type = Column(String, nullable=False, default="update")
-    name = Column(String, nullable=False)
-    area = Column(String, nullable=False)
-    address = Column(String, nullable=False)
-    geom = Column(Geometry(geometry_type="Point", srid=4326), nullable=False)
-    machine_status = Column(String, nullable=False, default="available")
-    num_coins = Column(Integer, nullable=False, default=4)
-    paywall = Column(Boolean, nullable=False, default=False)
+    name = Column(String, nullable=True)
+    area = Column(String, nullable=True)
+    address = Column(String, nullable=True)
+    # Plain floats rather than a PostGIS Geometry: unlike `Machine.geom`, this
+    # is never queried spatially, only stored and copied onto `Machine.geom`
+    # on approval.
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
+    machine_status = Column(String, nullable=True)
+    num_coins = Column(Integer, nullable=True)
+    paywall = Column(Boolean, nullable=True)
     external_url = Column(String, nullable=True)
     internal_url = Column(String, nullable=True)
-    last_updated = Column(Date, nullable=False)
+    last_updated = Column(Date, nullable=True)
     submitted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     reviewed_at = Column(DateTime, nullable=True)
     submitted_by = Column(String, nullable=True)
@@ -148,10 +160,9 @@ class PendingChange(Base):
     image_path = Column(String, nullable=True)
 
     @property
-    def lat_lon(self) -> tuple[float, float]:
-        """Return (latitude, longitude) for the stored PostGIS geometry."""
-        point = to_shape(self.geom)
-        return point.y, point.x
+    def lat_lon(self) -> tuple[Optional[float], Optional[float]]:
+        """Return (latitude, longitude), or (None, None) if this change didn't touch location."""
+        return self.latitude, self.longitude
 
     @classmethod
     def from_dict(
@@ -163,25 +174,28 @@ class PendingChange(Base):
         change_summary: str,
         status: str = "open",
     ) -> "PendingChange":
-        """Construct a PendingChange from the normalized machine-field dict."""
-        point = Point(
-            float(machine_fields["longitude"]), float(machine_fields["latitude"])
-        )
+        """Construct a PendingChange from a machine-fields dict.
+
+        Only keys present in `machine_fields` are stored; omitted keys stay
+        NULL, so callers submitting an 'update' should include only the
+        fields that actually changed (see `change_machine` in app.py).
+        """
         change = cls(
             machine_id=machine_id,
             change_type=change_type,
-            name=machine_fields["name"],
-            area=machine_fields["area"],
-            address=machine_fields["address"],
-            geom=from_shape(point, srid=4326),
             submitted_by=submitted_by or None,
             change_summary=change_summary,
             status=status,
         )
         for field in _PLAIN_PENDING_CHANGE_FIELDS:
-            setattr(change, field, machine_fields.get(field))
-        change.external_url = _normalise_url(machine_fields.get("external_url"))
-        change.internal_url = _normalise_url(machine_fields.get("internal_url"))
+            if field in machine_fields:
+                setattr(change, field, machine_fields[field])
+        if "latitude" in machine_fields and "longitude" in machine_fields:
+            change.latitude = float(machine_fields["latitude"])
+            change.longitude = float(machine_fields["longitude"])
+        for field in ("external_url", "internal_url"):
+            if field in machine_fields:
+                setattr(change, field, _normalise_url(machine_fields.get(field)))
         if status != "open":
             change.reviewed_at = datetime.utcnow()
         return change
@@ -440,44 +454,6 @@ def get_nearby_machines_db(
 # ---------------------------------------------------------------------------
 
 
-def merge_pending_change_values(
-    existing_change: Any,
-    machine_fields: dict,
-    new_change_summary: str,
-    submitted_by: Optional[str],
-) -> None:
-    """Merge a newly submitted change into a pre-existing open pending row.
-
-    The newest value for each field wins, but the review summary and submitter
-    metadata are preserved in a cumulative form so multiple edits for the same
-    machine are not lost.
-    """
-    for field in _PLAIN_PENDING_CHANGE_FIELDS:
-        if field in machine_fields:
-            setattr(existing_change, field, machine_fields[field])
-
-    if (
-        "latitude" in machine_fields or "longitude" in machine_fields
-    ) and machine_fields.get("latitude") is not None:
-        existing_change.geom = from_shape(
-            Point(
-                float(machine_fields["longitude"]), float(machine_fields["latitude"])
-            ),
-            srid=4326,
-        )
-
-    for field in ("external_url", "internal_url"):
-        if field in machine_fields:
-            setattr(existing_change, field, _normalise_url(machine_fields.get(field)))
-
-    existing_change.change_summary = (
-        f"{existing_change.change_summary}; {new_change_summary}"
-    )
-    existing_change.submitted_by = f"{existing_change.submitted_by}; {submitted_by}"
-    existing_change.status = "open"
-    existing_change.reviewed_at = None
-
-
 def insert_pending_change_full(
     machine_id: Optional[int],
     change_type: str,
@@ -488,18 +464,17 @@ def insert_pending_change_full(
 ) -> int:
     """Write a proposed change (create or update) to pending_changes.
 
-    The row holds the full proposed machine state so the approver can apply
-    it directly without re-reading the request.
-
-    If a machine already has an open pending change, the new change is merged
-    into that row instead of creating a second pending proposal. This preserves
-    unrelated edits from multiple contributors while ensuring the reviewer sees
-    the latest combined pending state.
+    Every submission becomes its own row. For 'update' changes, only include
+    the fields that actually changed in `machine_fields` — omitted fields are
+    stored as NULL and left untouched on approval (see
+    `_copy_pending_change_to_machine`), so multiple open changes for the same
+    machine can be reviewed independently and in any order. 'create' changes
+    must include every field, since there is no baseline machine row.
 
     Args:
         machine_id: Existing machine ID for updates, None for new machines.
         change_type: ``'create'`` or ``'update'``.
-        machine_fields: All mutable machine columns keyed by column name.
+        machine_fields: Changed machine columns keyed by column name.
         submitted_by: Anonymous installation identifier of the submitter.
         change_summary: Human-readable description (``'new machine'`` or the
             ``msg`` string from ``change_machine``).
@@ -514,30 +489,6 @@ def insert_pending_change_full(
 
     session = get_session()
     try:
-        if (
-            machine_id is not None
-            and status == "open"
-            and has_open_pending_change(machine_id)
-        ):
-            existing_change = (
-                session.query(PendingChange)
-                .filter(
-                    (PendingChange.machine_id == machine_id)
-                    & (PendingChange.status == "open")
-                )
-                .order_by(PendingChange.submitted_at.desc())
-                .first()
-            )
-            if existing_change is not None:
-                merge_pending_change_values(
-                    existing_change,
-                    machine_fields,
-                    change_summary,
-                    submitted_by,
-                )
-                session.commit()
-                return existing_change.id
-
         change = PendingChange.from_dict(
             machine_id=machine_id,
             change_type=change_type,
@@ -614,9 +565,17 @@ class ReviewResult:
 
 
 def _copy_pending_change_to_machine(change: "PendingChange", machine: Machine) -> None:
-    """Copy every `_MACHINE_SYNC_FIELDS` column from *change* onto *machine*."""
+    """Copy every set `_MACHINE_SYNC_FIELDS` column from *change* onto *machine*.
+
+    NULL columns on *change* mean "unchanged" and are skipped, so a partial
+    'update' row only patches the fields it actually touched.
+    """
     for field in _MACHINE_SYNC_FIELDS:
-        setattr(machine, field, getattr(change, field))
+        value = getattr(change, field)
+        if value is not None:
+            setattr(machine, field, value)
+    if change.latitude is not None and change.longitude is not None:
+        machine.geom = from_shape(Point(change.longitude, change.latitude), srid=4326)
 
 
 def _delete_pending_change_images(change: "PendingChange") -> None:

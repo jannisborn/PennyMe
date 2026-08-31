@@ -1,5 +1,4 @@
 import autoroot  # noqa: F401  # initializes repo root
-import copy
 import json
 import os
 import queue
@@ -8,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from threading import Thread
 from time import sleep
-from typing import Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
@@ -632,18 +631,17 @@ def change_machine() -> Tuple[Response, int]:
     msg = ":\n"
 
     if has_open_pending_change(machine_id):
-        msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:\n"
+        msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:"
 
-    # Start new dictionary
-    updated_machine_entry = copy.deepcopy(existing_machine_infos)
-    updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
-        " "
-    )[0]
+    # Only the fields actually changed are recorded (diff semantics), so this
+    # change can be reviewed independently of any other open pending change
+    # for the same machine.
+    changed_fields: Dict[str, Any] = {}
 
     # Case 1: status was changed:
     if status != existing_machine_infos["properties"]["machine_status"]:
-        msg += f"\tStatus from: {updated_machine_entry['properties']['machine_status']} to: {status}\n"
-        updated_machine_entry["properties"]["machine_status"] = status
+        msg += f"\tStatus from: {existing_machine_infos['properties']['machine_status']} to: {status}\n"
+        changed_fields["machine_status"] = status
 
     # Case 2: if area was changed -> match to available areas
     if area != existing_machine_infos["properties"]["area"]:
@@ -658,7 +656,7 @@ def change_machine() -> Tuple[Response, int]:
                 ),
                 400,
             )
-        updated_machine_entry["properties"]["area"] = area
+        changed_fields["area"] = area
         msg += (
             f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
         )
@@ -666,7 +664,7 @@ def change_machine() -> Tuple[Response, int]:
     # Case 3: Title changed
     if title != existing_machine_infos["properties"]["name"]:
         msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
-        updated_machine_entry["properties"]["name"] = title
+        changed_fields["name"] = title
 
     # Case 4: multimachine changed - deprecated
 
@@ -674,13 +672,13 @@ def change_machine() -> Tuple[Response, int]:
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
     if paywall_new != paywall_old:
-        updated_machine_entry["properties"]["paywall"] = paywall_new
+        changed_fields["paywall"] = paywall_new
         msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
 
     # Case 6: Number of coins changed
     num_coins_new = int(request.args.get("num_coins", 4))
     if num_coins_new != existing_machine_infos["properties"].get("num_coins", 4):
-        updated_machine_entry["properties"]["num_coins"] = num_coins_new
+        changed_fields["num_coins"] = num_coins_new
         msg += f"\t Number of coins from: {existing_machine_infos['properties'].get('num_coins', 4)} to: {num_coins_new}\n"
 
     # Case 7: address and / or location changed --> check for their correspondence
@@ -703,44 +701,29 @@ def change_machine() -> Tuple[Response, int]:
         dist = haversine((lat, lng), (latitude, longitude))
         address_okay = dist <= 1  # km
 
-        # adapt dictionary entries
-        updated_machine_entry["properties"]["address"] = address
-        updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
         if address_changed:
+            changed_fields["address"] = address
             msg += f"\tAddress from: {old_address} to: {address}\n"
         if location_changed:
+            changed_fields["latitude"] = latitude
+            changed_fields["longitude"] = longitude
             msg += f"\t Location from: {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
-    if "from" not in msg:
+    if not changed_fields:
         msg = f"{machine_id} - Submitted change is identical to the state of the DB (either in pending PR or in main)"
         message_slack_raw(msg)
 
         return jsonify({"message": "Success!"}), 200
 
-    area = updated_machine_entry["properties"]["area"]
-    url = updated_machine_entry["properties"]["external_url"]
+    # The record itself was touched, regardless of which fields changed.
+    changed_fields["last_updated"] = str(datetime.today()).split(" ")[0]
 
-    # Record the proposed change for maintainer review — do not apply yet.
-    props = updated_machine_entry["properties"]
-    lng_new, lat_new = updated_machine_entry["geometry"]["coordinates"]
+    url = existing_machine_infos["properties"]["external_url"]
     change_summary = msg.lstrip(":\n").strip()
     pending_id = insert_pending_change_full(
         machine_id=machine_id,
         change_type="update",
-        machine_fields={
-            "name": props["name"],
-            "area": props["area"],
-            "address": props["address"],
-            "latitude": lat_new,
-            "longitude": lng_new,
-            "machine_status": props.get("machine_status", "available"),
-            "num_coins": props.get("num_coins", 4),
-            "paywall": props.get("paywall", False),
-            "external_url": props.get("external_url"),
-            "internal_url": props.get("internal_url"),
-            "last_updated": props.get("last_updated"),
-            "source": props.get("source", "user"),
-        },
+        machine_fields=changed_fields,
         submitted_by=anonymous_user_id(),
         change_summary=change_summary,
     )
