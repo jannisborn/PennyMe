@@ -33,6 +33,7 @@ dependencies = [
   "haversine",
   "overpy",
   "geopandas",
+  "sqlalchemy",
   "loguru",
   "rembg[cpu]>=2.0.69",
   "numba>=0.62",
@@ -40,9 +41,12 @@ dependencies = [
   "black>=24.1.1",
   "isort>=5.9.3",
   "pre-commit",
+  "slack-bolt>=1.21.0",
   "slack-sdk>=3.39.0",
   "waitress",
   "typer>=0.21.0",
+  "psycopg2-binary>=2.9.6",
+  "geoalchemy2",
   "pytest>=9.1.1",
 ]
 

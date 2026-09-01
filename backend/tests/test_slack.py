@@ -29,15 +29,13 @@ class ProcessUploadedImageTest(unittest.TestCase):
             image.save(coin_path, quality=100)
             self.assertGreater(coin_path.stat().st_size, 1024 * 1024)
 
-            with (
-                patch("pennyme.slack.new_session", return_value=object()),
-                patch(
+            with patch("pennyme.slack.new_session", return_value=object()):
+                with patch(
                     "pennyme.slack.remove",
                     side_effect=lambda processed_image,
                     session: processed_image.convert("RGBA"),
-                ) as remove,
-            ):
-                code, _, saved_path = process_uploaded_image(str(coin_path))
+                ) as remove:
+                    code, _, saved_path = process_uploaded_image(str(coin_path))
 
             self.assertEqual(code, 200)
             self.assertEqual(Path(saved_path).suffix, ".png")

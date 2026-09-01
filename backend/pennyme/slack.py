@@ -1,6 +1,6 @@
-import json
 import os
 from pathlib import Path
+from threading import Thread
 from typing import Dict, Optional, Tuple
 
 import cv2
@@ -8,18 +8,21 @@ import numpy as np
 from loguru import logger
 from PIL import Image, ImageOps
 from rembg import new_session, remove
-from slack_sdk import WebClient
+from slack_bolt import App
+from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk.errors import SlackApiError
 
+from pennyme.database import (
+    approve_pending_change,
+    get_machine_display_names,
+    reject_pending_change,
+)
 from pennyme.utils import ALL_LOCATIONS
 
-CLIENT = WebClient(token=os.environ["SLACK_TOKEN"])
+SLACK_APP = App(token=os.environ["SLACK_TOKEN"])
+CLIENT = SLACK_APP.client
 IMG_PORT = "http://37.120.179.15:8000/"
 THIS_PATH = os.path.abspath(__file__)
-# Construct paths based on the location of the current script
-PATH_SERVER_LOCATION = os.path.join(
-    os.path.dirname(THIS_PATH), "..", "..", "..", "images", "server_locations.json"
-)
 
 MACHINE_NAMES = {
     elem["properties"][
@@ -49,20 +52,12 @@ def save_image(
 
 def reload_server_data() -> Dict[str, str]:
     """
-    Reloads the server data from the json file and extracts specific information, e.g.,
-    to display in Slack.
+    Reloads the machine display names from the database, e.g., to display in Slack.
 
     Returns:
         Dictionary with machine IDs as keys and machine names as values.
     """
-    # add server location IDs
-    with open(PATH_SERVER_LOCATION, "r", encoding="latin-1") as infile:
-        d = json.load(infile)
-    for elem in d["features"]:
-        MACHINE_NAMES[elem["properties"]["id"]] = (
-            f"{elem['properties']['name']} ({elem['properties']['area']})"
-            + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
-        )
+    MACHINE_NAMES.update(get_machine_display_names())
     return MACHINE_NAMES
 
 
@@ -121,20 +116,23 @@ def process_uploaded_image(
 
 
 def image_slack(
-    machine_id: int | str,
+    machine_id: int,
     fname_suffix: str = "",
     m_name: Optional[str] = None,
     img_slack_text: str = "Image uploaded for machine",
     filetype: Optional[str] = None,
+    pending: bool = False,
 ) -> None:
     """Post an image to Slack.
 
     Args:
-        machine_id: The ID of the machine.
+        machine_id: The ID of the machine (or pending_changes row when pending=True).
         fname_suffix: The suffix of the filename ("" or "_coin_x"). Defaults to "".
         m_name: The name of the machine. Defaults to None.
         img_slack_text: The text to display in the Slack message. Defaults to "Image uploaded for machine".
         filetype: Explicit uploaded image file extension, when known.
+        pending: When True, the image is a pending submission — uses pending_{machine_id}
+            as the filename and posts to #pennyme_approvals.
 
     Returns:
         None.
@@ -142,18 +140,27 @@ def image_slack(
     Raises:
         e: SlackApiError
     """
-    if m_name is None:
-        MACHINE_NAMES = reload_server_data()
-        if int(machine_id) not in MACHINE_NAMES.keys():
-            logger.error(f"Posting image, but ID {machine_id} not found in server data")
-            return
-        m_name = MACHINE_NAMES[int(machine_id)]
-    text = f"{img_slack_text} {machine_id} - {m_name}"
+    if pending:
+        fname_base = f"pending_{machine_id}"
+        channel = "#pennyme_approvals"
+        text = f"{img_slack_text} (pending #{machine_id})"
+    else:
+        fname_base = str(machine_id)
+        channel = "#pennyme_uploads"
+        if m_name is None:
+            MACHINE_NAMES = reload_server_data()
+            if int(machine_id) not in MACHINE_NAMES.keys():
+                logger.error(
+                    f"Posting image, but ID {machine_id} not found in server data"
+                )
+                return
+            m_name = MACHINE_NAMES[int(machine_id)]
+        text = f"{img_slack_text} {machine_id} - {m_name}"
     if not filetype:
         filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
         CLIENT.chat_postMessage(
-            channel="#pennyme_uploads",
+            channel=channel,
             text=text,
             username="PennyMe",
             blocks=[
@@ -164,7 +171,7 @@ def image_slack(
                         "text": text,
                         "emoji": True,
                     },
-                    "image_url": f"{IMG_PORT}{machine_id}{fname_suffix}.{filetype}",
+                    "image_url": f"{IMG_PORT}{fname_base}{fname_suffix}.{filetype}",
                     "alt_text": text,
                 }
             ],
@@ -218,4 +225,155 @@ def message_slack_raw(text: str, *args, **kwargs):
     except SlackApiError as e:
         assert e.response["ok"] is False
         assert e.response["error"]
+        raise e
+
+
+# ---------------------------------------------------------------------------
+# Slack Socket Mode — interactive button handlers
+# ---------------------------------------------------------------------------
+
+
+@SLACK_APP.action("approve_change")
+def handle_approve_change(ack, body, respond) -> None:
+    """Approve a pending change when the Approve button is clicked."""
+    ack()
+    change_id = int(body["actions"][0]["value"])
+    user_name = body.get("user", {}).get("name", "unknown")
+    try:
+        result = approve_pending_change(change_id)
+    except (KeyError, ValueError) as e:
+        result_text = f":warning: Error approving change #{change_id}: {e}"
+        logger.error(result_text)
+    else:
+        if result.applied:
+            result_text = (
+                f":white_check_mark: Pending change #{change_id} *approved* by "
+                f"{user_name} — machine ID {result.machine_id}."
+            )
+        else:
+            result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+    respond(replace_original=True, text=result_text)
+
+
+@SLACK_APP.action("reject_change")
+def handle_reject_change(ack, body, respond) -> None:
+    """Reject a pending change when the Reject button is clicked."""
+    ack()
+    change_id = int(body["actions"][0]["value"])
+    user_name = body.get("user", {}).get("name", "unknown")
+    try:
+        result = reject_pending_change(change_id)
+    except KeyError as e:
+        result_text = f":warning: Error rejecting change #{change_id}: {e}"
+        logger.error(result_text)
+    else:
+        if result.applied:
+            result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
+        else:
+            result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+    respond(replace_original=True, text=result_text)
+
+
+def start_socket_mode_handler() -> None:
+    """Start the Slack Socket Mode handler in a daemon thread.
+
+    Requires the ``SLACK_APP_TOKEN`` environment variable — an App-Level Token
+    with the ``connections:write`` scope (starts with ``xapp-``).
+    Has no effect if the variable is not set.
+    """
+    app_token = os.environ.get("SLACK_APP_TOKEN", "")
+    if not app_token:
+        logger.warning(
+            "SLACK_APP_TOKEN not set — Slack interactive buttons will not work"
+        )
+        return
+    handler = SocketModeHandler(SLACK_APP, app_token)
+    Thread(target=handler.start, daemon=True).start()
+    logger.info("Slack Socket Mode handler started")
+
+
+# ---------------------------------------------------------------------------
+# Outgoing Slack helpers
+# ---------------------------------------------------------------------------
+
+
+def message_slack_pending_change(
+    change_id: int,
+    change_type: str,
+    title: str,
+    area: str,
+    change_summary: str,
+    machine_id: Optional[int] = None,
+) -> None:
+    """Post a pending change notification to Slack with Approve/Reject buttons.
+
+    Args:
+        change_id: The ID of the pending_changes row.
+        change_type: ``'create'`` or ``'update'``.
+        title: Machine name.
+        area: Machine area/country.
+        change_summary: Human-readable description of what changed.
+        machine_id: Existing machine ID for updates, None for new machines.
+
+    Raises:
+        SlackApiError: If the Slack API call fails.
+    """
+    if change_type == "create":
+        header = f":new: *New machine proposed (pending #{change_id})*"
+    else:
+        header = (
+            f":pencil2: *Machine {machine_id} change proposed (pending #{change_id})*"
+        )
+
+    summary_text = change_summary.strip() or "(no summary)"
+    plain_text = f"{header}\n*{title}* ({area})\n{summary_text}"
+
+    blocks = [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"{header}\n*{title}* ({area})\n{summary_text}",
+            },
+        },
+        {
+            "type": "actions",
+            "block_id": f"pending_{change_id}",
+            "elements": [
+                {
+                    "type": "button",
+                    "text": {"type": "plain_text", "text": "Approve", "emoji": True},
+                    "style": "primary",
+                    "value": str(change_id),
+                    "action_id": "approve_change",
+                },
+                {
+                    "type": "button",
+                    "text": {"type": "plain_text", "text": "Reject", "emoji": True},
+                    "style": "danger",
+                    "value": str(change_id),
+                    "action_id": "reject_change",
+                    "confirm": {
+                        "title": {"type": "plain_text", "text": "Reject this change?"},
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"Permanently reject pending change #{change_id}?",
+                        },
+                        "confirm": {"type": "plain_text", "text": "Yes, reject"},
+                        "deny": {"type": "plain_text", "text": "Cancel"},
+                    },
+                },
+            ],
+        },
+    ]
+
+    try:
+        CLIENT.chat_postMessage(
+            channel="#pennyme_approvals",
+            text=plain_text,
+            username="PennyMe",
+            blocks=blocks,
+        )
+    except SlackApiError as e:
+        logger.error(f"Error sending pending change message to Slack: {e}")
         raise e

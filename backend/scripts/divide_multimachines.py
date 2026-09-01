@@ -182,15 +182,18 @@ server_before = len(ser_locs["features"])
 server_already_split = set()
 server_ids_to_skip = set()
 
-new_ser_locs, server_new_machines_for_all, next_id, server_split_ids = (
-    split_multimachines(
-        ser_locs["features"],
-        next_id=next_id,
-        ids_to_skip=server_ids_to_skip,
-        already_split_ids=server_already_split,
-        jitter_radius_m=15.0,
-        max_machines=MAX_MACHINES,
-    )
+(
+    new_ser_locs,
+    server_new_machines_for_all,
+    next_id,
+    server_split_ids,
+) = split_multimachines(
+    ser_locs["features"],
+    next_id=next_id,
+    ids_to_skip=server_ids_to_skip,
+    already_split_ids=server_already_split,
+    jitter_radius_m=15.0,
+    max_machines=MAX_MACHINES,
 )
 
 ser_locs["features"] = new_ser_locs

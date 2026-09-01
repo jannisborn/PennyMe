@@ -1,8 +1,7 @@
-import copy
+import autoroot  # noqa: F401  # initializes repo root
 import json
 import os
 import queue
-import random
 import traceback
 from datetime import datetime
 from pathlib import Path
@@ -10,23 +9,24 @@ from threading import Thread
 from time import sleep
 from typing import Any, Dict, Optional, Tuple
 
-import pandas as pd
 from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
-from haversine import haversine
+from haversine import haversine, Unit
 from loguru import logger
 from thefuzz import process as fuzzysearch
 
 from scripts.location_differ import location_differ
-from scripts.open_diff_pull_request import open_differ_pr
 
-from pennyme.github_update import (
-    get_latest_commit_time,
-    load_latest_json,
-    process_machine_change,
-    push_newmachine_to_github,
-    wait,
+from pennyme.database import (
+    dump_machines_to_file,
+    find_machine_in_database,
+    get_all_machines_geojson,
+    get_nearby_machines_db,
+    has_open_pending_change,
+    insert_pending_change_full,
+    upsert_machines_from_file,
 )
+from pennyme.github_update import wait
 from pennyme.locations import COUNTRIES
 from pennyme.moderation import (
     ModerationReport,
@@ -38,11 +38,12 @@ from pennyme.moderation import (
 from pennyme.slack import (
     image_slack,
     message_slack,
+    message_slack_pending_change,
     message_slack_raw,
     process_uploaded_image,
+    start_socket_mode_handler,
 )
 from pennyme.utils import (
-    find_machine_in_database,
     find_machine_name_conflict,
     get_nearby_machines,
     setup_locdiffer_logger,
@@ -55,6 +56,9 @@ request_queue = queue.Queue()
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
 PATH_IMAGES = os.path.join("..", "..", "images")
 PATH_MACHINES = os.path.join("..", "data", "all_locations.json")
+# Below this, treat coordinates as unchanged — avoids false positives from
+# float round-tripping through the DB rather than an actual edit.
+LOCATION_CHANGE_THRESHOLD_M = 1
 MODERATION = ModerationStore(
     Path(os.path.join("..", "content_attribution.json")),
     Path(os.path.join("..", "moderation_reports.jsonl")),
@@ -87,6 +91,30 @@ def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
     if contributor_id is not None and contributor_id in blocked_contributors:
         return jsonify({"error": "Posting access from this device is blocked"}), 403
     return None
+
+
+def _diff_field(
+    changed_fields: Dict[str, Any], msg: str, label: str, field: str, old: Any, new: Any
+) -> str:
+    """Record `field` in `changed_fields` and append a summary line if it changed.
+
+    Template for adding a new simple (non-validated) machine attribute to
+    `change_machine` — see Cases 5/6 below.
+    """
+    if new != old:
+        changed_fields[field] = new
+        msg += f"\t{label} from: {old} to: {new}\n"
+    return msg
+
+
+@app.route("/machines", methods=["GET"])
+def machines() -> Tuple[Response, int]:
+    """Return all approved server machines as a GeoJSON FeatureCollection.
+
+    Returns:
+        A GeoJSON FeatureCollection with HTTP 200.
+    """
+    return jsonify(get_all_machines_geojson()), 200
 
 
 @app.route("/health", methods=["GET"])
@@ -321,68 +349,62 @@ def report_content() -> Tuple[Response, int]:
     )
 
 
-def process_machine_entry(
-    new_machine_entry: Dict[str, Any],
+def process_pending_image(
+    pending_id: int,
     tmp_img_path: str,
     installation_id: str,
 ) -> None:
-    """Publish a queued machine submission and record its contributor.
+    """Process the image upload for a new pending machine submission and record contributor.
 
-    This function runs in the background worker so it can wait for repository
-    jobs without blocking the HTTP request.
+    Runs in the background worker so slow image operations do not block
+    the HTTP request.  The image is stored as ``pending_{pending_id}.jpg``
+    so the approver can rename it to ``{machine_id}.jpg`` on approval.
 
     Args:
-        new_machine_entry: The new machine entry to process.
-        tmp_img_path: Temporary path to the image.
+        pending_id: ID of the pending_changes row.
+        tmp_img_path: Temporary path where the uploaded image was saved.
         installation_id: Random installation identifier supplied by the app.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
     """
-
-    title = new_machine_entry.get("properties", {}).get("name", "<unknown>")
-    address = new_machine_entry.get("properties", {}).get("address", "<unknown>")
     try:
-        # Wait for cron job to finish and until 5 min passed since last commit
-        wait()
-
-        # Backup machine data
-        tmp_id = new_machine_entry["properties"]["id"]
-        with open(os.path.join("..", "data", f"{tmp_id}.json"), "w") as f:
-            json.dump(new_machine_entry, f, indent=4)
-
-        # We can add machine
-        new_machine_id = push_newmachine_to_github(new_machine_entry)
-
-        # Move the image file from temporary to permanent path
-        img_path = os.path.join(PATH_IMAGES, f"{new_machine_id}.jpg")
+        img_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}.jpg")
         os.rename(tmp_img_path, img_path)
 
-        # Upload the image
-        code, msg, img_path = process_uploaded_image(img_path)
+        code, msg_prefix, saved_path = process_uploaded_image(img_path)
+        msg = f"{msg_prefix} - New machine pending"
+
+        if code != 200:
+            image_slack(
+                pending_id,
+                img_slack_text=msg,
+                filetype="jpg",
+            )
+            sleep(1)
+            Path(saved_path).unlink(missing_ok=True)
+            return
 
         MODERATION.record_content(
-            str(new_machine_id),
+            str(pending_id),
             MODERATION.content_key("machine", "listing"),
             installation_id,
         )
         MODERATION.record_content(
-            str(new_machine_id),
+            str(pending_id),
             MODERATION.content_key("image", "machine"),
             installation_id,
         )
-        # Send message to slack
+
         image_slack(
-            new_machine_id,
-            m_name=title,
-            img_slack_text="New machine proposed:",
+            pending_id,
+            img_slack_text="New machine proposed (pending review):",
+            pending=True,
         )
     except Exception as e:
-        logger.exception(
-            f"Error when processing machine entry: {title}, {address}: {e}"
-        )
+        logger.exception(f"Error when processing pending image {pending_id}: {e}")
         message_slack_raw(
-            text=f"Error when processing machine entry: {title}, {address} ({type(e).__name__}: {e})",
+            text=f"Error when processing pending image {pending_id} ({type(e).__name__}: {e})",
         )
 
 
@@ -452,7 +474,7 @@ def create_machine() -> Tuple[Response, int]:
         float(request.args.get("lon_coord")),
         float(request.args.get("lat_coord")),
     )
-    name_match_machines = get_nearby_machines(
+    name_match_machines = get_nearby_machines_db(
         location[1], location[0], area, radius_m=500
     )
     conflict_kind, conflict_machine, score = find_machine_name_conflict(
@@ -539,50 +561,44 @@ def create_machine() -> Tuple[Response, int]:
                 if postal_code not in address:
                     address += out[0]["formatted_address"]
 
-    try:
-        multimachine = int(request.args.get("multimachine"))
-    except ValueError:
-        # just put the multimachine as a string, we need to correct it then
-        multimachine = str(request.args.get("multimachine"))
-
     num_coins = int(request.args.get("num_coins", 4))
-
     paywall = True if request.args.get("paywall") == "true" else False
+    last_updated = str(datetime.today()).split(" ")[0]
 
-    # put properties into dictionary
-    tmp_id = random.randint(-(2**16), -1)
-    properties_dict = {
-        "name": title,
-        "area": area,
-        "address": address,
-        "external_url": "null",
-        "internal_url": "null",
-        "machine_status": "available",
-        "id": tmp_id,  # to be updated later
-        "last_updated": str(datetime.today()).split(" ")[0],
-    }
-    # add multimachine, num_coins or paywall only if not defaults
-    if multimachine != 1:
-        properties_dict["multimachine"] = multimachine
-    if num_coins != 4:
-        properties_dict["num_coins"] = num_coins
-    if paywall:
-        properties_dict["paywall"] = paywall
-    # add new item to json
-    new_machine_entry = {
-        "type": "Feature",
-        "geometry": {"type": "Point", "coordinates": location},
-        "properties": properties_dict,
-    }
-    tmp_path = os.path.join(PATH_IMAGES, f"{tmp_id}.jpg")
+    # Insert as pending change (create). The machine is not added to the
+    # machines table until a maintainer approves the pending change.
+    pending_id = insert_pending_change_full(
+        machine_id=None,
+        change_type="create",
+        machine_fields={
+            "name": title,
+            "area": area,
+            "address": address,
+            "latitude": location[1],
+            "longitude": location[0],
+            "machine_status": "available",
+            "num_coins": num_coins,
+            "paywall": paywall,
+            "last_updated": last_updated,
+        },
+        submitted_by=anonymous_user_id(),
+        change_summary="new machine",
+    )
+
+    tmp_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}_tmp.jpg")
     request.files["image"].save(tmp_path)
 
-    message_slack_raw(text=f"New machine proposed: {title}, {address} ({area})")
-    # Add to queue
+    message_slack_pending_change(
+        change_id=pending_id,
+        change_type="create",
+        title=title,
+        area=area,
+        change_summary=f"Address: {address}",
+    )
     request_queue.put(
         (
-            process_machine_entry,
-            (new_machine_entry, tmp_path, anonymous_user_id()),
+            process_pending_image,
+            (pending_id, tmp_path, anonymous_user_id()),
         )
     )
     if not address_okay:
@@ -621,32 +637,29 @@ def change_machine() -> Tuple[Response, int]:
     if reason := text_block_reason(title):
         return jsonify({"error": reason}), 422
 
-    # Load server locations and find existing machine info
-    server_locations, latest_commit_sha = load_latest_json()
-    (
-        existing_machine_infos,
-        index_in_server_locations,
-    ) = find_machine_in_database(machine_id, server_locations["features"])
+    existing_machine_infos = find_machine_in_database(machine_id)
+    if existing_machine_infos is None:
+        return jsonify({"error": f"Machine {machine_id} not found"}), 404
 
     msg = ":\n"
 
-    latest_commit = get_latest_commit_time("main")
-    latest_change = pd.to_datetime(existing_machine_infos["properties"]["last_updated"])
-    if latest_change.date() >= latest_commit.date():
-        msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:\n"
+    if has_open_pending_change(machine_id):
+        msg += "Machine with pending changes is getting changed *AGAIN* @jannisborn @NinaWie:"
 
-    # Start new dictionary
-    updated_machine_entry = copy.deepcopy(existing_machine_infos)
-    updated_machine_entry["properties"]["last_updated"] = str(datetime.today()).split(
-        " "
-    )[0]
+    # Only the fields actually changed are recorded (diff semantics), so this
+    # change can be reviewed independently of any other open pending change
+    # for the same machine.
+    changed_fields: Dict[str, Any] = {}
 
     # Case 1: status was changed:
-    if status != existing_machine_infos["properties"]["machine_status"]:
-        msg += f"\tStatus from: {updated_machine_entry['properties']['machine_status']} to: {status}\n"
-        updated_machine_entry["properties"]["machine_status"] = status
+    old_status = existing_machine_infos["properties"]["machine_status"]
+    msg = _diff_field(
+        changed_fields, msg, "Status", "machine_status", old_status, status
+    )
 
-    # Case 2: if area was changed -> match to available areas
+    # Case 2: if area was changed -> match to available areas. Kept custom
+    # (not _diff_field) because the fuzzy-match validation only needs to run
+    # when the raw input differs, and the *matched* value is what's recorded.
     if area != existing_machine_infos["properties"]["area"]:
         # Identify area
         area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
@@ -659,76 +672,90 @@ def change_machine() -> Tuple[Response, int]:
                 ),
                 400,
             )
-        updated_machine_entry["properties"]["area"] = area
+        changed_fields["area"] = area
         msg += (
             f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
         )
 
     # Case 3: Title changed
-    if title != existing_machine_infos["properties"]["name"]:
-        msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
-        updated_machine_entry["properties"]["name"] = title
+    title_old = existing_machine_infos["properties"]["name"]
+    msg = _diff_field(changed_fields, msg, "Title", "name", title_old, title)
 
-    # Case 4: multimachine changed
-    try:
-        multimachine_new = int(request.args.get("multimachine"))
-    except ValueError:
-        return jsonify({"error": "Multimachine must be 1 (default) or larger"}), 400
-    if multimachine_new < 1:
-        return jsonify({"error": "Multimachine must be 1 (default) or larger"}), 400
-    multimachine_old = existing_machine_infos["properties"].get("multimachine", 1)
-    if multimachine_new != multimachine_old:
-        updated_machine_entry["properties"]["multimachine"] = multimachine_new
-        msg += f"\tMultimachine from: {multimachine_old} to: {multimachine_new}\n"
+    # Case 4: multimachine changed - deprecated
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
-    if paywall_new != paywall_old:
-        updated_machine_entry["properties"]["paywall"] = paywall_new
-        msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
+    msg = _diff_field(
+        changed_fields, msg, "Paywall", "paywall", paywall_old, paywall_new
+    )
 
     # Case 6: Number of coins changed
     num_coins_new = int(request.args.get("num_coins", 4))
-    if num_coins_new != existing_machine_infos["properties"].get("num_coins", 4):
-        updated_machine_entry["properties"]["num_coins"] = num_coins_new
-        msg += f"\t Number of coins from: {existing_machine_infos['properties'].get('num_coins', 4)} to: {num_coins_new}\n"
+    num_coins_old = existing_machine_infos["properties"].get("num_coins", 4)
+    msg = _diff_field(
+        changed_fields,
+        msg,
+        "Number of coins",
+        "num_coins",
+        num_coins_old,
+        num_coins_new,
+    )
 
     # Case 7: address and / or location changed --> check for their correspondence
-    (lng_old, lat_old) = existing_machine_infos["geometry"]["coordinates"]
+    lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]
     old_address = existing_machine_infos["properties"]["address"]
     address_okay = True  # by default okay
-    # if address or coordinates were changed, compare them and return warning if needed
-    if latitude != lat_old or longitude != lng_old or address != old_address:
+    address_changed = address != old_address
+    location_changed = (
+        haversine((lat_old, lng_old), (latitude, longitude), unit=Unit.METERS)
+        > LOCATION_CHANGE_THRESHOLD_M
+    )
+    # if address or coordinates were meaningfully changed, compare them and return warning if needed
+    if location_changed or address_changed:
         # Verify that address matches coordinates
         found_coords, (lat, lng) = address_to_coordinates(address, area, title)
         # if address was changed but is not found (error only if address was changed)
-        if (not found_coords) and address != old_address:
+        if (not found_coords) and address_changed:
             return jsonify({"error": "Google Maps does not know this address"}), 400
 
         dist = haversine((lat, lng), (latitude, longitude))
         address_okay = dist <= 1  # km
 
-        # adapt dictionary entries
-        updated_machine_entry["properties"]["address"] = address
-        updated_machine_entry["geometry"]["coordinates"] = [longitude, latitude]
-        if address != old_address:
+        if address_changed:
+            changed_fields["address"] = address
             msg += f"\tAddress from: {old_address} to: {address}\n"
-        if latitude != lat_old or longitude != lng_old:
+        if location_changed:
+            changed_fields["latitude"] = latitude
+            changed_fields["longitude"] = longitude
             msg += f"\t Location from: {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
 
-    if "from" not in msg:
+    if not changed_fields:
         msg = f"{machine_id} - Submitted change is identical to the state of the DB (either in pending PR or in main)"
         message_slack_raw(msg)
 
         return jsonify({"message": "Success!"}), 200
 
-    area = updated_machine_entry["properties"]["area"]
-    url = updated_machine_entry["properties"]["external_url"]
-    slack_message = f'Change {machine_id} "{title}" ({area}) at {url}' + msg[:-1]
-    message_slack_raw(text=slack_message)
+    # The record itself was touched, regardless of which fields changed.
+    changed_fields["last_updated"] = str(datetime.today()).split(" ")[0]
 
-    request_queue.put((process_machine_change, (updated_machine_entry, msg)))
+    url = existing_machine_infos["properties"]["external_url"]
+    change_summary = msg.lstrip(":\n").strip()
+    pending_id = insert_pending_change_full(
+        machine_id=machine_id,
+        change_type="update",
+        machine_fields=changed_fields,
+        submitted_by=anonymous_user_id(),
+        change_summary=change_summary,
+    )
+    message_slack_pending_change(
+        change_id=pending_id,
+        change_type="update",
+        title=title,
+        area=area,
+        change_summary=f"at {url}\n{change_summary}",
+        machine_id=machine_id,
+    )
 
     # return warning if the address and coordinates do not correspond
     if not address_okay:
@@ -765,6 +792,9 @@ def run_location_differ():
         # Make sure all preceding jobs are finished
         wait()
 
+        # Export the current DB state so location_differ can read it as a file
+        dump_machines_to_file(old_json_file)
+
         location_differ(
             output_folder="/root/PennyMe/new_data",
             device_json="/root/PennyMe/data/all_locations.json",
@@ -772,11 +802,15 @@ def run_location_differ():
             api_key=os.getenv("GCLOUD_KEY"),
             load_from_github=True,
         )
-        open_differ_pr(
-            locations_path=new_json_file, problems_path=new_problems_json_file
+
+        # Reload the merged output back into the database
+        upsert_machines_from_file(
+            new_json_file,
+            track_in_pending_changes=True,
+            track_submitted_by="location_differ",
         )
 
-        # Move files
+        # Move debug files for inspection (keep them out of the working dir)
         os.rename(
             new_problems_json_file,
             os.path.join(debug_path, os.path.basename(new_problems_json_file)),
@@ -805,6 +839,9 @@ def worker():
 
 # Start the worker thread
 Thread(target=worker, daemon=True).start()
+
+# Start the Slack Socket Mode handler (interactive buttons)
+start_socket_mode_handler()
 
 
 def create_app():

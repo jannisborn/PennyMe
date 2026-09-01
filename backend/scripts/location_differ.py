@@ -89,12 +89,12 @@ def location_differ(
     with open(device_json, "r") as f:
         device_data = json.load(f)
 
-    # load server_locations from github or from data folder
+    # server_json is pre-populated by the caller (dumped from the database);
+    # always read it from disk so location_differ never touches the DB directly.
+    with open(server_json, "r") as f:
+        server_data = json.load(f)
+
     if load_from_github:
-        server_data, _ = load_latest_json()
-        # save the file locally to compare it later
-        with open(server_json, "w", encoding="utf8") as f:
-            json.dump(server_data, f, ensure_ascii=False, indent=4)
         problems_old, _ = load_latest_json(file="/data/problems.json")
         problems_out_path = os.path.join(output_folder, "old_problems.json")
         with open(problems_out_path, "w", encoding="utf8") as f:
@@ -106,10 +106,6 @@ def location_differ(
         skip_links = [
             entry["properties"]["external_url"] for entry in skip_json["features"]
         ]
-
-    else:
-        with open(server_json, "r") as f:
-            server_data = json.load(f)
 
     # Saving all machines which have no external link
     external_list = []

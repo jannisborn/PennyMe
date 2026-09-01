@@ -9,7 +9,8 @@ import requests
 from loguru import logger
 
 from pennyme.slack import message_slack_raw
-from pennyme.utils import find_machine_in_database, get_next_free_machine_id
+from pennyme.database import find_machine_in_database
+from pennyme.utils import get_next_free_machine_id
 
 with open("github_token.json", "r") as infile:
     github_infos = json.load(infile)
@@ -278,7 +279,7 @@ def process_machine_change(
         (
             existing_machine_infos,
             index_in_server_locations,
-        ) = find_machine_in_database(machine_id, server_locations["features"])
+        ) = find_machine_in_database(machine_id)
 
         # replace or append to server_locations
         if index_in_server_locations > 0:

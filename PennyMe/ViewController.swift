@@ -601,7 +601,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     func loadServerLocations() {
         isLoadingServerLocations = true
         
-        guard let url = URL(string: "https://pennyme.duckdns.org/server_locations.json") else {
+        guard let url = URL(string: flaskURL + "machines") else {
             isLoadingServerLocations = false
             return
         }
