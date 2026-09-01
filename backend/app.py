@@ -93,6 +93,20 @@ def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
     return None
 
 
+def _diff_field(
+    changed_fields: Dict[str, Any], msg: str, label: str, field: str, old: Any, new: Any
+) -> str:
+    """Record `field` in `changed_fields` and append a summary line if it changed.
+
+    Template for adding a new simple (non-validated) machine attribute to
+    `change_machine` — see Cases 5/6 below.
+    """
+    if new != old:
+        changed_fields[field] = new
+        msg += f"\t{label} from: {old} to: {new}\n"
+    return msg
+
+
 @app.route("/machines", methods=["GET"])
 def machines() -> Tuple[Response, int]:
     """Return all approved server machines as a GeoJSON FeatureCollection.
@@ -566,7 +580,6 @@ def create_machine() -> Tuple[Response, int]:
             "num_coins": num_coins,
             "paywall": paywall,
             "last_updated": last_updated,
-            "source": "user",
         },
         submitted_by=anonymous_user_id(),
         change_summary="new machine",
@@ -639,11 +652,14 @@ def change_machine() -> Tuple[Response, int]:
     changed_fields: Dict[str, Any] = {}
 
     # Case 1: status was changed:
-    if status != existing_machine_infos["properties"]["machine_status"]:
-        msg += f"\tStatus from: {existing_machine_infos['properties']['machine_status']} to: {status}\n"
-        changed_fields["machine_status"] = status
+    old_status = existing_machine_infos["properties"]["machine_status"]
+    msg = _diff_field(
+        changed_fields, msg, "Status", "machine_status", old_status, status
+    )
 
-    # Case 2: if area was changed -> match to available areas
+    # Case 2: if area was changed -> match to available areas. Kept custom
+    # (not _diff_field) because the fuzzy-match validation only needs to run
+    # when the raw input differs, and the *matched* value is what's recorded.
     if area != existing_machine_infos["properties"]["area"]:
         # Identify area
         area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
@@ -662,24 +678,29 @@ def change_machine() -> Tuple[Response, int]:
         )
 
     # Case 3: Title changed
-    if title != existing_machine_infos["properties"]["name"]:
-        msg += f"\tTitle from: {existing_machine_infos['properties']['name']} to: {title}\n"
-        changed_fields["name"] = title
+    title_old = existing_machine_infos["properties"]["name"]
+    msg = _diff_field(changed_fields, msg, "Title", "name", title_old, title)
 
     # Case 4: multimachine changed - deprecated
 
     # Case 5: paywall reported
     paywall_new = request.args.get("paywall") == "true"
     paywall_old = existing_machine_infos["properties"].get("paywall", False)
-    if paywall_new != paywall_old:
-        changed_fields["paywall"] = paywall_new
-        msg += f"\t Paywall from: {paywall_old} to: {paywall_new}\n"
+    msg = _diff_field(
+        changed_fields, msg, "Paywall", "paywall", paywall_old, paywall_new
+    )
 
     # Case 6: Number of coins changed
     num_coins_new = int(request.args.get("num_coins", 4))
-    if num_coins_new != existing_machine_infos["properties"].get("num_coins", 4):
-        changed_fields["num_coins"] = num_coins_new
-        msg += f"\t Number of coins from: {existing_machine_infos['properties'].get('num_coins', 4)} to: {num_coins_new}\n"
+    num_coins_old = existing_machine_infos["properties"].get("num_coins", 4)
+    msg = _diff_field(
+        changed_fields,
+        msg,
+        "Number of coins",
+        "num_coins",
+        num_coins_old,
+        num_coins_new,
+    )
 
     # Case 7: address and / or location changed --> check for their correspondence
     lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]

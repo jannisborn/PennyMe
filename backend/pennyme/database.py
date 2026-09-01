@@ -43,6 +43,7 @@ from shapely.geometry import Point
 
 from pennyme.utils import ALL_LOCATIONS, PATH_IMAGES
 from pennyme.database_utils import (
+    MACHINE_FIELDS,
     _geojson_feature_to_machine_fields,
     _normalise_url,
     _rename_pending_change_image,
@@ -54,29 +55,13 @@ _LOGIN_PATH = Path(__file__).resolve().parent.parent / "db_login.json"
 if not _LOGIN_PATH.exists():
     logger.warning(f"Missing database login file: {_LOGIN_PATH}")
 
-_PLAIN_PENDING_CHANGE_FIELDS = (
-    "name",
-    "area",
-    "address",
-    "machine_status",
-    "num_coins",
-    "paywall",
-    "last_updated",
-)
+# Derived from MACHINE_FIELDS (database_utils.py), the single source of truth
+# for the plain columns shared by Machine and PendingChange.
+_PLAIN_PENDING_CHANGE_FIELDS = tuple(f.name for f in MACHINE_FIELDS)
 # Machine columns copied verbatim from a PendingChange row when it is approved.
 # (location is handled separately via `latitude`/`longitude`, see
 # `_copy_pending_change_to_machine`.)
-_MACHINE_SYNC_FIELDS = (
-    "name",
-    "area",
-    "address",
-    "machine_status",
-    "num_coins",
-    "paywall",
-    "external_url",
-    "internal_url",
-    "last_updated",
-)
+_MACHINE_SYNC_FIELDS = _PLAIN_PENDING_CHANGE_FIELDS + ("external_url", "internal_url")
 
 
 # ---------------------------------------------------------------------------
@@ -109,16 +94,10 @@ class Machine(Base):
         """Construct a Machine from a normalised machine-fields dict (see `_geojson_feature_to_machine_fields`)."""
         return cls(
             id=machine_id,
-            name=fields["name"],
-            area=fields["area"],
-            address=fields["address"],
             geom=from_shape(Point(fields["longitude"], fields["latitude"]), srid=4326),
-            machine_status=fields["machine_status"],
-            num_coins=fields["num_coins"],
-            paywall=fields["paywall"],
             external_url=fields["external_url"],
             internal_url=fields["internal_url"],
-            last_updated=fields["last_updated"],
+            **{f.name: fields[f.name] for f in MACHINE_FIELDS},
         )
 
 
@@ -286,17 +265,11 @@ def get_machine_as_geojson(machine_id: int) -> dict:
 
         row = {
             "id": machine.id,
-            "name": machine.name,
-            "area": machine.area,
-            "address": machine.address,
             "external_url": machine.external_url,
             "internal_url": machine.internal_url,
-            "machine_status": machine.machine_status,
-            "num_coins": machine.num_coins,
-            "paywall": machine.paywall,
-            "last_updated": machine.last_updated,
             "longitude": result.longitude,
             "latitude": result.latitude,
+            **{f.name: getattr(machine, f.name) for f in MACHINE_FIELDS},
         }
         return _row_to_geojson_feature(row)
     finally:
@@ -526,23 +499,17 @@ def get_open_pending_changes() -> List[Dict]:
                 "id": c.id,
                 "machine_id": c.machine_id,
                 "change_type": c.change_type,
-                "name": c.name,
-                "area": c.area,
-                "address": c.address,
                 "latitude": c.lat_lon[0],
                 "longitude": c.lat_lon[1],
-                "machine_status": c.machine_status,
-                "num_coins": c.num_coins,
-                "paywall": c.paywall,
                 "external_url": c.external_url,
                 "internal_url": c.internal_url,
-                "last_updated": c.last_updated,
                 "submitted_at": c.submitted_at,
                 "reviewed_at": c.reviewed_at,
                 "submitted_by": c.submitted_by,
                 "change_summary": c.change_summary,
                 "status": c.status,
                 "image_path": c.image_path,
+                **{f.name: getattr(c, f.name) for f in MACHINE_FIELDS},
             }
             for c in changes
         ]
@@ -751,28 +718,15 @@ def upsert_machines_from_file(
 
             if existing:
                 existing_point = to_shape(existing.geom)
-                old_last_updated = (
-                    str(existing.last_updated)
-                    if existing.last_updated is not None
-                    else None
-                )
-                new_last_updated = (
-                    str(machine_fields["last_updated"])
-                    if machine_fields["last_updated"] is not None
-                    else None
-                )
                 has_changed = (
-                    existing.name != machine_fields["name"]
-                    or existing.area != machine_fields["area"]
-                    or existing.address != machine_fields["address"]
+                    any(
+                        f.differs(getattr(existing, f.name), machine_fields[f.name])
+                        for f in MACHINE_FIELDS
+                    )
                     or existing_point.x != machine_fields["longitude"]
                     or existing_point.y != machine_fields["latitude"]
-                    or existing.machine_status != machine_fields["machine_status"]
-                    or existing.num_coins != machine_fields["num_coins"]
-                    or existing.paywall != machine_fields["paywall"]
                     or existing.external_url != machine_fields["external_url"]
                     or existing.internal_url != machine_fields["internal_url"]
-                    or old_last_updated != new_last_updated
                 )
 
                 # Update existing
@@ -791,16 +745,11 @@ def upsert_machines_from_file(
                     if track_in_pending_changes:
                         tracked_count += 1
                 else:
-                    existing.name = machine_fields["name"]
-                    existing.area = machine_fields["area"]
-                    existing.address = machine_fields["address"]
+                    for f in MACHINE_FIELDS:
+                        setattr(existing, f.name, machine_fields[f.name])
                     existing.geom = from_shape(Point(lng, lat), srid=4326)
-                    existing.machine_status = machine_fields["machine_status"]
-                    existing.num_coins = machine_fields["num_coins"]
-                    existing.paywall = machine_fields["paywall"]
                     existing.external_url = machine_fields["external_url"]
                     existing.internal_url = machine_fields["internal_url"]
-                    existing.last_updated = machine_fields["last_updated"]
 
                     if track_in_pending_changes and has_changed:
                         insert_pending_change_full(
