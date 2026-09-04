@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from threading import Thread
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 import cv2
 import numpy as np
@@ -31,6 +31,25 @@ MACHINE_NAMES = {
     + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
     for elem in ALL_LOCATIONS["features"]
 }
+
+# Maps pending_changes.id -> (channel, ts) of its Slack image message, so the
+# image can be deleted once the change is approved/rejected. In-memory only:
+# lost on restart, in which case deletion is silently skipped.
+_PENDING_IMAGE_MESSAGES: Dict[int, Tuple[str, str]] = {}
+
+
+def format_machine_fields(fields: Dict[str, Any]) -> str:
+    """Format non-None machine fields as readable 'field_name: value' lines.
+
+    Latitude/longitude are skipped since they are rendered as a Maps link
+    instead (see `message_slack_pending_change`).
+    """
+    lines = []
+    for key, value in fields.items():
+        if value is None or key in ("latitude", "longitude"):
+            continue
+        lines.append(f"{key}: {value}")
+    return "\n".join(lines)
 
 
 def save_image(
@@ -159,7 +178,7 @@ def image_slack(
     if not filetype:
         filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
-        CLIENT.chat_postMessage(
+        response = CLIENT.chat_postMessage(
             channel=channel,
             text=text,
             username="PennyMe",
@@ -176,6 +195,11 @@ def image_slack(
                 }
             ],
         )
+        if pending:
+            _PENDING_IMAGE_MESSAGES[int(machine_id)] = (
+                response["channel"],
+                response["ts"],
+            )
     except SlackApiError as e:
         print("Error sending message: ", e)
         assert e.response["ok"] is False
@@ -233,6 +257,18 @@ def message_slack_raw(text: str, *args, **kwargs):
 # ---------------------------------------------------------------------------
 
 
+def _delete_pending_image_message(change_id: int) -> None:
+    """Delete the Slack image message posted for a pending change, if any."""
+    location = _PENDING_IMAGE_MESSAGES.pop(change_id, None)
+    if location is None:
+        return
+    channel, ts = location
+    try:
+        CLIENT.chat_delete(channel=channel, ts=ts)
+    except SlackApiError as e:
+        logger.error(f"Error deleting image message for pending #{change_id}: {e}")
+
+
 @SLACK_APP.action("approve_change")
 def handle_approve_change(ack, body, respond) -> None:
     """Approve a pending change when the Approve button is clicked."""
@@ -252,6 +288,7 @@ def handle_approve_change(ack, body, respond) -> None:
             )
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+    _delete_pending_image_message(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -271,6 +308,7 @@ def handle_reject_change(ack, body, respond) -> None:
             result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+    _delete_pending_image_message(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -304,6 +342,8 @@ def message_slack_pending_change(
     area: str,
     change_summary: str,
     machine_id: Optional[int] = None,
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
 ) -> None:
     """Post a pending change notification to Slack with Approve/Reject buttons.
 
@@ -314,6 +354,8 @@ def message_slack_pending_change(
         area: Machine area/country.
         change_summary: Human-readable description of what changed.
         machine_id: Existing machine ID for updates, None for new machines.
+        latitude: Machine latitude, to render a Google Maps link. Defaults to None.
+        longitude: Machine longitude, to render a Google Maps link. Defaults to None.
 
     Raises:
         SlackApiError: If the Slack API call fails.
@@ -326,6 +368,9 @@ def message_slack_pending_change(
         )
 
     summary_text = change_summary.strip() or "(no summary)"
+    if latitude is not None and longitude is not None:
+        maps_url = f"https://www.google.com/maps?q={latitude},{longitude}"
+        summary_text += f"\n<{maps_url}|View on Google Maps>"
     plain_text = f"{header}\n*{title}* ({area})\n{summary_text}"
 
     blocks = [

@@ -36,6 +36,7 @@ from pennyme.moderation import (
     validate_report,
 )
 from pennyme.slack import (
+    format_machine_fields,
     image_slack,
     message_slack,
     message_slack_pending_change,
@@ -567,20 +568,21 @@ def create_machine() -> Tuple[Response, int]:
 
     # Insert as pending change (create). The machine is not added to the
     # machines table until a maintainer approves the pending change.
+    machine_fields = {
+        "name": title,
+        "area": area,
+        "address": address,
+        "latitude": location[1],
+        "longitude": location[0],
+        "machine_status": "available",
+        "num_coins": num_coins,
+        "paywall": paywall,
+        "last_updated": last_updated,
+    }
     pending_id = insert_pending_change_full(
         machine_id=None,
         change_type="create",
-        machine_fields={
-            "name": title,
-            "area": area,
-            "address": address,
-            "latitude": location[1],
-            "longitude": location[0],
-            "machine_status": "available",
-            "num_coins": num_coins,
-            "paywall": paywall,
-            "last_updated": last_updated,
-        },
+        machine_fields=machine_fields,
         submitted_by=anonymous_user_id(),
         change_summary="new machine",
     )
@@ -593,7 +595,9 @@ def create_machine() -> Tuple[Response, int]:
         change_type="create",
         title=title,
         area=area,
-        change_summary=f"Address: {address}",
+        change_summary=format_machine_fields(machine_fields),
+        latitude=location[1],
+        longitude=location[0],
     )
     request_queue.put(
         (
@@ -755,6 +759,8 @@ def change_machine() -> Tuple[Response, int]:
         area=area,
         change_summary=f"at {url}\n{change_summary}",
         machine_id=machine_id,
+        latitude=latitude,
+        longitude=longitude,
     )
 
     # return warning if the address and coordinates do not correspond
