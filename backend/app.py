@@ -109,12 +109,23 @@ def _diff_field(
 
 @app.route("/machines", methods=["GET"])
 def machines() -> Tuple[Response, int]:
-    """Return all approved server machines as a GeoJSON FeatureCollection.
+    """Return approved server machines as a GeoJSON FeatureCollection.
+
+    An optional ``since`` query parameter (``YYYY-MM-DD``) restricts the
+    response to machines whose ``last_updated`` is on or after that date,
+    supporting incremental client-side syncs.
 
     Returns:
-        A GeoJSON FeatureCollection with HTTP 200.
+        A GeoJSON FeatureCollection with HTTP 200, or HTTP 400 when ``since``
+        is present but not a valid date.
     """
-    return jsonify(get_all_machines_geojson()), 200
+    since = request.args.get("since")
+    if since is not None:
+        try:
+            datetime.strptime(since, "%Y-%m-%d")
+        except ValueError:
+            return jsonify({"error": "Invalid 'since', expected YYYY-MM-DD"}), 400
+    return jsonify(get_all_machines_geojson(since=since)), 200
 
 
 @app.route("/health", methods=["GET"])

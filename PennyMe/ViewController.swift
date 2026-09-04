@@ -361,6 +361,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             artworks = Artwork.artworks()
             isVisible = [:]
             pinIdDict = [:]
+            // Force a full (non-delta) pull as a periodic reconciliation safety net.
+            UserDefaults.standard.removeObject(forKey: lastServerSyncDateKey)
             loadInitialData()
             addAnnotationsIteratively()
         }
@@ -572,36 +574,103 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
     }
     
+    /// Where the full merged (bundled + all server syncs so far) machine set is cached,
+    /// so a fresh app launch can seed `artworks` from it instead of only the bundled
+    /// snapshot — otherwise a `since`-scoped delta pull would permanently lose any
+    /// server change that isn't in that snapshot and predates the delta window.
+    private var cachedMachinesURL: URL? {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
+            .appendingPathComponent("cached_machines.json")
+    }
+
+    private func loadCachedMachines() -> [Artwork]? {
+        guard let url = cachedMachinesURL,
+              let data = try? Data(contentsOf: url),
+              let cached = try? JSONDecoder().decode([CachedArtwork].self, from: data),
+              !cached.isEmpty else {
+            return nil
+        }
+        return cached.map(Artwork.init(cached:))
+    }
+
+    private func persistCachedMachines() {
+        guard let url = cachedMachinesURL,
+              let data = try? JSONEncoder().encode(artworks.map { $0.cacheSnapshot }) else {
+            return
+        }
+        try? data.write(to: url, options: .atomic)
+    }
+
     // To load machine locations from JSON
     @available(iOS 13.0, *)
     func loadInitialData() {
-        // Parse the geoJSON data from all_locations.json
-        guard let fileName = Bundle.main.path(forResource: "all_locations", ofType: "json")
-            else { return }
-        let artworkData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
-        
-        do {
-          let features = try MKGeoJSONDecoder()
-            .decode(artworkData!)
-            .compactMap { $0 as? MKGeoJSONFeature }
-          let validWorks = features.compactMap(Artwork.init)
-          artworks.append(contentsOf: validWorks)
-        // put IDs into a dictionary
-            for (ind, pin) in artworks.enumerated(){
+        if let cachedArtworks = loadCachedMachines() {
+            // Cache already reflects the full merged server state from a previous launch.
+            artworks.append(contentsOf: cachedArtworks)
+            print("LEN CACHED", cachedArtworks.count)
+            for (ind, pin) in artworks.enumerated() {
                 pinIdDict[pin.id] = ind
             }
-        } catch {
-          print("Unexpected error: \(error).")
+        } else if let fileName = Bundle.main.path(forResource: "all_locations", ofType: "json") {
+            // First launch (or cache unavailable): seed from the bundled snapshot.
+            let artworkData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
+
+            do {
+              let features = try MKGeoJSONDecoder()
+                .decode(artworkData!)
+                .compactMap { $0 as? MKGeoJSONFeature }
+              let validWorks = features.compactMap(Artwork.init)
+              artworks.append(contentsOf: validWorks)
+            // put IDs into a dictionary
+                for (ind, pin) in artworks.enumerated(){
+                    pinIdDict[pin.id] = ind
+                }
+            } catch {
+              print("Unexpected error: \(error).")
+            }
         }
         
         // Load json file from server
         loadServerLocations()
     }
     
+    /// Key under which the date (yyyy-MM-dd) of the last successful full/delta
+    /// server sync is persisted, so `loadServerLocations` can request only
+    /// machines changed since then instead of always pulling everything.
+    private let lastServerSyncDateKey = "lastServerSyncDate"
+
+    private static let syncDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    private func persistServerSyncDate(_ date: Date) {
+        print("Persisting server sync date: \(date)")
+        UserDefaults.standard.set(ViewController.syncDateFormatter.string(from: date), forKey: lastServerSyncDateKey)
+    }
+
+    /// Query value for `since`, or nil to request the full dataset (no prior sync recorded).
+    /// Backdated by a day to absorb clock/timezone skew given `last_updated`'s day-level granularity.
+    private func sinceQueryValue() -> String? {
+        guard let dateString = UserDefaults.standard.string(forKey: lastServerSyncDateKey),
+              let lastSync = ViewController.syncDateFormatter.date(from: dateString) else {
+            return nil
+        }
+        let since = Calendar(identifier: .gregorian).date(byAdding: .day, value: -1, to: lastSync) ?? lastSync
+        return ViewController.syncDateFormatter.string(from: since)
+    }
+
     func loadServerLocations() {
         isLoadingServerLocations = true
         
-        guard let url = URL(string: flaskURL + "machines") else {
+        var urlComponents = URLComponents(string: flaskURL + "machines")
+        if let since = sinceQueryValue() {
+            urlComponents?.queryItems = [URLQueryItem(name: "since", value: since)]
+        }
+        guard let url = urlComponents?.url else {
             isLoadingServerLocations = false
             return
         }
@@ -639,7 +708,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 let features = try MKGeoJSONDecoder()
                     .decode(data)
                     .compactMap { $0 as? MKGeoJSONFeature }
-                
+                print("FEATURES LOADED", features.count)
                 let pins = features.compactMap(Artwork.init)
                 
                 DispatchQueue.main.async {
@@ -694,6 +763,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         check_json_dict()
         
         lastDataLoad = Date()
+        persistServerSyncDate(Date())
+        persistCachedMachines()
         isLoadingServerLocations = false
     }
     

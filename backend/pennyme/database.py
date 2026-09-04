@@ -276,16 +276,28 @@ def get_machine_as_geojson(machine_id: int) -> dict:
         session.close()
 
 
-def get_all_machines_geojson() -> dict:
-    """Return all machines as a GeoJSON FeatureCollection.
+def get_all_machines_geojson(since: Optional[str] = None) -> dict:
+    """Return machines as a GeoJSON FeatureCollection.
+
+    Args:
+        since: Optional ``YYYY-MM-DD`` date string. When given, only machines
+            with ``last_updated >= since`` are returned, enabling incremental
+            (delta) syncs instead of pulling the full dataset.
 
     Raises:
         psycopg2.Error: On any database error.
     """
+    query = "SELECT * FROM machines"
+    params = None
+    if since is not None:
+        query += " WHERE last_updated >= %(since)s"
+        params = {"since": since}
+    query += " ORDER BY id"
     gdf = gpd.read_postgis(
-        "SELECT * FROM machines ORDER BY id",
+        query,
         get_engine(),
         geom_col="geom",
+        params=params,
     )
     gdf["last_updated"] = gdf["last_updated"].map(
         lambda value: value.isoformat() if pd.notna(value) else None
