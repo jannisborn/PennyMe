@@ -41,6 +41,7 @@ from pennyme.slack import (
     message_slack,
     message_slack_pending_change,
     message_slack_raw,
+    message_slack_report,
     process_uploaded_image,
     start_socket_mode_handler,
 )
@@ -328,7 +329,9 @@ def report_content() -> Tuple[Response, int]:
     )
     slack_notified = False
     try:
-        message_slack_raw(alert_text)
+        message_slack_report(
+            alert_text, machine_id, target_kind, target_id, PATH_IMAGES
+        )
         slack_notified = True
     except Exception:
         # The durable report was already written; a temporary Slack outage must not

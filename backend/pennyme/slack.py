@@ -1,4 +1,6 @@
+import json
 import os
+import re
 from pathlib import Path
 from threading import Thread
 from typing import Any, Dict, Optional, Tuple
@@ -14,6 +16,7 @@ from slack_sdk.errors import SlackApiError
 
 from pennyme.database import (
     approve_pending_change,
+    find_machine_in_database,
     get_machine_display_names,
     reject_pending_change,
 )
@@ -235,21 +238,101 @@ def message_slack(machine_id: str, comment_text: str) -> None:
     message_slack_raw(text)
 
 
-def message_slack_raw(text: str, *args, **kwargs):
-    """
-    Send a message to Slack, unspecific to a machine.
+def message_slack_raw(
+    text: str, channel: str = "#pennyme_uploads", **kwargs: Any
+) -> Dict[str, Any]:
+    """Send a message to Slack and return the API response.
 
     Args:
-        text: The message to send.
+        text: Plain-text fallback text for the Slack message.
+        channel: Slack channel name, ID, or private-channel identifier.
+        **kwargs: Additional arguments accepted by ``chat_postMessage``, such
+            as blocks or a thread timestamp.
+
+    Returns:
+        The response mapping returned by Slack's ``chat.postMessage`` API.
+
+    Raises:
+        SlackApiError: If Slack rejects the message or cannot be reached.
     """
-    try:
-        CLIENT.chat_postMessage(
-            channel="#pennyme_uploads", text=text, username="PennyMe"
+    return CLIENT.chat_postMessage(
+        channel=channel, text=text, username="PennyMe", **kwargs
+    )
+
+
+def message_slack_report(
+    text: str, machine_id: str, target_kind: str, target_id: str, images_path: str
+) -> None:
+    """Post a UGC report and its relevant content to the approvals channel.
+
+    The initial message contains the report alert, including its ``@channel``
+    mention. Related comments and images are posted as replies in the same
+    Slack thread. A comment report includes the comments JSON, an image report
+    includes the selected image, and a machine report includes the listing,
+    all comments, and every machine image.
+
+    Args:
+        text: Report alert text to use for the thread's root message.
+        machine_id: ID of the machine containing the reported content.
+        target_kind: One of ``comment``, ``image``, or ``machine``.
+        target_id: Client-provided identifier for the reported content.
+        images_path: Root directory containing machine images and comments.
+
+    Raises:
+        SlackApiError: If any Slack message cannot be delivered.
+        ValueError: If ``machine_id`` is not an integer.
+    """
+    response = message_slack_raw(text, channel="#pennyme_approvals")
+    thread_channel = "#pennyme_approvals"
+    thread_timestamp = str(response["ts"])
+    thread_arguments: Dict[str, str] = {
+        "channel": thread_channel,
+        "thread_ts": thread_timestamp,
+    }
+    machine_id = str(int(machine_id))
+    root = Path(images_path)
+    content: Dict[str, Any] = {}
+    if target_kind == "machine":
+        content["listing"] = find_machine_in_database(int(machine_id))
+    if target_kind in {"machine", "comment"}:
+        path = root / "comments" / f"{machine_id}.json"
+        comments = json.loads(path.read_text()) if path.exists() else {}
+        content["comments"] = (
+            comments
+            if target_kind == "machine" or target_id == "all"
+            else {target_id: comments.get(target_id, "Comment unavailable")}
         )
-    except SlackApiError as e:
-        assert e.response["ok"] is False
-        assert e.response["error"]
-        raise e
+    if content:
+        serialized = json.dumps(content, ensure_ascii=False, indent=2)
+        for offset in range(0, len(serialized), 3000):
+            chunk = serialized[offset : offset + 3000]
+            message_slack_raw(
+                chunk,
+                **thread_arguments,
+                blocks=[
+                    {"type": "section", "text": {"type": "plain_text", "text": chunk}}
+                ],
+            )
+    if target_kind in {"machine", "image"}:
+        for path in sorted(root.glob(f"{machine_id}*")):
+            if not re.fullmatch(
+                rf"{machine_id}(_coin_\d+)?\.(jpg|jpeg|png)", path.name
+            ):
+                continue
+            image_id = path.stem.removeprefix(machine_id).lstrip("_") or "machine"
+            if target_kind == "image" and target_id != image_id:
+                continue
+            message_slack_raw(
+                path.name,
+                **thread_arguments,
+                blocks=[
+                    {
+                        "type": "image",
+                        "image_url": f"{IMG_PORT}{path.name}",
+                        "alt_text": path.name,
+                    }
+                ],
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -412,13 +495,4 @@ def message_slack_pending_change(
         },
     ]
 
-    try:
-        CLIENT.chat_postMessage(
-            channel="#pennyme_approvals",
-            text=plain_text,
-            username="PennyMe",
-            blocks=blocks,
-        )
-    except SlackApiError as e:
-        logger.error(f"Error sending pending change message to Slack: {e}")
-        raise e
+    message_slack_raw(plain_text, channel="#pennyme_approvals", blocks=blocks)
