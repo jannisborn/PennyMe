@@ -795,9 +795,10 @@ def run_location_differ():
     Run the location differ script to fetch latest updates from website.
     """
     with setup_locdiffer_logger():
-        old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
-        new_json_file = "/root/PennyMe/new_data/server_locations.json"
-        new_problems_json_file = "/root/PennyMe/new_data/problems.json"
+        new_data_path = "/root/PennyMe/new_data"
+        old_json_file = os.path.join(new_data_path, "old_server_locations.json")
+        new_json_file = os.path.join(new_data_path, "server_locations.json")
+        new_problems_json_file = os.path.join(new_data_path, "problems.json")
         debug_path = "/root/PennyMe/debug_new_data"
 
         # Make sure all preceding jobs are finished
@@ -807,7 +808,7 @@ def run_location_differ():
         dump_machines_to_file(old_json_file)
 
         location_differ(
-            output_folder="/root/PennyMe/new_data",
+            output_folder=new_data_path,
             device_json="/root/PennyMe/data/all_locations.json",
             server_json=old_json_file,
             api_key=os.getenv("GCLOUD_KEY"),
@@ -829,6 +830,7 @@ def run_location_differ():
             updated=upsert_summary["updated"],
             merged_into_pending=upsert_summary["merged_into_pending"],
         )
+        os.remove(os.path.join(new_data_path, "running.tmp"))
 
         # Move debug files for inspection (keep them out of the working dir)
         os.rename(
