@@ -899,12 +899,3 @@ def upsert_machines_from_file(
         session.close()
 
     return summary
-
-
-if __name__ == "__main__":
-    new_json_file = "/root/PennyMe/new_data/server_locations.json"
-    upsert_machines_from_file(
-        new_json_file,
-        track_in_pending_changes=True,
-        track_submitted_by="location_differ",
-    )
