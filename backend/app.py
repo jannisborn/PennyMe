@@ -26,6 +26,7 @@ from pennyme.database import (
     insert_pending_change_full,
     upsert_machines_from_file,
 )
+from pennyme.database_utils import filter_changed_features
 from pennyme.github_update import wait
 from pennyme.locations import COUNTRIES
 from pennyme.moderation import (
@@ -38,6 +39,7 @@ from pennyme.moderation import (
 from pennyme.slack import (
     image_slack,
     message_slack,
+    message_slack_location_differ_summary,
     message_slack_pending_change,
     message_slack_raw,
     process_uploaded_image,
@@ -803,11 +805,20 @@ def run_location_differ():
             load_from_github=True,
         )
 
+        # Restrict to machines location_differ actually touched, so unrelated
+        # unchanged entries in the full crawl output can't trigger false positives.
+        changed_data = filter_changed_features(old_json_file, new_json_file)
+
         # Reload the merged output back into the database
-        upsert_machines_from_file(
-            new_json_file,
+        upsert_summary = upsert_machines_from_file(
+            changed_data,
             track_in_pending_changes=True,
             track_submitted_by="location_differ",
+        )
+        message_slack_location_differ_summary(
+            created=upsert_summary["created"],
+            updated=upsert_summary["updated"],
+            merged_into_pending=upsert_summary["merged_into_pending"],
         )
 
         # Move debug files for inspection (keep them out of the working dir)

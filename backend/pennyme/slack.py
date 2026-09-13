@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from threading import Thread
-from typing import Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import cv2
 import numpy as np
@@ -376,4 +376,66 @@ def message_slack_pending_change(
         )
     except SlackApiError as e:
         logger.error(f"Error sending pending change message to Slack: {e}")
+        raise e
+
+
+def message_slack_location_differ_summary(
+    created: List[Tuple[int, str]],
+    updated: List[Tuple[int, str]],
+    merged_into_pending: List[Tuple[int, str]],
+) -> None:
+    """Post a summary of a location_differ run to Slack, with details threaded.
+
+    Unlike `message_slack_pending_change`, location_differ changes are
+    already applied directly (no Approve/Reject buttons needed), so this
+    posts one top-level message with the run stats, then every
+    change_summary as a threaded reply instead of flooding the channel.
+
+    Args:
+        created: (machine_id, change_summary) for each newly inserted machine.
+        updated: (machine_id, change_summary) for each machine updated directly.
+        merged_into_pending: (machine_id, change_summary) for each machine
+            whose sync was merged into an already-open pending change instead
+            of being applied directly (see `upsert_machines_from_file`).
+
+    Raises:
+        SlackApiError: If the Slack API call fails.
+    """
+    if not (created or updated or merged_into_pending):
+        message_slack_raw(":robot_face: location_differ run complete: no changes found")
+        return
+
+    stats = (
+        f"{len(created)} new machine{'s' if len(created) != 1 else ''}, "
+        f"{len(updated)} changed machine{'s' if len(updated) != 1 else ''}"
+    )
+    if merged_into_pending:
+        stats += f", {len(merged_into_pending)} merged into an existing pending review"
+
+    try:
+        response = CLIENT.chat_postMessage(
+            channel="#pennyme_approvals",
+            text=f":robot_face: location_differ run complete: {stats}",
+            username="PennyMe",
+        )
+    except SlackApiError as e:
+        logger.error(f"Error sending location_differ summary to Slack: {e}")
+        raise e
+
+    lines = [f"machine {machine_id}: {summary}" for machine_id, summary in created]
+    lines += [f"machine {machine_id}: {summary}" for machine_id, summary in updated]
+    lines += [
+        f"machine {machine_id}: awaiting review (merged into open pending change) - {summary}"
+        for machine_id, summary in merged_into_pending
+    ]
+
+    try:
+        CLIENT.chat_postMessage(
+            channel="#pennyme_approvals",
+            text="\n".join(lines),
+            username="PennyMe",
+            thread_ts=response["ts"],
+        )
+    except SlackApiError as e:
+        logger.error(f"Error sending location_differ detail thread to Slack: {e}")
         raise e
