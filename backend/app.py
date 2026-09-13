@@ -36,10 +36,12 @@ from pennyme.moderation import (
     validate_report,
 )
 from pennyme.slack import (
+    format_machine_fields,
     image_slack,
     message_slack,
     message_slack_pending_change,
     message_slack_raw,
+    message_slack_report,
     process_uploaded_image,
     start_socket_mode_handler,
 )
@@ -327,7 +329,9 @@ def report_content() -> Tuple[Response, int]:
     )
     slack_notified = False
     try:
-        message_slack_raw(alert_text)
+        message_slack_report(
+            alert_text, machine_id, target_kind, target_id, PATH_IMAGES
+        )
         slack_notified = True
     except Exception:
         # The durable report was already written; a temporary Slack outage must not
@@ -567,20 +571,21 @@ def create_machine() -> Tuple[Response, int]:
 
     # Insert as pending change (create). The machine is not added to the
     # machines table until a maintainer approves the pending change.
+    machine_fields = {
+        "name": title,
+        "area": area,
+        "address": address,
+        "latitude": location[1],
+        "longitude": location[0],
+        "machine_status": "available",
+        "num_coins": num_coins,
+        "paywall": paywall,
+        "last_updated": last_updated,
+    }
     pending_id = insert_pending_change_full(
         machine_id=None,
         change_type="create",
-        machine_fields={
-            "name": title,
-            "area": area,
-            "address": address,
-            "latitude": location[1],
-            "longitude": location[0],
-            "machine_status": "available",
-            "num_coins": num_coins,
-            "paywall": paywall,
-            "last_updated": last_updated,
-        },
+        machine_fields=machine_fields,
         submitted_by=anonymous_user_id(),
         change_summary="new machine",
     )
@@ -593,7 +598,9 @@ def create_machine() -> Tuple[Response, int]:
         change_type="create",
         title=title,
         area=area,
-        change_summary=f"Address: {address}",
+        change_summary=format_machine_fields(machine_fields),
+        latitude=location[1],
+        longitude=location[0],
     )
     request_queue.put(
         (
@@ -755,6 +762,8 @@ def change_machine() -> Tuple[Response, int]:
         area=area,
         change_summary=f"at {url}\n{change_summary}",
         machine_id=machine_id,
+        latitude=latitude,
+        longitude=longitude,
     )
 
     # return warning if the address and coordinates do not correspond

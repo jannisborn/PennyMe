@@ -1,7 +1,9 @@
+import json
 import os
+import re
 from pathlib import Path
 from threading import Thread
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 import cv2
 import numpy as np
@@ -14,6 +16,7 @@ from slack_sdk.errors import SlackApiError
 
 from pennyme.database import (
     approve_pending_change,
+    find_machine_in_database,
     get_machine_display_names,
     reject_pending_change,
 )
@@ -31,6 +34,25 @@ MACHINE_NAMES = {
     + f"Status={elem['properties']['machine_status']} at: {elem['properties']['external_url']}"
     for elem in ALL_LOCATIONS["features"]
 }
+
+# Maps pending_changes.id -> (channel, ts) of its Slack image message, so the
+# image can be deleted once the change is approved/rejected. In-memory only:
+# lost on restart, in which case deletion is silently skipped.
+_PENDING_IMAGE_MESSAGES: Dict[int, Tuple[str, str]] = {}
+
+
+def format_machine_fields(fields: Dict[str, Any]) -> str:
+    """Format non-None machine fields as readable 'field_name: value' lines.
+
+    Latitude/longitude are skipped since they are rendered as a Maps link
+    instead (see `message_slack_pending_change`).
+    """
+    lines = []
+    for key, value in fields.items():
+        if value is None or key in ("latitude", "longitude"):
+            continue
+        lines.append(f"{key}: {value}")
+    return "\n".join(lines)
 
 
 def save_image(
@@ -159,7 +181,7 @@ def image_slack(
     if not filetype:
         filetype = "png" if "coin" in fname_suffix else "jpg"
     try:
-        CLIENT.chat_postMessage(
+        response = CLIENT.chat_postMessage(
             channel=channel,
             text=text,
             username="PennyMe",
@@ -176,6 +198,11 @@ def image_slack(
                 }
             ],
         )
+        if pending:
+            _PENDING_IMAGE_MESSAGES[int(machine_id)] = (
+                response["channel"],
+                response["ts"],
+            )
     except SlackApiError as e:
         print("Error sending message: ", e)
         assert e.response["ok"] is False
@@ -211,26 +238,118 @@ def message_slack(machine_id: str, comment_text: str) -> None:
     message_slack_raw(text)
 
 
-def message_slack_raw(text: str, *args, **kwargs):
-    """
-    Send a message to Slack, unspecific to a machine.
+def message_slack_raw(
+    text: str, channel: str = "#pennyme_uploads", **kwargs: Any
+) -> Dict[str, Any]:
+    """Send a message to Slack and return the API response.
 
     Args:
-        text: The message to send.
+        text: Plain-text fallback text for the Slack message.
+        channel: Slack channel name, ID, or private-channel identifier.
+        **kwargs: Additional arguments accepted by ``chat_postMessage``, such
+            as blocks or a thread timestamp.
+
+    Returns:
+        The response mapping returned by Slack's ``chat.postMessage`` API.
+
+    Raises:
+        SlackApiError: If Slack rejects the message or cannot be reached.
     """
-    try:
-        CLIENT.chat_postMessage(
-            channel="#pennyme_uploads", text=text, username="PennyMe"
+    return CLIENT.chat_postMessage(
+        channel=channel, text=text, username="PennyMe", **kwargs
+    )
+
+
+def message_slack_report(
+    text: str, machine_id: str, target_kind: str, target_id: str, images_path: str
+) -> None:
+    """Post a UGC report and its relevant content to the approvals channel.
+
+    The initial message contains the report alert, including its ``@channel``
+    mention. Related comments and images are posted as replies in the same
+    Slack thread. A comment report includes the comments JSON, an image report
+    includes the selected image, and a machine report includes the listing,
+    all comments, and every machine image.
+
+    Args:
+        text: Report alert text to use for the thread's root message.
+        machine_id: ID of the machine containing the reported content.
+        target_kind: One of ``comment``, ``image``, or ``machine``.
+        target_id: Client-provided identifier for the reported content.
+        images_path: Root directory containing machine images and comments.
+
+    Raises:
+        SlackApiError: If any Slack message cannot be delivered.
+        ValueError: If ``machine_id`` is not an integer.
+    """
+    response = message_slack_raw(text, channel="#pennyme_approvals")
+    thread_channel = "#pennyme_approvals"
+    thread_timestamp = str(response["ts"])
+    thread_arguments: Dict[str, str] = {
+        "channel": thread_channel,
+        "thread_ts": thread_timestamp,
+    }
+    machine_id = str(int(machine_id))
+    root = Path(images_path)
+    content: Dict[str, Any] = {}
+    if target_kind == "machine":
+        content["listing"] = find_machine_in_database(int(machine_id))
+    if target_kind in {"machine", "comment"}:
+        path = root / "comments" / f"{machine_id}.json"
+        comments = json.loads(path.read_text()) if path.exists() else {}
+        content["comments"] = (
+            comments
+            if target_kind == "machine" or target_id == "all"
+            else {target_id: comments.get(target_id, "Comment unavailable")}
         )
-    except SlackApiError as e:
-        assert e.response["ok"] is False
-        assert e.response["error"]
-        raise e
+    if content:
+        serialized = json.dumps(content, ensure_ascii=False, indent=2)
+        for offset in range(0, len(serialized), 3000):
+            chunk = serialized[offset : offset + 3000]
+            message_slack_raw(
+                chunk,
+                **thread_arguments,
+                blocks=[
+                    {"type": "section", "text": {"type": "plain_text", "text": chunk}}
+                ],
+            )
+    if target_kind in {"machine", "image"}:
+        for path in sorted(root.glob(f"{machine_id}*")):
+            if not re.fullmatch(
+                rf"{machine_id}(_coin_\d+)?\.(jpg|jpeg|png)", path.name
+            ):
+                continue
+            image_id = path.stem.removeprefix(machine_id).lstrip("_") or "machine"
+            if target_kind == "image" and target_id != image_id:
+                continue
+            message_slack_raw(
+                path.name,
+                **thread_arguments,
+                blocks=[
+                    {
+                        "type": "image",
+                        "image_url": f"{IMG_PORT}{path.name}",
+                        "alt_text": path.name,
+                    }
+                ],
+            )
 
 
 # ---------------------------------------------------------------------------
 # Slack Socket Mode — interactive button handlers
 # ---------------------------------------------------------------------------
+
+
+def _delete_pending_image_message(change_id: int) -> None:
+    """Delete the Slack image message posted for a pending change, if any."""
+    location = _PENDING_IMAGE_MESSAGES.pop(change_id, None)
+    if location is None:
+        return
+    channel, ts = location
+    try:
+        CLIENT.chat_delete(channel=channel, ts=ts)
+    except SlackApiError as e:
+        logger.error(f"Error deleting image message for pending #{change_id}: {e}")
 
 
 @SLACK_APP.action("approve_change")
@@ -252,6 +371,7 @@ def handle_approve_change(ack, body, respond) -> None:
             )
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+    _delete_pending_image_message(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -271,6 +391,7 @@ def handle_reject_change(ack, body, respond) -> None:
             result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+    _delete_pending_image_message(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -304,6 +425,8 @@ def message_slack_pending_change(
     area: str,
     change_summary: str,
     machine_id: Optional[int] = None,
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
 ) -> None:
     """Post a pending change notification to Slack with Approve/Reject buttons.
 
@@ -314,6 +437,8 @@ def message_slack_pending_change(
         area: Machine area/country.
         change_summary: Human-readable description of what changed.
         machine_id: Existing machine ID for updates, None for new machines.
+        latitude: Machine latitude, to render a Google Maps link. Defaults to None.
+        longitude: Machine longitude, to render a Google Maps link. Defaults to None.
 
     Raises:
         SlackApiError: If the Slack API call fails.
@@ -326,6 +451,9 @@ def message_slack_pending_change(
         )
 
     summary_text = change_summary.strip() or "(no summary)"
+    if latitude is not None and longitude is not None:
+        maps_url = f"https://www.google.com/maps?q={latitude},{longitude}"
+        summary_text += f"\n<{maps_url}|View on Google Maps>"
     plain_text = f"{header}\n*{title}* ({area})\n{summary_text}"
 
     blocks = [
@@ -367,13 +495,4 @@ def message_slack_pending_change(
         },
     ]
 
-    try:
-        CLIENT.chat_postMessage(
-            channel="#pennyme_approvals",
-            text=plain_text,
-            username="PennyMe",
-            blocks=blocks,
-        )
-    except SlackApiError as e:
-        logger.error(f"Error sending pending change message to Slack: {e}")
-        raise e
+    message_slack_raw(plain_text, channel="#pennyme_approvals", blocks=blocks)
