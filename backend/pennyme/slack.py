@@ -498,9 +498,9 @@ def message_slack_pending_change(
 
 
 def message_slack_location_differ_summary(
-    created: List[Tuple[int, str]],
-    updated: List[Tuple[int, str]],
-    merged_into_pending: List[Tuple[int, str]],
+    created: List[Tuple[int, str, str, str]],
+    updated: List[Tuple[int, str, str, str]],
+    merged_into_pending: List[Tuple[int, str, str, str]],
 ) -> None:
     """Post a summary of a location_differ run to Slack, with details threaded.
 
@@ -510,11 +510,14 @@ def message_slack_location_differ_summary(
     change_summary as a threaded reply instead of flooding the channel.
 
     Args:
-        created: (machine_id, change_summary) for each newly inserted machine.
-        updated: (machine_id, change_summary) for each machine updated directly.
-        merged_into_pending: (machine_id, change_summary) for each machine
-            whose sync was merged into an already-open pending change instead
-            of being applied directly (see `upsert_machines_from_file`).
+        created: (machine_id, name, area, change_summary) for each newly
+            inserted machine.
+        updated: (machine_id, name, area, change_summary) for each machine
+            updated directly.
+        merged_into_pending: (machine_id, name, area, change_summary) for
+            each machine whose sync was merged into an already-open pending
+            change instead of being applied directly (see
+            `upsert_machines_from_file`).
 
     Raises:
         SlackApiError: If the Slack API call fails.
@@ -540,11 +543,17 @@ def message_slack_location_differ_summary(
         logger.error(f"Error sending location_differ summary to Slack: {e}")
         raise e
 
-    lines = [f"machine {machine_id}: {summary}" for machine_id, summary in created]
-    lines += [f"machine {machine_id}: {summary}" for machine_id, summary in updated]
+    lines = [
+        f"machine {machine_id} ({name}, {area}): {summary}"
+        for machine_id, name, area, summary in created
+    ]
     lines += [
-        f"machine {machine_id}: awaiting review (merged into open pending change) - {summary}"
-        for machine_id, summary in merged_into_pending
+        f"machine {machine_id} ({name}, {area}): {summary}"
+        for machine_id, name, area, summary in updated
+    ]
+    lines += [
+        f"machine {machine_id} ({name}, {area}): awaiting review (merged into open pending change) - {summary}"
+        for machine_id, name, area, summary in merged_into_pending
     ]
 
     try:

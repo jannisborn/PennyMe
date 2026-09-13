@@ -799,6 +799,7 @@ def run_location_differ():
         old_json_file = os.path.join(new_data_path, "old_server_locations.json")
         new_json_file = os.path.join(new_data_path, "server_locations.json")
         new_problems_json_file = os.path.join(new_data_path, "problems.json")
+        changed_file = os.path.join(new_data_path, "changed.json")
         debug_path = "/root/PennyMe/debug_new_data"
 
         # Make sure all preceding jobs are finished
@@ -818,10 +819,12 @@ def run_location_differ():
         # Restrict to machines location_differ actually touched, so unrelated
         # unchanged entries in the full crawl output can't trigger false positives.
         changed_data = filter_changed_features(old_json_file, new_json_file)
+        with open(changed_file, "w", encoding="utf-8") as f:
+            json.dump(changed_data, f)
 
         # Reload the merged output back into the database
         upsert_summary = upsert_machines_from_file(
-            changed_data,
+            changed_file,
             track_in_pending_changes=True,
             track_submitted_by="location_differ",
         )

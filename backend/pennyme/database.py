@@ -681,7 +681,7 @@ def upsert_machines_from_file(
     path: str,
     track_in_pending_changes: bool = False,
     track_submitted_by: Optional[str] = None,
-) -> Dict[str, List[Tuple[int, str]]]:
+) -> Dict[str, List[Tuple[int, str, str, str]]]:
     """Upsert every machine in a GeoJSON FeatureCollection file into the DB.
 
     A machine absent from the machines table may not be new — it can be an
@@ -702,7 +702,7 @@ def upsert_machines_from_file(
 
     Returns:
         A dict with keys ``"created"``, ``"updated"``, and
-        ``"merged_into_pending"``, each a list of ``(machine_id,
+        ``"merged_into_pending"``, each a list of ``(machine_id, name, area,
         change_summary)`` tuples for every machine actually touched — for
         posting a location_differ run summary (see
         `message_slack_location_differ_summary` in slack.py).
@@ -720,7 +720,7 @@ def upsert_machines_from_file(
     if not features:
         raise ValueError(f"No features found in {path}")
 
-    summary: Dict[str, List[Tuple[int, str]]] = {
+    summary: Dict[str, List[Tuple[int, str, str, str]]] = {
         "created": [],
         "updated": [],
         "merged_into_pending": [],
@@ -835,7 +835,14 @@ def upsert_machines_from_file(
                         change_summary=change_summary,
                         status="open",
                     )
-                    summary["merged_into_pending"].append((machine_id, change_summary))
+                    summary["merged_into_pending"].append(
+                        (
+                            machine_id,
+                            machine_fields["name"],
+                            machine_fields["area"],
+                            change_summary,
+                        )
+                    )
                     if track_in_pending_changes:
                         tracked_count += 1
                 else:
@@ -856,7 +863,14 @@ def upsert_machines_from_file(
                     if "latitude" in changed_fields:
                         existing.geom = from_shape(Point(lng, lat), srid=4326)
 
-                    summary["updated"].append((machine_id, change_summary))
+                    summary["updated"].append(
+                        (
+                            machine_id,
+                            machine_fields["name"],
+                            machine_fields["area"],
+                            change_summary,
+                        )
+                    )
 
                     if track_in_pending_changes:
                         insert_pending_change_full(
@@ -876,7 +890,14 @@ def upsert_machines_from_file(
                 )
                 machine = Machine.from_dict(machine_id, machine_fields)
                 session.add(machine)
-                summary["created"].append((machine_id, "new machine"))
+                summary["created"].append(
+                    (
+                        machine_id,
+                        machine_fields["name"],
+                        machine_fields["area"],
+                        "new machine",
+                    )
+                )
 
                 if track_in_pending_changes:
                     insert_pending_change_full(
