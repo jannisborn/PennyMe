@@ -13,6 +13,7 @@ this table instead of hardcoding the field name in each place.
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Dict, Optional, Tuple
@@ -92,6 +93,59 @@ def _geojson_feature_to_machine_fields(feature: dict) -> Dict[str, Any]:
     fields["external_url"] = _normalise_url(props.get("external_url"))
     fields["internal_url"] = _normalise_url(props.get("internal_url"))
     return fields
+
+
+def filter_changed_features(old_path: str, new_path: str) -> Dict[str, Any]:
+    """Return new_path's FeatureCollection restricted to new-or-changed machines.
+
+    Compares each new_path feature (by machine ID) against its counterpart in
+    old_path using the same normalised field comparison `upsert_machines_from_file`
+    (database.py) uses, so unchanged machines - the vast majority of a
+    location_differ run - are dropped before the DB diff even sees them,
+    avoiding false-positive updates from unrelated re-crawled entries.
+
+    Args:
+        old_path: Path to the "before" GeoJSON FeatureCollection file.
+        new_path: Path to the "after" GeoJSON FeatureCollection file.
+
+    Returns:
+        A GeoJSON FeatureCollection dict containing only the new/changed features.
+
+    Raises:
+        OSError: On any file I/O error.
+    """
+    with open(old_path, "r", encoding="utf-8") as f:
+        old_data = json.load(f)
+    with open(new_path, "r", encoding="utf-8") as f:
+        new_data = json.load(f)
+
+    old_fields_by_id = {
+        feature["properties"]["id"]: _geojson_feature_to_machine_fields(feature)
+        for feature in old_data.get("features", [])
+    }
+
+    changed_features = []
+    for feature in new_data.get("features", []):
+        old_fields = old_fields_by_id.get(feature["properties"]["id"])
+        if old_fields is None:
+            changed_features.append(feature)
+            continue
+
+        new_fields = _geojson_feature_to_machine_fields(feature)
+        differs = (
+            any(
+                f.differs(old_fields[f.name], new_fields[f.name])
+                for f in MACHINE_FIELDS
+            )
+            or old_fields["latitude"] != new_fields["latitude"]
+            or old_fields["longitude"] != new_fields["longitude"]
+            or old_fields["external_url"] != new_fields["external_url"]
+            or old_fields["internal_url"] != new_fields["internal_url"]
+        )
+        if differs:
+            changed_features.append(feature)
+
+    return {"type": "FeatureCollection", "features": changed_features}
 
 
 def _rename_pending_change_image(
