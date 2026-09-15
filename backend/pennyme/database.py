@@ -679,26 +679,28 @@ def dump_machines_to_file(path: str) -> None:
 
 def upsert_machines_from_file(
     path: str,
-    track_in_pending_changes: bool = False,
+    track_in_pending_changes: bool = True,
     track_submitted_by: Optional[str] = None,
 ) -> Dict[str, List[Tuple[int, str, str, str]]]:
     """Upsert every machine in a GeoJSON FeatureCollection file into the DB.
 
-    A machine absent from the machines table may not be new — it can be an
-    unchanged-until-now machine that only lives in all_locations.json — so it
-    is looked up there (see `find_machine_in_database`) and diffed against
-    that baseline first, to keep its existing ID instead of inserting it as a
-    brand-new machine. New rows (genuinely absent from both) are inserted
-    directly. For an existing row (whether already in the machines table or
-    seeded from all_locations.json) that actually differs, if it has no open
-    pending change, it is overwritten directly and (when
-    ``track_in_pending_changes`` is true) logged as an already approved audit
-    entry containing only the fields that changed (diff semantics, matching
-    `change_machine` in app.py). If it *does* have an open pending change,
-    the diff is merged into that pending change instead of touching the live
-    row, so a concurrent user edit and this sync are both preserved once the
-    change is reviewed. Rows that are unchanged are left untouched. Only the
-    location_differ output should call this.
+    Insert changes found in the location-differ into the database. Both the
+    `machines` table and the `pending_changes` table are updated, treating
+    the location-differ changes as a pending change that is immediatly approved.
+    Three cases: (1) new rows (not in machines table yet) are inserted directly.
+    (2) changes are submitted as pending changes that are immediately approved.
+    (3) If there is already an open pending change about this machine, the diff
+    is merged into that pending change.
+
+    Args:
+        path: Path to a GeoJSON FeatureCollection file to upsert from.
+        track_in_pending_changes: If True, also record every created/updated
+            machine as a row in pending_changes with status ``"approved"``
+            (i.e. it's tracked there purely as an audit log, not because it's
+            actually awaiting review — it's already applied to `machines` by
+            the time the row is inserted).
+        track_submitted_by: Value to store as `submitted_by` on any
+            pending_changes rows created as a result of this call.
 
     Returns:
         A dict with keys ``"created"``, ``"updated"``, and
