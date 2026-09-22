@@ -9,8 +9,8 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional
-from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple
+from datetime import date, datetime, timedelta
 
 import pandas as pd
 import geopandas as gpd
@@ -691,18 +691,35 @@ def dump_machines_to_file(path: str) -> None:
 
 def upsert_machines_from_file(
     path: str,
-    track_in_pending_changes: bool = False,
+    track_in_pending_changes: bool = True,
     track_submitted_by: Optional[str] = None,
-) -> None:
+) -> Dict[str, List[Tuple[int, str, str, str]]]:
     """Upsert every machine in a GeoJSON FeatureCollection file into the DB.
 
-    New rows are inserted directly. For an existing row, if it has no open
-    pending change, it is overwritten directly and (when
-    ``track_in_pending_changes`` is true) logged as an already approved audit
-    entry. If it *does* have an open pending change, the sync is merged into
-    that pending change instead of touching the live row, so a concurrent
-    user edit and this sync are both preserved once the change is reviewed.
-    Only the location_differ output should call this.
+    Insert changes found in the location-differ into the database. Both the
+    `machines` table and the `pending_changes` table are updated, treating
+    the location-differ changes as a pending change that is immediatly approved.
+    Three cases: (1) new rows (not in machines table yet) are inserted directly.
+    (2) changes are submitted as pending changes that are immediately approved.
+    (3) If there is already an open pending change about this machine, the diff
+    is merged into that pending change.
+
+    Args:
+        path: Path to a GeoJSON FeatureCollection file to upsert from.
+        track_in_pending_changes: If True, also record every created/updated
+            machine as a row in pending_changes with status ``"approved"``
+            (i.e. it's tracked there purely as an audit log, not because it's
+            actually awaiting review — it's already applied to `machines` by
+            the time the row is inserted).
+        track_submitted_by: Value to store as `submitted_by` on any
+            pending_changes rows created as a result of this call.
+
+    Returns:
+        A dict with keys ``"created"``, ``"updated"``, and
+        ``"merged_into_pending"``, each a list of ``(machine_id, name, area,
+        change_summary)`` tuples for every machine actually touched — for
+        posting a location_differ run summary (see
+        `message_slack_location_differ_summary` in slack.py).
 
     Raises:
         ValueError: If the file contains no features.
@@ -717,6 +734,12 @@ def upsert_machines_from_file(
     if not features:
         raise ValueError(f"No features found in {path}")
 
+    summary: Dict[str, List[Tuple[int, str, str, str]]] = {
+        "created": [],
+        "updated": [],
+        "merged_into_pending": [],
+    }
+
     session = get_session()
     try:
         tracked_count = 0
@@ -725,58 +748,170 @@ def upsert_machines_from_file(
             machine_id = feature["properties"]["id"]
             machine_fields = _geojson_feature_to_machine_fields(feature)
 
-            # Try to find existing machine
+            # Try to find existing machine; if it's not in the machines table
+            # yet, it may already be known via all_locations.json — reuse that
+            # baseline (and ID) instead of treating it as a brand-new machine.
             existing = session.query(Machine).filter(Machine.id == machine_id).first()
+            seeded_from_all_locations = False
+            if existing is None:
+                base_feature = find_machine_in_database(machine_id)
+                if base_feature is not None:
+                    base_fields = _geojson_feature_to_machine_fields(base_feature)
+                    existing = Machine.from_dict(machine_id, base_fields)
+                    seeded_from_all_locations = True
 
-            if existing:
-                existing_point = to_shape(existing.geom)
-                has_changed = (
-                    any(
-                        f.differs(getattr(existing, f.name), machine_fields[f.name])
-                        for f in MACHINE_FIELDS
+            if existing is not None:
+                # location_differ dumps the DB, crawls for ~2h, then upserts here;
+                # a machine approved/edited during that window is newer than the
+                # crawl and must not be clobbered by this stale diff. Will be picked
+                # up again in the next crawl if it was an actual change. Only
+                # applies to rows already in the machines table.
+                if (
+                    not seeded_from_all_locations
+                    and existing.last_updated is not None
+                    and existing.last_updated >= date.today() - timedelta(days=1)
+                ):
+                    print(
+                        f"[upsert] machine {machine_id}: DB entry last updated "
+                        f"{existing.last_updated} (recently), skipping to avoid "
+                        "overwriting a concurrent edit"
                     )
-                    or existing_point.x != machine_fields["longitude"]
+                    continue
+
+                existing_point = to_shape(existing.geom)
+                # Only the fields that actually differ are recorded (diff
+                # semantics), matching `change_machine` in app.py. last_updated
+                # is excluded here and re-stamped to today below instead of
+                # trusting whatever (possibly stale) date is in the file.
+                changed_fields: Dict[str, Any] = {}
+                change_lines: List[str] = []
+                for f in MACHINE_FIELDS:
+                    if f.name == "last_updated":
+                        continue
+                    old_value = getattr(existing, f.name)
+                    new_value = machine_fields[f.name]
+                    if f.differs(old_value, new_value):
+                        changed_fields[f.name] = new_value
+                        change_lines.append(
+                            f"{f.name} from: {old_value} to: {new_value}"
+                        )
+
+                if (
+                    existing_point.x != machine_fields["longitude"]
                     or existing_point.y != machine_fields["latitude"]
-                    or existing.external_url != machine_fields["external_url"]
-                    or existing.internal_url != machine_fields["internal_url"]
-                )
+                ):
+                    changed_fields["latitude"] = machine_fields["latitude"]
+                    changed_fields["longitude"] = machine_fields["longitude"]
+                    change_lines.append(
+                        f"location from: {existing_point.y:.5f},{existing_point.x:.5f} "
+                        f"to: {machine_fields['latitude']:.5f},{machine_fields['longitude']:.5f}"
+                    )
+                # DB rows may store an actual NULL where the file always has
+                # the normalised "null" string, so normalise both before comparing.
+                old_external_url = _normalise_url(existing.external_url)
+                if old_external_url != machine_fields["external_url"]:
+                    changed_fields["external_url"] = machine_fields["external_url"]
+                    change_lines.append(
+                        f"external_url from: {old_external_url} to: {machine_fields['external_url']}"
+                    )
+                old_internal_url = _normalise_url(existing.internal_url)
+                if old_internal_url != machine_fields["internal_url"]:
+                    changed_fields["internal_url"] = machine_fields["internal_url"]
+                    change_lines.append(
+                        f"internal_url from: {old_internal_url} to: {machine_fields['internal_url']}"
+                    )
+
+                if not changed_fields:
+                    # Unchanged, whether already in the machines table or only
+                    # in all_locations.json; nothing to sync.
+                    print(f"[upsert] machine {machine_id}: nothing changed, skipping")
+                    continue
+
+                # Match change_machine's behaviour: last_updated reflects when
+                # the change was made, not whatever date the file has.
+                changed_fields["last_updated"] = str(datetime.today()).split(" ")[0]
+                change_summary = "; ".join(change_lines)
 
                 # Update existing
-                if has_changed and has_open_pending_change(machine_id):
+                if has_open_pending_change(machine_id):
                     # A user edit is already awaiting review for this machine;
                     # merge the sync into it instead of overwriting the live
                     # row, so neither change is lost once it's approved.
+                    print(
+                        f"[upsert] machine {machine_id}: has open pending change, "
+                        f"merging diff as new open pending change: {changed_fields}"
+                    )
                     insert_pending_change_full(
                         machine_id=machine_id,
                         change_type="update",
-                        machine_fields=machine_fields,
+                        machine_fields=changed_fields,
                         submitted_by=track_submitted_by,
-                        change_summary="location_differ sync",
+                        change_summary=change_summary,
                         status="open",
+                    )
+                    summary["merged_into_pending"].append(
+                        (
+                            machine_id,
+                            machine_fields["name"],
+                            machine_fields["area"],
+                            change_summary,
+                        )
                     )
                     if track_in_pending_changes:
                         tracked_count += 1
                 else:
-                    for f in MACHINE_FIELDS:
-                        setattr(existing, f.name, machine_fields[f.name])
-                    existing.geom = from_shape(Point(lng, lat), srid=4326)
-                    existing.external_url = machine_fields["external_url"]
-                    existing.internal_url = machine_fields["internal_url"]
+                    if seeded_from_all_locations:
+                        print(
+                            f"[upsert] machine {machine_id}: only in all_locations.json, "
+                            f"adding to machines table with same ID: {changed_fields}"
+                        )
+                        session.add(existing)
+                    else:
+                        print(
+                            f"[upsert] machine {machine_id}: updating directly: {changed_fields}"
+                        )
+                    for field, value in changed_fields.items():
+                        if field in ("latitude", "longitude"):
+                            continue
+                        setattr(existing, field, value)
+                    if "latitude" in changed_fields:
+                        existing.geom = from_shape(Point(lng, lat), srid=4326)
 
-                    if track_in_pending_changes and has_changed:
+                    summary["updated"].append(
+                        (
+                            machine_id,
+                            machine_fields["name"],
+                            machine_fields["area"],
+                            change_summary,
+                        )
+                    )
+
+                    if track_in_pending_changes:
                         insert_pending_change_full(
                             machine_id=machine_id,
                             change_type="update",
-                            machine_fields=machine_fields,
+                            machine_fields=changed_fields,
                             submitted_by=track_submitted_by,
-                            change_summary="location_differ sync",
+                            change_summary=change_summary,
                             status="approved",
                         )
                         tracked_count += 1
             else:
                 # Insert new
+                print(
+                    f"[upsert] machine {machine_id}: not found in DB or "
+                    "all_locations.json, inserting as new"
+                )
                 machine = Machine.from_dict(machine_id, machine_fields)
                 session.add(machine)
+                summary["created"].append(
+                    (
+                        machine_id,
+                        machine_fields["name"],
+                        machine_fields["area"],
+                        "new machine",
+                    )
+                )
 
                 if track_in_pending_changes:
                     insert_pending_change_full(
@@ -784,7 +919,7 @@ def upsert_machines_from_file(
                         change_type="create",
                         machine_fields=machine_fields,
                         submitted_by=track_submitted_by,
-                        change_summary="location_differ sync",
+                        change_summary="new machine",
                         status="approved",
                     )
                     tracked_count += 1
@@ -797,3 +932,5 @@ def upsert_machines_from_file(
             )
     finally:
         session.close()
+
+    return summary

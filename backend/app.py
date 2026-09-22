@@ -26,6 +26,7 @@ from pennyme.database import (
     insert_pending_change_full,
     upsert_machines_from_file,
 )
+from pennyme.database_utils import filter_changed_features
 from pennyme.github_update import wait
 from pennyme.locations import COUNTRIES
 from pennyme.moderation import (
@@ -36,10 +37,13 @@ from pennyme.moderation import (
     validate_report,
 )
 from pennyme.slack import (
+    format_machine_fields,
     image_slack,
     message_slack,
+    message_slack_location_differ_summary,
     message_slack_pending_change,
     message_slack_raw,
+    message_slack_report,
     process_uploaded_image,
     start_socket_mode_handler,
 )
@@ -338,7 +342,9 @@ def report_content() -> Tuple[Response, int]:
     )
     slack_notified = False
     try:
-        message_slack_raw(alert_text)
+        message_slack_report(
+            alert_text, machine_id, target_kind, target_id, PATH_IMAGES
+        )
         slack_notified = True
     except Exception:
         # The durable report was already written; a temporary Slack outage must not
@@ -578,20 +584,21 @@ def create_machine() -> Tuple[Response, int]:
 
     # Insert as pending change (create). The machine is not added to the
     # machines table until a maintainer approves the pending change.
+    machine_fields = {
+        "name": title,
+        "area": area,
+        "address": address,
+        "latitude": location[1],
+        "longitude": location[0],
+        "machine_status": "available",
+        "num_coins": num_coins,
+        "paywall": paywall,
+        "last_updated": last_updated,
+    }
     pending_id = insert_pending_change_full(
         machine_id=None,
         change_type="create",
-        machine_fields={
-            "name": title,
-            "area": area,
-            "address": address,
-            "latitude": location[1],
-            "longitude": location[0],
-            "machine_status": "available",
-            "num_coins": num_coins,
-            "paywall": paywall,
-            "last_updated": last_updated,
-        },
+        machine_fields=machine_fields,
         submitted_by=anonymous_user_id(),
         change_summary="new machine",
     )
@@ -604,7 +611,9 @@ def create_machine() -> Tuple[Response, int]:
         change_type="create",
         title=title,
         area=area,
-        change_summary=f"Address: {address}",
+        change_summary=format_machine_fields(machine_fields),
+        latitude=location[1],
+        longitude=location[0],
     )
     request_queue.put(
         (
@@ -766,6 +775,8 @@ def change_machine() -> Tuple[Response, int]:
         area=area,
         change_summary=f"at {url}\n{change_summary}",
         machine_id=machine_id,
+        latitude=latitude,
+        longitude=longitude,
     )
 
     # return warning if the address and coordinates do not correspond
@@ -795,9 +806,11 @@ def run_location_differ():
     Run the location differ script to fetch latest updates from website.
     """
     with setup_locdiffer_logger():
-        old_json_file = "/root/PennyMe/new_data/old_server_locations.json"
-        new_json_file = "/root/PennyMe/new_data/server_locations.json"
-        new_problems_json_file = "/root/PennyMe/new_data/problems.json"
+        new_data_path = "/root/PennyMe/new_data"
+        old_json_file = os.path.join(new_data_path, "old_server_locations.json")
+        new_json_file = os.path.join(new_data_path, "server_locations.json")
+        new_problems_json_file = os.path.join(new_data_path, "problems.json")
+        changed_file = os.path.join(new_data_path, "changed.json")
         debug_path = "/root/PennyMe/debug_new_data"
 
         # Make sure all preceding jobs are finished
@@ -807,19 +820,36 @@ def run_location_differ():
         dump_machines_to_file(old_json_file)
 
         location_differ(
-            output_folder="/root/PennyMe/new_data",
+            output_folder=new_data_path,
             device_json="/root/PennyMe/data/all_locations.json",
             server_json=old_json_file,
             api_key=os.getenv("GCLOUD_KEY"),
             load_from_github=True,
         )
 
-        # Reload the merged output back into the database
-        upsert_machines_from_file(
-            new_json_file,
-            track_in_pending_changes=True,
-            track_submitted_by="location_differ",
-        )
+        # Restrict to machines location_differ actually touched, so unrelated
+        # unchanged entries in the full crawl output can't trigger false positives.
+        changed_data = filter_changed_features(old_json_file, new_json_file)
+        with open(changed_file, "w", encoding="utf-8") as f:
+            json.dump(changed_data, f)
+
+        if changed_data.get("features"):
+            # Reload the merged output back into the database
+            upsert_summary = upsert_machines_from_file(
+                changed_file,
+                track_in_pending_changes=True,
+                track_submitted_by="location_differ",
+            )
+            message_slack_location_differ_summary(
+                created=upsert_summary["created"],
+                updated=upsert_summary["updated"],
+                merged_into_pending=upsert_summary["merged_into_pending"],
+            )
+        else:
+            message_slack_location_differ_summary(
+                created=[], updated=[], merged_into_pending=[]
+            )
+        os.remove(os.path.join(new_data_path, "running.tmp"))
 
         # Move debug files for inspection (keep them out of the working dir)
         os.rename(
