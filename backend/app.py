@@ -822,17 +822,22 @@ def run_location_differ():
         with open(changed_file, "w", encoding="utf-8") as f:
             json.dump(changed_data, f)
 
-        # Reload the merged output back into the database
-        upsert_summary = upsert_machines_from_file(
-            changed_file,
-            track_in_pending_changes=True,
-            track_submitted_by="location_differ",
-        )
-        message_slack_location_differ_summary(
-            created=upsert_summary["created"],
-            updated=upsert_summary["updated"],
-            merged_into_pending=upsert_summary["merged_into_pending"],
-        )
+        if changed_data.get("features"):
+            # Reload the merged output back into the database
+            upsert_summary = upsert_machines_from_file(
+                changed_file,
+                track_in_pending_changes=True,
+                track_submitted_by="location_differ",
+            )
+            message_slack_location_differ_summary(
+                created=upsert_summary["created"],
+                updated=upsert_summary["updated"],
+                merged_into_pending=upsert_summary["merged_into_pending"],
+            )
+        else:
+            message_slack_location_differ_summary(
+                created=[], updated=[], merged_into_pending=[]
+            )
         os.remove(os.path.join(new_data_path, "running.tmp"))
 
         # Move debug files for inspection (keep them out of the working dir)
