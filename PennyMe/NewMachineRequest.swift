@@ -259,7 +259,7 @@ struct NewMachineFormView: View {
                 .padding()
         }
         .alert(isPresented: $showAlert) {
-            return Alert(title: Text("Error!"), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
+            return Alert(title: Text("Could not submit"), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
         }
         .padding()
         .navigationBarTitle("Add new machine")
@@ -444,6 +444,56 @@ struct NewMachineFormView: View {
             isLoading = false
         }
     }
+
+    private func imageDataForUpload(_ image: UIImage) -> Data? {
+        let maxDimension: CGFloat = 2048
+        let longestSide = max(image.size.width, image.size.height)
+        guard longestSide > maxDimension else {
+            return image.jpegData(compressionQuality: 0.7)
+        }
+
+        let scale = maxDimension / longestSide
+        let size = CGSize(
+            width: floor(image.size.width * scale),
+            height: floor(image.size.height * scale)
+        )
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let resizedImage = UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            image.draw(in: CGRect(origin: .zero, size: size))
+        }
+        return resizedImage.jpegData(compressionQuality: 0.7)
+    }
+
+    private func networkErrorMessage(_ error: Error) -> String {
+        guard let urlError = error as? URLError else {
+            return "The submission could not be sent. Please try again later."
+        }
+
+        switch urlError.code {
+        case .notConnectedToInternet:
+            return "Your device appears to be offline. Connect to the internet and try again."
+        case .timedOut:
+            return "PennyMe could not confirm whether the submission was received because the request timed out. Please wait before trying again."
+        case .networkConnectionLost:
+            return "PennyMe could not confirm whether the submission was received because the connection was interrupted. Please wait before trying again."
+        default:
+            return "PennyMe could not connect to the server (network error \(urlError.code.rawValue)). Please try again later."
+        }
+    }
+
+    private func serverErrorMessage(statusCode: Int) -> String {
+        switch statusCode {
+        case 413:
+            return "The selected image is too large to upload (error 413). Please choose a smaller image and try again."
+        case 408, 504:
+            return "The PennyMe server timed out while processing the submission. Please try again later."
+        case 500...599:
+            return "The PennyMe server could not process the submission (error \(statusCode)). Please try again later."
+        default:
+            return "The PennyMe server returned an unexpected response (error \(statusCode)). Please try again later."
+        }
+    }
     
     // Function to handle the submission of the request
     private func submitRequest(ignoreNearby: Bool = false) {
@@ -457,9 +507,9 @@ struct NewMachineFormView: View {
         } else {
 
             // upload image and make request
-            if let image = selectedImage! as UIImage ?? nil {
+            if let image = selectedImage {
                 //  Convert the image to a data object
-                guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                guard let imageData = imageDataForUpload(image) else {
                     print("Failed to convert image to data")
                     finishLoading(message: "Something went wrong with your image")
                     return
@@ -496,12 +546,14 @@ struct NewMachineFormView: View {
                 // Create a URLSessionDataTask to send the request
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                     if let error = error {
-                        finishLoading(message: "Something went wrong. Please check your internet connection and try again")
+                        print("New machine submission failed: \(error)")
+                        finishLoading(message: networkErrorMessage(error))
                         return
                     }
                     // Check if a valid HTTP response was received
                     guard let httpResponse = response as? HTTPURLResponse else {
-                        finishLoading(message: "Something went wrong. Please check your internet connection and try again")
+                        print("New machine submission returned no HTTP response")
+                        finishLoading(message: "PennyMe did not receive a valid response from the server. Please try again later.")
                         return
                     }
                     // Extract the status code from the HTTP response
@@ -516,42 +568,35 @@ struct NewMachineFormView: View {
                             isLoading = false
                         }
                     }
-                    else {
-                        if let responseData = data {
-                            do {
-                                // Parse the JSON response
-                                if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-                                    // Handle the JSON data here
-                                    if let answerString = json["error"] as? String {
-                                        if statusCode == 409,
-                                           let duplicateJSON = json["duplicate_machine"] as? [String: Any],
-                                           let duplicateMachine = NearbyMachine(json: duplicateJSON) {
-                                            showDuplicateMachine(machine: duplicateMachine)
-                                            return
-                                        }
-                                        if statusCode == 409,
-                                           let similarJSON = json["similar_machine"] as? [String: Any],
-                                           let similarMachine = NearbyMachine(json: similarJSON) {
-                                            showSimilarMachine(machine: similarMachine)
-                                            return
-                                        }
-                                        if statusCode == 409,
-                                           let nearbyJSON = json["nearby_machines"] as? [[String: Any]] {
-                                            let nearbyMachines = nearbyJSON.compactMap(NearbyMachine.init)
-                                            if !nearbyMachines.isEmpty {
-                                                confirmNearbyMachines(machines: nearbyMachines)
-                                                return
-                                            }
-                                        }
-                                        finishLoading(message: answerString)
-                                        return
-                                    }
-                                }
-                            } catch {
-                                print("JSON parsing error: \(error)")
-                                finishLoading(message: "Something went wrong. Please check your internet connection and try again")
+                    else if let responseData = data,
+                            let jsonObject = try? JSONSerialization.jsonObject(with: responseData),
+                            let json = jsonObject as? [String: Any],
+                            let answerString = json["error"] as? String {
+                        if statusCode == 409,
+                           let duplicateJSON = json["duplicate_machine"] as? [String: Any],
+                           let duplicateMachine = NearbyMachine(json: duplicateJSON) {
+                            showDuplicateMachine(machine: duplicateMachine)
+                            return
+                        }
+                        if statusCode == 409,
+                           let similarJSON = json["similar_machine"] as? [String: Any],
+                           let similarMachine = NearbyMachine(json: similarJSON) {
+                            showSimilarMachine(machine: similarMachine)
+                            return
+                        }
+                        if statusCode == 409,
+                           let nearbyJSON = json["nearby_machines"] as? [[String: Any]] {
+                            let nearbyMachines = nearbyJSON.compactMap(NearbyMachine.init)
+                            if !nearbyMachines.isEmpty {
+                                confirmNearbyMachines(machines: nearbyMachines)
+                                return
                             }
                         }
+                        finishLoading(message: answerString)
+                    } else {
+                        let responseText = data.flatMap { String(data: $0, encoding: .utf8) } ?? "<empty>"
+                        print("New machine submission returned HTTP \(statusCode): \(responseText.prefix(500))")
+                        finishLoading(message: serverErrorMessage(statusCode: statusCode))
                     }
                 }
                 task.resume()
