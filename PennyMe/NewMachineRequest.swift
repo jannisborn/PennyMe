@@ -79,8 +79,12 @@ struct ConfirmationMessageView: View {
     }
 }
 
-@available(iOS 14.0, *)
+@available(iOS 15.0, *)
 struct NewMachineFormView: View {
+    private enum Field: Hashable {
+        case area
+    }
+
     private struct NearbyMachine: Identifiable {
         let machineID: String
         let name: String
@@ -137,6 +141,7 @@ struct NewMachineFormView: View {
     @State private var nearbyMachines: [NearbyMachine] = []
     @State private var nearbyConfirmationPending = false
     @State private var isLoading = false
+    @FocusState private var focusedField: Field?
 
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
@@ -190,11 +195,13 @@ struct NewMachineFormView: View {
             // Area input field
             TextField("Area (Country or US state)", text: $area)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($focusedField, equals: .area)
             if !matchingAreas.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
                     ForEach(matchingAreas.prefix(5), id: \.self) { areaChoice in
                         Button(action: {
                             area = areaChoice
+                            focusedField = nil
                         }) {
                             Text(areaChoice)
                                 .frame(maxWidth: .infinity, alignment: .leading)
