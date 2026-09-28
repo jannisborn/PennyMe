@@ -169,3 +169,58 @@ extension Artwork {
   }
 }
 
+/// Snapshot of the server-derived fields of an `Artwork`, persisted on-disk so a prior
+/// app launch's full server state survives across restarts (see `ViewController`'s
+/// `cachedMachinesURL`/`loadCachedMachines`/`persistCachedMachines`). Excludes the
+/// per-device `status`, which is tracked separately in `pin_status.json`.
+struct CachedArtwork: Codable {
+    let id: Int
+    let title: String
+    let address: String
+    let link: String
+    let lastUpdated: String
+    let multimachine: Int
+    let paywall: Bool
+    let machineStatus: String
+    let area: String
+    let numCoins: Int
+    let latitude: Double
+    let longitude: Double
+}
+
+extension Artwork {
+    var cacheSnapshot: CachedArtwork {
+        CachedArtwork(
+            id: Int(id) ?? 0,
+            title: title ?? "",
+            address: address,
+            link: link,
+            lastUpdated: last_updated,
+            multimachine: multimachine,
+            paywall: paywall,
+            machineStatus: machineStatus,
+            area: area,
+            numCoins: numCoins,
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude
+        )
+    }
+
+    convenience init(cached: CachedArtwork) {
+        self.init(
+            title: cached.title,
+            address: cached.address,
+            link: cached.link,
+            status: "unvisited",
+            coordinate: CLLocationCoordinate2D(latitude: cached.latitude, longitude: cached.longitude),
+            id: cached.id,
+            last_updated: cached.lastUpdated,
+            multimachine: cached.multimachine,
+            paywall: cached.paywall,
+            machineStatus: cached.machineStatus,
+            area: cached.area,
+            numCoins: cached.numCoins
+        )
+    }
+}
+
