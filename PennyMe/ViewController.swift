@@ -210,7 +210,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
     
     @objc func segueNewMachine(sender: UIButton) {
-        if #available(iOS 14.0, *) {
+        if #available(iOS 15.0, *) {
             // center on current location
             if let coordinate = PennyMe.locationManager.location?.coordinate{
                 let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: coordinate))
@@ -219,7 +219,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
     }
 
-    @available(iOS 14.0, *)
+    @available(iOS 15.0, *)
     private func newMachineForm(coordinate: CLLocationCoordinate2D) -> NewMachineFormView {
         NewMachineFormView(
             coordinate: coordinate,
@@ -786,7 +786,7 @@ extension ViewController: MKMapViewDelegate {
         guard let annotation = (sender.view as? MKAnnotationView)?.annotation  else {return}
         // first option: it's a new machine pin - present form
         if let newmachine = annotation as? NewMachine {
-            if #available(iOS 14.0, *) {
+            if #available(iOS 15.0, *) {
                 let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: newmachine.coordinate))
                 present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
                 
