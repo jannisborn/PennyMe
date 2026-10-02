@@ -25344,6 +25344,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "status": "unvisited",
+                "paywall": true,
                 "id": 4870,
                 "last_updated": "2021-04-05"
             }
@@ -139922,28 +139923,6 @@
                 "status": "unvisited",
                 "id": 4002,
                 "last_updated": "2025-01-11"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -120.13869055714984,
-                    34.59413282584666
-                ]
-            },
-            "properties": {
-                "name": "Solvang CA",
-                "area": "California",
-                "address": "1618 Copenhagen Dr Solvang 93463",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": 7705,
-                "last_updated": "2025-01-12",
-                "paywall": true
             }
         },
         {
