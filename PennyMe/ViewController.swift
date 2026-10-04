@@ -46,7 +46,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var isVisible : [String:Bool] = [:]
     var selectedPin: Artwork?
     var isLoadingServerLocations: Bool = false
-    private var hasLoadedCachedMachineSnapshot = false
     private let blockedContributors = BlockedContributorsStore()
     private var listingOwners: [String: String] = [:]
     private var blockedMachineIDs: Set<String> = []
@@ -89,6 +88,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var newMachineAnnotation: [MKAnnotation] = []
 
     // reload configuration
+    private var hasLoadedCachedMachineSnapshot = false
     // reload last_upadted data from server every 4 hours
     private let machineRefreshInterval: TimeInterval = 4 * 60 * 60
     // reload full data from server once a month
@@ -584,10 +584,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
     }
     
-    /// Where the full merged (bundled + all server syncs so far) machine set is cached,
-    /// so a fresh app launch can seed `artworks` from it instead of only the bundled
-    /// snapshot — otherwise a `since`-scoped delta pull would permanently lose any
-    /// server change that isn't in that snapshot and predates the delta window.
+    /// file path to the full merged (bundled + all server syncs so far) machine set is cached
     private var cachedMachinesURL: URL? {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
             .appendingPathComponent("cached_machines.json")
@@ -757,7 +754,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 let features = try MKGeoJSONDecoder()
                     .decode(data)
                     .compactMap { $0 as? MKGeoJSONFeature }
-                print("FEATURES LOADED", features.count)
                 let pins = features.compactMap(Artwork.init)
                 
                 DispatchQueue.main.async {
