@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var isVisible : [String:Bool] = [:]
     var selectedPin: Artwork?
     var isLoadingServerLocations: Bool = false
-    var lastDataLoad: Date?
+    private var hasLoadedCachedMachineSnapshot = false
     private let blockedContributors = BlockedContributorsStore()
     private var listingOwners: [String: String] = [:]
     private var blockedMachineIDs: Set<String> = []
@@ -88,6 +88,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     // new machine annotation
     var newMachineAnnotation: [MKAnnotation] = []
 
+    // reload configuration
+    // reload last_upadted data from server every 4 hours
+    private let machineRefreshInterval: TimeInterval = 4 * 60 * 60
+    // reload full data from server once a month
+    private let fullMachineSyncInterval: TimeInterval = 14 * 24 * 60 * 60
+    private let lastSuccessfulMachineRefreshKey = "lastSuccessfulMachineRefresh"
+    private let lastFullMachineSyncKey = "lastFullMachineSync"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -124,6 +132,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
         // check settings toggles
         updateIncludedStates()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .refresh,
+            target: self,
+            action: #selector(manuallyRefreshServerLocations)
+        )
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "Refresh machine data"
         
         // load data
         loadInitialData()
@@ -353,19 +375,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         loadListingModerationManifestIfNeeded()
         refreshBlockedListingFilter(force: needsListingFilterRefresh)
         needsListingFilterRefresh = false
-
-        //  Check whether reload has to be triggered
-        // only triggered if it's not already running
-        if shouldReloadData() && (!isLoadingServerLocations) {
-            PennyMap.removeAnnotations(artworks)
-            artworks = Artwork.artworks()
-            isVisible = [:]
-            pinIdDict = [:]
-            // Force a full (non-delta) pull as a periodic reconciliation safety net.
-            UserDefaults.standard.removeObject(forKey: lastServerSyncDateKey)
-            loadInitialData()
-            addAnnotationsIteratively()
-        }
+        refreshServerLocationsIfNeeded()
         // each time the view appears, check colours of the pins
         check_json_dict()
         // check whether some setting has changed, if yes, reload all data on the map
@@ -593,6 +603,36 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         return cached.map(Artwork.init(cached:))
     }
 
+    @objc private func applicationDidBecomeActive() {
+        refreshServerLocationsIfNeeded()
+    }
+
+    @objc private func manuallyRefreshServerLocations() {
+        refreshServerLocationsIfNeeded(force: true)
+    }
+
+    private func refreshServerLocationsIfNeeded(force: Bool = false) {
+        guard !isLoadingServerLocations else { return }
+
+        let now = Date()
+        let defaults = UserDefaults.standard
+        let lastRefresh = defaults.object(forKey: lastSuccessfulMachineRefreshKey) as? Date
+        guard force || !hasLoadedCachedMachineSnapshot || (lastRefresh.map {
+            now.timeIntervalSince($0) >= machineRefreshInterval
+        } ?? true) else {
+            return
+        }
+
+        let lastFullSync = defaults.object(forKey: lastFullMachineSyncKey) as? Date
+        let needsFullSync = !hasLoadedCachedMachineSnapshot || (lastFullSync.map {
+            now.timeIntervalSince($0) >= fullMachineSyncInterval
+        } ?? true)
+        if !hasLoadedCachedMachineSnapshot {
+            defaults.removeObject(forKey: lastServerSyncDateKey)
+        }
+        loadServerLocations(forceFull: needsFullSync)
+    }
+
     private func persistCachedMachines() {
         guard let url = cachedMachinesURL,
               let data = try? JSONEncoder().encode(artworks.map { $0.cacheSnapshot }) else {
@@ -604,10 +644,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     // To load machine locations from JSON
     @available(iOS 13.0, *)
     func loadInitialData() {
-        if let cachedArtworks = loadCachedMachines() {
+        let lastFullSync = UserDefaults.standard.object(forKey: lastFullMachineSyncKey) as? Date
+        let cacheIsFreshEnough = lastFullSync.map {
+            Date().timeIntervalSince($0) < fullMachineSyncInterval
+        } ?? false
+
+        if cacheIsFreshEnough, let cachedArtworks = loadCachedMachines() {
             // Cache already reflects the full merged server state from a previous launch.
+            hasLoadedCachedMachineSnapshot = true
             artworks.append(contentsOf: cachedArtworks)
-            print("LEN CACHED", cachedArtworks.count)
             for (ind, pin) in artworks.enumerated() {
                 pinIdDict[pin.id] = ind
             }
@@ -630,8 +675,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             }
         }
         
-        // Load json file from server
-        loadServerLocations()
+        // Keep the cache visible while refreshing only when its age warrants a request.
+        refreshServerLocationsIfNeeded()
     }
     
     /// Key under which the date (yyyy-MM-dd) of the last successful full/delta
@@ -663,15 +708,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         return ViewController.syncDateFormatter.string(from: since)
     }
 
-    func loadServerLocations() {
+    private func loadServerLocations(forceFull: Bool = false) {
         isLoadingServerLocations = true
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
         var urlComponents = URLComponents(string: flaskURL + "machines")
-        if let since = sinceQueryValue() {
+        if !forceFull, let since = sinceQueryValue() {
             urlComponents?.queryItems = [URLQueryItem(name: "since", value: since)]
         }
         guard let url = urlComponents?.url else {
             isLoadingServerLocations = false
+            navigationItem.rightBarButtonItem?.isEnabled = true
             return
         }
         
@@ -689,6 +736,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 print("Network error:", error.localizedDescription)
                 DispatchQueue.main.async {
                     self.isLoadingServerLocations = false
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
                     self.showServerNotLoadedAlert()
                 }
                 return
@@ -699,6 +747,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 print("No data received from server")
                 DispatchQueue.main.async {
                     self.isLoadingServerLocations = false
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
                     self.showServerNotLoadedAlert()
                 }
                 return
@@ -712,13 +761,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 let pins = features.compactMap(Artwork.init)
                 
                 DispatchQueue.main.async {
-                    self.handleLoadedPins(pins)
+                    self.handleLoadedPins(pins, isFullSync: forceFull)
                 }
                 
             } catch {
                 print("Decoding error:", error)
                 DispatchQueue.main.async {
                     self.isLoadingServerLocations = false
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
                 }
             }
         }
@@ -726,26 +776,36 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         task.resume()
     }
     
-    private func handleLoadedPins(_ pinsFromServer: [Artwork]) {
-        
-        // remove all current annotations
-        PennyMap.removeAnnotations(artworks)
-        
-        // update artwork list
-        for pin in pinsFromServer {
-            
-            if let index = pinIdDict[pin.id] {
-                // Case 1: existing pin → overwrite
-                artworks[index] = pin
-            } else {
-                // Case 2: new pin → append
-                artworks.append(pin)
-                pinIdDict[pin.id] = artworks.count - 1
+    private func handleLoadedPins(_ pinsFromServer: [Artwork], isFullSync: Bool) {
+        if isFullSync {
+            // The full server response is authoritative, including removals.
+            PennyMap.removeAnnotations(artworks)
+            artworks = pinsFromServer
+            pinIdDict = [:]
+            isVisible = [:]
+            for (index, pin) in artworks.enumerated() {
+                pinIdDict[pin.id] = index
+            }
+        } else {
+            for pin in pinsFromServer {
+                if let index = pinIdDict[pin.id] {
+                    let existingPin = artworks[index]
+                    guard existingPin.cacheSnapshot != pin.cacheSnapshot else { continue }
+
+                    if isVisible[pin.id] == true {
+                        PennyMap.removeAnnotation(existingPin)
+                    }
+                    pin.status = existingPin.status
+                    artworks[index] = pin
+                    isVisible[pin.id] = false
+                } else {
+                    artworks.append(pin)
+                    pinIdDict[pin.id] = artworks.count - 1
+                    isVisible[pin.id] = false
+                }
             }
         }
-        
-        // reset visibility + re-add annotations
-        isVisible = [:]
+
         addAnnotationsIteratively()
         
         // recompute stats
@@ -762,10 +822,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         // update UI-related state
         check_json_dict()
         
-        lastDataLoad = Date()
-        persistServerSyncDate(Date())
+        let syncDate = Date()
+        UserDefaults.standard.set(syncDate, forKey: lastSuccessfulMachineRefreshKey)
+        if isFullSync {
+            UserDefaults.standard.set(syncDate, forKey: lastFullMachineSyncKey)
+        }
+        persistServerSyncDate(syncDate)
         persistCachedMachines()
+        hasLoadedCachedMachineSnapshot = true
         isLoadingServerLocations = false
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     private func showServerNotLoadedAlert() {
@@ -1049,16 +1115,6 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // called if authorization has changed
         checkLocationAuthorization()
-    }
-    // Function to check if a certain time period has passed since the last successful load
-    func shouldReloadData() -> Bool {
-        let reloadTimeInterval: TimeInterval = 7 * 24 * 60 * 60 // One week in seconds
-        if let lastTimestamp = lastDataLoad {
-            // Calculate the time difference between now and the last successful load
-            let timeSinceLastLoad = Date().timeIntervalSince(lastTimestamp)
-            return timeSinceLastLoad >= reloadTimeInterval // Check if the time period has passed
-        }
-        return true
     }
 }
 

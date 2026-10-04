@@ -173,7 +173,7 @@ extension Artwork {
 /// app launch's full server state survives across restarts (see `ViewController`'s
 /// `cachedMachinesURL`/`loadCachedMachines`/`persistCachedMachines`). Excludes the
 /// per-device `status`, which is tracked separately in `pin_status.json`.
-struct CachedArtwork: Codable {
+struct CachedArtwork: Codable, Equatable {
     let id: Int
     let title: String
     let address: String
