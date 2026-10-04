@@ -233,11 +233,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     
     @objc func segueNewMachine(sender: UIButton) {
         if #available(iOS 15.0, *) {
-            // center on current location
-            if let coordinate = PennyMe.locationManager.location?.coordinate{
-                let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: coordinate))
-                present(swiftUIViewController, animated: true)
+            guard let coordinate = PennyMe.locationManager.location?.coordinate else {
+                let alert = UIAlertController(
+                    title: "Location unavailable",
+                    message: "PennyMe needs your current location to start a new machine request. Enable Location Services, or add a new machine by a long press on the map.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
+                return
             }
+
+            let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: coordinate))
+            present(swiftUIViewController, animated: true)
         }
     }
 
