@@ -44,6 +44,11 @@ struct InteractiveMapView: View {
         .onChange(of: region.center) { newCenter in
             selectedLocation = newCenter
         }
+        .onChange(of: selectedLocation) { newLocation in
+            if region.center != newLocation {
+                region.center = newLocation
+            }
+        }
         .frame(height: 200)
         .cornerRadius(10)
     }

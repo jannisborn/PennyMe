@@ -1,3 +1,8 @@
+from typing import Any, Dict, Optional
+
+from thefuzz import process as fuzzysearch
+
+
 def parse_location_name(x: str) -> str:
     """Parse the location name to remove special characters and spaces."""
     return x.lower().replace(". ", "_").replace(" ", "_")
@@ -509,3 +514,56 @@ USSTATE_TO_CODE = {
 
 # invert the dictionary
 CODE_TO_USSTATE = dict(map(reversed, USSTATE_TO_CODE.items()))
+
+
+def first_reverse_geocode_result(
+    client: Any,
+    latitude: float,
+    longitude: float,
+    result_type: Optional[str] = None,
+) -> Optional[Dict[str, Any]]:
+    """Return the first Google reverse-geocode result, if one exists."""
+
+    kwargs = {"result_type": result_type} if result_type else {}
+    results = client.reverse_geocode((latitude, longitude), **kwargs)
+    return results[0] if results else None
+
+
+def area_from_google_result(result: Dict[str, Any]) -> Optional[str]:
+    """Return PennyMe's canonical area for a Google reverse-geocode result."""
+
+    components = result.get("address_components", [])
+
+    def component(component_type: str) -> Optional[Dict[str, Any]]:
+        return next(
+            (
+                item
+                for item in components
+                if component_type in item.get("types", [])
+            ),
+            None,
+        )
+
+    country = component("country")
+    if country is None:
+        return None
+
+    if country.get("short_name") in {"US", "GB"}:
+        region = component("administrative_area_level_1")
+        candidate = region.get("long_name") if region else None
+    else:
+        candidate = country.get("long_name")
+
+    if not candidate:
+        return None
+
+    aliases = {
+        "District of Columbia": "Washington DC",
+        "Czechia": "Czech Republic",
+        "Syria": "Syrian Arab Republic",
+        "Türkiye": "Turkey",
+        "Vatican City": "Vatican City State",
+    }
+    candidate = aliases.get(candidate, candidate)
+    area, score = fuzzysearch.extract(candidate, COUNTRIES, limit=1)[0]
+    return area if score >= 90 else None

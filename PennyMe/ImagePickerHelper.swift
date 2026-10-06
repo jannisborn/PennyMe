@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Photos
 import SwiftUI
 import UIKit
 
@@ -17,6 +18,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 
     // Add a new property for the source type (camera or photo library)
     var sourceType: UIImagePickerController.SourceType
+    var onLocationFound: (CLLocationCoordinate2D) -> Void
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
@@ -44,6 +46,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let selectedImage = info[.originalImage] as? UIImage {
                 parent.selectedImage = selectedImage
+            }
+            if let location = (info[.phAsset] as? PHAsset)?.location {
+                parent.onLocationFound(location.coordinate)
             }
             parent.presentationMode.wrappedValue.dismiss()
         }

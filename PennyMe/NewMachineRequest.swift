@@ -132,9 +132,12 @@ struct NewMachineFormView: View {
     @State private var showFinishedAlert = false
     @State private var selectedLocation: CLLocationCoordinate2D
     @State private var displayResponse: String = ""
+    @State private var alertTitle: String = "Could not submit"
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
     @State private var selectedImage: UIImage? = nil
     @State private var isImagePickerPresented: Bool = false
+    @State private var pendingPhotoLocation: CLLocationCoordinate2D? = nil
+    @State private var isResolvingPhotoLocation = false
     @State private var showAlert = false
     @State private var duplicateMachine: NearbyMachine? = nil
     @State private var similarMachine: NearbyMachine? = nil
@@ -227,6 +230,7 @@ struct NewMachineFormView: View {
             
             // Button to open the ImagePicker when tapped
             Button(action: {
+                pendingPhotoLocation = nil
                 isImagePickerPresented = true
             }) {
                 Text("Select Image")
@@ -246,8 +250,8 @@ struct NewMachineFormView: View {
             .padding()
             
             // Submit button
-            if isLoading {
-                ProgressView("Loading...")
+            if isLoading || isResolvingPhotoLocation {
+                ProgressView(isResolvingPhotoLocation ? "Looking up photo location..." : "Loading...")
                     .padding()
             } else {
                 Button(action: {
@@ -266,12 +270,16 @@ struct NewMachineFormView: View {
                 .padding()
         }
         .alert(isPresented: $showAlert) {
-            return Alert(title: Text("Could not submit"), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
+            return Alert(title: Text(alertTitle), message: Text(displayResponse), dismissButton: .default(Text("Dismiss")))
         }
         .padding()
         .navigationBarTitle("Add new machine")
         .sheet(isPresented: $isImagePickerPresented) {
-            ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+            ImagePicker(
+                selectedImage: $selectedImage,
+                sourceType: .photoLibrary,
+                onLocationFound: { pendingPhotoLocation = $0 }
+            )
         }
         .overlay(warningOverlay)
         }
@@ -281,7 +289,24 @@ struct NewMachineFormView: View {
     @ViewBuilder
     private var warningOverlay: some View {
         ZStack {
-            if let duplicateMachine = duplicateMachine {
+            if let photoLocation = pendingPhotoLocation {
+                warningBackdrop
+                warningBox {
+                    Text("Photo location found")
+                        .font(.headline)
+                    Text("Use this location for the machine? The pin, address, and area will be updated.")
+                    Button(action: {
+                        usePhotoLocation(photoLocation)
+                    }) {
+                        primaryButtonLabel("Yes")
+                    }
+                    Button(action: {
+                        pendingPhotoLocation = nil
+                    }) {
+                        secondaryButtonLabel("No")
+                    }
+                }
+            } else if let duplicateMachine = duplicateMachine {
                 warningBackdrop
                 warningBox {
                     Text("A machine with this exact name already exists nearby")
@@ -412,12 +437,22 @@ struct NewMachineFormView: View {
     
     private func finishLoading(message: String) {
         DispatchQueue.main.async {
+            alertTitle = "Could not submit"
             displayResponse = message
             duplicateMachine = nil
             similarMachine = nil
             nearbyConfirmationPending = false
             showAlert = true
             isLoading = false
+        }
+    }
+
+    private func finishLocationLookup(message: String) {
+        DispatchQueue.main.async {
+            isResolvingPhotoLocation = false
+            alertTitle = "Address lookup failed"
+            displayResponse = "The pin was moved, but \(message) You can enter the address and area manually."
+            showAlert = true
         }
     }
 
@@ -450,6 +485,63 @@ struct NewMachineFormView: View {
             nearbyConfirmationPending = true
             isLoading = false
         }
+    }
+    private func usePhotoLocation(_ location: CLLocationCoordinate2D) {
+        selectedLocation = location
+        pendingPhotoLocation = nil
+        isResolvingPhotoLocation = true
+
+        guard var urlComponents = URLComponents(string: flaskURL) else {
+            finishLocationLookup(message: "PennyMe could not create the address lookup request.")
+            return
+        }
+        urlComponents.path = "/reverse_geocode"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "lat_coord", value: "\(location.latitude)"),
+            URLQueryItem(name: "lon_coord", value: "\(location.longitude)"),
+        ]
+        guard let url = urlComponents.url else {
+            finishLocationLookup(message: "PennyMe could not create the address lookup request.")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.addAnonymousUserHeader()
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Photo location lookup failed: \(error)")
+                finishLocationLookup(message: "PennyMe could not reach the address lookup service.")
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse,
+                  let data = data,
+                  let jsonObject = try? JSONSerialization.jsonObject(with: data),
+                  let json = jsonObject as? [String: Any] else {
+                finishLocationLookup(message: "the address lookup service returned an invalid response.")
+                return
+            }
+
+            guard 200 ..< 300 ~= httpResponse.statusCode,
+                  let resolvedAddress = json["address"] as? String else {
+                let message = json["error"] as? String
+                    ?? "the address lookup service returned error \(httpResponse.statusCode)."
+                finishLocationLookup(message: message)
+                return
+            }
+
+            DispatchQueue.main.async {
+                address = resolvedAddress
+                isResolvingPhotoLocation = false
+                if let resolvedArea = json["area"] as? String {
+                    area = resolvedArea
+                } else {
+                    alertTitle = "Area not found"
+                    displayResponse = "The pin and address were updated, but the area could not be determined. Please enter it manually."
+                    showAlert = true
+                }
+            }
+        }.resume()
     }
 
     private func imageDataForUpload(_ image: UIImage) -> Data? {
@@ -501,7 +593,7 @@ struct NewMachineFormView: View {
             return "The PennyMe server returned an unexpected response (error \(statusCode)). Please try again later."
         }
     }
-    
+
     // Function to handle the submission of the request
     private func submitRequest(ignoreNearby: Bool = false) {
         isLoading = true

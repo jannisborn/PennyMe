@@ -4,6 +4,7 @@ import os
 import queue
 import traceback
 from datetime import datetime
+from math import isfinite
 from pathlib import Path
 from threading import Thread
 from time import sleep
@@ -28,7 +29,11 @@ from pennyme.database import (
 )
 from pennyme.database_utils import filter_changed_features
 from pennyme.github_update import wait
-from pennyme.locations import COUNTRIES
+from pennyme.locations import (
+    COUNTRIES,
+    area_from_google_result,
+    first_reverse_geocode_result,
+)
 from pennyme.moderation import (
     ModerationReport,
     ModerationStore,
@@ -129,6 +134,44 @@ def health() -> Tuple[Response, int]:
         A JSON response and HTTP 200 status.
     """
     return jsonify({"status": "ok"}), 200
+
+
+@app.route("/reverse_geocode", methods=["GET"])
+def reverse_geocode() -> Tuple[Response, int]:
+    """Return a formatted address and PennyMe area for a coordinate."""
+
+    try:
+        latitude = float(request.args["lat_coord"])
+        longitude = float(request.args["lon_coord"])
+    except (KeyError, TypeError, ValueError):
+        return jsonify({"error": "Valid latitude and longitude are required"}), 400
+
+    if (
+        not isfinite(latitude)
+        or not isfinite(longitude)
+        or not -90 <= latitude <= 90
+        or not -180 <= longitude <= 180
+    ):
+        return jsonify({"error": "Coordinates are outside the valid range"}), 400
+
+    try:
+        result = first_reverse_geocode_result(GM_CLIENT, latitude, longitude)
+    except Exception as error:
+        logger.exception(f"Reverse geocoding failed: {error}")
+        return jsonify({"error": "Address lookup is temporarily unavailable"}), 502
+
+    if not result or not result.get("formatted_address"):
+        return jsonify({"error": "No address was found for this location"}), 404
+
+    return (
+        jsonify(
+            {
+                "address": result["formatted_address"],
+                "area": area_from_google_result(result),
+            }
+        ),
+        200,
+    )
 
 
 @app.route("/add_comment", methods=["GET"])
@@ -541,31 +584,32 @@ def create_machine() -> Tuple[Response, int]:
     address_okay = dist <= 1  # km
 
     # Get google maps address for the coordinates
-    out = GM_CLIENT.reverse_geocode(
-        [location[1], location[0]], result_type="street_address"
+    result = first_reverse_geocode_result(
+        GM_CLIENT, location[1], location[0], result_type="street_address"
     )
     orig_address = address
 
-    if out != []:  # if address is found
-        ad = out[0]["formatted_address"]
+    if result:
+        ad = result["formatted_address"]
         _, score = fuzzysearch.extract(ad, [address], limit=1)[0]
         if score > 85:
             # Prefer Google Maps address over user address
             address = ad
     else:
-        out = GM_CLIENT.reverse_geocode(
-            (location[1], location[0]), result_type="point_of_interest"
+        result = first_reverse_geocode_result(
+            GM_CLIENT, location[1], location[0], result_type="point_of_interest"
         )
-        if out != []:
-            address = out[0]["formatted_address"]
+        if result:
+            address = result["formatted_address"]
         else:
-            out = GM_CLIENT.reverse_geocode(
-                (location[1], location[0]), result_type="postal_code"
+            result = first_reverse_geocode_result(
+                GM_CLIENT, location[1], location[0], result_type="postal_code"
             )
-            if out != []:
-                postal_code = out[0]["formatted_address"].split(" ")[0]
+            if result:
+                formatted_address = result["formatted_address"]
+                postal_code = formatted_address.split(" ")[0]
                 if postal_code not in address:
-                    address += out[0]["formatted_address"]
+                    address += formatted_address
 
     num_coins = int(request.args.get("num_coins", 4))
     paywall = True if request.args.get("paywall") == "true" else False
