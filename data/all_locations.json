@@ -98024,18 +98024,19 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.10995,
-                    51.24126
+                    7.11267567410735,
+                    51.2374817933476
                 ]
             },
             "properties": {
-                "name": "Zoo Wuppertal",
+                "name": "Zoo Wuppertal - Lions",
                 "area": "Germany",
-                "address": "Hubertusallee 30",
+                "address": "Hubertusallee 30, 42117 Wuppertal",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=210558",
                 "internal_url": "null",
                 "paywall": true,
+                "num_coins": 3,
                 "machine_status": "available",
                 "id": 645,
                 "last_updated": "2023-08-13"
@@ -98051,13 +98052,14 @@
                 ]
             },
             "properties": {
-                "name": "Zoo Wuppertal 2 - Original Souvenirs (penguins)",
+                "name": "Zoo Wuppertal - Penguins",
                 "area": "Germany",
                 "address": "Hubertusallee 30, 42117 Wuppertal",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=210558",
                 "internal_url": "null",
                 "paywall": true,
+                "num_coins": 3,
                 "machine_status": "available",
                 "id": 6021,
                 "last_updated": "2023-08-13"
@@ -111724,27 +111726,6 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6934,
-                "last_updated": "2024-08-28"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    7.1048364,
-                    51.2406191
-                ]
-            },
-            "properties": {
-                "name": "Wuppertal Stadion am Zoo",
-                "area": "Germany",
-                "address": "Hubertusallee 9, 42117 Wuppertal, Germany",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": 6935,
                 "last_updated": "2024-08-28"
             }
         },
@@ -126089,19 +126070,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.1048263,
-                    51.2392133
+                    7.1048364,
+                    51.2406191
                 ]
             },
             "properties": {
-                "name": "Stadion am Zoo",
+                "name": "Stadion am Zoo - Wuppertaler SV",
                 "area": "Germany",
-                "address": "Hubertusallee 4, Wuppertal ",
+                "address": "Hubertusallee 9, 42117 Wuppertal, Germany",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=434347",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7292,
+                "num_coins": 3,
                 "last_updated": "2024-07-07"
             }
         },
