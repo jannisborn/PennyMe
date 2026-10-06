@@ -8,9 +8,11 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
 from datetime import date, datetime, timedelta
+from functools import lru_cache
+from pathlib import Path
+from threading import RLock
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import geopandas as gpd
@@ -276,17 +278,10 @@ def get_machine_as_geojson(machine_id: int) -> dict:
         session.close()
 
 
-def get_all_machines_geojson(since: Optional[str] = None) -> dict:
-    """Return machines as a GeoJSON FeatureCollection.
+_MACHINE_GEOJSON_CACHE_LOCK = RLock()
 
-    Args:
-        since: Optional ``YYYY-MM-DD`` date string. When given, only machines
-            with ``last_updated >= since`` are returned, enabling incremental
-            (delta) syncs instead of pulling the full dataset.
 
-    Raises:
-        psycopg2.Error: On any database error.
-    """
+def _query_all_machines_geojson(since: Optional[str]) -> dict:
     query = "SELECT * FROM machines"
     params = None
     if since is not None:
@@ -306,6 +301,32 @@ def get_all_machines_geojson(since: Optional[str] = None) -> dict:
     for col in ("external_url", "internal_url"):
         gdf[col] = gdf[col].fillna("null").replace({"None": "null"})
     return json.loads(gdf.to_json())
+
+
+@lru_cache(maxsize=16)
+def _cached_all_machines_geojson(since: Optional[str]) -> dict:
+    return _query_all_machines_geojson(since)
+
+
+def get_all_machines_geojson(since: Optional[str] = None) -> dict:
+    """Return machines as a cached GeoJSON FeatureCollection.
+
+    Args:
+        since: Optional ``YYYY-MM-DD`` date string. When given, only machines
+            with ``last_updated >= since`` are returned, enabling incremental
+            (delta) syncs instead of pulling the full dataset.
+
+    Raises:
+        psycopg2.Error: On any database error.
+    """
+    with _MACHINE_GEOJSON_CACHE_LOCK:
+        return _cached_all_machines_geojson(since)
+
+
+def clear_machine_geojson_cache() -> None:
+    """Invalidate cached machine snapshots after committed machine writes."""
+    with _MACHINE_GEOJSON_CACHE_LOCK:
+        _cached_all_machines_geojson.cache_clear()
 
 
 def find_machine_in_database(machine_id: int) -> Optional[Dict[str, Any]]:
@@ -633,6 +654,7 @@ def approve_pending_change(change_id: int) -> ReviewResult:
         change.status = "approved"
         change.reviewed_at = datetime.utcnow()
         session.commit()
+        clear_machine_geojson_cache()
         _rename_pending_change_image(change.change_type, change.id, machine_id)
         return ReviewResult(applied=True, status="approved", machine_id=machine_id)
     finally:
@@ -925,6 +947,8 @@ def upsert_machines_from_file(
                     tracked_count += 1
 
         session.commit()
+        if summary["created"] or summary["updated"]:
+            clear_machine_geojson_cache()
         logger.info(f"Upserted {len(features)} machines from {path}")
         if track_in_pending_changes:
             logger.info(
