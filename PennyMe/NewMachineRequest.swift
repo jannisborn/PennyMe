@@ -136,6 +136,7 @@ struct NewMachineFormView: View {
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
     @State private var selectedImage: UIImage? = nil
     @State private var isImagePickerPresented: Bool = false
+    @State private var selectedPhotoLocation: CLLocationCoordinate2D? = nil
     @State private var pendingPhotoLocation: CLLocationCoordinate2D? = nil
     @State private var isResolvingPhotoLocation = false
     @State private var showAlert = false
@@ -230,6 +231,7 @@ struct NewMachineFormView: View {
             
             // Button to open the ImagePicker when tapped
             Button(action: {
+                selectedPhotoLocation = nil
                 pendingPhotoLocation = nil
                 isImagePickerPresented = true
             }) {
@@ -274,11 +276,13 @@ struct NewMachineFormView: View {
         }
         .padding()
         .navigationBarTitle("Add new machine")
-        .sheet(isPresented: $isImagePickerPresented) {
+        .sheet(isPresented: $isImagePickerPresented, onDismiss: {
+            pendingPhotoLocation = selectedPhotoLocation
+        }) {
             ImagePicker(
                 selectedImage: $selectedImage,
                 sourceType: .photoLibrary,
-                onLocationFound: { pendingPhotoLocation = $0 }
+                onLocationFound: { selectedPhotoLocation = $0 }
             )
         }
         .overlay(warningOverlay)

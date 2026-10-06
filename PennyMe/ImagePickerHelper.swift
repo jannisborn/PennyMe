@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ImageIO
 import Photos
 import SwiftUI
 import UIKit
@@ -26,6 +27,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 
         // Set the source type based on the user's selection
         imagePicker.sourceType = sourceType
+        imagePicker.imageExportPreset = .current
 
         return imagePicker
     }
@@ -47,10 +49,34 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let selectedImage = info[.originalImage] as? UIImage {
                 parent.selectedImage = selectedImage
             }
-            if let location = (info[.phAsset] as? PHAsset)?.location {
-                parent.onLocationFound(location.coordinate)
+            let coordinate = (info[.phAsset] as? PHAsset)?.location?.coordinate
+                ?? coordinateFromImage(at: info[.imageURL] as? URL)
+            if let coordinate = coordinate {
+                print("Selected photo GPS: \(coordinate.latitude), \(coordinate.longitude)")
+                parent.onLocationFound(coordinate)
+            } else {
+                print("Selected photo has no accessible GPS metadata")
             }
             parent.presentationMode.wrappedValue.dismiss()
+        }
+
+        private func coordinateFromImage(at url: URL?) -> CLLocationCoordinate2D? {
+            guard let url = url,
+                  let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+                  let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any],
+                  let gps = properties[kCGImagePropertyGPSDictionary as String] as? [String: Any],
+                  let latitude = (gps[kCGImagePropertyGPSLatitude as String] as? NSNumber)?.doubleValue,
+                  let longitude = (gps[kCGImagePropertyGPSLongitude as String] as? NSNumber)?.doubleValue else {
+                return nil
+            }
+
+            let latitudeSign = gps[kCGImagePropertyGPSLatitudeRef as String] as? String == "S" ? -1.0 : 1.0
+            let longitudeSign = gps[kCGImagePropertyGPSLongitudeRef as String] as? String == "W" ? -1.0 : 1.0
+            let coordinate = CLLocationCoordinate2D(
+                latitude: latitude * latitudeSign,
+                longitude: longitude * longitudeSign
+            )
+            return CLLocationCoordinate2DIsValid(coordinate) ? coordinate : nil
         }
 
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
