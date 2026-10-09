@@ -536,11 +536,7 @@ def area_from_google_result(result: Dict[str, Any]) -> Optional[str]:
 
     def component(component_type: str) -> Optional[Dict[str, Any]]:
         return next(
-            (
-                item
-                for item in components
-                if component_type in item.get("types", [])
-            ),
+            (item for item in components if component_type in item.get("types", [])),
             None,
         )
 
