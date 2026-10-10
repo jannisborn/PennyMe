@@ -28,10 +28,16 @@ class TextModerationTests(unittest.TestCase):
 
     def test_validates_report_fields(self):
         self.assertIsNone(validate_report("image", "spam_scam"))
-        self.assertIsNone(validate_report("image", "wrong_content"))
-        self.assertIsNone(validate_report("image", "spam"))
-        self.assertIsNone(validate_report("image", "abuse"))
-        self.assertIsNone(validate_report("image", "inappropriate"))
+        self.assertIsNone(validate_report("image", "wrong_content", "wrong image"))
+        self.assertIsNone(validate_report("image", "spam", "spam image"))
+        self.assertIsNone(validate_report("image", "abuse", "abusive image"))
+        self.assertIsNone(
+            validate_report("image", "inappropriate", "inappropriate image")
+        )
+        self.assertEqual(
+            validate_report("image", "spam", " no "),
+            "Please enter a proper explanation why you are flagging this content",
+        )
         self.assertIsNotNone(validate_report("profile", "spam_scam"))
         self.assertIsNotNone(validate_report("image", "invalid"))
 
@@ -42,6 +48,7 @@ class TextModerationTests(unittest.TestCase):
                 "target_kind": "image",
                 "target_id": "machine",
                 "reason": "other",
+                "comment": "  legacy report  ",
                 "block_contributor": "true",
                 "ip": "203.0.113.7",
             }
@@ -49,6 +56,7 @@ class TextModerationTests(unittest.TestCase):
 
         self.assertNotIn("ip", parsed)
         self.assertEqual(parsed["machine_id"], "42")
+        self.assertEqual(parsed["comment"], "legacy report")
         self.assertTrue(parsed["block_contributor"])
 
 
@@ -149,19 +157,33 @@ class ModerationStoreTests(unittest.TestCase):
 
     def test_appends_reports(self):
         first_report = {
+            "report_id": "report-a",
             "machine_id": "42",
+            "target_kind": "image",
+            "target_id": "machine",
             "content_key": "image:machine",
             "reason": "other",
+            "comment": "Legacy explanation",
             "block_contributor": False,
             "contributor_id": "contributor-a",
             "reporter_id": "reporter-a",
         }
-        second_report = {**first_report, "machine_id": "43", "reason": "violence"}
+        second_report = {
+            **first_report,
+            "report_id": "report-b",
+            "machine_id": "43",
+            "reason": "violence",
+        }
         self.store.record_report(first_report)
         self.store.record_report(second_report)
+        self.store.record_review("report-b", "approved", "slack-user")
         lines = self.store.reports_path.read_text(encoding="utf-8").splitlines()
-        self.assertEqual(len(lines), 2)
+        report, decision = self.store.report_status("report-b")
+
+        self.assertEqual(len(lines), 3)
         self.assertEqual(json.loads(lines[1])["machine_id"], "43")
+        self.assertEqual(report["comment"], "Legacy explanation")
+        self.assertEqual(decision, "approved")
 
 
 if __name__ == "__main__":

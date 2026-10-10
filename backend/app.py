@@ -1,4 +1,3 @@
-import autoroot  # noqa: F401  # initializes repo root
 import json
 import os
 import queue
@@ -9,10 +8,11 @@ from pathlib import Path
 from threading import Thread
 from time import sleep
 from typing import Any, Dict, Optional, Tuple
+from uuid import uuid4
 
 from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
-from haversine import haversine, Unit
+from haversine import Unit, haversine
 from loguru import logger
 from thefuzz import process as fuzzysearch
 
@@ -338,8 +338,9 @@ def report_content() -> Tuple[Response, int]:
     """Record a content report and notify maintainers in Slack.
 
     The JSON or form body must contain ``machine_id``, ``target_kind``,
-    ``target_id``, and ``reason``. The optional ``block_contributor`` boolean
-    records whether the reporter also hid that contributor on their device.
+    ``target_id``, ``reason``, and a ``comment`` explaining the report. The
+    optional ``block_contributor`` boolean records whether the reporter also
+    hid that contributor on their device.
 
     Returns:
         A JSON response and HTTP 201 containing the viewer-scoped contributor
@@ -353,11 +354,12 @@ def report_content() -> Tuple[Response, int]:
     target_kind = report_request["target_kind"]
     target_id = report_request["target_id"]
     reason = report_request["reason"]
+    comment = report_request["comment"]
     block_contributor = report_request["block_contributor"]
 
     if not machine_id or not target_id:
         return jsonify({"error": "Missing report target"}), 400
-    if error := validate_report(target_kind, reason):
+    if error := validate_report(target_kind, reason, comment):
         return jsonify({"error": error}), 400
 
     reporter_id = MODERATION.contributor_id(anonymous_user_id())
@@ -367,9 +369,13 @@ def report_content() -> Tuple[Response, int]:
     content_key = MODERATION.content_key(target_kind, target_id)
     contributor = MODERATION.resolve_content(machine_id, content_key)
     report: ModerationReport = {
+        "report_id": uuid4().hex,
         "machine_id": machine_id,
+        "target_kind": target_kind,
+        "target_id": target_id,
         "content_key": content_key,
         "reason": reason,
+        "comment": comment,
         "block_contributor": bool(block_contributor),
         "contributor_id": contributor["contributor_id"],
         "reporter_id": reporter_id,
@@ -380,13 +386,18 @@ def report_content() -> Tuple[Response, int]:
     alert_text = (
         f"<!channel> UGC {action}: machine {machine_id}, {content_key}, "
         f"reason={reason}, "
-        f"contributor={contributor['contributor_id']}, reporter={reporter_id}. "
-        "Review and remove/eject within several working days."
+        f"contributor={contributor['contributor_id']}, reporter={reporter_id}."
     )
     slack_notified = False
     try:
         message_slack_report(
-            alert_text, machine_id, target_kind, target_id, PATH_IMAGES
+            alert_text,
+            report["report_id"],
+            comment,
+            machine_id,
+            target_kind,
+            target_id,
+            PATH_IMAGES,
         )
         slack_notified = True
     except Exception:

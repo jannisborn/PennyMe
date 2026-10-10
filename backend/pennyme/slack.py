@@ -20,7 +20,8 @@ from pennyme.database import (
     get_machine_display_names,
     reject_pending_change,
 )
-from pennyme.utils import ALL_LOCATIONS
+from pennyme.moderation import ModerationStore
+from pennyme.utils import ALL_LOCATIONS, PATH_IMAGES
 
 SLACK_APP = App(token=os.environ["SLACK_TOKEN"])
 CLIENT = SLACK_APP.client
@@ -39,6 +40,49 @@ MACHINE_NAMES = {
 # image can be deleted once the change is approved/rejected. In-memory only:
 # lost on restart, in which case deletion is silently skipped.
 _PENDING_IMAGE_MESSAGES: Dict[int, Tuple[str, str]] = {}
+_MODERATION = ModerationStore(
+    Path(os.path.join("..", "content_attribution.json")),
+    Path(os.path.join("..", "moderation_reports.jsonl")),
+)
+
+
+def _approval_actions(
+    value: str,
+    block_id: str,
+    approve_action: str,
+    reject_action: str,
+    subject: str,
+) -> Dict[str, Any]:
+    """Build the shared Approve/Reject controls used in Slack."""
+    return {
+        "type": "actions",
+        "block_id": block_id,
+        "elements": [
+            {
+                "type": "button",
+                "text": {"type": "plain_text", "text": "Approve", "emoji": True},
+                "style": "primary",
+                "value": value,
+                "action_id": approve_action,
+            },
+            {
+                "type": "button",
+                "text": {"type": "plain_text", "text": "Reject", "emoji": True},
+                "style": "danger",
+                "value": value,
+                "action_id": reject_action,
+                "confirm": {
+                    "title": {"type": "plain_text", "text": "Reject this change?"},
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": f"Permanently reject {subject}?",
+                    },
+                    "confirm": {"type": "plain_text", "text": "Yes, reject"},
+                    "deny": {"type": "plain_text", "text": "Cancel"},
+                },
+            },
+        ],
+    }
 
 
 def format_machine_fields(fields: Dict[str, Any]) -> str:
@@ -261,18 +305,25 @@ def message_slack_raw(
 
 
 def message_slack_report(
-    text: str, machine_id: str, target_kind: str, target_id: str, images_path: str
+    text: str,
+    report_id: str,
+    comment: str,
+    machine_id: str,
+    target_kind: str,
+    target_id: str,
+    images_path: str,
 ) -> None:
     """Post a UGC report and its relevant content to the approvals channel.
 
     The initial message contains the report alert, including its ``@channel``
-    mention. Related comments and images are posted as replies in the same
-    Slack thread. A comment report includes the comments JSON, an image report
-    includes the selected image, and a machine report includes the listing,
-    all comments, and every machine image.
+    mention. Image and comment reports include the same approval controls as
+    machine changes. The explanation and reported content are posted in the
+    thread so they remain available after a decision replaces the root message.
 
     Args:
         text: Report alert text to use for the thread's root message.
+        report_id: Unique identifier stored in the approval button values.
+        comment: The reporter's explanation.
         machine_id: ID of the machine containing the reported content.
         target_kind: One of ``comment``, ``image``, or ``machine``.
         target_id: Client-provided identifier for the reported content.
@@ -282,8 +333,21 @@ def message_slack_report(
         SlackApiError: If any Slack message cannot be delivered.
         ValueError: If ``machine_id`` is not an integer.
     """
-    response = message_slack_raw(text, channel="#pennyme_approvals")
-    thread_channel = "#pennyme_approvals"
+    blocks: List[Dict[str, Any]] = [
+        {"type": "section", "text": {"type": "mrkdwn", "text": text}}
+    ]
+    if target_kind in {"comment", "image"}:
+        blocks.append(
+            _approval_actions(
+                report_id,
+                f"report_{report_id}",
+                "approve_report",
+                "reject_report",
+                f"report {report_id}",
+            )
+        )
+    response = message_slack_raw(text, channel="#pennyme_approvals", blocks=blocks)
+    thread_channel = str(response.get("channel", "#pennyme_approvals"))
     thread_timestamp = str(response["ts"])
     thread_arguments: Dict[str, str] = {
         "channel": thread_channel,
@@ -291,6 +355,22 @@ def message_slack_report(
     }
     machine_id = str(int(machine_id))
     root = Path(images_path)
+    report_details = (
+        f"{text.removeprefix('<!channel> ')}\nReporter explanation: {comment}"
+    )
+    message_slack_raw(
+        report_details,
+        **thread_arguments,
+        blocks=[
+            {
+                "type": "section",
+                "text": {
+                    "type": "plain_text",
+                    "text": report_details,
+                },
+            }
+        ],
+    )
     content: Dict[str, Any] = {}
     if target_kind == "machine":
         content["listing"] = find_machine_in_database(int(machine_id))
@@ -322,6 +402,14 @@ def message_slack_report(
             image_id = path.stem.removeprefix(machine_id).lstrip("_") or "machine"
             if target_kind == "image" and target_id != image_id:
                 continue
+            if target_kind == "image":
+                CLIENT.files_upload_v2(
+                    channel=thread_channel,
+                    file=path,
+                    initial_comment=path.name,
+                    thread_ts=thread_timestamp,
+                )
+                continue
             message_slack_raw(
                 path.name,
                 **thread_arguments,
@@ -350,6 +438,116 @@ def _delete_pending_image_message(change_id: int) -> None:
         CLIENT.chat_delete(channel=channel, ts=ts)
     except SlackApiError as e:
         logger.error(f"Error deleting image message for pending #{change_id}: {e}")
+
+
+def _reported_content_path(
+    report: Dict[str, Any], images_path: Optional[str] = None
+) -> Path:
+    """Resolve the server file represented by an actionable UGC report.
+
+    Args:
+        report: Stored report fields from :class:`ModerationStore`.
+        images_path: Root directory containing images and comment JSON files.
+
+    Returns:
+        The exact image or comment file to move when the report is approved.
+
+    Raises:
+        ValueError: If the stored report does not identify actionable content.
+    """
+    machine_id = str(int(report["machine_id"]))
+    target_kind = report.get("target_kind")
+    target_id = report.get("target_id")
+    root = Path(images_path or PATH_IMAGES)
+    if target_kind == "comment" and target_id == "all":
+        return root / "comments" / f"{machine_id}.json"
+    if target_kind == "image" and target_id == "machine":
+        return root / f"{machine_id}.jpg"
+    if target_kind == "image" and re.fullmatch(r"coin_\d+", str(target_id)):
+        return root / f"{machine_id}_{target_id}.png"
+    raise ValueError("Report does not identify an image or comment file")
+
+
+def _quarantine_report_content(
+    report: Dict[str, Any], images_path: Optional[str] = None
+) -> Path:
+    """Move approved UGC into the flat ``images/reported`` directory.
+
+    Args:
+        report: Stored report fields from :class:`ModerationStore`.
+        images_path: Root directory containing images and comment JSON files.
+
+    Returns:
+        Destination path of the moved content.
+
+    Raises:
+        FileNotFoundError: If neither the live nor reported file exists.
+        FileExistsError: If both paths exist and choosing one would lose data.
+        ValueError: If the report does not identify actionable content.
+    """
+    root = images_path or PATH_IMAGES
+    source = _reported_content_path(report, root)
+    destination = Path(root) / "reported" / source.name
+    if not source.exists():
+        if destination.exists():
+            return destination
+        raise FileNotFoundError(source)
+    if destination.exists():
+        raise FileExistsError(destination)
+    destination.parent.mkdir(exist_ok=True)
+    return source.rename(destination)
+
+
+def _handle_report_review(body: Dict[str, Any], respond: Any, decision: str) -> None:
+    """Apply and record one Slack decision for an image or comment report."""
+    report_id = str(body["actions"][0]["value"])
+    action = "approve" if decision == "approved" else "reject"
+    reviewer = body.get("user", {})
+    reviewer_id = str(reviewer.get("id") or reviewer.get("name") or "unknown")
+    reviewer_name = str(reviewer.get("name") or reviewer_id)
+    try:
+        report, existing_decision = _MODERATION.report_status(report_id)
+        if report is None:
+            raise ValueError(f"Unknown report {report_id}")
+        if existing_decision:
+            result_text = (
+                f":information_source: UGC report {report_id} was already "
+                f"{existing_decision}. Details remain in this thread."
+            )
+        else:
+            if report.get("target_kind") not in {"comment", "image"}:
+                raise ValueError("Only image and comment reports can be handled here")
+            if decision == "approved":
+                _quarantine_report_content(report)
+            _MODERATION.record_review(report_id, decision, reviewer_id)
+            icon = ":white_check_mark:" if decision == "approved" else ":x:"
+            result_text = (
+                f"{icon} UGC report {report_id} *{decision}* by {reviewer_name}. "
+                "Details remain in this thread."
+            )
+    except (KeyError, OSError, TypeError, ValueError) as error:
+        logger.exception(f"Could not {action} report {report_id}")
+        respond(
+            replace_original=False,
+            response_type="ephemeral",
+            text=f":warning: Could not {action} report: {error}",
+        )
+        return
+    respond(replace_original=True, text=result_text, blocks=[])
+
+
+@SLACK_APP.action("approve_report")
+def handle_approve_report(ack: Any, body: Dict[str, Any], respond: Any) -> None:
+    """Move reported content aside and record approval from Slack."""
+    ack()
+    _handle_report_review(body, respond, "approved")
+
+
+@SLACK_APP.action("reject_report")
+def handle_reject_report(ack: Any, body: Dict[str, Any], respond: Any) -> None:
+    """Leave reported content in place and record rejection from Slack."""
+    ack()
+    _handle_report_review(body, respond, "rejected")
 
 
 @SLACK_APP.action("approve_change")
@@ -464,35 +662,13 @@ def message_slack_pending_change(
                 "text": f"{header}\n*{title}* ({area})\n{summary_text}",
             },
         },
-        {
-            "type": "actions",
-            "block_id": f"pending_{change_id}",
-            "elements": [
-                {
-                    "type": "button",
-                    "text": {"type": "plain_text", "text": "Approve", "emoji": True},
-                    "style": "primary",
-                    "value": str(change_id),
-                    "action_id": "approve_change",
-                },
-                {
-                    "type": "button",
-                    "text": {"type": "plain_text", "text": "Reject", "emoji": True},
-                    "style": "danger",
-                    "value": str(change_id),
-                    "action_id": "reject_change",
-                    "confirm": {
-                        "title": {"type": "plain_text", "text": "Reject this change?"},
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": f"Permanently reject pending change #{change_id}?",
-                        },
-                        "confirm": {"type": "plain_text", "text": "Yes, reject"},
-                        "deny": {"type": "plain_text", "text": "Cancel"},
-                    },
-                },
-            ],
-        },
+        _approval_actions(
+            str(change_id),
+            f"pending_{change_id}",
+            "approve_change",
+            "reject_change",
+            f"pending change #{change_id}",
+        ),
     ]
     message_slack_raw(plain_text, channel="#pennyme_approvals", blocks=blocks)
 

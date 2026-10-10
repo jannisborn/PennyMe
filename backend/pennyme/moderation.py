@@ -16,7 +16,7 @@ import tempfile
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Mapping, Optional, TypedDict
+from typing import Any, Dict, Mapping, Optional, Tuple, TypedDict
 
 _BANNED_WORDS = {
     "asshole",
@@ -69,6 +69,10 @@ _VALID_REASONS = {
     "violence",
     "wrong_content",
 }
+_REASONS_REQUIRING_COMMENT = {"abuse", "inappropriate", "spam", "wrong_content"}
+_REPORT_COMMENT_ERROR = (
+    "Please enter a proper explanation why you are flagging this content"
+)
 
 
 class ResolvedContent(TypedDict):
@@ -85,17 +89,25 @@ class ModerationReport(TypedDict):
     """Private fields recorded for one user-submitted content report.
 
     Attributes:
+        report_id: Random identifier used by Slack review actions.
         machine_id: Machine containing the reported content.
+        target_kind: Reported content category.
+        target_id: Category-specific content identifier.
         content_key: Canonical kind-and-ID key for the content.
         reason: Controlled report reason selected in the app.
+        comment: The reporter's explanation.
         block_contributor: Whether the reporter also requested a local block.
         contributor_id: Internal digest of the reported contributor.
         reporter_id: Internal digest of the reporting installation.
     """
 
+    report_id: str
     machine_id: str
+    target_kind: str
+    target_id: str
     content_key: str
     reason: str
+    comment: str
     block_contributor: bool
     contributor_id: str
     reporter_id: str
@@ -109,6 +121,7 @@ class ReportRequest(TypedDict):
         target_kind: Reported content category.
         target_id: Category-specific content identifier.
         reason: Controlled report reason selected in the app.
+        comment: The reporter's explanation.
         block_contributor: Whether the reporter also requested a local block.
     """
 
@@ -116,6 +129,7 @@ class ReportRequest(TypedDict):
     target_kind: str
     target_id: str
     reason: str
+    comment: str
     block_contributor: bool
 
 
@@ -148,12 +162,15 @@ def text_block_reason(*values: str) -> Optional[str]:
     return None
 
 
-def validate_report(target_kind: str, reason: str) -> Optional[str]:
+def validate_report(target_kind: str, reason: str, comment: str = "") -> Optional[str]:
     """Validate the controlled values accepted by the report endpoint.
 
     Args:
         target_kind: Reported content category, such as ``image`` or ``comment``.
         reason: Machine-readable report reason sent by the iOS client.
+        comment: Reporter explanation. Current report reasons require at least
+            five non-whitespace characters; legacy reasons remain compatible
+            with older app versions that did not send this field.
 
     Returns:
         A user-facing validation error, or ``None`` when both values are valid.
@@ -162,6 +179,8 @@ def validate_report(target_kind: str, reason: str) -> Optional[str]:
         return "Unknown content type"
     if reason not in _VALID_REASONS:
         return "Unknown report reason"
+    if reason in _REASONS_REQUIRING_COMMENT and len(comment.strip()) < 5:
+        return _REPORT_COMMENT_ERROR
     return None
 
 
@@ -186,6 +205,7 @@ def parse_report_request(payload: Mapping[str, Any]) -> ReportRequest:
         "target_kind": str(payload.get("target_kind", "")).strip(),
         "target_id": str(payload.get("target_id", "")).strip(),
         "reason": str(payload.get("reason", "")).strip(),
+        "comment": str(payload.get("comment", "")).strip(),
         "block_contributor": bool(block_contributor),
     }
 
@@ -395,9 +415,65 @@ class ModerationStore:
             OSError: If the report log directory or file cannot be written.
             TypeError: If ``report`` contains values that JSON cannot serialize.
         """
-        timestamped_report: Dict[str, Any] = {**report, "created_at": utc_now()}
+        self._append_report_entry({**report, "created_at": utc_now()})
+
+    def report_status(
+        self, report_id: str
+    ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+        """Return a submitted report and its recorded decision, if present.
+
+        Args:
+            report_id: Identifier stored with the submitted report.
+
+        Returns:
+            A tuple containing the report dictionary and ``approved`` or
+            ``rejected`` when the report has already been reviewed.
+        """
+        report = None
+        decision = None
+        try:
+            lines = self.reports_path.read_text(encoding="utf-8").splitlines()
+        except FileNotFoundError:
+            return report, decision
+        for line in lines:
+            try:
+                entry = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if entry.get("report_id") != report_id:
+                continue
+            if "decision" in entry:
+                decision = str(entry["decision"])
+            else:
+                report = entry
+        return report, decision
+
+    def record_review(self, report_id: str, decision: str, reviewer_id: str) -> None:
+        """Append a Slack moderation decision to the report log.
+
+        Args:
+            report_id: Identifier of the reviewed report.
+            decision: Either ``approved`` or ``rejected``.
+            reviewer_id: Slack user ID of the reviewer.
+
+        Raises:
+            ValueError: If ``decision`` is not a supported review outcome.
+        """
+        if decision not in {"approved", "rejected"}:
+            raise ValueError(f"Unknown moderation decision: {decision}")
+        self._append_report_entry(
+            {
+                "report_id": report_id,
+                "decision": decision,
+                "reviewer_id": reviewer_id,
+                "created_at": utc_now(),
+            }
+        )
+
+    def _append_report_entry(self, entry: Dict[str, Any]) -> None:
+        """Append one JSON object to the moderation log."""
         self.reports_path.parent.mkdir(parents=True, exist_ok=True)
-        line = json.dumps(timestamped_report, ensure_ascii=False, sort_keys=True)
+        line = json.dumps(entry, ensure_ascii=False, sort_keys=True)
         with self._lock:
             with self.reports_path.open("a", encoding="utf-8") as outfile:
                 outfile.write(line + "\n")

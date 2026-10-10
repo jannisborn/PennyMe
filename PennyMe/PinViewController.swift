@@ -11,7 +11,11 @@ import MapKit
 import SwiftUI
 
 
+// #if targetEnvironment(simulator)
+// let flaskURL = "http://127.0.0.1:5000/"
+// #else
 let flaskURL = "https://pennyme-backend.duckdns.org/"
+// #endif
 let imageURL = "https://pennyme.duckdns.org/"
 
 @available(iOS 13.0, *)
