@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from shutil import copy2
 from pathlib import Path
 from threading import Thread
 from typing import Any, Dict, List, Optional, Tuple
@@ -403,21 +404,21 @@ def message_slack_report(
             if target_kind == "image" and target_id != image_id:
                 continue
             if target_kind == "image":
-                CLIENT.files_upload_v2(
-                    channel=thread_channel,
-                    file=path,
-                    initial_comment=path.name,
-                    thread_ts=thread_timestamp,
-                )
-                continue
+                # Keep the review image available after the original is moved.
+                snapshot = root / "reported" / f"{report_id}_{path.name}"
+                snapshot.parent.mkdir(exist_ok=True)
+                copy2(path, snapshot)
+                image_url = f"{IMG_PORT}reported/{snapshot.name}"
+            else:
+                image_url = f"{IMG_PORT}{path.name}"
             message_slack_raw(
                 path.name,
                 **thread_arguments,
                 blocks=[
                     {
                         "type": "image",
-                        "image_url": f"{IMG_PORT}{path.name}",
                         "alt_text": path.name,
+                        "image_url": image_url,
                     }
                 ],
             )

@@ -9,6 +9,8 @@ from unittest.mock import Mock, patch
 from pennyme.moderation import ModerationStore
 
 from PIL import Image
+from slack_bolt.request import BoltRequest
+from slack_bolt.response import BoltResponse
 
 os.environ.setdefault("SLACK_TOKEN", "test")
 
@@ -52,6 +54,50 @@ class ProcessUploadedImageTest(unittest.TestCase):
 
 
 class ReportSlackTest(unittest.TestCase):
+    def test_machine_and_ugc_actions_match_separate_handlers(self):
+        for action in (
+            "approve_change",
+            "reject_change",
+            "approve_report",
+            "reject_report",
+        ):
+            body = {
+                "type": "block_actions",
+                "actions": [{"action_id": action, "value": "42"}],
+                "user": {"id": "U123", "name": "reviewer"},
+            }
+            request = BoltRequest(body=body, mode="socket_mode")
+            listeners = [
+                listener
+                for listener in slack.SLACK_APP._listeners
+                if listener.matches(req=request, resp=BoltResponse(status=200))
+            ]
+            self.assertEqual(len(listeners), 1, action)
+            self.assertEqual(listeners[0].ack_function.__name__, f"handle_{action}")
+            ack, respond = Mock(), Mock()
+            with (
+                patch.object(slack, "approve_pending_change") as approve,
+                patch.object(slack, "reject_pending_change") as reject,
+                patch.object(slack, "_handle_report_review") as review,
+                patch.object(slack, "_delete_pending_image_message"),
+            ):
+                listeners[0].ack_function(ack, body, respond)
+                ack.assert_called_once_with()
+                if action.endswith("_change"):
+                    (
+                        approve if action.startswith("approve") else reject
+                    ).assert_called_once_with(42)
+                    review.assert_not_called()
+                    self.assertTrue(respond.call_args.kwargs["replace_original"])
+                else:
+                    review.assert_called_once_with(
+                        body,
+                        respond,
+                        "approved" if action.startswith("approve") else "rejected",
+                    )
+                    approve.assert_not_called()
+                    reject.assert_not_called()
+
     def test_reports_include_only_target_content_and_thread_in_approvals(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -59,11 +105,11 @@ class ReportSlackTest(unittest.TestCase):
             (root / "comments/42.json").write_text('{"date": "flagged comment"}')
             for name in ("42.jpg", "42_coin_0.png", "420.jpg", "42_other.png"):
                 (root / name).touch()
-            for kind, target, expected_uploads, expected_linked_images in (
-                ("image", "machine", ["42.jpg"], []),
-                ("image", "coin_0", ["42_coin_0.png"], []),
-                ("comment", "all", [], []),
-                ("machine", "listing", [], ["42.jpg", "42_coin_0.png"]),
+            for kind, target, expected_linked_images in (
+                ("image", "machine", ["42.jpg"]),
+                ("image", "coin_0", ["42_coin_0.png"]),
+                ("comment", "all", []),
+                ("machine", "listing", ["42.jpg", "42_coin_0.png"]),
             ):
                 with (
                     self.subTest(kind=kind, target=target),
@@ -72,7 +118,6 @@ class ReportSlackTest(unittest.TestCase):
                         "chat_postMessage",
                         return_value={"channel": "C123", "ts": "123"},
                     ) as post,
-                    patch.object(slack.CLIENT, "files_upload_v2") as upload,
                     patch.object(
                         slack,
                         "find_machine_in_database",
@@ -90,6 +135,9 @@ class ReportSlackTest(unittest.TestCase):
                     )
                     calls = [call.kwargs for call in post.call_args_list]
                     self.assertEqual(calls[0]["text"], "<!channel> UGC REPORT")
+                    self.assertTrue(
+                        all(call["username"] == "PennyMe" for call in calls)
+                    )
                     action_ids = [
                         element["action_id"]
                         for block in calls[0]["blocks"]
@@ -116,10 +164,21 @@ class ReportSlackTest(unittest.TestCase):
                         if c["blocks"][0]["type"] == "image"
                     ]
                     self.assertEqual(linked_images, expected_linked_images)
-                    uploads = [
-                        Path(call.kwargs["file"]).name for call in upload.call_args_list
-                    ]
-                    self.assertEqual(uploads, expected_uploads)
+                    if kind == "image":
+                        image_block = next(
+                            c["blocks"][0]
+                            for c in calls[1:]
+                            if c["blocks"][0]["type"] == "image"
+                        )
+                        filename = expected_linked_images[0]
+                        snapshot = root / "reported" / f"report-id_{filename}"
+                        self.assertEqual(
+                            snapshot.read_bytes(), (root / filename).read_bytes()
+                        )
+                        self.assertEqual(
+                            image_block["image_url"],
+                            f"{slack.IMG_PORT}reported/{snapshot.name}",
+                        )
                     text = "".join(c["text"] for c in calls[1:])
                     self.assertEqual(
                         "flagged comment" in text, kind in {"comment", "machine"}
