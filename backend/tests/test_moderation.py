@@ -28,6 +28,10 @@ class TextModerationTests(unittest.TestCase):
 
     def test_validates_report_fields(self):
         self.assertIsNone(validate_report("image", "spam_scam"))
+        self.assertIsNone(validate_report("image", "wrong_content"))
+        self.assertIsNone(validate_report("image", "spam"))
+        self.assertIsNone(validate_report("image", "abuse"))
+        self.assertIsNone(validate_report("image", "inappropriate"))
         self.assertIsNotNone(validate_report("profile", "spam_scam"))
         self.assertIsNotNone(validate_report("image", "invalid"))
 

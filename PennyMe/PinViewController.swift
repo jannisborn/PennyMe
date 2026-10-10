@@ -97,21 +97,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
 
     private enum ReportReason: String, CaseIterable {
-        case spamScam = "Spam / Scam"
-        case harassment = "Harassment"
-        case sexualContent = "Sexual content"
-        case hate = "Hate speech"
-        case violence = "Violence or threats"
-        case other = "Other objectionable content"
+        case wrongContent = "Wrong content"
+        case spam = "Spam"
+        case abuse = "Harassment, hate speech or violence"
+        case inappropriate = "Inappropriate content"
 
         var apiValue: String {
             switch self {
-            case .spamScam: return "spam_scam"
-            case .harassment: return "harassment"
-            case .sexualContent: return "sexual_content"
-            case .hate: return "hate"
-            case .violence: return "violence"
-            case .other: return "other"
+            case .wrongContent: return "wrong_content"
+            case .spam: return "spam"
+            case .abuse: return "abuse"
+            case .inappropriate: return "inappropriate"
             }
         }
     }
@@ -525,11 +521,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         )
         for reason in ReportReason.allCases {
             sheet.addAction(UIAlertAction(title: reason.rawValue, style: .default) { _ in
-                if blockContributor {
-                    self.confirmBlock(target: target, reason: reason)
-                } else {
-                    self.submitModerationReport(target: target, reason: reason, blockContributor: false)
-                }
+                self.requestReportComment(
+                    target: target,
+                    reason: reason,
+                    blockContributor: blockContributor
+                )
             })
         }
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -539,7 +535,49 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         present(sheet, animated: true)
     }
 
-    private func confirmBlock(target: ModerationTarget, reason: ReportReason) {
+    private func requestReportComment(
+        target: ModerationTarget,
+        reason: ReportReason,
+        blockContributor: Bool
+    ) {
+        let alert = UIAlertController(
+            title: "Explain Report",
+            message: "Please explain why you are flagging this content.",
+            preferredStyle: .alert
+        )
+        alert.addTextField { textField in
+            textField.placeholder = "Explanation"
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Continue", style: .default) { [weak alert] _ in
+            let comment = alert?.textFields?.first?.text?
+                .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            guard comment.count >= 5 else {
+                self.showAlert(
+                    title: "Invalid Explanation",
+                    message: "Please enter a proper explanation why you are flagging this content"
+                )
+                return
+            }
+            if blockContributor {
+                self.confirmBlock(target: target, reason: reason, comment: comment)
+            } else {
+                self.submitModerationReport(
+                    target: target,
+                    reason: reason,
+                    comment: comment,
+                    blockContributor: false
+                )
+            }
+        })
+        present(alert, animated: true)
+    }
+
+    private func confirmBlock(
+        target: ModerationTarget,
+        reason: ReportReason,
+        comment: String
+    ) {
         let alert = UIAlertController(
             title: "Block Contributor?",
             message: "All attributed machine listings, images, and comments from this contributor will be hidden throughout PennyMe on this device. While content is not deleted, useful information may appear missing to you! You can reverse this in Settings → Blocked content. PennyMe will also receive a report for review within several working days.",
@@ -547,7 +585,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         )
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Block & Report", style: .destructive) { _ in
-            self.submitModerationReport(target: target, reason: reason, blockContributor: true)
+            self.submitModerationReport(
+                target: target,
+                reason: reason,
+                comment: comment,
+                blockContributor: true
+            )
         })
         present(alert, animated: true)
     }
@@ -555,6 +598,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private func submitModerationReport(
         target: ModerationTarget,
         reason: ReportReason,
+        comment: String,
         blockContributor: Bool
     ) {
         if blockContributor {
@@ -571,6 +615,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             "target_kind": target.kind,
             "target_id": target.identifier,
             "reason": reason.apiValue,
+            "comment": comment,
             "block_contributor": blockContributor
         ]
         guard let body = try? JSONSerialization.data(withJSONObject: payload) else { return }

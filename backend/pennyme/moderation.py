@@ -58,12 +58,16 @@ _THREAT_PHRASES = (
 
 _VALID_TARGET_KINDS = {"comment", "image", "machine"}
 _VALID_REASONS = {
+    "abuse",
     "harassment",
     "hate",
+    "inappropriate",
     "other",
     "sexual_content",
     "spam_scam",
+    "spam",
     "violence",
+    "wrong_content",
 }
 
 
