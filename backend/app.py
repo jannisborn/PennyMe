@@ -1,3 +1,4 @@
+import autoroot  # noqa: F401  # loads backend/.env before Slack initializes
 import json
 import os
 import queue

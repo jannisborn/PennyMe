@@ -1,3 +1,4 @@
+import autoroot  # noqa: F401  # initializes backend root and loads .env
 import json
 import os
 import sys

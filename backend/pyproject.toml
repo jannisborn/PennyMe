@@ -22,6 +22,7 @@ keywords = ["iOS App Store", "App", "Pressed Penny", "Collecting", "Coins"]
 requires-python = "==3.12.*"
 
 dependencies = [
+  "autoroot>=1.0.1",
   "requests",
   "bs4",
   "googlemaps",
