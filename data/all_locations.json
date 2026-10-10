@@ -25344,6 +25344,7 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "status": "unvisited",
+                "paywall": true,
                 "id": 4870,
                 "last_updated": "2021-04-05"
             }
@@ -52288,27 +52289,6 @@
                 "machine_status": "available",
                 "status": "unvisited",
                 "id": 1225,
-                "last_updated": "2021-04-05"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    12.4742287,
-                    41.8965229
-                ]
-            },
-            "properties": {
-                "name": "This and That Souvenir",
-                "area": "Italy",
-                "address": "Corso Vittorio Emanuele 123",
-                "external_url": "http://locations.pennycollector.com/Details.aspx?location=263178",
-                "internal_url": "null",
-                "machine_status": "available",
-                "status": "unvisited",
-                "id": 974,
                 "last_updated": "2021-04-05"
             }
         },
@@ -98044,18 +98024,19 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.10995,
-                    51.24126
+                    7.11267567410735,
+                    51.2374817933476
                 ]
             },
             "properties": {
-                "name": "Zoo Wuppertal",
+                "name": "Zoo Wuppertal - Lions",
                 "area": "Germany",
-                "address": "Hubertusallee 30",
+                "address": "Hubertusallee 30, 42117 Wuppertal",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=210558",
                 "internal_url": "null",
                 "paywall": true,
+                "num_coins": 3,
                 "machine_status": "available",
                 "id": 645,
                 "last_updated": "2023-08-13"
@@ -98071,13 +98052,14 @@
                 ]
             },
             "properties": {
-                "name": "Zoo Wuppertal 2 - Original Souvenirs (penguins)",
+                "name": "Zoo Wuppertal - Penguins",
                 "area": "Germany",
                 "address": "Hubertusallee 30, 42117 Wuppertal",
                 "status": "unvisited",
-                "external_url": "null",
+                "external_url": "http://locations.pennycollector.com/Details.aspx?location=210558",
                 "internal_url": "null",
                 "paywall": true,
+                "num_coins": 3,
                 "machine_status": "available",
                 "id": 6021,
                 "last_updated": "2023-08-13"
@@ -111744,27 +111726,6 @@
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 6934,
-                "last_updated": "2024-08-28"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    7.1048364,
-                    51.2406191
-                ]
-            },
-            "properties": {
-                "name": "Wuppertal Stadion am Zoo",
-                "area": "Germany",
-                "address": "Hubertusallee 9, 42117 Wuppertal, Germany",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": 6935,
                 "last_updated": "2024-08-28"
             }
         },
@@ -126109,19 +126070,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    7.1048263,
-                    51.2392133
+                    7.1048364,
+                    51.2406191
                 ]
             },
             "properties": {
-                "name": "Stadion am Zoo",
+                "name": "Stadion am Zoo - Wuppertaler SV",
                 "area": "Germany",
-                "address": "Hubertusallee 4, Wuppertal ",
+                "address": "Hubertusallee 9, 42117 Wuppertal, Germany",
                 "status": "unvisited",
                 "external_url": "http://locations.pennycollector.com/Details.aspx?location=434347",
                 "internal_url": "null",
                 "machine_status": "available",
                 "id": 7292,
+                "num_coins": 3,
                 "last_updated": "2024-07-07"
             }
         },
@@ -129635,27 +129597,6 @@
                 "machine_status": "retired",
                 "status": "unvisited",
                 "id": 1526,
-                "last_updated": "2024-08-28"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.0071228,
-                    41.920362
-                ]
-            },
-            "properties": {
-                "name": "Good vibes, Good, Great Finds",
-                "area": "Massachusetts",
-                "address": "464 State Highway Route 6, Wellfleet",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "available",
-                "status": "unvisited",
-                "id": 5229,
                 "last_updated": "2024-08-28"
             }
         },
@@ -139922,28 +139863,6 @@
                 "status": "unvisited",
                 "id": 4002,
                 "last_updated": "2025-01-11"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -120.13869055714984,
-                    34.59413282584666
-                ]
-            },
-            "properties": {
-                "name": "Solvang CA",
-                "area": "California",
-                "address": "1618 Copenhagen Dr Solvang 93463",
-                "status": "unvisited",
-                "external_url": "null",
-                "internal_url": "null",
-                "machine_status": "available",
-                "id": 7705,
-                "last_updated": "2025-01-12",
-                "paywall": true
             }
         },
         {
