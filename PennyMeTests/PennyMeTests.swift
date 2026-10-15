@@ -8,6 +8,8 @@
 
 import XCTest
 import UIKit
+import SwiftUI
+import MapKit
 @testable import PennyMe
 
 class PennyMeTests: XCTestCase {
@@ -23,6 +25,29 @@ class PennyMeTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    /// User movement updates the form; programmatic changes must not feed back.
+    @MainActor
+    func testCoordinatePickerSynchronizesSelection() {
+        let initial = CLLocationCoordinate2D(latitude: 47.37, longitude: 8.54)
+        var selection = initial
+        let coordinator = CoordinatePickerMap.Coordinator(
+            selectedLocation: Binding(get: { selection }, set: { selection = $0 })
+        )
+        let map = MKMapView(frame: CGRect(x: 0, y: 0, width: 390, height: 200))
+        let moved = CLLocationCoordinate2D(latitude: 47.38, longitude: 8.55)
+        map.setRegion(MKCoordinateRegion(
+            center: moved, latitudinalMeters: 500, longitudinalMeters: 500
+        ), animated: false)
+        coordinator.isUpdating = true
+        coordinator.mapView(map, regionDidChangeAnimated: false)
+        XCTAssertEqual(selection, initial)
+
+        coordinator.isUpdating = false
+        coordinator.mapView(map, regionDidChangeAnimated: false)
+        XCTAssertEqual(selection.latitude, moved.latitude, accuracy: 0.00001)
+        XCTAssertEqual(selection.longitude, moved.longitude, accuracy: 0.00001)
     }
 
     func testTextModerationBlocksObjectionableLanguageWithoutSubstringFalsePositive() {
