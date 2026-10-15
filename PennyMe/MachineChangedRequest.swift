@@ -20,6 +20,7 @@ let regionInMeters: Double = 100
 @available(iOS 14.0, *)
 struct InteractiveMapView: View {
     @Binding var selectedLocation: CLLocationCoordinate2D
+    var originalLocation: CLLocationCoordinate2D? = nil
     @State private var mapType: MKMapType = .standard
 
     private var mapTypeName: String {
@@ -31,7 +32,9 @@ struct InteractiveMapView: View {
     }
 
     var body: some View {
-        CoordinatePickerMap(selectedLocation: $selectedLocation, mapType: mapType)
+        CoordinatePickerMap(
+            selectedLocation: $selectedLocation, mapType: mapType, originalLocation: originalLocation
+        )
         .overlay {
             // The pin stays at the selected center while the map moves beneath it.
             Image(systemName: "mappin")
@@ -74,6 +77,7 @@ struct InteractiveMapView: View {
 struct CoordinatePickerMap: UIViewRepresentable {
     @Binding var selectedLocation: CLLocationCoordinate2D
     let mapType: MKMapType
+    var originalLocation: CLLocationCoordinate2D? = nil
 
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
@@ -83,6 +87,12 @@ struct CoordinatePickerMap: UIViewRepresentable {
             span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         ), animated: false)
         map.delegate = context.coordinator
+        if let originalLocation = originalLocation {
+            let pin = MKPointAnnotation()
+            pin.coordinate = originalLocation
+            pin.title = "Current machine location"
+            map.addAnnotation(pin)
+        }
         return map
     }
 
@@ -115,6 +125,15 @@ struct CoordinatePickerMap: UIViewRepresentable {
         init(selectedLocation: Binding<CLLocationCoordinate2D>) {
             self.selectedLocation = selectedLocation
             lastSelection = selectedLocation.wrappedValue
+        }
+
+        /// Marks the original machine location while preserving the native user-location dot.
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard annotation is MKPointAnnotation else { return nil }
+            let view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            view.markerTintColor = .systemGray
+            view.canShowCallout = true
+            return view
         }
 
         func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -206,7 +225,7 @@ struct MachineChangedForm: View {
             .padding(3)
             
             Section(header: Text("Change location").foregroundColor(.gray)) {
-                InteractiveMapView(selectedLocation: $selectedLocation)
+                InteractiveMapView(selectedLocation: $selectedLocation, originalLocation: coords)
 
                 Text("Lat: \(String(format: "%.4f", selectedLocation.latitude)), Lon: \(String(format: "%.4f", selectedLocation.longitude))")
                     .font(.footnote)
