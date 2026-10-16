@@ -17,9 +17,6 @@
 		83E455212A705D67003D0D8A /* NewMachineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E455202A705D67003D0D8A /* NewMachineRequest.swift */; };
 		83E627E72B265A9A002FE18B /* Siren in Frameworks */ = {isa = PBXBuildFile; productRef = 83E627E62B265A9A002FE18B /* Siren */; };
 		83F2DA682AF6DC6E0002B47A /* MachineChangedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2DA672AF6DC6E0002B47A /* MachineChangedRequest.swift */; };
-		A10000022E40000100C0FFEE /* CommunitySafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000012E40000100C0FFEE /* CommunitySafety.swift */; };
-		A10000042E40000200C0FFEE /* terms_of_use.md in Resources */ = {isa = PBXBuildFile; fileRef = A10000032E40000200C0FFEE /* terms_of_use.md */; };
-		A10000062E40000300C0FFEE /* privacy_policy.md in Resources */ = {isa = PBXBuildFile; fileRef = A10000052E40000300C0FFEE /* privacy_policy.md */; };
 		9F421AB3261B9755004197B4 /* ArtworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F421AB2261B9755004197B4 /* ArtworkViews.swift */; };
 		9F612054230CAC2300F1D9DE /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F612053230CAC2300F1D9DE /* Artwork.swift */; };
 		9F70CCEA231850DC003AED89 /* all_locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F70CCE9231850DC003AED89 /* all_locations.json */; };
@@ -33,6 +30,9 @@
 		9FAC9326231828ED00BDEA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FAC9325231828ED00BDEA98 /* Assets.xcassets */; };
 		9FC12D6B230E9B1E00016617 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12D6A230E9B1E00016617 /* AboutViewController.swift */; };
 		9FF43BDA2621221A00BE3F6A /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF43BD92621221A00BE3F6A /* SearchFooter.swift */; };
+		A10000022E40000100C0FFEE /* CommunitySafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000012E40000100C0FFEE /* CommunitySafety.swift */; };
+		A10000042E40000200C0FFEE /* terms_of_use.md in Resources */ = {isa = PBXBuildFile; fileRef = A10000032E40000200C0FFEE /* terms_of_use.md */; };
+		A10000062E40000300C0FFEE /* privacy_policy.md in Resources */ = {isa = PBXBuildFile; fileRef = A10000052E40000300C0FFEE /* privacy_policy.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,9 +61,6 @@
 		83E4551E2A705829003D0D8A /* NewMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMachine.swift; sourceTree = "<group>"; };
 		83E455202A705D67003D0D8A /* NewMachineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMachineRequest.swift; sourceTree = "<group>"; };
 		83F2DA672AF6DC6E0002B47A /* MachineChangedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineChangedRequest.swift; sourceTree = "<group>"; };
-		A10000012E40000100C0FFEE /* CommunitySafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySafety.swift; sourceTree = "<group>"; };
-		A10000032E40000200C0FFEE /* terms_of_use.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = terms_of_use.md; sourceTree = "<group>"; };
-		A10000052E40000300C0FFEE /* privacy_policy.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = privacy_policy.md; sourceTree = "<group>"; };
 		9F421AB2261B9755004197B4 /* ArtworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViews.swift; sourceTree = "<group>"; };
 		9F612053230CAC2300F1D9DE /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		9F70CCE9231850DC003AED89 /* all_locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = all_locations.json; path = data/all_locations.json; sourceTree = "<group>"; };
@@ -83,6 +80,9 @@
 		9FAC9325231828ED00BDEA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PennyMe/Assets.xcassets; sourceTree = "<group>"; };
 		9FC12D6A230E9B1E00016617 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9FF43BD92621221A00BE3F6A /* SearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
+		A10000012E40000100C0FFEE /* CommunitySafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySafety.swift; sourceTree = "<group>"; };
+		A10000032E40000200C0FFEE /* terms_of_use.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = terms_of_use.md; sourceTree = "<group>"; };
+		A10000052E40000300C0FFEE /* privacy_policy.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = privacy_policy.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -526,16 +526,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PennyMe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PennyMe;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -548,16 +548,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
 				INFOPLIST_FILE = PennyMe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PennyMe;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
