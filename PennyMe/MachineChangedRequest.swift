@@ -11,46 +11,136 @@ import SwiftUI
 import MapKit
 import Combine
 
-import SwiftUI
-import MapKit
 import CoreLocation
 
 // variable defining how large the shown region is when changing coordinates
 let regionInMeters: Double = 100
 
-struct IdentifiableCoordinate: Identifiable {
-    let id = UUID()
-    let coordinate: CLLocationCoordinate2D
-}
-
+/// Shared coordinate picker for new machines and suggested machine changes.
 @available(iOS 14.0, *)
 struct InteractiveMapView: View {
     @Binding var selectedLocation: CLLocationCoordinate2D
+    var originalLocation: CLLocationCoordinate2D? = nil
+    @State private var mapType: MKMapType = .standard
 
-    @State private var region: MKCoordinateRegion
-
-    init(selectedLocation: Binding<CLLocationCoordinate2D>) {
-        _selectedLocation = selectedLocation
-        _region = State(initialValue: MKCoordinateRegion(
-            center: selectedLocation.wrappedValue,
-            span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        ))
+    private var mapTypeName: String {
+        switch mapType {
+        case .satellite: return "Satellite"
+        case .hybrid: return "Hybrid"
+        default: return "Standard"
+        }
     }
 
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: [IdentifiableCoordinate(coordinate: selectedLocation)]) { item in
-            MapMarker(coordinate: item.coordinate, tint: .red)
+        CoordinatePickerMap(
+            selectedLocation: $selectedLocation, mapType: mapType, originalLocation: originalLocation
+        )
+        .overlay {
+            // The pin stays at the selected center while the map moves beneath it.
+            Image(systemName: "mappin")
+                .font(.system(size: 32, weight: .bold))
+                .foregroundColor(.red)
+                .shadow(color: .white, radius: 2)
+                .alignmentGuide(VerticalAlignment.center) { $0[.bottom] }
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
         }
-        .onChange(of: region.center) { newCenter in
-            selectedLocation = newCenter
-        }
-        .onChange(of: selectedLocation) { newLocation in
-            if region.center != newLocation {
-                region.center = newLocation
+        .overlay(alignment: .bottomTrailing) {
+            Button {
+                switch mapType {
+                case .standard: mapType = .satellite
+                case .satellite: mapType = .hybrid
+                default: mapType = .standard
+                }
+            } label: {
+                Image(systemName: "square.stack.3d.up.fill")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.black)
+                    .frame(width: 44, height: 44)
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .shadow(radius: 2)
             }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Change map type")
+            .accessibilityValue(mapTypeName)
+            .accessibilityHint("Cycles through standard, satellite and hybrid maps")
+            .padding(8)
         }
         .frame(height: 200)
         .cornerRadius(10)
+    }
+}
+
+/// Embeds MapKit's map types and location indicator without following the user.
+@available(iOS 14.0, *)
+struct CoordinatePickerMap: UIViewRepresentable {
+    @Binding var selectedLocation: CLLocationCoordinate2D
+    let mapType: MKMapType
+    var originalLocation: CLLocationCoordinate2D? = nil
+
+    func makeUIView(context: Context) -> MKMapView {
+        let map = MKMapView()
+        map.showsUserLocation = true
+        map.setRegion(MKCoordinateRegion(
+            center: selectedLocation,
+            span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        ), animated: false)
+        map.delegate = context.coordinator
+        if let originalLocation = originalLocation {
+            let pin = MKPointAnnotation()
+            pin.coordinate = originalLocation
+            pin.title = "Current machine location"
+            map.addAnnotation(pin)
+        }
+        return map
+    }
+
+    func updateUIView(_ map: MKMapView, context: Context) {
+        let coordinator = context.coordinator
+        coordinator.selectedLocation = $selectedLocation
+        coordinator.isUpdating = true
+        defer { coordinator.isUpdating = false }
+
+        if map.mapType != mapType {
+            map.mapType = mapType
+        }
+        // Only recenter for external edits, such as accepting a photo's GPS data.
+        if coordinator.lastSelection != selectedLocation {
+            coordinator.lastSelection = selectedLocation
+            map.setCenter(selectedLocation, animated: false)
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(selectedLocation: $selectedLocation)
+    }
+
+    /// Sends completed map movements back to the form without update feedback.
+    final class Coordinator: NSObject, MKMapViewDelegate {
+        var selectedLocation: Binding<CLLocationCoordinate2D>
+        var lastSelection: CLLocationCoordinate2D
+        var isUpdating = false
+
+        init(selectedLocation: Binding<CLLocationCoordinate2D>) {
+            self.selectedLocation = selectedLocation
+            lastSelection = selectedLocation.wrappedValue
+        }
+
+        /// Marks the original machine location while preserving the native user-location dot.
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard annotation is MKPointAnnotation else { return nil }
+            let view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            view.markerTintColor = .systemGray
+            view.canShowCallout = true
+            return view
+        }
+
+        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            guard !isUpdating, lastSelection != mapView.centerCoordinate else { return }
+            lastSelection = mapView.centerCoordinate
+            selectedLocation.wrappedValue = lastSelection
+        }
     }
 }
     
@@ -135,7 +225,7 @@ struct MachineChangedForm: View {
             .padding(3)
             
             Section(header: Text("Change location").foregroundColor(.gray)) {
-                InteractiveMapView(selectedLocation: $selectedLocation)
+                InteractiveMapView(selectedLocation: $selectedLocation, originalLocation: coords)
 
                 Text("Lat: \(String(format: "%.4f", selectedLocation.latitude)), Lon: \(String(format: "%.4f", selectedLocation.longitude))")
                     .font(.footnote)
