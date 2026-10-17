@@ -12,8 +12,6 @@
 
 </div>
 
-<img align="right" width="240" src="https://user-images.githubusercontent.com/20857899/184221232-5a37ec6f-dba8-4093-b9a8-ad6cfad33e3c.gif" alt="PennyMe map preview">
-
 PennyMe is an open-source iOS app for discovering pressed penny machines, keeping track of your collection, and helping the community keep the map useful.
 
 ## At a glance
@@ -41,3 +39,7 @@ Add machines, upload photos, and share comments. Report outdated listings or ina
 PennyMe is built by two developers in their spare time and released under the [GNU GPL v3](LICENSE). Contributions, issue reports, and better machine data are welcome.
 
 If you are not using an Apple device, the [web map](https://jannisborn.github.io/PennyMe/webmap/map.html) shows the current machine locations.
+
+<div align="center">
+<img width="240" src="https://user-images.githubusercontent.com/20857899/184221232-5a37ec6f-dba8-4093-b9a8-ad6cfad33e3c.gif" alt="PennyMe map preview">
+</div>
