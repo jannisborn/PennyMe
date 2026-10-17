@@ -11,23 +11,44 @@ import MapKit
 import CoreLocation
 import Contacts
 
+final class ValueSlider: UISlider {
+    func showValue(_ value: Float) {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 48, height: 30))
+        let image = renderer.image { context in
+            let rect = CGRect(x: 1, y: 1, width: 46, height: 28)
+            UIColor.systemBlue.setFill()
+            UIBezierPath(roundedRect: rect, cornerRadius: 8).fill()
+            let text = "\(Int(value.rounded()))"
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 13, weight: .semibold),
+                .foregroundColor: UIColor.white
+            ]
+            let size = text.size(withAttributes: attributes)
+            text.draw(at: CGPoint(x: (48 - size.width) / 2, y: (30 - size.height) / 2), withAttributes: attributes)
+            context.cgContext.setShadow(offset: CGSize(width: 0, height: 1), blur: 2, color: UIColor.black.withAlphaComponent(0.25).cgColor)
+        }
+        setThumbImage(image, for: .normal)
+        setThumbImage(image, for: .highlighted)
+    }
+}
 
 class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var navigationbar: UINavigationItem!
     @IBOutlet weak var pushSwitch: UISwitch!
     @IBOutlet weak var reportProblemButton: UIButton!
-    @IBOutlet weak var radiusSlider: UISlider!
+    @IBOutlet weak var radiusSlider: ValueSlider!
     @IBOutlet weak var retiredSwitch: UISwitch!
     @IBOutlet weak var clusterPinsSwitch: UISwitch!
     @IBOutlet weak var markedSwitch: UISwitch!
     @IBOutlet weak var visitedSwitch: UISwitch!
     @IBOutlet weak var unvisitedSwitch: UISwitch!
+    @IBOutlet weak var routingSlider: ValueSlider!
     
     static var hasChanged = false
     static var clusterHasChanged = false
-    private let legalIndexPath = IndexPath(row: 0, section: 3)
-    private let blockedContentIndexPath = IndexPath(row: 1, section: 3)
+    private let legalIndexPath = IndexPath(row: 0, section: 4)
+    private let blockedContentIndexPath = IndexPath(row: 1, section: 4)
     let default_switches: [String: Bool] = [
         "unvisitedSwitch": true,
         "visitedSwitch": true,
@@ -55,6 +76,7 @@ class SettingsViewController: UITableViewController {
         // slider
         radiusSlider.value =  UserDefaults.standard.float(forKey: "radius")
         radius = Double(radiusSlider.value)
+        radiusSlider.showValue(radiusSlider.value)
         radiusSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         radiusSlider.isContinuous = false
         
@@ -75,9 +97,13 @@ class SettingsViewController: UITableViewController {
         // 4) retired switch
         retiredSwitch.isOn = user_settings.value(forKey: "retiredSwitch") as? Bool ?? default_switches["retiredSwitch"] as! Bool
         retiredSwitch.addTarget(self, action: #selector(showRetiredMachines), for: .valueChanged)
-        
+
+        routingSlider.value = min(max(Float(Trip.maximumExtraDistance / 1_000), 1), 50)
+        routingSlider.showValue(routingSlider.value)
+        routingSlider.isContinuous = false
+        routingSlider.addTarget(self, action: #selector(routingSliderValueDidChange(_:)), for: .valueChanged)
     }
-    
+
     @objc func reportProblem (sender: UIButton!){
         let mailtostring = String(
             "mailto:ninawiedemann999@gmail.com?subject=[PennyMe] - Problem report&body=Dear PennyMe team,\n\n I would like to inform you about the following problem in your app:\n\n"
@@ -146,7 +172,36 @@ class SettingsViewController: UITableViewController {
                 )
                 present(UINavigationController(rootViewController: controller), animated: true)
             }
+        } else if tableView.cellForRow(at: indexPath)?.contentView.subviews.compactMap({ $0 as? UILabel }).first?.text == "Import trip" {
+            importTrip()
         }
+    }
+
+    private func importTrip() {
+        let alert = UIAlertController(title: "Import trip", message: "Paste an Apple Maps or Google Maps directions link with a start and destination, without existing stops.", preferredStyle: .alert)
+        alert.addTextField {
+            $0.placeholder = "Maps link"
+            $0.keyboardType = .URL
+            $0.autocapitalizationType = .none
+            $0.autocorrectionType = .no
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Preview", style: .default) { [weak self, weak alert] _ in
+            let text = alert?.textFields?.first?.text ?? ""
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.navigationController?.popViewController(animated: true)
+                NotificationCenter.default.post(name: .tripImportRequested, object: text)
+            }
+        })
+        present(alert, animated: true)
+    }
+
+    @objc private func routingSliderValueDidChange(_ sender: UISlider) {
+        let value = sender.value.rounded()
+        sender.value = value
+        UserDefaults.standard.set(Double(value) * 1_000, forKey: Trip.maximumExtraDistanceKey)
+        routingSlider.showValue(value)
     }
     // Functions for Switches
     @objc func showUnvisitedMachines(sender:UISwitch!) {
@@ -180,6 +235,7 @@ class SettingsViewController: UITableViewController {
     {
         radius =  Double(sender.value)
         UserDefaults.standard.set(sender.value, forKey: "radius")
+        radiusSlider.showValue(sender.value)
         UserDefaults.standard.synchronize()
         self.tableView.reloadData()
     }
@@ -221,7 +277,7 @@ class SettingsViewController: UITableViewController {
         if section == 1{
             return "Send push notification if a new penny machine is less than \(Int(self.radiusSlider.value)) km away. Location services must be set to 'Always' in settings. Attention: The app must be opened regularly to keep the location updates running."
         }
-        if section == 4{
+        if section == 5{
             return "Tell us if there is a problem with the app! To update a penny machine, please use `Report Change` at the bottom of the machine view."
         }
         return nil

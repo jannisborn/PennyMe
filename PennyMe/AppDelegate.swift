@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
 
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        guard url.scheme?.lowercased() == "pennyme" else { return false }
+        NotificationCenter.default.post(name: .tripImportRequested, object: nil)
+        return true
+    }
+
     private func checkForUpdates() {
         guard !didCheckForUpdates else { return }
         didCheckForUpdates = true
