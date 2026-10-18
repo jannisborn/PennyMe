@@ -56,6 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     private var isLoadingListingManifest = false
     private var lastListingManifestAttempt: Date?
     private var needsListingFilterRefresh = false
+    private var pendingTripLink: String?
     
     // variables to handle the toggles on the Settings screen
     var includedStates : [String] = []
@@ -150,6 +151,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             name: UIApplication.didBecomeActiveNotification,
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleTripImportRequest(_:)),
+            name: .tripImportRequested,
+            object: nil
+        )
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .refresh,
@@ -176,6 +183,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 target: self,
                 action: #selector(didTapSettings)
             )
+        navigationItem.leftBarButtonItem?.accessibilityLabel = "Settings"
         // new machine button
          setupRoundIconButton(newMachineButton, systemName: "plus", action: #selector(segueNewMachine))
         // user stats button
@@ -380,6 +388,46 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     @objc private func didTapSettings() {
         performSegue(withIdentifier: "ShowSettingsViewController", sender: self)
        }
+
+    /// Uses the same machine visibility rules as the main map, including blocked listings.
+    func showTrip(_ link: String) {
+        guard viewIfLoaded?.window != nil, presentedViewController == nil,
+              navigationController?.topViewController === self else {
+            pendingTripLink = link
+            return
+        }
+        let machines = artworks.filter {
+            $0.machineStatus == "available" && !blockedMachineIDs.contains($0.id) && isMachineVisible(machineID: $0.id)
+        }
+        let preview = TripPreviewViewController(link: link, machines: machines)
+        present(UINavigationController(rootViewController: preview), animated: true)
+    }
+
+    @objc private func handleTripImportRequest(_ notification: Notification) {
+        if let link = notification.object as? String {
+            pendingTripLink = link
+            presentPendingTrip()
+        } else {
+            presentPendingTrip()
+        }
+    }
+
+    private func presentPendingTrip() {
+        guard viewIfLoaded?.window != nil, presentedViewController == nil,
+              navigationController?.topViewController === self else { return }
+        let file = SharedTrip.file
+        let fromFile = pendingTripLink == nil
+        let link = pendingTripLink ?? file.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
+        guard let link else { return }
+        pendingTripLink = nil
+        showTrip(link)
+        if fromFile, let file { try? FileManager.default.removeItem(at: file) }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentPendingTrip()
+    }
 
     
     func removeNewMachinePin() -> Void {
@@ -621,6 +669,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
     @objc private func applicationDidBecomeActive() {
         refreshServerLocationsIfNeeded()
+        presentPendingTrip()
     }
 
     @objc private func manuallyRefreshServerLocations() {

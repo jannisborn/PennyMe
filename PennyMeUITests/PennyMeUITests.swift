@@ -31,4 +31,33 @@ class PennyMeUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testTripImportAndStopSelection() {
+        let app = XCUIApplication()
+        app.buttons["Settings"].tap()
+        let importButton = app.staticTexts["Import trip"]
+        app.swipeUp()
+        XCTAssertTrue(importButton.waitForExistence(timeout: 10))
+        importButton.tap()
+        let prompt = app.alerts["Import trip"]
+        prompt.textFields.firstMatch.tap()
+        prompt.textFields.firstMatch.typeText("https://maps.apple.com/?saddr=47.37,8.54&daddr=47.56,7.59")
+        prompt.buttons["Preview"].tap()
+        XCTAssertTrue(app.navigationBars["Trip preview"].waitForExistence(timeout: 10))
+        let best = app.descendants(matching: .any)["trip-best"].firstMatch
+        XCTAssertTrue(best.waitForExistence(timeout: 10))
+        let export = app.buttons["Open in Google Maps"]
+        XCTAssertFalse(export.isEnabled)
+        best.tap()
+        let selection = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: export)
+        wait(for: [selection], timeout: 5)
+        XCTAssertTrue(export.isEnabled, app.debugDescription)
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
+        app.buttons["Remove stop"].tap()
+        XCTAssertFalse(export.isEnabled)
+        app.buttons["Done"].tap()
+        XCTAssertTrue(importButton.waitForExistence(timeout: 5))
+    }
+
 }

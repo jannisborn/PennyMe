@@ -1,35 +1,45 @@
+<div align="center">
+
 # PennyMe
 
-This is the open source code for iOS App *PennyMe* - An app for finding pressed Penny Machines.
+**Find, collect, and share pressed penny machines wherever you travel.**
 
-Checkout the app on [the app store](https://apps.apple.com/gb/app/pennylocator/id1635027001?platform=iphone)!
+[![App Store](https://img.shields.io/badge/App_Store-Download-0D96F6?logo=apple&logoColor=white)](https://apps.apple.com/gb/app/pennylocator/id1635027001?platform=iphone)
+[![iOS](https://img.shields.io/badge/iOS-15.6%2B-0A84FF?logo=apple&logoColor=white)](https://github.com/jannisborn/PennyMe)
+[![Swift](https://img.shields.io/badge/Swift-UIKit%20%2B%20SwiftUI-F05138?logo=swift&logoColor=white)](https://github.com/jannisborn/PennyMe)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
+[![Backend tests](https://github.com/jannisborn/PennyMe/actions/workflows/backend-tests.yml/badge.svg)](https://github.com/jannisborn/PennyMe/actions/workflows/backend-tests.yml)
 
-<img align="right" src=https://user-images.githubusercontent.com/20857899/184221232-5a37ec6f-dba8-4093-b9a8-ad6cfad33e3c.gif >
+</div>
 
+PennyMe is an open-source iOS app for discovering pressed penny machines, keeping track of your collection, and helping the community keep the map useful.
 
+## At a glance
 
-**App description**
+| 25K | 15K | 10K | 4.5K | 10K |
+| ---: | ---: | ---: | ---: | ---: |
+| downloads since 2022 | user-contributed images | penny machines tracked | machines with comments | comments shared |
 
-You enjoy collecting pressed pennys?
+## Explore and collect
 
-This app makes it easier than ever to find the next coin machine - anywhere you travel! Never miss your nearest penny anymore!
+- Browse a worldwide map with standard, satellite, and clustered views.
+- Open a machine to see its address, photos, available coins, comments, and status.
+- Mark machines as visited or saved for later, filter the map, and get notifications when an unvisited machine is nearby.
 
-PennyMe is an app to help with the collection of pressed pennies. Those neat coins that you can imprint with a picture of a tourist attraction if you turn the crank of the machine.
+## Plan trips around pennies
 
-PennyMe displays all machines worldwide and displays detailed information about a machine upon selection.
+Import a route from Google Maps or Apple Maps through the share sheet or Settings. PennyMe finds machines near the route, lets you add multiple stops, previews the driving legs when MapKit can provide them, and exports the resulting route back to Maps.
 
-Tick off machines you visited to keep track of your collected pennies. Or mark a machine for a later visit.
+## Build the collection together
 
-PennyMe also helps you to easily navigate to any machine. And it shows its address, a picture of the machine and other details.
+Add machines, upload photos, and share comments. Report outdated listings or inappropriate images and comments so they can be reviewed. Content can also be blocked locally from Settings.
 
-PennyMe relies on user contributions! Add new machines or report if anything has changed!
+## Open source
 
+PennyMe is built by two developers in their spare time and released under the [GNU GPL v3](LICENSE). Contributions, issue reports, and better machine data are welcome.
 
-## Not an apple user?
+If you are not using an Apple device, the [web map](https://jannisborn.github.io/PennyMe/webmap/map.html) shows the current machine locations.
 
-See [here](https://jannisborn.github.io/PennyMe/webmap/map.html) for a map of all pins: https://jannisborn.github.io/PennyMe/webmap/map.html 
-
-
-
-
-
+<div align="center">
+<img width="240" src="https://user-images.githubusercontent.com/20857899/184221232-5a37ec6f-dba8-4093-b9a8-ad6cfad33e3c.gif" alt="PennyMe map preview">
+</div>
