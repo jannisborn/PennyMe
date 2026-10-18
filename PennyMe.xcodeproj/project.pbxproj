@@ -32,27 +32,13 @@
 		A10000022E40000100C0FFEE /* CommunitySafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000012E40000100C0FFEE /* CommunitySafety.swift */; };
 		A10000042E40000200C0FFEE /* terms_of_use.md in Resources */ = {isa = PBXBuildFile; fileRef = A10000032E40000200C0FFEE /* terms_of_use.md */; };
 		A10000062E40000300C0FFEE /* privacy_policy.md in Resources */ = {isa = PBXBuildFile; fileRef = A10000052E40000300C0FFEE /* privacy_policy.md */; };
-		A5250000000000000000000B = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000001;
-		};
-		A5250000000000000000000C = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000002;
-		};
-		A5250000000000000000000D = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000003;
-		};
-		A5250000000000000000000E = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000003;
-		};
-		A5250000000000000000000F = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000005;
-		};
-		A52500000000000000000010 = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000007; settings = {ATTRIBUTES = (RemoveHeadersOnCopy,);};
-		};
-		A52500000000000000000012 = {
-			isa = PBXBuildFile; fileRef = A52500000000000000000008;
-		};
+		A5250000000000000000000B /* TripLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52500000000000000000001 /* TripLink.swift */; };
+		A5250000000000000000000C /* TripPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52500000000000000000002 /* TripPreviewViewController.swift */; };
+		A5250000000000000000000D /* SharedTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52500000000000000000003 /* SharedTrip.swift */; };
+		A5250000000000000000000E /* SharedTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52500000000000000000003 /* SharedTrip.swift */; };
+		A5250000000000000000000F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52500000000000000000005 /* ShareViewController.swift */; };
+		A52500000000000000000010 /* TripShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A52500000000000000000007 /* TripShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A52500000000000000000012 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52500000000000000000008 /* TripTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,14 +56,26 @@
 			remoteGlobalIDString = 9F9F31A02300B40900C0E854;
 			remoteInfo = PennyMe;
 		};
-		A52500000000000000000018 = {
-			isa = PBXContainerItemProxy; containerPortal = 9F9F31992300B40900C0E854; proxyType = 1; remoteGlobalIDString = A52500000000000000000019; remoteInfo = TripShare;
+		A52500000000000000000018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F9F31992300B40900C0E854 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A52500000000000000000019;
+			remoteInfo = TripShare;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A52500000000000000000017 = {
-			isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 13; files = (A52500000000000000000010,); name = "Embed App Extensions"; runOnlyForDeploymentPostprocessing = 0;
+		A52500000000000000000017 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A52500000000000000000010 /* TripShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -111,30 +109,14 @@
 		A10000012E40000100C0FFEE /* CommunitySafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySafety.swift; sourceTree = "<group>"; };
 		A10000032E40000200C0FFEE /* terms_of_use.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = terms_of_use.md; sourceTree = "<group>"; };
 		A10000052E40000300C0FFEE /* privacy_policy.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = privacy_policy.md; sourceTree = "<group>"; };
-		A52500000000000000000001 = {
-			isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLink.swift; sourceTree = "<group>";
-		};
-		A52500000000000000000002 = {
-			isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPreviewViewController.swift; sourceTree = "<group>";
-		};
-		A52500000000000000000003 = {
-			isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTrip.swift; sourceTree = "<group>";
-		};
-		A52500000000000000000004 = {
-			isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PennyMe.entitlements; sourceTree = "<group>";
-		};
-		A52500000000000000000005 = {
-			isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>";
-		};
-		A52500000000000000000006 = {
-			isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>";
-		};
-		A52500000000000000000008 = {
-			isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>";
-		};
-		A52500000000000000000007 = {
-			isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; path = TripShare.appex; sourceTree = BUILT_PRODUCTS_DIR;
-		};
+		A52500000000000000000001 /* TripLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLink.swift; sourceTree = "<group>"; };
+		A52500000000000000000002 /* TripPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPreviewViewController.swift; sourceTree = "<group>"; };
+		A52500000000000000000003 /* SharedTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTrip.swift; sourceTree = "<group>"; };
+		A52500000000000000000004 /* PennyMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PennyMe.entitlements; sourceTree = "<group>"; };
+		A52500000000000000000005 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		A52500000000000000000006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A52500000000000000000007 /* TripShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; path = TripShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A52500000000000000000008 /* TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +143,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A52500000000000000000016 = {
-			isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0;
+		A52500000000000000000016 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -170,7 +156,7 @@
 		9F9F31982300B40900C0E854 = {
 			isa = PBXGroup;
 			children = (
-				A52500000000000000000014,
+				A52500000000000000000014 /* TripShare */,
 				A10000032E40000200C0FFEE /* terms_of_use.md */,
 				A10000052E40000300C0FFEE /* privacy_policy.md */,
 				9FAC9325231828ED00BDEA98 /* Assets.xcassets */,
@@ -185,7 +171,7 @@
 		9F9F31A22300B40900C0E854 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A52500000000000000000007,
+				A52500000000000000000007 /* TripShare.appex */,
 				9F9F31A12300B40900C0E854 /* PennyMe.app */,
 				9F9F31B52300B40A00C0E854 /* PennyMeTests.xctest */,
 				9F9F31C02300B40A00C0E854 /* PennyMeUITests.xctest */,
@@ -196,10 +182,10 @@
 		9F9F31A32300B40900C0E854 /* PennyMe */ = {
 			isa = PBXGroup;
 			children = (
-				A52500000000000000000001,
-				A52500000000000000000002,
-				A52500000000000000000003,
-				A52500000000000000000004,
+				A52500000000000000000001 /* TripLink.swift */,
+				A52500000000000000000002 /* TripPreviewViewController.swift */,
+				A52500000000000000000003 /* SharedTrip.swift */,
+				A52500000000000000000004 /* PennyMe.entitlements */,
 				8374764F2CADDAD800812146 /* StatisticsViewController.swift */,
 				83E4551E2A705829003D0D8A /* NewMachine.swift */,
 				839CF43F267B78AB00E259D9 /* SettingsViewController.swift */,
@@ -226,7 +212,7 @@
 		9F9F31B82300B40A00C0E854 /* PennyMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				A52500000000000000000008,
+				A52500000000000000000008 /* TripTests.swift */,
 				9F9F31B92300B40A00C0E854 /* PennyMeTests.swift */,
 				9F9F31BB2300B40A00C0E854 /* Info.plist */,
 			);
@@ -249,8 +235,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A52500000000000000000014 = {
-			isa = PBXGroup; children = (A52500000000000000000005, A52500000000000000000006,); path = TripShare; sourceTree = "<group>";
+		A52500000000000000000014 /* TripShare */ = {
+			isa = PBXGroup;
+			children = (
+				A52500000000000000000005 /* ShareViewController.swift */,
+				A52500000000000000000006 /* Info.plist */,
+			);
+			path = TripShare;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -259,7 +251,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F9F31C92300B40A00C0E854 /* Build configuration list for PBXNativeTarget "PennyMe" */;
 			buildPhases = (
-				A52500000000000000000017,
+				A52500000000000000000017 /* Embed App Extensions */,
 				9F9F319D2300B40900C0E854 /* Sources */,
 				9F9F319E2300B40900C0E854 /* Frameworks */,
 				9F9F319F2300B40900C0E854 /* Resources */,
@@ -268,7 +260,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A5250000000000000000001A,
+				A5250000000000000000001A /* PBXTargetDependency */,
 			);
 			name = PennyMe;
 			packageProductDependencies = (
@@ -315,12 +307,21 @@
 			productReference = 9F9F31C02300B40A00C0E854 /* PennyMeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		A52500000000000000000019 = {
+		A52500000000000000000019 /* TripShare */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5250000000000000000001B;
-			buildPhases = (A52500000000000000000015, A52500000000000000000016,);
-			buildRules = (); dependencies = (); name = TripShare; productName = TripShare;
-			productReference = A52500000000000000000007; productType = "com.apple.product-type.app-extension";
+			buildConfigurationList = A5250000000000000000001B /* Build configuration list for PBXNativeTarget "TripShare" */;
+			buildPhases = (
+				A52500000000000000000015 /* Sources */,
+				A52500000000000000000016 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TripShare;
+			productName = TripShare;
+			productReference = A52500000000000000000007 /* TripShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -367,7 +368,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A52500000000000000000019,
+				A52500000000000000000019 /* TripShare */,
 				9F9F31A02300B40900C0E854 /* PennyMe */,
 				9F9F31B42300B40A00C0E854 /* PennyMeTests */,
 				9F9F31BF2300B40A00C0E854 /* PennyMeUITests */,
@@ -409,10 +410,14 @@
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
-			files = ();
-			inputPaths = ();
+			files = (
+			);
+			inputPaths = (
+			);
 			name = "Stamp release year";
-			outputPaths = ("$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/ReleaseYear.txt",);
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/ReleaseYear.txt",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -eu\n/bin/date -u +%Y > \"$SCRIPT_OUTPUT_FILE_0\"\n";
@@ -424,9 +429,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5250000000000000000000B,
-				A5250000000000000000000C,
-				A5250000000000000000000D,
+				A5250000000000000000000B /* TripLink.swift in Sources */,
+				A5250000000000000000000C /* TripPreviewViewController.swift in Sources */,
+				A5250000000000000000000D /* SharedTrip.swift in Sources */,
 				9F9F31A72300B40900C0E854 /* ViewController.swift in Sources */,
 				8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */,
 				9F9C64A52A10D12E00C57887 /* VersionManager.swift in Sources */,
@@ -450,7 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A52500000000000000000012,
+				A52500000000000000000012 /* TripTests.swift in Sources */,
 				9F9F31BA2300B40A00C0E854 /* PennyMeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,8 +468,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A52500000000000000000015 = {
-			isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A5250000000000000000000E, A5250000000000000000000F,); runOnlyForDeploymentPostprocessing = 0;
+		A52500000000000000000015 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5250000000000000000000E /* SharedTrip.swift in Sources */,
+				A5250000000000000000000F /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -479,8 +490,10 @@
 			target = 9F9F31A02300B40900C0E854 /* PennyMe */;
 			targetProxy = 9F9F31C12300B40A00C0E854 /* PBXContainerItemProxy */;
 		};
-		A5250000000000000000001A = {
-			isa = PBXTargetDependency; target = A52500000000000000000019; targetProxy = A52500000000000000000018;
+		A5250000000000000000001A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A52500000000000000000019 /* TripShare */;
+			targetProxy = A52500000000000000000018 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -624,11 +637,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H8Z8J2BM93;
 				INFOPLIST_FILE = PennyMe/Info.plist;
-				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = PennyMe;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -647,11 +660,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
 				INFOPLIST_FILE = PennyMe/Info.plist;
-				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = PennyMe;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -752,37 +765,51 @@
 			};
 			name = Release;
 		};
-		A5250000000000000000001C = {
+		A5250000000000000000001C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_STYLE = Automatic;
 				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = TripShare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme.TripShare";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks",);
-				SKIP_INSTALL = YES; SWIFT_VERSION = 4.2; TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		A5250000000000000000001D = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H8Z8J2BM93;
 				INFOPLIST_FILE = TripShare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 2.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme.TripShare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks",);
-				SKIP_INSTALL = YES; SWIFT_VERSION = 4.2; TARGETED_DEVICE_FAMILY = "1,2";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5250000000000000000001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = PennyMe/PennyMe.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8Z8J2BM93;
+				INFOPLIST_FILE = TripShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "PennyMe--com.de.pennyme.TripShare";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -825,8 +852,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5250000000000000000001B = {
-			isa = XCConfigurationList; buildConfigurations = (A5250000000000000000001C, A5250000000000000000001D,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;
+		A5250000000000000000001B /* Build configuration list for PBXNativeTarget "TripShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5250000000000000000001C /* Debug */,
+				A5250000000000000000001D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
