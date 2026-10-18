@@ -91,12 +91,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     // reload configuration
     private var hasLoadedCachedMachineSnapshot = false
     private var isManualRefreshPending = false
-    // reload last_upadted data from server every 4 hours
+    // fetch only machines updated since the last sync (delta) from the server every 4 hours
     private let machineRefreshInterval: TimeInterval = 4 * 60 * 60
-    // reload full data from server once a month
+    // reload the full dataset from the server every 14 days (also picks up deletions)
     private let fullMachineSyncInterval: TimeInterval = 14 * 24 * 60 * 60
     private let lastSuccessfulMachineRefreshKey = "lastSuccessfulMachineRefresh"
     private let lastFullMachineSyncKey = "lastFullMachineSync"
+    private let lastFullMachineSyncAppVersionKey = "lastFullMachineSyncAppVersion"
+
+    private var appVersionIdentifier: String? {
+        guard let info = Bundle.main.infoDictionary,
+              let version = info["CFBundleShortVersionString"] as? String,
+              let build = info["CFBundleVersion"] as? String else {
+            return nil
+        }
+        return "\(version)+\(build)"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -756,15 +766,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
         let now = Date()
         let defaults = UserDefaults.standard
+        let currentAppVersion = appVersionIdentifier
+        let appVersionChanged = currentAppVersion.map {
+            defaults.string(forKey: lastFullMachineSyncAppVersionKey) != $0
+        } ?? false
         let lastRefresh = defaults.object(forKey: lastSuccessfulMachineRefreshKey) as? Date
-        guard force || !hasLoadedCachedMachineSnapshot || (lastRefresh.map {
+        guard force || appVersionChanged || !hasLoadedCachedMachineSnapshot || (lastRefresh.map {
             now.timeIntervalSince($0) >= machineRefreshInterval
         } ?? true) else {
             return
         }
 
         let lastFullSync = defaults.object(forKey: lastFullMachineSyncKey) as? Date
-        let needsFullSync = !hasLoadedCachedMachineSnapshot || (lastFullSync.map {
+        let needsFullSync = appVersionChanged || !hasLoadedCachedMachineSnapshot || (lastFullSync.map {
             now.timeIntervalSince($0) >= fullMachineSyncInterval
         } ?? true)
         if !hasLoadedCachedMachineSnapshot {
@@ -784,34 +798,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     // To load machine locations from JSON
     @available(iOS 13.0, *)
     func loadInitialData() {
-        let lastFullSync = UserDefaults.standard.object(forKey: lastFullMachineSyncKey) as? Date
-        let cacheIsFreshEnough = lastFullSync.map {
-            Date().timeIntervalSince($0) < fullMachineSyncInterval
-        } ?? false
-
-        if cacheIsFreshEnough, let cachedArtworks = loadCachedMachines() {
-            // Cache already reflects the full merged server state from a previous launch.
+        if let cachedArtworks = loadCachedMachines() {
+            // Show cached data immediately; refreshServerLocationsIfNeeded decides
+            // whether the server request needs to be a full sync.
             hasLoadedCachedMachineSnapshot = true
             artworks.append(contentsOf: cachedArtworks)
             for (ind, pin) in artworks.enumerated() {
                 pinIdDict[pin.id] = ind
-            }
-        } else if let fileName = Bundle.main.path(forResource: "all_locations", ofType: "json") {
-            // First launch (or cache unavailable): seed from the bundled snapshot.
-            let artworkData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
-
-            do {
-              let features = try MKGeoJSONDecoder()
-                .decode(artworkData!)
-                .compactMap { $0 as? MKGeoJSONFeature }
-              let validWorks = features.compactMap(Artwork.init)
-              artworks.append(contentsOf: validWorks)
-            // put IDs into a dictionary
-                for (ind, pin) in artworks.enumerated(){
-                    pinIdDict[pin.id] = ind
-                }
-            } catch {
-              print("Unexpected error: \(error).")
             }
         }
         
@@ -971,6 +964,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         defaults.set(syncDate, forKey: lastSuccessfulMachineRefreshKey)
         if isFullSync {
             defaults.set(syncDate, forKey: lastFullMachineSyncKey)
+            if let appVersionIdentifier {
+                defaults.set(appVersionIdentifier, forKey: lastFullMachineSyncAppVersionKey)
+            }
         }
         persistServerSyncDate(syncDate)
         persistCachedMachines()
@@ -984,7 +980,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     }
     
     private func showServerNotLoadedAlert() {
-        let alertController = UIAlertController(title:"Offline mode", message:"The pin information is outdated since the latest data could not be loaded. Check your internet connection.", preferredStyle: .alert)
+        let message: String
+        if artworks.isEmpty {
+            message = "no connection, data could not be loaded. Connect to the internet and use the refresh button on the top right to load the machines"
+        } else {
+            message = "The pin information is outdated since the latest data could not be loaded. Check your internet connection."
+        }
+        let alertController = UIAlertController(
+            title: "Offline mode",
+            message: message,
+            preferredStyle: .alert
+        )
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
