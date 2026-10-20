@@ -130,6 +130,34 @@ class ModerationStoreTests(unittest.TestCase):
             {"42": self.store.block_id(listing_contributor, "viewer-a")},
         )
 
+    def test_reassigns_pending_machine_attribution_to_final_id(self):
+        listing_contributor = self.store.record_content(
+            "7", "machine:listing", "listing-installation"
+        )
+        image_contributor = self.store.record_content(
+            "7", "image:machine", "image-installation"
+        )
+        comment_contributor = self.store.record_content(
+            "42", "comment:now", "comment-installation"
+        )
+
+        self.assertTrue(self.store.reassign_machine_content("7", "42"))
+        self.assertFalse(self.store.reassign_machine_content("7", "42"))
+
+        self.assertEqual(self.store.manifest("7", "viewer-a"), {})
+        self.assertEqual(
+            self.store.resolve_content("42", "machine:listing")["contributor_id"],
+            listing_contributor,
+        )
+        self.assertEqual(
+            self.store.resolve_content("42", "image:machine")["contributor_id"],
+            image_contributor,
+        )
+        self.assertEqual(
+            self.store.resolve_content("42", "comment:now")["contributor_id"],
+            comment_contributor,
+        )
+
     def test_legacy_clients_are_scoped_to_individual_content(self):
         first = self.store.record_content("42", "comment:a", "")
         second = self.store.record_content("43", "comment:b", "")

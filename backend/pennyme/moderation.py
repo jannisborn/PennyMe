@@ -14,9 +14,12 @@ import os
 import re
 import tempfile
 import threading
+from dataclasses import dataclass
 from datetime import datetime, timezone
+from filecmp import cmp
 from pathlib import Path
-from typing import Any, Dict, Mapping, Optional, Tuple, TypedDict
+from shutil import copy2
+from typing import Any, Dict, Mapping, Optional, Self, Tuple, TypedDict
 
 _BANNED_WORDS = {
     "asshole",
@@ -131,6 +134,106 @@ class ReportRequest(TypedDict):
     reason: str
     comment: str
     block_contributor: bool
+
+
+@dataclass(frozen=True)
+class MachineContentBackup:
+    """A staged filesystem backup for one approved machine report.
+
+    Machine deletion spans the filesystem and SQL, which cannot share a single
+    transaction. :meth:`stage` first ensures every live file has a backup.
+    Callers can then run the SQL archive/delete transaction and either
+    :meth:`finish_move` after success or :meth:`discard` after failure.
+
+    Attributes:
+        files: Source and backup path pairs included in this operation.
+        created_files: Backup paths newly created by this operation. Existing
+            identical report snapshots are excluded so rollback preserves them.
+    """
+
+    files: tuple[tuple[Path, Path], ...]
+    created_files: tuple[Path, ...]
+
+    @classmethod
+    def stage(
+        cls,
+        machine_id: int,
+        report_id: str,
+        images_path: Path,
+    ) -> Self:
+        """Copy all machine images and its optional comments file to backup.
+
+        Only exact machine image names are included: ``<id>.<ext>`` and
+        ``<id>_coin_<n>.<ext>`` for JPG, JPEG, and PNG files. Every backup name
+        is prefixed with the report ID, keeping separate reports independent.
+
+        Args:
+            machine_id: SQL ID of the reported machine.
+            report_id: Moderation report ID used to namespace backup files.
+            images_path: Root containing live images, ``comments``, and
+                ``reported`` directories.
+
+        Returns:
+            A staged backup that can be finalized or rolled back.
+
+        Raises:
+            FileExistsError: If a destination exists with different content.
+            OSError: If a source cannot be read or a backup cannot be written.
+        """
+        root = Path(images_path)
+        machine_name = str(machine_id)
+        image_pattern = re.compile(
+            rf"{re.escape(machine_name)}(_coin_\d+)?\.(jpg|jpeg|png)"
+        )
+        sources = [
+            path
+            for path in sorted(root.glob(f"{machine_name}*"))
+            if image_pattern.fullmatch(path.name)
+        ]
+        comments = root / "comments" / f"{machine_name}.json"
+        if comments.exists():
+            sources.append(comments)
+
+        destination_dir = root / "reported"
+        destination_dir.mkdir(exist_ok=True)
+        files: list[tuple[Path, Path]] = []
+        created_files: list[Path] = []
+        try:
+            for source in sources:
+                destination = destination_dir / f"{report_id}_{source.name}"
+                if destination.exists():
+                    if not cmp(source, destination, shallow=False):
+                        raise FileExistsError(destination)
+                else:
+                    copy2(source, destination)
+                    created_files.append(destination)
+                files.append((source, destination))
+        except Exception:
+            for path in created_files:
+                path.unlink(missing_ok=True)
+            raise
+
+        return cls(tuple(files), tuple(created_files))
+
+    def finish_move(self) -> None:
+        """Remove live files after the SQL archive/delete transaction succeeds.
+
+        Raises:
+            OSError: If a live file cannot be removed.
+        """
+        for source, _ in self.files:
+            source.unlink()
+
+    def discard(self) -> None:
+        """Remove backups created by this staging attempt after SQL failure.
+
+        Backups that existed before :meth:`stage` are intentionally preserved.
+
+        Raises:
+            OSError: If a newly created backup cannot be removed.
+        """
+        for path in self.created_files:
+            path.unlink(missing_ok=True)
 
 
 def utc_now() -> str:
@@ -330,6 +433,51 @@ class ModerationStore:
             machine[content_key] = entry
             self._atomic_write_json(self.attribution_path, data)
         return contributor_id
+
+    def reassign_machine_content(
+        self, source_machine_id: str, destination_machine_id: str
+    ) -> bool:
+        """Move all attribution from a temporary machine ID to its final ID.
+
+        Existing attribution at the destination is preserved unless the same
+        content key is present at the source, in which case the newly approved
+        contribution wins.
+
+        Args:
+            source_machine_id: Temporary pending-change ID used at submission.
+            destination_machine_id: Permanent SQL machine ID assigned on
+                approval.
+
+        Returns:
+            ``True`` when attribution was moved, otherwise ``False``.
+
+        Raises:
+            OSError: If the attribution file cannot be replaced atomically.
+            TypeError: If the updated attribution cannot be serialized.
+        """
+        source = str(source_machine_id)
+        destination = str(destination_machine_id)
+        if source == destination:
+            return False
+
+        with self._lock:
+            current = self._read_attribution()
+            source_content = current.get(source)
+            if not isinstance(source_content, dict):
+                return False
+
+            data = dict(current)
+            existing_destination = current.get(destination, {})
+            destination_content = (
+                dict(existing_destination)
+                if isinstance(existing_destination, dict)
+                else {}
+            )
+            destination_content.update(source_content)
+            data[destination] = destination_content
+            del data[source]
+            self._atomic_write_json(self.attribution_path, data)
+        return True
 
     def manifest(self, machine_id: str, viewer_id: str) -> Dict[str, str]:
         """Return content-owner pseudonyms safe to expose to one viewer.

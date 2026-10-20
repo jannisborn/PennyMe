@@ -8,7 +8,7 @@ from math import isfinite
 from pathlib import Path
 from threading import Thread
 from time import sleep
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from uuid import uuid4
 
 from flask import Flask, Response, jsonify, request
@@ -20,6 +20,7 @@ from thefuzz import process as fuzzysearch
 from scripts.location_differ import location_differ
 
 from pennyme.database import (
+    NearbyMachine,
     dump_machines_to_file,
     find_machine_in_database,
     get_all_machines_geojson,
@@ -55,7 +56,6 @@ from pennyme.slack import (
 )
 from pennyme.utils import (
     find_machine_name_conflict,
-    get_nearby_machines,
     setup_locdiffer_logger,
 )
 
@@ -123,7 +123,10 @@ def machines() -> Tuple[Response, int]:
 
     An optional ``since`` query parameter (``YYYY-MM-DD``) restricts the
     response to machines whose ``last_updated`` is on or after that date,
-    supporting incremental client-side syncs.
+    supporting incremental client-side syncs. Delta responses contain only
+    existing rows and therefore cannot communicate hard deletions. A request
+    without ``since`` is the authoritative full snapshot clients use to remove
+    deleted machines from their caches.
 
     Returns:
         A GeoJSON FeatureCollection with HTTP 200, or HTTP 400 when ``since``
@@ -580,7 +583,7 @@ def create_machine() -> Tuple[Response, int]:
         )
 
     # Preserve the generic proximity warning at its existing 150 metre radius.
-    nearby_machines = get_nearby_machines(location[1], location[0], area)
+    nearby_machines = get_nearby_machines_db(location[1], location[0], area)
     if request.args.get("ignore_nearby") != "true" and nearby_machines:
         nearby_lines = [
             f"{machine['distance_m']}m: {machine['name']} ({machine['machine_status']})"
@@ -651,6 +654,9 @@ def create_machine() -> Tuple[Response, int]:
         "paywall": paywall,
         "last_updated": last_updated,
     }
+    nearest_machines = get_nearby_machines_db(
+        location[1], location[0], area, radius_m=None, limit=3
+    )
     pending_id = insert_pending_change_full(
         machine_id=None,
         change_type="create",
@@ -670,6 +676,7 @@ def create_machine() -> Tuple[Response, int]:
         change_summary=format_machine_fields(machine_fields),
         latitude=location[1],
         longitude=location[0],
+        nearby_machines=nearest_machines,
     )
     request_queue.put(
         (
@@ -783,10 +790,12 @@ def change_machine() -> Tuple[Response, int]:
     old_address = existing_machine_infos["properties"]["address"]
     address_okay = True  # by default okay
     address_changed = address != old_address
-    location_changed = (
-        haversine((lat_old, lng_old), (latitude, longitude), unit=Unit.METERS)
-        > LOCATION_CHANGE_THRESHOLD_M
+    movement_distance_m = haversine(
+        (lat_old, lng_old), (latitude, longitude), unit=Unit.METERS
     )
+    location_changed = movement_distance_m > LOCATION_CHANGE_THRESHOLD_M
+    nearby_machines: List[NearbyMachine] = []
+    nearby_radius_m: Optional[float] = None
     # if address or coordinates were meaningfully changed, compare them and return warning if needed
     if location_changed or address_changed:
         # Verify that address matches coordinates
@@ -805,6 +814,14 @@ def change_machine() -> Tuple[Response, int]:
             changed_fields["latitude"] = latitude
             changed_fields["longitude"] = longitude
             msg += f"\t Location from: {lat_old:.4f}, {lng_old:.4f} to: {latitude:.4f}, {longitude:.4f}."
+            nearby_radius_m = max(150, movement_distance_m)
+            nearby_machines = get_nearby_machines_db(
+                latitude,
+                longitude,
+                area,
+                radius_m=nearby_radius_m,
+                exclude_machine_id=machine_id,
+            )
 
     if not changed_fields:
         msg = f"{machine_id} - Submitted change is identical to the state of the DB (either in pending PR or in main)"
@@ -833,6 +850,11 @@ def change_machine() -> Tuple[Response, int]:
         machine_id=machine_id,
         latitude=latitude,
         longitude=longitude,
+        old_latitude=lat_old if location_changed else None,
+        old_longitude=lng_old if location_changed else None,
+        movement_distance_m=movement_distance_m if location_changed else None,
+        nearby_radius_m=nearby_radius_m,
+        nearby_machines=nearby_machines if location_changed else None,
     )
 
     # return warning if the address and coordinates do not correspond
