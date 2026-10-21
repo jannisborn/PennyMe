@@ -152,7 +152,7 @@ class ReportSlackTest(unittest.TestCase):
                 text,
             )
 
-    def test_nearby_machine_links_and_images_are_temporary_thread_replies(self):
+    def test_source_and_nearby_images_are_temporary_thread_replies(self):
         neighbors = [
             {
                 "id": 7,
@@ -169,7 +169,14 @@ class ReportSlackTest(unittest.TestCase):
         ]
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for name in ("7.jpg", "7_coin_0.png", "70.jpg", "7_other.png"):
+            for name in (
+                "42.jpg",
+                "42_coin_0.png",
+                "7.jpg",
+                "7_coin_0.png",
+                "70.jpg",
+                "7_other.png",
+            ):
                 (root / name).touch()
 
             with (
@@ -180,7 +187,8 @@ class ReportSlackTest(unittest.TestCase):
                     "message_slack_raw",
                     side_effect=[
                         {"channel": "C123", "ts": "root-ts"},
-                        {"channel": "C123", "ts": "images-ts"},
+                        {"channel": "C123", "ts": "source-images-ts"},
+                        {"channel": "C123", "ts": "nearby-images-ts"},
                     ],
                 ) as post,
             ):
@@ -203,14 +211,30 @@ class ReportSlackTest(unittest.TestCase):
                 )
                 self.assertNotIn("<https://example.com/not-pennycollector|", root_text)
 
-                image_message = post.call_args_list[1]
-                self.assertEqual(image_message.kwargs["thread_ts"], "root-ts")
+                source_image_message = post.call_args_list[1]
+                self.assertEqual(source_image_message.kwargs["thread_ts"], "root-ts")
                 self.assertEqual(
-                    [block["image_url"] for block in image_message.kwargs["blocks"]],
+                    [
+                        block["image_url"]
+                        for block in source_image_message.kwargs["blocks"]
+                    ],
+                    [f"{slack.IMG_PORT}42.jpg"],
+                )
+                nearby_image_message = post.call_args_list[2]
+                self.assertEqual(nearby_image_message.kwargs["thread_ts"], "root-ts")
+                self.assertEqual(
+                    [
+                        block["image_url"]
+                        for block in nearby_image_message.kwargs["blocks"]
+                    ],
                     [f"{slack.IMG_PORT}7.jpg"],
                 )
                 self.assertEqual(
-                    slack._PENDING_IMAGE_MESSAGES[12], [("C123", "images-ts")]
+                    slack._PENDING_IMAGE_MESSAGES[12],
+                    [
+                        ("C123", "source-images-ts"),
+                        ("C123", "nearby-images-ts"),
+                    ],
                 )
 
     def test_pending_image_cleanup_deletes_every_tracked_message(self):

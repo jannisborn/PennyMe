@@ -733,7 +733,8 @@ def message_slack_pending_change(
         title: Machine name.
         area: Machine area/country.
         change_summary: Human-readable description of what changed.
-        machine_id: Existing machine ID for updates, None for new machines.
+        machine_id: Existing machine ID for updates, None for new machines. Its
+            current machine photo is included when nearby machines are checked.
         latitude: Machine latitude, to render a Google Maps link. Defaults to None.
         longitude: Machine longitude, to render a Google Maps link. Defaults to None.
         old_latitude: Previous latitude for a moved machine.
@@ -817,26 +818,35 @@ def message_slack_pending_change(
         message_text, channel="#pennyme_approvals", blocks=blocks
     )
 
-    for nearby_machine in nearby_machines or []:
-        nearby_id = str(nearby_machine["id"])
+    image_machines = []
+    if machine_id is not None and nearby_machines is not None:
+        image_machines.append((str(machine_id), title, "Source machine"))
+    image_machines.extend(
+        (str(nearby_machine["id"]), nearby_machine["name"], "Nearby machine")
+        for nearby_machine in nearby_machines or []
+    )
+
+    for image_machine_id, image_machine_name, image_label in image_machines:
         image_paths = [
             path
-            for path in sorted(Path(PATH_IMAGES).glob(f"{nearby_id}*"))
-            if re.fullmatch(rf"{re.escape(nearby_id)}\.(jpg|jpeg|png)", path.name)
+            for path in sorted(Path(PATH_IMAGES).glob(f"{image_machine_id}*"))
+            if re.fullmatch(
+                rf"{re.escape(image_machine_id)}\.(jpg|jpeg|png)", path.name
+            )
         ]
         if not image_paths:
             continue
-        title = f"Nearby machine {nearby_id} — {nearby_machine['name']}"
+        image_title = f"{image_label} {image_machine_id} — {image_machine_name}"
         image_response = message_slack_raw(
-            title,
+            image_title,
             channel=str(response.get("channel", "#pennyme_approvals")),
             thread_ts=str(response["ts"]),
             blocks=[
                 {
                     "type": "image",
-                    "title": {"type": "plain_text", "text": title},
+                    "title": {"type": "plain_text", "text": image_title},
                     "image_url": f"{IMG_PORT}{path.name}",
-                    "alt_text": f"{title}: {path.name}",
+                    "alt_text": f"{image_title}: {path.name}",
                 }
                 for path in image_paths
             ],
