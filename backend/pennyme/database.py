@@ -82,6 +82,7 @@ class NearbyMachine(TypedDict):
         address: Public street address.
         area: Country or area used to constrain the search.
         machine_status: Current public availability status.
+        external_url: PennyCollector or other source URL, when available.
         distance_m: Rounded geodesic distance from the search point in metres.
     """
 
@@ -90,6 +91,7 @@ class NearbyMachine(TypedDict):
     address: str
     area: str
     machine_status: str
+    external_url: Optional[str]
     distance_m: int
 
 
@@ -473,8 +475,8 @@ def get_nearby_machines_db(
         limit: Maximum number of nearest results to return.
 
     Returns:
-        Machine summaries ordered by geodesic distance, including rounded
-        ``distance_m`` values.
+        Machine summaries ordered by geodesic distance, including source URLs
+        and rounded ``distance_m`` values.
 
     Raises:
         psycopg2.Error: On any database error.
@@ -499,6 +501,7 @@ def get_nearby_machines_db(
             Machine.address,
             Machine.area,
             Machine.machine_status,
+            Machine.external_url,
             distance,
         )
         query = query.filter(Machine.area == area)
@@ -518,6 +521,7 @@ def get_nearby_machines_db(
                 "address": row.address,
                 "area": row.area,
                 "machine_status": row.machine_status,
+                "external_url": row.external_url,
                 "distance_m": round(row.distance_m),
             }
             for row in results

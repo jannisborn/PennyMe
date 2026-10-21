@@ -30,6 +30,7 @@ class NearbyMachinesDatabaseTest(unittest.TestCase):
                         address="Main Street",
                         area="Switzerland",
                         machine_status="available",
+                        external_url="https://pennycollector.com/machine/7",
                         distance_m=40.4,
                     )
                 ]
@@ -50,6 +51,10 @@ class NearbyMachinesDatabaseTest(unittest.TestCase):
                 else:
                     query.limit.assert_called_once_with(limit)
                 self.assertEqual(result[0]["distance_m"], 40)
+                self.assertEqual(
+                    result[0]["external_url"],
+                    "https://pennycollector.com/machine/7",
+                )
                 session.close.assert_called_once_with()
 
 

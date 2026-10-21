@@ -68,7 +68,7 @@ class ReportSlackTest(unittest.TestCase):
         with (
             patch.object(slack, "approve_pending_change", return_value=result),
             patch.object(slack._MODERATION, "reassign_machine_content") as reassign,
-            patch.object(slack, "_delete_pending_image_message"),
+            patch.object(slack, "delete_pending_image_messages"),
         ):
             slack.handle_approve_change(Mock(), body, Mock())
 
@@ -152,6 +152,82 @@ class ReportSlackTest(unittest.TestCase):
                 text,
             )
 
+    def test_nearby_machine_links_and_images_are_temporary_thread_replies(self):
+        neighbors = [
+            {
+                "id": 7,
+                "name": "Museum",
+                "distance_m": 40,
+                "external_url": "https://locations.pennycollector.com/Details.aspx?id=7",
+            },
+            {
+                "id": 8,
+                "name": "Station",
+                "distance_m": 120,
+                "external_url": "https://example.com/not-pennycollector",
+            },
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("7.jpg", "7_coin_0.png", "70.jpg", "7_other.png"):
+                (root / name).touch()
+
+            with (
+                patch.object(slack, "PATH_IMAGES", directory),
+                patch.object(slack, "_PENDING_IMAGE_MESSAGES", {}),
+                patch.object(
+                    slack,
+                    "message_slack_raw",
+                    side_effect=[
+                        {"channel": "C123", "ts": "root-ts"},
+                        {"channel": "C123", "ts": "images-ts"},
+                    ],
+                ) as post,
+            ):
+                slack.message_slack_pending_change(
+                    change_id=12,
+                    change_type="update",
+                    title="Moved machine",
+                    area="Switzerland",
+                    change_summary="Location changed",
+                    machine_id=42,
+                    movement_distance_m=250,
+                    nearby_radius_m=250,
+                    nearby_machines=neighbors,
+                )
+
+                root_text = post.call_args_list[0].args[0]
+                self.assertIn(
+                    "<https://locations.pennycollector.com/Details.aspx?id=7|PennyCollector>",
+                    root_text,
+                )
+                self.assertNotIn("<https://example.com/not-pennycollector|", root_text)
+
+                image_message = post.call_args_list[1]
+                self.assertEqual(image_message.kwargs["thread_ts"], "root-ts")
+                self.assertEqual(
+                    [block["image_url"] for block in image_message.kwargs["blocks"]],
+                    [f"{slack.IMG_PORT}7.jpg"],
+                )
+                self.assertEqual(
+                    slack._PENDING_IMAGE_MESSAGES[12], [("C123", "images-ts")]
+                )
+
+    def test_pending_image_cleanup_deletes_every_tracked_message(self):
+        with (
+            patch.object(
+                slack,
+                "_PENDING_IMAGE_MESSAGES",
+                {12: [("C123", "one"), ("C123", "two")]},
+            ),
+            patch.object(slack.CLIENT, "chat_delete") as delete,
+        ):
+            slack.delete_pending_image_messages(12)
+
+        self.assertEqual(delete.call_count, 2)
+        delete.assert_any_call(channel="C123", ts="one")
+        delete.assert_any_call(channel="C123", ts="two")
+
     def test_pending_change_splits_large_neighbor_lists_into_valid_blocks(self):
         neighbors = [
             {"id": index, "name": "Museum " + "x" * 50, "distance_m": index}
@@ -208,7 +284,7 @@ class ReportSlackTest(unittest.TestCase):
                 patch.object(slack, "approve_pending_change") as approve,
                 patch.object(slack, "reject_pending_change") as reject,
                 patch.object(slack, "handle_report_review") as review,
-                patch.object(slack, "_delete_pending_image_message"),
+                patch.object(slack, "delete_pending_image_messages"),
             ):
                 listeners[0].ack_function(ack, body, respond)
                 ack.assert_called_once_with()

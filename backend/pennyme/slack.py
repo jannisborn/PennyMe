@@ -40,10 +40,10 @@ MACHINE_NAMES = {
     for elem in ALL_LOCATIONS["features"]
 }
 
-# Maps pending_changes.id -> (channel, ts) of its Slack image message, so the
-# image can be deleted once the change is approved/rejected. In-memory only:
+# Maps pending_changes.id to its Slack image messages, so submitted and nearby
+# machine photos can be deleted once the change is approved/rejected. In-memory only:
 # lost on restart, in which case deletion is silently skipped.
-_PENDING_IMAGE_MESSAGES: Dict[int, Tuple[str, str]] = {}
+_PENDING_IMAGE_MESSAGES: Dict[int, List[Tuple[str, str]]] = {}
 _MODERATION = ModerationStore(
     Path(os.path.join("..", "content_attribution.json")),
     Path(os.path.join("..", "moderation_reports.jsonl")),
@@ -272,9 +272,8 @@ def image_slack(
             ],
         )
         if pending:
-            _PENDING_IMAGE_MESSAGES[int(machine_id)] = (
-                response["channel"],
-                response["ts"],
+            _PENDING_IMAGE_MESSAGES.setdefault(int(machine_id), []).append(
+                (str(response["channel"]), str(response["ts"]))
             )
     except SlackApiError as e:
         print("Error sending message: ", e)
@@ -460,16 +459,19 @@ def message_slack_report(
 # ---------------------------------------------------------------------------
 
 
-def _delete_pending_image_message(change_id: int) -> None:
-    """Delete the Slack image message posted for a pending change, if any."""
-    location = _PENDING_IMAGE_MESSAGES.pop(change_id, None)
-    if location is None:
-        return
-    channel, ts = location
-    try:
-        CLIENT.chat_delete(channel=channel, ts=ts)
-    except SlackApiError as e:
-        logger.error(f"Error deleting image message for pending #{change_id}: {e}")
+def delete_pending_image_messages(change_id: int) -> None:
+    """Delete submitted and nearby-image messages for a pending change.
+
+    Args:
+        change_id: Pending-change ID used to track temporary Slack messages.
+    """
+    for channel, timestamp in _PENDING_IMAGE_MESSAGES.pop(change_id, []):
+        try:
+            CLIENT.chat_delete(channel=channel, ts=timestamp)
+        except SlackApiError as error:
+            logger.error(
+                f"Error deleting image message for pending #{change_id}: {error}"
+            )
 
 
 def _reported_content_path(
@@ -655,7 +657,7 @@ def handle_approve_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
             )
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
-    _delete_pending_image_message(change_id)
+    delete_pending_image_messages(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -681,7 +683,7 @@ def handle_reject_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
             result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
-    _delete_pending_image_message(change_id)
+    delete_pending_image_messages(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -738,7 +740,8 @@ def message_slack_pending_change(
         old_longitude: Previous longitude for a moved machine.
         movement_distance_m: Geodesic distance from the old to new location.
         nearby_radius_m: Radius used to find neighbors for a moved machine.
-        nearby_machines: Neighbor summaries ordered by geodesic distance.
+        nearby_machines: Neighbor summaries ordered by geodesic distance. Their
+            PennyCollector links and machine photos are included in Slack.
 
     Raises:
         SlackApiError: If the Slack API call fails.
@@ -767,12 +770,20 @@ def message_slack_pending_change(
         maps_url = f"https://www.google.com/maps?q={latitude},{longitude}"
         summary_lines.append(f"<{maps_url}|View on Google Maps>")
 
+    nearby_lines = []
+    for nearby_machine in nearby_machines or []:
+        nearby_line = (
+            f"• ID {nearby_machine['id']} — {nearby_machine['name']} — "
+            f"{nearby_machine['distance_m']} m"
+        )
+        external_url = nearby_machine.get("external_url")
+        if external_url and "pennycollector.com" in external_url.casefold():
+            nearby_line += f" — <{external_url}|PennyCollector>"
+        nearby_lines.append(nearby_line)
+
     if change_type == "create" and nearby_machines is not None:
         summary_lines.append("*Three nearest machines:*")
-        summary_lines.extend(
-            f"• ID {machine['id']} — {machine['name']} — {machine['distance_m']} m"
-            for machine in nearby_machines
-        )
+        summary_lines.extend(nearby_lines)
     elif nearby_radius_m is not None:
         moved = round(movement_distance_m or 0)
         radius = round(nearby_radius_m)
@@ -787,10 +798,7 @@ def message_slack_pending_change(
                     f"(ID {nearest['id']} at {nearest['distance_m']} m)."
                 )
             summary_lines.append(f"*Nearby machines ({len(nearby_machines)}):*")
-            summary_lines.extend(
-                f"• ID {machine['id']} — {machine['name']} — {machine['distance_m']} m"
-                for machine in nearby_machines
-            )
+            summary_lines.extend(nearby_lines)
         else:
             summary_lines.append(f"No other machines within {radius} m.")
 
@@ -805,7 +813,37 @@ def message_slack_pending_change(
             f"pending change #{change_id}",
         )
     ]
-    message_slack_raw(message_text, channel="#pennyme_approvals", blocks=blocks)
+    response = message_slack_raw(
+        message_text, channel="#pennyme_approvals", blocks=blocks
+    )
+
+    for nearby_machine in nearby_machines or []:
+        nearby_id = str(nearby_machine["id"])
+        image_paths = [
+            path
+            for path in sorted(Path(PATH_IMAGES).glob(f"{nearby_id}*"))
+            if re.fullmatch(rf"{re.escape(nearby_id)}\.(jpg|jpeg|png)", path.name)
+        ]
+        if not image_paths:
+            continue
+        title = f"Nearby machine {nearby_id} — {nearby_machine['name']}"
+        image_response = message_slack_raw(
+            title,
+            channel=str(response.get("channel", "#pennyme_approvals")),
+            thread_ts=str(response["ts"]),
+            blocks=[
+                {
+                    "type": "image",
+                    "title": {"type": "plain_text", "text": title},
+                    "image_url": f"{IMG_PORT}{path.name}",
+                    "alt_text": f"{title}: {path.name}",
+                }
+                for path in image_paths
+            ],
+        )
+        _PENDING_IMAGE_MESSAGES.setdefault(change_id, []).append(
+            (str(image_response["channel"]), str(image_response["ts"]))
+        )
 
 
 def message_slack_location_differ_summary(
