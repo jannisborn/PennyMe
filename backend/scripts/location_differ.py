@@ -113,7 +113,9 @@ def location_differ(
     # Convert data to have links as keys
     device_dict = {}
     country_to_titles = defaultdict(list)
-    machine_idx = max([x["properties"]["id"] for x in device_data["features"]])
+    machine_idx = max(
+        [x["properties"]["id"] for x in device_data["features"]], default=0
+    )
     for i, geojson in enumerate(device_data["features"]):
         url = geojson["properties"]["external_url"]
         country_to_titles[geojson["properties"]["area"]].append(

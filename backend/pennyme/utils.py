@@ -70,7 +70,7 @@ def find_machine_name_conflict(
 
     Args:
         title: The proposed machine name.
-        nearby_machines: Machine summaries returned by ``get_nearby_machines``.
+        nearby_machines: Machine summaries returned by ``get_nearby_machines_db``.
 
     Returns:
         A tuple of conflict kind (``exact`` or ``similar``), matching machine, and
