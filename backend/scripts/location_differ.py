@@ -154,7 +154,7 @@ def location_differ(
     machine_idx += 1
 
     # Required to later ensure that machines are not added twice.
-    external = pd.DataFrame(external_list).drop(["logs"], axis=1)
+    external = pd.DataFrame(external_list).drop(columns=["logs"], errors="ignore")
     # If a machine w/o link exists in both dicts, we only keep the one from the server
     external = external.sort_values(
         by=["id", "source"], ascending=[True, False]
