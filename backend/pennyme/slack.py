@@ -1,10 +1,11 @@
 import json
 import os
 import re
+from filecmp import cmp
 from shutil import copy2
 from pathlib import Path
 from threading import Thread
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
 import cv2
 import numpy as np
@@ -16,12 +17,14 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk.errors import SlackApiError
 
 from pennyme.database import (
+    NearbyMachine,
+    archive_and_delete_machine,
     approve_pending_change,
     find_machine_in_database,
     get_machine_display_names,
     reject_pending_change,
 )
-from pennyme.moderation import ModerationStore
+from pennyme.moderation import MachineContentBackup, ModerationStore
 from pennyme.utils import ALL_LOCATIONS, PATH_IMAGES
 
 SLACK_APP = App(token=os.environ["SLACK_TOKEN"])
@@ -37,10 +40,10 @@ MACHINE_NAMES = {
     for elem in ALL_LOCATIONS["features"]
 }
 
-# Maps pending_changes.id -> (channel, ts) of its Slack image message, so the
-# image can be deleted once the change is approved/rejected. In-memory only:
+# Maps pending_changes.id to its Slack image messages, so submitted and nearby
+# machine photos can be deleted once the change is approved/rejected. In-memory only:
 # lost on restart, in which case deletion is silently skipped.
-_PENDING_IMAGE_MESSAGES: Dict[int, Tuple[str, str]] = {}
+_PENDING_IMAGE_MESSAGES: Dict[int, List[Tuple[str, str]]] = {}
 _MODERATION = ModerationStore(
     Path(os.path.join("..", "content_attribution.json")),
     Path(os.path.join("..", "moderation_reports.jsonl")),
@@ -98,6 +101,31 @@ def format_machine_fields(fields: Dict[str, Any]) -> str:
             continue
         lines.append(f"{key}: {value}")
     return "\n".join(lines)
+
+
+def slack_markdown_sections(text: str, max_length: int = 3000) -> List[Dict[str, Any]]:
+    """Split text into valid Slack Markdown section blocks.
+
+    Args:
+        text: Markdown text to split.
+        max_length: Maximum characters in each section. Slack permits at most
+            3,000 characters in a section text object.
+
+    Returns:
+        Slack Block Kit section dictionaries. Line boundaries are preferred
+        when a split is required.
+    """
+    sections: List[Dict[str, Any]] = []
+    while text:
+        split_at = min(len(text), max_length)
+        if split_at < len(text):
+            newline = text.rfind("\n", 0, split_at + 1)
+            if newline > 0:
+                split_at = newline
+        chunk = text[:split_at]
+        sections.append({"type": "section", "text": {"type": "mrkdwn", "text": chunk}})
+        text = text[split_at:].lstrip("\n")
+    return sections
 
 
 def save_image(
@@ -244,9 +272,8 @@ def image_slack(
             ],
         )
         if pending:
-            _PENDING_IMAGE_MESSAGES[int(machine_id)] = (
-                response["channel"],
-                response["ts"],
+            _PENDING_IMAGE_MESSAGES.setdefault(int(machine_id), []).append(
+                (str(response["channel"]), str(response["ts"]))
             )
     except SlackApiError as e:
         print("Error sending message: ", e)
@@ -316,10 +343,10 @@ def message_slack_report(
 ) -> None:
     """Post a UGC report and its relevant content to the approvals channel.
 
-    The initial message contains the report alert, including its ``@channel``
-    mention. Image and comment reports include the same approval controls as
-    machine changes. The explanation and reported content are posted in the
-    thread so they remain available after a decision replaces the root message.
+    The initial message contains the report alert, its ``@channel`` mention,
+    and approval controls. The explanation and reported content are posted in
+    the thread so they remain available after a decision replaces the root
+    message.
 
     Args:
         text: Report alert text to use for the thread's root message.
@@ -337,16 +364,15 @@ def message_slack_report(
     blocks: List[Dict[str, Any]] = [
         {"type": "section", "text": {"type": "mrkdwn", "text": text}}
     ]
-    if target_kind in {"comment", "image"}:
-        blocks.append(
-            _approval_actions(
-                report_id,
-                f"report_{report_id}",
-                "approve_report",
-                "reject_report",
-                f"report {report_id}",
-            )
+    blocks.append(
+        _approval_actions(
+            report_id,
+            f"report_{report_id}",
+            "approve_report",
+            "reject_report",
+            f"report {report_id}",
         )
+    )
     response = message_slack_raw(text, channel="#pennyme_approvals", blocks=blocks)
     thread_channel = str(response.get("channel", "#pennyme_approvals"))
     thread_timestamp = str(response["ts"])
@@ -403,11 +429,15 @@ def message_slack_report(
             image_id = path.stem.removeprefix(machine_id).lstrip("_") or "machine"
             if target_kind == "image" and target_id != image_id:
                 continue
-            if target_kind == "image":
+            if target_kind in {"image", "machine"}:
                 # Keep the review image available after the original is moved.
                 snapshot = root / "reported" / f"{report_id}_{path.name}"
                 snapshot.parent.mkdir(exist_ok=True)
-                copy2(path, snapshot)
+                if snapshot.exists():
+                    if not cmp(path, snapshot, shallow=False):
+                        raise FileExistsError(snapshot)
+                else:
+                    copy2(path, snapshot)
                 image_url = f"{IMG_PORT}reported/{snapshot.name}"
             else:
                 image_url = f"{IMG_PORT}{path.name}"
@@ -429,16 +459,19 @@ def message_slack_report(
 # ---------------------------------------------------------------------------
 
 
-def _delete_pending_image_message(change_id: int) -> None:
-    """Delete the Slack image message posted for a pending change, if any."""
-    location = _PENDING_IMAGE_MESSAGES.pop(change_id, None)
-    if location is None:
-        return
-    channel, ts = location
-    try:
-        CLIENT.chat_delete(channel=channel, ts=ts)
-    except SlackApiError as e:
-        logger.error(f"Error deleting image message for pending #{change_id}: {e}")
+def delete_pending_image_messages(change_id: int) -> None:
+    """Delete submitted and nearby-image messages for a pending change.
+
+    Args:
+        change_id: Pending-change ID used to track temporary Slack messages.
+    """
+    for channel, timestamp in _PENDING_IMAGE_MESSAGES.pop(change_id, []):
+        try:
+            CLIENT.chat_delete(channel=channel, ts=timestamp)
+        except SlackApiError as error:
+            logger.error(
+                f"Error deleting image message for pending #{change_id}: {error}"
+            )
 
 
 def _reported_content_path(
@@ -499,8 +532,22 @@ def _quarantine_report_content(
     return source.rename(destination)
 
 
-def _handle_report_review(body: Dict[str, Any], respond: Any, decision: str) -> None:
-    """Apply and record one Slack decision for an image or comment report."""
+def handle_report_review(
+    body: Dict[str, Any],
+    respond: Any,
+    decision: Literal["approved", "rejected"],
+) -> None:
+    """Apply one Slack UGC-report decision and update its root message.
+
+    Approval of a machine report first stages filesystem backups, then archives
+    and deletes the SQL row transactionally, and finally removes the live files.
+    Rejection records the review without modifying machine data or files.
+
+    Args:
+        body: Slack action payload containing the report and reviewer IDs.
+        respond: Slack Bolt response callback for replacing the action message.
+        decision: Either ``approved`` or ``rejected``.
+    """
     report_id = str(body["actions"][0]["value"])
     action = "approve" if decision == "approved" else "reject"
     reviewer = body.get("user", {})
@@ -516,17 +563,33 @@ def _handle_report_review(body: Dict[str, Any], respond: Any, decision: str) -> 
                 f"{existing_decision}. Details remain in this thread."
             )
         else:
-            if report.get("target_kind") not in {"comment", "image"}:
-                raise ValueError("Only image and comment reports can be handled here")
+            target_kind = report.get("target_kind")
+            if target_kind not in {"comment", "image", "machine"}:
+                raise ValueError(f"Unknown report target: {target_kind}")
             if decision == "approved":
-                _quarantine_report_content(report)
+                if target_kind == "machine":
+                    backup = MachineContentBackup.stage(
+                        int(report["machine_id"]),
+                        str(report["report_id"]),
+                        Path(PATH_IMAGES),
+                    )
+                    try:
+                        archive_and_delete_machine(
+                            int(report["machine_id"]), reviewer_id, report_id
+                        )
+                    except Exception:
+                        backup.discard()
+                        raise
+                    backup.finish_move()
+                else:
+                    _quarantine_report_content(report)
             _MODERATION.record_review(report_id, decision, reviewer_id)
             icon = ":white_check_mark:" if decision == "approved" else ":x:"
             result_text = (
                 f"{icon} UGC report {report_id} *{decision}* by {reviewer_name}. "
                 "Details remain in this thread."
             )
-    except (KeyError, OSError, TypeError, ValueError) as error:
+    except Exception as error:
         logger.exception(f"Could not {action} report {report_id}")
         respond(
             replace_original=False,
@@ -539,27 +602,51 @@ def _handle_report_review(body: Dict[str, Any], respond: Any, decision: str) -> 
 
 @SLACK_APP.action("approve_report")
 def handle_approve_report(ack: Any, body: Dict[str, Any], respond: Any) -> None:
-    """Move reported content aside and record approval from Slack."""
+    """Move reported content aside and record approval from Slack.
+
+    Args:
+        ack: Slack Bolt callback that acknowledges the button action.
+        body: Slack action payload containing report and reviewer IDs.
+        respond: Slack Bolt callback used to replace the action message.
+    """
     ack()
-    _handle_report_review(body, respond, "approved")
+    handle_report_review(body, respond, "approved")
 
 
 @SLACK_APP.action("reject_report")
 def handle_reject_report(ack: Any, body: Dict[str, Any], respond: Any) -> None:
-    """Leave reported content in place and record rejection from Slack."""
+    """Leave reported content in place and record rejection from Slack.
+
+    Args:
+        ack: Slack Bolt callback that acknowledges the button action.
+        body: Slack action payload containing report and reviewer IDs.
+        respond: Slack Bolt callback used to replace the action message.
+    """
     ack()
-    _handle_report_review(body, respond, "rejected")
+    handle_report_review(body, respond, "rejected")
 
 
 @SLACK_APP.action("approve_change")
-def handle_approve_change(ack, body, respond) -> None:
-    """Approve a pending change when the Approve button is clicked."""
+def handle_approve_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
+    """Approve a pending change when its Slack button is clicked.
+
+    Args:
+        ack: Slack Bolt callback that acknowledges the button action.
+        body: Slack action payload containing change and reviewer IDs.
+        respond: Slack Bolt callback used to replace the action message.
+    """
     ack()
     change_id = int(body["actions"][0]["value"])
     user_name = body.get("user", {}).get("name", "unknown")
     try:
         result = approve_pending_change(change_id)
-    except (KeyError, ValueError) as e:
+        if (
+            result.status == "approved"
+            and result.change_type == "create"
+            and result.machine_id is not None
+        ):
+            _MODERATION.reassign_machine_content(str(change_id), str(result.machine_id))
+    except (KeyError, OSError, TypeError, ValueError) as e:
         result_text = f":warning: Error approving change #{change_id}: {e}"
         logger.error(result_text)
     else:
@@ -570,13 +657,19 @@ def handle_approve_change(ack, body, respond) -> None:
             )
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
-    _delete_pending_image_message(change_id)
+    delete_pending_image_messages(change_id)
     respond(replace_original=True, text=result_text)
 
 
 @SLACK_APP.action("reject_change")
-def handle_reject_change(ack, body, respond) -> None:
-    """Reject a pending change when the Reject button is clicked."""
+def handle_reject_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
+    """Reject a pending change when its Slack button is clicked.
+
+    Args:
+        ack: Slack Bolt callback that acknowledges the button action.
+        body: Slack action payload containing change and reviewer IDs.
+        respond: Slack Bolt callback used to replace the action message.
+    """
     ack()
     change_id = int(body["actions"][0]["value"])
     user_name = body.get("user", {}).get("name", "unknown")
@@ -590,7 +683,7 @@ def handle_reject_change(ack, body, respond) -> None:
             result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
         else:
             result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
-    _delete_pending_image_message(change_id)
+    delete_pending_image_messages(change_id)
     respond(replace_original=True, text=result_text)
 
 
@@ -626,6 +719,11 @@ def message_slack_pending_change(
     machine_id: Optional[int] = None,
     latitude: Optional[float] = None,
     longitude: Optional[float] = None,
+    old_latitude: Optional[float] = None,
+    old_longitude: Optional[float] = None,
+    movement_distance_m: Optional[float] = None,
+    nearby_radius_m: Optional[float] = None,
+    nearby_machines: Optional[List[NearbyMachine]] = None,
 ) -> None:
     """Post a pending change notification to Slack with Approve/Reject buttons.
 
@@ -635,9 +733,16 @@ def message_slack_pending_change(
         title: Machine name.
         area: Machine area/country.
         change_summary: Human-readable description of what changed.
-        machine_id: Existing machine ID for updates, None for new machines.
+        machine_id: Existing machine ID for updates, None for new machines. Its
+            current machine photo is included when nearby machines are checked.
         latitude: Machine latitude, to render a Google Maps link. Defaults to None.
         longitude: Machine longitude, to render a Google Maps link. Defaults to None.
+        old_latitude: Previous latitude for a moved machine.
+        old_longitude: Previous longitude for a moved machine.
+        movement_distance_m: Geodesic distance from the old to new location.
+        nearby_radius_m: Radius used to find neighbors for a moved machine.
+        nearby_machines: Neighbor summaries ordered by geodesic distance. Their
+            PennyCollector links and machine photos are included in Slack.
 
     Raises:
         SlackApiError: If the Slack API call fails.
@@ -649,29 +754,106 @@ def message_slack_pending_change(
             f":pencil2: *Machine {machine_id} change proposed (pending #{change_id})*"
         )
 
-    summary_text = change_summary.strip() or "(no summary)"
-    if latitude is not None and longitude is not None:
+    summary_lines = [change_summary.strip() or "(no summary)"]
+    if (
+        latitude is not None
+        and longitude is not None
+        and old_latitude is not None
+        and old_longitude is not None
+    ):
+        maps_url = (
+            "https://www.google.com/maps/dir/?api=1"
+            f"&origin={old_latitude},{old_longitude}"
+            f"&destination={latitude},{longitude}"
+        )
+        summary_lines.append(f"<{maps_url}|View old → new location on Google Maps>")
+    elif latitude is not None and longitude is not None:
         maps_url = f"https://www.google.com/maps?q={latitude},{longitude}"
-        summary_text += f"\n<{maps_url}|View on Google Maps>"
-    plain_text = f"{header}\n*{title}* ({area})\n{summary_text}"
+        summary_lines.append(f"<{maps_url}|View on Google Maps>")
 
-    blocks = [
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": f"{header}\n*{title}* ({area})\n{summary_text}",
-            },
-        },
+    nearby_lines = []
+    for nearby_machine in nearby_machines or []:
+        nearby_line = (
+            f"• ID {nearby_machine['id']} — {nearby_machine['name']} — "
+            f"{nearby_machine['distance_m']} m"
+        )
+        external_url = nearby_machine.get("external_url")
+        if external_url and "pennycollector.com" in external_url.casefold():
+            nearby_line += f" — <{external_url}|PennyCollector>"
+        nearby_lines.append(nearby_line)
+
+    if change_type == "create" and nearby_machines is not None:
+        summary_lines.append("*Three nearest machines:*")
+        summary_lines.extend(nearby_lines)
+    elif nearby_radius_m is not None:
+        moved = round(movement_distance_m or 0)
+        radius = round(nearby_radius_m)
+        summary_lines.append(f"Moved {moved} m; searched within {radius} m.")
+        if nearby_machines:
+            nearest = nearby_machines[0]
+            if movement_distance_m is not None and (
+                movement_distance_m > nearest["distance_m"]
+            ):
+                summary_lines.append(
+                    ":warning: Moved farther than the nearest neighbor "
+                    f"(ID {nearest['id']} at {nearest['distance_m']} m)."
+                )
+            summary_lines.append(f"*Nearby machines ({len(nearby_machines)}):*")
+            summary_lines.extend(nearby_lines)
+        else:
+            summary_lines.append(f"No other machines within {radius} m.")
+
+    message_text = f"{header}\n*{title}* ({area})\n" + "\n".join(summary_lines)
+
+    blocks = slack_markdown_sections(message_text) + [
         _approval_actions(
             str(change_id),
             f"pending_{change_id}",
             "approve_change",
             "reject_change",
             f"pending change #{change_id}",
-        ),
+        )
     ]
-    message_slack_raw(plain_text, channel="#pennyme_approvals", blocks=blocks)
+    response = message_slack_raw(
+        message_text, channel="#pennyme_approvals", blocks=blocks
+    )
+
+    image_machines = []
+    if machine_id is not None and nearby_machines is not None:
+        image_machines.append((str(machine_id), title, "Source machine"))
+    image_machines.extend(
+        (str(nearby_machine["id"]), nearby_machine["name"], "Nearby machine")
+        for nearby_machine in nearby_machines or []
+    )
+
+    for image_machine_id, image_machine_name, image_label in image_machines:
+        image_paths = [
+            path
+            for path in sorted(Path(PATH_IMAGES).glob(f"{image_machine_id}*"))
+            if re.fullmatch(
+                rf"{re.escape(image_machine_id)}\.(jpg|jpeg|png)", path.name
+            )
+        ]
+        if not image_paths:
+            continue
+        image_title = f"{image_label} {image_machine_id} — {image_machine_name}"
+        image_response = message_slack_raw(
+            image_title,
+            channel=str(response.get("channel", "#pennyme_approvals")),
+            thread_ts=str(response["ts"]),
+            blocks=[
+                {
+                    "type": "image",
+                    "title": {"type": "plain_text", "text": image_title},
+                    "image_url": f"{IMG_PORT}{path.name}",
+                    "alt_text": f"{image_title}: {path.name}",
+                }
+                for path in image_paths
+            ],
+        )
+        _PENDING_IMAGE_MESSAGES.setdefault(change_id, []).append(
+            (str(image_response["channel"]), str(image_response["ts"]))
+        )
 
 
 def message_slack_location_differ_summary(

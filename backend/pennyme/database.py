@@ -8,11 +8,11 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
 from threading import RLock
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, TypedDict
 
 import pandas as pd
 import geopandas as gpd
@@ -73,6 +73,28 @@ _MACHINE_SYNC_FIELDS = _PLAIN_PENDING_CHANGE_FIELDS + ("external_url", "internal
 Base = declarative_base()
 
 
+class NearbyMachine(TypedDict):
+    """Machine fields returned by a geodesic proximity query.
+
+    Attributes:
+        id: Permanent SQL machine ID.
+        name: Public machine title.
+        address: Public street address.
+        area: Country or area used to constrain the search.
+        machine_status: Current public availability status.
+        external_url: PennyCollector or other source URL, when available.
+        distance_m: Rounded geodesic distance from the search point in metres.
+    """
+
+    id: int
+    name: str
+    address: str
+    area: str
+    machine_status: str
+    external_url: Optional[str]
+    distance_m: int
+
+
 class Machine(Base):
     """ORM model for a coin machine location."""
 
@@ -101,6 +123,34 @@ class Machine(Base):
             internal_url=fields["internal_url"],
             **{f.name: fields[f.name] for f in MACHINE_FIELDS},
         )
+
+
+class DeletedMachine(Base):
+    """Immutable audit snapshot of a machine removed by UGC moderation.
+
+    The machine fields mirror :class:`Machine`. ``report_id`` identifies the
+    approving report and provides idempotency for Slack retries, while
+    ``deleted_at`` and ``slack_reviewer`` record who performed the deletion and
+    when.
+    """
+
+    __tablename__ = "deleted_machines"
+
+    id = Column(Integer, nullable=False, index=True)
+    name = Column(String, nullable=False)
+    area = Column(String, nullable=False)
+    address = Column(String, nullable=False)
+    geom = Column(Geometry(geometry_type="Point", srid=4326), nullable=False)
+    machine_status = Column(String, nullable=False)
+    status = Column(String, nullable=False)
+    num_coins = Column(Integer, nullable=False)
+    paywall = Column(Boolean, nullable=False)
+    external_url = Column(String, nullable=True)
+    internal_url = Column(String, nullable=True)
+    last_updated = Column(Date, nullable=False)
+    deleted_at = Column(DateTime(timezone=True), nullable=False)
+    slack_reviewer = Column(String, nullable=False)
+    report_id = Column(String, primary_key=True)
 
 
 class PendingChange(Base):
@@ -183,7 +233,7 @@ class PendingChange(Base):
 
 
 def create_tables() -> None:
-    """Create the machines and pending_changes tables if they do not exist.
+    """Create all application tables that do not exist.
 
     Uses SQLAlchemy metadata to create all tables defined in the ORM classes.
 
@@ -314,7 +364,8 @@ def get_all_machines_geojson(since: Optional[str] = None) -> dict:
     Args:
         since: Optional ``YYYY-MM-DD`` date string. When given, only machines
             with ``last_updated >= since`` are returned, enabling incremental
-            (delta) syncs instead of pulling the full dataset.
+            (delta) syncs instead of pulling the full dataset. Hard deletions
+            become visible only when callers request the full dataset.
 
     Raises:
         psycopg2.Error: On any database error.
@@ -398,13 +449,34 @@ def has_open_pending_change(machine_id: int) -> bool:
 
 
 def get_nearby_machines_db(
-    lat: float, lon: float, area: str, radius_m: int = 150
-) -> List[Dict]:
-    """Return approved machines within *radius_m* metres of the given point.
+    lat: float,
+    lon: float,
+    area: str,
+    radius_m: Optional[float] = 150,
+    *,
+    exclude_machine_id: Optional[int] = None,
+    limit: Optional[int] = None,
+) -> List[NearbyMachine]:
+    """Return approved machines nearest to the given point.
 
-    Uses a PostGIS ``ST_DWithin`` query on a GIST-indexed geography column for
-    efficient indexed radius lookup, with exact geodesic distances via
-    ``ST_Distance``.
+    When *radius_m* is set, results are restricted to that radius using an
+    indexed PostGIS ``ST_DWithin`` query. Passing ``None`` returns the nearest
+    machines without a radius restriction. Distances are exact geodesic metres
+    from ``ST_Distance``.
+
+    Args:
+        lat: Latitude of the search point in WGS84 decimal degrees.
+        lon: Longitude of the search point in WGS84 decimal degrees.
+        area: Country or area used to constrain the search.
+        radius_m: Maximum geodesic distance in metres, or ``None`` for no
+            distance limit.
+        exclude_machine_id: Machine ID to omit, normally the machine being
+            moved.
+        limit: Maximum number of nearest results to return.
+
+    Returns:
+        Machine summaries ordered by geodesic distance, including source URLs
+        and rounded ``distance_m`` values.
 
     Raises:
         psycopg2.Error: On any database error.
@@ -423,22 +495,24 @@ def get_nearby_machines_db(
             search_geog,
         ).label("distance_m")
 
-        results = (
-            session.query(
-                Machine.id,
-                Machine.name,
-                Machine.address,
-                Machine.area,
-                Machine.machine_status,
-                distance,
-            )
-            .filter(
-                Machine.area == area,
-                ST_DWithin(machine_geog, search_geog, radius_m),
-            )
-            .order_by(distance)
-            .all()
+        query = session.query(
+            Machine.id,
+            Machine.name,
+            Machine.address,
+            Machine.area,
+            Machine.machine_status,
+            Machine.external_url,
+            distance,
         )
+        query = query.filter(Machine.area == area)
+        if radius_m is not None:
+            query = query.filter(ST_DWithin(machine_geog, search_geog, radius_m))
+        if exclude_machine_id is not None:
+            query = query.filter(Machine.id != exclude_machine_id)
+        query = query.order_by(distance)
+        if limit is not None:
+            query = query.limit(limit)
+        results = query.all()
 
         return [
             {
@@ -447,6 +521,7 @@ def get_nearby_machines_db(
                 "address": row.address,
                 "area": row.area,
                 "machine_status": row.machine_status,
+                "external_url": row.external_url,
                 "distance_m": round(row.distance_m),
             }
             for row in results
@@ -458,6 +533,73 @@ def get_nearby_machines_db(
 # ---------------------------------------------------------------------------
 # Write operations – pending_changes
 # ---------------------------------------------------------------------------
+
+
+def archive_and_delete_machine(
+    machine_id: int, slack_reviewer: str, report_id: str
+) -> bool:
+    """Archive and delete a machine in one database transaction.
+
+    The live row is locked before it is copied. The archive insert and live-row
+    deletion share one commit, so deletion cannot succeed without its audit
+    snapshot.
+
+    Args:
+        machine_id: ID of the live machine to remove.
+        slack_reviewer: Slack user ID or fallback name of the approver.
+        report_id: Moderation report authorizing the removal.
+
+    Returns:
+        ``True`` when the machine was archived and deleted. ``False`` when the
+        same report already archived it, making Slack retries idempotent.
+
+    Raises:
+        KeyError: If the machine and matching archive row do not exist.
+        ValueError: If ``report_id`` is already attached to another machine.
+        SQLAlchemyError: If locking, archiving, deleting, or committing fails.
+    """
+    session = get_session()
+    try:
+        machine = (
+            session.query(Machine)
+            .filter(Machine.id == machine_id)
+            .with_for_update()
+            .first()
+        )
+        if machine is None:
+            archived = (
+                session.query(DeletedMachine)
+                .filter(DeletedMachine.report_id == report_id)
+                .first()
+            )
+            if archived is None:
+                raise KeyError(f"Machine {machine_id} not found in database")
+            if archived.id != machine_id:
+                raise ValueError(
+                    f"Report {report_id} already archived machine {archived.id}"
+                )
+            return False
+
+        archived = DeletedMachine(
+            **{
+                column.name: getattr(machine, column.name)
+                for column in Machine.__table__.columns
+            },
+            deleted_at=datetime.now(timezone.utc),
+            slack_reviewer=slack_reviewer,
+            report_id=report_id,
+        )
+        session.add(archived)
+        session.delete(machine)
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+    clear_machine_geojson_cache()
+    return True
 
 
 def insert_pending_change_full(
@@ -557,11 +699,18 @@ class ReviewResult:
     ``applied`` is False when the change had already been reviewed earlier —
     this is an expected, normal outcome (e.g. a Slack button clicked twice),
     not an error, so callers can branch on it without a try/except.
+
+    Attributes:
+        applied: Whether this call changed the pending change's state.
+        status: Current review status after the call.
+        machine_id: Permanent machine ID involved in the change, when known.
+        change_type: ``create`` or ``update``, when the change exists.
     """
 
     applied: bool
     status: str
     machine_id: Optional[int] = None
+    change_type: Optional[str] = None
 
 
 def _copy_pending_change_to_machine(change: "PendingChange", machine: Machine) -> None:
@@ -624,7 +773,12 @@ def approve_pending_change(change_id: int) -> ReviewResult:
         if change is None:
             raise KeyError(f"Pending change {change_id} not found")
         if change.status != "open":
-            return ReviewResult(applied=False, status=change.status)
+            return ReviewResult(
+                applied=False,
+                status=change.status,
+                machine_id=change.machine_id,
+                change_type=change.change_type,
+            )
 
         if change.change_type == "create":
             machine = Machine()
@@ -632,6 +786,7 @@ def approve_pending_change(change_id: int) -> ReviewResult:
             session.add(machine)
             session.flush()
             machine_id = machine.id
+            change.machine_id = machine_id
         else:
             machine_id = change.machine_id
             if machine_id is None:
@@ -656,7 +811,12 @@ def approve_pending_change(change_id: int) -> ReviewResult:
         session.commit()
         clear_machine_geojson_cache()
         _rename_pending_change_image(change.change_type, change.id, machine_id)
-        return ReviewResult(applied=True, status="approved", machine_id=machine_id)
+        return ReviewResult(
+            applied=True,
+            status="approved",
+            machine_id=machine_id,
+            change_type=change.change_type,
+        )
     finally:
         session.close()
 
@@ -682,13 +842,23 @@ def reject_pending_change(change_id: int) -> ReviewResult:
         if change is None:
             raise KeyError(f"Pending change {change_id} not found")
         if change.status != "open":
-            return ReviewResult(applied=False, status=change.status)
+            return ReviewResult(
+                applied=False,
+                status=change.status,
+                machine_id=change.machine_id,
+                change_type=change.change_type,
+            )
 
         change.status = "rejected"
         change.reviewed_at = datetime.utcnow()
         session.commit()
         _delete_pending_change_images(change)
-        return ReviewResult(applied=True, status="rejected")
+        return ReviewResult(
+            applied=True,
+            status="rejected",
+            machine_id=change.machine_id,
+            change_type=change.change_type,
+        )
     finally:
         session.close()
 

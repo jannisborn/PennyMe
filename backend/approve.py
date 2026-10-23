@@ -7,6 +7,7 @@ Usage (from the backend/ directory):
 
 import os
 from pathlib import Path
+from typing import Any, Mapping, Optional
 
 from loguru import logger
 
@@ -29,16 +30,27 @@ _MODERATION = ModerationStore(
 # ---------------------------------------------------------------------------
 
 
-def _record_moderation(change: dict, machine_id: int) -> None:
-    """For 'create' changes, update content attribution to the final machine ID.
+def reassign_created_machine_content(
+    change: Mapping[str, Any], machine_id: Optional[int]
+) -> None:
+    """Move a newly approved machine's attribution to its permanent SQL ID.
 
-    Content attribution is initially recorded in process_pending_image with the pending_id.
-    On approval, we remap it to the final machine_id for proper moderation manifests.
+    Content attribution is initially recorded in ``process_pending_image`` with
+    the pending ID. Approval remaps it to the permanent machine ID.
+
+    Args:
+        change: Approved pending-change record.
+        machine_id: Permanent machine ID returned by the approval transaction.
+
+    Raises:
+        ValueError: If an approved create result has no permanent machine ID.
+        OSError: If the attribution file cannot be updated atomically.
     """
     if change["change_type"] != "create":
         return
-    # Note: future enhancement to remap pending_id → machine_id in moderation store
-    # For now, the attribution recorded in process_pending_image serves as the audit trail
+    if machine_id is None:
+        raise ValueError("Approved create change has no permanent machine ID")
+    _MODERATION.reassign_machine_content(str(change["id"]), str(machine_id))
 
 
 def _display_change(change: dict) -> None:
@@ -83,7 +95,7 @@ def approve_all() -> None:
                     f"Pending change #{change['id']} was already {result.status}; skipping."
                 )
                 continue
-            _record_moderation(change, result.machine_id)
+            reassign_created_machine_content(change, result.machine_id)
             logger.info(
                 f"Approved pending change #{change['id']} "
                 f"({change['change_type']}) → machine {result.machine_id}"
@@ -127,7 +139,7 @@ def approve_one_by_one() -> None:
                     print(f"  Already {result.status}; skipping.")
                     skipped += 1
                     continue
-                _record_moderation(change, result.machine_id)
+                reassign_created_machine_content(change, result.machine_id)
                 print(
                     f"  Approved → machine {result.machine_id}"
                     + (" (new)" if change["change_type"] == "create" else "")
