@@ -34,7 +34,7 @@ class Artwork: NSObject, MKAnnotation {
         self.status = status
         self.id = String(id)
         self.last_updated = last_updated
-        self.text = self.title! + self.address
+        self.text = title + address + self.id
         self.multimachine = multimachine
         self.paywall = paywall
         self.area = area
