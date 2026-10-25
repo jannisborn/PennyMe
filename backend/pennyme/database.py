@@ -28,6 +28,7 @@ from sqlalchemy import (
     Date,
     DateTime,
     cast,
+    text,
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
@@ -185,6 +186,7 @@ class PendingChange(Base):
     last_updated = Column(Date, nullable=True)
     submitted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     reviewed_at = Column(DateTime, nullable=True)
+    rejection_reason = Column(String, nullable=True)
     submitted_by = Column(String, nullable=True)
     change_summary = Column(String, nullable=False)
     status = Column(String, nullable=False, default="open")
@@ -242,7 +244,20 @@ def create_tables() -> None:
     """
     engine = get_engine()
     Base.metadata.create_all(engine)
+    ensure_pending_change_schema()
     logger.info("Tables created (or already exist).")
+
+
+def ensure_pending_change_schema() -> None:
+    """Apply small additive schema updates needed by the running backend."""
+    engine = get_engine()
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                "ALTER TABLE pending_changes "
+                "ADD COLUMN IF NOT EXISTS rejection_reason TEXT"
+            )
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -692,6 +707,112 @@ def get_open_pending_changes() -> List[Dict]:
         session.close()
 
 
+def _pending_change_display_fields(
+    change: PendingChange,
+) -> List[Dict[str, Optional[str]]]:
+    """Return minimal old/new diffs for the fields submitted in a change."""
+    fields: List[Dict[str, Optional[str]]] = []
+
+    def old_value(summary_label: str) -> Optional[str]:
+        marker = f"{summary_label} from: "
+        _, found, remainder = change.change_summary.partition(marker)
+        if not found:
+            return None
+        line = remainder.splitlines()[0]
+        old, separator, _ = line.rpartition(" to: ")
+        return old if separator else None
+
+    def display_value(field: str, value: Any) -> str:
+        if field == "paywall":
+            return "Yes" if str(value).casefold() == "true" else "No"
+        if field == "machine_status":
+            return str(value).replace("-", " ").capitalize()
+        return str(value)
+
+    def add(
+        field: str,
+        label: str,
+        value: Any,
+        summary_label: Optional[str] = None,
+    ) -> None:
+        if value is None:
+            return
+        old = old_value(summary_label or label)
+        fields.append(
+            {
+                "field": field,
+                "label": label,
+                "old_value": display_value(field, old) if old is not None else None,
+                "new_value": display_value(field, value),
+            }
+        )
+
+    add("name", "Title", change.name)
+    add("address", "Address", change.address)
+    add("area", "Area", change.area)
+    if change.latitude is not None and change.longitude is not None:
+        add(
+            "location",
+            "Location",
+            f"{change.latitude:.5f}, {change.longitude:.5f}",
+        )
+    add("machine_status", "Machine status", change.machine_status, "Status")
+    add(
+        "num_coins",
+        "# coins",
+        change.num_coins,
+        "Number of coins",
+    )
+    add("paywall", "Paywall", change.paywall)
+    add("external_url", "External link", change.external_url)
+    add("internal_url", "Internal link", change.internal_url)
+    return fields
+
+
+def _iso_utc(value: Optional[datetime]) -> Optional[str]:
+    if value is None:
+        return None
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def get_change_requests_for_submitter(submitted_by: str) -> List[Dict[str, Any]]:
+    """Return one installation's contributions, newest first.
+
+    ``PendingChange`` stores update requests as sparse patches, so the returned
+    ``changed_fields`` list contains exactly the values the contributor
+    submitted. Database-only metadata such as ``last_updated`` is excluded.
+    """
+    session = get_session()
+    try:
+        changes = (
+            session.query(PendingChange, Machine.name.label("current_machine_name"))
+            .outerjoin(Machine, PendingChange.machine_id == Machine.id)
+            .filter(PendingChange.submitted_by == submitted_by)
+            .order_by(PendingChange.submitted_at.desc())
+            .all()
+        )
+        return [
+            {
+                "id": change.id,
+                "machine_id": change.machine_id,
+                "change_type": change.change_type,
+                "machine_name": (
+                    change.name if change.change_type == "create" else machine_name
+                ),
+                "submitted_at": _iso_utc(change.submitted_at),
+                "reviewed_at": _iso_utc(change.reviewed_at),
+                "rejection_reason": getattr(change, "rejection_reason", None),
+                "status": "pending" if change.status == "open" else change.status,
+                "changed_fields": _pending_change_display_fields(change),
+            }
+            for change, machine_name in changes
+        ]
+    finally:
+        session.close()
+
+
 @dataclass
 class ReviewResult:
     """Outcome of a call to `approve_pending_change` or `reject_pending_change`.
@@ -821,18 +942,23 @@ def approve_pending_change(change_id: int) -> ReviewResult:
         session.close()
 
 
-def reject_pending_change(change_id: int) -> ReviewResult:
+def reject_pending_change(change_id: int, reason: Optional[str] = None) -> ReviewResult:
     """Mark a pending change as rejected without touching the machines table.
 
     For 'create' changes, also deletes the pending machine image(s) from disk
     since they would otherwise never be referenced or cleaned up.
 
-    If the change was already reviewed, nothing is modified and
+    ``reason`` is optional and stored with the rejected row. If the change was
+    already reviewed, nothing is modified and
     ``ReviewResult.applied`` is False.
 
     Raises:
         KeyError: If the pending change is not found.
         psycopg2.Error: On any database error.
+
+    Args:
+        change_id: Identifier of the pending change.
+        reason: Optional reviewer explanation, stored for the contributor.
     """
     session = get_session()
     try:
@@ -851,6 +977,7 @@ def reject_pending_change(change_id: int) -> ReviewResult:
 
         change.status = "rejected"
         change.reviewed_at = datetime.utcnow()
+        change.rejection_reason = (reason.strip() if reason else None) or None
         session.commit()
         _delete_pending_change_images(change)
         return ReviewResult(

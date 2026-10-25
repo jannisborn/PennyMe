@@ -1,4 +1,3 @@
-import autoroot  # noqa: F401  # loads backend/.env before Slack initializes
 import json
 import os
 import queue
@@ -11,19 +10,18 @@ from time import sleep
 from typing import Any, Dict, List, Optional, Tuple
 from uuid import uuid4
 
+import autoroot  # noqa: F401  # loads backend/.env before Slack initializes
 from flask import Flask, Response, jsonify, request
 from googlemaps import Client as GoogleMaps
 from haversine import Unit, haversine
 from loguru import logger
-from thefuzz import process as fuzzysearch
-
-from scripts.location_differ import location_differ
-
 from pennyme.database import (
     NearbyMachine,
     dump_machines_to_file,
+    ensure_pending_change_schema,
     find_machine_in_database,
     get_all_machines_geojson,
+    get_change_requests_for_submitter,
     get_nearby_machines_db,
     has_open_pending_change,
     insert_pending_change_full,
@@ -58,6 +56,8 @@ from pennyme.utils import (
     find_machine_name_conflict,
     setup_locdiffer_logger,
 )
+from scripts.location_differ import location_differ
+from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
@@ -139,6 +139,18 @@ def machines() -> Tuple[Response, int]:
         except ValueError:
             return jsonify({"error": "Invalid 'since', expected YYYY-MM-DD"}), 400
     return jsonify(get_all_machines_geojson(since=since)), 200
+
+
+@app.route("/change_requests", methods=["GET"])
+def change_requests() -> Tuple[Response, int]:
+    """Return the current installation's submitted machine changes."""
+    submitter = anonymous_user_id()
+    if not submitter:
+        return jsonify({"error": "Missing anonymous contributor identifier"}), 400
+    return (
+        jsonify({"change_requests": get_change_requests_for_submitter(submitter)}),
+        200,
+    )
 
 
 @app.route("/health", methods=["GET"])
@@ -428,6 +440,7 @@ def process_pending_image(
     pending_id: int,
     tmp_img_path: str,
     installation_id: str,
+    title: str,
 ) -> None:
     """Process the image upload for a new pending machine submission and record contributor.
 
@@ -439,6 +452,7 @@ def process_pending_image(
         pending_id: ID of the pending_changes row.
         tmp_img_path: Temporary path where the uploaded image was saved.
         installation_id: Random installation identifier supplied by the app.
+        title: Proposed machine title shown in the Slack image notification.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
@@ -453,8 +467,10 @@ def process_pending_image(
         if code != 200:
             image_slack(
                 pending_id,
+                m_name=title,
                 img_slack_text=msg,
                 filetype="jpg",
+                pending=True,
             )
             sleep(1)
             Path(saved_path).unlink(missing_ok=True)
@@ -473,6 +489,7 @@ def process_pending_image(
 
         image_slack(
             pending_id,
+            m_name=title,
             img_slack_text="New machine proposed (pending review):",
             pending=True,
         )
@@ -681,7 +698,7 @@ def create_machine() -> Tuple[Response, int]:
     request_queue.put(
         (
             process_pending_image,
-            (pending_id, tmp_path, anonymous_user_id()),
+            (pending_id, tmp_path, anonymous_user_id(), title),
         )
     )
     if not address_okay:
@@ -955,6 +972,8 @@ def worker():
         finally:
             request_queue.task_done()
 
+
+ensure_pending_change_schema()
 
 # Start the worker thread
 Thread(target=worker, daemon=True).start()
