@@ -55,6 +55,27 @@ class PennyMeTests: XCTestCase {
         XCTAssertNil(TextModeration.blockReason("Classic brass machine"))
     }
 
+    func testContributionDiffShowsOnlyChangedTextWithContext() {
+        let segments = ContributionDiff.segments(
+            old: "1737 Post Street, West Mall, #326, San Francisco",
+            new: "1737 Post Street, West Mall, San Francisco"
+        )
+
+        XCTAssertTrue(segments.prefix.hasPrefix("…"))
+        XCTAssertTrue(segments.prefix.contains("West Mall"))
+        XCTAssertEqual(segments.removed, "#326, ")
+        XCTAssertEqual(segments.added, "")
+        XCTAssertTrue(segments.suffix.contains("San Francisco"))
+        XCTAssertFalse(segments.prefix.contains("1737 Post"))
+
+        let whitespace = ContributionDiff.segments(
+            old: "Fisherman's Wharf ",
+            new: "Fisherman's Wharf"
+        )
+        XCTAssertEqual(whitespace.removed, " ")
+        XCTAssertEqual(ContributionDiff.visibleChange(whitespace.removed), "␠")
+    }
+
     func testLegalMarkdownRendersFormattingAndMailLink() {
         let rendered = LegalMarkdownRenderer.attributedText(
             from: "# Terms\n\nContact [support@example.com](mailto:support@example.com). Accept **these terms**.",
