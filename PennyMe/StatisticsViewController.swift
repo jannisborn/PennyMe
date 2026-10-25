@@ -159,20 +159,25 @@ class StatisticsViewController: UIViewController {
         }
     }
     
+    /// Share of non-retired machines visited in an area, in [0, 100]. Retired machines
+    /// raise the visited count but not the percentage, so 100% requires all non-retired machines.
+    func percentage(forArea area: String, visited: Int) -> Double {
+        let total = activeMachinesByArea[area] ?? 0
+        guard total > 0 else {
+            // only retired machines in this area: nothing left to collect
+            return visited > 0 ? 100 : 0
+        }
+        let visitedActive = visitedActiveByArea[area] ?? 0
+        return min(Double(visitedActive) / Double(total) * 100, 100)
+    }
+
     func setupBarChart(mode: String) {
         // Sort the dictionary and get the top 5 countries
         var topCountries = visitedByArea.sorted { $0.value > $1.value } // .prefix(5)
         // if percent: sort by percentage
         if mode != "absolute" {
             topCountries = visitedByArea.sorted {
-                // ensure it is at least 1
-                let totalMachines1 = max(machinesByArea[$0.key] ?? 0, 1)
-                let totalMachines2 = max(machinesByArea[$1.key] ?? 0, 1)
-                // compute percentage
-                let percentage1 = Double($0.value) / Double(totalMachines1)
-                let percentage2 = Double($1.value) / Double(totalMachines2)
-
-                return percentage1 > percentage2
+                percentage(forArea: $0.key, visited: $0.value) > percentage(forArea: $1.key, visited: $1.value)
             } // .prefix(5)
         }
 
@@ -190,8 +195,7 @@ class StatisticsViewController: UIViewController {
                 barValue = Double(country.value)
             }
             else {
-                let totalMachinesCountry = max(machinesByArea[country.key] ?? 0, 1)
-                barValue = Double(country.value) / Double(totalMachinesCountry) * 100
+                barValue = percentage(forArea: country.key, visited: country.value)
             }
             let entry = BarChartDataEntry(x: Double(index), y: barValue)
             
