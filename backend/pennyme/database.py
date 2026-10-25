@@ -28,7 +28,6 @@ from sqlalchemy import (
     Date,
     DateTime,
     cast,
-    text,
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
@@ -244,20 +243,7 @@ def create_tables() -> None:
     """
     engine = get_engine()
     Base.metadata.create_all(engine)
-    ensure_pending_change_schema()
     logger.info("Tables created (or already exist).")
-
-
-def ensure_pending_change_schema() -> None:
-    """Apply small additive schema updates needed by the running backend."""
-    engine = get_engine()
-    with engine.begin() as connection:
-        connection.execute(
-            text(
-                "ALTER TABLE pending_changes "
-                "ADD COLUMN IF NOT EXISTS rejection_reason TEXT"
-            )
-        )
 
 
 # ---------------------------------------------------------------------------

@@ -18,7 +18,6 @@ from loguru import logger
 from pennyme.database import (
     NearbyMachine,
     dump_machines_to_file,
-    ensure_pending_change_schema,
     find_machine_in_database,
     get_all_machines_geojson,
     get_change_requests_for_submitter,
@@ -972,8 +971,6 @@ def worker():
         finally:
             request_queue.task_done()
 
-
-ensure_pending_change_schema()
 
 # Start the worker thread
 Thread(target=worker, daemon=True).start()
