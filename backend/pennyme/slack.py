@@ -732,7 +732,9 @@ def handle_reject_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
         logger.info("Rejection modal opened for pending change #{}", change_id)
     except Exception as e:
         change_id = body.get("actions", [{}])[0].get("value", "?")
-        result_text = f":warning: Could not open rejection form for change #{change_id}: {e}"
+        result_text = (
+            f":warning: Could not open rejection form for change #{change_id}: {e}"
+        )
         logger.exception(result_text)
         respond(replace_original=False, response_type="ephemeral", text=result_text)
 

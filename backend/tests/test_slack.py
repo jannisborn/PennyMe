@@ -335,9 +335,7 @@ class ReportSlackTest(unittest.TestCase):
                     reject.assert_not_called()
                     review.assert_not_called()
                     self.assertTrue(respond.call_args.kwargs["replace_original"])
-                    self.assertIn(
-                        "Machine title", respond.call_args.kwargs["text"]
-                    )
+                    self.assertIn("Machine title", respond.call_args.kwargs["text"])
                 elif action == "reject_change":
                     reject.assert_not_called()
                     views_open.assert_called_once()
@@ -372,9 +370,7 @@ class ReportSlackTest(unittest.TestCase):
                 }
             ),
             "state": {
-                "values": {
-                    "rejection_reason": {"reason": {"value": "Not accurate"}}
-                }
+                "values": {"rejection_reason": {"reason": {"value": "Not accurate"}}}
             },
         }
         result = SimpleNamespace(applied=True, status="rejected")
