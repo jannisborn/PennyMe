@@ -34,7 +34,7 @@ class Artwork: NSObject, MKAnnotation {
         self.status = status
         self.id = String(id)
         self.last_updated = last_updated
-        self.text = self.title! + self.address
+        self.text = title + address + self.id
         self.multimachine = multimachine
         self.paywall = paywall
         self.area = area
@@ -145,6 +145,10 @@ class Artwork: NSObject, MKAnnotation {
         }
         else if status == "marked" {
             return .yellow
+        }
+        // legacy status handling (if users have old "retired" value in the local json)
+        else if status == "retired" {
+            return .gray
         }
         else {
             return .black

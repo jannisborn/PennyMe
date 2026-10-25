@@ -18,9 +18,10 @@ let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
 var totalMachines = 0
-var machinesByArea: [String: Int] = [:]
+var activeMachinesByArea: [String: Int] = [:]
 var visitedCount = 0
 var visitedByArea: [String: Int] = [:]
+var visitedActiveByArea: [String: Int] = [:] // non-retired machins by area
 
 @available(iOS 13.0, *)
 class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
@@ -605,6 +606,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         // Set visited to zero again
         visitedCount = 0
         visitedByArea = [:]
+        visitedActiveByArea = [:]
         
         // If we have saved some already:
         if !is_empty{
@@ -624,6 +626,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         // Increment the count for the specific area
                         let area = machine.area ?? "Unknown Area"
                         visitedByArea[area, default: 0] += 1
+                        if machine.machineStatus != "retired" {
+                            visitedActiveByArea[area, default: 0] += 1
+                        }
                     }
                     
                     // check if machine should be displayed based on settings
@@ -795,6 +800,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         try? data.write(to: url, options: .atomic)
     }
 
+    /// Recomputes the machine totals shown in the statistics view from the current `artworks`.
+    private func recomputeMachineTotals() {
+        totalMachines = 0
+        activeMachinesByArea = [:]
+        for machine in artworks where machine.machineStatus != "retired" {
+            totalMachines += 1
+            activeMachinesByArea[machine.area, default: 0] += 1
+        }
+    }
+
     // To load machine locations from JSON
     @available(iOS 13.0, *)
     func loadInitialData() {
@@ -806,6 +821,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             for (ind, pin) in artworks.enumerated() {
                 pinIdDict[pin.id] = ind
             }
+            // Totals must be available even if no server sync runs this session
+            recomputeMachineTotals()
         }
         
         // Keep the cache visible while refreshing only when its age warrants a request.
@@ -945,16 +962,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
         addAnnotationsIteratively()
         
-        // recompute stats
-        totalMachines = 0
-        machinesByArea = [:]
-        
-        for machine in artworks {
-            if machine.machineStatus != "retired" {
-                totalMachines += 1
-                machinesByArea[machine.area, default: 0] += 1
-            }
-        }
+        recomputeMachineTotals()
         
         // update UI-related state
         check_json_dict()
