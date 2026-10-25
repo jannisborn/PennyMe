@@ -162,7 +162,7 @@ class StatisticsViewController: UIViewController {
     /// Share of non-retired machines visited in an area, in [0, 100]. Retired machines
     /// raise the visited count but not the percentage, so 100% requires all non-retired machines.
     func percentage(forArea area: String, visited: Int) -> Double {
-        let total = machinesByArea[area] ?? 0
+        let total = activeMachinesByArea[area] ?? 0
         guard total > 0 else {
             // only retired machines in this area: nothing left to collect
             return visited > 0 ? 100 : 0

@@ -18,7 +18,7 @@ let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
 var radius = 20.0
 
 var totalMachines = 0
-var machinesByArea: [String: Int] = [:]
+var activeMachinesByArea: [String: Int] = [:]
 var visitedCount = 0
 var visitedByArea: [String: Int] = [:]
 var visitedActiveByArea: [String: Int] = [:] // non-retired machins by area
@@ -803,10 +803,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     /// Recomputes the machine totals shown in the statistics view from the current `artworks`.
     private func recomputeMachineTotals() {
         totalMachines = 0
-        machinesByArea = [:]
+        activeMachinesByArea = [:]
         for machine in artworks where machine.machineStatus != "retired" {
             totalMachines += 1
-            machinesByArea[machine.area, default: 0] += 1
+            activeMachinesByArea[machine.area, default: 0] += 1
         }
     }
 
