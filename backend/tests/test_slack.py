@@ -97,6 +97,7 @@ class ReportSlackTest(unittest.TestCase):
             )
 
         text = post.call_args.args[0]
+        self.assertIn("*Moved machine*", text)
         self.assertIn(
             "https://www.google.com/maps/dir/?api=1&origin=47.3,8.5"
             "&destination=47.4,8.6",
@@ -151,6 +152,16 @@ class ReportSlackTest(unittest.TestCase):
                 f"ID {machine['id']} — {machine['name']} — {machine['distance_m']} m",
                 text,
             )
+
+    def test_pending_image_notification_includes_machine_title(self):
+        with patch.object(
+            slack.CLIENT,
+            "chat_postMessage",
+            return_value={"channel": "C123", "ts": "123"},
+        ) as post:
+            slack.image_slack(12, m_name="New machine", pending=True)
+
+        self.assertIn("New machine", post.call_args.kwargs["text"])
 
     def test_source_and_nearby_images_are_temporary_thread_replies(self):
         neighbors = [
@@ -294,6 +305,12 @@ class ReportSlackTest(unittest.TestCase):
                 "type": "block_actions",
                 "actions": [{"action_id": action, "value": "42"}],
                 "user": {"id": "U123", "name": "reviewer"},
+                "trigger_id": "trigger-42",
+                "channel": {"id": "C123"},
+                "message": {
+                    "ts": "123.456",
+                    "text": "Change requested\n*Machine title* (Area)",
+                },
             }
             request = BoltRequest(body=body, mode="socket_mode")
             listeners = [
@@ -309,15 +326,29 @@ class ReportSlackTest(unittest.TestCase):
                 patch.object(slack, "reject_pending_change") as reject,
                 patch.object(slack, "handle_report_review") as review,
                 patch.object(slack, "delete_pending_image_messages"),
+                patch.object(slack.CLIENT, "views_open") as views_open,
             ):
                 listeners[0].ack_function(ack, body, respond)
                 ack.assert_called_once_with()
-                if action.endswith("_change"):
-                    (
-                        approve if action.startswith("approve") else reject
-                    ).assert_called_once_with(42)
+                if action == "approve_change":
+                    approve.assert_called_once_with(42)
+                    reject.assert_not_called()
                     review.assert_not_called()
                     self.assertTrue(respond.call_args.kwargs["replace_original"])
+                    self.assertIn("Machine title", respond.call_args.kwargs["text"])
+                elif action == "reject_change":
+                    reject.assert_not_called()
+                    views_open.assert_called_once()
+                    self.assertEqual(
+                        views_open.call_args.kwargs["view"]["callback_id"],
+                        "reject_change_modal",
+                    )
+                    metadata = json.loads(
+                        views_open.call_args.kwargs["view"]["private_metadata"]
+                    )
+                    self.assertEqual(metadata["machine_title"], "Machine title")
+                    approve.assert_not_called()
+                    review.assert_not_called()
                 else:
                     review.assert_called_once_with(
                         body,
@@ -326,6 +357,39 @@ class ReportSlackTest(unittest.TestCase):
                     )
                     approve.assert_not_called()
                     reject.assert_not_called()
+
+    def test_rejection_modal_persists_reason_and_updates_original_message(self):
+        body = {"user": {"id": "U123", "name": "reviewer"}}
+        view = {
+            "private_metadata": json.dumps(
+                {
+                    "change_id": 42,
+                    "channel_id": "C123",
+                    "message_ts": "123.456",
+                    "machine_title": "Machine title",
+                }
+            ),
+            "state": {
+                "values": {"rejection_reason": {"reason": {"value": "Not accurate"}}}
+            },
+        }
+        result = SimpleNamespace(applied=True, status="rejected")
+        with (
+            patch.object(slack, "reject_pending_change", return_value=result) as reject,
+            patch.object(slack, "delete_pending_image_messages"),
+            patch.object(slack.CLIENT, "chat_update") as update,
+        ):
+            ack = Mock()
+            slack.handle_reject_change_submission(ack, body, view)
+
+        ack.assert_called_once_with()
+        reject.assert_called_once_with(42, "Not accurate")
+        update.assert_called_once_with(
+            channel="C123",
+            ts="123.456",
+            text=":x: *Machine title* — Pending change #42 *rejected* by reviewer.",
+            blocks=[],
+        )
 
     def test_reports_include_only_target_content_and_thread_in_approvals(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -350,7 +414,7 @@ class ReportSlackTest(unittest.TestCase):
                     patch.object(
                         slack,
                         "find_machine_in_database",
-                        return_value={"name": "Listing"},
+                        return_value={"properties": {"name": "Listing"}},
                     ),
                 ):
                     slack.message_slack_report(
@@ -363,7 +427,9 @@ class ReportSlackTest(unittest.TestCase):
                         directory,
                     )
                     calls = [call.kwargs for call in post.call_args_list]
-                    self.assertEqual(calls[0]["text"], "<!channel> UGC REPORT")
+                    self.assertEqual(
+                        calls[0]["text"], "<!channel> UGC REPORT\n*Listing*"
+                    )
                     self.assertTrue(
                         all(call["username"] == "PennyMe" for call in calls)
                     )
@@ -380,7 +446,7 @@ class ReportSlackTest(unittest.TestCase):
                     self.assertTrue(all(c["channel"] == "C123" for c in calls[1:]))
                     self.assertTrue(all(c["thread_ts"] == "123" for c in calls[1:]))
                     self.assertIn(
-                        "UGC REPORT\nReporter explanation: This content is wrong",
+                        "UGC REPORT\n*Listing*\nReporter explanation: This content is wrong",
                         calls[1]["blocks"][0]["text"]["text"],
                     )
                     linked_images = [
@@ -410,7 +476,7 @@ class ReportSlackTest(unittest.TestCase):
                     self.assertEqual(
                         "flagged comment" in text, kind in {"comment", "machine"}
                     )
-                    self.assertEqual("Listing" in text, kind == "machine")
+                    self.assertIn("Listing", text)
 
     def test_long_comments_are_preserved_as_plain_text(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -418,9 +484,16 @@ class ReportSlackTest(unittest.TestCase):
             (root / "comments").mkdir()
             comment = "<!channel>" + "x" * 7000
             (root / "comments/42.json").write_text(slack.json.dumps({"date": comment}))
-            with patch.object(
-                slack.CLIENT, "chat_postMessage", return_value={"ts": "123"}
-            ) as post:
+            with (
+                patch.object(
+                    slack.CLIENT, "chat_postMessage", return_value={"ts": "123"}
+                ) as post,
+                patch.object(
+                    slack,
+                    "find_machine_in_database",
+                    return_value={"properties": {"name": "Listing"}},
+                ),
+            ):
                 slack.message_slack_report(
                     "alert",
                     "report-id",
@@ -480,6 +553,7 @@ class ReportSlackTest(unittest.TestCase):
                 body = {
                     "actions": [{"value": "report-id"}],
                     "user": {"id": "U123", "name": "reviewer"},
+                    "message": {"text": "UGC report\n*Machine title*"},
                 }
 
                 with (
@@ -503,6 +577,7 @@ class ReportSlackTest(unittest.TestCase):
                 ack.assert_called_once_with()
                 self.assertEqual(respond.call_args.kwargs["blocks"], [])
                 self.assertTrue(respond.call_args.kwargs["replace_original"])
+                self.assertIn("Machine title", respond.call_args.kwargs["text"])
 
     def test_rejection_records_the_reviewer_without_moving_content(self):
         with tempfile.TemporaryDirectory() as directory:

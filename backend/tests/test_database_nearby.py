@@ -7,6 +7,7 @@ from pennyme.database import (
     archive_and_delete_machine,
     approve_pending_change,
     get_nearby_machines_db,
+    reject_pending_change,
 )
 
 
@@ -83,6 +84,30 @@ class PendingChangeApprovalTest(unittest.TestCase):
         self.assertEqual(change.machine_id, 42)
         self.assertEqual(result.machine_id, 42)
         self.assertEqual(result.change_type, "create")
+        session.commit.assert_called_once_with()
+        session.close.assert_called_once_with()
+
+    def test_rejection_persists_reason_with_review(self):
+        change = SimpleNamespace(
+            id=7,
+            status="open",
+            change_type="update",
+            machine_id=42,
+            reviewed_at=None,
+            rejection_reason=None,
+        )
+        session = Mock()
+        session.query.return_value.filter.return_value.first.return_value = change
+
+        with (
+            patch("pennyme.database.get_session", return_value=session),
+            patch("pennyme.database._delete_pending_change_images"),
+        ):
+            result = reject_pending_change(7, "  Address is not verifiable.  ")
+
+        self.assertEqual(result.status, "rejected")
+        self.assertEqual(change.rejection_reason, "Address is not verifiable.")
+        self.assertIsNotNone(change.reviewed_at)
         session.commit.assert_called_once_with()
         session.close.assert_called_once_with()
 

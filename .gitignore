@@ -98,7 +98,9 @@ iOSInjectionProject/
 *egg-info
 
 .secrets/
+backend/.env
 
 # Private runtime moderation state
 /content_attribution.json
 /moderation_reports.jsonl
+

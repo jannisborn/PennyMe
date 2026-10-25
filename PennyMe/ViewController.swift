@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     @IBOutlet weak var PennyMap: MKMapView!
     @IBOutlet weak var ownLocation: UIButton!
     @IBOutlet var toggleMapButton: UIButton!
-    @IBOutlet weak var userStatsButton: UIButton!
+    @IBOutlet weak var userProfileButton: UIButton!
     
     @IBOutlet weak var navigationbar: UINavigationItem!
     
@@ -187,8 +187,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         navigationItem.leftBarButtonItem?.accessibilityLabel = "Settings"
         // new machine button
          setupRoundIconButton(newMachineButton, systemName: "plus", action: #selector(segueNewMachine))
-        // user stats button
-        setupRoundIconButton(userStatsButton, systemName: "person")
+        // user profile button
+        setupRoundIconButton(
+            userProfileButton,
+            systemName: "person",
+            action: #selector(showProfile)
+        )
         // toggle map button
         setupRoundIconButton(toggleMapButton, systemName: "square.stack.3d.up.fill", action: #selector(changeMapType))
 
@@ -389,6 +393,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     @objc private func didTapSettings() {
         performSegue(withIdentifier: "ShowSettingsViewController", sender: self)
        }
+
+    @objc private func showProfile() {
+        guard let storyboard = storyboard else { return }
+        navigationController?.pushViewController(
+            ProfileViewController(storyboard: storyboard, artworks: artworks),
+            animated: true
+        )
+    }
 
     /// Uses the same machine visibility rules as the main map, including blocked listings.
     func showTrip(_ link: String) {

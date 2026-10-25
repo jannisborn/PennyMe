@@ -60,9 +60,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Sn7-qQ-3Jb" kind="show" identifier="showStatsSegue" id="sYj-P3-Nag"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -93,7 +90,7 @@
                         <outlet property="navigationbar" destination="rX1-V4-AoS" id="r8W-BC-hYt"/>
                         <outlet property="newMachineButton" destination="kVO-l0-XyT" id="ajc-Wc-iGV"/>
                         <outlet property="ownLocation" destination="uvf-JL-VdF" id="V8r-E5-Axi"/>
-                        <outlet property="userStatsButton" destination="fhA-Sv-L5I" id="yz7-Gq-YSl"/>
+                        <outlet property="userProfileButton" destination="fhA-Sv-L5I" id="yz7-Gq-YSl"/>
                         <segue destination="PPz-Om-lJ8" kind="push" identifier="ShowPinViewController" id="7Sd-M6-4hP"/>
                         <segue destination="LzO-Nz-nvu" kind="show" identifier="ShowSettingsViewController" id="7o7-Wb-KYb"/>
                     </connections>
@@ -105,7 +102,7 @@
         <!--Pin View Controller-->
         <scene sceneID="VRE-ZY-CVx">
             <objects>
-                <tableViewController id="PPz-Om-lJ8" customClass="PinViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PinViewController" id="PPz-Om-lJ8" customClass="PinViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="2Pc-ji-4ZI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -901,7 +898,7 @@
         <!--Statistics View Controller-->
         <scene sceneID="G9T-4b-1eK">
             <objects>
-                <viewController id="Sn7-qQ-3Jb" customClass="StatisticsViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatisticsViewController" id="Sn7-qQ-3Jb" customClass="StatisticsViewController" customModule="PennyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f9m-ZA-4dI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

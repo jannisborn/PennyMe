@@ -1405,6 +1405,12 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     @objc private func collectedSwitchChanged(_ sender: UISwitch) {
+        guard !sender.isOn || imageDict[sender.tag] != nil else {
+            sender.setOn(false, animated: true)
+            showConfirmationMessage(message: "Take a picture first!", duration: 1.5)
+            return
+        }
+
         // handle change of "collected"-toggle
         collectedByIndex[sender.tag] = sender.isOn
         saveCollectedToDefaults()

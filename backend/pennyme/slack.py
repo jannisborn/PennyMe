@@ -56,37 +56,31 @@ def _approval_actions(
     approve_action: str,
     reject_action: str,
     subject: str,
+    reason_modal: bool = False,
 ) -> Dict[str, Any]:
     """Build the shared Approve/Reject controls used in Slack."""
-    return {
-        "type": "actions",
-        "block_id": block_id,
-        "elements": [
-            {
-                "type": "button",
-                "text": {"type": "plain_text", "text": "Approve", "emoji": True},
-                "style": "primary",
-                "value": value,
-                "action_id": approve_action,
-            },
-            {
-                "type": "button",
-                "text": {"type": "plain_text", "text": "Reject", "emoji": True},
-                "style": "danger",
-                "value": value,
-                "action_id": reject_action,
-                "confirm": {
-                    "title": {"type": "plain_text", "text": "Reject this change?"},
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": f"Permanently reject {subject}?",
-                    },
-                    "confirm": {"type": "plain_text", "text": "Yes, reject"},
-                    "deny": {"type": "plain_text", "text": "Cancel"},
-                },
-            },
-        ],
+    approve = {
+        "type": "button",
+        "text": {"type": "plain_text", "text": "Approve", "emoji": True},
+        "style": "primary",
+        "value": value,
+        "action_id": approve_action,
     }
+    reject = {
+        "type": "button",
+        "text": {"type": "plain_text", "text": "Reject", "emoji": True},
+        "style": "danger",
+        "value": value,
+        "action_id": reject_action,
+    }
+    if not reason_modal:
+        reject["confirm"] = {
+            "title": {"type": "plain_text", "text": "Reject this change?"},
+            "text": {"type": "mrkdwn", "text": f"Permanently reject {subject}?"},
+            "confirm": {"type": "plain_text", "text": "Yes, reject"},
+            "deny": {"type": "plain_text", "text": "Cancel"},
+        }
+    return {"type": "actions", "block_id": block_id, "elements": [approve, reject]}
 
 
 def format_machine_fields(fields: Dict[str, Any]) -> str:
@@ -239,6 +233,8 @@ def image_slack(
         fname_base = f"pending_{machine_id}"
         channel = "#pennyme_approvals"
         text = f"{img_slack_text} (pending #{machine_id})"
+        if m_name:
+            text += f" — {m_name}"
     else:
         fname_base = str(machine_id)
         channel = "#pennyme_uploads"
@@ -359,8 +355,14 @@ def message_slack_report(
 
     Raises:
         SlackApiError: If any Slack message cannot be delivered.
-        ValueError: If ``machine_id`` is not an integer.
+        ValueError: If ``machine_id`` is invalid or the machine cannot be found.
     """
+    machine_id = str(int(machine_id))
+    machine = find_machine_in_database(int(machine_id))
+    if machine is None:
+        raise ValueError(f"Machine {machine_id} not found")
+    machine_title = machine["properties"]["name"]
+    text = f"{text}\n*{machine_title}*"
     blocks: List[Dict[str, Any]] = [
         {"type": "section", "text": {"type": "mrkdwn", "text": text}}
     ]
@@ -380,7 +382,6 @@ def message_slack_report(
         "channel": thread_channel,
         "thread_ts": thread_timestamp,
     }
-    machine_id = str(int(machine_id))
     root = Path(images_path)
     report_details = (
         f"{text.removeprefix('<!channel> ')}\nReporter explanation: {comment}"
@@ -400,7 +401,7 @@ def message_slack_report(
     )
     content: Dict[str, Any] = {}
     if target_kind == "machine":
-        content["listing"] = find_machine_in_database(int(machine_id))
+        content["listing"] = machine
     if target_kind in {"machine", "comment"}:
         path = root / "comments" / f"{machine_id}.json"
         comments = json.loads(path.read_text()) if path.exists() else {}
@@ -457,6 +458,14 @@ def message_slack_report(
 # ---------------------------------------------------------------------------
 # Slack Socket Mode — interactive button handlers
 # ---------------------------------------------------------------------------
+
+
+def _action_machine_title(body: Dict[str, Any]) -> str:
+    """Read the bold machine-title line from one of our Slack messages."""
+    lines = body.get("message", {}).get("text", "").splitlines()
+    if len(lines) > 1 and lines[1].startswith("*"):
+        return lines[1].split("*", 2)[1]
+    return ""
 
 
 def delete_pending_image_messages(change_id: int) -> None:
@@ -550,6 +559,8 @@ def handle_report_review(
     """
     report_id = str(body["actions"][0]["value"])
     action = "approve" if decision == "approved" else "reject"
+    machine_title = _action_machine_title(body)
+    title_prefix = f"*{machine_title}* — " if machine_title else ""
     reviewer = body.get("user", {})
     reviewer_id = str(reviewer.get("id") or reviewer.get("name") or "unknown")
     reviewer_name = str(reviewer.get("name") or reviewer_id)
@@ -559,7 +570,7 @@ def handle_report_review(
             raise ValueError(f"Unknown report {report_id}")
         if existing_decision:
             result_text = (
-                f":information_source: UGC report {report_id} was already "
+                f":information_source: {title_prefix}UGC report {report_id} was already "
                 f"{existing_decision}. Details remain in this thread."
             )
         else:
@@ -586,7 +597,8 @@ def handle_report_review(
             _MODERATION.record_review(report_id, decision, reviewer_id)
             icon = ":white_check_mark:" if decision == "approved" else ":x:"
             result_text = (
-                f"{icon} UGC report {report_id} *{decision}* by {reviewer_name}. "
+                f"{icon} {title_prefix}UGC report {report_id} *{decision}* "
+                f"by {reviewer_name}. "
                 "Details remain in this thread."
             )
     except Exception as error:
@@ -637,6 +649,8 @@ def handle_approve_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
     """
     ack()
     change_id = int(body["actions"][0]["value"])
+    machine_title = _action_machine_title(body)
+    title_prefix = f"*{machine_title}* — " if machine_title else ""
     user_name = body.get("user", {}).get("name", "unknown")
     try:
         result = approve_pending_change(change_id)
@@ -652,39 +666,124 @@ def handle_approve_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
     else:
         if result.applied:
             result_text = (
-                f":white_check_mark: Pending change #{change_id} *approved* by "
-                f"{user_name} — machine ID {result.machine_id}."
+                f":white_check_mark: {title_prefix}Pending change #{change_id} "
+                f"*approved* by {user_name} — machine ID {result.machine_id}."
             )
         else:
-            result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+            result_text = (
+                f":information_source: {title_prefix}Pending change #{change_id} "
+                f"was already handled (status: {result.status})."
+            )
     delete_pending_image_messages(change_id)
     respond(replace_original=True, text=result_text)
 
 
 @SLACK_APP.action("reject_change")
 def handle_reject_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
-    """Reject a pending change when its Slack button is clicked.
+    """Open the optional-reason modal for a pending change rejection.
 
     Args:
         ack: Slack Bolt callback that acknowledges the button action.
         body: Slack action payload containing change and reviewer IDs.
         respond: Slack Bolt callback used to replace the action message.
     """
+    logger.info("Received Slack reject_change action")
     ack()
-    change_id = int(body["actions"][0]["value"])
-    user_name = body.get("user", {}).get("name", "unknown")
     try:
-        result = reject_pending_change(change_id)
-    except KeyError as e:
+        change_id = int(body["actions"][0]["value"])
+        trigger_id = body["trigger_id"]
+        logger.info("Opening rejection modal for pending change #{}", change_id)
+        metadata = json.dumps(
+            {
+                "change_id": change_id,
+                "channel_id": body.get("channel", {}).get("id"),
+                "message_ts": body.get("message", {}).get("ts"),
+                "machine_title": _action_machine_title(body),
+            }
+        )
+        CLIENT.views_open(
+            trigger_id=trigger_id,
+            view={
+                "type": "modal",
+                "callback_id": "reject_change_modal",
+                "private_metadata": metadata,
+                "title": {"type": "plain_text", "text": "Reject change"},
+                "submit": {"type": "plain_text", "text": "Reject"},
+                "close": {"type": "plain_text", "text": "Cancel"},
+                "blocks": [
+                    {
+                        "type": "input",
+                        "optional": True,
+                        "block_id": "rejection_reason",
+                        "label": {
+                            "type": "plain_text",
+                            "text": "Reason (optional)",
+                        },
+                        "element": {
+                            "type": "plain_text_input",
+                            "action_id": "reason",
+                            "multiline": True,
+                            "max_length": 2000,
+                        },
+                    }
+                ],
+            },
+        )
+        logger.info("Rejection modal opened for pending change #{}", change_id)
+    except Exception as e:
+        change_id = body.get("actions", [{}])[0].get("value", "?")
+        result_text = (
+            f":warning: Could not open rejection form for change #{change_id}: {e}"
+        )
+        logger.exception(result_text)
+        respond(replace_original=False, response_type="ephemeral", text=result_text)
+
+
+@SLACK_APP.view("reject_change_modal")
+def handle_reject_change_submission(
+    ack: Any, body: Dict[str, Any], view: Dict[str, Any]
+) -> None:
+    """Persist a rejection submitted from the Slack reason modal."""
+    ack()
+    metadata = json.loads(view.get("private_metadata", "{}"))
+    change_id = int(metadata["change_id"])
+    reason = (
+        view.get("state", {})
+        .get("values", {})
+        .get("rejection_reason", {})
+        .get("reason", {})
+        .get("value", "")
+    )
+    user_name = body.get("user", {}).get("name", "unknown")
+    machine_title = metadata.get("machine_title", "")
+    title_prefix = f"*{machine_title}* — " if machine_title else ""
+    try:
+        result = reject_pending_change(change_id, reason)
+    except (KeyError, TypeError, ValueError) as e:
         result_text = f":warning: Error rejecting change #{change_id}: {e}"
         logger.error(result_text)
     else:
         if result.applied:
-            result_text = f":x: Pending change #{change_id} *rejected* by {user_name}."
+            result_text = (
+                f":x: {title_prefix}Pending change #{change_id} *rejected* "
+                f"by {user_name}."
+            )
         else:
-            result_text = f":information_source: Pending change #{change_id} was already handled (status: {result.status})."
+            result_text = (
+                f":information_source: {title_prefix}Pending change #{change_id} "
+                f"was already handled (status: {result.status})."
+            )
     delete_pending_image_messages(change_id)
-    respond(replace_original=True, text=result_text)
+    if metadata.get("channel_id") and metadata.get("message_ts"):
+        try:
+            CLIENT.chat_update(
+                channel=metadata["channel_id"],
+                ts=metadata["message_ts"],
+                text=result_text,
+                blocks=[],
+            )
+        except SlackApiError:
+            logger.exception("Could not update rejected change message")
 
 
 def start_socket_mode_handler() -> None:
@@ -812,6 +911,7 @@ def message_slack_pending_change(
             "approve_change",
             "reject_change",
             f"pending change #{change_id}",
+            reason_modal=True,
         )
     ]
     response = message_slack_raw(
