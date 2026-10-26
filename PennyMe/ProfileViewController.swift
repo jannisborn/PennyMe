@@ -114,16 +114,17 @@ final class ProfileViewController: UIViewController, UIPageViewControllerDataSou
     }
 }
 
-private struct ChangeRequestResponse: Decodable {
+private struct ContributionsResponse: Decodable {
     let changeRequests: [Contribution]
+    let ugcReports: [Contribution]?
 
     enum CodingKeys: String, CodingKey {
         case changeRequests = "change_requests"
+        case ugcReports = "ugc_reports"
     }
 }
 
 private struct Contribution: Decodable {
-    let id: Int
     let machineID: Int?
     let changeType: String
     let machineName: String?
@@ -132,9 +133,10 @@ private struct Contribution: Decodable {
     let status: String
     let rejectionReason: String?
     let changedFields: [ChangedField]
+    var isUGCReport: Bool { changeType == "ugc_report" }
 
     enum CodingKeys: String, CodingKey {
-        case id, status
+        case status
         case machineID = "machine_id"
         case changeType = "change_type"
         case machineName = "machine_name"
@@ -146,13 +148,12 @@ private struct Contribution: Decodable {
 }
 
 private struct ChangedField: Decodable {
-    let field: String
     let label: String
     let oldValue: String?
     let newValue: String
 
     enum CodingKeys: String, CodingKey {
-        case field, label
+        case label
         case oldValue = "old_value"
         case newValue = "new_value"
     }
@@ -228,7 +229,7 @@ private final class ContributionCell: UITableViewCell {
     private let titleLine = UILabel()
     private let fieldsLabel = UILabel()
     private let statusButton = UIButton(type: .system)
-    private var onStatusToggle: (() -> Void)?
+    private var onStatusTap: (() -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -238,11 +239,9 @@ private final class ContributionCell: UITableViewCell {
         titleLine.adjustsFontForContentSizeCategory = true
         fieldsLabel.translatesAutoresizingMaskIntoConstraints = false
         fieldsLabel.numberOfLines = 0
-        fieldsLabel.font = .preferredFont(forTextStyle: .subheadline)
-        fieldsLabel.textColor = .secondaryLabel
         fieldsLabel.adjustsFontForContentSizeCategory = true
         statusButton.translatesAutoresizingMaskIntoConstraints = false
-        statusButton.addTarget(self, action: #selector(toggleStatus), for: .touchUpInside)
+        statusButton.addTarget(self, action: #selector(showStatusDetails), for: .touchUpInside)
         statusButton.accessibilityHint = "Show review status details"
 
         contentView.addSubview(titleLine)
@@ -272,15 +271,30 @@ private final class ContributionCell: UITableViewCell {
         date: String,
         fields: [ChangedField],
         status: String,
+        isUGCReport: Bool,
         rejectionReason: String?,
-        onStatusToggle: @escaping () -> Void
+        onStatusTap: @escaping () -> Void
     ) {
-        let heading = NSMutableAttributedString(
-            string: title,
-            attributes: [
-                .font: UIFont.preferredFont(forTextStyle: .headline),
-                .foregroundColor: UIColor.label
-            ]
+        let heading = NSMutableAttributedString()
+        if isUGCReport,
+           let icon = UIImage(systemName: "exclamationmark.circle.fill")?.withTintColor(
+               .systemOrange,
+               renderingMode: .alwaysOriginal
+           ) {
+            let attachment = NSTextAttachment()
+            attachment.image = icon
+            attachment.bounds = CGRect(x: 0, y: -2, width: 16, height: 16)
+            heading.append(NSAttributedString(attachment: attachment))
+            heading.append(NSAttributedString(string: " "))
+        }
+        heading.append(
+            NSAttributedString(
+                string: title,
+                attributes: [
+                    .font: UIFont.preferredFont(forTextStyle: .headline),
+                    .foregroundColor: UIColor.label
+                ]
+            )
         )
         heading.append(
             NSAttributedString(
@@ -292,8 +306,8 @@ private final class ContributionCell: UITableViewCell {
             )
         )
         titleLine.attributedText = heading
-        fieldsLabel.attributedText = diffText(fields)
-        self.onStatusToggle = onStatusToggle
+        fieldsLabel.attributedText = fieldText(fields, showsDiff: !isUGCReport)
+        self.onStatusTap = onStatusTap
 
         let color: UIColor
         let background: UIColor
@@ -324,14 +338,18 @@ private final class ContributionCell: UITableViewCell {
             return "\(field.label), added \(field.newValue)"
         }.joined(separator: ", ")
         let reasonText = rejectionReason.map { ", reason \($0)" } ?? ""
-        accessibilityLabel = "\(title), \(date), status \(status)\(reasonText), \(spokenChanges)"
+        let kindText = isUGCReport ? "UGC report, " : ""
+        accessibilityLabel = "\(kindText)\(title), \(date), status \(status)\(reasonText), \(spokenChanges)"
     }
 
-    @objc private func toggleStatus() {
-        onStatusToggle?()
+    @objc private func showStatusDetails() {
+        onStatusTap?()
     }
 
-    private func diffText(_ fields: [ChangedField]) -> NSAttributedString {
+    private func fieldText(
+        _ fields: [ChangedField],
+        showsDiff: Bool
+    ) -> NSAttributedString {
         let result = NSMutableAttributedString()
         for (index, field) in fields.enumerated() {
             if index > 0 {
@@ -349,7 +367,17 @@ private final class ContributionCell: UITableViewCell {
                     ]
                 )
             )
-            if let oldValue = field.oldValue {
+            if !showsDiff {
+                result.append(
+                    NSAttributedString(
+                        string: field.newValue,
+                        attributes: [
+                            .font: UIFont.preferredFont(forTextStyle: .subheadline),
+                            .foregroundColor: UIColor.label
+                        ]
+                    )
+                )
+            } else if let oldValue = field.oldValue {
                 appendInlineDiff(old: oldValue, new: field.newValue, to: result)
             } else {
                 appendAddition(field.newValue, to: result)
@@ -580,9 +608,10 @@ private final class ContributionsViewController: UITableViewController {
             date: formattedDate(contribution.submittedAt),
             fields: contribution.changedFields,
             status: contribution.status,
+            isUGCReport: contribution.isUGCReport,
             rejectionReason: contribution.rejectionReason,
-            onStatusToggle: { [weak self] in
-                self?.showStatus(for: contribution.id)
+            onStatusTap: { [weak self] in
+                self?.showStatus(for: contribution)
             }
         )
         cell.selectionStyle = artwork(for: contribution) == nil ? .none : .default
@@ -611,11 +640,7 @@ private final class ContributionsViewController: UITableViewController {
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
     }
 
-    private func showStatus(for contributionID: Int) {
-        guard let contribution = contributions.first(where: { $0.id == contributionID }) else {
-            return
-        }
-
+    private func showStatus(for contribution: Contribution) {
         var message = statusDate(for: contribution)
         if contribution.status == "rejected",
            let reason = contribution.rejectionReason,
@@ -658,7 +683,7 @@ private final class ContributionsViewController: UITableViewController {
                       let response = response as? HTTPURLResponse,
                       200 ..< 300 ~= response.statusCode,
                       let data = data,
-                      let decoded = try? JSONDecoder().decode(ChangeRequestResponse.self, from: data)
+                      let decoded = try? JSONDecoder().decode(ContributionsResponse.self, from: data)
                 else {
                     if self.contributions.isEmpty {
                         self.showMessage("Could not load contributions. Pull down to try again.")
@@ -666,7 +691,12 @@ private final class ContributionsViewController: UITableViewController {
                     return
                 }
 
-                self.contributions = decoded.changeRequests
+                self.contributions = (
+                    decoded.changeRequests + (decoded.ugcReports ?? [])
+                ).sorted {
+                    (self.parseDate($0.submittedAt) ?? .distantPast)
+                        > (self.parseDate($1.submittedAt) ?? .distantPast)
+                }
                 self.groups = self.makeGroups(from: self.contributions)
                 self.tableView.backgroundView = self.contributions.isEmpty
                     ? self.messageLabel("No contributions from this device yet.")

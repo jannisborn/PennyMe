@@ -142,12 +142,19 @@ def machines() -> Tuple[Response, int]:
 
 @app.route("/change_requests", methods=["GET"])
 def change_requests() -> Tuple[Response, int]:
-    """Return the current installation's submitted machine changes."""
+    """Return the current installation's machine changes and UGC reports."""
     submitter = anonymous_user_id()
     if not submitter:
         return jsonify({"error": "Missing anonymous contributor identifier"}), 400
     return (
-        jsonify({"change_requests": get_change_requests_for_submitter(submitter)}),
+        jsonify(
+            {
+                "change_requests": get_change_requests_for_submitter(submitter),
+                "ugc_reports": MODERATION.report_contributions_for(
+                    MODERATION.contributor_id(submitter) or ""
+                ),
+            }
+        ),
         200,
     )
 
@@ -383,9 +390,13 @@ def report_content() -> Tuple[Response, int]:
 
     content_key = MODERATION.content_key(target_kind, target_id)
     contributor = MODERATION.resolve_content(machine_id, content_key)
+    machine = (
+        find_machine_in_database(int(machine_id)) if machine_id.isdecimal() else None
+    )
     report: ModerationReport = {
         "report_id": uuid4().hex,
         "machine_id": machine_id,
+        "machine_name": machine["properties"]["name"] if machine else None,
         "target_kind": target_kind,
         "target_id": target_id,
         "content_key": content_key,

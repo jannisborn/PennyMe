@@ -30,7 +30,6 @@ from pennyme.utils import ALL_LOCATIONS, PATH_IMAGES
 SLACK_APP = App(token=os.environ["SLACK_TOKEN"])
 CLIENT = SLACK_APP.client
 IMG_PORT = "http://37.120.179.15:8000/"
-THIS_PATH = os.path.abspath(__file__)
 
 MACHINE_NAMES = {
     elem["properties"][
@@ -55,8 +54,6 @@ def _approval_actions(
     block_id: str,
     approve_action: str,
     reject_action: str,
-    subject: str,
-    reason_modal: bool = False,
 ) -> Dict[str, Any]:
     """Build the shared Approve/Reject controls used in Slack."""
     approve = {
@@ -73,14 +70,83 @@ def _approval_actions(
         "value": value,
         "action_id": reject_action,
     }
-    if not reason_modal:
-        reject["confirm"] = {
-            "title": {"type": "plain_text", "text": "Reject this change?"},
-            "text": {"type": "mrkdwn", "text": f"Permanently reject {subject}?"},
-            "confirm": {"type": "plain_text", "text": "Yes, reject"},
-            "deny": {"type": "plain_text", "text": "Cancel"},
-        }
     return {"type": "actions", "block_id": block_id, "elements": [approve, reject]}
+
+
+def _rejection_modal(
+    callback_id: str, title: str, metadata: Dict[str, Any]
+) -> Dict[str, Any]:
+    """Build the optional-reason modal shared by rejection actions."""
+    return {
+        "type": "modal",
+        "callback_id": callback_id,
+        "private_metadata": json.dumps(metadata),
+        "title": {"type": "plain_text", "text": title},
+        "submit": {"type": "plain_text", "text": "Reject"},
+        "close": {"type": "plain_text", "text": "Cancel"},
+        "blocks": [
+            {
+                "type": "input",
+                "optional": True,
+                "block_id": "rejection_reason",
+                "label": {"type": "plain_text", "text": "Reason (optional)"},
+                "element": {
+                    "type": "plain_text_input",
+                    "action_id": "reason",
+                    "multiline": True,
+                    "max_length": 2000,
+                },
+            }
+        ],
+    }
+
+
+def _rejection_reason(view: Dict[str, Any]) -> str:
+    """Read the optional reason from one of our rejection modals."""
+    return (
+        view.get("state", {})
+        .get("values", {})
+        .get("rejection_reason", {})
+        .get("reason", {})
+        .get("value", "")
+    )
+
+
+def _open_rejection_modal(
+    body: Dict[str, Any], respond: Any, metadata_key: Literal["change_id", "report_id"]
+) -> None:
+    """Open the appropriate rejection modal for a Slack action."""
+    is_change = metadata_key == "change_id"
+    identifier = body.get("actions", [{}])[0].get("value", "?")
+    subject = f"change #{identifier}" if is_change else f"report {identifier}"
+    try:
+        identifier = body["actions"][0]["value"]
+        if is_change:
+            identifier = int(identifier)
+        subject = f"change #{identifier}" if is_change else f"report {identifier}"
+        metadata = {
+            metadata_key: identifier,
+            "channel_id": body.get("channel", {}).get("id"),
+            "message_ts": body.get("message", {}).get("ts"),
+            "machine_title": _action_machine_title(body),
+        }
+        CLIENT.views_open(
+            trigger_id=body["trigger_id"],
+            view=_rejection_modal(
+                f"reject_{'change' if is_change else 'report'}_modal",
+                "Reject change" if is_change else "Reject UGC report",
+                metadata,
+            ),
+        )
+        logger.info("Rejection modal opened for {}", subject)
+    except Exception as error:
+        result_text = f":warning: Could not open rejection form for {subject}: {error}"
+        logger.exception(result_text)
+        respond(
+            replace_original=False,
+            response_type="ephemeral",
+            text=result_text,
+        )
 
 
 def format_machine_fields(fields: Dict[str, Any]) -> str:
@@ -372,7 +438,6 @@ def message_slack_report(
             f"report_{report_id}",
             "approve_report",
             "reject_report",
-            f"report {report_id}",
         )
     )
     response = message_slack_raw(text, channel="#pennyme_approvals", blocks=blocks)
@@ -545,6 +610,8 @@ def handle_report_review(
     body: Dict[str, Any],
     respond: Any,
     decision: Literal["approved", "rejected"],
+    rejection_reason: Optional[str] = None,
+    machine_title: Optional[str] = None,
 ) -> None:
     """Apply one Slack UGC-report decision and update its root message.
 
@@ -556,10 +623,12 @@ def handle_report_review(
         body: Slack action payload containing the report and reviewer IDs.
         respond: Slack Bolt response callback for replacing the action message.
         decision: Either ``approved`` or ``rejected``.
+        rejection_reason: Optional explanation supplied for a rejection.
+        machine_title: Stored title when the review came from a modal.
     """
     report_id = str(body["actions"][0]["value"])
     action = "approve" if decision == "approved" else "reject"
-    machine_title = _action_machine_title(body)
+    machine_title = machine_title or _action_machine_title(body)
     title_prefix = f"*{machine_title}* — " if machine_title else ""
     reviewer = body.get("user", {})
     reviewer_id = str(reviewer.get("id") or reviewer.get("name") or "unknown")
@@ -594,7 +663,9 @@ def handle_report_review(
                     backup.finish_move()
                 else:
                     _quarantine_report_content(report)
-            _MODERATION.record_review(report_id, decision, reviewer_id)
+            _MODERATION.record_review(
+                report_id, decision, reviewer_id, rejection_reason
+            )
             icon = ":white_check_mark:" if decision == "approved" else ":x:"
             result_text = (
                 f"{icon} {title_prefix}UGC report {report_id} *{decision}* "
@@ -627,15 +698,54 @@ def handle_approve_report(ack: Any, body: Dict[str, Any], respond: Any) -> None:
 
 @SLACK_APP.action("reject_report")
 def handle_reject_report(ack: Any, body: Dict[str, Any], respond: Any) -> None:
-    """Leave reported content in place and record rejection from Slack.
+    """Open the optional-reason modal for a UGC report rejection.
 
     Args:
         ack: Slack Bolt callback that acknowledges the button action.
         body: Slack action payload containing report and reviewer IDs.
         respond: Slack Bolt callback used to replace the action message.
     """
+    logger.info("Received Slack reject_report action")
     ack()
-    handle_report_review(body, respond, "rejected")
+    _open_rejection_modal(body, respond, "report_id")
+
+
+@SLACK_APP.view("reject_report_modal")
+def handle_reject_report_submission(
+    ack: Any, body: Dict[str, Any], view: Dict[str, Any]
+) -> None:
+    """Persist a UGC report rejection submitted from the reason modal."""
+    ack()
+    metadata = json.loads(view.get("private_metadata", "{}"))
+    report_id = str(metadata["report_id"])
+    channel_id = metadata.get("channel_id")
+    message_ts = metadata.get("message_ts")
+
+    def respond(**response: Any) -> None:
+        try:
+            if response.get("replace_original") and channel_id and message_ts:
+                CLIENT.chat_update(
+                    channel=channel_id,
+                    ts=message_ts,
+                    text=response["text"],
+                    blocks=response.get("blocks", []),
+                )
+            elif channel_id and body.get("user", {}).get("id"):
+                CLIENT.chat_postEphemeral(
+                    channel=channel_id,
+                    user=body["user"]["id"],
+                    text=response["text"],
+                )
+        except SlackApiError:
+            logger.exception("Could not update rejected UGC report message")
+
+    handle_report_review(
+        {"actions": [{"value": report_id}], "user": body.get("user", {})},
+        respond,
+        "rejected",
+        _rejection_reason(view),
+        metadata.get("machine_title"),
+    )
 
 
 @SLACK_APP.action("approve_change")
@@ -689,54 +799,7 @@ def handle_reject_change(ack: Any, body: Dict[str, Any], respond: Any) -> None:
     """
     logger.info("Received Slack reject_change action")
     ack()
-    try:
-        change_id = int(body["actions"][0]["value"])
-        trigger_id = body["trigger_id"]
-        logger.info("Opening rejection modal for pending change #{}", change_id)
-        metadata = json.dumps(
-            {
-                "change_id": change_id,
-                "channel_id": body.get("channel", {}).get("id"),
-                "message_ts": body.get("message", {}).get("ts"),
-                "machine_title": _action_machine_title(body),
-            }
-        )
-        CLIENT.views_open(
-            trigger_id=trigger_id,
-            view={
-                "type": "modal",
-                "callback_id": "reject_change_modal",
-                "private_metadata": metadata,
-                "title": {"type": "plain_text", "text": "Reject change"},
-                "submit": {"type": "plain_text", "text": "Reject"},
-                "close": {"type": "plain_text", "text": "Cancel"},
-                "blocks": [
-                    {
-                        "type": "input",
-                        "optional": True,
-                        "block_id": "rejection_reason",
-                        "label": {
-                            "type": "plain_text",
-                            "text": "Reason (optional)",
-                        },
-                        "element": {
-                            "type": "plain_text_input",
-                            "action_id": "reason",
-                            "multiline": True,
-                            "max_length": 2000,
-                        },
-                    }
-                ],
-            },
-        )
-        logger.info("Rejection modal opened for pending change #{}", change_id)
-    except Exception as e:
-        change_id = body.get("actions", [{}])[0].get("value", "?")
-        result_text = (
-            f":warning: Could not open rejection form for change #{change_id}: {e}"
-        )
-        logger.exception(result_text)
-        respond(replace_original=False, response_type="ephemeral", text=result_text)
+    _open_rejection_modal(body, respond, "change_id")
 
 
 @SLACK_APP.view("reject_change_modal")
@@ -747,13 +810,7 @@ def handle_reject_change_submission(
     ack()
     metadata = json.loads(view.get("private_metadata", "{}"))
     change_id = int(metadata["change_id"])
-    reason = (
-        view.get("state", {})
-        .get("values", {})
-        .get("rejection_reason", {})
-        .get("reason", {})
-        .get("value", "")
-    )
+    reason = _rejection_reason(view)
     user_name = body.get("user", {}).get("name", "unknown")
     machine_title = metadata.get("machine_title", "")
     title_prefix = f"*{machine_title}* — " if machine_title else ""
@@ -910,8 +967,6 @@ def message_slack_pending_change(
             f"pending_{change_id}",
             "approve_change",
             "reject_change",
-            f"pending change #{change_id}",
-            reason_modal=True,
         )
     ]
     response = message_slack_raw(

@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 from filecmp import cmp
 from pathlib import Path
 from shutil import copy2
-from typing import Any, Dict, Mapping, Optional, Self, Tuple, TypedDict
+from typing import Any, Dict, Iterator, Mapping, Optional, Self, Tuple, TypedDict
 
 _BANNED_WORDS = {
     "asshole",
@@ -102,6 +102,7 @@ class ModerationReport(TypedDict):
         block_contributor: Whether the reporter also requested a local block.
         contributor_id: Internal digest of the reported contributor.
         reporter_id: Internal digest of the reporting installation.
+        machine_name: Machine title at the time the report was submitted.
     """
 
     report_id: str
@@ -114,6 +115,7 @@ class ModerationReport(TypedDict):
     block_contributor: bool
     contributor_id: str
     reporter_id: str
+    machine_name: Optional[str]
 
 
 class ReportRequest(TypedDict):
@@ -579,15 +581,7 @@ class ModerationStore:
         """
         report = None
         decision = None
-        try:
-            lines = self.reports_path.read_text(encoding="utf-8").splitlines()
-        except FileNotFoundError:
-            return report, decision
-        for line in lines:
-            try:
-                entry = json.loads(line)
-            except json.JSONDecodeError:
-                continue
+        for entry in self._report_entries():
             if entry.get("report_id") != report_id:
                 continue
             if "decision" in entry:
@@ -596,27 +590,114 @@ class ModerationStore:
                 report = entry
         return report, decision
 
-    def record_review(self, report_id: str, decision: str, reviewer_id: str) -> None:
+    def report_contributions_for(self, reporter_id: str) -> list[Dict[str, Any]]:
+        """Return one installation's reports as contribution-screen rows."""
+        reports: Dict[str, Dict[str, Any]] = {}
+        reviews: Dict[str, Dict[str, Any]] = {}
+        for entry in self._report_entries():
+            report_id = str(entry.get("report_id", ""))
+            if entry.get("reporter_id") == reporter_id:
+                reports[report_id] = entry
+            elif report_id in reports and "decision" in entry:
+                reviews[report_id] = entry
+
+        contributions = []
+        for report_id, report in reports.items():
+            review = reviews.get(report_id, {})
+            target_kind = str(report.get("target_kind", ""))
+            target_id = str(report.get("target_id", ""))
+            if target_kind == "machine":
+                target = "Machine listing"
+            elif target_kind == "comment":
+                target = "Comments"
+            elif target_id == "machine":
+                target = "Machine image"
+            elif target_id.startswith("coin_"):
+                coin = target_id.removeprefix("coin_")
+                target = (
+                    f"Coin image #{int(coin) + 1}" if coin.isdecimal() else "Coin image"
+                )
+            else:
+                target = target_kind.capitalize()
+            fields = [
+                {"label": "Reported", "old_value": None, "new_value": target},
+                {
+                    "label": "Reason",
+                    "old_value": None,
+                    "new_value": str(report.get("reason", ""))
+                    .replace("_", " ")
+                    .title(),
+                },
+            ]
+            if report.get("comment"):
+                fields.append(
+                    {
+                        "label": "Details",
+                        "old_value": None,
+                        "new_value": report["comment"],
+                    }
+                )
+            machine_id = str(report.get("machine_id", ""))
+            contributions.append(
+                {
+                    "machine_id": int(machine_id) if machine_id.isdecimal() else None,
+                    "change_type": "ugc_report",
+                    "machine_name": report.get("machine_name"),
+                    "submitted_at": report.get("created_at"),
+                    "status": review.get("decision", "pending"),
+                    "reviewed_at": review.get("created_at"),
+                    "rejection_reason": review.get("rejection_reason"),
+                    "changed_fields": fields,
+                }
+            )
+        return sorted(
+            contributions,
+            key=lambda contribution: contribution.get("submitted_at", ""),
+            reverse=True,
+        )
+
+    def record_review(
+        self,
+        report_id: str,
+        decision: str,
+        reviewer_id: str,
+        rejection_reason: Optional[str] = None,
+    ) -> None:
         """Append a Slack moderation decision to the report log.
 
         Args:
             report_id: Identifier of the reviewed report.
             decision: Either ``approved`` or ``rejected``.
             reviewer_id: Slack user ID of the reviewer.
+            rejection_reason: Optional explanation shown to the reporter.
 
         Raises:
             ValueError: If ``decision`` is not a supported review outcome.
         """
         if decision not in {"approved", "rejected"}:
             raise ValueError(f"Unknown moderation decision: {decision}")
-        self._append_report_entry(
-            {
-                "report_id": report_id,
-                "decision": decision,
-                "reviewer_id": reviewer_id,
-                "created_at": utc_now(),
-            }
-        )
+        entry = {
+            "report_id": report_id,
+            "decision": decision,
+            "reviewer_id": reviewer_id,
+            "created_at": utc_now(),
+        }
+        reason = (rejection_reason or "").strip()
+        if decision == "rejected" and reason:
+            entry["rejection_reason"] = reason
+        self._append_report_entry(entry)
+
+    def _report_entries(self) -> Iterator[Dict[str, Any]]:
+        """Yield valid entries from the append-only moderation log."""
+        try:
+            lines = self.reports_path.read_text(encoding="utf-8").splitlines()
+        except FileNotFoundError:
+            return
+        for line in lines:
+            try:
+                yield json.loads(line)
+            except json.JSONDecodeError:
+                continue
 
     def _append_report_entry(self, entry: Dict[str, Any]) -> None:
         """Append one JSON object to the moderation log."""
