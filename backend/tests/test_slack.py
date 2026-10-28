@@ -336,12 +336,17 @@ class ReportSlackTest(unittest.TestCase):
                     review.assert_not_called()
                     self.assertTrue(respond.call_args.kwargs["replace_original"])
                     self.assertIn("Machine title", respond.call_args.kwargs["text"])
-                elif action == "reject_change":
+                elif action in {"reject_change", "reject_report"}:
                     reject.assert_not_called()
                     views_open.assert_called_once()
+                    expected_callback = (
+                        "reject_change_modal"
+                        if action == "reject_change"
+                        else "reject_report_modal"
+                    )
                     self.assertEqual(
                         views_open.call_args.kwargs["view"]["callback_id"],
-                        "reject_change_modal",
+                        expected_callback,
                     )
                     metadata = json.loads(
                         views_open.call_args.kwargs["view"]["private_metadata"]
@@ -350,11 +355,7 @@ class ReportSlackTest(unittest.TestCase):
                     approve.assert_not_called()
                     review.assert_not_called()
                 else:
-                    review.assert_called_once_with(
-                        body,
-                        respond,
-                        "approved" if action.startswith("approve") else "rejected",
-                    )
+                    review.assert_called_once_with(body, respond, "approved")
                     approve.assert_not_called()
                     reject.assert_not_called()
 
@@ -579,7 +580,7 @@ class ReportSlackTest(unittest.TestCase):
                 self.assertTrue(respond.call_args.kwargs["replace_original"])
                 self.assertIn("Machine title", respond.call_args.kwargs["text"])
 
-    def test_rejection_records_the_reviewer_without_moving_content(self):
+    def test_ugc_rejection_modal_records_reason_without_moving_content(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "42.jpg"
@@ -603,14 +604,28 @@ class ReportSlackTest(unittest.TestCase):
                 patch.object(slack, "_MODERATION", store),
                 patch.object(slack, "PATH_IMAGES", directory),
                 patch.object(slack, "archive_and_delete_machine") as archive,
+                patch.object(slack.CLIENT, "chat_update") as update,
             ):
-                slack.handle_reject_report(
+                slack.handle_reject_report_submission(
                     Mock(),
+                    {"user": {"id": "U123", "name": "reviewer"}},
                     {
-                        "actions": [{"value": "report-id"}],
-                        "user": {"id": "U123", "name": "reviewer"},
+                        "private_metadata": json.dumps(
+                            {
+                                "report_id": "report-id",
+                                "channel_id": "C123",
+                                "message_ts": "123.456",
+                                "machine_title": "Machine title",
+                            }
+                        ),
+                        "state": {
+                            "values": {
+                                "rejection_reason": {
+                                    "reason": {"value": "Content is accurate"}
+                                }
+                            }
+                        },
                     },
-                    respond := Mock(),
                 )
 
             self.assertTrue(source.exists())
@@ -618,7 +633,12 @@ class ReportSlackTest(unittest.TestCase):
             archive.assert_not_called()
             _, decision = store.report_status("report-id")
             self.assertEqual(decision, "rejected")
-            self.assertEqual(respond.call_args.kwargs["blocks"], [])
+            review = json.loads(
+                store.reports_path.read_text(encoding="utf-8").splitlines()[-1]
+            )
+            self.assertEqual(review["rejection_reason"], "Content is accurate")
+            self.assertEqual(update.call_args.kwargs["blocks"], [])
+            self.assertIn("Machine title", update.call_args.kwargs["text"])
 
     def test_machine_approval_backs_up_all_content_and_deletes_sql_row(self):
         with tempfile.TemporaryDirectory() as directory:

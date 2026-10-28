@@ -213,6 +213,38 @@ class ModerationStoreTests(unittest.TestCase):
         self.assertEqual(report["comment"], "Legacy explanation")
         self.assertEqual(decision, "approved")
 
+    def test_returns_only_the_reporters_reports_with_rejection_reason(self):
+        report = {
+            "report_id": "report-a",
+            "machine_id": "42",
+            "machine_name": "Museum",
+            "target_kind": "image",
+            "target_id": "machine",
+            "content_key": "image:machine",
+            "reason": "wrong_content",
+            "comment": "This is the wrong image",
+            "block_contributor": False,
+            "contributor_id": "private-contributor",
+            "reporter_id": "reporter-a",
+        }
+        self.store.record_report(report)
+        self.store.record_report(
+            {**report, "report_id": "report-b", "reporter_id": "reporter-b"}
+        )
+        self.store.record_review(
+            "report-a", "rejected", "slack-user", "The image is correct"
+        )
+
+        reports = self.store.report_contributions_for("reporter-a")
+
+        self.assertEqual(len(reports), 1)
+        self.assertEqual(reports[0]["machine_name"], "Museum")
+        self.assertEqual(reports[0]["status"], "rejected")
+        self.assertEqual(reports[0]["rejection_reason"], "The image is correct")
+        self.assertEqual(reports[0]["changed_fields"][0]["new_value"], "Machine image")
+        self.assertNotIn("reporter_id", reports[0])
+        self.assertNotIn("contributor_id", reports[0])
+
 
 if __name__ == "__main__":
     unittest.main()
