@@ -28,7 +28,7 @@ class VersionManager {
         if shouldShowVersionInfo() {
             let alert = UIAlertController(
                 title: "PennyMe v\(currentVersion ?? "")",
-                message: "Faster, offline-ready maps: pins load instantly and refresh every few hours or on demand. New: import a Google Maps route to find nearby machines. Reporting wrong locations and content is easier too.", preferredStyle: .alert
+                message: "Small coins, big contributions! Visit your new Profile to track your submissions and reports, check their review status, and see feedback. Find machines by ID and enjoy more accurate collection stats. Thanks for helping PennyMe grow!", preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
