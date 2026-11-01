@@ -12,6 +12,7 @@ from datetime import date, datetime, timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
 from threading import RLock
+from time import monotonic
 from typing import Any, Dict, List, Optional, Tuple, TypedDict
 
 import pandas as pd
@@ -355,7 +356,7 @@ def _query_all_machines_geojson(since: Optional[str]) -> dict:
 
 
 @lru_cache(maxsize=16)
-def _cached_all_machines_geojson(since: Optional[str]) -> dict:
+def _cached_all_machines_geojson(since: Optional[str], minute: int) -> dict:
     return _query_all_machines_geojson(since)
 
 
@@ -372,7 +373,9 @@ def get_all_machines_geojson(since: Optional[str] = None) -> dict:
         psycopg2.Error: On any database error.
     """
     with _MACHINE_GEOJSON_CACHE_LOCK:
-        return _cached_all_machines_geojson(since)
+        # Other processes (including the daily differ) can commit writes. Keep
+        # snapshots cached for at most a minute without requiring an app restart.
+        return _cached_all_machines_geojson(since, int(monotonic() // 60))
 
 
 def clear_machine_geojson_cache() -> None:
