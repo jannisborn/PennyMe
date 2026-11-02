@@ -162,6 +162,38 @@ class PennyCollectorApiTests(unittest.TestCase):
         ):
             self.assertEqual(list(get_locations()), ["Portugal"])
 
+    def test_native_listings_use_canonical_url_without_inventing_legacy_ids(self):
+        record = location_record()
+        record.update(
+            id=30245,
+            link="https://pennycollector.com/locations/germany/alfred-kunze-sportpark/",
+        )
+        record["acf"].update(legacy_id="", source_url="")
+        for legacy in ("", None, 0):
+            record["acf"]["legacy_id"] = legacy
+            with patch(
+                "pennyme.pennycollector_api._get_collection",
+                side_effect=[[{"id": 181, "name": "Germany"}], [record]],
+            ):
+                feature = get_locations()["Germany"][0]
+            self.assertEqual(feature["properties"]["external_url"], record["link"])
+            self.assertEqual(feature["temporary"]["wordpress_id"], 30245)
+            self.assertEqual(feature["properties"]["id"], -1)
+        for url in (
+            "",
+            "https://example.com/locations/germany/test/",
+            "http://pennycollector.com/locations/germany/test/",
+            "https://pennycollector.com/",
+            "https://pennycollector.com/locations/germany/test/?location=30245",
+        ):
+            record["link"] = url
+            with patch(
+                "pennyme.pennycollector_api._get_collection",
+                side_effect=[[{"id": 181, "name": "Germany"}], [record]],
+            ):
+                with self.assertRaises(ValueError):
+                    get_locations()
+
 
 if __name__ == "__main__":
     unittest.main()

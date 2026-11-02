@@ -9,6 +9,7 @@ import time
 from collections import Counter, defaultdict
 from datetime import date
 from html import unescape
+from urllib.parse import urlsplit
 
 import requests
 from loguru import logger
@@ -83,17 +84,33 @@ def _get_collection(session, resource, fields):
 
 def _to_geojson(record, area):
     fields = record["acf"]
-    legacy_id = fields["legacy_id"]
-    if type(legacy_id) is not int or legacy_id <= 0:
-        raise ValueError(
-            f"PennyCollector post {record['id']} has no valid legacy ID; "
-            "cannot invent a Details.aspx URL"
-        )
-    url = f"{WEBSITE_ROOT}Details.aspx?location={legacy_id}"
-    if fields.get("source_url") != url:
-        raise ValueError(
-            f"PennyCollector post {record['id']} has a conflicting source URL"
-        )
+    legacy_id = fields.get("legacy_id")
+    if type(legacy_id) is int and legacy_id > 0:
+        url = f"{WEBSITE_ROOT}Details.aspx?location={legacy_id}"
+        if fields.get("source_url") != url:
+            raise ValueError(
+                f"PennyCollector post {record['id']} has a conflicting source URL"
+            )
+    else:
+        # Native listings on the new site have no legacy ID or source URL.
+        # Their WordPress ID must never be substituted into Details.aspx.
+        url = record.get("link") or ""
+        parsed = urlsplit(url)
+        if (
+            isinstance(legacy_id, bool)
+            or legacy_id not in (None, "", 0)
+            or fields.get("source_url") not in (None, "")
+            or parsed.scheme != "https"
+            or parsed.netloc != "pennycollector.com"
+            or not parsed.path.startswith("/locations/")
+            or len(parsed.path.strip("/").split("/")) < 3
+            or parsed.query
+            or parsed.fragment
+        ):
+            raise ValueError(
+                f"PennyCollector post {record['id']} has neither a valid legacy identity "
+                "nor a valid canonical location URL"
+            )
     state = fields["status"]
     if state not in ["Active", *UNAVAILABLE_STATES]:
         raise ValueError(f"Unknown PennyCollector status {state!r} for {url}")
