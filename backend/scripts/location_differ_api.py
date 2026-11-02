@@ -815,6 +815,29 @@ def write_report(inputs, comparison, output_dir):
         "snapshot_at": inputs["snapshot_at"],
         "sql_machines": len(inputs["database"]["machines"]),
         "source_locations": len(inputs["source"]),
+        "coverage": {
+            "pennycollector_active_listings": sum(
+                s["properties"]["machine_status"] == "available"
+                for s in inputs["source"]
+            ),
+            "pennycollector_inactive_listings": sum(
+                s["properties"]["machine_status"] != "available"
+                for s in inputs["source"]
+            ),
+            "sql_available_machines": sum(
+                m["machine_status"] == "available"
+                for m in inputs["database"]["machines"]
+            ),
+            "sql_without_pennycollector_link": sum(
+                urlsplit(m.get("external_url") or "").hostname
+                not in {
+                    "pennycollector.com",
+                    "www.pennycollector.com",
+                    "locations.pennycollector.com",
+                }
+                for m in inputs["database"]["machines"]
+            ),
+        },
         "source_categories": dict(counts),
         "proposed_machine_additions": len(additions),
         "proposed_link_additions": len(links),
@@ -906,6 +929,10 @@ def write_report(inputs, comparison, output_dir):
         "- [Full audit and evidence](report.json); [input snapshot](inputs.json).",
         "",
         "## Complete source accounting",
+        "",
+        f"PennyCollector has {summary['coverage']['pennycollector_active_listings']:,} active and {summary['coverage']['pennycollector_inactive_listings']:,} inactive listings. SQL has {summary['coverage']['sql_available_machines']:,} machines marked available out of {summary['sql_machines']:,} total rows. {summary['coverage']['sql_without_pennycollector_link']:,} SQL machines have no PennyCollector link; this is not a reliable count of user-created machines.",
+        "",
+        "These totals measure different things: website venue listings versus individual app machines. Listings can cover multiple devices or duplicate another listing. Inactive source-only locations and known exceptions are not automatically added; app deletions and user corrections take precedence. Missing-link proposals change coverage, not the number of SQL machines.",
         "",
         "| Classification | Locations |",
         "| --- | ---: |",
@@ -1324,52 +1351,95 @@ def main():
             / "reports/location_differ"
             / datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%S-%fZ")
         )
-    if args.send_report:
-        if args.no_slack:
-            parser.error("--send-report cannot be combined with --no-slack")
-        receipt_path = args.output_dir / "apply_result.json"
-        if receipt_path.exists():
-            # Recover even if the process stopped after saving the commit receipt.
-            receipt = json.loads(receipt_path.read_text())
-            report = json.loads((args.output_dir / "report.json").read_text())
-            preview_path = args.output_dir / "slack_preview.json"
-            preview = json.loads(preview_path.read_text())
-            preview["root_text"] = slack_summary(report["summary"], receipt)
-            preview_path.write_text(json.dumps(preview, indent=2))
-        print(
-            json.dumps(send_slack_reports(args.output_dir, args.slack_state), indent=2)
-        )
-        return
-    if (args.output_dir / "apply_result.json").exists():
+    if args.send_report and args.no_slack:
+        parser.error("--send-report cannot be combined with --no-slack")
+    if not args.send_report and (args.output_dir / "apply_result.json").exists():
         parser.error(
             "This directory contains an applied run; use --send-report or a fresh directory"
         )
-    if not args.reuse_inputs and (args.output_dir / "inputs.json").exists():
+    if (
+        not args.send_report
+        and not args.reuse_inputs
+        and (args.output_dir / "inputs.json").exists()
+    ):
         parser.error(
             "Use a fresh --output-dir, or --reuse-inputs for a read-only replay"
         )
     if not args.no_slack and not os.environ.get("SLACK_TOKEN"):
         parser.error("Set SLACK_TOKEN or pass --no-slack")
-    print(f"Report directory: {args.output_dir}")
-    inputs = (
-        json.loads((args.output_dir / "inputs.json").read_text())
-        if args.reuse_inputs
-        else fetch_inputs(args.output_dir)
+    run(args)
+
+
+def run(args):
+    mode = "SEND REPORT" if args.send_report else "APPLY" if args.apply else "DRY RUN"
+    started = time.monotonic()
+    evidence = None
+    receipt = None
+    logger.info(
+        "START | {} | Slack: {} | Reports: {}",
+        mode,
+        "disabled" if args.no_slack else "enabled",
+        args.output_dir,
     )
-    evidence = SourceEvidence(args.output_dir, geocode=args.geocode)
     try:
-        comparison = compare(inputs, evidence.get)
-        summary = write_report(inputs, comparison, args.output_dir)
-        print(json.dumps(summary, indent=2))
-        if args.apply:
-            report = json.loads((args.output_dir / "report.json").read_text())
-            receipt = apply_report(inputs, report)
-            record_application(args.output_dir, receipt)
-            print(json.dumps(receipt, indent=2))
+        if args.send_report:
+            receipt_path = args.output_dir / "apply_result.json"
+            if receipt_path.exists():
+                # Recover even if the process stopped after saving the commit receipt.
+                receipt = json.loads(receipt_path.read_text())
+                report = json.loads((args.output_dir / "report.json").read_text())
+                preview_path = args.output_dir / "slack_preview.json"
+                preview = json.loads(preview_path.read_text())
+                preview["root_text"] = slack_summary(report["summary"], receipt)
+                preview_path.write_text(json.dumps(preview, indent=2))
+            result_text = "Saved report delivery; no SQL writes in this invocation."
+        else:
+            inputs = (
+                json.loads((args.output_dir / "inputs.json").read_text())
+                if args.reuse_inputs
+                else fetch_inputs(args.output_dir)
+            )
+            evidence = SourceEvidence(args.output_dir, geocode=args.geocode)
+            comparison = compare(inputs, evidence.get)
+            summary = write_report(inputs, comparison, args.output_dir)
+            print(json.dumps(summary, indent=2), flush=True)
+            if args.apply:
+                report = json.loads((args.output_dir / "report.json").read_text())
+                receipt = apply_report(inputs, report)
+                record_application(args.output_dir, receipt)
+                print(json.dumps(receipt, indent=2), flush=True)
+            result_text = slack_summary(summary, receipt).replace("\n", " ")
+        slack_status = "disabled"
         if not args.no_slack:
-            send_slack_reports(args.output_dir, args.slack_state)
+            logger.info("Sending Slack diff and problem reports")
+            delivery = send_slack_reports(args.output_dir, args.slack_state)
+            slack_status = (
+                "already delivered" if delivery.get("already_sent") else "sent"
+            )
+        logger.success(
+            "COMPLETE | {} | {} | {:.1f}s | Slack: {} | Reports: {}",
+            mode,
+            result_text,
+            time.monotonic() - started,
+            slack_status,
+            args.output_dir,
+        )
+    except Exception as error:
+        logger.error(
+            "FAILED | {} | {:.1f}s | {} | Reports: {}",
+            mode,
+            time.monotonic() - started,
+            error,
+            args.output_dir,
+        )
+        if receipt is not None and args.apply:
+            logger.error(
+                "SQL was committed; retry report delivery with --send-report, not --apply"
+            )
+        raise
     finally:
-        evidence.session.close()
+        if evidence is not None:
+            evidence.session.close()
 
 
 if __name__ == "__main__":

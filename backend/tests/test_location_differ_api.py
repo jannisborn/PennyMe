@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from argparse import Namespace
 from copy import deepcopy
 from pathlib import Path
 from unittest.mock import MagicMock, Mock, patch
@@ -16,6 +17,7 @@ from scripts.location_differ_api import (
     read_database,
     send_slack_reports,
     record_application,
+    run,
     write_report,
 )
 
@@ -791,10 +793,44 @@ class SqlDifferApplyTests(unittest.TestCase):
                 ),
                 patch("scripts.location_differ_api.SourceEvidence") as details,
                 patch("scripts.location_differ_api.apply_report") as apply,
+                patch("scripts.location_differ_api.logger") as log,
             ):
                 details.return_value.get.return_value = evidence()
                 main()
                 apply.assert_not_called()
+                self.assertIn("START", log.info.call_args_list[0].args[0])
+                self.assertIn("COMPLETE", log.success.call_args.args[0])
+                self.assertIn("disabled", log.success.call_args.args)
+                log.error.assert_not_called()
+
+    def test_slack_failure_logs_failure_instead_of_completion(self):
+        with tempfile.TemporaryDirectory() as directory:
+            data, _ = self.plan(directory)
+            Path(directory, "inputs.json").write_text(json.dumps(data))
+            args = Namespace(
+                output_dir=Path(directory),
+                send_report=False,
+                apply=False,
+                no_slack=False,
+                reuse_inputs=True,
+                geocode=False,
+                slack_state=Path(directory) / "slack.json",
+            )
+            with (
+                patch("scripts.location_differ_api.SourceEvidence") as details,
+                patch(
+                    "scripts.location_differ_api.send_slack_reports",
+                    side_effect=RuntimeError("Slack unavailable"),
+                ),
+                patch("scripts.location_differ_api.logger") as log,
+            ):
+                details.return_value.get.return_value = evidence()
+                with self.assertRaisesRegex(RuntimeError, "Slack unavailable"):
+                    run(args)
+                self.assertIn("START", log.info.call_args_list[0].args[0])
+                self.assertIn("FAILED", log.error.call_args.args[0])
+                log.success.assert_not_called()
+                details.return_value.session.close.assert_called_once()
 
 
 if __name__ == "__main__":
