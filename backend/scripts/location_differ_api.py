@@ -45,6 +45,12 @@ NON_MACHINE_LABEL = re.compile(
     r"\b(ret(?:ired)?|gone|moved|removed|empty|pennybooks?|pocketbooks?|books?)\b", re.I
 )
 MACHINE_LABEL = re.compile(r"\b(?:machine|maquina)\s*(?:#|No\.?\s*)?(\d+)\b", re.I)
+STATUS_MAPPING = {
+    "available": "available",
+    "Gone": "retired",
+    "Moved": "retired",
+    "Out of Order": "out-of-order",
+}
 
 
 def read_database(login_path):
@@ -153,6 +159,20 @@ def location_key(url):
     return (url or "").rstrip("/")
 
 
+def source_keys(source):
+    """Use the same legacy/canonical identity for every protection and match."""
+    return tuple(
+        dict.fromkeys(
+            location_key(url)
+            for url in (
+                source["properties"]["external_url"],
+                source["temporary"].get("canonical_url"),
+            )
+            if url
+        )
+    )
+
+
 def normalized(text):
     text = unicodedata.normalize("NFKD", text or "").casefold()
     return " ".join(
@@ -230,9 +250,9 @@ def parse_machine_table(html):
         rows.append(
             {
                 "label": label,
-                "num_coins": int(designs)
-                if designs.isascii() and designs.isdigit()
-                else None,
+                "num_coins": (
+                    int(designs) if designs.isascii() and designs.isdigit() else None
+                ),
                 "coin_type": coin_type,
                 "retired_or_book": bool(NON_MACHINE_LABEL.search(label)),
             }
@@ -438,12 +458,7 @@ def plan_status_changes(source, machines, pending_ids, as_of, excluded_reason=No
     also protected edits made today/yesterday; pending edits remain untouched.
     """
     p = source["properties"]
-    target = {
-        "available": "available",
-        "Gone": "retired",
-        "Moved": "retired",
-        "Out of Order": "out-of-order",
-    }[p["machine_status"]]
+    target = STATUS_MAPPING[p["machine_status"]]
     differences = [
         {
             "machine_id": m["id"],
@@ -547,8 +562,8 @@ def compare(inputs, evidence_for):
     venue_keys = defaultdict(set)
     for source in inputs["source"]:
         p = source["properties"]
-        venue_keys[tuple(normalized(p[k]) for k in ("area", "name", "address"))].add(
-            location_key(p["external_url"])
+        venue_keys[tuple(normalized(p[k]) for k in ("area", "name", "address"))].update(
+            source_keys(source)
         )
     claimed_siblings = defaultdict(set)
     records, disagreements, inspections, status_updates = [], [], [], []
@@ -556,6 +571,7 @@ def compare(inputs, evidence_for):
     for source in inputs["source"]:
         p = source["properties"]
         key = location_key(p["external_url"])
+        aliases = source_keys(source)
         item = {
             "source": deepcopy(source),
             "category": None,
@@ -564,22 +580,17 @@ def compare(inputs, evidence_for):
         }
         records.append(item)
         existing = list(
-            {
-                m["id"]: m
-                for alias in (
-                    key,
-                    location_key(source["temporary"].get("canonical_url")),
-                )
-                for m in by_url.get(alias, [])
-            }.values()
+            {m["id"]: m for alias in aliases for m in by_url.get(alias, [])}.values()
         )
-        if key in skipped or key in known:
+        skipped_key = next((alias for alias in aliases if alias in skipped), None)
+        known_key = next((alias for alias in aliases if alias in known), None)
+        if skipped_key or known_key:
             item["category"] = "known_exception"
-            entry = skipped.get(key) or known[key]
+            entry = skipped[skipped_key] if skipped_key else known[known_key]
             item["reason"] = entry.get("reason") or entry.get(
                 "problem", "Known GitHub exception"
             )
-            item["registry"] = "skip" if key in skipped else "problems"
+            item["registry"] = "skip" if skipped_key else "problems"
             continue
         if key in IGNORED_LISTINGS:
             item.update(
@@ -618,7 +629,11 @@ def compare(inputs, evidence_for):
             )
             continue
         if existing:
-            item.update(category="represented", machine_ids=[m["id"] for m in existing])
+            item.update(
+                category="represented",
+                machine_ids=[m["id"] for m in existing],
+                target_status=STATUS_MAPPING[p["machine_status"]],
+            )
             updates, observations, review_reason = plan_status_changes(
                 source, existing, pending_ids, as_of
             )
@@ -629,16 +644,16 @@ def compare(inputs, evidence_for):
                     category="review", reason=review_reason, candidates=existing
                 )
             continue
-        if any(location_key(m.get("external_url")) == key for m in deleted):
+        if any(location_key(m.get("external_url")) in aliases for m in deleted):
             item.update(
                 category="protected_deleted",
                 reason="Archived deletion already expresses PennyMe's decision; do not re-add",
             )
             item["candidates"] = [
-                m for m in deleted if location_key(m.get("external_url")) == key
+                m for m in deleted if location_key(m.get("external_url")) in aliases
             ]
             continue
-        if any(location_key(m.get("external_url")) == key for m in pending):
+        if any(location_key(m.get("external_url")) in aliases for m in pending):
             item.update(
                 category="deferred", reason="Already covered by an open change request"
             )
@@ -669,7 +684,7 @@ def compare(inputs, evidence_for):
             candidates = candidates_for(
                 source, machines + deleted + pending_creates, evidence.get("geocode")
             )
-            siblings = venue_keys[signature] - {key}
+            siblings = venue_keys[signature] - set(source_keys(source))
             candidates = [
                 c
                 for c in candidates
@@ -802,40 +817,41 @@ def compare(inputs, evidence_for):
                 for update in item["link_updates"]
                 if update["machine_id"] not in targets
             ]
-    # Two aliases may both occur in the catalogue. Never apply competing status
-    # proposals to one ID, nor bypass a shared-URL conflict through another alias.
-    review_ids = {
-        c["id"]
-        for r in records
-        if r["category"] == "review" and r.get("machine_ids")
-        for c in r["candidates"]
-    }
-    by_status_id = defaultdict(list)
-    for update in status_updates:
-        by_status_id[update["machine_id"]].append(update)
-    blocked_ids = review_ids | {
-        mid
-        for mid, rows in by_status_id.items()
-        if len({r["target_status"] for r in rows}) > 1
-    }
-    blocked_urls = {
-        r["external_url"] for r in status_updates if r["machine_id"] in blocked_ids
-    }
-    for row in status_updates:
-        if row["external_url"] in blocked_urls:
-            row.update(
-                disposition="review",
-                reason="Conflicting catalogue identities/statuses for this machine; resolve before updating",
+    # Include unchanged statuses in catalogue claims: "already available" must
+    # still conflict with another alias claiming the same machine is gone.
+    linked = [r for r in records if "target_status" in r]
+    claims = defaultdict(set)
+    blocked_ids = set()
+    for item in linked:
+        for mid in item["machine_ids"]:
+            claims[mid].add(item["target_status"])
+        if item["category"] == "review":
+            blocked_ids.update(item["machine_ids"])
+    blocked_ids.update(mid for mid, targets in claims.items() if len(targets) > 1)
+    # A conflict protects every overlapping shared-URL group, independent of
+    # source order. A single pass can leave a third alias partially updated.
+    while True:
+        before = len(blocked_ids)
+        for item in linked:
+            if blocked_ids.intersection(item["machine_ids"]):
+                blocked_ids.update(item["machine_ids"])
+        if len(blocked_ids) == before:
+            break
+    reason = "Conflicting catalogue identities/statuses for this machine; resolve before updating"
+    by_id = {m["id"]: m for m in machines}
+    for item in linked:
+        if (
+            blocked_ids.intersection(item["machine_ids"])
+            and item["category"] != "review"
+        ):
+            item.update(
+                category="review",
+                reason=reason,
+                candidates=[by_id[mid] for mid in item["machine_ids"]],
             )
-            for item in records:
-                if item["source"]["properties"]["external_url"] == row["external_url"]:
-                    item.update(
-                        category="review",
-                        reason=row["reason"],
-                        candidates=by_url.get(
-                            location_key(row["expected_external_url"]), []
-                        ),
-                    )
+    for row in status_updates:
+        if row["machine_id"] in blocked_ids:
+            row.update(disposition="review", reason=reason)
     status_updates = list(
         {
             r["machine_id"]: r for r in status_updates if r["disposition"] == "planned"
@@ -1084,7 +1100,7 @@ def write_report(inputs, comparison, output_dir):
         "## Proposed changes",
         "",
         f"- [Individual machine additions](additions.csv): **{len(additions)}** rows at **{counts['addition']}** locations. No SQL IDs have been allocated; each row needs its own ID.",
-        f"- [Missing-link additions](links.csv): **{len(links)}** existing SQL IDs. Only `external_url` would change.",
+        f"- [Missing-link additions](links.csv): **{len(links)}** existing SQL IDs. Fill `external_url` and confirm the pin via `last_updated`.",
         f"- [Manual review](manual_review.md) ([CSV](review.csv)): **{len(reviews)}** identity/status conflicts, with matching SQL candidates and reasons.",
         f"- [Automatic retries](deferred.csv): **{len(deferred)}** deferred lookups; no manual coordinate verification required.",
         f"- [Status changes](status_updates.csv): **{summary['proposed_status_changes']}** machine updates proposed; [all status disagreements](status_disagreements.csv) include dates and reasons for every skipped/deferred/review decision.",
@@ -1115,7 +1131,7 @@ def write_report(inputs, comparison, output_dir):
         "",
         "Geocoding is automatic; approximate/partial results are accepted and missing results retry automatically. A unique machine within 10 m matches regardless of title. Otherwise, exact name/address, 85% name similarity or a meaningful shared phrase within 250 m, or 95% name plus 80% address similarity can match. Explicit user confirmations for Basilica St. Michael and Hinterglemm are retained. Competing strong matches require review; weak neighbors do not prevent additions. PennyMe fields, populated links, archived deletions and pending changes remain authoritative.",
         "",
-        "Dry runs do not apply SQL changes; use --apply with a fresh crawl to commit the plan atomically. Apply runs also refresh last_updated for app delta sync. Separate Slack diff/problem reports are sent by default; use --no-slack for local previews. The historical differ and Flask endpoint remain untouched. Unchanged outstanding problems remain visible in the counts but are not repeatedly posted in detail; GitHub's known problems remain permanent suppressions.",
+        "Dry runs do not apply SQL changes; use --apply with a fresh crawl to commit the plan atomically. Apply runs also refresh last_updated for app delta sync and record approved changes in pending_changes in the same transaction. Separate Slack diff/problem reports are sent by default; use --no-slack for local previews. The historical differ and Flask endpoint remain untouched. Unchanged outstanding problems remain visible in the counts but are not repeatedly posted in detail; GitHub's known problems remain permanent suppressions.",
         "",
     ]
 
@@ -1140,7 +1156,7 @@ def write_report(inputs, comparison, output_dir):
         "",
         "## All proposed missing links",
         "",
-        "Only the link changes; the listed PennyMe status is retained.",
+        "Fill the link and refresh last_updated; the listed PennyMe status is retained.",
         "",
         "| SQL ID | PennyMe name | Area | Status retained | Proposed link |",
         "| ---: | --- | --- | --- | --- |",
@@ -1213,6 +1229,28 @@ def slack_summary(summary, application=None):
     )
 
 
+def record_approved_change(cursor, machine_id, change_type, fields, summary):
+    """Keep the historical SQL audit trail in the same transaction as the change.
+
+    Field names are fixed by the calls below, never supplied by website content.
+    Read the final values from SQL, including the actual allocated ID/date.
+    """
+    values = [
+        {"latitude": "ST_Y(geom)", "longitude": "ST_X(geom)"}.get(field, field)
+        for field in fields
+    ]
+    cursor.execute(
+        "INSERT INTO pending_changes (machine_id, change_type, submitted_by, "
+        "change_summary, status, submitted_at, reviewed_at, last_updated, "
+        + ", ".join(fields)
+        + ") SELECT id, %s, 'location_differ', %s, 'approved', "
+        "CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, last_updated, "
+        + ", ".join(values)
+        + " FROM machines WHERE id = %s",
+        (change_type, summary, machine_id),
+    )
+
+
 def apply_report(inputs, report, db_login=BACKEND / "db_login.json"):
     """Commit the freshly calculated plan atomically, or change no machine rows.
 
@@ -1268,6 +1306,13 @@ def apply_report(inputs, report, db_login=BACKEND / "db_login.json"):
                     raise RuntimeError(
                         f"Machine {mid} changed; rolling back the full plan"
                     )
+                record_approved_change(
+                    cursor,
+                    mid,
+                    "update",
+                    ["external_url"],
+                    f"external_url from: {link['before_url']} to: {link['after_url']}",
+                )
                 receipt["links_added"].append(mid)
             for update in report.get("status_updates", []):
                 mid = update["machine_id"]
@@ -1301,6 +1346,13 @@ def apply_report(inputs, report, db_login=BACKEND / "db_login.json"):
                     raise RuntimeError(
                         f"Machine {mid} changed; rolling back the full plan"
                     )
+                record_approved_change(
+                    cursor,
+                    mid,
+                    "update",
+                    ["machine_status"],
+                    f"machine_status from: {update['pennyme_status']} to: {update['target_status']}",
+                )
                 receipt["statuses_changed"].append(
                     {
                         "machine_id": mid,
@@ -1330,6 +1382,24 @@ def apply_report(inputs, report, db_login=BACKEND / "db_login.json"):
                         "Database ID sequence would reuse an existing or archived ID; rolling back"
                     )
                 used_ids.add(mid)
+                record_approved_change(
+                    cursor,
+                    mid,
+                    "create",
+                    [
+                        "name",
+                        "area",
+                        "address",
+                        "latitude",
+                        "longitude",
+                        "machine_status",
+                        "num_coins",
+                        "paywall",
+                        "external_url",
+                        "internal_url",
+                    ],
+                    "new machine",
+                )
                 receipt["machines_added"].append(
                     {"machine_id": mid, "proposed_key": row["proposed_key"]}
                 )
@@ -1532,7 +1602,7 @@ def main():
     mode.add_argument(
         "--apply",
         action="store_true",
-        help="Commit new machines and missing links to SQL",
+        help="Commit new machines, missing links and eligible status changes to SQL",
     )
     mode.add_argument(
         "--dry-run",
@@ -1662,6 +1732,31 @@ def run(args):
             logger.error(
                 "SQL was committed; retry report delivery with --send-report, not --apply"
             )
+        if not args.no_slack:
+            if receipt is not None and args.apply:
+                sql_state = (
+                    "SQL committed. Retry delivery with --send-report, not --apply."
+                )
+            elif args.apply:
+                sql_state = "No successful SQL commit was confirmed. Check the terminal log before retrying."
+            else:
+                sql_state = "No SQL writes in this invocation."
+            try:
+                # Keep exception details/credentials in the terminal, not Slack.
+                response = WebClient(token=os.environ["SLACK_TOKEN"]).chat_postMessage(
+                    channel="#pennyme_approvals",
+                    text=f"PennyCollector {mode} FAILED ({type(error).__name__}). {sql_state} Reports: {args.output_dir}",
+                    username="PennyMe",
+                    unfurl_links=False,
+                    unfurl_media=False,
+                )
+                if not response.get("ok"):
+                    raise RuntimeError("Slack did not confirm the failure alert")
+            except Exception as notification_error:
+                logger.error(
+                    "Failure alert could not be delivered ({})",
+                    type(notification_error).__name__,
+                )
         raise
     finally:
         if evidence is not None:

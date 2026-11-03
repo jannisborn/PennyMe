@@ -99,6 +99,54 @@ def evidence(count=1):
 
 
 class SqlDifferReportTests(unittest.TestCase):
+    def test_canonical_alias_protects_deleted_pending_and_github_exceptions(self):
+        for kind in ("deleted", "pending", "problems", "skip"):
+            with self.subTest(kind=kind):
+                src = source()
+                canonical = src["temporary"]["canonical_url"]
+                data = inputs(sources=[src])
+                if kind == "deleted":
+                    data["database"]["deleted_machines"] = [
+                        machine(name="App correction", external_url=canonical)
+                    ]
+                    category = "protected_deleted"
+                elif kind == "pending":
+                    data["database"]["pending_changes"] = [
+                        {
+                            "machine_id": None,
+                            "change_type": "create",
+                            "external_url": canonical,
+                        }
+                    ]
+                    category = "deferred"
+                else:
+                    data["github"][kind]["features"] = [source(external_url=canonical)]
+                    category = "known_exception"
+                result = compare(
+                    data, Mock(side_effect=AssertionError("Protected source inspected"))
+                )
+                self.assertEqual(result["records"][0]["category"], category)
+                self.assertEqual(result["status_updates"], [])
+
+    def test_canonical_link_does_not_absorb_a_distinct_sibling_machine(self):
+        first, second = source(1), source(2)
+        second["temporary"]["canonical_url"] += "second/"
+        current = machine(external_url=first["temporary"]["canonical_url"])
+        for sources in ([first, second], [second, first]):
+            result = compare(
+                inputs(sources=sources, machines=[current]), lambda _: evidence()
+            )
+            categories = {
+                r["source"]["properties"]["external_url"]: r["category"]
+                for r in result["records"]
+            }
+            self.assertEqual(
+                categories[first["properties"]["external_url"]], "represented"
+            )
+            self.assertEqual(
+                categories[second["properties"]["external_url"]], "addition"
+            )
+
     def test_single_progress_bar_counts_only_locations_needing_inspection(self):
         sources = [source(i) for i in range(1, 6)]
         sources[1]["properties"]["machine_status"] = "Gone"
@@ -777,6 +825,37 @@ class SqlDifferStatusTests(unittest.TestCase):
         self.assertEqual(result["status_updates"], [])
         self.assertTrue(all(r["category"] == "review" for r in result["records"]))
 
+    def test_alias_agreeing_with_pin_still_blocks_a_contradictory_status_change(self):
+        data = self.linked_data(pin_status="available", website_status="Gone", count=2)
+        data["database"]["machines"][1]["external_url"] = data["source"][0][
+            "temporary"
+        ]["canonical_url"]
+        other = deepcopy(data["source"][0])
+        other["properties"].update(
+            external_url=source(2)["properties"]["external_url"],
+            machine_status="available",
+        )
+        data["source"].append(other)
+        for sources in (data["source"], list(reversed(data["source"]))):
+            with self.subTest(
+                order=[s["properties"]["machine_status"] for s in sources]
+            ):
+                result = self.compare({**data, "source": sources})
+                self.assertEqual(result["status_updates"], [])
+                self.assertTrue(
+                    all(r["category"] == "review" for r in result["records"])
+                )
+                self.assertTrue(
+                    all(
+                        r["disposition"] == "review"
+                        for r in result["status_disagreements"]
+                    )
+                )
+                review = next(
+                    r for r in result["records"] if len(r["machine_ids"]) == 2
+                )
+                self.assertEqual({c["id"] for c in review["candidates"]}, {1, 2})
+
     def test_status_plan_report_apply_receipt_and_atomic_failure(self):
         for fail_second in (False, True):
             with (
@@ -833,7 +912,9 @@ class SqlDifferStatusTests(unittest.TestCase):
                 mutations = [
                     c
                     for c in cursor.execute.call_args_list
-                    if c.args[0].startswith(("UPDATE", "INSERT", "DELETE"))
+                    if c.args[0].startswith(
+                        ("UPDATE machines", "INSERT INTO machines", "DELETE")
+                    )
                 ]
                 self.assertEqual(len(mutations), 2)
                 self.assertTrue(
@@ -852,6 +933,17 @@ class SqlDifferStatusTests(unittest.TestCase):
                         "2026-10-10",
                         data["source"][0]["properties"]["external_url"],
                     ),
+                )
+                audits = [
+                    c
+                    for c in cursor.execute.call_args_list
+                    if c.args[0].startswith("INSERT INTO pending_changes")
+                ]
+                self.assertEqual(len(audits), 1 if fail_second else 2)
+                self.assertIn("last_updated, machine_status)", audits[0].args[0])
+                self.assertEqual(
+                    audits[0].args[1],
+                    ("update", "machine_status from: retired to: available", 1),
                 )
 
 
@@ -906,7 +998,27 @@ class SqlDifferApplyTests(unittest.TestCase):
             self.assertIn("SET external_url = %s, last_updated = CURRENT_DATE", update)
             self.assertNotIn("machine_status =", update)
             self.assertTrue(
-                all("(name, area" in s for s in sql if s.startswith("INSERT"))
+                all(
+                    "(name, area" in s
+                    for s in sql
+                    if s.startswith("INSERT INTO machines")
+                )
+            )
+            audits = [
+                c
+                for c in cursor.execute.call_args_list
+                if c.args[0].startswith("INSERT INTO pending_changes")
+            ]
+            self.assertEqual(
+                [c.args[1][0] for c in audits], ["update", "create", "create"]
+            )
+            self.assertEqual([c.args[1][-1] for c in audits], [1, 100, 101])
+            self.assertIn("last_updated, external_url)", audits[0].args[0])
+            self.assertTrue(
+                all(
+                    "'location_differ'" in c.args[0] and "'approved'" in c.args[0]
+                    for c in audits
+                )
             )
             self.assertFalse(any(s.startswith("DELETE") for s in sql))
             record_application(directory, receipt)
@@ -1017,6 +1129,35 @@ class SqlDifferApplyTests(unittest.TestCase):
                 connection.commit.assert_not_called()
                 connection.rollback.assert_called_once()
 
+    def test_audit_failure_rolls_back_the_machine_change(self):
+        with tempfile.TemporaryDirectory() as directory:
+            data, report = self.plan(directory)
+            credentials = Path(directory, "db.json")
+            credentials.write_text("{}")
+            connection = MagicMock()
+            cursor = connection.cursor.return_value.__enter__.return_value
+            cursor.fetchone.return_value = {"id": 1}
+
+            def execute(sql, *args):
+                if sql.startswith("INSERT INTO pending_changes"):
+                    raise RuntimeError("Audit insert failed")
+
+            cursor.execute.side_effect = execute
+            with (
+                patch(
+                    "scripts.location_differ_api.psycopg2.connect",
+                    return_value=connection,
+                ),
+                patch(
+                    "scripts.location_differ_api.database_snapshot",
+                    return_value=data["database"],
+                ),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "Audit insert failed"):
+                    apply_report(data, report, credentials)
+            connection.commit.assert_not_called()
+            connection.rollback.assert_called_once()
+
     def test_cli_defaults_to_dry_run_and_rejects_applying_saved_inputs(self):
         with tempfile.TemporaryDirectory() as directory:
             data, report = self.plan(directory)
@@ -1075,7 +1216,10 @@ class SqlDifferApplyTests(unittest.TestCase):
                     side_effect=RuntimeError("Slack unavailable"),
                 ),
                 patch("scripts.location_differ_api.logger") as log,
+                patch.dict("os.environ", {"SLACK_TOKEN": "test-token"}),
+                patch("scripts.location_differ_api.WebClient") as slack,
             ):
+                slack.return_value.chat_postMessage.return_value = {"ok": True}
                 details.return_value.get.return_value = evidence()
                 with self.assertRaisesRegex(RuntimeError, "Slack unavailable"):
                     run(args)
@@ -1083,6 +1227,58 @@ class SqlDifferApplyTests(unittest.TestCase):
                 self.assertIn("FAILED", log.error.call_args.args[0])
                 log.success.assert_not_called()
                 details.return_value.session.close.assert_called_once()
+                message = slack.return_value.chat_postMessage.call_args.kwargs["text"]
+                self.assertIn("DRY RUN FAILED", message)
+                self.assertIn("No SQL writes", message)
+
+    def test_failure_after_commit_alerts_without_reapplying_or_leaking_error(self):
+        with tempfile.TemporaryDirectory() as directory:
+            data, report = self.plan(directory)
+            Path(directory, "inputs.json").write_text(json.dumps(data))
+            args = Namespace(
+                output_dir=Path(directory),
+                send_report=False,
+                apply=True,
+                no_slack=False,
+                reuse_inputs=False,
+                geocode=False,
+                slack_state=Path(directory, "slack.json"),
+            )
+            receipt = {
+                "status": "applied",
+                "machines_added": [],
+                "links_added": [],
+                "statuses_changed": [],
+                "sql_machines_after": 1,
+            }
+            with (
+                patch("scripts.location_differ_api.fetch_inputs", return_value=data),
+                patch("scripts.location_differ_api.SourceEvidence") as details,
+                patch(
+                    "scripts.location_differ_api.apply_report", return_value=receipt
+                ) as apply,
+                patch(
+                    "scripts.location_differ_api.send_slack_reports",
+                    side_effect=RuntimeError("sensitive-example"),
+                ),
+                patch.dict("os.environ", {"SLACK_TOKEN": "test-token"}),
+                patch("scripts.location_differ_api.WebClient") as slack,
+                patch("scripts.location_differ_api.logger") as log,
+            ):
+                details.return_value.get.return_value = evidence()
+                slack.return_value.chat_postMessage.return_value = {"ok": True}
+                with self.assertRaisesRegex(RuntimeError, "sensitive-example"):
+                    run(args)
+                apply.assert_called_once()
+                log.success.assert_not_called()
+                message = slack.return_value.chat_postMessage.call_args.kwargs["text"]
+                self.assertIn("SQL committed", message)
+                self.assertIn("--send-report", message)
+                self.assertNotIn("sensitive-example", message)
+                self.assertEqual(
+                    json.loads(Path(directory, "apply_result.json").read_text()),
+                    receipt,
+                )
 
 
 if __name__ == "__main__":
