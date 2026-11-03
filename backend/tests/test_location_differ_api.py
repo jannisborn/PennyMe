@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from argparse import Namespace
 from copy import deepcopy
+from contextlib import nullcontext
 from pathlib import Path
 from unittest.mock import MagicMock, Mock, patch
 
@@ -98,6 +99,24 @@ def evidence(count=1):
 
 
 class SqlDifferReportTests(unittest.TestCase):
+    def test_single_progress_bar_counts_only_locations_needing_inspection(self):
+        sources = [source(i) for i in range(1, 6)]
+        sources[1]["properties"]["machine_status"] = "Gone"
+        data = inputs(
+            sources=sources,
+            machines=[machine(external_url=sources[0]["properties"]["external_url"])],
+            problems=[sources[2]],
+        )
+        lookup = Mock(return_value=evidence())
+        with patch(
+            "scripts.location_differ_api.tqdm",
+            side_effect=lambda rows, **kwargs: nullcontext(rows),
+        ) as progress:
+            compare(data, lookup)
+        progress.assert_called_once()
+        self.assertEqual(len(progress.call_args.args[0]), 2)
+        self.assertEqual(lookup.call_count, 2)
+
     def test_bucees_duplicate_is_ignored_without_matching_or_creating(self):
         data = inputs(sources=[source(460896)], machines=[machine(9549), machine(8003)])
         fetch = Mock(side_effect=AssertionError("Confirmed duplicate needs no lookup"))
@@ -412,7 +431,7 @@ class SqlDifferReportTests(unittest.TestCase):
             self.assertEqual(
                 preview["root_text"],
                 "Screened 3 PennyCollector listings; SQL: 2 machines.\n"
-                "Dry run: 2 machines to add; 0 links to add; links to remove from 0 machines.",
+                "Dry run: 2 machines to add; 0 links to add; 0 statuses to change; links to remove from 0 machines.",
             )
 
     def test_relaxed_identity_ignores_unrelated_neighbors_and_partial_geocodes(self):
@@ -601,6 +620,239 @@ class SqlDifferReportTests(unittest.TestCase):
         ]:
             with self.assertRaises(ValueError):
                 parse_machine_table(invalid)
+
+
+class SqlDifferStatusTests(unittest.TestCase):
+    def linked_data(
+        self,
+        pin_status="retired",
+        website_status="available",
+        pin_date="2026-10-10",
+        website_date="2026-10-20",
+        count=1,
+    ):
+        src = source(machine_status=website_status)
+        src["temporary"]["website_updated"] = website_date
+        return inputs(
+            sources=[src],
+            machines=[
+                machine(
+                    i + 1,
+                    machine_status=pin_status,
+                    last_updated=pin_date,
+                    external_url=src["properties"]["external_url"],
+                )
+                for i in range(count)
+            ],
+        )
+
+    def compare(self, data):
+        return compare(
+            data,
+            Mock(
+                side_effect=AssertionError("Linked statuses need no detail inspection")
+            ),
+        )
+
+    def test_all_historical_status_transitions_and_unchanged_equivalents(self):
+        mapping = {
+            "available": "available",
+            "Gone": "retired",
+            "Moved": "retired",
+            "Out of Order": "out-of-order",
+        }
+        for before in ("available", "retired", "out-of-order"):
+            for website, target in mapping.items():
+                with self.subTest(before=before, website=website):
+                    data = self.linked_data(before, website)
+                    snapshot = deepcopy(data)
+                    result = self.compare(data)
+                    self.assertEqual(
+                        len(result["status_updates"]), int(before != target)
+                    )
+                    if before != target:
+                        self.assertEqual(
+                            result["status_updates"][0]["target_status"], target
+                        )
+                    self.assertEqual(data, snapshot)
+
+    def test_any_pin_edit_is_confirmation_and_equal_website_dates_qualify(self):
+        for pin_date, website_date, outcome in (
+            ("2026-10-21", "2026-10-20", "preserved"),
+            ("2026-10-20", "2026-10-20", "planned"),
+            ("2026-10-19", "2026-10-20", "planned"),
+            ("2026-10-26", "2026-10-27", "deferred"),
+            ("2026-10-27", "2026-10-27", "deferred"),
+        ):
+            with self.subTest(pin_date=pin_date, website_date=website_date):
+                result = self.compare(
+                    self.linked_data(pin_date=pin_date, website_date=website_date)
+                )
+                self.assertEqual(
+                    result["status_disagreements"][0]["disposition"], outcome
+                )
+                self.assertEqual(
+                    len(result["status_updates"]), int(outcome == "planned")
+                )
+
+    def test_shared_url_consistency_and_historical_guard_order(self):
+        data = self.linked_data(count=5)
+        self.assertEqual(len(self.compare(data)["status_updates"]), 5)
+        data["database"]["machines"][0]["machine_status"] = "available"
+        result = self.compare(data)
+        self.assertEqual(result["status_updates"], [])
+        self.assertEqual(result["records"][0]["category"], "review")
+        data = self.linked_data(count=2)
+        data["database"]["machines"][1]["last_updated"] = "2026-10-11"
+        result = self.compare(data)
+        self.assertEqual(result["status_updates"], [])
+        self.assertIn("different last_updated", result["records"][0]["reason"])
+        # Matching states skip the date conflict, as in the historical differ.
+        data["source"][0]["properties"]["machine_status"] = "Gone"
+        self.assertEqual(self.compare(data)["records"][0]["category"], "represented")
+
+    def test_pending_edits_exceptions_and_deletions_block_status_writes(self):
+        data = self.linked_data(count=2)
+        data["database"]["pending_changes"] = [
+            {**machine(99), "machine_id": 1, "change_type": "update"}
+        ]
+        result = self.compare(data)
+        self.assertEqual(result["status_updates"], [])
+        self.assertTrue(
+            all(r["disposition"] == "deferred" for r in result["status_disagreements"])
+        )
+        for registry in ("problems", "skip"):
+            data = self.linked_data()
+            data["github"][registry]["features"] = [data["source"][0]]
+            self.assertEqual(self.compare(data)["status_updates"], [])
+        data = self.linked_data()
+        data["database"]["deleted_machines"] = data["database"]["machines"]
+        data["database"]["machines"] = []
+        result = self.compare(data)
+        self.assertEqual(result["status_updates"], [])
+        self.assertEqual(result["records"][0]["category"], "protected_deleted")
+
+    def test_universal_is_link_only_for_active_and_inactive_venue_status(self):
+        for website in ("available", "Gone", "Out of Order"):
+            data = self.linked_data(website_status=website)
+            url = source(424410)["properties"]["external_url"]
+            data["source"][0]["properties"]["external_url"] = url
+            data["database"]["machines"][0].update(
+                external_url=url,
+                area="Florida",
+                latitude=28.4749822,
+                longitude=-81.4665043,
+            )
+            result = self.compare(data)
+            self.assertEqual(result["status_updates"], [])
+            self.assertEqual(result["records"][0]["category"], "regional_links")
+            self.assertTrue(
+                all(
+                    r["disposition"] == "preserved"
+                    for r in result["status_disagreements"]
+                )
+            )
+
+    def test_legacy_and_canonical_aliases_cannot_hide_conflicting_states(self):
+        data = self.linked_data(count=2)
+        data["database"]["machines"][1].update(
+            external_url=data["source"][0]["temporary"]["canonical_url"],
+            machine_status="available",
+        )
+        result = self.compare(data)
+        self.assertEqual(result["status_updates"], [])
+        self.assertEqual(result["records"][0]["category"], "review")
+        # Two website IDs proposing different statuses for one canonical match.
+        data = self.linked_data()
+        data["database"]["machines"][0]["external_url"] = data["source"][0][
+            "temporary"
+        ]["canonical_url"]
+        other = deepcopy(data["source"][0])
+        other["properties"].update(
+            external_url=source(2)["properties"]["external_url"],
+            machine_status="Out of Order",
+        )
+        data["source"].append(other)
+        result = self.compare(data)
+        self.assertEqual(result["status_updates"], [])
+        self.assertTrue(all(r["category"] == "review" for r in result["records"]))
+
+    def test_status_plan_report_apply_receipt_and_atomic_failure(self):
+        for fail_second in (False, True):
+            with (
+                self.subTest(fail_second=fail_second),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                data = self.linked_data(count=2)
+                summary = write_report(data, self.compare(data), directory)
+                self.assertEqual(summary["proposed_status_changes"], 2)
+                self.assertEqual(summary["preserved_status_disagreements"], 0)
+                self.assertEqual(summary["status_changes_by_target"], {"available": 2})
+                plan = json.loads(Path(directory, "planned_changes.json").read_text())
+                self.assertEqual(
+                    [r["set"] for r in plan["status_updates"]],
+                    [{"machine_status": "available"}] * 2,
+                )
+                self.assertIn(
+                    "2 statuses to change",
+                    Path(directory, "slack_preview.txt").read_text(),
+                )
+                report = json.loads(Path(directory, "report.json").read_text())
+                credentials = Path(directory, "db.json")
+                credentials.write_text("{}")
+                connection = MagicMock()
+                cursor = connection.cursor.return_value.__enter__.return_value
+                cursor.fetchone.side_effect = [
+                    {"id": 1},
+                    None if fail_second else {"id": 2},
+                ]
+                with (
+                    patch(
+                        "scripts.location_differ_api.psycopg2.connect",
+                        return_value=connection,
+                    ),
+                    patch(
+                        "scripts.location_differ_api.database_snapshot",
+                        return_value=data["database"],
+                    ),
+                ):
+                    if fail_second:
+                        with self.assertRaisesRegex(RuntimeError, "rolling back"):
+                            apply_report(data, report, credentials)
+                        connection.rollback.assert_called_once()
+                        connection.commit.assert_not_called()
+                    else:
+                        receipt = apply_report(data, report, credentials)
+                        self.assertEqual(len(receipt["statuses_changed"]), 2)
+                        connection.commit.assert_called_once()
+                        record_application(directory, receipt)
+                        self.assertIn(
+                            "2 statuses changed",
+                            Path(directory, "slack_preview.txt").read_text(),
+                        )
+                mutations = [
+                    c
+                    for c in cursor.execute.call_args_list
+                    if c.args[0].startswith(("UPDATE", "INSERT", "DELETE"))
+                ]
+                self.assertEqual(len(mutations), 2)
+                self.assertTrue(
+                    all(
+                        "SET machine_status = %s, last_updated = CURRENT_DATE"
+                        in c.args[0]
+                        for c in mutations
+                    )
+                )
+                self.assertEqual(
+                    mutations[0].args[1],
+                    (
+                        "available",
+                        1,
+                        "retired",
+                        "2026-10-10",
+                        data["source"][0]["properties"]["external_url"],
+                    ),
+                )
 
 
 class SqlDifferApplyTests(unittest.TestCase):
