@@ -1046,19 +1046,22 @@ def write_report(inputs, comparison, output_dir):
         f"Kept PennyMe's values for {summary['preserved_status_disagreements']} status disagreements. No changes applied."
     )
     slack_text = slack_summary(summary)
+    thread_messages = slack_change_thread(report)
     (output_dir / "slack_preview.json").write_text(
         json.dumps(
             {
                 "channel": "#pennyme_approvals",
                 "root_text": slack_text,
-                "thread_messages": [],
+                "thread_messages": thread_messages,
                 "sent": False,
             },
             ensure_ascii=False,
             indent=2,
         )
     )
-    (output_dir / "slack_preview.txt").write_text(slack_text + "\n")
+    (output_dir / "slack_preview.txt").write_text(
+        "\n\n".join([slack_text, *thread_messages]) + "\n"
+    )
     (output_dir / "planned_changes.json").write_text(
         json.dumps(
             {
@@ -1227,6 +1230,80 @@ def slack_summary(summary, application=None):
         f"{summary.get('proposed_status_changes', 0)} statuses to change; "
         f"links to remove from {summary['proposed_link_removals']} machines."
     )
+
+
+def slack_escape(value):
+    return str(value).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def slack_change_thread(report, application=None):
+    """Area totals first, then every change; committed receipts govern apply reports."""
+    groups = defaultdict(list)
+    added_ids = (
+        {r["proposed_key"]: r["machine_id"] for r in application["machines_added"]}
+        if application
+        else {}
+    )
+    linked_ids = set(application["links_added"]) if application else set()
+    status_ids = (
+        {r["machine_id"] for r in application.get("statuses_changed", [])}
+        if application
+        else set()
+    )
+    for kind, rows in (
+        ("machine", report["additions"]),
+        ("link", report["links"]),
+        ("status", report.get("status_updates", [])),
+    ):
+        for row in rows:
+            mid = row.get("machine_id")
+            if application:
+                if kind == "machine":
+                    if row["proposed_key"] not in added_ids:
+                        continue
+                    mid = added_ids[row["proposed_key"]]
+                elif mid not in (linked_ids if kind == "link" else status_ids):
+                    continue
+            name = row.get("pennyme_name", row["name"])
+            url = row["after_url"] if kind == "link" else row["external_url"]
+            label = f"<{slack_escape(url)}|{slack_escape(name)}>"
+            if mid is not None:
+                label += f" (SQL #{mid})"
+            if kind == "status":
+                change = f"{row['pennyme_status']} → {row['target_status']}"
+                detail = f"{label}: {change}"
+            else:
+                change = "new machine" if kind == "machine" else "link added"
+                action = ("Added" if application else "Add") + " " + kind
+                detail = f"{action}: {label}"
+            groups[row["area"]].append((change, detail))
+    if not groups:
+        return []
+    mode = "Applied" if application else "Proposed (dry run)"
+    summaries = [f"*{mode} changes by area*"]
+    details = [f"*Every individual change — {mode.lower()}*"]
+    for area, changes in sorted(groups.items()):
+        counts = Counter(change for change, _ in changes)
+        labels = {"new machine": "new machines", "link added": "links added"}
+        totals = "; ".join(
+            f"{count} {labels.get(change, change) if count != 1 else change}"
+            for change, count in counts.items()
+        )
+        summaries.append(f"• *{slack_escape(area)}*: {totals}")
+        details.append(f"\n*{slack_escape(area)}*")
+        details.extend(f"• {detail}" for _, detail in changes)
+    # Keep whole lines/links together and summaries ahead of all individual rows.
+    messages = []
+    for section in (summaries, details):
+        lines = []
+        for line in section:
+            if lines and len("\n".join([*lines, line])) > 3000:
+                messages.append("\n".join(lines))
+                lines = []
+            lines.append(line)
+        if lines:
+            messages.append("\n".join(lines))
+    return messages
 
 
 def record_approved_change(cursor, machine_id, change_type, fields, summary):
@@ -1423,9 +1500,15 @@ def record_application(output_dir, receipt):
     (output_dir / "apply_result.json").write_text(json.dumps(receipt, indent=2))
     report = json.loads((output_dir / "report.json").read_text())
     preview = json.loads((output_dir / "slack_preview.json").read_text())
-    preview.update(root_text=slack_summary(report["summary"], receipt), sent=False)
+    preview.update(
+        root_text=slack_summary(report["summary"], receipt),
+        thread_messages=slack_change_thread(report, receipt),
+        sent=False,
+    )
     (output_dir / "slack_preview.json").write_text(json.dumps(preview, indent=2))
-    (output_dir / "slack_preview.txt").write_text(preview["root_text"] + "\n")
+    (output_dir / "slack_preview.txt").write_text(
+        "\n\n".join([preview["root_text"], *preview["thread_messages"]]) + "\n"
+    )
     path = output_dir / "report.md"
     path.write_text(
         "# Applied successfully\n\n"
@@ -1464,7 +1547,7 @@ def problem_signature(item):
 def send_slack_reports(
     output_dir, state_path, channel="#pennyme_approvals", client=None
 ):
-    """Send counts plus new/changed problems, remembering successful deliveries.
+    """Send counts, a complete change thread and new/changed problem reports.
 
     Unresolved cases stay in the local report. A repeat notification is not a
     resolution, and this ledger never changes the GitHub exception registry.
@@ -1472,6 +1555,20 @@ def send_slack_reports(
     output_dir, state_path = Path(output_dir), Path(state_path)
     report = json.loads((output_dir / "report.json").read_text())
     diff = json.loads((output_dir / "slack_preview.json").read_text())
+    receipt_path = output_dir / "apply_result.json"
+    application = (
+        json.loads(receipt_path.read_text()) if receipt_path.exists() else None
+    )
+    diff.update(
+        root_text=slack_summary(report["summary"], application),
+        thread_messages=slack_change_thread(report, application),
+    )
+    (output_dir / "slack_preview.json").write_text(
+        json.dumps(diff, ensure_ascii=False, indent=2)
+    )
+    (output_dir / "slack_preview.txt").write_text(
+        "\n\n".join([diff["root_text"], *diff["thread_messages"]]) + "\n"
+    )
     cases = {
         location_key(r["source"]["properties"]["external_url"]): r
         for r in report["records"]
@@ -1494,7 +1591,12 @@ def send_slack_reports(
     ledger = json.loads(state_path.read_text()) if state_path.exists() else {}
     state = ledger.setdefault(channel, {"cases": {}, "runs": {}})
     run = state["runs"].setdefault(fingerprint, {})
-    if run.get("complete"):
+    thread_messages = {
+        hashlib.sha256(f"{index}:{body}".encode()).hexdigest(): body
+        for index, body in enumerate(diff["thread_messages"])
+    }
+    delivered_threads = run.setdefault("diff_threads", {})
+    if run.get("complete") and thread_messages.keys() <= delivered_threads.keys():
         diff.update(sent=True, channel=channel, ts=run["diff_ts"])
         (output_dir / "slack_preview.json").write_text(
             json.dumps(diff, ensure_ascii=False, indent=2)
@@ -1507,11 +1609,6 @@ def send_slack_reports(
         f"{len(cases)} unresolved cases. Unchanged cases are not repeated."
     )
 
-    def escape(value):
-        return (
-            str(value).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        )
-
     chunks, keys, lines = [], [], []
     for key in changed:
         item = cases[key]
@@ -1520,9 +1617,9 @@ def send_slack_reports(
             f"{c.get('record_type', 'SQL')} #{c['id']} {c['name']} (status: {c.get('machine_status', '?')}; updated: {c.get('last_updated', '?')})"
             for c in item["candidates"]
         )
-        line = f"<{p['external_url']}|{escape(p['name'])}> ({escape(p['area'])}): {escape(item['reason'])}"
+        line = f"<{p['external_url']}|{slack_escape(p['name'])}> ({slack_escape(p['area'])}): {slack_escape(item['reason'])}"
         if candidates:
-            line += " Candidates: " + escape(candidates)
+            line += " Candidates: " + slack_escape(candidates)
         # Each location is at most one compact paragraph; all evidence stays local.
         line = line[:2700]
         if lines and len("\n\n".join(lines + [line])) > 3000:
@@ -1574,6 +1671,10 @@ def send_slack_reports(
     if "diff_ts" not in run:
         run["diff_ts"] = post(diff["root_text"])
         save()
+    for digest, body in thread_messages.items():
+        if digest not in delivered_threads:
+            delivered_threads[digest] = post(body, thread_ts=run["diff_ts"])
+            save()
     if "problem_ts" not in run:
         run["problem_ts"] = post(text)
         save()

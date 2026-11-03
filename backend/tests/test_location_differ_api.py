@@ -17,6 +17,7 @@ from scripts.location_differ_api import (
     parse_machine_table,
     read_database,
     send_slack_reports,
+    slack_change_thread,
     record_application,
     run,
     write_report,
@@ -475,7 +476,9 @@ class SqlDifferReportTests(unittest.TestCase):
             self.assertEqual(len(problems["features"]), 2)
             preview = json.loads((Path(directory) / "slack_preview.json").read_text())
             self.assertFalse(preview["sent"])
-            self.assertEqual(preview["thread_messages"], [])
+            self.assertIn("changes by area", preview["thread_messages"][0])
+            self.assertIn("2 new machines", preview["thread_messages"][0])
+            self.assertEqual(preview["thread_messages"][1].count("Add machine:"), 2)
             self.assertEqual(
                 preview["root_text"],
                 "Screened 3 PennyCollector listings; SQL: 2 machines.\n"
@@ -564,6 +567,150 @@ class SqlDifferReportTests(unittest.TestCase):
             self.assertTrue(sent["complete"])
             client.chat_postMessage.assert_called_once()
             self.assertEqual(client.chat_postMessage.call_args.kwargs["thread_ts"], "2")
+
+    def test_change_thread_summarizes_areas_before_listing_every_change(self):
+        report = {
+            "additions": [
+                {
+                    "name": "Museum & <shop>",
+                    "area": "Portugal",
+                    "external_url": "https://example.com/new",
+                    "machine_id": None,
+                    "proposed_key": "new:1",
+                }
+            ],
+            "links": [
+                {
+                    "name": "Website name",
+                    "pennyme_name": "App name",
+                    "area": "Austria",
+                    "after_url": "https://example.com/link",
+                    "machine_id": 7,
+                }
+            ],
+            "status_updates": [
+                {
+                    "name": "Museum",
+                    "area": "Portugal",
+                    "external_url": "https://example.com/status",
+                    "machine_id": 8,
+                    "pennyme_status": "retired",
+                    "target_status": "available",
+                }
+            ],
+        }
+        messages = slack_change_thread(report)
+        self.assertEqual(len(messages), 2)
+        self.assertIn("Proposed (dry run)", messages[0])
+        self.assertLess(messages[0].index("Austria"), messages[0].index("Portugal"))
+        self.assertIn("Portugal*: 1 new machine; 1 retired → available", messages[0])
+        self.assertIn("Austria*: 1 link added", messages[0])
+        self.assertIn(
+            "Add machine: <https://example.com/new|Museum &amp; &lt;shop&gt;>",
+            messages[1],
+        )
+        self.assertIn(
+            "Add link: <https://example.com/link|App name> (SQL #7)", messages[1]
+        )
+        self.assertIn("(SQL #8): retired → available", messages[1])
+        receipt = {
+            "machines_added": [{"proposed_key": "new:1", "machine_id": 100}],
+            "links_added": [],
+            "statuses_changed": [
+                {"machine_id": 8, "from": "retired", "to": "available"}
+            ],
+        }
+        applied = slack_change_thread(report, receipt)
+        self.assertIn("Applied changes", applied[0])
+        self.assertNotIn("Austria", "\n".join(applied))
+        self.assertIn("(SQL #100)", applied[1])
+        self.assertIn("Added machine:", applied[1])
+        self.assertNotIn("dry run", "\n".join(applied))
+        self.assertEqual(
+            slack_change_thread({"additions": [], "links": [], "status_updates": []}),
+            [],
+        )
+
+    def test_change_thread_chunks_preserve_every_change_and_all_summaries_first(self):
+        rows = [
+            {
+                "name": f"Machine {i}",
+                "area": f"Area {i:03}",
+                "external_url": f"https://example.com/{i}",
+                "machine_id": i,
+                "pennyme_status": "available",
+                "target_status": "retired",
+            }
+            for i in range(160)
+        ]
+        messages = slack_change_thread(
+            {"additions": [], "links": [], "status_updates": rows}
+        )
+        self.assertGreater(len(messages), 3)
+        self.assertTrue(all(len(message) <= 3000 for message in messages))
+        text = "\n".join(messages)
+        summary_end = text.index("Every individual change")
+        for row in rows:
+            self.assertIn(f"{row['area']}*: 1 available → retired", text[:summary_end])
+            self.assertEqual(text[summary_end:].count(f"(SQL #{row['machine_id']})"), 1)
+
+    def test_diff_thread_delivery_retries_and_backfills_existing_root(self):
+        data = inputs(machines=[machine()])
+        comparison = compare(data, lambda _: evidence())
+        client = Mock()
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch("scripts.location_differ_api.time.sleep"),
+        ):
+            root = Path(directory)
+            state = root / "state.json"
+            write_report(data, comparison, root)
+            client.chat_postMessage.side_effect = [
+                {"ok": True, "ts": "diff"},
+                {"ok": True, "ts": "summary"},
+                RuntimeError("Thread interrupted"),
+            ]
+            with self.assertRaisesRegex(RuntimeError, "Thread interrupted"):
+                send_slack_reports(root, state, client=client)
+            calls = client.chat_postMessage.call_args_list
+            self.assertNotIn("thread_ts", calls[0].kwargs)
+            self.assertEqual(calls[1].kwargs["thread_ts"], "diff")
+            self.assertEqual(calls[2].kwargs["thread_ts"], "diff")
+            client.reset_mock()
+            client.chat_postMessage.side_effect = None
+            client.chat_postMessage.return_value = {"ok": True, "ts": "rest"}
+            send_slack_reports(root, state, client=client)
+            self.assertEqual(client.chat_postMessage.call_count, 2)
+            self.assertIn(
+                "Every individual change",
+                client.chat_postMessage.call_args_list[0].kwargs["text"],
+            )
+            self.assertEqual(
+                client.chat_postMessage.call_args_list[0].kwargs["thread_ts"], "diff"
+            )
+            self.assertIn(
+                "problem report",
+                client.chat_postMessage.call_args_list[1].kwargs["text"],
+            )
+            client.reset_mock()
+            self.assertTrue(
+                send_slack_reports(root, state, client=client)["already_sent"]
+            )
+            client.chat_postMessage.assert_not_called()
+            # A report delivered by the previous script has root timestamps but
+            # no change-thread receipts. Append details without reposting roots.
+            ledger = json.loads(state.read_text())
+            saved = next(iter(ledger["#pennyme_approvals"]["runs"].values()))
+            saved.pop("diff_threads")
+            state.write_text(json.dumps(ledger))
+            send_slack_reports(root, state, client=client)
+            self.assertEqual(client.chat_postMessage.call_count, 2)
+            self.assertTrue(
+                all(
+                    call.kwargs.get("thread_ts") == "diff"
+                    for call in client.chat_postMessage.call_args_list
+                )
+            )
 
     def test_inactive_sources_and_transient_failures_do_not_become_additions(self):
         result = compare(
