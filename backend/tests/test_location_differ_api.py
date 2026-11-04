@@ -130,7 +130,7 @@ class SqlDifferReportTests(unittest.TestCase):
                 self.assertEqual(result["status_updates"], [])
 
     def test_canonical_link_does_not_absorb_a_distinct_sibling_machine(self):
-        first, second = source(1), source(2)
+        first, second = source(430923), source(436375)
         second["temporary"]["canonical_url"] += "second/"
         current = machine(external_url=first["temporary"]["canonical_url"])
         for sources in ([first, second], [second, first]):
@@ -335,7 +335,7 @@ class SqlDifferReportTests(unittest.TestCase):
         )
 
     def test_duplicate_sources_add_distinct_spaced_pins_and_only_missing_siblings(self):
-        sources = [source(1), source(2)]
+        sources = [source(430923), source(436375)]
         data = inputs(sources=sources)
         result = compare(data, lambda _: evidence())
         self.assertEqual(
@@ -367,6 +367,286 @@ class SqlDifferReportTests(unittest.TestCase):
         self.assertEqual(
             [r["category"] for r in result["records"]], ["link", "addition"]
         )
+
+    def test_other_catalogue_ids_do_not_disqualify_an_existing_venue(self):
+        first, second = source(417847), source(420009)
+        current = machine(external_url=first["properties"]["external_url"])
+        for order in ([first, second], [second, first]):
+            result = compare(
+                inputs(sources=order, machines=[current]), lambda _: evidence()
+            )
+            self.assertEqual(
+                sorted(r["category"] for r in result["records"]),
+                ["represented", "represented_by_identity"],
+            )
+            self.assertFalse(
+                any(r["category"] == "addition" for r in result["records"])
+            )
+
+    def test_duplicate_catalogue_pages_share_proposals_but_keep_distinct_device_numbers(
+        self,
+    ):
+        first, second = source(1), source(2)
+
+        def lookup(src):
+            detail = evidence(2)
+            if src["properties"]["external_url"].endswith("=2"):
+                detail["machines"] = detail["machines"][
+                    1:
+                ]  # The second page repeats Machine 2.
+            return detail
+
+        for order in ([first, second], [second, first]):
+            with (
+                self.subTest(order=order[0]["properties"]["external_url"]),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                data = inputs(sources=order)
+                comparison = compare(data, lookup)
+                summary = write_report(data, comparison, directory)
+                self.assertEqual(summary["proposed_machine_additions"], 2)
+                self.assertEqual(
+                    summary["source_categories"]["represented_by_proposal"], 1
+                )
+                devices = [
+                    d
+                    for r in comparison["records"]
+                    if r["category"] == "addition"
+                    for d in r["devices"]
+                ]
+                self.assertEqual(
+                    {d["label"] for d in devices}, {"Machine 1", "Machine 2"}
+                )
+                data = inputs(sources=order, machines=[machine()])
+                comparison = compare(data, lookup)
+                self.assertEqual(
+                    sum(r["category"] == "link" for r in comparison["records"]), 1
+                )
+                self.assertEqual(
+                    sum(r["category"] == "review" for r in comparison["records"]), 0
+                )
+
+    def test_kussaberg_matches_existing_pin_with_town_or_castle_geocode(self):
+        src = source(
+            481393, name="Küssaberg Castle", area="Germany", address="Küssaberg"
+        )
+        current = machine(
+            6852,
+            name="Küssaburg",
+            area="Germany",
+            address="79790 Küssaberg, Germany",
+            latitude=47.6021793,
+            longitude=8.3544231,
+        )
+        for latitude, longitude in ((47.6109517, 8.2965392), (47.601177, 8.3547699)):
+            detail = evidence()
+            detail["geocode"].update(
+                safe=False,
+                latitude=latitude,
+                longitude=longitude,
+                formatted_address="79790 Küssaberg, Germany",
+            )
+            for state, expected in (
+                ("current", "link"),
+                ("deleted", "protected_deleted"),
+                ("pending", "pending"),
+            ):
+                with self.subTest(geocode=(latitude, longitude), state=state):
+                    data = inputs(
+                        sources=[src],
+                        machines=[current] if state != "deleted" else [],
+                        deleted=[current] if state == "deleted" else [],
+                        pending=[
+                            {**current, "machine_id": 6852, "change_type": "update"}
+                        ]
+                        if state == "pending"
+                        else [],
+                    )
+                    before = deepcopy(data)
+                    item = compare(data, lambda _: detail)["records"][0]
+                    self.assertEqual(item["category"], expected)
+                    self.assertEqual(item["matched_candidate"]["id"], 6852)
+                    self.assertEqual(data, before)
+
+    def test_geocoding_prefers_venue_over_town_in_either_result_order(self):
+        town = {
+            "formatted_address": "79790 Küssaberg, Germany",
+            "address_components": [
+                {"long_name": "Germany", "short_name": "DE", "types": ["country"]}
+            ],
+            "types": ["locality", "political"],
+            "partial_match": True,
+            "geometry": {
+                "location": {"lat": 47.6109517, "lng": 8.2965392},
+                "location_type": "APPROXIMATE",
+            },
+        }
+        castle = {
+            **town,
+            "types": ["establishment", "point_of_interest", "tourist_attraction"],
+            "geometry": {
+                "location": {"lat": 47.601177, "lng": 8.3547699},
+                "location_type": "GEOMETRIC_CENTER",
+            },
+        }
+        src = source(
+            481393, name="Küssaberg Castle", area="Germany", address="Küssaberg"
+        )
+        for order in ([town, castle], [castle, town]):
+            with (
+                self.subTest(order=order[0]["types"]),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                details = SourceEvidence(directory, geocode=False)
+                details.cache["legacy:481393"] = {"machines": evidence()["machines"]}
+                details.maps = Mock()
+                details.maps.geocode.side_effect = [order, [town]]
+                details.maps.reverse_geocode.return_value = []
+                geo = details.get(src)["geocode"]
+                self.assertEqual(
+                    (geo["latitude"], geo["longitude"]), (47.601177, 8.3547699)
+                )
+                self.assertIn("point_of_interest", geo["types"])
+                details.session.close()
+
+    def test_matching_handles_word_order_qualifiers_and_shorter_addresses(self):
+        for website, app, address, app_address, distance_m in (
+            (
+                "König Stuhl Heidelberg",
+                "Heidelberg Konigstuhl",
+                "Heidelberg",
+                "Königstuhl 2, Heidelberg",
+                53,
+            ),
+            (
+                "Stubnerkogel",
+                "Stubnerkogel Gipfelrestaurantt",
+                "Bad Gastein",
+                "Stubnerkogel, Bad Gastein",
+                778,
+            ),
+            (
+                "Bioparc Gijon",
+                "Acuario bioparc (O-036)",
+                "Playa De Poniente, Gijon",
+                "Playa De Poniente, Gijon, Spain",
+                343,
+            ),
+            (
+                "Catedral de Cuernavaca",
+                "Cathedral Cuernavaca",
+                "Miguel Hidalgo 17, Cuernavaca Centro",
+                "Miguel Hidalgo 17",
+                5526,
+            ),
+        ):
+            with self.subTest(name=website):
+                src = source(name=website, address=address)
+                current = machine(
+                    name=app, address=app_address, latitude=40 + distance_m / 111195
+                )
+                item = compare(
+                    inputs(sources=[src], machines=[current]), lambda _: evidence()
+                )["records"][0]
+                self.assertEqual(item["category"], "link")
+
+    def test_partial_name_matches_and_nearby_streets_do_not_merge_other_venues(self):
+        for website, app, address, app_address, distance_m in (
+            (
+                "Ain Dubai",
+                "Bluewaters Mall - Madame Tussauds Dubai",
+                "Bluewaters Island, Dubai",
+                "Bluewaters Island, Dubai",
+                146,
+            ),
+            (
+                "Hakone Sekisho Exhibition Hall",
+                "Owakudani Ropeway Station (Was at Hakone Ropeway- Sounzan Station)",
+                "Hakone, Kanagawa",
+                "Hakone",
+                5818,
+            ),
+            (
+                "KL Tower",
+                "KL Upside Down House",
+                "Jalan Punchak, Kuala Lumpur",
+                "Jalan Punchak, Kuala Lumpur",
+                320,
+            ),
+            (
+                "Penang Ferry Museum",
+                "PERMANENTLY CLOSED- Make In Penang Interactive Museum",
+                "7, Pengkalan Weld, George Town, Penang",
+                "3, Pengkalan Weld, George Town, Penang",
+                217,
+            ),
+            (
+                "Aquarium d’Amnéville",
+                "Zoo dAmnéville",
+                "5 Rue du Tigre, Amnéville",
+                "1 Rue du Tigre, Amnéville",
+                196,
+            ),
+            (
+                "Los Angeles Zoo",
+                "Los Angeles Museum",
+                "Los Angeles",
+                "Los Angeles",
+                2000,
+            ),
+            (
+                "Great Wolf Lodge",
+                "Great Wolf Lodge",
+                "1000 Great Wolf Wy, Webster",
+                "100 Great Wolf Dr., Grapevine",
+                423174,
+            ),
+        ):
+            with self.subTest(name=website):
+                src = source(name=website, address=address)
+                current = machine(
+                    name=app, address=app_address, latitude=40 + distance_m / 111195
+                )
+                detail = evidence()
+                detail["geocode"].update(safe=False, formatted_address=address)
+                item = compare(
+                    inputs(sources=[src], machines=[current]), lambda _: detail
+                )["records"][0]
+                self.assertEqual(item["category"], "addition")
+
+    def test_uncertain_town_coordinate_can_match_a_unique_exact_venue_with_postal_address(
+        self,
+    ):
+        src = source(
+            name="Scenic Caves Nature Adventures",
+            area="Canada",
+            address="260 Scenic Caves Rd Ravenna ON Canada, Ontario - Colllingwood",
+        )
+        current = machine(
+            4992,
+            name="Scenic Caves Nature Adventures",
+            area="Canada",
+            address="P.O.Box 215, Ontario - Collingwood",
+            latitude=44.487146,
+            longitude=-80.314937,
+        )
+        detail = evidence()
+        detail["geocode"].update(
+            safe=False,
+            latitude=44.5008798,
+            longitude=-80.2169959,
+            formatted_address="Collingwood, ON, Canada",
+        )
+        item = compare(inputs(sources=[src], machines=[current]), lambda _: detail)[
+            "records"
+        ][0]
+        self.assertEqual((item["category"], item["machine_id"]), ("link", 4992))
+        # A second equally good identity remains a review, not an arbitrary link.
+        second = {**current, "id": 4993}
+        item = compare(
+            inputs(sources=[src], machines=[current, second]), lambda _: detail
+        )["records"][0]
+        self.assertEqual(item["category"], "review")
 
     def test_coordinates_match_and_weak_neighbors_do_not_block_new_machines(self):
         near = machine(name="Another attraction", address="2 Side Street")

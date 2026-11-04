@@ -13,6 +13,10 @@ CONFIRMED_IDENTITIES = {
     "legacy:484552": 5607,  # Hochseilpark Hinterglemm
 }
 
+# User confirmed two physical machines here. Different catalogue IDs alone are
+# not proof of different machines: the site also contains duplicate/old listings.
+DISTINCT_LISTING_GROUPS = (frozenset({"legacy:430923", "legacy:436375"}),)
+
 IGNORED_LISTINGS = {
     "legacy:460896": (
         "User-confirmed duplicate of Buc-ee's Rockingham County, VA (466359), "

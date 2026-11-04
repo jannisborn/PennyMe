@@ -36,6 +36,7 @@ from pennyme.locations import area_from_google_result
 from pennyme.pennycollector_api import get_locations
 from pennyme.pennycollector_exceptions import (
     CONFIRMED_IDENTITIES,
+    DISTINCT_LISTING_GROUPS,
     IGNORED_LISTINGS,
     regional_machines,
 )
@@ -50,6 +51,36 @@ STATUS_MAPPING = {
     "Gone": "retired",
     "Moved": "retired",
     "Out of Order": "out-of-order",
+}
+GENERIC_NAME_WORDS = {
+    "a",
+    "an",
+    "the",
+    "of",
+    "and",
+    "de",
+    "la",
+    "el",
+    "di",
+    "do",
+    "da",
+    "d",
+    "gift",
+    "souvenir",
+    "souvenirs",
+    "shop",
+    "store",
+    "visitor",
+    "center",
+    "centre",
+    "tourist",
+    "information",
+    "museum",
+    "castle",
+    "church",
+    "park",
+    "exhibition",
+    "hall",
 }
 
 
@@ -206,7 +237,92 @@ def strong_identity(candidate):
             close and (candidate["name_score"] >= 85 or candidate["shared_name_phrase"])
         )
         or (candidate["name_score"] >= 95 and candidate["address_score"] >= 80)
+        or bool(candidate.get("corroborated_match"))
     )
+
+
+def best_geocode_result(results, area):
+    """A town centre is a fallback when the same query also found the venue."""
+    return max(
+        results,
+        key=lambda result: (
+            area_from_google_result(result) == area,
+            bool(
+                set(result.get("types", []))
+                & {"establishment", "point_of_interest", "premise"}
+            ),
+            result["geometry"]["location_type"] in {"ROOFTOP", "RANGE_INTERPOLATED"},
+            not result.get("partial_match"),
+        ),
+    )
+
+
+def name_token_score(left, right, address, app_address):
+    """Corroborate fuzzy names without matching on just a shared town or 'museum'."""
+    types = {
+        "zoo",
+        "aquarium",
+        "museum",
+        "castle",
+        "hotel",
+        "restaurant",
+        "church",
+        "cathedral",
+    }
+    left_types, right_types = [
+        {
+            "church" if w == "cathedral" else w
+            for w in normalized(name).split()
+            if w in types
+        }
+        for name in (left, right)
+    ]
+    if left_types and right_types and left_types.isdisjoint(right_types):
+        return 0
+    words = [
+        [
+            w
+            for w in normalized(
+                re.sub(r"\([A-Z]{1,3}-\d+[A-Z]?\)", "", name, flags=re.I)
+            ).split()
+            if w not in GENERIC_NAME_WORDS
+        ]
+        for name in (left, right)
+    ]
+    place_words = set(address.split()) & set(app_address.split())
+    without_place = [[w for w in side if w not in place_words] for side in words]
+    if all(without_place):
+        words = without_place
+    short, long = sorted(words, key=len)
+    if not short:
+        return 0
+    initials = {
+        "".join(w[0] for w in long[start : start + size])
+        for size in (2, 3, 4)
+        for start in range(len(long) - size + 1)
+    }
+    return round(
+        sum(
+            100
+            if len(word) <= 4 and word in initials
+            else max(
+                100
+                if min(len(word), len(other)) >= 5 and (word in other or other in word)
+                else fuzz.ratio(word, other)
+                for other in long
+            )
+            for word in short
+        )
+        / len(short)
+    )
+
+
+def address_number(address):
+    if re.search(r"\bp\s*o\s*box\b", address):
+        return None  # A postal box cannot contradict a street number.
+    match = re.search(r"\b\d+\b", address)
+    # Four/five-digit postal codes after a town/street aren't house numbers.
+    return match[0] if match and (len(match[0]) < 4 or match.start() == 0) else None
 
 
 def individual_devices(rows):
@@ -319,7 +435,11 @@ class SourceEvidence:
                             break
                         results = self.maps.geocode(fallback)
                         query = fallback
-                elif results[0].get("partial_match") and p["address"]:
+                if (
+                    results
+                    and best_geocode_result(results, p["area"]).get("partial_match")
+                    and p["address"]
+                ):
                     # A partial venue-name match can point to a different entrance.
                     # Prefer a complete match for the supplied street address.
                     address_query = f"{p['address']}, {p['area']}"
@@ -339,7 +459,7 @@ class SourceEvidence:
                         "reason": "No results",
                     }
                 else:
-                    result = results[0]
+                    result = best_geocode_result(results, p["area"])
                     area = area_from_google_result(result)
                     geometry = result["geometry"]
                     precise = geometry["location_type"] in {
@@ -395,6 +515,9 @@ class SourceEvidence:
 def candidates_for(source, machines, geocode=None):
     p = source["properties"]
     name, address = normalized(p["name"]), normalized(p["address"])
+    # A municipality/partial result can be kilometres from the actual machine.
+    # Wider searches still require corroborating name AND address evidence.
+    radius = 10000 if geocode and not geocode.get("safe") else 1000
     candidates = []
     for machine in machines:
         same_area = normalized(machine["area"]) == normalized(p["area"])
@@ -405,38 +528,122 @@ def candidates_for(source, machines, geocode=None):
             and machine.get("latitude") is not None
             and machine.get("longitude") is not None
         ):
-            if (
-                abs(geocode["latitude"] - machine["latitude"]) < 0.02
-                and abs(geocode["longitude"] - machine["longitude"]) < 0.04
-            ):
-                distance = round(
-                    haversine(
-                        (geocode["latitude"], geocode["longitude"]),
-                        (machine["latitude"], machine["longitude"]),
-                        unit="m",
-                    ),
-                    1,
-                )
+            distance = round(
+                haversine(
+                    (geocode["latitude"], geocode["longitude"]),
+                    (machine["latitude"], machine["longitude"]),
+                    unit="m",
+                ),
+                1,
+            )
         if not same_area and (distance is None or distance > 250):
             continue
-        name_score = fuzz.ratio(name, normalized(machine["name"]))
-        address_score = (
-            fuzz.ratio(address, normalized(machine["address"])) if address else 0
+        app_name, app_address = (
+            normalized(machine["name"]),
+            normalized(machine["address"]),
         )
-        exact = (
-            name == normalized(machine["name"])
-            and bool(address)
-            and address == normalized(machine["address"])
+        name_score = max(
+            fuzz.ratio(name, app_name), fuzz.token_sort_ratio(name, app_name)
         )
+        address_score = fuzz.ratio(address, app_address) if address else 0
+        exact = name == app_name and bool(address) and address == app_address
+        fuzzy_name = max(name_score, fuzz.WRatio(name, app_name))
+        street_number = address_number(address)
+        app_number = address_number(app_address)
+        numbers_conflict = bool(
+            street_number and app_number and street_number != app_number
+        )
+        usable_address = app_address not in {"", "unknown", "unknown address", "n a"}
+        address_tokens = max(
+            (
+                fuzz.token_set_ratio(value, app_address)
+                for value in (
+                    address,
+                    normalized((geocode or {}).get("formatted_address")),
+                )
+                if value and usable_address
+            ),
+            default=0,
+        )
+        address_words, app_words = set(address.split()), set(app_address.split())
+        locality_words = set(
+            normalized(
+                (geocode or {}).get("formatted_address", "").split(",")[0]
+            ).split()
+        )
+        address_anchor = any(
+            len(word) >= 6
+            for word in ((address_words | locality_words) & app_words)
+            - GENERIC_NAME_WORDS
+            - set(normalized(p["area"]).split())
+            - {"street", "avenue", "highway", "unknown", "address"}
+        )
+        contained_address = bool(
+            usable_address
+            and min(len(address_words), len(app_words)) >= 2
+            and (address_words <= app_words or app_words <= address_words)
+        )
+        token_score = name_token_score(p["name"], machine["name"], address, app_address)
+        corroborated = None
+        if token_score >= 80 and not numbers_conflict:
+            if name_score >= 90 and contained_address:
+                corroborated = "Venue name and contained address agree despite wording or geocoder differences"
+            elif (
+                distance is not None
+                and distance <= radius
+                and name_score >= 95
+                and address_tokens >= 60
+                and address_anchor
+            ):
+                corroborated = "Near-exact venue name with address/locality overlap within geocode search radius"
+            elif (
+                distance is not None
+                and distance <= 1000
+                and shared_name_phrase(p["name"], machine["name"])
+            ):
+                corroborated = "Nearby venue shares a distinctive multiword name"
+            elif (
+                distance is not None
+                and distance <= radius
+                and (
+                    (fuzzy_name >= 80 and address_tokens >= 90)
+                    or (
+                        token_score >= 95
+                        and shared_name_phrase(p["name"], machine["name"])
+                        and address_tokens >= 75
+                    )
+                )
+            ):
+                corroborated = "Similar venue name and corroborating address within geocode search radius"
+            elif (
+                distance is not None
+                and distance <= 100
+                and fuzzy_name >= 65
+                and contained_address
+            ):
+                corroborated = (
+                    "Nearby venue with a matching address and a compatible name"
+                )
         similar = (name_score >= 90 and address_score >= 60) or (
             name_score >= 72 and address_score >= 88
         )
-        if exact or similar or (distance is not None and distance <= 250):
+        if (
+            exact
+            or similar
+            or (distance is not None and distance <= 250)
+            or corroborated
+        ):
             candidates.append(
                 {
                     **machine,
                     "name_score": name_score,
                     "address_score": address_score,
+                    "fuzzy_name_score": fuzzy_name,
+                    "name_token_score": token_score,
+                    "address_token_score": address_tokens,
+                    "address_numbers_conflict": numbers_conflict,
+                    "match_radius_m": radius,
+                    "corroborated_match": corroborated,
                     "distance_m": distance,
                     "exact_text": exact,
                     "shared_name_phrase": shared_name_phrase(
@@ -557,14 +764,14 @@ def compare(inputs, evidence_for):
     pending_creates = [
         {**m, "record_type": "pending"} for m in pending if m["change_type"] == "create"
     ]
-    # Distinct website IDs with the same venue identity represent separate
-    # machines. An already-linked sibling must not absorb the missing one.
+    # Only user-confirmed distinct devices bypass same-venue identity matching.
+    # Other website IDs may be duplicate or obsolete catalogue entries.
+    distinct_groups = {key: group for group in DISTINCT_LISTING_GROUPS for key in group}
     venue_keys = defaultdict(set)
     for source in inputs["source"]:
-        p = source["properties"]
-        venue_keys[tuple(normalized(p[k]) for k in ("area", "name", "address"))].update(
-            source_keys(source)
-        )
+        group = distinct_groups.get(location_key(source["properties"]["external_url"]))
+        if group:
+            venue_keys[group].update(source_keys(source))
     claimed_siblings = defaultdict(set)
     records, disagreements, inspections, status_updates = [], [], [], []
     as_of = date.fromisoformat(inputs["snapshot_at"][:10])
@@ -674,11 +881,7 @@ def compare(inputs, evidence_for):
             source = item["source"]
             p = source["properties"]
             key = location_key(p["external_url"])
-            signature = (
-                normalized(p["area"]),
-                normalized(p["name"]),
-                normalized(p["address"]),
-            )
+            signature = distinct_groups.get(key)
             evidence = evidence_for(source)
             item["evidence"] = evidence
             candidates = candidates_for(
@@ -691,7 +894,7 @@ def compare(inputs, evidence_for):
                 if c.get("record_type") in {"deleted", "pending"}
                 or (
                     location_key(c.get("external_url")) not in siblings
-                    and c["id"] not in claimed_siblings[signature]
+                    and (not signature or c["id"] not in claimed_siblings[signature])
                 )
             ]
             confirmed_id = CONFIRMED_IDENTITIES.get(key)
@@ -756,7 +959,10 @@ def compare(inputs, evidence_for):
                         after_url=p["external_url"],
                     )
                 item["matched_candidate"] = candidate
-                if candidate.get("record_type") not in {"deleted", "pending"}:
+                if signature and candidate.get("record_type") not in {
+                    "deleted",
+                    "pending",
+                }:
                     claimed_siblings[signature].add(candidate["id"])
                 continue
             if len(strong) > 1 and all(
@@ -800,7 +1006,79 @@ def compare(inputs, evidence_for):
                 devices=active_devices,
             )
 
-    # Never choose one source arbitrarily when several would fill the same SQL row.
+    # Also compare proposals with each other. Duplicate catalogue pages must not
+    # each add the same numbered device before either has reached SQL.
+    proposed = defaultdict(list)
+    for item in sorted(
+        records,
+        key=lambda r: (
+            r["source"]["temporary"]["website_updated"],
+            len(r.get("devices", [])),
+            r["source"]["properties"]["external_url"],
+        ),
+        reverse=True,
+    ):
+        if item["category"] not in {"addition", "link"}:
+            continue
+        p = item["source"]["properties"]
+        if location_key(p["external_url"]) in distinct_groups:
+            continue
+        signature = tuple(normalized(p[k]) for k in ("area", "name", "address"))
+        # Empty addresses cannot establish that two same-name branches coincide.
+        if not signature[2]:
+            continue
+        geo = item["evidence"].get("geocode", {})
+        retained, duplicates = [], []
+        for device in item.get("devices", [None]):
+            identity = (
+                signature,
+                item["category"],
+                (device["label"], device["coin_type"], device["num_coins"])
+                if device
+                else item["machine_id"],
+            )
+            match = next(
+                (
+                    prior
+                    for prior in proposed[identity]
+                    if device is None
+                    or (
+                        "latitude" in geo
+                        and "latitude" in prior["evidence"].get("geocode", {})
+                        and haversine(
+                            (geo["latitude"], geo["longitude"]),
+                            (
+                                prior["evidence"]["geocode"]["latitude"],
+                                prior["evidence"]["geocode"]["longitude"],
+                            ),
+                            unit="m",
+                        )
+                        <= 10
+                    )
+                ),
+                None,
+            )
+            if match:
+                duplicates.append(
+                    {
+                        "device": device["label"] if device else "link",
+                        "source_url": match["source"]["properties"]["external_url"],
+                    }
+                )
+            else:
+                proposed[identity].append(item)
+                retained.append(device)
+        if duplicates:
+            item["duplicate_proposals"] = duplicates
+            if not retained:
+                item.update(
+                    category="represented_by_proposal",
+                    reason="Same venue and device/link already proposed from another catalogue listing",
+                )
+            else:
+                item["devices"] = retained
+
+    # Different venue identities competing for one SQL row still need review.
     targets = Counter(r["machine_id"] for r in records if r["category"] == "link")
     for item in records:
         if item["category"] == "link" and targets[item["machine_id"]] > 1:
@@ -1128,11 +1406,11 @@ def write_report(inputs, comparison, output_dir):
         "",
         "PennyMe names, addresses, coordinates, coin counts and existing links take precedence. Status syncing follows the historical differ: consistent shared-URL statuses, then differing status, then consistent pin dates, then a website date equal to or newer than last_updated. Any pin edit confirms all fields on that date. Today/yesterday edits and pending changes defer automatic status updates. Conflicting shared-URL states or dates require review. Regional link-only exceptions never broadcast venue status. Archived deletions stay deleted; missing website listings never delete a machine. Known GitHub problems/skips suppress their sources.",
         "",
-        "Distinct machine numbers and distinct website IDs at one venue become separate machines. Product/design rows sharing a number collapse to one machine; unclear labels fall back to one active machine. Unknown design counts use PennyMe's default of four. Retired/book rows are excluded. New pins are spaced at least 10 m apart without moving existing app pins.",
+        "Distinct machine numbers become separate machines. Different website IDs alone do not disqualify an existing venue match. Identical venue/device proposals from duplicate pages are consolidated; Cova's user-confirmed pair stays separate. Product/design rows sharing a number collapse to one machine; unclear labels fall back to one active machine. Unknown design counts use PennyMe's default of four. Retired/book rows are excluded. New pins are spaced at least 10 m apart without moving existing app pins.",
         "",
         "Already-linked source locations count as represented. Explicit exceptions live in pennycollector_exceptions.py: Buc-ee’s 460896 is a duplicate with no action; Universal Studios 424410 fills blank links on existing machines within its fixed 1 km region and never creates machines. Specific link proposals take precedence over that regional fallback. This run does not infer additional physical machines inside those venues from aggregate design counts. That would require a separate, reliable machine-level reconciliation; no source-wide changes are applied to their existing PennyMe IDs.",
         "",
-        "Geocoding is automatic; approximate/partial results are accepted and missing results retry automatically. A unique machine within 10 m matches regardless of title. Otherwise, exact name/address, 85% name similarity or a meaningful shared phrase within 250 m, or 95% name plus 80% address similarity can match. Explicit user confirmations for Basilica St. Michael and Hinterglemm are retained. Competing strong matches require review; weak neighbors do not prevent additions. PennyMe fields, populated links, archived deletions and pending changes remain authoritative.",
+        "Geocoding prefers venue results over town centres in the correct area; approximate/partial results remain usable. A unique machine within 10 m matches regardless of title. Name comparisons allow reordered words, spelling differences and extra qualifiers. Additional matching searches reach 1 km for precise geocodes and 10 km for uncertain ones, with meaningful venue-name and address/locality corroboration; distance alone does not match outside 10 m. Exact/contained text identities can survive incorrect geocoding. Generic/shared town words and conflicting house numbers do not establish a relaxed match. Candidate evidence records scores, distance and the matching reason. Competing strong identities require review. Existing fields, populated links, archived deletions, pending edits and explicit confirmed exceptions retain their protections.",
         "",
         "Dry runs do not apply SQL changes; use --apply with a fresh crawl to commit the plan atomically. Apply runs also refresh last_updated for app delta sync and record approved changes in pending_changes in the same transaction. Separate Slack diff/problem reports are sent by default; use --no-slack for local previews. The historical differ and Flask endpoint remain untouched. Unchanged outstanding problems remain visible in the counts but are not repeatedly posted in detail; GitHub's known problems remain permanent suppressions.",
         "",
