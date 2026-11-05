@@ -1,7 +1,8 @@
 """PennyCollector SQL differ with automatic Slack diff/problem reports.
 
 Run from backend: python -m scripts.location_differ_api --output-dir REPORT_DIR
-Dry run is the default. Use --apply to commit, --no-slack for local previews.
+Changes are committed by default. Use --dry-run to preview without SQL writes;
+add --no-slack to suppress Slack reports.
 The historical location_differ.py and its endpoint are deliberately untouched.
 """
 
@@ -1412,7 +1413,7 @@ def write_report(inputs, comparison, output_dir):
         "",
         "Geocoding prefers venue results over town centres in the correct area; approximate/partial results remain usable. A unique machine within 10 m matches regardless of title. Name comparisons allow reordered words, spelling differences and extra qualifiers. Additional matching searches reach 1 km for precise geocodes and 10 km for uncertain ones, with meaningful venue-name and address/locality corroboration; distance alone does not match outside 10 m. Exact/contained text identities can survive incorrect geocoding. Generic/shared town words and conflicting house numbers do not establish a relaxed match. Candidate evidence records scores, distance and the matching reason. Competing strong identities require review. Existing fields, populated links, archived deletions, pending edits and explicit confirmed exceptions retain their protections.",
         "",
-        "Dry runs do not apply SQL changes; use --apply with a fresh crawl to commit the plan atomically. Apply runs also refresh last_updated for app delta sync and record approved changes in pending_changes in the same transaction. Separate Slack diff/problem reports are sent by default; use --no-slack for local previews. The historical differ and Flask endpoint remain untouched. Unchanged outstanding problems remain visible in the counts but are not repeatedly posted in detail; GitHub's known problems remain permanent suppressions.",
+        "Changes are committed atomically by default after a fresh crawl; use --dry-run to preview without SQL writes. Apply runs also refresh last_updated for app delta sync and record approved changes in pending_changes in the same transaction. Separate Slack diff/problem reports are sent by default; use --dry-run --no-slack for local previews. The historical differ and Flask endpoint remain untouched. Unchanged outstanding problems remain visible in the counts but are not repeatedly posted in detail; GitHub's known problems remain permanent suppressions.",
         "",
     ]
 
@@ -1981,12 +1982,12 @@ def main():
     mode.add_argument(
         "--apply",
         action="store_true",
-        help="Commit new machines, missing links and eligible status changes to SQL",
+        help="Commit new machines, missing links and eligible status changes to SQL (default)",
     )
     mode.add_argument(
         "--dry-run",
         action="store_true",
-        help="Plan changes without SQL writes (default)",
+        help="Plan changes without SQL writes",
     )
     mode.add_argument(
         "--send-report",
@@ -1996,7 +1997,7 @@ def main():
     parser.add_argument(
         "--no-slack",
         action="store_true",
-        help="Generate local reports without sending Slack notifications",
+        help="Suppress Slack notifications; SQL writes are still enabled unless --dry-run is set",
     )
     parser.add_argument(
         "--slack-state",
@@ -2007,7 +2008,7 @@ def main():
     parser.add_argument(
         "--reuse-inputs",
         action="store_true",
-        help="Re-evaluate the saved read-only SQL/API snapshot",
+        help="Re-evaluate the saved SQL/API snapshot; requires --dry-run and --output-dir",
     )
     parser.add_argument(
         "--geocode",
@@ -2016,8 +2017,11 @@ def main():
         help="Automatically geocode with GCLOUD_KEY (default); --no-geocode reuses cached coordinates",
     )
     args = parser.parse_args()
+    args.apply = not args.dry_run and not args.send_report
     if args.apply and args.reuse_inputs:
-        parser.error("--apply requires a fresh crawl; --reuse-inputs is dry-run only")
+        parser.error(
+            "Applying requires a fresh crawl; --reuse-inputs requires --dry-run"
+        )
     if (args.send_report or args.reuse_inputs) and args.output_dir is None:
         parser.error("--send-report / --reuse-inputs requires --output-dir")
     if args.output_dir is None:
@@ -2038,7 +2042,7 @@ def main():
         and (args.output_dir / "inputs.json").exists()
     ):
         parser.error(
-            "Use a fresh --output-dir, or --reuse-inputs for a read-only replay"
+            "Use a fresh --output-dir, or --dry-run --reuse-inputs for a read-only replay"
         )
     if not args.no_slack and not os.environ.get("SLACK_TOKEN"):
         parser.error("Set SLACK_TOKEN or pass --no-slack")

@@ -1585,26 +1585,89 @@ class SqlDifferApplyTests(unittest.TestCase):
             connection.commit.assert_not_called()
             connection.rollback.assert_called_once()
 
-    def test_cli_defaults_to_dry_run_and_rejects_applying_saved_inputs(self):
+    def test_cli_applies_by_default_and_only_dry_run_skips_commit(self):
+        for flags in [[], ["--apply"], ["--dry-run"]]:
+            with self.subTest(flags=flags), tempfile.TemporaryDirectory() as directory:
+                data, _ = self.plan(directory)
+                receipt = {
+                    "status": "applied",
+                    "machines_added": [],
+                    "links_added": [],
+                    "statuses_changed": [],
+                    "sql_machines_after": 1,
+                }
+                with (
+                    patch(
+                        "sys.argv",
+                        ["differ", "--no-slack", "--output-dir", directory, *flags],
+                    ),
+                    patch(
+                        "scripts.location_differ_api.fetch_inputs", return_value=data
+                    ),
+                    patch("scripts.location_differ_api.SourceEvidence") as details,
+                    patch(
+                        "scripts.location_differ_api.apply_report", return_value=receipt
+                    ) as apply,
+                    patch("scripts.location_differ_api.send_slack_reports") as send,
+                    patch("scripts.location_differ_api.logger") as log,
+                ):
+                    details.return_value.get.return_value = evidence()
+                    main()
+                    send.assert_not_called()
+                    preview = json.loads(
+                        Path(directory, "slack_preview.json").read_text()
+                    )
+                    if "--dry-run" in flags:
+                        apply.assert_not_called()
+                        self.assertIn("DRY RUN", log.success.call_args.args)
+                        self.assertIn("Dry run:", preview["root_text"])
+                        self.assertFalse(Path(directory, "apply_result.json").exists())
+                    else:
+                        apply.assert_called_once()
+                        self.assertIn("APPLY", log.success.call_args.args)
+                        self.assertIn("Applied:", preview["root_text"])
+                        self.assertEqual(
+                            json.loads(
+                                Path(directory, "apply_result.json").read_text()
+                            ),
+                            receipt,
+                        )
+
+    def test_send_report_never_enables_apply(self):
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch("sys.argv", ["differ", "--send-report", "--output-dir", directory]),
+            patch.dict("os.environ", {"SLACK_TOKEN": "test-token"}),
+            patch("scripts.location_differ_api.run") as execute,
+        ):
+            main()
+            args = execute.call_args.args[0]
+            self.assertTrue(args.send_report)
+            self.assertFalse(args.apply)
+
+    def test_cli_rejects_applying_saved_inputs_and_allows_explicit_dry_run(self):
         with tempfile.TemporaryDirectory() as directory:
             data, report = self.plan(directory)
             Path(directory, "inputs.json").write_text(json.dumps(data))
-            with (
-                patch(
-                    "sys.argv",
-                    ["differ", "--apply", "--reuse-inputs", "--output-dir", directory],
-                ),
-                patch("scripts.location_differ_api.apply_report") as apply,
-            ):
-                with self.assertRaises(SystemExit) as error:
-                    main()
-                self.assertEqual(error.exception.code, 2)
-                apply.assert_not_called()
+            for flags in [[], ["--apply"]]:
+                with (
+                    self.subTest(flags=flags),
+                    patch(
+                        "sys.argv",
+                        ["differ", *flags, "--reuse-inputs", "--output-dir", directory],
+                    ),
+                    patch("scripts.location_differ_api.apply_report") as apply,
+                ):
+                    with self.assertRaises(SystemExit) as error:
+                        main()
+                    self.assertEqual(error.exception.code, 2)
+                    apply.assert_not_called()
             with (
                 patch(
                     "sys.argv",
                     [
                         "differ",
+                        "--dry-run",
                         "--reuse-inputs",
                         "--no-slack",
                         "--output-dir",
