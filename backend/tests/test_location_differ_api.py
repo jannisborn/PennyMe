@@ -818,6 +818,15 @@ class SqlDifferReportTests(unittest.TestCase):
             self.assertEqual(second["unresolved"], 1)
             self.assertEqual(client.chat_postMessage.call_count, 2)
             self.assertNotIn("thread_ts", client.chat_postMessage.call_args.kwargs)
+            # Daily reports retain case signatures but only recent delivery IDs.
+            for day in range(1, 10):
+                data["snapshot_at"] = f"2026-11-{day:02d}T20:00:00Z"
+                write_report(data, comparison, root)
+                sent = send_slack_reports(root, state, client=client)
+                self.assertEqual(sent["new_or_changed"], 0)
+            saved = json.loads(state.read_text())["#pennyme_approvals"]
+            self.assertEqual(len(saved["runs"]), 7)
+            self.assertEqual(len(saved["cases"]), 1)
 
     def test_failed_problem_delivery_is_retried_without_reposting_counts(self):
         data = inputs(machines=[machine(1), machine(2)])
@@ -1375,6 +1384,49 @@ class SqlDifferStatusTests(unittest.TestCase):
 
 
 class SqlDifferApplyTests(unittest.TestCase):
+    def test_default_reports_are_cleaned_up_on_success_and_failure(self):
+        for fail in [False, True]:
+            with self.subTest(fail=fail), tempfile.TemporaryDirectory() as directory:
+                state = Path(directory, "slack_state.json")
+                paths = []
+
+                def execute(args):
+                    self.assertTrue(args.apply)
+                    self.assertTrue(args.temporary_reports)
+                    paths.append(args.output_dir)
+                    (args.output_dir / "inputs.json").write_text("temporary snapshot")
+                    args.slack_state.write_text("persistent state")
+                    if fail:
+                        raise RuntimeError("Test failure")
+
+                with (
+                    patch(
+                        "sys.argv",
+                        ["differ", "--no-slack", "--slack-state", str(state)],
+                    ),
+                    patch("scripts.location_differ_api.run", side_effect=execute),
+                ):
+                    if fail:
+                        with self.assertRaisesRegex(RuntimeError, "Test failure"):
+                            main()
+                    else:
+                        main()
+                self.assertEqual(len(paths), 1)
+                self.assertFalse(paths[0].exists())
+                self.assertEqual(state.read_text(), "persistent state")
+
+    def test_missing_cron_geocoding_key_has_actionable_error(self):
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch.dict("os.environ", {}, clear=True),
+            patch("scripts.location_differ_api.googlemaps.Client") as maps,
+        ):
+            with self.assertRaisesRegex(
+                ValueError, "Missing GCLOUD_KEY; set it in backend/.env"
+            ):
+                SourceEvidence(directory)
+            maps.assert_not_called()
+
     def plan(self, directory):
         data = inputs(
             sources=[

@@ -1,8 +1,9 @@
 """PennyCollector SQL differ with automatic Slack diff/problem reports.
 
-Run from backend: python -m scripts.location_differ_api --output-dir REPORT_DIR
+Run from backend: python -m scripts.location_differ_api
 Changes are committed by default. Use --dry-run to preview without SQL writes;
-add --no-slack to suppress Slack reports.
+add --no-slack to suppress Slack reports. Reports are temporary unless an
+explicit --output-dir is supplied. The Slack state JSON is kept between runs.
 The historical location_differ.py and its endpoint are deliberately untouched.
 """
 
@@ -16,9 +17,11 @@ import re
 import time
 import unicodedata
 from collections import Counter, defaultdict
+from contextlib import nullcontext
 from copy import deepcopy
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from urllib.parse import parse_qs, urlsplit
 
 import googlemaps
@@ -387,6 +390,11 @@ class SourceEvidence:
     """Cache public detail tables and automatic geocodes for repeatable review."""
 
     def __init__(self, output_dir, geocode=True):
+        if geocode and not os.environ.get("GCLOUD_KEY"):
+            raise ValueError(
+                "Missing GCLOUD_KEY; set it in backend/.env. "
+                "Cron does not inherit variables exported in your terminal."
+            )
         self.path = Path(output_dir) / "evidence.json"
         self.cache = json.loads(self.path.read_text()) if self.path.exists() else {}
         self.session = requests.Session()
@@ -1869,7 +1877,10 @@ def send_slack_reports(
     ).hexdigest()
     ledger = json.loads(state_path.read_text()) if state_path.exists() else {}
     state = ledger.setdefault(channel, {"cases": {}, "runs": {}})
-    run = state["runs"].setdefault(fingerprint, {})
+    run = state["runs"].pop(fingerprint, {})
+    state["runs"][fingerprint] = run
+    # Retain recent delivery retries without growing the ledger every day.
+    state["runs"] = dict(list(state["runs"].items())[-7:])
     thread_messages = {
         hashlib.sha256(f"{index}:{body}".encode()).hexdigest(): body
         for index, body in enumerate(diff["thread_messages"])
@@ -1977,7 +1988,11 @@ def main():
     load_dotenv(BACKEND / ".env")
     load_dotenv(BACKEND.parent / ".env")
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-dir", type=Path)
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        help="Keep reports in this directory; by default temporary reports are deleted after the run",
+    )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument(
         "--apply",
@@ -2003,7 +2018,7 @@ def main():
         "--slack-state",
         type=Path,
         default=BACKEND.parent / "reports/location_differ/slack_state.json",
-        help="Persistent notification ledger shared across daily report directories",
+        help="Persistent notification ledger; keeps problem signatures and the seven latest deliveries",
     )
     parser.add_argument(
         "--reuse-inputs",
@@ -2024,21 +2039,20 @@ def main():
         )
     if (args.send_report or args.reuse_inputs) and args.output_dir is None:
         parser.error("--send-report / --reuse-inputs requires --output-dir")
-    if args.output_dir is None:
-        args.output_dir = (
-            BACKEND.parent
-            / "reports/location_differ"
-            / datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%S-%fZ")
-        )
     if args.send_report and args.no_slack:
         parser.error("--send-report cannot be combined with --no-slack")
-    if not args.send_report and (args.output_dir / "apply_result.json").exists():
+    if (
+        args.output_dir is not None
+        and not args.send_report
+        and (args.output_dir / "apply_result.json").exists()
+    ):
         parser.error(
             "This directory contains an applied run; use --send-report or a fresh directory"
         )
     if (
         not args.send_report
         and not args.reuse_inputs
+        and args.output_dir is not None
         and (args.output_dir / "inputs.json").exists()
     ):
         parser.error(
@@ -2046,7 +2060,14 @@ def main():
         )
     if not args.no_slack and not os.environ.get("SLACK_TOKEN"):
         parser.error("Set SLACK_TOKEN or pass --no-slack")
-    run(args)
+    args.temporary_reports = args.output_dir is None
+    with (
+        TemporaryDirectory(prefix="pennyme-differ-")
+        if args.temporary_reports
+        else nullcontext(args.output_dir)
+    ) as directory:
+        args.output_dir = Path(directory)
+        run(args)
 
 
 def run(args):
@@ -2054,11 +2075,16 @@ def run(args):
     started = time.monotonic()
     evidence = None
     receipt = None
+    reports = (
+        "temporary (deleted after run)"
+        if getattr(args, "temporary_reports", False)
+        else str(args.output_dir)
+    )
     logger.info(
         "START | {} | Slack: {} | Reports: {}",
         mode,
         "disabled" if args.no_slack else "enabled",
-        args.output_dir,
+        reports,
     )
     try:
         if args.send_report:
@@ -2073,12 +2099,12 @@ def run(args):
                 preview_path.write_text(json.dumps(preview, indent=2))
             result_text = "Saved report delivery; no SQL writes in this invocation."
         else:
+            evidence = SourceEvidence(args.output_dir, geocode=args.geocode)
             inputs = (
                 json.loads((args.output_dir / "inputs.json").read_text())
                 if args.reuse_inputs
                 else fetch_inputs(args.output_dir)
             )
-            evidence = SourceEvidence(args.output_dir, geocode=args.geocode)
             comparison = compare(inputs, evidence.get)
             summary = write_report(inputs, comparison, args.output_dir)
             print(json.dumps(summary, indent=2), flush=True)
@@ -2101,7 +2127,7 @@ def run(args):
             result_text,
             time.monotonic() - started,
             slack_status,
-            args.output_dir,
+            reports,
         )
     except Exception as error:
         logger.error(
@@ -2109,26 +2135,37 @@ def run(args):
             mode,
             time.monotonic() - started,
             error,
-            args.output_dir,
+            reports,
         )
         if receipt is not None and args.apply:
             logger.error(
-                "SQL was committed; retry report delivery with --send-report, not --apply"
+                "SQL was committed. {}",
+                "Reports are temporary; check the applied receipt above. A fresh run will recompare current SQL."
+                if getattr(args, "temporary_reports", False)
+                else "Retry report delivery with --send-report, not --apply",
             )
         if not args.no_slack:
             if receipt is not None and args.apply:
                 sql_state = (
-                    "SQL committed. Retry delivery with --send-report, not --apply."
+                    "SQL committed. Reports are temporary; check the log for the applied receipt."
+                    if getattr(args, "temporary_reports", False)
+                    else "SQL committed. Retry delivery with --send-report, not --apply."
                 )
             elif args.apply:
                 sql_state = "No successful SQL commit was confirmed. Check the terminal log before retrying."
             else:
                 sql_state = "No SQL writes in this invocation."
+            if (
+                not args.send_report
+                and args.geocode
+                and not os.environ.get("GCLOUD_KEY")
+            ):
+                sql_state += " GCLOUD_KEY is missing; set it in backend/.env for cron."
             try:
                 # Keep exception details/credentials in the terminal, not Slack.
                 response = WebClient(token=os.environ["SLACK_TOKEN"]).chat_postMessage(
                     channel="#pennyme_approvals",
-                    text=f"PennyCollector {mode} FAILED ({type(error).__name__}). {sql_state} Reports: {args.output_dir}",
+                    text=f"PennyCollector {mode} FAILED ({type(error).__name__}). {sql_state} Reports: {reports}",
                     username="PennyMe",
                     unfurl_links=False,
                     unfurl_media=False,
