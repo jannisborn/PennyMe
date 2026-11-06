@@ -46,7 +46,7 @@ dependencies = [
   "slack-sdk>=3.39.0",
   "waitress",
   "typer>=0.21.0",
-  "psycopg2-binary>=2.9.6",
+  "psycopg2-binary>=2.9.6",  # Provides the psycopg2 import used by the SQL differ.
   "geoalchemy2",
   "pytest>=9.1.1",
 ]

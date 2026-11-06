@@ -99,6 +99,8 @@ iOSInjectionProject/
 
 .secrets/
 backend/.env
+backend/location_differ.log
+backend/location_differ.lock
 
 # Private runtime moderation state
 /content_attribution.json
