@@ -113,6 +113,7 @@ class Machine(Base):
     external_url = Column(String, nullable=True)
     internal_url = Column(String, nullable=True)
     last_updated = Column(Date, nullable=False)
+    last_seen = Column(DateTime(timezone=True), nullable=True)
 
     @classmethod
     def from_dict(cls, machine_id: int, fields: dict) -> "Machine":
@@ -149,6 +150,7 @@ class DeletedMachine(Base):
     external_url = Column(String, nullable=True)
     internal_url = Column(String, nullable=True)
     last_updated = Column(Date, nullable=False)
+    last_seen = Column(DateTime(timezone=True), nullable=True)
     deleted_at = Column(DateTime(timezone=True), nullable=False)
     slack_reviewer = Column(String, nullable=False)
     report_id = Column(String, primary_key=True)
@@ -347,6 +349,9 @@ def _query_all_machines_geojson(since: Optional[str]) -> dict:
         params=params,
     )
     gdf["last_updated"] = gdf["last_updated"].map(
+        lambda value: value.isoformat() if pd.notna(value) else None
+    )
+    gdf["last_seen"] = gdf["last_seen"].map(
         lambda value: value.isoformat() if pd.notna(value) else None
     )
     # The iOS app expects URL fields to be strings, never JSON null/None.

@@ -129,6 +129,7 @@ class DeletedMachineTest(unittest.TestCase):
                 "external_url",
                 "internal_url",
                 "last_updated",
+                "last_seen",
                 "deleted_at",
                 "slack_reviewer",
                 "report_id",
@@ -149,6 +150,7 @@ class DeletedMachineTest(unittest.TestCase):
             external_url=None,
             internal_url=None,
             last_updated="2026-10-20",
+            last_seen=None,
         )
         session = Mock()
         query = session.query.return_value

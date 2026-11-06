@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52600000000000000000001 /* MachinePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000002 /* MachinePresence.swift */; };
 		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
 		837476502CADDAD800812146 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8374764F2CADDAD800812146 /* StatisticsViewController.swift */; };
 		837476532CB0918000812146 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 837476522CB0918000812146 /* DGCharts */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A52600000000000000000002 /* MachinePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinePresence.swift; sourceTree = "<group>"; };
 		8319D8CF27414AC100E97D93 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		8374764F2CADDAD800812146 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		839CF43F267B78AB00E259D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		9F9F31A32300B40900C0E854 /* PennyMe */ = {
 			isa = PBXGroup;
 			children = (
+				A52600000000000000000002 /* MachinePresence.swift */,
 				A52500000000000000000001 /* TripLink.swift */,
 				A52500000000000000000002 /* TripPreviewViewController.swift */,
 				A52500000000000000000003 /* SharedTrip.swift */,
@@ -432,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52600000000000000000001 /* MachinePresence.swift in Sources */,
 				A5250000000000000000000B /* TripLink.swift in Sources */,
 				A5250000000000000000000C /* TripPreviewViewController.swift in Sources */,
 				A5250000000000000000000D /* SharedTrip.swift in Sources */,

@@ -14,6 +14,23 @@ import MapKit
 
 class PennyMeTests: XCTestCase {
 
+    func testPresenceRequiresFreshPreciseLocationWithinTwentyMetres() {
+        let now = Date()
+        let machine = PresenceMachine(id: 1, name: "Test", latitude: 0, longitude: 0)
+        func fix(metres: Double = 0, accuracy: Double = 5, age: Double = 0) -> CLLocation {
+            let coordinate = CLLocationCoordinate2D(latitude: 0, longitude: metres / 111319.49)
+            return CLLocation(coordinate: coordinate, altitude: 0, horizontalAccuracy: accuracy,
+                              verticalAccuracy: -1, timestamp: now.addingTimeInterval(-age))
+        }
+        XCTAssertTrue(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 19.9), now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 20.1), now: now))
+        XCTAssertTrue(MachinePresencePolicy.canConfirm(machine, at: fix(accuracy: 10, age: 15), now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(accuracy: -1), now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(accuracy: 10.1), now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(age: 15.1), now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(age: -5.1), now: now))
+    }
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

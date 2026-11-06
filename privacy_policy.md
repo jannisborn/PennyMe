@@ -1,6 +1,6 @@
 # PennyMe Privacy Policy
 
-Last updated: July 22, 2026
+Last updated: November 6, 2026
 
 PennyMe is a free, account-free app operated by Jannis Born and Nina Wiedemann. This policy explains the limited information processed when you use the app.
 
@@ -8,9 +8,10 @@ PennyMe is a free, account-free app operated by Jannis Born and Nina Wiedemann. 
 
 PennyMe does not require an account, name, email address, or social profile. The app and service may process:
 
-- A random installation identifier created by the app and stored in the device Keychain. It is sent only with contributions and safety reports.
+- A random installation identifier created by the app and stored in the device Keychain. It is sent with contributions, safety reports, and nearby machine confirmation checks.
 - Content you choose to submit, the affected machine, submission time, and moderation/report details.
 - Location information you choose to use for map features or include in a machine contribution. Ordinary map location is used on the device; submitted machine coordinates are sent to the service.
+- While the app is open near a machine, a fresh location, its accuracy and measurement time are sent to check whether the machine needs confirmation. If you confirm it is still there, the service validates your current proximity and records the machine's confirmation time. This feature does not store a location history.
 - Basic technical log information needed to operate, secure, and diagnose the service.
 
 ## Why we process it

@@ -40,6 +40,7 @@ from pennyme.moderation import (
     text_block_reason,
     validate_report,
 )
+from pennyme.presence import presence_api
 from pennyme.slack import (
     format_machine_fields,
     image_slack,
@@ -100,6 +101,15 @@ def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
     if contributor_id is not None and contributor_id in blocked_contributors:
         return jsonify({"error": "Posting access from this device is blocked"}), 403
     return None
+
+
+app.register_blueprint(presence_api)
+
+
+@app.before_request
+def check_presence_contributor():
+    if request.blueprint == "presence":
+        return blocked_contributor_response()
 
 
 def _diff_field(
