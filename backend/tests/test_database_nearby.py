@@ -1,4 +1,6 @@
+import tempfile
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
@@ -99,10 +101,7 @@ class PendingChangeApprovalTest(unittest.TestCase):
         session = Mock()
         session.query.return_value.filter.return_value.first.return_value = change
 
-        with (
-            patch("pennyme.database.get_session", return_value=session),
-            patch("pennyme.database._delete_pending_change_images"),
-        ):
+        with patch("pennyme.database.get_session", return_value=session):
             result = reject_pending_change(7, "  Address is not verifiable.  ")
 
         self.assertEqual(result.status, "rejected")
@@ -110,6 +109,31 @@ class PendingChangeApprovalTest(unittest.TestCase):
         self.assertIsNotNone(change.reviewed_at)
         session.commit.assert_called_once_with()
         session.close.assert_called_once_with()
+
+    def test_rejected_new_machine_keeps_uploaded_images(self):
+        change = SimpleNamespace(
+            id=7,
+            status="open",
+            change_type="create",
+            machine_id=None,
+        )
+        session = Mock()
+        session.query.return_value.filter.return_value.first.return_value = change
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            image = root / "pending_7.jpg"
+            image.write_bytes(b"submitted image")
+            with (
+                patch("pennyme.database.get_session", return_value=session),
+                patch("pennyme.database.Path", return_value=root),
+            ):
+                result = reject_pending_change(7, "Duplicate listing")
+                repeated = reject_pending_change(7, "Another reason")
+            self.assertEqual(image.read_bytes(), b"submitted image")
+        self.assertTrue(result.applied)
+        self.assertFalse(repeated.applied)
+        self.assertEqual(change.rejection_reason, "Duplicate listing")
+        session.commit.assert_called_once_with()
 
 
 class DeletedMachineTest(unittest.TestCase):

@@ -451,6 +451,7 @@ def process_pending_image(
     tmp_img_path: str,
     installation_id: str,
     title: str,
+    thread_ts: str,
 ) -> None:
     """Process the image upload for a new pending machine submission and record contributor.
 
@@ -463,6 +464,7 @@ def process_pending_image(
         tmp_img_path: Temporary path where the uploaded image was saved.
         installation_id: Random installation identifier supplied by the app.
         title: Proposed machine title shown in the Slack image notification.
+        thread_ts: Original pending-change Slack message timestamp.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
@@ -481,6 +483,7 @@ def process_pending_image(
                 img_slack_text=msg,
                 filetype="jpg",
                 pending=True,
+                thread_ts=thread_ts,
             )
             sleep(1)
             Path(saved_path).unlink(missing_ok=True)
@@ -502,6 +505,7 @@ def process_pending_image(
             m_name=title,
             img_slack_text="New machine proposed (pending review):",
             pending=True,
+            thread_ts=thread_ts,
         )
     except Exception as e:
         logger.exception(f"Error when processing pending image {pending_id}: {e}")
@@ -695,7 +699,7 @@ def create_machine() -> Tuple[Response, int]:
     tmp_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}_tmp.jpg")
     request.files["image"].save(tmp_path)
 
-    message_slack_pending_change(
+    thread_ts = message_slack_pending_change(
         change_id=pending_id,
         change_type="create",
         title=title,
@@ -708,7 +712,7 @@ def create_machine() -> Tuple[Response, int]:
     request_queue.put(
         (
             process_pending_image,
-            (pending_id, tmp_path, anonymous_user_id(), title),
+            (pending_id, tmp_path, anonymous_user_id(), title, thread_ts),
         )
     )
     if not address_okay:

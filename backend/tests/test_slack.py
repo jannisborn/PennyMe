@@ -159,9 +159,12 @@ class ReportSlackTest(unittest.TestCase):
             "chat_postMessage",
             return_value={"channel": "C123", "ts": "123"},
         ) as post:
-            slack.image_slack(12, m_name="New machine", pending=True)
+            slack.image_slack(
+                12, m_name="New machine", pending=True, thread_ts="root-ts"
+            )
 
         self.assertIn("New machine", post.call_args.kwargs["text"])
+        self.assertEqual(post.call_args.kwargs["thread_ts"], "root-ts")
 
     def test_source_and_nearby_images_are_temporary_thread_replies(self):
         neighbors = [
@@ -198,12 +201,13 @@ class ReportSlackTest(unittest.TestCase):
                     "message_slack_raw",
                     side_effect=[
                         {"channel": "C123", "ts": "root-ts"},
+                        {"channel": "C123", "ts": "details-ts"},
                         {"channel": "C123", "ts": "source-images-ts"},
                         {"channel": "C123", "ts": "nearby-images-ts"},
                     ],
                 ) as post,
             ):
-                slack.message_slack_pending_change(
+                thread_ts = slack.message_slack_pending_change(
                     change_id=12,
                     change_type="update",
                     title="Moved machine",
@@ -221,8 +225,17 @@ class ReportSlackTest(unittest.TestCase):
                     root_text,
                 )
                 self.assertNotIn("<https://example.com/not-pennycollector|", root_text)
+                self.assertEqual(thread_ts, "root-ts")
+                details = post.call_args_list[1]
+                self.assertEqual(details.args[0], root_text)
+                self.assertEqual(details.kwargs["thread_ts"], "root-ts")
+                self.assertFalse(
+                    any(
+                        block["type"] == "actions" for block in details.kwargs["blocks"]
+                    )
+                )
 
-                source_image_message = post.call_args_list[1]
+                source_image_message = post.call_args_list[2]
                 self.assertEqual(source_image_message.kwargs["thread_ts"], "root-ts")
                 self.assertEqual(
                     [
@@ -231,7 +244,7 @@ class ReportSlackTest(unittest.TestCase):
                     ],
                     [f"{slack.IMG_PORT}42.jpg"],
                 )
-                nearby_image_message = post.call_args_list[2]
+                nearby_image_message = post.call_args_list[3]
                 self.assertEqual(nearby_image_message.kwargs["thread_ts"], "root-ts")
                 self.assertEqual(
                     [
@@ -377,7 +390,8 @@ class ReportSlackTest(unittest.TestCase):
         result = SimpleNamespace(applied=True, status="rejected")
         with (
             patch.object(slack, "reject_pending_change", return_value=result) as reject,
-            patch.object(slack, "delete_pending_image_messages"),
+            patch.object(slack, "delete_pending_image_messages") as cleanup,
+            patch.object(slack, "message_slack_raw") as post,
             patch.object(slack.CLIENT, "chat_update") as update,
         ):
             ack = Mock()
@@ -388,8 +402,15 @@ class ReportSlackTest(unittest.TestCase):
         update.assert_called_once_with(
             channel="C123",
             ts="123.456",
-            text=":x: *Machine title* — Pending change #42 *rejected* by reviewer.",
+            text=":x: *Machine title* — Pending change #42 *rejected* by reviewer. Details remain in this thread.",
             blocks=[],
+        )
+        cleanup.assert_not_called()
+        post.assert_called_once()
+        self.assertEqual(post.call_args.kwargs["channel"], "C123")
+        self.assertEqual(post.call_args.kwargs["thread_ts"], "123.456")
+        self.assertIn(
+            "Not accurate", post.call_args.kwargs["blocks"][0]["text"]["text"]
         )
 
     def test_reports_include_only_target_content_and_thread_in_approvals(self):
@@ -604,6 +625,7 @@ class ReportSlackTest(unittest.TestCase):
                 patch.object(slack, "_MODERATION", store),
                 patch.object(slack, "PATH_IMAGES", directory),
                 patch.object(slack, "archive_and_delete_machine") as archive,
+                patch.object(slack, "message_slack_raw") as post,
                 patch.object(slack.CLIENT, "chat_update") as update,
             ):
                 slack.handle_reject_report_submission(
@@ -639,6 +661,13 @@ class ReportSlackTest(unittest.TestCase):
             self.assertEqual(review["rejection_reason"], "Content is accurate")
             self.assertEqual(update.call_args.kwargs["blocks"], [])
             self.assertIn("Machine title", update.call_args.kwargs["text"])
+            post.assert_called_once()
+            self.assertEqual(post.call_args.kwargs["channel"], "C123")
+            self.assertEqual(post.call_args.kwargs["thread_ts"], "123.456")
+            self.assertEqual(
+                post.call_args.kwargs["blocks"][0]["text"]["text"],
+                "Rejection reason: Content is accurate",
+            )
 
     def test_machine_approval_backs_up_all_content_and_deletes_sql_row(self):
         with tempfile.TemporaryDirectory() as directory:
