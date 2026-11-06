@@ -177,6 +177,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
         updatedLabel.numberOfLines = 0
         updatedLabel.contentMode = .scaleToFill
+        updatedLabel.text = ""
 
         // textfield
         commentTextField.attributedPlaceholder = NSAttributedString(
@@ -323,6 +324,14 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         guard isViewLoaded, view.window != nil else { return false }
         guard let navigationController = navigationController else { return true }
         return navigationController.visibleViewController === self
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath == IndexPath(row: 0, section: 4),
+           (updatedLabel.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return 0
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
     override func viewDidLayoutSubviews() {
@@ -767,7 +776,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                         }
                         if displayString.isEmpty {
                             displayString = results_.isEmpty
-                                ? "No comments yet"
+                                ? ""
                                 : "Comments from blocked contributors are hidden."
                         }
                         completionBlock(displayString)

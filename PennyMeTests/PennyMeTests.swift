@@ -14,6 +14,40 @@ import MapKit
 
 class PennyMeTests: XCTestCase {
 
+    @MainActor
+    func testPresenceConfirmsWithExistingFreshFixAndAfterTemporaryError() async {
+        for temporaryError in [false, true] {
+            let sent = expectation(description: "Live confirmation sent (temporary error: \(temporaryError))")
+            let manager = PresenceTestLocationManager()
+            let fix = CLLocation(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+                                 altitude: 0, horizontalAccuracy: 5, verticalAccuracy: -1,
+                                 timestamp: Date().addingTimeInterval(-2))
+            manager.testLocation = temporaryError ? nil : fix
+            let configuration = URLSessionConfiguration.ephemeral
+            configuration.protocolClasses = [PresenceTestURLProtocol.self]
+            let session = URLSession(configuration: configuration)
+            PresenceTestURLProtocol.onRequest = { request in
+                XCTAssertEqual(request.url?.path, "/machines/42/confirm-presence")
+                sent.fulfill()
+            }
+            let monitor = MachinePresenceMonitor(
+                hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
+                manager: manager, session: session, isActive: { true }
+            )
+            let stopsBeforeConfirming = manager.stops
+            monitor.requestFreshConfirmation(PresenceMachine(id: 42, name: "Test", latitude: 0, longitude: 0))
+            if temporaryError {
+                monitor.locationManager(manager, didFailWithError: CLError(.locationUnknown))
+                // The delegate fix can precede the tap and the manager's cached property can be nil.
+                monitor.locationManager(manager, didUpdateLocations: [fix])
+            }
+            XCTAssertEqual(manager.stops, stopsBeforeConfirming, "Confirming must not restart GPS")
+            await fulfillment(of: [sent], timeout: 3)
+            session.invalidateAndCancel()
+        }
+        PresenceTestURLProtocol.onRequest = nil
+    }
+
     func testPresenceRequiresFreshPreciseLocationWithinTwentyMetres() {
         let now = Date()
         let machine = PresenceMachine(id: 1, name: "Test", latitude: 0, longitude: 0)
@@ -168,4 +202,33 @@ class PennyMeTests: XCTestCase {
         }
     }
 
+}
+
+private final class PresenceTestLocationManager: CLLocationManager {
+    var testLocation: CLLocation?
+    var stops = 0
+    private weak var testDelegate: CLLocationManagerDelegate?
+    override var delegate: CLLocationManagerDelegate? {
+        get { testDelegate }
+        set { testDelegate = newValue }
+    }
+    override var location: CLLocation? { testLocation }
+    override var authorizationStatus: CLAuthorizationStatus { .authorizedWhenInUse }
+    override func startUpdatingLocation() {}
+    override func stopUpdatingLocation() { stops += 1 }
+}
+
+private final class PresenceTestURLProtocol: URLProtocol {
+    static var onRequest: ((URLRequest) -> Void)?
+    override class func canInit(with request: URLRequest) -> Bool { true }
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
+    override func startLoading() {
+        Self.onRequest?(request)
+        client?.urlProtocol(self, didReceive: HTTPURLResponse(url: request.url!, statusCode: 200,
+                                                            httpVersion: nil, headerFields: nil)!,
+                            cacheStoragePolicy: .notAllowed)
+        client?.urlProtocol(self, didLoad: Data("{}".utf8))
+        client?.urlProtocolDidFinishLoading(self)
+    }
+    override func stopLoading() {}
 }

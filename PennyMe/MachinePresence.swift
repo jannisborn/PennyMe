@@ -26,7 +26,9 @@ enum MachinePresencePolicy {
 
 /// Foreground-only checks, independent of the optional background notifications.
 final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
-    private let manager = CLLocationManager()
+    private let manager: CLLocationManager
+    private let session: URLSession
+    private let isActive: () -> Bool
     private let hasNearbyMachine: (CLLocation) -> Bool
     private let isBlocked: (Int) -> Bool
     private var timer: Timer?
@@ -39,9 +41,14 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     private weak var prompt: UIAlertController?
     private var promptedMachine: PresenceMachine?
 
-    init(hasNearbyMachine: @escaping (CLLocation) -> Bool, isBlocked: @escaping (Int) -> Bool) {
+    init(hasNearbyMachine: @escaping (CLLocation) -> Bool, isBlocked: @escaping (Int) -> Bool,
+         manager: CLLocationManager = CLLocationManager(), session: URLSession = .shared,
+         isActive: @escaping () -> Bool = { UIApplication.shared.applicationState == .active }) {
         self.hasNearbyMachine = hasNearbyMachine
         self.isBlocked = isBlocked
+        self.manager = manager
+        self.session = session
+        self.isActive = isActive
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,7 +68,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     }
 
     @objc private func resume() {
-        guard UIApplication.shared.applicationState == .active else { return }
+        guard isActive() else { return }
         let status = manager.authorizationStatus
         guard status == .authorizedWhenInUse || status == .authorizedAlways else { return }
         manager.startUpdatingLocation()
@@ -92,24 +99,26 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        checkLocation()
+        checkLocation(locations.last)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // Core Location continues trying after a temporary inability to locate us.
+        if (error as? CLError)?.code == .locationUnknown { return }
         if let pending = waitingForFix {
             waitingForFix = nil
             showFailure("A fresh, precise location is needed. Please try again while at the machine.", machine: pending.machine)
         }
     }
 
-    private func checkLocation() {
-        guard UIApplication.shared.applicationState == .active else { return }
+    private func checkLocation(_ update: CLLocation? = nil) {
+        guard isActive() else { return }
         if let pending = waitingForFix, Date().timeIntervalSince(pending.after) > 15 {
             waitingForFix = nil
             showFailure("Could not get a fresh location. Please try again while at the machine.", machine: pending.machine)
             return
         }
-        guard let location = manager.location,
+        guard let location = update ?? manager.location,
               MachinePresencePolicy.isPreciseAndFresh(location) else {
             prompt?.dismiss(animated: true)
             prompt = nil
@@ -124,7 +133,6 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
             promptedMachine = nil
         }
         if let pending = waitingForFix {
-            guard location.timestamp >= pending.after else { return }
             waitingForFix = nil
             guard MachinePresencePolicy.canConfirm(pending.machine, at: location), !isBlocked(pending.machine.id) else {
                 showFailure("You need to be within 20 metres of the machine to confirm it.", machine: pending.machine)
@@ -176,12 +184,12 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         presenter.present(alert, animated: true)
     }
 
-    private func requestFreshConfirmation(_ machine: PresenceMachine) {
-        guard UIApplication.shared.applicationState == .active else { return }
+    func requestFreshConfirmation(_ machine: PresenceMachine) {
+        guard isActive() else { return }
         waitingForFix = (machine, Date())
-        // Force a new fix even when the user is standing still at the machine.
-        manager.stopUpdatingLocation()
+        // Reuse an already fresh fix; otherwise wait for continuous updates.
         manager.startUpdatingLocation()
+        checkLocation()
     }
 
     private func confirm(_ machine: PresenceMachine, location: CLLocation) {
@@ -212,10 +220,10 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
             "measured_at": location.timestamp.timeIntervalSince1970
         ])
         let currentGeneration = generation
-        task = URLSession.shared.dataTask(with: request) { [weak self] data, response, _ in
+        task = session.dataTask(with: request) { [weak self] data, response, _ in
             DispatchQueue.main.async {
                 guard let self = self, self.generation == currentGeneration,
-                      UIApplication.shared.applicationState == .active else { return }
+                      self.isActive() else { return }
                 self.task = nil
                 completion(data, (response as? HTTPURLResponse)?.statusCode ?? 0)
             }
@@ -231,7 +239,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         // The current app also supports the AppDelegate lifecycle without scenes.
         let window = windows.first(where: { $0.isKeyWindow })
             ?? (UIApplication.shared.delegate as? AppDelegate)?.window
-        guard UIApplication.shared.applicationState == .active,
+        guard isActive(),
               var controller = window?.rootViewController else { return nil }
         while true {
             if let presented = controller.presentedViewController { controller = presented }
