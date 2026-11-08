@@ -44,7 +44,7 @@ from geoalchemy2.functions import (
 from geoalchemy2.shape import from_shape, to_shape
 from shapely.geometry import Point
 
-from pennyme.utils import ALL_LOCATIONS, PATH_IMAGES
+from pennyme.utils import ALL_LOCATIONS
 from pennyme.database_utils import (
     MACHINE_FIELDS,
     _geojson_feature_to_machine_fields,
@@ -837,26 +837,6 @@ def _copy_pending_change_to_machine(change: "PendingChange", machine: Machine) -
         machine.geom = from_shape(Point(change.longitude, change.latitude), srid=4326)
 
 
-def _delete_pending_change_images(change: "PendingChange") -> None:
-    """Delete the uploaded image(s) for a rejected 'create' pending change.
-
-    New-machine images are saved as ``pending_{change.id}[...].<ext>`` (see
-    ``process_pending_image`` / ``create_machine`` in app.py) before a machine
-    row exists to attach them to, so they must be cleaned up manually here
-    instead of via a foreign-key cascade.
-    """
-    if change.change_type != "create":
-        return
-    for image_path in Path(PATH_IMAGES).glob(f"pending_{change.id}*"):
-        try:
-            image_path.unlink()
-            logger.info(f"Deleted rejected pending image {image_path}")
-        except OSError as exc:
-            logger.warning(
-                f"Could not delete rejected pending image {image_path}: {exc}"
-            )
-
-
 def approve_pending_change(change_id: int) -> ReviewResult:
     """Apply a pending change to the machines table and mark it approved.
 
@@ -934,8 +914,8 @@ def approve_pending_change(change_id: int) -> ReviewResult:
 def reject_pending_change(change_id: int, reason: Optional[str] = None) -> ReviewResult:
     """Mark a pending change as rejected without touching the machines table.
 
-    For 'create' changes, also deletes the pending machine image(s) from disk
-    since they would otherwise never be referenced or cleaned up.
+    Pending machine images are retained so the rejected submission remains
+    visible in its Slack review thread.
 
     ``reason`` is optional and stored with the rejected row. If the change was
     already reviewed, nothing is modified and
@@ -968,7 +948,6 @@ def reject_pending_change(change_id: int, reason: Optional[str] = None) -> Revie
         change.reviewed_at = datetime.utcnow()
         change.rejection_reason = (reason.strip() if reason else None) or None
         session.commit()
-        _delete_pending_change_images(change)
         return ReviewResult(
             applied=True,
             status="rejected",
