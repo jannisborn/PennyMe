@@ -313,13 +313,11 @@ struct MachineChangedForm: View {
                 Color.black.opacity(0.3).ignoresSafeArea()
                 VStack(alignment: .leading, spacing: 14) {
                     Text("Explain the status change").font(.headline)
-                    Text("You are changing the status of this machine from \(originalMachineStatus.replacingOccurrences(of: "-", with: " ")) to \(proposedMachineStatus.replacingOccurrences(of: "-", with: " ")). Please explain the reason for this:")
+                    Text("You are changing the status of this machine from \(originalMachineStatus.replacingOccurrences(of: "-", with: " ")) to \(proposedMachineStatus.replacingOccurrences(of: "-", with: " ")). Please explain what happened in detail.")
                     TextField("Reason", text: $statusChangeReason)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .accessibilityIdentifier("statusChangeReason")
                         .onChange(of: statusChangeReason) { _ in statusReasonError = nil }
-                    Text("10–2,000 characters · \(statusChangeReason.trimmingCharacters(in: .whitespacesAndNewlines).count) entered")
-                        .font(.footnote).foregroundColor(.secondary)
                     if let error = statusReasonError {
                         Text(error).font(.footnote).foregroundColor(.red)
                     }

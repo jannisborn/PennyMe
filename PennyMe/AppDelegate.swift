@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         return true
     }
-
+it
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         guard url.scheme?.lowercased() == "pennyme" else { return false }
         NotificationCenter.default.post(name: .tripImportRequested, object: nil)
