@@ -1020,13 +1020,12 @@ def message_slack_pending_change(
     response = message_slack_raw(
         message_text, channel="#pennyme_approvals", blocks=blocks
     )
-    if status_change_reason:
-        message_slack_raw(
-            message_text,
-            channel=str(response.get("channel", "#pennyme_approvals")),
-            thread_ts=str(response["ts"]),
-            blocks=detail_blocks,
-        )
+    message_slack_raw(
+        message_text,
+        channel=str(response.get("channel", "#pennyme_approvals")),
+        thread_ts=str(response["ts"]),
+        blocks=detail_blocks,
+    )
 
     image_machines = []
     if machine_id is not None and nearby_machines is not None:

@@ -256,6 +256,7 @@ class ReportSlackTest(unittest.TestCase):
                     nearby_machines=neighbors,
                 )
 
+                self.assertEqual(post.call_count, 4)
                 root_text = post.call_args_list[0].args[0]
                 self.assertIn(
                     "<https://locations.pennycollector.com/Details.aspx?id=7|PennyCollector>",
