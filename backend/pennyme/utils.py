@@ -65,8 +65,8 @@ def find_machine_name_conflict(
     """Find an exact or fuzzy title conflict among nearby machines.
 
     Exact matches compare lowercased, stripped names and take priority over fuzzy
-    matches. This lets callers present a known duplicate differently from a title
-    that merely needs to be made more distinct.
+    matches. This lets callers block a known duplicate while allowing the user
+    to confirm a similar name.
 
     Args:
         title: The proposed machine name.

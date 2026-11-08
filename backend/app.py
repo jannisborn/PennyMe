@@ -599,11 +599,11 @@ def create_machine() -> Tuple[Response, int]:
             ),
             409,
         )
-    if conflict_kind == "similar":
+    if conflict_kind == "similar" and request.args.get("ignore_nearby") != "true":
         return (
             jsonify(
                 {
-                    "error": f"A similarly named machine '{conflict_machine['name']}' already exists. Pick a more distinct name.",
+                    "error": f"A similarly named machine '{conflict_machine['name']}' already exists. Do you still want to submit this machine?",
                     "similar_machine": {
                         **conflict_machine,
                         "title_match_score": score,

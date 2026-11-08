@@ -346,8 +346,14 @@ struct NewMachineFormView: View {
             } else if let similarMachine = similarMachine {
                 warningBackdrop
                 warningBox {
-                    Text("A similarly named machine '\(similarMachine.name)' already exists. Pick a more distinct name.")
+                    Text("A similarly named machine '\(similarMachine.name)' already exists. Do you still want to submit this machine?")
                         .font(.headline)
+                    Button(action: {
+                        self.similarMachine = nil
+                        submitRequest(ignoreNearby: true)
+                    }) {
+                        secondaryButtonLabel("Submit anyway")
+                    }
                     Button(action: {
                         self.similarMachine = nil
                     }) {
@@ -470,7 +476,7 @@ struct NewMachineFormView: View {
         }
     }
 
-    // Ask for a more distinct title while preserving the form's current input.
+    // Let the user confirm a similar name or change it, preserving the form input.
     private func showSimilarMachine(machine: NearbyMachine) {
         DispatchQueue.main.async {
             duplicateMachine = nil
