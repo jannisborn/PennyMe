@@ -39,6 +39,7 @@ from pennyme.moderation import (
     parse_report_request,
     text_block_reason,
     validate_report,
+    validate_status_change_reason,
 )
 from pennyme.presence import presence_api
 from pennyme.slack import (
@@ -752,6 +753,8 @@ def change_machine() -> Tuple[Response, int]:
     address = str(request.args.get("address")).strip()
     area = str(request.args.get("area")).strip()
     status = str(request.args.get("status")).strip()
+    if status not in {"available", "out-of-order", "retired"}:
+        return jsonify(error="Unknown machine status"), 422
     latitude = float(request.args.get("lat_coord"))
     longitude = float(request.args.get("lon_coord"))
     if reason := text_block_reason(title):
@@ -773,6 +776,19 @@ def change_machine() -> Tuple[Response, int]:
 
     # Case 1: status was changed:
     old_status = existing_machine_infos["properties"]["machine_status"]
+    status_change_reason = ""
+    if status != old_status:
+        payload = request.get_json(silent=True)
+        explanation = (
+            payload.get("status_change_reason") if isinstance(payload, dict) else None
+        )
+        if error := validate_status_change_reason(explanation):
+            return jsonify(
+                error=error,
+                current_status=old_status,
+                requires_status_change_reason=True,
+            ), 422
+        status_change_reason = explanation.strip()
     msg = _diff_field(
         changed_fields, msg, "Status", "machine_status", old_status, status
     )
@@ -870,7 +886,10 @@ def change_machine() -> Tuple[Response, int]:
     changed_fields["last_updated"] = str(datetime.today()).split(" ")[0]
 
     url = existing_machine_infos["properties"]["external_url"]
-    change_summary = msg.lstrip(":\n").strip()
+    diff_summary = msg.lstrip(":\n").strip()
+    change_summary = diff_summary
+    if status_change_reason:
+        change_summary += f"\nStatus change reason: {status_change_reason}"
     pending_id = insert_pending_change_full(
         machine_id=machine_id,
         change_type="update",
@@ -883,7 +902,8 @@ def change_machine() -> Tuple[Response, int]:
         change_type="update",
         title=title,
         area=area,
-        change_summary=f"at {url}\n{change_summary}",
+        change_summary=f"at {url}\n{diff_summary}",
+        status_change_reason=status_change_reason or None,
         machine_id=machine_id,
         latitude=latitude,
         longitude=longitude,

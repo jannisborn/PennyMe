@@ -1,4 +1,6 @@
 import CoreLocation
+import MapKit
+import SwiftUI
 import UIKit
 
 struct PresenceMachine: Decodable {
@@ -22,6 +24,22 @@ enum MachinePresencePolicy {
     static func canConfirm(_ machine: PresenceMachine, at location: CLLocation, now: Date = Date()) -> Bool {
         isPreciseAndFresh(location, now: now) && location.distance(from: machine.location) <= 20
     }
+
+    static func rediscoveredMachine(from data: Data?) -> Artwork? {
+        guard let data = data,
+              let decoded = try? JSONSerialization.jsonObject(with: data),
+              let response = decoded as? [String: Any],
+              let machine = response["machine"] as? [String: Any],
+              let properties = machine["properties"] as? [String: Any],
+              let status = properties["machine_status"] as? String,
+              ["out-of-order", "retired"].contains(status),
+              properties["id"] is Int,
+              ["name", "address", "area", "external_url", "last_updated"].allSatisfy({ properties[$0] is String }),
+              let encoded = try? JSONSerialization.data(withJSONObject: machine),
+              let objects = try? MKGeoJSONDecoder().decode(encoded),
+              let feature = objects.first as? MKGeoJSONFeature else { return nil }
+        return Artwork(feature: feature)
+    }
 }
 
 /// Foreground-only checks, independent of the optional background notifications.
@@ -40,6 +58,8 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     private var waitingForFix: (machine: PresenceMachine, after: Date)?
     private weak var prompt: UIAlertController?
     private var promptedMachine: PresenceMachine?
+    private var pendingRediscovery: Artwork?
+    private var pendingChangeEditor: Artwork?
 
     init(hasNearbyMachine: @escaping (CLLocation) -> Bool, isBlocked: @escaping (Int) -> Bool,
          manager: CLLocationManager = CLLocationManager(), session: URLSession = .shared,
@@ -113,6 +133,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
 
     private func checkLocation(_ update: CLLocation? = nil) {
         guard isActive() else { return }
+        if presentPendingRediscovery() { return }
         if let pending = waitingForFix, Date().timeIntervalSince(pending.after) > 15 {
             waitingForFix = nil
             showFailure("Could not get a fresh location. Please try again while at the machine.", machine: pending.machine)
@@ -196,7 +217,12 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         send(path: "machines/\(machine.id)/confirm-presence", location: location) { [weak self] data, status in
             guard let self = self else { return }
             if status == 200 {
-                self.showMessage(title: "Thank you!", message: "Your sighting of \(machine.name) was saved.")
+                if let rediscovered = MachinePresencePolicy.rediscoveredMachine(from: data) {
+                    self.pendingRediscovery = rediscovered
+                    self.presentPendingRediscovery()
+                } else {
+                    self.showMessage(title: "Thank you!", message: "Your sighting of \(machine.name) was saved.")
+                }
             } else {
                 let response = data.flatMap { try? JSONSerialization.jsonObject(with: $0) } as? [String: Any]
                 let message = response?["error"] as? String
@@ -204,6 +230,34 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
                 self.showFailure(message, machine: machine)
             }
         }
+    }
+
+    /// Wait for other alerts to close before handing off to the regular change form.
+    @discardableResult
+    private func presentPendingRediscovery() -> Bool {
+        guard pendingRediscovery != nil || pendingChangeEditor != nil else { return false }
+        guard let presenter = availablePresenter() else { return true }
+        if let machine = pendingChangeEditor {
+            pendingChangeEditor = nil
+            let form = MachineChangedForm(pinData: machine, suggestedStatus: "available")
+            presenter.present(UIHostingController(rootView: form), animated: true)
+        } else if let machine = pendingRediscovery {
+            pendingRediscovery = nil
+            let status = machine.machineStatus.replacingOccurrences(of: "-", with: " ")
+            let alert = UIAlertController(
+                title: "Great, you found it!",
+                message: "This machine was previously marked as \(status). Let's submit a status change so it can be shown as active again.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.pendingChangeEditor = machine
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self?.presentPendingRediscovery()
+                }
+            })
+            presenter.present(alert, animated: true)
+        }
+        return true
     }
 
     private func send(path: String, location: CLLocation, completion: @escaping (Data?, Int) -> Void) {
@@ -248,6 +302,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
             else { break }
         }
         guard !(controller is UIAlertController), !(controller is UIImagePickerController),
+              !(controller is UIHostingController<MachineChangedForm>),
               !controller.isBeingPresented, !controller.isBeingDismissed,
               controller.viewIfLoaded?.window != nil else { return nil }
         return controller

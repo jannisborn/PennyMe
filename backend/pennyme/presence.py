@@ -8,6 +8,7 @@ from flask import Blueprint, jsonify, request
 from psycopg2.extras import RealDictCursor
 
 from pennyme.database import get_connection
+from pennyme.database_utils import _row_to_geojson_feature
 
 presence_api = Blueprint("presence", __name__)
 
@@ -84,7 +85,9 @@ def confirm_presence(machine_id):
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 20) "
                 "AND CURRENT_TIMESTAMP - %s::timestamptz "
                 "BETWEEN INTERVAL '-5 seconds' AND INTERVAL '15 seconds' "
-                "RETURNING last_seen",
+                "RETURNING last_seen, id, name, area, address, machine_status, "
+                "num_coins, paywall, external_url, internal_url, last_updated, "
+                "ST_X(geom) AS longitude, ST_Y(geom) AS latitude",
                 (machine_id, longitude, latitude, measured_at),
             )
             row = cursor.fetchone()
@@ -92,4 +95,7 @@ def confirm_presence(machine_id):
         return jsonify(
             error="The machine was recently confirmed or your location is no longer valid"
         ), 409
-    return jsonify(last_seen=row["last_seen"].isoformat())
+    return jsonify(
+        last_seen=row["last_seen"].isoformat(),
+        machine=_row_to_geojson_feature(dict(row)),
+    )

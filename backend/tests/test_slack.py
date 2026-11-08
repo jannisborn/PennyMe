@@ -54,6 +54,43 @@ class ProcessUploadedImageTest(unittest.TestCase):
 
 
 class ReportSlackTest(unittest.TestCase):
+    def test_status_change_reason_is_plain_text_and_preserved_with_details_in_thread(
+        self,
+    ):
+        reason = "I used it today. <!channel> & <@U123>"
+        with patch.object(
+            slack,
+            "message_slack_raw",
+            return_value={"channel": "C123", "ts": "root-ts"},
+        ) as post:
+            slack.message_slack_pending_change(
+                change_id=12,
+                change_type="update",
+                title="Zoo",
+                area="Germany",
+                change_summary="Status from: retired to: available",
+                status_change_reason=reason,
+            )
+        self.assertEqual(post.call_count, 2)
+        root, thread = post.call_args_list
+        self.assertNotIn("<!channel>", root.args[0])
+        self.assertIn("&lt;!channel&gt;", root.args[0])
+        for call in (root, thread):
+            reason_blocks = [
+                block
+                for block in call.kwargs["blocks"]
+                if block.get("text", {}).get("type") == "plain_text"
+            ]
+            self.assertEqual(
+                reason_blocks[0]["text"]["text"], f"Status change reason:\n{reason}"
+            )
+            self.assertIn("Status from: retired to: available", call.args[0])
+        self.assertEqual(thread.kwargs["channel"], "C123")
+        self.assertEqual(thread.kwargs["thread_ts"], "root-ts")
+        self.assertFalse(
+            any(block["type"] == "actions" for block in thread.kwargs["blocks"])
+        )
+
     def test_approved_new_machine_reassigns_attribution_to_final_id(self):
         body = {
             "actions": [{"value": "7"}],

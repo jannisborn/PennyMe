@@ -158,6 +158,10 @@ struct MachineChangedForm: View {
     @State private var paywall: Bool = false
     @State private var numCoins: Int = 4
     @State private var selectedSegment: Int = 0
+    @State private var originalMachineStatus: String
+    @State private var statusChangeReason = ""
+    @State private var showStatusChangeReason = false
+    @State private var statusReasonError: String?
     @State private var lonLat: String = ""
     
     // to select the location on the map
@@ -174,8 +178,9 @@ struct MachineChangedForm: View {
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
 
-    init(pinData: Artwork) {
+    init(pinData: Artwork, suggestedStatus: String? = nil) {
         pinDataStored = pinData
+        _originalMachineStatus = State(initialValue: pinData.machineStatus)
         _name = State(initialValue: pinData.title!)
         coords = pinData.coordinate
         _selectedLocation = State(initialValue: coords)
@@ -187,7 +192,7 @@ struct MachineChangedForm: View {
         let lonLatConverted = "\(coords.latitude)° N, \(coords.longitude)° O".replacingOccurrences(of: ".", with: ",")
         _lonLat = State(initialValue: lonLatConverted)
 
-        switch pinData.machineStatus {
+        switch suggestedStatus ?? pinData.machineStatus {
             case "available":
                 _selectedSegment = State(initialValue: 0)
             case "out-of-order":
@@ -290,13 +295,65 @@ struct MachineChangedForm: View {
         .padding()
         .navigationBarTitle("Suggest machine change")
         }
-        .padding(.bottom, keyboardHeight)
+        .overlay(statusChangeReasonPopup)
+        .padding(.bottom, showStatusChangeReason ? 0 : keyboardHeight)
+    }
+
+    var proposedMachineStatus: String { statusDict[selectedSegment] ?? "available" }
+    var requiresStatusExplanation: Bool { proposedMachineStatus != originalMachineStatus }
+
+    static func isValidStatusReason(_ reason: String) -> Bool {
+        (10...2000).contains(reason.trimmingCharacters(in: .whitespacesAndNewlines).count)
+    }
+
+    @ViewBuilder
+    private var statusChangeReasonPopup: some View {
+        if showStatusChangeReason {
+            ZStack {
+                Color.black.opacity(0.3).ignoresSafeArea()
+                VStack(alignment: .leading, spacing: 14) {
+                    Text("Explain the status change").font(.headline)
+                    Text("You are changing the status of this machine from \(originalMachineStatus.replacingOccurrences(of: "-", with: " ")) to \(proposedMachineStatus.replacingOccurrences(of: "-", with: " ")). Please explain the reason for this:")
+                    TextField("Reason", text: $statusChangeReason)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .accessibilityIdentifier("statusChangeReason")
+                        .onChange(of: statusChangeReason) { _ in statusReasonError = nil }
+                    Text("10–2,000 characters · \(statusChangeReason.trimmingCharacters(in: .whitespacesAndNewlines).count) entered")
+                        .font(.footnote).foregroundColor(.secondary)
+                    if let error = statusReasonError {
+                        Text(error).font(.footnote).foregroundColor(.red)
+                    }
+                    HStack(spacing: 12) {
+                        Button("Cancel") { showStatusChangeReason = false }
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                        Button("Submit request") {
+                            showStatusChangeReason = false
+                            submitRequest(statusReasonConfirmed: true)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                        .background(Color.blue.opacity(Self.isValidStatusReason(statusChangeReason) ? 1 : 0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .disabled(!Self.isValidStatusReason(statusChangeReason))
+                        .accessibilityIdentifier("submitStatusChange")
+                    }
+                }
+                .padding()
+                .frame(maxWidth: 360)
+                .background(Color(UIColor.systemBackground))
+                .cornerRadius(10)
+                .shadow(radius: 8)
+                .padding()
+            }
+        }
     }
     
     private func finishLoading(message: String) {
-        displayResponse = message
-        showAlert = true
-        isLoading = false
+        DispatchQueue.main.async {
+            displayResponse = message
+            showAlert = true
+            isLoading = false
+        }
     }
     
     private func goToMaps() {
@@ -304,7 +361,7 @@ struct MachineChangedForm: View {
     }
     
     // Function to handle the submission of the request
-    private func submitRequest() {
+    private func submitRequest(statusReasonConfirmed: Bool = false) {
         isLoading = true
         if let reason = TextModeration.blockReason(name) {
             finishLoading(message: reason)
@@ -320,7 +377,21 @@ struct MachineChangedForm: View {
         let lat_coord = selectedLocation.latitude
         let lon_coord = selectedLocation.longitude
 
-        let statusNew = statusDict[selectedSegment]!
+        let statusNew = proposedMachineStatus
+        if requiresStatusExplanation {
+            if !statusReasonConfirmed || !Self.isValidStatusReason(statusChangeReason) {
+                isLoading = false
+                statusReasonError = nil
+                showStatusChangeReason = true
+                return
+            }
+            if let reason = TextModeration.blockReason(statusChangeReason) {
+                isLoading = false
+                statusReasonError = reason
+                showStatusChangeReason = true
+                return
+            }
+        }
         
         // check if anything was changed at all, otherwise abort
         if (name == pinDataStored.title!) &&
@@ -330,7 +401,7 @@ struct MachineChangedForm: View {
             (numCoins == pinDataStored.numCoins) &&
             (lat_coord == pinDataStored.coordinate.latitude) &&
             (lon_coord == pinDataStored.coordinate.longitude) &&
-            (statusNew == pinDataStored.machineStatus) {
+            (statusNew == originalMachineStatus) {
             finishLoading(message: "Nothing was changed - not submitting.")
             return
         }
@@ -354,6 +425,10 @@ struct MachineChangedForm: View {
 
         request.httpMethod = "POST"
         request.addAnonymousUserHeader()
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: [
+            "status_change_reason": statusChangeReason.trimmingCharacters(in: .whitespacesAndNewlines)
+        ])
         
         // Create a URLSessionDataTask to send the request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -378,22 +453,22 @@ struct MachineChangedForm: View {
                     isLoading = false
                 }
             }
-            else {
-                if let responseData = data {
-                    do {
-                        // Parse the JSON response
-                        if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-                            // Handle the JSON data here
-                            if let answerString = json["error"] as? String {
-                                finishLoading(message: answerString)
-                                return
-                            }
-                        }
-                    } catch {
-                        print("JSON parsing error: \(error)")
-                        finishLoading(message: "Something went wrong. Please check your internet connection and try again")
+            else if let responseData = data,
+                    let decoded = try? JSONSerialization.jsonObject(with: responseData),
+                    let json = decoded as? [String: Any] {
+                if json["requires_status_change_reason"] as? Bool == true,
+                   let currentStatus = json["current_status"] as? String {
+                    DispatchQueue.main.async {
+                        originalMachineStatus = currentStatus
+                        statusReasonError = json["error"] as? String
+                        isLoading = false
+                        showStatusChangeReason = true
                     }
+                    return
                 }
+                finishLoading(message: json["error"] as? String ?? "The change request could not be submitted. Please try again.")
+            } else {
+                finishLoading(message: "The change request could not be submitted. Please try again.")
             }
         }
         task.resume()

@@ -15,6 +15,43 @@ import MapKit
 class PennyMeTests: XCTestCase {
 
     @MainActor
+    func testRediscoveryUsesServerStatusAndOnlyPresetsTheProposedStatus() throws {
+        for status in ["available", "out-of-order", "retired"] {
+            let feature: [String: Any] = [
+                "type": "Feature",
+                "geometry": ["type": "Point", "coordinates": [8.54, 47.37]],
+                "properties": ["id": 42, "name": "Current server title", "address": "Current address",
+                               "area": "Germany", "external_url": "null", "last_updated": "2026-11-01",
+                               "machine_status": status, "num_coins": 8, "paywall": true]
+            ]
+            let data = try JSONSerialization.data(withJSONObject: ["machine": feature])
+            let rediscovered = MachinePresencePolicy.rediscoveredMachine(from: data)
+            XCTAssertEqual(rediscovered != nil, status != "available")
+            let encoded = try JSONSerialization.data(withJSONObject: feature)
+            let geoFeature = try XCTUnwrap(MKGeoJSONDecoder().decode(encoded).first as? MKGeoJSONFeature)
+            let machine = try XCTUnwrap(Artwork(feature: geoFeature))
+            let regular = MachineChangedForm(pinData: machine)
+            XCTAssertEqual(regular.proposedMachineStatus, status)
+            XCTAssertFalse(regular.requiresStatusExplanation)
+            let suggested = MachineChangedForm(pinData: machine, suggestedStatus: "available")
+            XCTAssertEqual(suggested.proposedMachineStatus, "available")
+            XCTAssertEqual(suggested.requiresStatusExplanation, status != "available")
+            XCTAssertEqual(machine.machineStatus, status)
+            XCTAssertEqual(suggested.pinDataStored.address, "Current address")
+            XCTAssertEqual(suggested.pinDataStored.numCoins, 8)
+        }
+        XCTAssertNil(MachinePresencePolicy.rediscoveredMachine(from: Data("{}".utf8)))
+        XCTAssertNil(MachinePresencePolicy.rediscoveredMachine(from: Data("{\"machine\":{\"properties\":{\"machine_status\":\"retired\"}}}".utf8)))
+    }
+
+    func testStatusChangeReasonRequiresTenTrimmedCharacters() {
+        XCTAssertFalse(MachineChangedForm.isValidStatusReason("          "))
+        XCTAssertFalse(MachineChangedForm.isValidStatusReason("123456789"))
+        XCTAssertTrue(MachineChangedForm.isValidStatusReason(" 1234567890 "))
+        XCTAssertFalse(MachineChangedForm.isValidStatusReason(String(repeating: "x", count: 2001)))
+    }
+
+    @MainActor
     func testPresenceConfirmsWithExistingFreshFixAndAfterTemporaryError() async {
         for temporaryError in [false, true] {
             let sent = expectation(description: "Live confirmation sent (temporary error: \(temporaryError))")

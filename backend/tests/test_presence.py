@@ -96,7 +96,24 @@ class PresenceTests(unittest.TestCase):
     def test_confirmation_is_one_conditional_update_of_only_last_seen(self):
         connection = MagicMock()
         cursor = connection.cursor.return_value.__enter__.return_value
-        cursor.fetchone.side_effect = [{"last_seen": self.now}, None]
+        cursor.fetchone.side_effect = [
+            {
+                "last_seen": self.now,
+                "id": 42,
+                "name": "Zoo",
+                "address": "Main Street",
+                "area": "Germany",
+                "machine_status": "retired",
+                "num_coins": 4,
+                "paywall": False,
+                "external_url": None,
+                "internal_url": None,
+                "last_updated": date(2026, 10, 1),
+                "latitude": 47.37,
+                "longitude": 8.54,
+            },
+            None,
+        ]
         with patch("pennyme.presence.get_connection", return_value=connection):
             first = self.client.post(
                 "/machines/42/confirm-presence", json=self.fix, headers=self.headers
@@ -106,6 +123,10 @@ class PresenceTests(unittest.TestCase):
             )
         self.assertEqual(first.status_code, 200)
         self.assertEqual(first.json["last_seen"], self.now.isoformat())
+        self.assertEqual(
+            first.json["machine"]["properties"]["machine_status"], "retired"
+        )
+        self.assertEqual(first.json["machine"]["properties"]["address"], "Main Street")
         self.assertEqual(repeated.status_code, 409)
         for call in cursor.execute.call_args_list:
             sql, params = call.args
@@ -117,8 +138,9 @@ class PresenceTests(unittest.TestCase):
             self.assertIn("last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days'", sql)
             self.assertIn("::geography, 20)", sql)
             self.assertIn("INTERVAL '15 seconds'", sql)
-            self.assertNotIn("last_updated", sql)
-            self.assertNotIn("machine_status", sql)
+            assignments = sql.split(" WHERE", 1)[0]
+            self.assertNotIn("last_updated", assignments)
+            self.assertNotIn("machine_status", assignments)
             self.assertEqual(params[:3], (42, 8.54, 47.37))
             self.assertEqual(params[3].tzinfo, timezone.utc)
 

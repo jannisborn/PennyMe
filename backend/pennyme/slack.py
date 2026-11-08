@@ -2,6 +2,7 @@ import json
 import os
 import re
 from filecmp import cmp
+from html import escape
 from shutil import copy2
 from pathlib import Path
 from threading import Thread
@@ -880,6 +881,7 @@ def message_slack_pending_change(
     movement_distance_m: Optional[float] = None,
     nearby_radius_m: Optional[float] = None,
     nearby_machines: Optional[List[NearbyMachine]] = None,
+    status_change_reason: Optional[str] = None,
 ) -> None:
     """Post a pending change notification to Slack with Approve/Reject buttons.
 
@@ -899,6 +901,7 @@ def message_slack_pending_change(
         nearby_radius_m: Radius used to find neighbors for a moved machine.
         nearby_machines: Neighbor summaries ordered by geodesic distance. Their
             PennyCollector links and machine photos are included in Slack.
+        status_change_reason: Validated explanation, also preserved in the review thread.
 
     Raises:
         SlackApiError: If the Slack API call fails.
@@ -961,7 +964,14 @@ def message_slack_pending_change(
 
     message_text = f"{header}\n*{title}* ({area})\n" + "\n".join(summary_lines)
 
-    blocks = slack_markdown_sections(message_text) + [
+    detail_blocks = slack_markdown_sections(message_text)
+    if status_change_reason:
+        reason_text = f"Status change reason:\n{status_change_reason}"
+        detail_blocks.append(
+            {"type": "section", "text": {"type": "plain_text", "text": reason_text}}
+        )
+        message_text += "\n" + escape(reason_text, quote=False)
+    blocks = detail_blocks + [
         _approval_actions(
             str(change_id),
             f"pending_{change_id}",
@@ -972,6 +982,13 @@ def message_slack_pending_change(
     response = message_slack_raw(
         message_text, channel="#pennyme_approvals", blocks=blocks
     )
+    if status_change_reason:
+        message_slack_raw(
+            message_text,
+            channel=str(response.get("channel", "#pennyme_approvals")),
+            thread_ts=str(response["ts"]),
+            blocks=detail_blocks,
+        )
 
     image_machines = []
     if machine_id is not None and nearby_machines is not None:
