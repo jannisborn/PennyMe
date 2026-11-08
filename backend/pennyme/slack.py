@@ -3,8 +3,8 @@ import os
 import re
 from filecmp import cmp
 from html import escape
-from shutil import copy2
 from pathlib import Path
+from shutil import copy2
 from threading import Thread
 from typing import Any, Dict, List, Literal, Optional, Tuple
 
@@ -19,8 +19,8 @@ from slack_sdk.errors import SlackApiError
 
 from pennyme.database import (
     NearbyMachine,
-    archive_and_delete_machine,
     approve_pending_change,
+    archive_and_delete_machine,
     find_machine_in_database,
     get_machine_display_names,
     reject_pending_change,
@@ -41,7 +41,7 @@ MACHINE_NAMES = {
 }
 
 # Maps pending_changes.id to its Slack image messages, so submitted and nearby
-# machine photos can be deleted once the change is approved/rejected. In-memory only:
+# machine photos can be deleted once the change is approved. In-memory only:
 # lost on restart, in which case deletion is silently skipped.
 _PENDING_IMAGE_MESSAGES: Dict[int, List[Tuple[str, str]]] = {}
 _MODERATION = ModerationStore(
@@ -111,6 +111,24 @@ def _rejection_reason(view: Dict[str, Any]) -> str:
         .get("reason", {})
         .get("value", "")
     )
+
+
+def _post_rejection_reason(
+    channel: Optional[str], thread_ts: Optional[str], reason: Optional[str]
+) -> None:
+    """Keep the reviewer's explanation in the original review thread."""
+    if not channel or not thread_ts:
+        return
+    text = f"Rejection reason: {(reason or '').strip() or '(no reason provided)'}"
+    try:
+        message_slack_raw(
+            text,
+            channel=channel,
+            thread_ts=thread_ts,
+            blocks=[{"type": "section", "text": {"type": "plain_text", "text": text}}],
+        )
+    except SlackApiError:
+        logger.exception("Could not post rejection reason to review thread")
 
 
 def _open_rejection_modal(
@@ -278,6 +296,7 @@ def image_slack(
     img_slack_text: str = "Image uploaded for machine",
     filetype: Optional[str] = None,
     pending: bool = False,
+    thread_ts: Optional[str] = None,
 ) -> None:
     """Post an image to Slack.
 
@@ -289,6 +308,7 @@ def image_slack(
         filetype: Explicit uploaded image file extension, when known.
         pending: When True, the image is a pending submission — uses pending_{machine_id}
             as the filename and posts to #pennyme_approvals.
+        thread_ts: Original pending-change message to attach the image to.
 
     Returns:
         None.
@@ -321,6 +341,7 @@ def image_slack(
             channel=channel,
             text=text,
             username="PennyMe",
+            **({"thread_ts": thread_ts} if thread_ts else {}),
             blocks=[
                 {
                     "type": "image",
@@ -667,6 +688,12 @@ def handle_report_review(
             _MODERATION.record_review(
                 report_id, decision, reviewer_id, rejection_reason
             )
+            if decision == "rejected":
+                _post_rejection_reason(
+                    body.get("channel", {}).get("id"),
+                    body.get("message", {}).get("ts"),
+                    rejection_reason,
+                )
             icon = ":white_check_mark:" if decision == "approved" else ":x:"
             result_text = (
                 f"{icon} {title_prefix}UGC report {report_id} *{decision}* "
@@ -741,7 +768,12 @@ def handle_reject_report_submission(
             logger.exception("Could not update rejected UGC report message")
 
     handle_report_review(
-        {"actions": [{"value": report_id}], "user": body.get("user", {})},
+        {
+            "actions": [{"value": report_id}],
+            "user": body.get("user", {}),
+            "channel": {"id": channel_id},
+            "message": {"ts": message_ts},
+        },
         respond,
         "rejected",
         _rejection_reason(view),
@@ -824,14 +856,17 @@ def handle_reject_change_submission(
         if result.applied:
             result_text = (
                 f":x: {title_prefix}Pending change #{change_id} *rejected* "
-                f"by {user_name}."
+                f"by {user_name}. Details remain in this thread."
             )
+            _post_rejection_reason(
+                metadata.get("channel_id"), metadata.get("message_ts"), reason
+            )
+            _PENDING_IMAGE_MESSAGES.pop(change_id, None)
         else:
             result_text = (
                 f":information_source: {title_prefix}Pending change #{change_id} "
                 f"was already handled (status: {result.status})."
             )
-    delete_pending_image_messages(change_id)
     if metadata.get("channel_id") and metadata.get("message_ts"):
         try:
             CLIENT.chat_update(
@@ -905,6 +940,9 @@ def message_slack_pending_change(
 
     Raises:
         SlackApiError: If the Slack API call fails.
+
+    Returns:
+        Root message timestamp, used to thread the submitted image.
     """
     if change_type == "create":
         header = f":new: *New machine proposed (pending #{change_id})*"
@@ -1026,6 +1064,7 @@ def message_slack_pending_change(
         _PENDING_IMAGE_MESSAGES.setdefault(change_id, []).append(
             (str(image_response["channel"]), str(image_response["ts"]))
         )
+    return str(response["ts"])
 
 
 def message_slack_location_differ_summary(
