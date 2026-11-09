@@ -75,14 +75,27 @@ class PresenceTests(unittest.TestCase):
         connection = MagicMock()
         cursor = connection.cursor.return_value.__enter__.return_value
         cursor.fetchall.return_value = [
-            {"id": 42, "name": "Zoo", "latitude": 47.37, "longitude": 8.54}
+            {
+                "id": machine_id,
+                "name": f"Zoo {machine_id}",
+                "latitude": 47.37,
+                "longitude": 8.54,
+                "num_coins": 4,
+                "needs_confirmation": eligible,
+            }
+            for machine_id, eligible in [(42, True), (43, False), (44, True)]
         ]
         with patch("pennyme.presence.get_connection", return_value=connection):
             response = self.client.post(
                 "/machines/nearby-confirmations", json=self.fix, headers=self.headers
             )
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json["machines"][0]["id"], 42)
+        self.assertEqual([row["id"] for row in response.json["machines"]], [42, 44])
+        self.assertEqual(
+            [row["id"] for row in response.json["nearby_machines"]], [42, 43, 44]
+        )
+        self.assertEqual(response.json["machines"][0]["num_coins"], 4)
+        self.assertNotIn("needs_confirmation", response.json["machines"][0])
         sql, params = cursor.execute.call_args.args
         self.assertIn(
             "last_seen IS NULL OR last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days'",
@@ -90,7 +103,11 @@ class PresenceTests(unittest.TestCase):
         )
         self.assertIn("ST_DWithin(geom::geography", sql)
         self.assertIn("::geography, 20)", sql)
-        self.assertEqual(params, (8.54, 47.37, 8.54, 47.37))
+        self.assertIn("::geography, 120)", sql)
+        # Recently confirmed and inactive neighbors must remain visible as context.
+        self.assertNotIn("last_seen", sql.split("FROM machines", 1)[1])
+        self.assertNotIn("machine_status", sql)
+        self.assertEqual(params, (8.54, 47.37, 8.54, 47.37, 8.54, 47.37))
         connection.close.assert_called_once()
 
     def test_confirmation_is_one_conditional_update_of_only_last_seen(self):

@@ -56,16 +56,27 @@ def nearby_confirmations():
     with closing(get_connection()) as connection, connection:
         with connection.cursor(cursor_factory=RealDictCursor) as cursor:
             cursor.execute(
-                "SELECT id, name, ST_Y(geom) AS latitude, ST_X(geom) AS longitude "
-                "FROM machines "
-                "WHERE (last_seen IS NULL OR last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days') "
+                "SELECT id, name, num_coins, ST_Y(geom) AS latitude, ST_X(geom) AS longitude, "
+                "((last_seen IS NULL OR last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days') "
                 "AND ST_DWithin(geom::geography, "
-                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 20) "
+                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 20)) AS needs_confirmation "
+                "FROM machines "
+                # A target can be 20 m away; include its entire 100 m neighborhood.
+                "WHERE ST_DWithin(geom::geography, "
+                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 120) "
                 "ORDER BY ST_Distance(geom::geography, "
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography), id",
-                (longitude, latitude, longitude, latitude),
+                (longitude, latitude, longitude, latitude, longitude, latitude),
             )
-            return jsonify(machines=[dict(row) for row in cursor.fetchall()])
+            machines, nearby_machines = [], []
+            for row in cursor.fetchall():
+                machine = dict(row)
+                needs_confirmation = machine.pop("needs_confirmation")
+                nearby_machines.append(machine)
+                if needs_confirmation:
+                    machines.append(machine)
+            # Keep the original eligible-only list for older app versions.
+            return jsonify(machines=machines, nearby_machines=nearby_machines)
 
 
 @presence_api.post("/machines/<int:machine_id>/confirm-presence")
