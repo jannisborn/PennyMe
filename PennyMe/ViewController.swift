@@ -1068,6 +1068,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         if (segue.identifier == "ShowPinViewController") {
             let destinationViewController = segue.destination as! PinViewController
             destinationViewController.pinData = self.selectedPin!
+            destinationViewController.presenceMonitor = presenceMonitor
         }
         
     }

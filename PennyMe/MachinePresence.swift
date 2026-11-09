@@ -8,11 +8,45 @@ struct PresenceMachine: Decodable {
     let name: String
     let latitude: Double
     let longitude: Double
+    var numCoins: Int? = nil
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, latitude, longitude
+        case numCoins = "num_coins"
+    }
 
     var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
 }
 
+struct PresenceCandidates: Decodable {
+    let machines: [PresenceMachine]
+    let nearbyMachines: [PresenceMachine]?
+
+    enum CodingKeys: String, CodingKey {
+        case machines
+        case nearbyMachines = "nearby_machines"
+    }
+
+    func neighbors(of machine: PresenceMachine, at location: CLLocation) -> [PresenceMachine] {
+        MachinePresencePolicy.neighbors(in: nearbyMachines ?? machines, excluding: machine, at: location)
+    }
+}
+
+enum PresenceConfirmationSource: String {
+    case automatic, manual
+
+    var radius: CLLocationDistance { self == .manual ? 100 : 20 }
+}
+
 enum MachinePresencePolicy {
+    static func neighbors(in machines: [PresenceMachine], excluding machine: PresenceMachine,
+                          at location: CLLocation) -> [PresenceMachine] {
+        machines.filter {
+            $0.id != machine.id && CLLocationCoordinate2DIsValid($0.location.coordinate)
+                && $0.location.distance(from: location) <= 100
+        }.sorted { $0.location.distance(from: location) < $1.location.distance(from: location) }
+    }
+
     static func isPreciseAndFresh(_ location: CLLocation, now: Date = Date()) -> Bool {
         let age = now.timeIntervalSince(location.timestamp)
         return CLLocationCoordinate2DIsValid(location.coordinate)
@@ -21,8 +55,9 @@ enum MachinePresencePolicy {
             && (-5...15).contains(age)
     }
 
-    static func canConfirm(_ machine: PresenceMachine, at location: CLLocation, now: Date = Date()) -> Bool {
-        isPreciseAndFresh(location, now: now) && location.distance(from: machine.location) <= 20
+    static func canConfirm(_ machine: PresenceMachine, at location: CLLocation,
+                           source: PresenceConfirmationSource = .automatic, now: Date = Date()) -> Bool {
+        isPreciseAndFresh(location, now: now) && location.distance(from: machine.location) <= source.radius
     }
 
     static func rediscoveredMachine(from data: Data?) -> Artwork? {
@@ -55,9 +90,10 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     private var lastAttempt = Date.distantPast
     private var lastQueryLocation: CLLocation?
     private var suppressed: [Int: PresenceMachine] = [:]
-    private var waitingForFix: (machine: PresenceMachine, after: Date)?
-    private weak var prompt: UIAlertController?
+    private var waitingForFix: (machine: PresenceMachine, after: Date, source: PresenceConfirmationSource, showPrompt: Bool)?
+    private weak var prompt: PresenceConfirmationController?
     private var promptedMachine: PresenceMachine?
+    private var promptSource: PresenceConfirmationSource = .automatic
     private var pendingRediscovery: Artwork?
     private var pendingChangeEditor: Artwork?
 
@@ -107,9 +143,8 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         task?.cancel()
         task = nil
         waitingForFix = nil
-        prompt?.dismiss(animated: false)
-        prompt = nil
-        promptedMachine = nil
+        // Keep the sheet and photo viewer through temporary app interruptions.
+        prompt?.updateLocation(nil, source: promptSource)
         lastAttempt = .distantPast
     }
 
@@ -127,7 +162,8 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         if (error as? CLError)?.code == .locationUnknown { return }
         if let pending = waitingForFix {
             waitingForFix = nil
-            showFailure("A fresh, precise location is needed. Please try again while at the machine.", machine: pending.machine)
+            showFailure("A fresh, precise location is needed. Please try again while at the machine.", machine: pending.machine,
+                        source: pending.source, showPrompt: pending.showPrompt)
         }
     }
 
@@ -136,30 +172,31 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         if presentPendingRediscovery() { return }
         if let pending = waitingForFix, Date().timeIntervalSince(pending.after) > 15 {
             waitingForFix = nil
-            showFailure("Could not get a fresh location. Please try again while at the machine.", machine: pending.machine)
+            showFailure("Could not get a fresh location. Please try again while at the machine.", machine: pending.machine,
+                        source: pending.source, showPrompt: pending.showPrompt)
             return
         }
-        guard let location = update ?? manager.location,
-              MachinePresencePolicy.isPreciseAndFresh(location) else {
-            prompt?.dismiss(animated: true)
-            prompt = nil
-            promptedMachine = nil
-            return
-        }
+        let latest = update ?? manager.location
+        prompt?.updateLocation(latest, source: promptSource)
+        guard let location = latest, MachinePresencePolicy.isPreciseAndFresh(location) else { return }
         // Hysteresis avoids repeated prompts when GPS drifts around the 20 m boundary.
         suppressed = suppressed.filter { location.distance(from: $0.value.location) <= 50 }
-        if let machine = promptedMachine, !MachinePresencePolicy.canConfirm(machine, at: location) {
-            prompt?.dismiss(animated: true)
-            prompt = nil
-            promptedMachine = nil
-        }
         if let pending = waitingForFix {
             waitingForFix = nil
-            guard MachinePresencePolicy.canConfirm(pending.machine, at: location), !isBlocked(pending.machine.id) else {
-                showFailure("You need to be within 20 metres of the machine to confirm it.", machine: pending.machine)
+            guard !isBlocked(pending.machine.id) else { return }
+            guard MachinePresencePolicy.canConfirm(pending.machine, at: location, source: pending.source) else {
+                if pending.source == .manual {
+                    showMessage(title: "Can't validate", message: "Please move closer. You need to be within 100 metres of the machine.")
+                } else {
+                    showFailure("You need to be within 20 metres of the machine to confirm it.", machine: pending.machine)
+                }
                 return
             }
-            confirm(pending.machine, location: location)
+            if pending.showPrompt {
+                loadManualPrompt(for: pending.machine, location: location)
+            } else {
+                confirm(pending.machine, location: location, source: pending.source)
+            }
             return
         }
         guard task == nil, prompt == nil, CommunityTermsGate.hasAccepted,
@@ -170,51 +207,82 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         lastQueryLocation = location
         send(path: "machines/nearby-confirmations", location: location) { [weak self] data, status in
             guard let self = self, status == 200, let data = data,
-                  let machines = try? JSONDecoder().decode(Candidates.self, from: data).machines,
+                  let candidates = try? JSONDecoder().decode(PresenceCandidates.self, from: data),
                   let current = self.manager.location,
-                  let machine = machines.first(where: {
+                  let machine = candidates.machines.first(where: {
                       self.suppressed[$0.id] == nil && !self.isBlocked($0.id)
                           && MachinePresencePolicy.canConfirm($0, at: current)
                   }) else { return }
-            self.askAbout(machine)
+            self.askAbout(machine, neighbors: candidates.neighbors(of: machine, at: current).filter { !self.isBlocked($0.id) },
+                          location: current)
         }
     }
 
-    private struct Candidates: Decodable { let machines: [PresenceMachine] }
-
-    private func askAbout(_ machine: PresenceMachine) {
+    private func askAbout(_ machine: PresenceMachine, neighbors: [PresenceMachine], location: CLLocation,
+                          source: PresenceConfirmationSource = .automatic) {
         guard let presenter = availablePresenter() else { return }
-        let alert = UIAlertController(
-            title: "Is this machine still here?",
-            message: "You're near \(machine.name). Can you confirm the machine is still here?",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Yes, it's here", style: .default) { [weak self] _ in
-            self?.suppressed[machine.id] = machine
-            self?.prompt = nil
-            self?.promptedMachine = nil
-            self?.requestFreshConfirmation(machine)
-        })
-        alert.addAction(UIAlertAction(title: "I can't confirm", style: .cancel) { [weak self] _ in
-            self?.suppressed[machine.id] = machine
-            self?.prompt = nil
-            self?.promptedMachine = nil
-        })
+        let sheet = PresenceConfirmationController(machine: machine, neighbors: neighbors, location: location, session: session) { [weak self] confirmed in
+            guard let self = self, self.promptedMachine?.id == machine.id else { return }
+            self.suppressed[machine.id] = machine
+            let controller = self.prompt
+            self.prompt = nil
+            self.promptedMachine = nil
+            controller?.dismiss(animated: true) { [weak self] in
+                if confirmed { self?.requestFreshConfirmation(machine, source: source) }
+            }
+        }
         promptedMachine = machine
-        prompt = alert
-        presenter.present(alert, animated: true)
+        promptSource = source
+        prompt = sheet
+        presenter.present(sheet, animated: true)
     }
 
-    func requestFreshConfirmation(_ machine: PresenceMachine) {
+    func requestManualConfirmation(_ machine: PresenceMachine) {
+        guard isActive(), prompt == nil, waitingForFix == nil else { return }
+        if let running = task {
+            // A tap takes priority over an automatic lookup, never over a save.
+            guard running.currentRequest?.url?.path.hasSuffix("/nearby-confirmations") == true else { return }
+            generation = UUID()
+            running.cancel()
+            task = nil
+        }
+        let authorization = manager.authorizationStatus
+        guard authorization == .authorizedWhenInUse || authorization == .authorizedAlways else {
+            showMessage(title: "Location needed", message: "Please allow precise location access for PennyMe in Settings, then try again.")
+            return
+        }
+        requestFreshConfirmation(machine, source: .manual, showPrompt: true)
+    }
+
+    private func loadManualPrompt(for machine: PresenceMachine, location: CLLocation) {
+        send(path: "machines/nearby-confirmations", location: location) { [weak self] data, status in
+            guard let self = self else { return }
+            guard status == 200, let data = data,
+                  let candidates = try? JSONDecoder().decode(PresenceCandidates.self, from: data) else {
+                self.showFailure("Could not load the machine. Please try again.", machine: machine, source: .manual, showPrompt: true)
+                return
+            }
+            let current = self.manager.location ?? location
+            guard let target = (candidates.nearbyMachines ?? candidates.machines).first(where: { $0.id == machine.id }),
+                  MachinePresencePolicy.canConfirm(target, at: current, source: .manual), !self.isBlocked(target.id) else {
+                self.showMessage(title: "Can't validate", message: "Please move closer and try again with a fresh, precise location.")
+                return
+            }
+            self.askAbout(target, neighbors: candidates.neighbors(of: target, at: current).filter { !self.isBlocked($0.id) },
+                          location: current, source: .manual)
+        }
+    }
+
+    func requestFreshConfirmation(_ machine: PresenceMachine, source: PresenceConfirmationSource = .automatic, showPrompt: Bool = false) {
         guard isActive() else { return }
-        waitingForFix = (machine, Date())
+        waitingForFix = (machine, Date(), source, showPrompt)
         // Reuse an already fresh fix; otherwise wait for continuous updates.
         manager.startUpdatingLocation()
         checkLocation()
     }
 
-    private func confirm(_ machine: PresenceMachine, location: CLLocation) {
-        send(path: "machines/\(machine.id)/confirm-presence", location: location) { [weak self] data, status in
+    private func confirm(_ machine: PresenceMachine, location: CLLocation, source: PresenceConfirmationSource) {
+        send(path: "machines/\(machine.id)/confirm-presence", location: location, source: source) { [weak self] data, status in
             guard let self = self else { return }
             if status == 200 {
                 if let rediscovered = MachinePresencePolicy.rediscoveredMachine(from: data) {
@@ -227,7 +295,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
                 let response = data.flatMap { try? JSONSerialization.jsonObject(with: $0) } as? [String: Any]
                 let message = response?["error"] as? String
                     ?? "Your sighting could not be saved. Please try again while at the machine."
-                self.showFailure(message, machine: machine)
+                self.showFailure(message, machine: machine, source: source)
             }
         }
     }
@@ -260,7 +328,8 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         return true
     }
 
-    private func send(path: String, location: CLLocation, completion: @escaping (Data?, Int) -> Void) {
+    private func send(path: String, location: CLLocation, source: PresenceConfirmationSource = .automatic,
+                      completion: @escaping (Data?, Int) -> Void) {
         guard let url = URL(string: path, relativeTo: URL(string: flaskURL)) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -271,7 +340,8 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
             "latitude": location.coordinate.latitude,
             "longitude": location.coordinate.longitude,
             "accuracy": location.horizontalAccuracy,
-            "measured_at": location.timestamp.timeIntervalSince1970
+            "measured_at": location.timestamp.timeIntervalSince1970,
+            "source": source.rawValue
         ])
         let currentGeneration = generation
         task = session.dataTask(with: request) { [weak self] data, response, _ in
@@ -302,15 +372,17 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
             else { break }
         }
         guard !(controller is UIAlertController), !(controller is UIImagePickerController),
+              !(controller is PresenceConfirmationController),
               !(controller is UIHostingController<MachineChangedForm>),
               !controller.isBeingPresented, !controller.isBeingDismissed,
               controller.viewIfLoaded?.window != nil else { return nil }
         return controller
     }
 
-    private func showFailure(_ message: String, machine: PresenceMachine) {
+    private func showFailure(_ message: String, machine: PresenceMachine,
+                             source: PresenceConfirmationSource = .automatic, showPrompt: Bool = false) {
         showMessage(title: "Could not confirm", message: message, retry: { [weak self] in
-            self?.requestFreshConfirmation(machine)
+            self?.requestFreshConfirmation(machine, source: source, showPrompt: showPrompt)
         })
     }
 

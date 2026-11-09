@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52600000000000000000003 /* PresenceConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000004 /* PresenceConfirmationView.swift */; };
 		A52600000000000000000001 /* MachinePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000002 /* MachinePresence.swift */; };
 		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
 		837476502CADDAD800812146 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8374764F2CADDAD800812146 /* StatisticsViewController.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A52600000000000000000004 /* PresenceConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceConfirmationView.swift; sourceTree = "<group>"; };
 		A52600000000000000000002 /* MachinePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinePresence.swift; sourceTree = "<group>"; };
 		8319D8CF27414AC100E97D93 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		8374764F2CADDAD800812146 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A52600000000000000000002 /* MachinePresence.swift */,
+				A52600000000000000000004 /* PresenceConfirmationView.swift */,
 				A52500000000000000000001 /* TripLink.swift */,
 				A52500000000000000000002 /* TripPreviewViewController.swift */,
 				A52500000000000000000003 /* SharedTrip.swift */,
@@ -436,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A52600000000000000000001 /* MachinePresence.swift in Sources */,
+				A52600000000000000000003 /* PresenceConfirmationView.swift in Sources */,
 				A5250000000000000000000B /* TripLink.swift in Sources */,
 				A5250000000000000000000C /* TripPreviewViewController.swift in Sources */,
 				A5250000000000000000000D /* SharedTrip.swift in Sources */,

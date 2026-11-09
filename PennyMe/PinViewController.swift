@@ -38,6 +38,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var pageControl: UIPageControl!
     
     var pinData : Artwork!
+    weak var presenceMonitor: MachinePresenceMonitor?
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     let machineStatusColors: [String:UIColor] = ["available": .white, "out-of-order": .gray, "retired": .gray]
@@ -158,7 +159,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         reportButton.tintColor = .red
         reportButton.accessibilityLabel = "Report content"
         reportButton.accessibilityIdentifier = "reportContentButton"
-        navigationItem.rightBarButtonItem = reportButton
+        let confirmButton = UIBarButtonItem(
+            image: UIImage(systemName: "checkmark.seal.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .semibold)),
+            style: .plain,
+            target: self,
+            action: #selector(confirmMachinePresence)
+        )
+        confirmButton.tintColor = .systemGreen
+        confirmButton.accessibilityLabel = "Confirm this machine is here"
+        confirmButton.accessibilityHint = "Opens photo confirmation. Requires being within 100 metres."
+        confirmButton.accessibilityIdentifier = "confirmMachinePresenceButton"
+        navigationItem.rightBarButtonItems = [reportButton, confirmButton]
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(blockedContentDidChange),
@@ -184,6 +195,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             string: "Type your comment here")
             
         // submit button
+        submitButton.configuration?.titleLineBreakMode = .byClipping
         submitButton.addTarget(self, action: #selector(addComment), for: .touchUpInside
                                )
         // main command to ensure that the subviews are sorted
@@ -303,6 +315,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc private func confirmMachinePresence() {
+        guard let id = Int(pinData.id) else { return }
+        CommunityTermsGate.start(from: self) { [weak self] in
+            guard let self = self else { return }
+            let machine = PresenceMachine(id: id, name: self.pinData.title ?? "Penny machine",
+                                          latitude: self.pinData.coordinate.latitude, longitude: self.pinData.coordinate.longitude,
+                                          numCoins: self.pinData.numCoins)
+            self.presenceMonitor?.requestManualConfirmation(machine)
+        }
     }
 
     @objc private func blockedContentDidChange() {
