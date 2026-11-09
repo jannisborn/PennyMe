@@ -744,6 +744,8 @@ def change_machine() -> Tuple[Response, int]:
 
     The request query parameters describe the machine ID, title, address, area,
     status, coordinates, and optional machine attributes.
+    The optional JSON key ``status_change_reason`` opts clients into explanation
+    validation; legacy clients omit it and can still suggest status changes.
 
     Returns:
         A JSON response and HTTP status describing acceptance, invalid input, or
@@ -783,16 +785,16 @@ def change_machine() -> Tuple[Response, int]:
     status_change_reason = ""
     if status != old_status:
         payload = request.get_json(silent=True)
-        explanation = (
-            payload.get("status_change_reason") if isinstance(payload, dict) else None
-        )
-        if error := validate_status_change_reason(explanation):
-            return jsonify(
-                error=error,
-                current_status=old_status,
-                requires_status_change_reason=True,
-            ), 422
-        status_change_reason = explanation.strip()
+        # New apps always send this key, even when empty. Old apps omit it.
+        if isinstance(payload, dict) and "status_change_reason" in payload:
+            explanation = payload["status_change_reason"]
+            if error := validate_status_change_reason(explanation):
+                return jsonify(
+                    error=error,
+                    current_status=old_status,
+                    requires_status_change_reason=True,
+                ), 422
+            status_change_reason = explanation.strip()
     msg = _diff_field(
         changed_fields, msg, "Status", "machine_status", old_status, status
     )
