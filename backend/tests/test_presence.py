@@ -24,6 +24,21 @@ class PresenceTests(unittest.TestCase):
         app.register_blueprint(presence_api)
         self.client = app.test_client()
         self.headers = {"X-PennyMe-Anonymous-ID": "test-contributor"}
+        self.confirmed_machine = {
+            "last_seen": self.now,
+            "id": 42,
+            "name": "Zoo",
+            "address": "Main Street",
+            "area": "Germany",
+            "machine_status": "retired",
+            "num_coins": 4,
+            "paywall": False,
+            "external_url": None,
+            "internal_url": None,
+            "last_updated": date(2026, 10, 1),
+            "latitude": 47.37,
+            "longitude": 8.54,
+        }
 
     def test_location_validation_includes_age_accuracy_and_numeric_boundaries(self):
         for changes in [
@@ -103,7 +118,7 @@ class PresenceTests(unittest.TestCase):
         )
         self.assertIn("ST_DWithin(geom::geography", sql)
         self.assertIn("::geography, 20)", sql)
-        self.assertIn("::geography, 120)", sql)
+        self.assertIn("::geography, 200)", sql)
         # Recently confirmed and inactive neighbors must remain visible as context.
         self.assertNotIn("last_seen", sql.split("FROM machines", 1)[1])
         self.assertNotIn("machine_status", sql)
@@ -113,24 +128,7 @@ class PresenceTests(unittest.TestCase):
     def test_confirmation_is_one_conditional_update_of_only_last_seen(self):
         connection = MagicMock()
         cursor = connection.cursor.return_value.__enter__.return_value
-        cursor.fetchone.side_effect = [
-            {
-                "last_seen": self.now,
-                "id": 42,
-                "name": "Zoo",
-                "address": "Main Street",
-                "area": "Germany",
-                "machine_status": "retired",
-                "num_coins": 4,
-                "paywall": False,
-                "external_url": None,
-                "internal_url": None,
-                "last_updated": date(2026, 10, 1),
-                "latitude": 47.37,
-                "longitude": 8.54,
-            },
-            None,
-        ]
+        cursor.fetchone.side_effect = [self.confirmed_machine, None]
         with patch("pennyme.presence.get_connection", return_value=connection):
             first = self.client.post(
                 "/machines/42/confirm-presence", json=self.fix, headers=self.headers
@@ -153,13 +151,65 @@ class PresenceTests(unittest.TestCase):
                 )
             )
             self.assertIn("last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days'", sql)
-            self.assertIn("::geography, 20)", sql)
+            self.assertIn("::geography, %s)", sql)
             self.assertIn("INTERVAL '15 seconds'", sql)
             assignments = sql.split(" WHERE", 1)[0]
             self.assertNotIn("last_updated", assignments)
             self.assertNotIn("machine_status", assignments)
-            self.assertEqual(params[:3], (42, 8.54, 47.37))
-            self.assertEqual(params[3].tzinfo, timezone.utc)
+            self.assertEqual(params[:4], (42, 8.54, 47.37, 20))
+            self.assertEqual(params[4].tzinfo, timezone.utc)
+
+    def test_manual_confirmation_enforces_one_hundred_metres_without_auto_cooldown(
+        self,
+    ):
+        connection = MagicMock()
+        cursor = connection.cursor.return_value.__enter__.return_value
+        cursor.fetchone.side_effect = [
+            self.confirmed_machine,
+            self.confirmed_machine,
+            None,
+        ]
+        with patch("pennyme.presence.get_connection", return_value=connection):
+            for _ in range(2):
+                response = self.client.post(
+                    "/machines/42/confirm-presence",
+                    json={**self.fix, "source": "manual"},
+                    headers=self.headers,
+                )
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.json["last_seen"], self.now.isoformat())
+                self.assertEqual(
+                    response.json["machine"]["properties"]["machine_status"], "retired"
+                )
+            outside = self.client.post(
+                "/machines/42/confirm-presence",
+                json={**self.fix, "source": "manual"},
+                headers=self.headers,
+            )
+            self.assertEqual(outside.status_code, 409)
+            self.assertIn("move closer", outside.json["error"])
+        for call in cursor.execute.call_args_list:
+            sql, params = call.args
+            self.assertEqual(params[:4], (42, 8.54, 47.37, 100))
+            self.assertNotIn("last_seen <", sql)
+            self.assertIn("::geography, %s)", sql)
+            self.assertIn("INTERVAL '15 seconds'", sql)
+            self.assertEqual(
+                sql.split(" WHERE", 1)[0],
+                "UPDATE machines SET last_seen = CURRENT_TIMESTAMP",
+            )
+
+    def test_unknown_confirmation_sources_never_reach_sql(self):
+        with patch("pennyme.presence.get_connection") as connect:
+            for source in [None, False, [], {}, "nearby", 100]:
+                with self.subTest(source=source):
+                    response = self.client.post(
+                        "/machines/42/confirm-presence",
+                        json={**self.fix, "source": source},
+                        headers=self.headers,
+                    )
+                    self.assertEqual(response.status_code, 400)
+            connect.assert_not_called()
 
     def test_database_failure_closes_connection_and_propagates(self):
         connection = MagicMock()

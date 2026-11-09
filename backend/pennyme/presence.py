@@ -61,9 +61,9 @@ def nearby_confirmations():
                 "AND ST_DWithin(geom::geography, "
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 20)) AS needs_confirmation "
                 "FROM machines "
-                # A target can be 20 m away; include its entire 100 m neighborhood.
+                # Manual targets can be 100 m away; include their 100 m neighborhood.
                 "WHERE ST_DWithin(geom::geography, "
-                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 120) "
+                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 200) "
                 "ORDER BY ST_Distance(geom::geography, "
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography), id",
                 (longitude, latitude, longitude, latitude, longitude, latitude),
@@ -81,30 +81,46 @@ def nearby_confirmations():
 
 @presence_api.post("/machines/<int:machine_id>/confirm-presence")
 def confirm_presence(machine_id):
+    payload = request.get_json(silent=True)
     try:
-        latitude, longitude, measured_at = parse_location(request.get_json(silent=True))
+        latitude, longitude, measured_at = parse_location(payload)
     except ValueError as error:
         return jsonify(error=str(error)), 400
+    source = payload.get("source", "automatic")
+    if source not in ("automatic", "manual"):
+        return jsonify(error="Invalid confirmation source"), 400
+    radius = 100 if source == "manual" else 20
+    # A deliberate sighting may refresh last_seen at any time; only automatic
+    # prompts need the seven-day cooldown.
+    cooldown = (
+        "AND (last_seen IS NULL OR last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days') "
+        if source == "automatic"
+        else ""
+    )
     with closing(get_connection()) as connection, connection:
         with connection.cursor(cursor_factory=RealDictCursor) as cursor:
             # One conditional update also handles concurrent confirmations and moves.
             cursor.execute(
                 "UPDATE machines SET last_seen = CURRENT_TIMESTAMP "
                 "WHERE id = %s "
-                "AND (last_seen IS NULL OR last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days') "
+                f"{cooldown}"
                 "AND ST_DWithin(geom::geography, "
-                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 20) "
+                "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, %s) "
                 "AND CURRENT_TIMESTAMP - %s::timestamptz "
                 "BETWEEN INTERVAL '-5 seconds' AND INTERVAL '15 seconds' "
                 "RETURNING last_seen, id, name, area, address, machine_status, "
                 "num_coins, paywall, external_url, internal_url, last_updated, "
                 "ST_X(geom) AS longitude, ST_Y(geom) AS latitude",
-                (machine_id, longitude, latitude, measured_at),
+                (machine_id, longitude, latitude, radius, measured_at),
             )
             row = cursor.fetchone()
     if row is None:
         return jsonify(
-            error="The machine was recently confirmed or your location is no longer valid"
+            error=(
+                "Can't validate. Please move closer and try again with a fresh, precise location."
+                if source == "manual"
+                else "The machine was recently confirmed or your location is no longer valid"
+            )
         ), 409
     return jsonify(
         last_seen=row["last_seen"].isoformat(),
