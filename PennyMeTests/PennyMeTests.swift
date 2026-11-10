@@ -15,6 +15,28 @@ import MapKit
 class PennyMeTests: XCTestCase {
 
     @MainActor
+    func testScrollingPinDetailsDoesNotChangeTheReportedImage() {
+        let controller = PinViewController(style: .grouped)
+        let photos = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
+        let pages = UIPageControl()
+        pages.numberOfPages = 5
+        controller.scrollView = photos
+        controller.pageControl = pages
+        let details = UITableView(frame: CGRect(x: 0, y: 0, width: 320, height: 640))
+        for page in 1...4 {
+            photos.contentOffset.x = CGFloat(page) * photos.bounds.width
+            controller.scrollViewDidScroll(photos)
+            XCTAssertEqual(pages.currentPage, page)
+            details.contentOffset.y = CGFloat(page) * 100
+            controller.scrollViewDidScroll(details)
+            XCTAssertEqual(pages.currentPage, page, "Vertical scrolling must preserve the selected coin")
+        }
+        photos.frame.size.width = 0
+        controller.scrollViewDidScroll(photos)
+        XCTAssertEqual(pages.currentPage, 4)
+    }
+
+    @MainActor
     func testPresencePromptSurvivesLocationLossDriftAndAppInterruptions() async throws {
         let appDelegate = try XCTUnwrap(UIApplication.shared.delegate as? AppDelegate)
         let originalWindow = appDelegate.window

@@ -371,7 +371,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        guard scrollView === self.scrollView, scrollView.bounds.width > 0 else { return }
+        let page = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
         pageControl.currentPage = page
     }
 
@@ -499,9 +500,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             message: "Report objectionable content or block the contributor of an image.",
             preferredStyle: .actionSheet
         )
-        sheet.addAction(UIAlertAction(title: "Report Visible Image", style: .default) { _ in
+        let imageReport = UIAlertAction(title: page == 0 ? "Report Machine Image" : "Report Coin Image \(page)", style: .default) { _ in
             self.chooseReportReason(for: imageTarget, blockContributor: false)
-        })
+        }
+        imageReport.isEnabled = imageDict[page] != nil
+        sheet.addAction(imageReport)
         sheet.addAction(UIAlertAction(title: "Report Public Comments", style: .default) { _ in
             self.chooseReportReason(for: .comments, blockContributor: false)
         })

@@ -621,7 +621,10 @@ def _quarantine_report_content(
     if not source.exists():
         if destination.exists():
             return destination
-        raise FileNotFoundError(source)
+        raise FileNotFoundError(
+            f"Reported {report['target_kind']}:{report['target_id']} is missing ({source}). "
+            "Check the report target; no content was removed."
+        )
     if destination.exists():
         raise FileExistsError(destination)
     destination.parent.mkdir(exist_ok=True)

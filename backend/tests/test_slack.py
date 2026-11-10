@@ -701,6 +701,29 @@ class ReportSlackTest(unittest.TestCase):
                 comment,
             )
 
+    def test_missing_machine_image_cannot_remove_a_coin_or_approve_the_report(self):
+        with tempfile.TemporaryDirectory() as directory:
+            coin = Path(directory) / "5051_coin_0.png"
+            coin.write_bytes(b"Keep the coin image")
+            store = Mock()
+            store.report_status.return_value = (
+                {"machine_id": "5051", "target_kind": "image", "target_id": "machine"},
+                None,
+            )
+            respond = Mock()
+            with (
+                patch.object(slack, "_MODERATION", store),
+                patch.object(slack, "PATH_IMAGES", directory),
+            ):
+                slack.handle_approve_report(
+                    Mock(), {"actions": [{"value": "report-id"}]}, respond
+                )
+            self.assertEqual(coin.read_bytes(), b"Keep the coin image")
+            store.record_review.assert_not_called()
+            self.assertFalse(respond.call_args.kwargs["replace_original"])
+            self.assertIn("image:machine is missing", respond.call_args.kwargs["text"])
+            self.assertIn("no content was removed", respond.call_args.kwargs["text"])
+
     def test_approval_moves_the_exact_reported_file_and_records_the_reviewer(self):
         for kind, target, relative_source, other_name in (
             ("image", "machine", "42.jpg", "42_coin_0.png"),
