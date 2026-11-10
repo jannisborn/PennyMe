@@ -968,11 +968,18 @@ def message_slack_pending_change(
         maps_url = f"https://www.google.com/maps?q={latitude},{longitude}"
         summary_lines.append(f"<{maps_url}|View on Google Maps>")
 
+    use_km = bool(nearby_machines) and all(
+        machine["distance_m"] > 1000 for machine in nearby_machines
+    )
+
+    def format_distance(distance_m: float) -> str:
+        return f"{distance_m / 1000:,.1f} km" if use_km else f"{round(distance_m)} m"
+
     nearby_lines = []
     for nearby_machine in nearby_machines or []:
         nearby_line = (
             f"• ID {nearby_machine['id']} — {nearby_machine['name']} — "
-            f"{nearby_machine['distance_m']} m"
+            f"{format_distance(nearby_machine['distance_m'])}"
         )
         external_url = nearby_machine.get("external_url")
         if external_url and "pennycollector.com" in external_url.casefold():
@@ -985,7 +992,9 @@ def message_slack_pending_change(
     elif nearby_radius_m is not None:
         moved = round(movement_distance_m or 0)
         radius = round(nearby_radius_m)
-        summary_lines.append(f"Moved {moved} m; searched within {radius} m.")
+        summary_lines.append(
+            f"Moved {format_distance(moved)}; searched within {format_distance(radius)}."
+        )
         if nearby_machines:
             nearest = nearby_machines[0]
             if movement_distance_m is not None and (
@@ -993,12 +1002,12 @@ def message_slack_pending_change(
             ):
                 summary_lines.append(
                     ":warning: Moved farther than the nearest neighbor "
-                    f"(ID {nearest['id']} at {nearest['distance_m']} m)."
+                    f"(ID {nearest['id']} at {format_distance(nearest['distance_m'])})."
                 )
             summary_lines.append(f"*Nearby machines ({len(nearby_machines)}):*")
             summary_lines.extend(nearby_lines)
         else:
-            summary_lines.append(f"No other machines within {radius} m.")
+            summary_lines.append(f"No other machines within {format_distance(radius)}.")
 
     message_text = f"{header}\n*{title}* ({area})\n" + "\n".join(summary_lines)
 
@@ -1026,6 +1035,9 @@ def message_slack_pending_change(
         thread_ts=str(response["ts"]),
         blocks=detail_blocks,
     )
+    # New submissions post these after their uploaded photo finishes processing.
+    if change_type == "create":
+        return str(response["ts"])
 
     image_machines = []
     if machine_id is not None and nearby_machines is not None:
@@ -1035,7 +1047,23 @@ def message_slack_pending_change(
         for nearby_machine in nearby_machines or []
     )
 
-    for image_machine_id, image_machine_name, image_label in image_machines:
+    message_slack_machine_images(
+        change_id,
+        str(response["ts"]),
+        image_machines,
+        channel=str(response.get("channel", "#pennyme_approvals")),
+    )
+    return str(response["ts"])
+
+
+def message_slack_machine_images(
+    change_id: int,
+    thread_ts: str,
+    machines: List[Tuple[str, str, str]],
+    channel: str = "#pennyme_approvals",
+) -> None:
+    """Post machine photos in order and track them for approval cleanup."""
+    for image_machine_id, image_machine_name, image_label in machines:
         image_paths = [
             path
             for path in sorted(Path(PATH_IMAGES).glob(f"{image_machine_id}*"))
@@ -1048,8 +1076,8 @@ def message_slack_pending_change(
         image_title = f"{image_label} {image_machine_id} — {image_machine_name}"
         image_response = message_slack_raw(
             image_title,
-            channel=str(response.get("channel", "#pennyme_approvals")),
-            thread_ts=str(response["ts"]),
+            channel=channel,
+            thread_ts=thread_ts,
             blocks=[
                 {
                     "type": "image",
@@ -1063,7 +1091,6 @@ def message_slack_pending_change(
         _PENDING_IMAGE_MESSAGES.setdefault(change_id, []).append(
             (str(image_response["channel"]), str(image_response["ts"]))
         )
-    return str(response["ts"])
 
 
 def message_slack_location_differ_summary(

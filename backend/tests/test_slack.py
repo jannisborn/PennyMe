@@ -1,3 +1,4 @@
+import ast
 import importlib
 import json
 import os
@@ -202,6 +203,128 @@ class ReportSlackTest(unittest.TestCase):
 
         self.assertIn("New machine", post.call_args.kwargs["text"])
         self.assertEqual(post.call_args.kwargs["thread_ts"], "root-ts")
+
+    def test_pending_distances_use_kilometres_only_when_no_machine_is_within_one_km(
+        self,
+    ):
+        for change_type, distances, expected in [
+            (
+                "create",
+                [6199927, 6200125, 6203696],
+                ["6,199.9 km", "6,200.1 km", "6,203.7 km"],
+            ),
+            ("create", [1001, 2500], ["1.0 km", "2.5 km"]),
+            ("create", [1000, 2500], ["1000 m", "2500 m"]),
+            ("create", [999, 6200125], ["999 m", "6200125 m"]),
+            ("update", [1500, 2000], ["1.5 km", "2.0 km"]),
+        ]:
+            with (
+                self.subTest(change_type=change_type, distances=distances),
+                patch.object(
+                    slack,
+                    "message_slack_raw",
+                    return_value={"channel": "C123", "ts": "root-ts"},
+                ) as post,
+                patch.object(slack, "message_slack_machine_images"),
+            ):
+                slack.message_slack_pending_change(
+                    change_id=13,
+                    change_type=change_type,
+                    title="Machine",
+                    area="Singapore",
+                    change_summary="Proposed change",
+                    movement_distance_m=2500,
+                    nearby_radius_m=3000,
+                    nearby_machines=[
+                        {
+                            "id": index,
+                            "name": f"Machine {index}",
+                            "distance_m": distance,
+                        }
+                        for index, distance in enumerate(distances)
+                    ],
+                )
+                for call in post.call_args_list:
+                    text = call.args[0]
+                    for index, distance in enumerate(expected):
+                        self.assertIn(
+                            f"ID {index} — Machine {index} — {distance}", text
+                        )
+                    if change_type == "update":
+                        self.assertIn("Moved 2.5 km; searched within 3.0 km.", text)
+                        self.assertIn("nearest neighbor (ID 0 at 1.5 km)", text)
+
+    def test_new_machine_photo_precedes_nearby_photos_after_background_processing(self):
+        app_path = Path(__file__).resolve().parents[1] / "app.py"
+        worker = next(
+            node
+            for node in ast.parse(app_path.read_text()).body
+            if isinstance(node, ast.FunctionDef)
+            and node.name == "process_pending_image"
+        )
+        neighbors = [
+            {"id": 7, "name": "Museum", "distance_m": 40},
+            {"id": 8, "name": "Station", "distance_m": 120},
+        ]
+        post = Mock(return_value={"channel": "C123", "ts": "root-ts"})
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch.object(slack, "PATH_IMAGES", directory),
+            patch.object(slack, "_PENDING_IMAGE_MESSAGES", {}),
+            patch.object(slack, "message_slack_raw", post),
+            patch.object(slack.CLIENT, "chat_postMessage", post),
+        ):
+            root = Path(directory)
+            for name in ["pending_12_tmp.jpg", "7.jpg", "8.png"]:
+                (root / name).touch()
+            thread_ts = slack.message_slack_pending_change(
+                change_id=12,
+                change_type="create",
+                title="New machine",
+                area="Switzerland",
+                change_summary="new machine",
+                nearby_machines=neighbors,
+            )
+            self.assertEqual(
+                post.call_count, 2, "Wait for the upload before posting photos"
+            )
+            # Run the real worker without app.py's credential and service startup.
+            namespace = dict(vars(slack))
+            namespace.update(
+                MODERATION=Mock(),
+                process_uploaded_image=Mock(
+                    return_value=(200, "OK", root / "pending_12.jpg")
+                ),
+            )
+            exec(
+                compile(
+                    ast.Module(body=[worker], type_ignores=[]), str(app_path), "exec"
+                ),
+                namespace,
+            )
+            namespace["process_pending_image"](
+                12,
+                str(root / "pending_12_tmp.jpg"),
+                "submitter",
+                "New machine",
+                thread_ts,
+                neighbors,
+            )
+            images = [
+                call.kwargs
+                for call in post.call_args_list
+                if call.kwargs["blocks"][0]["type"] == "image"
+            ]
+            self.assertEqual(
+                [message["blocks"][0]["image_url"] for message in images],
+                [
+                    f"{slack.IMG_PORT}{name}"
+                    for name in ["pending_12.jpg", "7.jpg", "8.png"]
+                ],
+            )
+            self.assertTrue(
+                all(message["thread_ts"] == "root-ts" for message in images)
+            )
 
     def test_source_and_nearby_images_are_temporary_thread_replies(self):
         neighbors = [

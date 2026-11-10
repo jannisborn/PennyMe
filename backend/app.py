@@ -47,6 +47,7 @@ from pennyme.slack import (
     image_slack,
     message_slack,
     message_slack_location_differ_summary,
+    message_slack_machine_images,
     message_slack_pending_change,
     message_slack_raw,
     message_slack_report,
@@ -463,6 +464,7 @@ def process_pending_image(
     installation_id: str,
     title: str,
     thread_ts: str,
+    nearby_machines: Optional[List[NearbyMachine]] = None,
 ) -> None:
     """Process the image upload for a new pending machine submission and record contributor.
 
@@ -476,6 +478,7 @@ def process_pending_image(
         installation_id: Random installation identifier supplied by the app.
         title: Proposed machine title shown in the Slack image notification.
         thread_ts: Original pending-change Slack message timestamp.
+        nearby_machines: Photos posted after the submitted machine's photo.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
@@ -517,6 +520,14 @@ def process_pending_image(
             img_slack_text="New machine proposed (pending review):",
             pending=True,
             thread_ts=thread_ts,
+        )
+        message_slack_machine_images(
+            pending_id,
+            thread_ts,
+            [
+                (str(machine["id"]), machine["name"], "Nearby machine")
+                for machine in nearby_machines or []
+            ],
         )
     except Exception as e:
         logger.exception(f"Error when processing pending image {pending_id}: {e}")
@@ -723,7 +734,14 @@ def create_machine() -> Tuple[Response, int]:
     request_queue.put(
         (
             process_pending_image,
-            (pending_id, tmp_path, anonymous_user_id(), title, thread_ts),
+            (
+                pending_id,
+                tmp_path,
+                anonymous_user_id(),
+                title,
+                thread_ts,
+                nearest_machines,
+            ),
         )
     )
     if not address_okay:
