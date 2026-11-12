@@ -39,12 +39,15 @@ from pennyme.moderation import (
     parse_report_request,
     text_block_reason,
     validate_report,
+    validate_status_change_reason,
 )
+from pennyme.presence import presence_api
 from pennyme.slack import (
     format_machine_fields,
     image_slack,
     message_slack,
     message_slack_location_differ_summary,
+    message_slack_machine_images,
     message_slack_pending_change,
     message_slack_raw,
     message_slack_report,
@@ -100,6 +103,15 @@ def blocked_contributor_response() -> Optional[Tuple[Response, int]]:
     if contributor_id is not None and contributor_id in blocked_contributors:
         return jsonify({"error": "Posting access from this device is blocked"}), 403
     return None
+
+
+app.register_blueprint(presence_api)
+
+
+@app.before_request
+def check_presence_contributor():
+    if request.blueprint == "presence":
+        return blocked_contributor_response()
 
 
 def _diff_field(
@@ -452,6 +464,7 @@ def process_pending_image(
     installation_id: str,
     title: str,
     thread_ts: str,
+    nearby_machines: Optional[List[NearbyMachine]] = None,
 ) -> None:
     """Process the image upload for a new pending machine submission and record contributor.
 
@@ -465,6 +478,7 @@ def process_pending_image(
         installation_id: Random installation identifier supplied by the app.
         title: Proposed machine title shown in the Slack image notification.
         thread_ts: Original pending-change Slack message timestamp.
+        nearby_machines: Photos posted after the submitted machine's photo.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
@@ -506,6 +520,14 @@ def process_pending_image(
             img_slack_text="New machine proposed (pending review):",
             pending=True,
             thread_ts=thread_ts,
+        )
+        message_slack_machine_images(
+            pending_id,
+            thread_ts,
+            [
+                (str(machine["id"]), machine["name"], "Nearby machine")
+                for machine in nearby_machines or []
+            ],
         )
     except Exception as e:
         logger.exception(f"Error when processing pending image {pending_id}: {e}")
@@ -712,7 +734,14 @@ def create_machine() -> Tuple[Response, int]:
     request_queue.put(
         (
             process_pending_image,
-            (pending_id, tmp_path, anonymous_user_id(), title, thread_ts),
+            (
+                pending_id,
+                tmp_path,
+                anonymous_user_id(),
+                title,
+                thread_ts,
+                nearest_machines,
+            ),
         )
     )
     if not address_okay:
@@ -733,6 +762,8 @@ def change_machine() -> Tuple[Response, int]:
 
     The request query parameters describe the machine ID, title, address, area,
     status, coordinates, and optional machine attributes.
+    The optional JSON key ``status_change_reason`` opts clients into explanation
+    validation; legacy clients omit it and can still suggest status changes.
 
     Returns:
         A JSON response and HTTP status describing acceptance, invalid input, or
@@ -746,6 +777,8 @@ def change_machine() -> Tuple[Response, int]:
     address = str(request.args.get("address")).strip()
     area = str(request.args.get("area")).strip()
     status = str(request.args.get("status")).strip()
+    if status not in {"available", "out-of-order", "retired"}:
+        return jsonify(error="Unknown machine status"), 422
     latitude = float(request.args.get("lat_coord"))
     longitude = float(request.args.get("lon_coord"))
     if reason := text_block_reason(title):
@@ -767,6 +800,19 @@ def change_machine() -> Tuple[Response, int]:
 
     # Case 1: status was changed:
     old_status = existing_machine_infos["properties"]["machine_status"]
+    status_change_reason = ""
+    if status != old_status:
+        payload = request.get_json(silent=True)
+        # New apps always send this key, even when empty. Old apps omit it.
+        if isinstance(payload, dict) and "status_change_reason" in payload:
+            explanation = payload["status_change_reason"]
+            if error := validate_status_change_reason(explanation):
+                return jsonify(
+                    error=error,
+                    current_status=old_status,
+                    requires_status_change_reason=True,
+                ), 422
+            status_change_reason = explanation.strip()
     msg = _diff_field(
         changed_fields, msg, "Status", "machine_status", old_status, status
     )
@@ -864,7 +910,10 @@ def change_machine() -> Tuple[Response, int]:
     changed_fields["last_updated"] = str(datetime.today()).split(" ")[0]
 
     url = existing_machine_infos["properties"]["external_url"]
-    change_summary = msg.lstrip(":\n").strip()
+    diff_summary = msg.lstrip(":\n").strip()
+    change_summary = diff_summary
+    if status_change_reason:
+        change_summary += f"\nStatus change reason: {status_change_reason}"
     pending_id = insert_pending_change_full(
         machine_id=machine_id,
         change_type="update",
@@ -877,7 +926,8 @@ def change_machine() -> Tuple[Response, int]:
         change_type="update",
         title=title,
         area=area,
-        change_summary=f"at {url}\n{change_summary}",
+        change_summary=f"at {url}\n{diff_summary}",
+        status_change_reason=status_change_reason or None,
         machine_id=machine_id,
         latitude=latitude,
         longitude=longitude,

@@ -50,6 +50,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     private let blockedContributors = BlockedContributorsStore()
     private var listingOwners: [String: String] = [:]
     private var blockedMachineIDs: Set<String> = []
+    private var presenceMonitor: MachinePresenceMonitor?
     private var appliedBlockedContributorIDs: Set<String> = []
     private var appliedBlockedContentKeys: Set<String> = []
     private var hasAppliedBlockedListingState = false
@@ -133,6 +134,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
         // Check and enable localization (blue dot)
         checkLocationServices()
+        presenceMonitor = MachinePresenceMonitor(
+            hasNearbyMachine: { [weak self] location in
+                self?.artworks.contains { machine in
+                    CLLocation(latitude: machine.coordinate.latitude, longitude: machine.coordinate.longitude)
+                        .distance(from: location) <= 30
+                } ?? false
+            },
+            isBlocked: { [weak self] id in self?.blockedMachineIDs.contains(String(id)) ?? true }
+        )
         
         // Map initialization goes here:
         setDelegates()
@@ -1058,6 +1068,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         if (segue.identifier == "ShowPinViewController") {
             let destinationViewController = segue.destination as! PinViewController
             destinationViewController.pinData = self.selectedPin!
+            destinationViewController.presenceMonitor = presenceMonitor
         }
         
     }

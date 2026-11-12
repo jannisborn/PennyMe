@@ -245,8 +245,12 @@ enum LegalLinkOpener {
 enum CommunityTermsGate {
     private static let acceptedVersionKey = "communityTerms.acceptedVersion"
 
+    static var hasAccepted: Bool {
+        UserDefaults.standard.string(forKey: acceptedVersionKey) == CommunityTerms.version
+    }
+
     static func start(from presenter: UIViewController, completion: @escaping () -> Void) {
-        if UserDefaults.standard.string(forKey: acceptedVersionKey) == CommunityTerms.version {
+        if hasAccepted {
             completion()
             return
         }

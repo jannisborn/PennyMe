@@ -38,6 +38,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var pageControl: UIPageControl!
     
     var pinData : Artwork!
+    weak var presenceMonitor: MachinePresenceMonitor?
     let statusChoices = ["unvisited", "visited", "marked", "retired"]
     let statusColors: [UIColor] = [.red, .green, .yellow, .gray]
     let machineStatusColors: [String:UIColor] = ["available": .white, "out-of-order": .gray, "retired": .gray]
@@ -158,7 +159,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         reportButton.tintColor = .red
         reportButton.accessibilityLabel = "Report content"
         reportButton.accessibilityIdentifier = "reportContentButton"
-        navigationItem.rightBarButtonItem = reportButton
+        let confirmButton = UIBarButtonItem(
+            image: UIImage(systemName: "checkmark.seal.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .semibold)),
+            style: .plain,
+            target: self,
+            action: #selector(confirmMachinePresence)
+        )
+        confirmButton.tintColor = .systemGreen
+        confirmButton.accessibilityLabel = "Confirm this machine is here"
+        confirmButton.accessibilityHint = "Opens photo confirmation. Requires being within 100 metres."
+        confirmButton.accessibilityIdentifier = "confirmMachinePresenceButton"
+        navigationItem.rightBarButtonItems = [reportButton, confirmButton]
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(blockedContentDidChange),
@@ -177,12 +188,14 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         
         updatedLabel.numberOfLines = 0
         updatedLabel.contentMode = .scaleToFill
+        updatedLabel.text = ""
 
         // textfield
         commentTextField.attributedPlaceholder = NSAttributedString(
             string: "Type your comment here")
             
         // submit button
+        submitButton.configuration?.titleLineBreakMode = .byClipping
         submitButton.addTarget(self, action: #selector(addComment), for: .touchUpInside
                                )
         // main command to ensure that the subviews are sorted
@@ -304,6 +317,17 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         NotificationCenter.default.removeObserver(self)
     }
 
+    @objc private func confirmMachinePresence() {
+        guard let id = Int(pinData.id) else { return }
+        CommunityTermsGate.start(from: self) { [weak self] in
+            guard let self = self else { return }
+            let machine = PresenceMachine(id: id, name: self.pinData.title ?? "Penny machine",
+                                          latitude: self.pinData.coordinate.latitude, longitude: self.pinData.coordinate.longitude,
+                                          numCoins: self.pinData.numCoins)
+            self.presenceMonitor?.requestManualConfirmation(machine)
+        }
+    }
+
     @objc private func blockedContentDidChange() {
         guard isDisplayingMachine else {
             needsBlockedContentRefresh = true
@@ -324,6 +348,14 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         guard let navigationController = navigationController else { return true }
         return navigationController.visibleViewController === self
     }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath == IndexPath(row: 0, section: 4),
+           (updatedLabel.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return 0
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -339,7 +371,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        guard scrollView === self.scrollView, scrollView.bounds.width > 0 else { return }
+        let page = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
         pageControl.currentPage = page
     }
 
@@ -467,9 +500,11 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             message: "Report objectionable content or block the contributor of an image.",
             preferredStyle: .actionSheet
         )
-        sheet.addAction(UIAlertAction(title: "Report Visible Image", style: .default) { _ in
+        let imageReport = UIAlertAction(title: page == 0 ? "Report Machine Image" : "Report Coin Image \(page)", style: .default) { _ in
             self.chooseReportReason(for: imageTarget, blockContributor: false)
-        })
+        }
+        imageReport.isEnabled = imageDict[page] != nil
+        sheet.addAction(imageReport)
         sheet.addAction(UIAlertAction(title: "Report Public Comments", style: .default) { _ in
             self.chooseReportReason(for: .comments, blockContributor: false)
         })
@@ -767,7 +802,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                         }
                         if displayString.isEmpty {
                             displayString = results_.isEmpty
-                                ? "No comments yet"
+                                ? ""
                                 : "Comments from blocked contributors are hidden."
                         }
                         completionBlock(displayString)

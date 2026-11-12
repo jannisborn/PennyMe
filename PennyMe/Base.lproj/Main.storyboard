@@ -339,7 +339,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No comments yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-rg-nvf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-rg-nvf">
                                                     <rect key="frame" x="16" y="15" width="343" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -361,19 +361,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZVp-Wt-4Vc">
-                                                    <rect key="frame" x="16" y="4" width="244" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZVp-Wt-4Vc">
+                                                    <rect key="frame" x="16" y="9" width="247" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Com-Inp-Hgt"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rw-nZ-kZ4">
-                                                    <rect key="frame" x="268" y="3" width="78" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rw-nZ-kZ4">
+                                                    <rect key="frame" x="271" y="4" width="88" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Com-Sub-Hgt"/>
+                                                    </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Submit"/>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZVp-Wt-4Vc" firstAttribute="leading" secondItem="EbS-er-6Gh" secondAttribute="leadingMargin" id="Com-Inp-Ldg"/>
+                                                <constraint firstItem="ZVp-Wt-4Vc" firstAttribute="centerY" secondItem="EbS-er-6Gh" secondAttribute="centerY" id="Com-Inp-Ctr"/>
+                                                <constraint firstItem="1rw-nZ-kZ4" firstAttribute="leading" secondItem="ZVp-Wt-4Vc" secondAttribute="trailing" constant="8" id="Com-Sub-Gap"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1rw-nZ-kZ4" secondAttribute="trailing" id="Com-Sub-Trl"/>
+                                                <constraint firstItem="1rw-nZ-kZ4" firstAttribute="centerY" secondItem="EbS-er-6Gh" secondAttribute="centerY" id="Com-Sub-Ctr"/>
+                                                <constraint firstItem="1rw-nZ-kZ4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EbS-er-6Gh" secondAttribute="top" constant="4" id="Com-Sub-Top"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1rw-nZ-kZ4" secondAttribute="bottom" constant="4" id="Com-Sub-Btm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

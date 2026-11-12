@@ -267,6 +267,15 @@ def text_block_reason(*values: str) -> Optional[str]:
     return None
 
 
+def validate_status_change_reason(reason: Any) -> Optional[str]:
+    """Validate the explanation required for a user-proposed status transition."""
+    if not isinstance(reason, str) or len(reason.strip()) < 10:
+        return "Please explain the status change using at least 10 characters."
+    if len(reason.strip()) > 2000:
+        return "Please keep the status change explanation within 2,000 characters."
+    return text_block_reason(reason)
+
+
 def validate_report(target_kind: str, reason: str, comment: str = "") -> Optional[str]:
     """Validate the controlled values accepted by the report endpoint.
 
