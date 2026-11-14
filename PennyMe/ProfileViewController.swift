@@ -444,7 +444,7 @@ private final class ContributionCell: UITableViewCell {
 }
 
 @available(iOS 15.0, *)
-private final class ContributionGroupHeader: UITableViewHeaderFooterView {
+final class ContributionGroupHeader: UITableViewHeaderFooterView {
     private let titleLabel = UILabel()
     private let toggleButton = UIButton(type: .system)
     private var onToggle: (() -> Void)?
@@ -453,13 +453,13 @@ private final class ContributionGroupHeader: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = .preferredFont(forTextStyle: .caption1)
-        titleLabel.font = UIFont.systemFont(
-            ofSize: titleLabel.font.pointSize,
-            weight: .semibold
+        titleLabel.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(
+            for: .systemFont(ofSize: 12, weight: .semibold)
         )
         titleLabel.textColor = .secondaryLabel
         titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byWordWrapping
 
         toggleButton.translatesAutoresizingMaskIntoConstraints = false
         toggleButton.addTarget(self, action: #selector(toggle), for: .touchUpInside)
@@ -470,13 +470,16 @@ private final class ContributionGroupHeader: UITableViewHeaderFooterView {
         contentView.addSubview(toggleButton)
         contentView.backgroundColor = .systemGroupedBackground
         NSLayoutConstraint.activate([
-            toggleButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            toggleButton.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             toggleButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            toggleButton.widthAnchor.constraint(equalToConstant: 28),
-            toggleButton.heightAnchor.constraint(equalToConstant: 28),
-            titleLabel.leadingAnchor.constraint(equalTo: toggleButton.trailingAnchor, constant: 2),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            toggleButton.widthAnchor.constraint(equalToConstant: 44),
+            toggleButton.heightAnchor.constraint(equalToConstant: 44),
+            toggleButton.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
+            toggleButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -4),
+            titleLabel.leadingAnchor.constraint(equalTo: toggleButton.trailingAnchor, constant: 4),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
 
@@ -551,12 +554,19 @@ private final class ContributionsViewController: UITableViewController {
             ContributionGroupHeader.self,
             forHeaderFooterViewReuseIdentifier: headerIdentifier
         )
-        tableView.sectionHeaderHeight = 28
-        tableView.estimatedSectionHeaderHeight = 28
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 52
 
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         loadContributions()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if isViewLoaded && previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            tableView.reloadData()
+        }
     }
 
     deinit {

@@ -25,16 +25,25 @@ class StatisticsViewController: UIViewController {
 //    let goldproCutoff: Int = 15
 //    let goldlegendCutoff: Int = 16
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var crownImage: UIImageView!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var thirdCrown: UIImageView!
-    @IBOutlet weak var secondCrown: UIImageView!
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var showPercentSwitch: UISwitch!
-    @IBOutlet weak var byCountryLabel: UILabel!
-    @IBOutlet weak var barChartView: HorizontalBarChartView!
-    @IBOutlet weak var totalMachinesLabel: UILabel!
+    let titleLabel = UILabel()
+    let crownImage = UIImageView()
+    let numberLabel = UILabel()
+    let thirdCrown = UIImageView()
+    let secondCrown = UIImageView()
+    let totalLabel = UILabel()
+    let showPercentSwitch = UISwitch()
+    let byCountryLabel = UILabel()
+    let barChartView = HorizontalBarChartView()
+    let percentLabel = UILabel()
+    let scrollView = UIScrollView()
+    private let counts = UIStackView()
+    private let locationsHeader = UIStackView()
+    private var chartHeight: NSLayoutConstraint!
+    private var needsChartPositionUpdate = false
+    private var countryRowHeight: CGFloat = 32
+    private var visibleCountryCount = 0
+    private var chartViewportSize = CGSize.zero
+    private var isUpdatingChartLayout = false
     // Bronze Color (RGB: 205, 127, 50)
     let bronzeColor = UIColor(red: 205/255.0, green: 127/255.0, blue: 50/255.0, alpha: 1.0)
 
@@ -47,13 +56,14 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLayout()
         
         let user_settings = UserDefaults.standard
         let userSawLast = user_settings.value(forKey: "userSawLast") as? Int ?? 0
 
         crownImage.image = UIImage(systemName:"crown.fill")
-        var text = ""
-        var color: UIColor = .black
+        var text = "Collector status: Getting started"
+        var color: UIColor = .label
         if visitedCount >= goldCutoff {
             color = goldColor
             text = "Collector status: Gold!"
@@ -85,6 +95,8 @@ class StatisticsViewController: UIViewController {
             thirdCrown.tintColor = goldColor
             text = "Collector status: Gold Legend!"
         }
+        secondCrown.isHidden = visitedCount < goldproCutoff
+        thirdCrown.isHidden = visitedCount < goldlegendCutoff
         
         // update variable indicating what status the user has seen
         UserDefaults.standard.set(visitedCount, forKey: "userSawLast")
@@ -100,25 +112,163 @@ class StatisticsViewController: UIViewController {
         showPercentSwitch.onTintColor = UIColor.black
         showPercentSwitch.addTarget(self, action: #selector(setBarChartType), for: .valueChanged)
         
-        byCountryLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        
-        titleLabel.textColor = .gray
+        titleLabel.textColor = .secondaryLabel
         titleLabel.text = text
-        titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        numberLabel.font = UIFont.systemFont(ofSize: 60, weight: .bold)
         numberLabel.shadowColor = UIColor.gray // Shadow color
         numberLabel.shadowOffset = CGSize(width: 2, height: 2)
         numberLabel.textColor = color
         numberLabel.text = "\(visitedCount)"
         
-        totalMachinesLabel.numberOfLines = 0
-        totalMachinesLabel.text = "machines visited"
-        totalLabel.text = "/ \(totalMachines)"
+        numberLabel.accessibilityLabel = "\(visitedCount) machines visited"
+        totalLabel.text = "/\(totalMachines)"
+        totalLabel.accessibilityLabel = "out of \(totalMachines) machines"
 
         setBarChartType(sender: showPercentSwitch)
+    }
+
+    private func configureLayout() {
+        view.backgroundColor = .systemBackground
+        barChartView.xAxisRenderer = LocationAxisRenderer(
+            viewPortHandler: barChartView.viewPortHandler, axis: barChartView.xAxis,
+            transformer: barChartView.getTransformer(forAxis: .left), chart: barChartView
+        )
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.clipsToBounds = true
+        scrollView.alwaysBounceVertical = true
+        view.addSubview(scrollView)
+
+        for label in [titleLabel, numberLabel, totalLabel, byCountryLabel, percentLabel] {
+            label.numberOfLines = 0
+            label.adjustsFontForContentSizeCategory = true
+            label.textAlignment = .center
+        }
+        for label in [numberLabel, totalLabel] {
+            label.numberOfLines = 1
+            label.adjustsFontSizeToFitWidth = true
+            label.minimumScaleFactor = 0.3
+        }
+        numberLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        byCountryLabel.text = "Top locations"
+        byCountryLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        percentLabel.text = "Show percent"
+        percentLabel.textAlignment = .right
+        showPercentSwitch.accessibilityLabel = "Show percent"
+        showPercentSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
+        showPercentSwitch.setContentHuggingPriority(.required, for: .horizontal)
+
+        let crowns = UIStackView(arrangedSubviews: [secondCrown, crownImage, thirdCrown])
+        crowns.spacing = 3
+        for crown in [crownImage, secondCrown, thirdCrown] {
+            crown.contentMode = .scaleAspectFit
+            let width = crown.widthAnchor.constraint(equalToConstant: crown === crownImage ? 44 : 24)
+            width.priority = .defaultHigh
+            width.isActive = true
+            crown.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        }
+        crownImage.isAccessibilityElement = true
+        crownImage.accessibilityLabel = "Collection status"
+        crownImage.accessibilityTraits = .button
+
+        counts.addArrangedSubview(numberLabel)
+        counts.addArrangedSubview(totalLabel)
+        counts.spacing = 2
+        let countAndCrowns = UIStackView(arrangedSubviews: [counts, crowns])
+        countAndCrowns.spacing = 12
+        countAndCrowns.alignment = .center
+        let summary = UIStackView(arrangedSubviews: [countAndCrowns, titleLabel])
+        summary.axis = .vertical
+        summary.alignment = .center
+        summary.spacing = 4
+
+        let percentRow = UIStackView(arrangedSubviews: [percentLabel, showPercentSwitch])
+        percentRow.alignment = .center
+        percentRow.spacing = 8
+        locationsHeader.addArrangedSubview(byCountryLabel)
+        locationsHeader.addArrangedSubview(percentRow)
+        locationsHeader.spacing = 8
+        let content = UIStackView(arrangedSubviews: [summary, locationsHeader, barChartView])
+        content.axis = .vertical
+        content.spacing = 6
+        content.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(content)
+
+        // A content-sized chart keeps country rows compact even on taller screens.
+        chartHeight = barChartView.heightAnchor.constraint(equalToConstant: 120)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            content.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 8),
+            content.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -8),
+            content.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 16),
+            content.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -16),
+            content.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -32),
+            titleLabel.widthAnchor.constraint(equalTo: summary.widthAnchor),
+            countAndCrowns.widthAnchor.constraint(lessThanOrEqualTo: summary.widthAnchor),
+            numberLabel.widthAnchor.constraint(lessThanOrEqualTo: counts.widthAnchor),
+            totalLabel.widthAnchor.constraint(lessThanOrEqualTo: counts.widthAnchor),
+            chartHeight,
+            percentRow.heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
+            locationsHeader.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
+        ])
+        updateTextStyles()
+    }
+
+    private func updateTextStyles() {
+        titleLabel.font = .preferredFont(forTextStyle: .subheadline, compatibleWith: traitCollection)
+        byCountryLabel.font = .preferredFont(forTextStyle: .headline, compatibleWith: traitCollection)
+        numberLabel.font = UIFontMetrics(forTextStyle: .title1).scaledFont(
+            for: .systemFont(ofSize: 34, weight: .bold), compatibleWith: traitCollection
+        )
+        totalLabel.font = .preferredFont(forTextStyle: .title3, compatibleWith: traitCollection)
+        percentLabel.font = .preferredFont(forTextStyle: .caption1, compatibleWith: traitCollection)
+        counts.axis = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .vertical : .horizontal
+        counts.alignment = counts.axis == .horizontal ? .firstBaseline : .center
+        locationsHeader.axis = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .vertical : .horizontal
+        locationsHeader.alignment = locationsHeader.axis == .horizontal ? .center : .fill
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if isViewLoaded && previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            updateTextStyles()
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard !isUpdatingChartLayout, let data = barChartView.data, data.entryCount > 0,
+              scrollView.bounds.width > 0, scrollView.bounds.height > 0 else { return }
+        isUpdatingChartLayout = true
+        defer { isUpdatingChartLayout = false }
+
+        // Measure wrapped headers before choosing how many readable rows will fit.
+        scrollView.layoutIfNeeded()
+        barChartView.superview?.layoutIfNeeded()
+        let chartTop = barChartView.convert(CGPoint.zero, to: scrollView).y
+        let availableHeight = scrollView.bounds.height - chartTop - 8
+        let rows = min(data.entryCount, max(1, Int(floor((availableHeight - 20) / countryRowHeight))))
+        let height = CGFloat(rows) * countryRowHeight + 20
+        if chartHeight.constant != height {
+            chartHeight.constant = height
+            scrollView.layoutIfNeeded()
+        }
+        barChartView.layoutIfNeeded()
+        guard needsChartPositionUpdate || rows != visibleCountryCount || barChartView.bounds.size != chartViewportSize else { return }
+        needsChartPositionUpdate = false
+        visibleCountryCount = rows
+        chartViewportSize = barChartView.bounds.size
+        barChartView.xAxis.setLabelCount(rows, force: false)
+        barChartView.fitScreen()
+        barChartView.setVisibleXRangeMaximum(Double(rows))
+        // Horizontal charts put the country index on the transformer's y axis.
+        let top = barChartView.getTransformer(forAxis: .left).pixelForValues(x: 0, y: barChartView.xAxis.axisMaximum)
+        barChartView.viewPortHandler.centerViewPort(pt: top, chart: barChartView)
+        barChartView.notifyDataSetChanged()
     }
     
     // The function that will be called when the image is tapped
@@ -172,19 +322,17 @@ class StatisticsViewController: UIViewController {
     }
 
     func setupBarChart(mode: String) {
-        // Sort the dictionary and get the top 5 countries
-        var topCountries = visitedByArea.sorted { $0.value > $1.value } // .prefix(5)
+        var topCountries = visitedByArea.sorted { $0.value > $1.value }
         // if percent: sort by percentage
         if mode != "absolute" {
             topCountries = visitedByArea.sorted {
                 percentage(forArea: $0.key, visited: $0.value) > percentage(forArea: $1.key, visited: $1.value)
-            } // .prefix(5)
+            }
         }
 
         // Create entries for the bar chart
         var barChartEntries: [BarChartDataEntry] = []
         var countryNames: [String] = []
-        var nameSizes: [String] = []
 
         // Assign colors to each bar
         var barColors: [UIColor] = []
@@ -205,8 +353,6 @@ class StatisticsViewController: UIViewController {
             let maxNameLength = 12 // Example threshold, adjust as needed
             let formattedName = ((name.count > maxNameLength) && name.contains(" ")) ? insertLineBreaksInCountryName(name, maxLength: maxNameLength) : name
             countryNames.append(formattedName)
-            // append size for scaling
-            nameSizes.append(contentsOf: formattedName.components(separatedBy: "\n"))
             barColors.append(colorForValue(value: Int(barValue), mode: mode))
         }
         
@@ -214,6 +360,8 @@ class StatisticsViewController: UIViewController {
         guard !topCountries.isEmpty else {
             barChartView.data = nil
             barChartView.clear()
+            chartHeight.constant = 120
+            needsChartPositionUpdate = false
 
             barChartView.noDataText = "No collected countries yet."
             barChartView.noDataFont = .systemFont(ofSize: 16)
@@ -223,18 +371,14 @@ class StatisticsViewController: UIViewController {
             return
         }
 
-        // Calculate the longest country name with line breaks and update padding accordingly
-        let longestName = nameSizes.max(by: { $1.count > $0.count }) ?? ""
-        let longestNameLength = longestName.count
-
-        // Adjust the left padding to accommodate the longest label
-        barChartView.extraLeftOffset = CGFloat(longestNameLength) * 2.0
-//        barChartView.extraRightOffset = 10.0
-        
         // Create the BarChartDataSet
         let dataSet = BarChartDataSet(entries: barChartEntries, label: "Collected Pennies")
         dataSet.colors = barColors
         dataSet.valueFont = .systemFont(ofSize: 15)
+        let valueWidths = barChartEntries.map {
+            (String(Int($0.y)) as NSString).size(withAttributes: [.font: dataSet.valueFont]).width
+        }
+        barChartView.extraRightOffset = ceil((valueWidths.max() ?? 0) + 8)
 
         // Apply custom integer formatter
         dataSet.valueFormatter = IntegerValueFormatter()
@@ -243,22 +387,14 @@ class StatisticsViewController: UIViewController {
         // Create the BarChartData object
         let data = BarChartData(dataSet: dataSet)
         
-        // Reduce the bar width to make bars smaller
-        data.barWidth = 0.5 // Smaller bars, default is 1.0
+        data.barWidth = 0.6
         
         barChartView.data = data
-        // Refresh the chart
-        barChartView.notifyDataSetChanged()
         
-        barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-        
-        // Make it scrollable (show only N bars at a time)
-        let visibleBars = min(5, barChartEntries.count)   // choose what looks good
         barChartView.dragEnabled = true
         barChartView.setScaleEnabled(true)
         barChartView.scaleXEnabled = false
         barChartView.scaleYEnabled = true
-        barChartView.setVisibleXRangeMaximum(Double(visibleBars))
 
         // Customize the x-axis labels (which is now the vertical axis) with country names
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: countryNames)
@@ -270,6 +406,11 @@ class StatisticsViewController: UIViewController {
         barChartView.xAxis.avoidFirstLastClippingEnabled = true
         // Increase font size of the x-axis (country labels)
         barChartView.xAxis.labelFont = .systemFont(ofSize: 16)
+        let labelHeight = countryNames.map {
+            ($0 as NSString).size(withAttributes: [.font: barChartView.xAxis.labelFont]).height
+        }.max() ?? 0
+        countryRowHeight = max(32, ceil(labelHeight) + 4)
+        chartHeight.constant = countryRowHeight + 20
 
         // Disable grid lines for clarity
         barChartView.xAxis.drawGridLinesEnabled = false
@@ -284,11 +425,11 @@ class StatisticsViewController: UIViewController {
         barChartView.legend.enabled = false
         
         barChartView.data?.setDrawValues(true)
-        
-        let lastIndex = max(0, barChartEntries.count)
-        DispatchQueue.main.async {
-            self.barChartView.moveViewTo(xValue: 0, yValue: Double(lastIndex), axis: .left)
-        }
+        // Measure the final labels and fonts before calculating the chart's margins.
+        barChartView.notifyDataSetChanged()
+        barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+        needsChartPositionUpdate = true
+        view.setNeedsLayout()
     }
 
     func insertLineBreaksInCountryName(_ name: String, maxLength: Int) -> String {
@@ -321,6 +462,23 @@ class StatisticsViewController: UIViewController {
             valueClipped = valueClipped / 2
         }
         return colorGradient[valueClipped]
+    }
+}
+
+// DGCharts chooses its reference label by character count, which can underestimate multiline names.
+private final class LocationAxisRenderer: XAxisRendererHorizontalBarChart {
+    override func computeSize() {
+        super.computeSize()
+        guard let formatter = axis.valueFormatter as? IndexAxisValueFormatter else { return }
+        let sizes = formatter.values.map { ($0 as NSString).size(withAttributes: [.font: axis.labelFont]) }
+        let size = CGSize(width: sizes.map(\.width).max() ?? 0, height: sizes.map(\.height).max() ?? 0)
+        let rotated = CGRect(origin: .zero, size: size).applying(
+            CGAffineTransform(rotationAngle: CGFloat(axis.labelRotationAngle) * .pi / 180)
+        ).size
+        axis.labelWidth = ceil(size.width + axis.xOffset * 3.5)
+        axis.labelHeight = size.height
+        axis.labelRotatedWidth = ceil(rotated.width + axis.xOffset * 3.5)
+        axis.labelRotatedHeight = ceil(rotated.height)
     }
 }
 
