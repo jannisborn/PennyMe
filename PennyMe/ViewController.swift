@@ -15,7 +15,7 @@ import SwiftUI
 let locationManager = CLLocationManager()
 let LAT_DEGREE_TO_KM = 110.948
 let closeNotifyDist = 0.3 // in km, send "you are very close" at this distance
-var radius = 20.0
+let radius = 1.0 // in km, the nearby-machine notification radius
 
 var totalMachines = 0
 var activeMachinesByArea: [String: Int] = [:]
@@ -32,11 +32,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     @IBOutlet weak var userProfileButton: UIButton!
     
     @IBOutlet weak var navigationbar: UINavigationItem!
-    
-    //    For search results
-    @IBOutlet var searchFooter: SearchFooter!
-    @IBOutlet var searchFooterBottomConstraint: NSLayoutConstraint!
-    @IBOutlet var tableView: UITableView!
     
     @IBOutlet weak var newMachineButton: UIButton!
     
@@ -79,8 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var lastClosestID: Int = -1
     
     // To display the search results
-    lazy var locationResult : UITableView = UITableView(frame: PennyMap.frame)
-    var tableShown: Bool = false
+    let locationResult = SearchResultsTableView(frame: .zero, style: .plain)
     
     //  Map type + button
     var currMap = 1
@@ -122,6 +116,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
         // Set up search bar
         searchController.searchResultsUpdater = self
+        searchController.delegate = self
         // Results should be displayed in same searchbar as used for searching
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search penny machines"
@@ -181,7 +176,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         addAnnotationsIteratively()
         loadListingModerationManifestIfNeeded()
 
-        // addMapTracking Button
+        configureMapLayout()
+
+        // long gesture recognizer
+        let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        PennyMap.addGestureRecognizer(lpgr)
+
+        // Check whether version is new
+        VersionManager.shared.showVersionInfoAlertIfNeeded()
+    }
+
+    func configureMapLayout() {
+        // Keep the buttons in their storyboard container so their constraints stay active.
         setupRoundIconButton(
             ownLocation,
             systemName: "location",
@@ -206,16 +215,32 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         // toggle map button
         setupRoundIconButton(toggleMapButton, systemName: "square.stack.3d.up.fill", action: #selector(changeMapType))
 
-        
-        // long gesture recognizer
-        let lpgr = UILongPressGestureRecognizer(target: self, action:#selector(handleLongPress))
-        lpgr.minimumPressDuration = 0.5
-        lpgr.delaysTouchesBegan = true
-        lpgr.delegate = self
-        PennyMap.addGestureRecognizer(lpgr)
+        locationResult.translatesAutoresizingMaskIntoConstraints = false
+        locationResult.isHidden = true
+        locationResult.accessibilityIdentifier = "machineSearchResults"
+        locationResult.rowHeight = UITableView.automaticDimension
+        locationResult.estimatedRowHeight = 44
+        locationResult.keyboardDismissMode = .onDrag
+        locationResult.contentInsetAdjustmentBehavior = .never
+        locationResult.tableFooterView = UIView()
 
-        // Check whether version is new
-        VersionManager.shared.showVersionInfoAlertIfNeeded()
+        let emptyLabel = UILabel()
+        emptyLabel.text = "No machines match your search"
+        emptyLabel.font = .preferredFont(forTextStyle: .body)
+        emptyLabel.adjustsFontForContentSizeCategory = true
+        emptyLabel.textColor = .secondaryLabel
+        emptyLabel.textAlignment = .center
+        emptyLabel.numberOfLines = 0
+        emptyLabel.isHidden = true
+        locationResult.backgroundView = emptyLabel
+
+        view.addSubview(locationResult)
+        NSLayoutConstraint.activate([
+            locationResult.topAnchor.constraint(equalTo: PennyMap.topAnchor),
+            locationResult.leadingAnchor.constraint(equalTo: PennyMap.leadingAnchor),
+            locationResult.trailingAnchor.constraint(equalTo: PennyMap.trailingAnchor),
+            locationResult.bottomAnchor.constraint(lessThanOrEqualTo: view.keyboardLayoutGuide.topAnchor)
+        ])
     }
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -260,8 +285,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         if let action {
             button.addTarget(self, action: action, for: .touchUpInside)
         }
-
-        PennyMap.addSubview(button)
     }
 
     
@@ -1033,6 +1056,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     
     // Implements the search itself
     func filterContentForSearchText(_ searchText: String, category: Artwork? = nil) {
+        guard !searchText.isEmpty else {
+            hideSearchResults()
+            return
+        }
         filteredArtworks = artworks.filter {
             (artwork: Artwork) -> Bool in
             return !blockedMachineIDs.contains(artwork.id)
@@ -1040,21 +1067,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
         filteredArtworks = filteredArtworks.sorted(by: {$0.title! < $1.title! })
         
-        // This sets the table view frame to cover exactly the entire underlying map
-        locationResult.frame = PennyMap.bounds
-        
-        // Default height of table view cell is 44 - locationResult.rowHeight does not work
-        let height = CGFloat(filteredArtworks.count * 44)
-        if height < PennyMap.bounds.height{
-            var tableFrame = locationResult.frame
-            tableFrame.size.height = height
-            locationResult.frame = tableFrame
-        }
-        
-        if !tableShown {
-            PennyMap.addSubview(locationResult)
-            tableShown = true
-        }
+        locationResult.reloadData()
+        locationResult.backgroundView?.isHidden = !filteredArtworks.isEmpty
+        locationResult.invalidateIntrinsicContentSize()
+        locationResult.isHidden = false
+    }
+
+    private func hideSearchResults() {
+        locationResult.isHidden = true
+        filteredArtworks.removeAll()
         locationResult.reloadData()
     }
     
@@ -1311,11 +1332,7 @@ extension ViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
     
-    // Display the penny pin options and execute the search only if a string is entered
-    // Makes sure that list is not displayed if cancel is pressed
-    if searchBar.text!.count > 0 {
-        filterContentForSearchText(searchBar.text!)
-    }
+    filterContentForSearchText(searchBar.text ?? "")
     
   }
 }
@@ -1325,10 +1342,15 @@ extension ViewController: UISearchBarDelegate {
     
     //  Cancel button execution
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        locationResult.removeFromSuperview()
-        tableShown = false
+        hideSearchResults()
     }
 
+}
+
+extension ViewController: UISearchControllerDelegate {
+    func didDismissSearchController(_ searchController: UISearchController) {
+        hideSearchResults()
+    }
 }
 
 // Table with search results
@@ -1337,14 +1359,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "location")
-        let artwork: Artwork
-        if isFiltering {
-            artwork = filteredArtworks[indexPath.row]
-        } else {
-            artwork = artworks[indexPath.row]
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "location")
+            ?? UITableViewCell(style: .default, reuseIdentifier: "location")
+        let artwork = filteredArtworks[indexPath.row]
         cell.textLabel?.text = artwork.title
+        cell.textLabel?.font = .preferredFont(forTextStyle: .body)
+        cell.textLabel?.adjustsFontForContentSizeCategory = true
+        cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = artwork.address
         // Set the custom color for the cell based on the artwork color
         cell.backgroundColor = artwork.markerTintColor.withAlphaComponent(0.15)
@@ -1353,18 +1374,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-          return filteredArtworks.count
-        }
-        return artworks.count
-      if isFiltering {
-        searchFooter.setIsFilteringToShow(filteredItemCount:
-          filteredArtworks.count, of: artworks.count)
         return filteredArtworks.count
-      }
-
-      searchFooter.setNotFiltering()
-      return artworks.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -1372,11 +1382,32 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let center = self.selectedPin!.coordinate
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.PennyMap.setRegion(region, animated: true)
-        locationResult.removeFromSuperview()
-        tableShown = false
+        hideSearchResults()
         searchController.searchBar.endEditing(true)
         
         self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
+    }
+}
+
+final class SearchResultsTableView: UITableView {
+    override var contentSize: CGSize {
+        didSet {
+            if contentSize != oldValue { invalidateIntrinsicContentSize() }
+        }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        var height = contentSize.height
+        if let emptyView = backgroundView, !emptyView.isHidden {
+            let fittingSize = CGSize(width: max(1, bounds.width - 32), height: .greatestFiniteMagnitude)
+            height = max(height, emptyView.sizeThatFits(fittingSize).height + 32)
+        }
+        return CGSize(width: UIView.noIntrinsicMetric, height: height)
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        invalidateIntrinsicContentSize()
     }
 }
 

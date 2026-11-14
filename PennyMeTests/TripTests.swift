@@ -58,20 +58,28 @@ final class TripTests: XCTestCase {
     }
 
     func testGeodesicFilteringAndExportPreserveEndpoints() async throws {
+        let defaults = UserDefaults.standard
+        let previousDistance = defaults.object(forKey: "tripMaximumExtraDistance")
+        defaults.set(10_000, forKey: "tripMaximumExtraDistance")
+        defer { defaults.set(previousDistance, forKey: "tripMaximumExtraDistance") }
+        XCTAssertEqual(Trip.maximumExtraDistance, 50_000, "Always use 50 km, regardless of a previously saved limit")
         let trip = try await TripLink.importTrip(from: "https://maps.apple.com/?saddr=0,0&daddr=0,1")
         let middle = CLLocationCoordinate2D(latitude: 0, longitude: 0.5)
         let near = CLLocationCoordinate2D(latitude: 0.1, longitude: 0.5)
+        let withinNewLimit = CLLocationCoordinate2D(latitude: 0.4, longitude: 0.5)
         let far = CLLocationCoordinate2D(latitude: 1, longitude: 0.5)
         XCTAssertEqual(trip.extraDistance(via: middle), 0, accuracy: 1)
         XCTAssertGreaterThan(trip.extraDistance(via: near), trip.extraDistance(via: middle))
         XCTAssertLessThan(trip.extraDistance(via: near), Trip.maximumExtraDistance)
+        XCTAssertGreaterThan(trip.extraDistance(via: withinNewLimit), 10_000)
+        XCTAssertLessThan(trip.extraDistance(via: withinNewLimit), Trip.maximumExtraDistance)
         XCTAssertGreaterThan(trip.extraDistance(via: far), Trip.maximumExtraDistance)
         func machine(_ id: Int, at coordinate: CLLocationCoordinate2D) -> Artwork {
             Artwork(title: "Test \(id)", address: "", link: "", status: "unvisited", coordinate: coordinate,
                     id: id, last_updated: "", multimachine: 1, paywall: false, machineStatus: "available", area: "", numCoins: 4)
         }
-        let matches = trip.matches(in: [machine(1, at: far), machine(2, at: near), machine(3, at: middle)])
-        XCTAssertEqual(matches.map { $0.machine.id }, ["3", "2"])
+        let matches = trip.matches(in: [machine(1, at: far), machine(2, at: near), machine(3, at: middle), machine(4, at: withinNewLimit)])
+        XCTAssertEqual(matches.map { $0.machine.id }, ["3", "2", "4"])
         XCTAssertTrue(trip.matches(in: [machine(1, at: far)]).isEmpty)
         for apple in [true, false] {
             let url = trip.exportURL(appleMaps: apple, stop: near)

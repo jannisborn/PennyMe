@@ -93,12 +93,7 @@ struct TripLink {
 struct Trip {
     let start: MKMapItem
     let end: MKMapItem
-    static let defaultMaximumExtraDistance: CLLocationDistance = 10_000
-    static let maximumExtraDistanceKey = "tripMaximumExtraDistance"
-    static var maximumExtraDistance: CLLocationDistance {
-        let saved = UserDefaults.standard.double(forKey: maximumExtraDistanceKey)
-        return saved > 0 ? saved : defaultMaximumExtraDistance
-    }
+    static let maximumExtraDistance: CLLocationDistance = 50_000
 
     static func formatDistance(_ meters: CLLocationDistance) -> String {
         if meters < 1_000 {
