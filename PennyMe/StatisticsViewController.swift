@@ -161,9 +161,10 @@ class StatisticsViewController: UIViewController {
 
         let crowns = UIStackView(arrangedSubviews: [secondCrown, crownImage, thirdCrown])
         crowns.spacing = 3
+        crowns.distribution = .fillEqually
         for crown in [crownImage, secondCrown, thirdCrown] {
             crown.contentMode = .scaleAspectFit
-            let width = crown.widthAnchor.constraint(equalToConstant: crown === crownImage ? 44 : 24)
+            let width = crown.widthAnchor.constraint(equalToConstant: 44)
             width.priority = .defaultHigh
             width.isActive = true
             crown.heightAnchor.constraint(equalToConstant: 44).isActive = true
