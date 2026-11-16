@@ -104,7 +104,8 @@ enum LegalMarkdownRenderer {
 
     static func attributedText(
         from markdown: String,
-        baseTextStyle: UIFont.TextStyle
+        baseTextStyle: UIFont.TextStyle,
+        compatibleWith traits: UITraitCollection? = nil
     ) -> NSAttributedString {
         let result = NSMutableAttributedString()
         let lines = markdown.components(separatedBy: .newlines)
@@ -116,19 +117,19 @@ enum LegalMarkdownRenderer {
             }
 
             var line = originalLine
-            var font = UIFont.preferredFont(forTextStyle: baseTextStyle)
+            var font = UIFont.preferredFont(forTextStyle: baseTextStyle, compatibleWith: traits)
             let paragraph = NSMutableParagraphStyle()
             paragraph.paragraphSpacing = 3
 
             if line.hasPrefix("# ") {
                 line = String(line.dropFirst(2))
-                let titleFont = UIFont.preferredFont(forTextStyle: .title2)
+                let titleFont = UIFont.preferredFont(forTextStyle: .title2, compatibleWith: traits)
                 font = UIFont.systemFont(ofSize: titleFont.pointSize, weight: .bold)
                 paragraph.paragraphSpacingBefore = 4
                 paragraph.paragraphSpacing = 8
             } else if line.hasPrefix("## ") {
                 line = String(line.dropFirst(3))
-                font = UIFont.preferredFont(forTextStyle: .headline)
+                font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: traits)
                 paragraph.paragraphSpacingBefore = 5
                 paragraph.paragraphSpacing = 4
             } else if line.hasPrefix("- ") {
@@ -268,6 +269,9 @@ enum CommunityTermsGate {
 
 final class TermsGateViewController: UIViewController, UITextViewDelegate {
     var onAccept: (() -> Void)?
+    private let textView = UITextView()
+    private let acceptButton = UIButton(type: .system)
+    private let declineButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -285,15 +289,11 @@ final class TermsGateViewController: UIViewController, UITextViewDelegate {
         summaryLabel.adjustsFontForContentSizeCategory = true
         summaryLabel.numberOfLines = 0
 
-        let textView = UITextView()
-        textView.attributedText = LegalMarkdownRenderer.attributedText(
-            from: CommunityTerms.text,
-            baseTextStyle: .footnote
-        )
         textView.isEditable = false
         textView.isSelectable = true
         textView.delegate = self
         textView.adjustsFontForContentSizeCategory = true
+        textView.accessibilityIdentifier = "communityTermsText"
         textView.linkTextAttributes = [
             .foregroundColor: UIColor.systemBlue,
             .underlineStyle: NSUnderlineStyle.single.rawValue
@@ -302,16 +302,11 @@ final class TermsGateViewController: UIViewController, UITextViewDelegate {
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 8
 
-        let acceptButton = UIButton(type: .system)
-        acceptButton.setTitle("Agree & Continue", for: .normal)
-        acceptButton.titleLabel?.font = .preferredFont(forTextStyle: .headline)
         acceptButton.addTarget(self, action: #selector(acceptTerms), for: .touchUpInside)
         acceptButton.accessibilityIdentifier = "communityTermsAcceptButton"
 
-        let declineButton = UIButton(type: .system)
-        declineButton.setTitle("Decline", for: .normal)
-        declineButton.setTitleColor(.secondaryLabel, for: .normal)
         declineButton.addTarget(self, action: #selector(declineTerms), for: .touchUpInside)
+        declineButton.accessibilityIdentifier = "communityTermsDeclineButton"
 
         let buttons = UIStackView(arrangedSubviews: [acceptButton, declineButton])
         buttons.axis = .vertical
@@ -321,15 +316,58 @@ final class TermsGateViewController: UIViewController, UITextViewDelegate {
         stack.axis = .vertical
         stack.spacing = 14
         stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.clipsToBounds = true
+        view.addSubview(scrollView)
+        scrollView.addSubview(stack)
+
+        // Keep the actions at the bottom when everything fits; otherwise scroll the form.
+        let preferredHeight = stack.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor, constant: -32)
+        preferredHeight.priority = .defaultLow
 
         NSLayoutConstraint.activate([
-            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 220)
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 20),
+            stack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -20),
+            stack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 20),
+            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -12),
+            stack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -40),
+            preferredHeight,
+            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 220),
+            acceptButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
+            declineButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
         ])
+        updateTextStyles()
+    }
+
+    private func updateTextStyles() {
+        textView.attributedText = LegalMarkdownRenderer.attributedText(
+            from: CommunityTerms.text, baseTextStyle: .footnote, compatibleWith: traitCollection
+        )
+        for (button, title, style) in [(acceptButton, "Agree & Continue", UIFont.TextStyle.headline),
+                                        (declineButton, "Decline", UIFont.TextStyle.body)] {
+            var attributes = AttributeContainer()
+            attributes.font = UIFont.preferredFont(forTextStyle: style, compatibleWith: traitCollection)
+            var configuration = UIButton.Configuration.plain()
+            configuration.attributedTitle = AttributedString(title, attributes: attributes)
+            configuration.titleLineBreakMode = .byWordWrapping
+            configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
+            if button === declineButton { configuration.baseForegroundColor = .secondaryLabel }
+            button.configuration = configuration
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if isViewLoaded && previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            updateTextStyles()
+        }
     }
 
     @objc private func acceptTerms() {
@@ -549,16 +587,81 @@ final class LegalDocumentViewController: UIViewController, UITextViewDelegate {
     }
 }
 
+private final class BlockedContentCell: UITableViewCell {
+    private let titleLabel = UILabel()
+    private let detailLabel = UILabel()
+    let unblockButton = UIButton(type: .system)
+    private let row = UIStackView()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        titleLabel.font = .preferredFont(forTextStyle: .body)
+        detailLabel.font = .preferredFont(forTextStyle: .subheadline)
+        detailLabel.textColor = .secondaryLabel
+        for label in [titleLabel, detailLabel] {
+            label.numberOfLines = 0
+            label.lineBreakMode = .byWordWrapping
+            label.adjustsFontForContentSizeCategory = true
+            label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        }
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = "Unblock"
+        configuration.titleLineBreakMode = .byWordWrapping
+        unblockButton.configuration = configuration
+        unblockButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        unblockButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+
+        let labels = UIStackView(arrangedSubviews: [titleLabel, detailLabel])
+        labels.axis = .vertical
+        labels.spacing = 3
+        row.addArrangedSubview(labels)
+        row.addArrangedSubview(unblockButton)
+        row.spacing = 12
+        row.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(row)
+        NSLayoutConstraint.activate([
+            row.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            row.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            row.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
+            row.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
+            unblockButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
+        ])
+        updateLayout()
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    func configure(title: String, detail: String) {
+        titleLabel.text = title
+        detailLabel.text = detail
+    }
+
+    private func updateLayout() {
+        let largeText = traitCollection.preferredContentSizeCategory.isAccessibilityCategory
+        row.axis = largeText ? .vertical : .horizontal
+        row.alignment = largeText ? .fill : .center
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            updateLayout()
+        }
+    }
+}
+
 final class BlockedContentViewController: UITableViewController {
     private enum Entry {
         case contributor(String)
         case unattributedContent(String)
     }
 
-    private let store = BlockedContributorsStore()
+    private let store: BlockedContributorsStore
     private var entries: [Entry] = []
 
-    init() {
+    init(store: BlockedContributorsStore = BlockedContributorsStore()) {
+        self.store = store
         super.init(style: .insetGrouped)
     }
 
@@ -569,7 +672,8 @@ final class BlockedContentViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Blocked content"
-        tableView.rowHeight = 58
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 88
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Unblock All",
             style: .plain,
@@ -577,6 +681,13 @@ final class BlockedContentViewController: UITableViewController {
             action: #selector(confirmUnblockAll)
         )
         reloadEntries()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if isViewLoaded && previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            tableView.reloadData()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -588,25 +699,19 @@ final class BlockedContentViewController: UITableViewController {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let identifier = "BlockedContentCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier)
-            ?? UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? BlockedContentCell
+            ?? BlockedContentCell(style: .default, reuseIdentifier: identifier)
         let entry = entries[indexPath.row]
         switch entry {
         case .contributor(let identifier):
-            cell.textLabel?.text = "Anonymous contributor"
-            cell.detailTextLabel?.text = abbreviated(identifier)
+            cell.configure(title: "Anonymous contributor", detail: abbreviated(identifier))
         case .unattributedContent(let key):
-            cell.textLabel?.text = "Older unattributed content"
-            cell.detailTextLabel?.text = key
+            cell.configure(title: "Older unattributed content", detail: key)
         }
-        cell.selectionStyle = .none
 
-        let button = UIButton(type: .system)
-        button.setTitle("Unblock", for: .normal)
-        button.sizeToFit()
+        let button = cell.unblockButton
         button.tag = indexPath.row
         button.addTarget(self, action: #selector(unblockEntry(_:)), for: .touchUpInside)
-        cell.accessoryView = button
         return cell
     }
 

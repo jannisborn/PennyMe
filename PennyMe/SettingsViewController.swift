@@ -11,39 +11,16 @@ import MapKit
 import CoreLocation
 import Contacts
 
-final class ValueSlider: UISlider {
-    func showValue(_ value: Float) {
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 48, height: 30))
-        let image = renderer.image { context in
-            let rect = CGRect(x: 1, y: 1, width: 46, height: 28)
-            UIColor.systemBlue.setFill()
-            UIBezierPath(roundedRect: rect, cornerRadius: 8).fill()
-            let text = "\(Int(value.rounded()))"
-            let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 13, weight: .semibold),
-                .foregroundColor: UIColor.white
-            ]
-            let size = text.size(withAttributes: attributes)
-            text.draw(at: CGPoint(x: (48 - size.width) / 2, y: (30 - size.height) / 2), withAttributes: attributes)
-            context.cgContext.setShadow(offset: CGSize(width: 0, height: 1), blur: 2, color: UIColor.black.withAlphaComponent(0.25).cgColor)
-        }
-        setThumbImage(image, for: .normal)
-        setThumbImage(image, for: .highlighted)
-    }
-}
-
 class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var navigationbar: UINavigationItem!
     @IBOutlet weak var pushSwitch: UISwitch!
     @IBOutlet weak var reportProblemButton: UIButton!
-    @IBOutlet weak var radiusSlider: ValueSlider!
     @IBOutlet weak var retiredSwitch: UISwitch!
     @IBOutlet weak var clusterPinsSwitch: UISwitch!
     @IBOutlet weak var markedSwitch: UISwitch!
     @IBOutlet weak var visitedSwitch: UISwitch!
     @IBOutlet weak var unvisitedSwitch: UISwitch!
-    @IBOutlet weak var routingSlider: ValueSlider!
     
     static var hasChanged = false
     static var clusterHasChanged = false
@@ -60,25 +37,30 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 32
+        tableView.sectionFooterHeight = UITableView.automaticDimension
+        tableView.estimatedSectionFooterHeight = 60
+
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
             self.navigationbar.standardAppearance = UINavigationBarAppearance()
             self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         }
-        reportProblemButton!.titleLabel?.text = "Report a problem"
+        var reportConfiguration = UIButton.Configuration.plain()
+        reportConfiguration.title = "Report a problem"
+        reportConfiguration.titleLineBreakMode = .byWordWrapping
+        reportConfiguration.contentInsets = .zero
+        reportProblemButton.configuration = reportConfiguration
+        reportProblemButton.contentHorizontalAlignment = .leading
         reportProblemButton.tintColor = UIColor.black
         reportProblemButton.addTarget(self, action: #selector(reportProblem), for: .touchUpInside)
         
         // push notification button
         pushSwitch.isOn =  UserDefaults.standard.bool(forKey: "switchState")
         pushSwitch.addTarget(self, action: #selector(setPushNotifications), for: .valueChanged)
-        
-        // slider
-        radiusSlider.value =  UserDefaults.standard.float(forKey: "radius")
-        radius = Double(radiusSlider.value)
-        radiusSlider.showValue(radiusSlider.value)
-        radiusSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-        radiusSlider.isContinuous = false
         
         // cluster switch
         let user_settings = UserDefaults.standard
@@ -97,11 +79,6 @@ class SettingsViewController: UITableViewController {
         // 4) retired switch
         retiredSwitch.isOn = user_settings.value(forKey: "retiredSwitch") as? Bool ?? default_switches["retiredSwitch"] as! Bool
         retiredSwitch.addTarget(self, action: #selector(showRetiredMachines), for: .valueChanged)
-
-        routingSlider.value = min(max(Float(Trip.maximumExtraDistance / 1_000), 1), 50)
-        routingSlider.showValue(routingSlider.value)
-        routingSlider.isContinuous = false
-        routingSlider.addTarget(self, action: #selector(routingSliderValueDidChange(_:)), for: .valueChanged)
     }
 
     @objc func reportProblem (sender: UIButton!){
@@ -197,12 +174,6 @@ class SettingsViewController: UITableViewController {
         present(alert, animated: true)
     }
 
-    @objc private func routingSliderValueDidChange(_ sender: UISlider) {
-        let value = sender.value.rounded()
-        sender.value = value
-        UserDefaults.standard.set(Double(value) * 1_000, forKey: Trip.maximumExtraDistanceKey)
-        routingSlider.showValue(value)
-    }
     // Functions for Switches
     @objc func showUnvisitedMachines(sender:UISwitch!) {
         userdefauls_helper(defaultsKey: "unvisitedSwitch", isOn: sender.isOn)
@@ -228,16 +199,6 @@ class SettingsViewController: UITableViewController {
         else {
             SettingsViewController.hasChanged = true
         }
-    }
-    
-    // Function for radius slider for push notifications
-    @objc func sliderValueDidChange(_ sender:UISlider!)
-    {
-        radius =  Double(sender.value)
-        UserDefaults.standard.set(sender.value, forKey: "radius")
-        radiusSlider.showValue(sender.value)
-        UserDefaults.standard.synchronize()
-        self.tableView.reloadData()
     }
     
     @objc func setPushNotifications(sender:UISwitch!) {
@@ -275,7 +236,7 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?{
 
         if section == 1{
-            return "Send push notification if a new penny machine is less than \(Int(self.radiusSlider.value)) km away. Location services must be set to 'Always' in settings. Attention: The app must be opened regularly to keep the location updates running."
+            return "Notify me when within 1KM of unvisited machine. NOTE: Open app regularly to keep this active."
         }
         if section == 5{
             return "Tell us if there is a problem with the app! To update a penny machine, please use `Report Change` at the bottom of the machine view."
