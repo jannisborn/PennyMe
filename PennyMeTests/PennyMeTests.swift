@@ -811,6 +811,322 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testPinCardsShowFreshActivityCropPhotosAndTrackCollectedCoins() async throws {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: PinViewController.self))
+        let controller = try XCTUnwrap(storyboard.instantiateViewController(withIdentifier: "PinViewController") as? PinViewController)
+        let machineID = 98765432
+        let collectedKey = "collectedCoins_\(machineID)"
+        let previousCoins = UserDefaults.standard.object(forKey: collectedKey)
+        UserDefaults.standard.set([1, 2, 3, 4, 99], forKey: collectedKey)
+        let machine = Artwork(title: "Erlebnis-Zoo Hannover · Machine 6 (Outback)", address: "Adenauerallee 3, Hannover",
+                              link: "https://example.com", status: "marked",
+                              coordinate: CLLocationCoordinate2D(latitude: 52.3808, longitude: 9.7711), id: machineID,
+                              last_updated: "2026-10-01", multimachine: 6, paywall: true,
+                              machineStatus: "available", area: "Germany", numCoins: 4)
+        controller.pinData = machine
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [PresenceTestURLProtocol.self]
+        let session = URLSession(configuration: configuration)
+        controller.contentSession = session
+        let manager = PresenceTestLocationManager()
+        manager.testLocation = CLLocation(coordinate: machine.coordinate, altitude: 0, horizontalAccuracy: 5, verticalAccuracy: -1, timestamp: Date())
+        controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
+                                                            manager: manager, confirmationManager: PresenceTestLocationManager(), session: session, isActive: { true })
+        let portrait = UIGraphicsImageRenderer(size: CGSize(width: 240, height: 600)).image { context in
+            UIColor.systemTeal.setFill()
+            context.fill(CGRect(x: 0, y: 0, width: 240, height: 600))
+            UIColor.systemOrange.setFill()
+            context.fill(CGRect(x: 60, y: 200, width: 120, height: 200))
+        }
+        let photoData = try XCTUnwrap(portrait.jpegData(compressionQuality: 0.8))
+        PresenceTestURLProtocol.response = { request in
+            if request.url?.path.hasSuffix("/activity") == true {
+                XCTAssertEqual(request.cachePolicy, .reloadIgnoringLocalCacheData)
+                XCTAssertNotNil(request.value(forHTTPHeaderField: "X-PennyMe-Anonymous-ID"))
+                return (200, Data("{\"last_seen\":\"2026-11-15T10:30:00.123456+00:00\",\"last_updated\":\"2026-11-14\"}".utf8))
+            }
+            if request.url?.path.hasSuffix(".jpg") == true || request.url?.path.hasSuffix(".png") == true { return (200, photoData) }
+            return (200, Data("{}".utf8))
+        }
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let map = UIViewController()
+        map.navigationItem.backButtonTitle = ""
+        let navigation = UINavigationController(rootViewController: map)
+        navigation.pushViewController(controller, animated: false)
+        window.rootViewController = navigation
+        window.makeKeyAndVisible()
+        defer {
+            controller.dismiss(animated: false)
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+            UserDefaults.standard.set(previousCoins, forKey: collectedKey)
+            PresenceTestURLProtocol.response = nil
+            session.invalidateAndCancel()
+        }
+        for _ in 0..<100 where controller.imageDict.count < 5 || machine.lastSeen == nil {
+            try await Task.sleep(nanoseconds: 20_000_000)
+        }
+        controller.tableView.reloadData()
+        window.layoutIfNeeded()
+        controller.view.layoutIfNeeded()
+        XCTAssertNil(controller.navigationItem.rightBarButtonItems)
+        XCTAssertNotNil(controller.reportButton.superview)
+        XCTAssertEqual(controller.addressLabel.text, machine.address)
+        let titleFrame = controller.titleLabel.convert(controller.titleLabel.bounds, to: controller.view)
+        let addressFrame = controller.addressLabel.convert(controller.addressLabel.bounds, to: controller.view)
+        let activityFrame = controller.lastSeenLabel.convert(controller.lastSeenLabel.bounds, to: controller.view)
+        let barFrame = navigation.navigationBar.convert(navigation.navigationBar.bounds, to: controller.view)
+        XCTAssertLessThanOrEqual(titleFrame.minY, barFrame.midY, "The title should open alongside the native back button")
+        XCTAssertGreaterThanOrEqual(titleFrame.minX, 64, "The title must stay to the right of the back button")
+        XCTAssertGreaterThanOrEqual(addressFrame.minY, titleFrame.maxY)
+        XCTAssertLessThan(addressFrame.maxY, activityFrame.minY + 1)
+        let editedFrame = controller.lastUpdatedLabel.convert(controller.lastUpdatedLabel.bounds, to: controller.view)
+        let flagFrame = controller.reportButton.convert(controller.reportButton.bounds, to: controller.view)
+        XCTAssertGreaterThan(flagFrame.minX, editedFrame.maxX)
+        let features = try XCTUnwrap(controller.paywallButton.superview)
+        XCTAssertEqual(features.accessibilityIdentifier, "pinMachineFeatures")
+        XCTAssertGreaterThanOrEqual(features.convert(features.bounds, to: controller.view).minY, flagFrame.maxY)
+        XCTAssertEqual(controller.imageDict.count, 5)
+        XCTAssertEqual(machine.lastSeen, "2026-11-15T10:30:00.123456+00:00")
+        XCTAssertTrue(controller.lastSeenLabel.accessibilityLabel?.contains("2026") == true)
+        XCTAssertFalse(controller.lastUpdatedLabel.accessibilityLabel?.contains("October") == true)
+        XCTAssertEqual(controller.tableView.numberOfRows(inSection: 4), 1, "Empty comments should only show the add action")
+        XCTAssertFalse(controller.updatedLabel.text?.contains("No comments") == true)
+        XCTAssertEqual(controller.scrollView.bounds.width / controller.scrollView.bounds.height, 16.0 / 9, accuracy: 0.01)
+        let mainPhoto = try XCTUnwrap(controller.scrollView.subviews.flatMap(\.subviews).compactMap { $0 as? UIImageView }.first { $0.tag == 0 })
+        XCTAssertEqual(mainPhoto.contentMode, .scaleAspectFill)
+        XCTAssertTrue(mainPhoto.clipsToBounds)
+        XCTAssertEqual(controller.imageDict[0]?.cgImage?.width, portrait.cgImage?.width, "Zoom must retain the full original resolution")
+        XCTAssertEqual(controller.imageDict[0]?.cgImage?.height, portrait.cgImage?.height)
+        XCTAssertEqual(controller.directionsMapItem.placemark.coordinate.latitude, machine.coordinate.latitude)
+        XCTAssertEqual(controller.directionsMapItem.placemark.coordinate.longitude, machine.coordinate.longitude)
+        XCTAssertTrue(controller.directionsMapItem.placemark.postalAddress?.street.isEmpty != false)
+
+        XCTAssertFalse(controller.lastSeenLabel.attributedText?.string.contains("Seen") == true)
+        XCTAssertFalse(controller.lastUpdatedLabel.attributedText?.string.contains("Edited") == true)
+        let seenIcon = try XCTUnwrap(controller.lastSeenLabel.attributedText?.attribute(.attachment, at: 0, effectiveRange: nil) as? NSTextAttachment)
+        let editedIcon = try XCTUnwrap(controller.lastUpdatedLabel.attributedText?.attribute(.attachment, at: 0, effectiveRange: nil) as? NSTextAttachment)
+        XCTAssertEqual(seenIcon.bounds.width, editedIcon.bounds.width)
+        XCTAssertGreaterThan(editedIcon.bounds.height, seenIcon.bounds.height)
+        func waitForAlert() async {
+            let ready = expectation(for: NSPredicate { _, _ in
+                guard let alert = controller.presentedViewController as? UIAlertController else { return false }
+                return !alert.isBeingPresented
+            }, evaluatedWith: nil)
+            await fulfillment(of: [ready], timeout: 3)
+        }
+        func dismissAlert() async {
+            await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+                controller.dismiss(animated: false) { continuation.resume() }
+            }
+        }
+        manager.testLocation = CLLocation(coordinate: machine.coordinate, altitude: 0, horizontalAccuracy: 5, verticalAccuracy: -1,
+                                          timestamp: Date().addingTimeInterval(-60))
+        controller.perform(NSSelectorFromString("showSeenInfo"))
+        await waitForAlert()
+        let seenAlert = try XCTUnwrap(controller.presentedViewController as? UIAlertController)
+        XCTAssertEqual(seenAlert.title, "Last seen")
+        XCTAssertTrue(seenAlert.message?.hasSuffix("200 metres.") == true)
+        XCTAssertFalse(seenAlert.message?.contains("precise") == true)
+        XCTAssertTrue(seenAlert.actions.first { $0.title == "Confirm it's here" }?.isEnabled == true)
+        await dismissAlert()
+        controller.perform(NSSelectorFromString("showEditedInfo"))
+        await waitForAlert()
+        let editedAlert = try XCTUnwrap(controller.presentedViewController as? UIAlertController)
+        XCTAssertEqual(editedAlert.title, "Last edited")
+        XCTAssertEqual(editedAlert.actions.map(\.title), ["Edit machine details", "Okay"])
+        await dismissAlert()
+
+        let coinCell = controller.tableView(controller.tableView, cellForRowAt: IndexPath(row: 0, section: 2))
+        func descendants(_ view: UIView) -> [UIView] { [view] + view.subviews.flatMap(descendants) }
+        let galleryCoin = try XCTUnwrap(controller.scrollView.subviews.flatMap(\.subviews).compactMap { $0 as? CoinPreviewView }.first { $0.tag == 1 })
+        XCTAssertGreaterThan(try XCTUnwrap(galleryCoin.image).size.width, try XCTUnwrap(galleryCoin.image).size.height)
+        let thumbnail = try XCTUnwrap(descendants(coinCell).first { $0.accessibilityIdentifier == "coinThumbnail_1" })
+        let preview = try XCTUnwrap(thumbnail as? CoinPreviewView)
+        XCTAssertGreaterThan(try XCTUnwrap(preview.image).size.height, try XCTUnwrap(preview.image).size.width)
+        let collect = try XCTUnwrap(descendants(coinCell).first { $0.accessibilityIdentifier == "collectCoin_1" } as? UIButton)
+        XCTAssertTrue((thumbnail as? CoinPreviewView)?.isCollected == true)
+        XCTAssertEqual(coinCell.layer.borderWidth, 2.5)
+        collect.sendActions(for: .touchUpInside)
+        XCTAssertFalse((thumbnail as? CoinPreviewView)?.isCollected == true)
+        XCTAssertEqual(coinCell.layer.borderWidth, 0)
+        collect.sendActions(for: .touchUpInside)
+        XCTAssertTrue((thumbnail as? CoinPreviewView)?.isCollected == true)
+        XCTAssertEqual(coinCell.layer.borderWidth, 2.5)
+        controller.pageControl.currentPage = 1
+        controller.view.setNeedsLayout()
+        controller.view.layoutIfNeeded()
+        controller.tableView.layoutIfNeeded()
+        let attachment = XCTAttachment(image: UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+            window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+        })
+        attachment.name = "Pin view A — collected coins"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+
+        controller.reportButton.sendActions(for: .touchUpInside)
+        await waitForAlert()
+        let report = try XCTUnwrap(controller.presentedViewController as? UIAlertController)
+        XCTAssertEqual(report.title, "Content Safety")
+        XCTAssertTrue(report.actions.contains { $0.title == "Report Machine Listing" })
+        await dismissAlert()
+
+        controller.tableView(controller.tableView, didSelectRowAt: IndexPath(row: 1, section: 5))
+        XCTAssertEqual(controller.tableView.numberOfRows(inSection: 5), 5, "Details should disclose coordinates, website and machine ID/region")
+        controller.tableView(controller.tableView, didSelectRowAt: IndexPath(row: 2, section: 5))
+        await waitForAlert()
+        XCTAssertEqual(UIPasteboard.general.string, "52.380800, 9.771100")
+        await dismissAlert()
+        controller.perform(NSSelectorFromString("copyTitle"))
+        await waitForAlert()
+        XCTAssertEqual(UIPasteboard.general.string, machine.title)
+        await dismissAlert()
+
+        let updated = "2026-11-16T12:00:00+00:00"
+        NotificationCenter.default.post(name: .machinePresenceDidChange, object: nil, userInfo: ["id": machineID, "last_seen": updated])
+        XCTAssertEqual(machine.lastSeen, updated)
+        XCTAssertEqual(machine.last_updated, "2026-10-01", "Sightings must stay separate from edits")
+
+        window.frame = CGRect(x: 0, y: 0, width: 320, height: 568)
+        navigation.setOverrideTraitCollection(UITraitCollection(preferredContentSizeCategory: .accessibilityExtraExtraExtraLarge), forChild: controller)
+        controller.tableView.reloadData()
+        window.layoutIfNeeded()
+        controller.view.layoutIfNeeded()
+        XCTAssertFalse(controller.titleLabel.hasAmbiguousLayout)
+        XCTAssertGreaterThan(controller.titleLabel.bounds.height, 60, "Long names should wrap at large text sizes")
+        XCTAssertEqual(controller.scrollView.bounds.width / controller.scrollView.bounds.height, 16.0 / 9, accuracy: 0.01)
+        controller.tableView.scrollToRow(at: IndexPath(row: 4, section: 5), at: .bottom, animated: false)
+        controller.tableView.layoutIfNeeded()
+        XCTAssertNotNil(controller.tableView.cellForRow(at: IndexPath(row: 4, section: 5)), "Details remain reachable on short screens")
+        let largeText = XCTAttachment(image: UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+            window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+        })
+        largeText.name = "Pin details — large text"
+        largeText.lifetime = .keepAlways
+        add(largeText)
+    }
+
+    @MainActor
+    func testCoinOutlinesFollowTransparentAndOpaqueCoinShapes() throws {
+        func alpha(_ image: UIImage, at point: CGPoint) throws -> UInt8 {
+            let source = try XCTUnwrap(image.cgImage)
+            var pixels = [UInt8](repeating: 0, count: source.width * source.height * 4)
+            return try pixels.withUnsafeMutableBytes { bytes in
+                let context = try XCTUnwrap(CGContext(data: bytes.baseAddress, width: source.width, height: source.height,
+                                                     bitsPerComponent: 8, bytesPerRow: source.width * 4,
+                                                     space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+                context.draw(source, in: CGRect(x: 0, y: 0, width: source.width, height: source.height))
+                let x = Int(point.x * image.scale), y = Int(point.y * image.scale)
+                return bytes[(y * source.width + x) * 4 + 3]
+            }
+        }
+        for opaque in [false, true] {
+            let format = UIGraphicsImageRendererFormat()
+            format.opaque = opaque
+            format.scale = 1
+            let coin = UIGraphicsImageRenderer(size: CGSize(width: 80, height: 100), format: format).image { context in
+                if opaque { UIColor.white.setFill(); context.fill(CGRect(x: 0, y: 0, width: 80, height: 100)) }
+                UIColor.systemBlue.setFill()
+                UIBezierPath(ovalIn: CGRect(x: 12, y: 8, width: 56, height: 84)).fill()
+                UIBezierPath(ovalIn: CGRect(x: 58, y: 14, width: 14, height: 14)).fill()
+                UIColor.white.setFill()
+                UIBezierPath(ovalIn: CGRect(x: 32, y: 42, width: 16, height: 16)).fill()
+            }
+            let ring = try XCTUnwrap(CoinPreviewView.collectionOutline(for: coin, size: coin.size))
+            XCTAssertGreaterThan(try alpha(ring, at: CGPoint(x: 16, y: 56)), 100, "Ring should hug the coin's left edge")
+            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 6, y: 56)), 10, "Ring must not follow the preview's bounding rectangle")
+            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 46, y: 56)), 10, "White details inside an opaque coin must remain inside its silhouette")
+            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 8, y: 8)), 10)
+            XCTAssertGreaterThan(try alpha(ring, at: CGPoint(x: 80, y: 27)), 100, "An asymmetric edge must follow the picture in the correct orientation")
+            XCTAssertFalse(CoinPreviewView(image: coin).clipsToBounds, "The ring must remain visible beyond the image bounds")
+            let horizontal = CoinPreviewView.orientedImage(coin, landscape: true)
+            XCTAssertGreaterThan(horizontal.size.width, horizontal.size.height)
+            let rotatedRing = try XCTUnwrap(CoinPreviewView.collectionOutline(for: horizontal, size: horizontal.size))
+            XCTAssertGreaterThan(try alpha(rotatedRing, at: CGPoint(x: 12, y: 46)), 100)
+            XCTAssertLessThan(try alpha(rotatedRing, at: CGPoint(x: 6, y: 46)), 10, "Rotating an opaque photo must still preserve its coin silhouette")
+        }
+        XCTAssertGreaterThan(CoinPreviewView.placeholder.size.height, CoinPreviewView.placeholder.size.width)
+        XCTAssertEqual(PinViewController.externalWebsiteTitle(for: "http://locations.pennycollector.com/Details.aspx?location=42"), "PennyCollector (External)")
+        XCTAssertEqual(PinViewController.externalWebsiteTitle(for: "https://www.coinmap.org/place/42"), "coinmap.org (External)")
+        XCTAssertEqual(PinViewController.externalWebsiteTitle(for: "https://pennycollector.com.example.org/"), "pennycollector.com.example.org (External)")
+        XCTAssertEqual(PinViewController.externalWebsiteTitle(for: "null"), "No website available")
+    }
+
+    @MainActor
+    func testCoinDesignStripCentersSmallSetsAndShowsScrollableOverflow() async throws {
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [PresenceTestURLProtocol.self]
+        let session = URLSession(configuration: configuration)
+        PresenceTestURLProtocol.response = { _ in (200, Data("{}".utf8)) }
+        defer {
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+            PresenceTestURLProtocol.response = nil
+            session.invalidateAndCancel()
+        }
+        func descendants(_ view: UIView) -> [UIView] { [view] + view.subviews.flatMap(descendants) }
+        for count in [1, 3, 6] {
+            let controller = PinViewController(style: .insetGrouped)
+            controller.pinData = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
+                                         coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: 98765433,
+                                         last_updated: "2026-11-01", multimachine: 1, paywall: false,
+                                         machineStatus: "available", area: "Germany", numCoins: count)
+            controller.contentSession = session
+            window.rootViewController = UINavigationController(rootViewController: controller)
+            window.makeKeyAndVisible()
+            window.layoutIfNeeded()
+            try await Task.sleep(nanoseconds: 50_000_000)
+            controller.tableView.layoutIfNeeded()
+            controller.view.layoutIfNeeded()
+            controller.tableView.layoutIfNeeded()
+            let cell = controller.tableView(controller.tableView, cellForRowAt: IndexPath(row: 0, section: 2))
+            let strip = try XCTUnwrap(descendants(cell).first { $0.accessibilityIdentifier == "coinDesignsScroll" } as? UIScrollView)
+            strip.layoutIfNeeded()
+            XCTAssertGreaterThan(strip.bounds.height, 100)
+            if count < 4 {
+                let first = try XCTUnwrap(descendants(strip).first { $0.accessibilityIdentifier == "coinThumbnail_1" })
+                let last = try XCTUnwrap(descendants(strip).first { $0.accessibilityIdentifier == "coinThumbnail_\(count)" })
+                let center = (first.convert(first.bounds, to: cell).midX + last.convert(last.bounds, to: cell).midX) / 2
+                XCTAssertEqual(center, strip.convert(strip.bounds, to: cell).midX, accuracy: 1)
+            } else {
+                XCTAssertGreaterThan(strip.contentSize.width, strip.bounds.width)
+                XCTAssertTrue(strip.showsHorizontalScrollIndicator)
+                let hint = try XCTUnwrap(descendants(cell).compactMap { $0 as? UILabel }.first { $0.text?.contains("Swipe") == true })
+                XCTAssertFalse(hint.isHidden)
+                strip.contentOffset.x = strip.contentSize.width - strip.bounds.width
+                controller.scrollViewDidScroll(strip)
+                XCTAssertTrue(hint.text?.contains("←") == true)
+            }
+            XCTAssertEqual(controller.tableView.numberOfSections, 6, "The standalone Directions row is removed")
+            if count > 1 {
+                let preview = XCTAttachment(image: UIGraphicsImageRenderer(bounds: cell.bounds).image { _ in
+                    cell.drawHierarchy(in: cell.bounds, afterScreenUpdates: true)
+                })
+                preview.name = "Coin designs — \(count)"
+                preview.lifetime = .keepAlways
+                add(preview)
+            }
+        }
+    }
+
+    func testSightingCacheSupportsOlderSnapshotsAndOptionalDates() throws {
+        let artwork = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
+                              coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: 1,
+                              last_updated: "2026-11-01", multimachine: 1, paywall: false,
+                              machineStatus: "available", area: "Germany", numCoins: 0,
+                              lastSeen: "2026-11-15T12:00:00+00:00")
+        let data = try JSONEncoder().encode(artwork.cacheSnapshot)
+        XCTAssertEqual(Artwork(cached: try JSONDecoder().decode(CachedArtwork.self, from: data)).lastSeen, artwork.lastSeen)
+        var legacy = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        legacy.removeValue(forKey: "lastSeen")
+        let restored = try JSONDecoder().decode(CachedArtwork.self, from: JSONSerialization.data(withJSONObject: legacy))
+        XCTAssertNil(Artwork(cached: restored).lastSeen)
+    }
+
+    @MainActor
     func testScrollingPinDetailsDoesNotChangeTheReportedImage() {
         let controller = PinViewController(style: .grouped)
         let photos = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
@@ -867,7 +1183,7 @@ class PennyMeTests: XCTestCase {
         manager.testLocation = fix
         var active = true
         let monitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
-                                             manager: manager, session: session, isActive: { active })
+                                             manager: manager, confirmationManager: PresenceTestLocationManager(), session: session, isActive: { active })
         monitor.requestManualConfirmation(machine)
         let presented = expectation(for: NSPredicate { _, _ in
             guard let prompt = presenter.presentedViewController as? PresenceConfirmationController else { return false }
@@ -890,8 +1206,8 @@ class PennyMeTests: XCTestCase {
         prompt.present(viewer, animated: false)
         for location in [
             CLLocation(coordinate: machine.location.coordinate, altitude: 0, horizontalAccuracy: 5,
-                       verticalAccuracy: -1, timestamp: Date().addingTimeInterval(-20)),
-            CLLocation(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 120 / 111319.49),
+                       verticalAccuracy: -1, timestamp: Date().addingTimeInterval(-121)),
+            CLLocation(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 220 / 111319.49),
                        altitude: 0, horizontalAccuracy: 5, verticalAccuracy: -1, timestamp: Date())
         ] {
             manager.testLocation = location
@@ -910,8 +1226,9 @@ class PennyMeTests: XCTestCase {
         XCTAssertTrue(prompt.presentedViewController === viewer)
         active = true
         NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
-        manager.testLocation = fix
-        monitor.locationManager(manager, didUpdateLocations: [fix])
+        let restored = CLLocation(coordinate: fix.coordinate, altitude: 0, horizontalAccuracy: 5, verticalAccuracy: -1, timestamp: Date())
+        manager.testLocation = restored
+        monitor.locationManager(manager, didUpdateLocations: [restored])
         XCTAssertNil(prompt.rootView.locationMessage)
         XCTAssertTrue(prompt.presentedViewController === viewer)
     }
@@ -1051,6 +1368,66 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testCommittedSightingUpdatesOpenPinEvenAfterAppBecomesInactive() async throws {
+        XCTAssertNil(MachinePresencePolicy.confirmedLastSeen(from: Data("{}".utf8)))
+        XCTAssertNil(MachinePresencePolicy.confirmedLastSeen(from: Data("{\"last_seen\":\"invalid\"}".utf8)))
+        let controller = PinViewController(style: .insetGrouped)
+        let coordinate = CLLocationCoordinate2D(latitude: 47.677014, longitude: 8.614564)
+        controller.pinData = Artwork(title: "Rheinfall sidewalk", address: "Schloss Laufen", link: "null", status: "unvisited",
+                                     coordinate: coordinate, id: 6042, last_updated: "2026-10-22", multimachine: 1,
+                                     paywall: false, machineStatus: "available", area: "Switzerland", numCoins: 0)
+        let manager = PresenceTestLocationManager()
+        manager.testLocation = CLLocation(coordinate: coordinate, altitude: 0, horizontalAccuracy: 30, verticalAccuracy: -1,
+                                          timestamp: Date().addingTimeInterval(-45))
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [PresenceTestURLProtocol.self]
+        let session = URLSession(configuration: configuration)
+        var active = true
+        let monitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
+                                             manager: manager, confirmationManager: PresenceTestLocationManager(),
+                                             session: session, isActive: { active })
+        controller.presenceMonitor = monitor
+        controller.contentSession = session
+        let savedAt = ISO8601DateFormatter().string(from: Date())
+        PresenceTestURLProtocol.response = { request in
+            if request.url?.path.hasSuffix("/confirm-presence") == true {
+                DispatchQueue.main.async {
+                    active = false
+                    // Exercise the same generation change that happens during an interruption.
+                    monitor.locationManagerDidChangeAuthorization(manager)
+                }
+                return (200, Data("{\"last_seen\":\"\(savedAt)\"}".utf8))
+            }
+            if request.url?.path.hasSuffix("/activity") == true {
+                return (200, Data("{\"last_seen\":null,\"last_updated\":\"2026-10-22\"}".utf8))
+            }
+            return (200, Data("{}".utf8))
+        }
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = UINavigationController(rootViewController: controller)
+        window.makeKeyAndVisible()
+        window.layoutIfNeeded()
+        defer {
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+            PresenceTestURLProtocol.response = nil
+            session.invalidateAndCancel()
+        }
+        try await Task.sleep(nanoseconds: 50_000_000)
+        let updated = expectation(for: NSPredicate { _, _ in
+            controller.pinData.lastSeen == savedAt
+        }, evaluatedWith: nil)
+        let machine = PresenceMachine(id: 6042, name: "Rheinfall sidewalk", latitude: coordinate.latitude, longitude: coordinate.longitude)
+        monitor.requestFreshConfirmation(machine, source: .manual)
+        await fulfillment(of: [updated], timeout: 3)
+        XCTAssertEqual(controller.pinData.lastSeen, savedAt)
+        XCTAssertTrue(controller.lastSeenLabel.attributedText?.string.contains("Just now") == true)
+        XCTAssertEqual(controller.pinData.last_updated, "2026-10-22")
+        XCTAssertNil(controller.presentedViewController, "Saving in the background must update state without presenting an alert")
+    }
+
+    @MainActor
     func testPresenceConfirmsWithExistingFreshFixAndAfterTemporaryError() async {
         for temporaryError in [false, true] {
             let sent = expectation(description: "Live confirmation sent (temporary error: \(temporaryError))")
@@ -1068,7 +1445,7 @@ class PennyMeTests: XCTestCase {
             }
             let monitor = MachinePresenceMonitor(
                 hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
-                manager: manager, session: session, isActive: { true }
+                manager: manager, confirmationManager: PresenceTestLocationManager(), session: session, isActive: { true }
             )
             let stopsBeforeConfirming = manager.stops
             monitor.requestFreshConfirmation(PresenceMachine(id: 42, name: "Test", latitude: 0, longitude: 0))
@@ -1102,7 +1479,7 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
-    func testManualPresenceUsesOneHundredMetresAndSendsTheManualSource() async throws {
+    func testManualPresenceUsesTwoHundredMetresAndSendsTheManualSource() async throws {
         let now = Date()
         let machine = PresenceMachine(id: 42, name: "Zoo", latitude: 0, longitude: 0)
         func fix(metres: Double, age: Double = 0, accuracy: Double = 5) -> CLLocation {
@@ -1110,13 +1487,15 @@ class PennyMeTests: XCTestCase {
                        altitude: 0, horizontalAccuracy: accuracy, verticalAccuracy: -1,
                        timestamp: now.addingTimeInterval(-age))
         }
-        XCTAssertTrue(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 99.9), source: .manual, now: now))
-        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 100.1), source: .manual, now: now))
-        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 75, age: 16), source: .manual, now: now))
-        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 75, accuracy: 11), source: .manual, now: now))
+        XCTAssertTrue(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 199.9), source: .manual, now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 200.1), source: .manual, now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 75, age: 120.1), source: .manual, now: now))
+        XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 75, accuracy: 50.1), source: .manual, now: now))
         XCTAssertFalse(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 75), now: now))
+        XCTAssertTrue(MachinePresencePolicy.canConfirm(machine, at: fix(metres: 75, age: 120, accuracy: 50), source: .manual, now: now))
         let manager = PresenceTestLocationManager()
-        manager.testLocation = fix(metres: 75)
+        let requester = PresenceTestLocationManager()
+        manager.testLocation = fix(metres: 75, age: 180)
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [PresenceTestURLProtocol.self]
         let session = URLSession(configuration: configuration)
@@ -1136,6 +1515,7 @@ class PennyMeTests: XCTestCase {
             }
             let body = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]
             XCTAssertEqual(body?["source"] as? String, "manual")
+            XCTAssertGreaterThan((body?["measured_at"] as? Double ?? 0), now.timeIntervalSince1970 - 15)
             sent.fulfill()
         }
         defer {
@@ -1143,8 +1523,12 @@ class PennyMeTests: XCTestCase {
             session.invalidateAndCancel()
         }
         let monitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
-                                             manager: manager, session: session, isActive: { true })
+                                             manager: manager, confirmationManager: requester, session: session, isActive: { true })
         monitor.requestFreshConfirmation(machine, source: .manual)
+        XCTAssertEqual(requester.requests, 1, "An unusable cached fix should trigger a one-shot GPS request")
+        let fresh = fix(metres: 75)
+        requester.testLocation = fresh
+        monitor.locationManager(requester, didUpdateLocations: [fresh])
         await fulfillment(of: [sent], timeout: 3)
     }
 
@@ -1333,6 +1717,8 @@ private final class MapLayoutTestController: ViewController {
 private final class PresenceTestLocationManager: CLLocationManager {
     var testLocation: CLLocation?
     var stops = 0
+    var requests = 0
+    override func requestLocation() { requests += 1 }
     private weak var testDelegate: CLLocationManagerDelegate?
     override var delegate: CLLocationManagerDelegate? {
         get { testDelegate }
@@ -1351,7 +1737,9 @@ private final class PresenceTestURLProtocol: URLProtocol {
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() {
         Self.onRequest?(request)
-        let (status, data) = Self.response?(request) ?? (200, Data("{}".utf8))
+        let receipt = try! JSONSerialization.data(withJSONObject: ["last_seen": ISO8601DateFormatter().string(from: Date())])
+        let fallback = request.url?.path.hasSuffix("/confirm-presence") == true ? receipt : Data("{}".utf8)
+        let (status, data) = Self.response?(request) ?? (200, fallback)
         client?.urlProtocol(self, didReceive: HTTPURLResponse(url: request.url!, statusCode: status,
                                                             httpVersion: nil, headerFields: nil)!,
                             cacheStoragePolicy: .notAllowed)

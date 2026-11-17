@@ -20,13 +20,14 @@ class Artwork: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let id: String
     let last_updated: String
+    var lastSeen: String?
     let text: String
     let paywall: Bool
     let multimachine: Int
     var machineStatus: String
     let numCoins: Int
     
-    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int) {
+    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int, lastSeen: String? = nil) {
         self.title = title
         self.address = address
         self.coordinate = coordinate
@@ -34,6 +35,7 @@ class Artwork: NSObject, MKAnnotation {
         self.status = status
         self.id = String(id)
         self.last_updated = last_updated
+        self.lastSeen = lastSeen
         self.text = title + address + self.id
         self.multimachine = multimachine
         self.paywall = paywall
@@ -61,6 +63,7 @@ class Artwork: NSObject, MKAnnotation {
         address = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
         last_updated = (properties["last_updated"] as? String)!
+        lastSeen = properties["last_seen"] as? String
         id = String((properties["id"] as? Int)!)
         area = String((properties["area"] as? String)!)
       
@@ -190,6 +193,7 @@ struct CachedArtwork: Codable, Equatable {
     let numCoins: Int
     let latitude: Double
     let longitude: Double
+    var lastSeen: String? = nil
 }
 
 extension Artwork {
@@ -206,7 +210,8 @@ extension Artwork {
             area: area,
             numCoins: numCoins,
             latitude: coordinate.latitude,
-            longitude: coordinate.longitude
+            longitude: coordinate.longitude,
+            lastSeen: lastSeen
         )
     }
 
@@ -223,7 +228,8 @@ extension Artwork {
             paywall: cached.paywall,
             machineStatus: cached.machineStatus,
             area: cached.area,
-            numCoins: cached.numCoins
+            numCoins: cached.numCoins,
+            lastSeen: cached.lastSeen
         )
     }
 }
