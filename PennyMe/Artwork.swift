@@ -184,23 +184,6 @@ class Artwork: NSObject, MKAnnotation {
     }
 }
 
-extension Artwork {
-  static func artworks() -> [Artwork] {
-    guard
-      let url = Bundle.main.url(forResource: "candies", withExtension: "json"),
-      let data = try? Data(contentsOf: url)
-      else {
-        return []
-    }
-    
-    do {
-      return []
-    } catch {
-      return []
-    }
-  }
-}
-
 /// Snapshot of the server-derived fields of an `Artwork`, persisted on-disk so a prior
 /// app launch's full server state survives across restarts (see `ViewController`'s
 /// `cachedMachinesURL`/`loadCachedMachines`/`persistCachedMachines`). Excludes the

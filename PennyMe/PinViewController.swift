@@ -12,11 +12,7 @@ import SwiftUI
 import CoreImage
 
 
-// #if targetEnvironment(simulator)
-// let flaskURL = "http://127.0.0.1:5000/"
-// #else
 let flaskURL = "https://pennyme-backend.duckdns.org/"
-// #endif
 let imageURL = "https://pennyme.duckdns.org/"
 
 @available(iOS 13.0, *)
@@ -143,13 +139,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         return "\(pinData.id):\(serverContentKey)"
     }
 
-    enum StatusChoice : String {
-        case unvisited
-        case visited
-        case marked
-        case retired
-    }
-    
     var imagePicker = UIImagePickerController()
     
     var imageDict: [Int: UIImage] = [:]
@@ -671,8 +660,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                     if let results_ = results as? Dictionary<String, String> {
                         let sortedDates = results_.keys.sorted {$0 > $1}
                         var displayString : String = ""
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
                         var isFirst = true
                         for date in sortedDates {
                             if let value = results_[date]{
@@ -821,9 +808,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     }
     func uploadCommentWithTimeout(_ comment: String, timeout: TimeInterval) {
-        
-        var task: URLSessionDataTask?
-        
         // submit request to backend
         let requestString = "/add_comment?comment=\(comment)&id=\(self.pinData.id)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let urlEncodedStringRequest = flaskURL + requestString!
@@ -838,9 +822,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 DispatchQueue.main.async {
                     self.hideLoadingView()
                 }
-                
-                // Cancel the task if it's still running
-                task?.cancel()
                 
                 if let error = error {
                     print("Error: \(error)")
@@ -1175,7 +1156,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         do {
             // setup json encoder
             jsonData = try JSONSerialization.data(withJSONObject: currentStatusDict, options: JSONSerialization.WritingOptions()) as NSData
-            let jsonString = String(data: jsonData as Data, encoding: String.Encoding.utf8)
         } catch let error as NSError {
             print("Array to JSON conversion failed: \(error.localizedDescription)")
         }

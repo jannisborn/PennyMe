@@ -112,8 +112,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
 
-        // Do any additional setup after loading the view, typically from a nib.
-        artworks = Artwork.artworks()
+        artworks = []
 
         // Set up search bar
         searchController.searchResultsUpdater = self
@@ -671,7 +670,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         visitedCount += 1
                         
                         // Increment the count for the specific area
-                        let area = machine.area ?? "Unknown Area"
+                        let area = machine.area
                         visitedByArea[area, default: 0] += 1
                         if machine.machineStatus != "retired" {
                             visitedActiveByArea[area, default: 0] += 1
@@ -1140,7 +1139,6 @@ extension ViewController: MKMapViewDelegate {
             }
         // second option: it's a regular machine
         } else if let artworkAnnotation = annotation as? Artwork {
-            let selectedLocation = artworkAnnotation.title
             // set selected pin to pass it to detail VC
             self.selectedPin = artworkAnnotation
             self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
