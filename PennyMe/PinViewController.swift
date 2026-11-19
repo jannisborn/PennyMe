@@ -36,6 +36,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     var scrollView: UIScrollView! = UIScrollView()
     var pageControl: UIPageControl! = UIPageControl()
     var contentSession: URLSession = .shared
+    var areaChoices: [String] = []
     
     var pinData : Artwork!
     var presenceMonitor: MachinePresenceMonitor?
@@ -45,6 +46,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private struct ImageItemViews {
         let container: UIView
         let imageView: UIImageView
+        let photoViewport: MachinePhotoViewport?
         let toggleContainer: UIView?     // nil for idx 0
         let toggleLabel: UILabel?
         let toggleSwitch: UISwitch?
@@ -62,6 +64,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private let activityStack = UIStackView()
     private var editedWidthConstraint: NSLayoutConstraint?
     private let titleStack = UIStackView()
+    private let summaryHeader = UIView()
     private let coinHeadingStack = UIStackView()
     private let collectionChoiceStack = UIStackView()
     private var lastEdited: String = ""
@@ -70,13 +73,13 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private var activityTask: URLSessionDataTask?
     private var activityGeneration = UUID()
     private enum Row: Hashable {
-        case summary, photos, coins, collection, comments, addComment, composer
+        case photos, coins, collection, comments, addComment, composer
         case edit, details, coordinates, website, info
     }
     private var cells: [Row: UITableViewCell] = [:]
     private var sections: [[Row]] {
         let comments: [Row] = (updatedLabel.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? [] : [.comments]
-        return [[.summary], [.photos], pinData.numCoins > 0 ? [.coins] : [], [.collection],
+        return [[], [.photos], pinData.numCoins > 0 ? [.coins] : [], [.collection],
                 comments + [.addComment] + (commentExpanded ? [.composer] : []),
                 [.edit, .details] + (detailsExpanded ? [.coordinates, .website, .info] : [])]
     }
@@ -244,7 +247,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        sections[section].isEmpty || section == 0 ? .leastNormalMagnitude : 8
+        sections[section].isEmpty || section <= 1 ? .leastNormalMagnitude : 8
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -268,6 +271,15 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
         titleStack.alignment = accessibleText ? .leading : .top
         coinHeadingStack.alignment = accessibleText ? .leading : .center
+        if tableView.bounds.width > 0 {
+            let fitted = summaryHeader.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0),
+                                                              withHorizontalFittingPriority: .required,
+                                                              verticalFittingPriority: .fittingSizeLevel)
+            if summaryHeader.frame.size != fitted {
+                summaryHeader.frame.size = fitted
+                tableView.tableHeaderView = summaryHeader
+            }
+        }
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -1291,7 +1303,18 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             imageView.contentMode = .center
             imageView.backgroundColor = .secondarySystemBackground
         }
-        container.addSubview(imageView)
+        let photoViewport: MachinePhotoViewport?
+        if img_idx == 0, imageDict[0] != nil, action != nil {
+            let viewport = MachinePhotoViewport(imageView: imageView) { [weak self] in self?.openPhoto(at: img_idx) }
+            container.addSubview(viewport)
+            // Vertical drags belong to the crop; horizontal drags still page the gallery.
+            scrollView.panGestureRecognizer.require(toFail: viewport.verticalPan)
+            tableView.panGestureRecognizer.require(toFail: viewport.verticalPan)
+            photoViewport = viewport
+        } else {
+            container.addSubview(imageView)
+            photoViewport = nil
+        }
 
         var toggleContainer: UIView? = nil
         var toggleLabel: UILabel? = nil
@@ -1327,13 +1350,14 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         imageItems[img_idx] = ImageItemViews(
             container: container,
             imageView: imageView,
+            photoViewport: photoViewport,
             toggleContainer: toggleContainer,
             toggleLabel: toggleLabel,
             toggleSwitch: toggleSwitch
         )
 
         if let thumbnail = coinThumbnails[img_idx] {
-            thumbnail.image = action == nil ? image : CoinPreviewView.orientedImage(image, landscape: false)
+            thumbnail.image = action == nil ? image : CoinPreviewView.orientedImage(image, landscape: pinData.numCoins <= 2)
             thumbnail.contentMode = action == nil ? .center : .scaleAspectFit
         }
         updateCollectionAppearance()
@@ -1350,6 +1374,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         item.imageView.tintColor = .secondaryLabel
         item.imageView.contentMode = .center
         item.imageView.backgroundColor = .secondarySystemBackground
+        item.photoViewport?.isPanEnabled = false
         imageDict.removeValue(forKey: index)
         (item.imageView as? CoinPreviewView)?.isCollected = false
         coinThumbnails[index]?.image = UIImage(systemName: "eye.slash")
@@ -1387,12 +1412,19 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         let spacing: CGFloat = (toggleHeight == 0) ? 0 : 8
 
         // Image uses remaining height above the toggle
-        item.imageView.frame = CGRect(
+        let imageFrame = CGRect(
             x: 0,
             y: 0,
             width: pageWidth,
             height: max(0, pageHeight - toggleHeight - spacing)
         )
+        if let viewport = item.photoViewport {
+            viewport.frame = imageFrame
+            viewport.setNeedsLayout()
+            viewport.layoutIfNeeded()
+        } else {
+            item.imageView.frame = index > 0 ? imageFrame.insetBy(dx: 8, dy: 8) : imageFrame
+        }
 
         if let label = item.container.subviews
             .compactMap({ $0 as? UILabel })
@@ -1403,7 +1435,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             ).height
             label.frame = CGRect(
                 x: horizontalPadding,
-                y: item.imageView.frame.midY + 24,
+                y: imageFrame.midY + 24,
                 width: pageWidth - 2 * horizontalPadding,
                 height: labelHeight
             )
@@ -1432,10 +1464,15 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     @objc func enlargeImage(tapGestureRecognizer: UITapGestureRecognizer)
     {
         guard let tappedView = tapGestureRecognizer.view else { return }
-        pendingImageIndex = tappedView.tag
-        self.performSegue(withIdentifier: "bigImage", sender: self)
+        openPhoto(at: tappedView.tag)
     }
-    
+
+    private func openPhoto(at index: Int) {
+        guard imageDict[index] != nil else { return }
+        pendingImageIndex = index
+        performSegue(withIdentifier: "bigImage", sender: self)
+    }
+
     @objc func startNewCoinUpload(tapGestureRecognizer: UITapGestureRecognizer) {
         // get index of tapped image
         guard let tappedView = tapGestureRecognizer.view else { return }
@@ -1463,10 +1500,12 @@ private extension PinViewController {
         if #available(iOS 26.0, *) { tableView.topEdgeEffect.isHidden = true }
         copyFeedback.prepare()
 
-        titleLabel.text = pinData.title
         titleLabel.font = .preferredFont(forTextStyle: .title2).withWeight(.bold)
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.lineBreakStrategy = []
+        titleLabel.attributedText = pinData.displayTitle
+        titleLabel.accessibilityLabel = pinData.title
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.isUserInteractionEnabled = true
         titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(copyTitle)))
@@ -1483,6 +1522,7 @@ private extension PinViewController {
         badge.baseBackgroundColor = statusColor
         badge.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
         badge.cornerStyle = .capsule
+        badge.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8)
         badge.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
             var result = incoming
             result.font = .preferredFont(forTextStyle: .caption1).withWeight(.semibold)
@@ -1500,13 +1540,14 @@ private extension PinViewController {
         titleStack.addArrangedSubview(titleLabel)
         titleStack.addArrangedSubview(machineStatusButton)
         titleStack.axis = .horizontal
-        titleStack.spacing = 10
+        titleStack.spacing = 6
         titleStack.alignment = .top
         titleStack.isLayoutMarginsRelativeArrangement = true
-        titleStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0)
+        titleStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 48, bottom: 0, trailing: 0)
         for button in [paywallButton, multiButton] {
             button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-            button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 32).isActive = true
+            button.contentVerticalAlignment = .center
         }
         machineStatusButton.setContentHuggingPriority(.required, for: .horizontal)
         machineStatusButton.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -1526,7 +1567,7 @@ private extension PinViewController {
         for (label, action) in [(lastSeenLabel, #selector(showSeenInfo)), (lastUpdatedLabel, #selector(showEditedInfo))] {
             label.isUserInteractionEnabled = true
             label.accessibilityTraits = .button
-            label.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
+            label.heightAnchor.constraint(greaterThanOrEqualToConstant: 32).isActive = true
             label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         }
         activityStack.addArrangedSubview(lastSeenLabel)
@@ -1537,26 +1578,29 @@ private extension PinViewController {
         reportButton.setImage(UIImage(systemName: "flag.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold)), for: .normal)
         reportButton.tintColor = .systemRed
         reportButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        reportButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        reportButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         reportButton.accessibilityLabel = "Report content"
         reportButton.accessibilityIdentifier = "reportContentButton"
         reportButton.addTarget(self, action: #selector(showContentSafetyActions), for: .touchUpInside)
         let activityRow = horizontalStack([activityStack, reportButton], spacing: 4)
+        activityRow.isLayoutMarginsRelativeArrangement = true
+        activityRow.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
 
-        let directions = UIButton(type: .system)
-        directions.setImage(UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 19.8)), for: .normal)
-        directions.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        directions.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        directions.addTarget(self, action: #selector(openDirections), for: .touchUpInside)
+        let directions = UIImageView(image: UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17.82)))
+        directions.tintColor = .systemBlue
+        directions.contentMode = .center
+        directions.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        directions.heightAnchor.constraint(equalToConstant: 22).isActive = true
         directions.accessibilityIdentifier = "pinDirections"
         directions.accessibilityLabel = "Walking directions to the machine"
-        addressLabel.text = pinData.address.isEmpty ? "Navigate to machine" : pinData.address
-        addressLabel.font = .preferredFont(forTextStyle: .subheadline)
+        let displayedAddress = Self.compactAddress(pinData.address)
+        addressLabel.text = displayedAddress.isEmpty ? "Navigate to machine" : displayedAddress
+        addressLabel.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 14.025))
         addressLabel.adjustsFontForContentSizeCategory = true
         addressLabel.numberOfLines = 0
         addressLabel.textColor = .secondaryLabel
         let address = horizontalStack([directions, addressLabel], spacing: 4)
-        address.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
+        address.heightAnchor.constraint(greaterThanOrEqualToConstant: 28).isActive = true
         address.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openDirections)))
         address.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(copyAddress(_:))))
         address.isAccessibilityElement = true
@@ -1564,11 +1608,25 @@ private extension PinViewController {
         address.accessibilityTraits = .button
         address.accessibilityHint = "Walking directions to the machine's coordinates. Hold to copy the address."
         address.accessibilityIdentifier = "pinAddress"
-        let features = horizontalStack([paywallButton, multiButton, UIView()], spacing: 8)
+        let features = horizontalStack([paywallButton, multiButton], spacing: 0)
         features.accessibilityIdentifier = "pinMachineFeatures"
         features.isHidden = !pinData.paywall && pinData.multimachine <= 1
-        makeCell(.summary, views: [titleStack, address, activityRow, features], spacing: 4,
-                 insets: NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 4, trailing: 12)).backgroundColor = .clear
+        let featureRow = horizontalStack([features, UIView()], spacing: 0)
+        featureRow.isHidden = features.isHidden
+        featureRow.isLayoutMarginsRelativeArrangement = true
+        featureRow.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 4, trailing: 10)
+        let summary = UIStackView(arrangedSubviews: [titleStack, address, activityRow, featureRow])
+        summary.axis = .vertical
+        summary.spacing = 0
+        summary.translatesAutoresizingMaskIntoConstraints = false
+        summaryHeader.addSubview(summary)
+        NSLayoutConstraint.activate([
+            summary.leadingAnchor.constraint(equalTo: summaryHeader.leadingAnchor, constant: 16),
+            summary.trailingAnchor.constraint(equalTo: summaryHeader.trailingAnchor, constant: -8),
+            summary.topAnchor.constraint(equalTo: summaryHeader.topAnchor),
+            summary.bottomAnchor.constraint(equalTo: summaryHeader.bottomAnchor)
+        ])
+        tableView.tableHeaderView = summaryHeader
 
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
@@ -1583,7 +1641,8 @@ private extension PinViewController {
         pageControl.hidesForSinglePage = true
         pageControl.addTarget(self, action: #selector(photoPageChanged), for: .valueChanged)
         pageControl.accessibilityLabel = "Machine and coin photos"
-        makeCell(.photos, views: [scrollView, pageControl], spacing: 0, insets: NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+        let photoCell = makeCell(.photos, views: [scrollView, pageControl], spacing: 0, insets: .zero)
+        photoCell.backgroundConfiguration = .clear()
 
         if pinData.numCoins > 0 {
             let coinTitle = label("\(pinData.numCoins) \(pinData.numCoins == 1 ? "design" : "designs")", style: .subheadline, weight: .semibold)
@@ -1605,6 +1664,8 @@ private extension PinViewController {
             coinStripStack.axis = .horizontal
             coinStripStack.spacing = 12
             coinStripStack.alignment = .center
+            coinStripStack.isLayoutMarginsRelativeArrangement = true
+            coinStripStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 0, trailing: 8)
             coinStripStack.translatesAutoresizingMaskIntoConstraints = false
             coinStrip.addSubview(coinStripStack)
             NSLayoutConstraint.activate([
@@ -1625,7 +1686,7 @@ private extension PinViewController {
                 thumbnail.accessibilityTraits = .button
                 let width = thumbnail.widthAnchor.constraint(equalToConstant: 76)
                 coinWidthConstraints.append(width)
-                NSLayoutConstraint.activate([width, thumbnail.heightAnchor.constraint(equalToConstant: 100)])
+                NSLayoutConstraint.activate([width, thumbnail.heightAnchor.constraint(equalToConstant: pinData.numCoins <= 2 ? 88 : 100)])
                 let button = UIButton(type: .system)
                 button.tag = index
                 button.titleLabel?.font = .preferredFont(forTextStyle: .caption1)
@@ -1635,7 +1696,7 @@ private extension PinViewController {
                 button.addTarget(self, action: #selector(coinCollectionTapped(_:)), for: .touchUpInside)
                 let column = UIStackView(arrangedSubviews: [thumbnail, button])
                 column.axis = .vertical
-                column.spacing = 4
+                column.spacing = 0
                 coinStripStack.addArrangedSubview(column)
                 coinThumbnails[index] = thumbnail
                 coinButtons[index] = button
@@ -1646,7 +1707,8 @@ private extension PinViewController {
             coinMoreLabel.textAlignment = .center
             coinMoreLabel.isHidden = pinData.numCoins <= 4
             coinMoreLabel.text = "Swipe for more designs →"
-            makeCell(.coins, views: [coinHeadingStack, coinStrip, coinMoreLabel], spacing: 8)
+            makeCell(.coins, views: [coinHeadingStack, coinStrip, coinMoreLabel], spacing: 0,
+                     insets: NSDirectionalEdgeInsets(top: 10, leading: 12, bottom: 0, trailing: 12))
         }
 
         let choices = pinData.status == "retired" ? statusChoices : Array(statusChoices.prefix(3))
@@ -1817,7 +1879,7 @@ private extension PinViewController {
         let count = (0..<max(0, pinData.numCoins)).filter { collectedByIndex[$0 + 1] == true }.count
         coinProgressLabel.text = "\(count)/\(pinData.numCoins) collected"
         let complete = pinData.numCoins > 0 && count == pinData.numCoins
-        cells[.coins]?.layer.borderWidth = complete ? 2.5 : 0
+        cells[.coins]?.layer.borderWidth = complete ? 5 : 0
         cells[.coins]?.layer.borderColor = UIColor.systemGreen.cgColor
         cells[.coins]?.layer.cornerRadius = 16
         cells[.coins]?.accessibilityValue = complete ? "All coins collected" : coinProgressLabel.text
@@ -1925,14 +1987,15 @@ private extension UIFont {
 private extension PinViewController {
     func layoutCoinStrip() {
         let count = pinData.numCoins
-        let width = coinStrip.bounds.width
+        let horizontalPadding = coinStripStack.directionalLayoutMargins.leading + coinStripStack.directionalLayoutMargins.trailing
+        let width = coinStrip.bounds.width - horizontalPadding
         guard count > 0, width > 0 else { return }
         let columns = count > 4 ? 3.65 : CGFloat(count)
-        let itemWidth = count < 4 ? min(92, (width - CGFloat(count - 1) * 12) / columns)
+        let itemWidth = count < 4 ? min(count <= 2 ? 160 : 92, (width - CGFloat(count - 1) * 12) / columns)
             : (width - 36) / columns
         for constraint in coinWidthConstraints { constraint.constant = max(44, itemWidth) }
-        let contentWidth = CGFloat(count) * max(44, itemWidth) + CGFloat(count - 1) * 12
-        let inset = max(0, (width - contentWidth) / 2)
+        let contentWidth = CGFloat(count) * max(44, itemWidth) + CGFloat(count - 1) * 12 + horizontalPadding
+        let inset = max(0, (coinStrip.bounds.width - contentWidth) / 2)
         if coinStrip.contentInset.left != inset {
             coinStrip.contentInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
             if !coinStrip.isDragging && !coinStrip.isDecelerating {
@@ -1951,7 +2014,7 @@ private extension PinViewController {
 
     @objc func showEditedInfo() {
         let date = Self.activityDate(lastEdited).map { DateFormatter.localizedString(from: $0, dateStyle: .long, timeStyle: .none) } ?? "Unknown"
-        let alert = UIAlertController(title: "Last edited", message: "The machine's listing details, such as its name, location or status, were last updated on \(date).", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Last edited", message: "The machine's details were last updated on \(date).", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Edit machine details", style: .default) { [weak self] _ in
             self?.dismiss(animated: true) { [weak self] in self?.openMachineChangeRequest() }
         })
@@ -1960,7 +2023,7 @@ private extension PinViewController {
     }
 
     func openMachineChangeRequest() {
-        present(UIHostingController(rootView: MachineChangedForm(pinData: pinData)), animated: true)
+        present(UIHostingController(rootView: MachineChangedForm(pinData: pinData, areaChoices: areaChoices)), animated: true)
     }
 
     @objc func showSeenInfo() {
@@ -2026,7 +2089,7 @@ final class CoinPreviewView: UIImageView {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         defer { CATransaction.commit() }
-        outlineLayer.frame = bounds.insetBy(dx: -6, dy: -6)
+        outlineLayer.frame = bounds.insetBy(dx: -8, dy: -8)
         guard cachedImage !== image || cachedSize != bounds.size else { return }
         cachedImage = image
         cachedSize = bounds.size
@@ -2036,7 +2099,7 @@ final class CoinPreviewView: UIImageView {
 
     static func collectionOutline(for image: UIImage, size: CGSize) -> UIImage? {
         guard image.size.width > 0, image.size.height > 0, size.width > 0, size.height > 0 else { return nil }
-        let padding: CGFloat = 6
+        let padding: CGFloat = 8
         let output = CGSize(width: size.width + padding * 2, height: size.height + padding * 2)
         let scale = min(size.width / image.size.width, size.height / image.size.height)
         let fitted = CGSize(width: image.size.width * scale, height: image.size.height * scale)
@@ -2057,7 +2120,7 @@ final class CoinPreviewView: UIImageView {
             "inputAVector": CIVector(x: 0, y: 0, z: 0, w: 1),
             "inputBiasVector": CIVector(x: red, y: green, z: blue, w: 0)
         ])
-        let ring = colored.applyingFilter("CIMorphologyMaximum", parameters: ["inputRadius": 4 * format.scale])
+        let ring = colored.applyingFilter("CIMorphologyMaximum", parameters: ["inputRadius": 6 * format.scale])
             .applyingFilter("CISourceOutCompositing", parameters: [kCIInputBackgroundImageKey: input])
         guard let result = context.createCGImage(ring, from: input.extent) else { return nil }
         return UIImage(cgImage: result, scale: format.scale, orientation: .up)
@@ -2144,4 +2207,116 @@ final class CoinPreviewView: UIImageView {
             inner.stroke()
         }
     }()
+}
+
+/// A vertical crop inside the horizontal gallery. Full-resolution originals remain unchanged.
+final class MachinePhotoViewport: UIView, UIGestureRecognizerDelegate {
+    let imageView: UIImageView
+    let verticalPan = UIPanGestureRecognizer()
+    private let onOpen: () -> Void
+    private var verticalFraction: CGFloat = 0
+    var isPanEnabled = true {
+        didSet {
+            verticalPan.isEnabled = isPanEnabled
+            if !isPanEnabled { verticalFraction = 0 }
+            updateAccessibility()
+            setNeedsLayout()
+        }
+    }
+
+    init(imageView: UIImageView, onOpen: @escaping () -> Void) {
+        self.imageView = imageView
+        self.onOpen = onOpen
+        super.init(frame: .zero)
+        clipsToBounds = true
+        addSubview(imageView)
+        verticalPan.addTarget(self, action: #selector(panPhoto(_:)))
+        verticalPan.delegate = self
+        addGestureRecognizer(verticalPan)
+        isAccessibilityElement = true
+        updateAccessibility()
+    }
+
+    required init?(coder: NSCoder) { fatalError("Use init(imageView:onOpen:)") }
+
+    private func updateAccessibility() {
+        accessibilityTraits = isPanEnabled ? [.image, .button] : .image
+        accessibilityLabel = isPanEnabled ? "Machine photo" : "Blocked machine photo"
+        accessibilityHint = isPanEnabled ? "Tap to enlarge. Swipe up or down to reposition; swipe sideways for coin photos." : nil
+    }
+
+    private var fittedSize: CGSize {
+        guard let image = imageView.image, image.size.width > 0, image.size.height > 0 else { return .zero }
+        let scale = max(bounds.width / image.size.width, bounds.height / image.size.height)
+        return CGSize(width: image.size.width * scale, height: image.size.height * scale)
+    }
+
+    private var maximumOffset: CGFloat { max(0, (fittedSize.height - bounds.height) / 2) }
+
+    func canPan(velocity: CGPoint) -> Bool {
+        isPanEnabled && maximumOffset > 0.5 && abs(velocity.y) > abs(velocity.x)
+    }
+
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer === verticalPan { return canPan(velocity: verticalPan.velocity(in: self)) }
+        return super.gestureRecognizerShouldBegin(gestureRecognizer)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard isPanEnabled else { imageView.frame = bounds; return }
+        let size = fittedSize
+        imageView.frame = CGRect(x: (bounds.width - size.width) / 2,
+                                 y: (bounds.height - size.height) / 2 + verticalFraction * maximumOffset,
+                                 width: size.width, height: size.height)
+    }
+
+    func movePhotoVertically(by translation: CGFloat) {
+        guard isPanEnabled, maximumOffset > 0 else { return }
+        let offset = min(max(verticalFraction * maximumOffset + translation, -maximumOffset), maximumOffset)
+        verticalFraction = offset / maximumOffset
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+
+    @objc private func panPhoto(_ gesture: UIPanGestureRecognizer) {
+        movePhotoVertically(by: gesture.translation(in: self).y)
+        gesture.setTranslation(.zero, in: self)
+    }
+
+    override func accessibilityActivate() -> Bool {
+        guard isPanEnabled else { return false }
+        onOpen()
+        return true
+    }
+
+    override func accessibilityScroll(_ direction: UIAccessibilityScrollDirection) -> Bool {
+        let old = verticalFraction
+        switch direction {
+        case .up: movePhotoVertically(by: -bounds.height * 0.75)
+        case .down: movePhotoVertically(by: bounds.height * 0.75)
+        default: return false
+        }
+        guard old != verticalFraction else { return false }
+        UIAccessibility.post(notification: .pageScrolled, argument: "Photo repositioned")
+        return true
+    }
+}
+
+extension PinViewController {
+    private static let addressCountryNames: Set<String> = {
+        let english = Locale(identifier: "en_US")
+        let names = Locale.isoRegionCodes.flatMap { code in
+            [english.localizedString(forRegionCode: code), Locale.current.localizedString(forRegionCode: code)].compactMap { $0 }
+        } + ["USA", "U.S.A.", "US", "UK", "U.K.", "United States of America", "UAE",
+             "England", "Scotland", "Wales", "Northern Ireland", "Czech Republic", "Turkey", "Russia"]
+        // PennyCollector also uses Georgia as a US state; don't strip that address component.
+        return Set(names.map { $0.lowercased() }).subtracting(["georgia"])
+    }()
+
+    static func compactAddress(_ address: String) -> String {
+        var parts = address.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        if let last = parts.last, addressCountryNames.contains(last.lowercased()) { parts.removeLast() }
+        return parts.joined(separator: ", ")
+    }
 }

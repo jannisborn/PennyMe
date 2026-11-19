@@ -755,7 +755,7 @@ class PennyMeTests: XCTestCase {
         controller.locationResult.layoutIfNeeded()
         XCTAssertFalse(controller.locationResult.isHidden)
         XCTAssertEqual(controller.locationResult.numberOfRows(inSection: 0), 1)
-        XCTAssertEqual(controller.locationResult.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text, title)
+        XCTAssertEqual(controller.locationResult.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.accessibilityLabel, title)
         XCTAssertGreaterThan(controller.locationResult.rectForRow(at: IndexPath(row: 0, section: 0)).height, 44)
         XCTAssertTrue(try XCTUnwrap(controller.locationResult.backgroundView).isHidden)
         XCTAssertEqual(controller.locationResult.bounds.height, controller.locationResult.contentSize.height, accuracy: 1,
@@ -811,6 +811,99 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testPinTitleHasRoomForPlaceNameBeforeHyphenating() async throws {
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 375, height: 812))
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [PresenceTestURLProtocol.self]
+        let session = URLSession(configuration: configuration)
+        PresenceTestURLProtocol.response = { _ in (200, Data("{}".utf8)) }
+        defer {
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+            PresenceTestURLProtocol.response = nil
+            session.invalidateAndCancel()
+        }
+        for width in [375, 393] {
+            window.frame.size.width = CGFloat(width)
+            for suffix in ["Entrance 1", "Entrance 2", "Playground"] {
+                let controller = PinViewController(style: .insetGrouped)
+                controller.pinData = Artwork(title: "Allwetterzoo Münster - \(suffix)", address: "Sentruper Str. 315, 48161 Münster, Germany",
+                                             link: "null", status: "unvisited", coordinate: CLLocationCoordinate2D(latitude: 51.95, longitude: 7.59),
+                                             id: 98765434, last_updated: "2026-11-01", multimachine: 1, paywall: true,
+                                             machineStatus: "available", area: "Germany", numCoins: 4)
+                controller.contentSession = session
+                controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
+                                                                    manager: PresenceTestLocationManager(), session: session, isActive: { false })
+                let map = UIViewController()
+                map.navigationItem.backButtonTitle = ""
+                let navigation = UINavigationController(rootViewController: map)
+                navigation.pushViewController(controller, animated: false)
+                window.rootViewController = navigation
+                window.makeKeyAndVisible()
+                window.layoutIfNeeded()
+                try await Task.sleep(nanoseconds: 50_000_000)
+                controller.view.setNeedsLayout()
+                controller.view.layoutIfNeeded()
+                controller.tableView.layoutIfNeeded()
+                let label = controller.titleLabel
+                let needed = ceil(("Allwetterzoo Müns-" as NSString).size(withAttributes: [.font: label.font!]).width)
+                XCTAssertGreaterThanOrEqual(label.bounds.width, needed, "The real title column must fit Allwetterzoo Müns- at \(width) points")
+                XCTAssertLessThanOrEqual(label.bounds.height, ceil(label.font.lineHeight) * 2 + 1,
+                                         "Allwetterzoo Müns-ter should fit in two lines for \(suffix) at \(width) points")
+                let preview = XCTAttachment(image: UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+                    window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+                })
+                preview.name = "Pin title — \(width) — \(suffix)"
+                preview.lifetime = .keepAlways
+                add(preview)
+            }
+        }
+    }
+
+    @MainActor
+    func testPlaceNameHyphenationDoesNotDependOnMachineDescription() throws {
+        let font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        func machine(_ title: String) -> Artwork {
+            Artwork(title: title, address: "", link: "", status: "unvisited",
+                    coordinate: CLLocationCoordinate2D(latitude: 51.95, longitude: 7.59), id: 1,
+                    last_updated: "", multimachine: 1, paywall: false,
+                    machineStatus: "available", area: "Germany", numCoins: 4)
+        }
+        func lines(_ title: NSAttributedString, width: CGFloat) -> [String] {
+            let storage = NSTextStorage(attributedString: title)
+            storage.addAttribute(.font, value: font, range: NSRange(location: 0, length: storage.length))
+            let manager = NSLayoutManager()
+            let container = NSTextContainer(size: CGSize(width: width, height: .greatestFiniteMagnitude))
+            container.lineFragmentPadding = 0
+            storage.addLayoutManager(manager)
+            manager.addTextContainer(container)
+            manager.ensureLayout(for: container)
+            var result: [String] = []
+            manager.enumerateLineFragments(forGlyphRange: manager.glyphRange(for: container)) { _, _, _, glyphs, _ in
+                let range = manager.characterRange(forGlyphRange: glyphs, actualGlyphRange: nil)
+                result.append((storage.string as NSString).substring(with: range).replacingOccurrences(of: "\u{00AD}", with: "")
+                    .trimmingCharacters(in: .whitespaces))
+            }
+            return result
+        }
+        let width = ceil(("Allwetterzoo Müns-" as NSString).size(withAttributes: [.font: font]).width)
+        for suffix in ["Entrance 1", "Entrance 2", "Playground"] {
+            let title = "Allwetterzoo Münster - \(suffix)"
+            let formatted = machine(title).displayTitle
+            XCTAssertEqual(formatted.string.replacingOccurrences(of: "\u{00AD}", with: ""), title)
+            XCTAssertTrue(formatted.string.contains("Müns\u{00AD}ter"), "Only the German break should be offered for Münster")
+            XCTAssertEqual(lines(formatted, width: width).first, "Allwetterzoo Müns", "Use Müns-ter for \(suffix)")
+        }
+        let down = machine("Walk down").displayTitle
+        let narrow = ceil(("Walk do" as NSString).size(withAttributes: [.font: font]).width)
+        XCTAssertEqual(lines(down, width: narrow), ["Walk", "down"], "A monosyllable must move intact to the next line")
+        XCTAssertEqual(machine("downstairs").displayTitle.string, "down\u{00AD}stairs")
+        let unicodeTitle = "🐘 Allwetterzoo Münster - Playground"
+        XCTAssertEqual(machine(unicodeTitle).displayTitle.string.replacingOccurrences(of: "\u{00AD}", with: ""), unicodeTitle)
+    }
+
+    @MainActor
     func testPinCardsShowFreshActivityCropPhotosAndTrackCollectedCoins() async throws {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: PinViewController.self))
         let controller = try XCTUnwrap(storyboard.instantiateViewController(withIdentifier: "PinViewController") as? PinViewController)
@@ -818,7 +911,7 @@ class PennyMeTests: XCTestCase {
         let collectedKey = "collectedCoins_\(machineID)"
         let previousCoins = UserDefaults.standard.object(forKey: collectedKey)
         UserDefaults.standard.set([1, 2, 3, 4, 99], forKey: collectedKey)
-        let machine = Artwork(title: "Erlebnis-Zoo Hannover · Machine 6 (Outback)", address: "Adenauerallee 3, Hannover",
+        let machine = Artwork(title: "Allwetterzoo Münster - Entrance 1", address: "Adenauerallee 3, Hannover, Germany",
                               link: "https://example.com", status: "marked",
                               coordinate: CLLocationCoordinate2D(latitude: 52.3808, longitude: 9.7711), id: machineID,
                               last_updated: "2026-10-01", multimachine: 6, paywall: true,
@@ -872,21 +965,48 @@ class PennyMeTests: XCTestCase {
         controller.view.layoutIfNeeded()
         XCTAssertNil(controller.navigationItem.rightBarButtonItems)
         XCTAssertNotNil(controller.reportButton.superview)
-        XCTAssertEqual(controller.addressLabel.text, machine.address)
+        XCTAssertEqual(controller.addressLabel.text, "Adenauerallee 3, Hannover")
         let titleFrame = controller.titleLabel.convert(controller.titleLabel.bounds, to: controller.view)
         let addressFrame = controller.addressLabel.convert(controller.addressLabel.bounds, to: controller.view)
         let activityFrame = controller.lastSeenLabel.convert(controller.lastSeenLabel.bounds, to: controller.view)
         let barFrame = navigation.navigationBar.convert(navigation.navigationBar.bounds, to: controller.view)
         XCTAssertLessThanOrEqual(titleFrame.minY, barFrame.midY, "The title should open alongside the native back button")
-        XCTAssertGreaterThanOrEqual(titleFrame.minX, 64, "The title must stay to the right of the back button")
+        XCTAssertGreaterThanOrEqual(titleFrame.minX, 63.5, "The title must stay to the right of the back button")
         XCTAssertGreaterThanOrEqual(addressFrame.minY, titleFrame.maxY)
         XCTAssertLessThan(addressFrame.maxY, activityFrame.minY + 1)
+        XCTAssertLessThanOrEqual(activityFrame.minY - addressFrame.maxY, 10, "Keep the address and activity row close together")
         let editedFrame = controller.lastUpdatedLabel.convert(controller.lastUpdatedLabel.bounds, to: controller.view)
         let flagFrame = controller.reportButton.convert(controller.reportButton.bounds, to: controller.view)
         XCTAssertGreaterThan(flagFrame.minX, editedFrame.maxX)
         let features = try XCTUnwrap(controller.paywallButton.superview)
         XCTAssertEqual(features.accessibilityIdentifier, "pinMachineFeatures")
-        XCTAssertGreaterThanOrEqual(features.convert(features.bounds, to: controller.view).minY, flagFrame.maxY)
+        let featuresFrame = features.convert(features.bounds, to: controller.view)
+        let photoFrame = controller.scrollView.convert(controller.scrollView.bounds, to: controller.view)
+        XCTAssertEqual(featuresFrame.maxY + 4, photoFrame.minY, accuracy: 1, "Keep the feature buttons close to the photo")
+        XCTAssertEqual(featuresFrame.minX, photoFrame.minX + 6, accuracy: 1)
+        let feeIcon = try XCTUnwrap(controller.paywallButton.imageView)
+        let feeFrame = feeIcon.convert(feeIcon.bounds, to: controller.view)
+        let activityGlyph = try XCTUnwrap(controller.lastUpdatedLabel.attributedText?.attribute(.attachment, at: 0, effectiveRange: nil) as? NSTextAttachment)
+        let activityTop = editedFrame.midY - activityGlyph.bounds.height / 2
+        let activityBottom = editedFrame.midY + activityGlyph.bounds.height / 2
+        let previousAddressGap = (32 - addressFrame.height) / 2 + (44 - activityGlyph.bounds.height) / 2
+        let previousAboveFeeGap = (44 - activityGlyph.bounds.height) / 2 + 2 + (44 - feeFrame.height) / 2
+        let previousBelowFeeGap = (44 - feeFrame.height) / 2 + 12
+        XCTAssertEqual(activityTop - addressFrame.maxY, previousAddressGap / 2, accuracy: 1,
+                       "Halve the whitespace between the address and activity icons")
+        XCTAssertEqual(feeFrame.minY - activityBottom, previousAboveFeeGap / 3, accuracy: 2,
+                       "Reduce whitespace above the dollar icon to one third")
+        XCTAssertEqual(photoFrame.minY - feeFrame.maxY, previousBelowFeeGap / 3, accuracy: 1,
+                       "Reduce whitespace below the dollar icon to one third")
+        XCTAssertEqual(feeFrame.midY, (activityBottom + photoFrame.minY) / 2, accuracy: 1,
+                       "Center the feature icon between the activity icons and the photo")
+        let galleryCell = controller.tableView(controller.tableView, cellForRowAt: IndexPath(row: 0, section: 1))
+        XCTAssertFalse(features.isDescendant(of: galleryCell), "Machine features belong outside the gallery card")
+        XCTAssertTrue(features.isDescendant(of: try XCTUnwrap(controller.tableView.tableHeaderView)))
+        let galleryFrame = galleryCell.contentView.convert(galleryCell.contentView.bounds, to: controller.view)
+        XCTAssertEqual(photoFrame.minX, galleryFrame.minX, accuracy: 1, "The gallery should have no outer padding")
+        XCTAssertEqual(photoFrame.minY, galleryFrame.minY, accuracy: 1)
+        XCTAssertGreaterThanOrEqual(controller.paywallButton.bounds.height, 32)
         XCTAssertEqual(controller.imageDict.count, 5)
         XCTAssertEqual(machine.lastSeen, "2026-11-15T10:30:00.123456+00:00")
         XCTAssertTrue(controller.lastSeenLabel.accessibilityLabel?.contains("2026") == true)
@@ -894,7 +1014,16 @@ class PennyMeTests: XCTestCase {
         XCTAssertEqual(controller.tableView.numberOfRows(inSection: 4), 1, "Empty comments should only show the add action")
         XCTAssertFalse(controller.updatedLabel.text?.contains("No comments") == true)
         XCTAssertEqual(controller.scrollView.bounds.width / controller.scrollView.bounds.height, 16.0 / 9, accuracy: 0.01)
-        let mainPhoto = try XCTUnwrap(controller.scrollView.subviews.flatMap(\.subviews).compactMap { $0 as? UIImageView }.first { $0.tag == 0 })
+        let viewport = try XCTUnwrap(controller.scrollView.subviews.flatMap(\.subviews).compactMap { $0 as? MachinePhotoViewport }.first)
+        let mainPhoto = viewport.imageView
+        let badgeFrame = controller.machineStatusButton.convert(controller.machineStatusButton.bounds, to: window)
+        XCTAssertEqual(badgeFrame.maxX, window.bounds.maxX - 8, accuracy: 1)
+        XCTAssertTrue(viewport.canPan(velocity: CGPoint(x: 0, y: 100)))
+        XCTAssertFalse(viewport.canPan(velocity: CGPoint(x: 100, y: 0)))
+        let page = controller.pageControl.currentPage
+        viewport.movePhotoVertically(by: -100)
+        XCTAssertEqual(controller.pageControl.currentPage, page, "Repositioning the crop must not change the reported gallery photo")
+        XCTAssertTrue(mainPhoto.gestureRecognizers?.contains { $0 is UITapGestureRecognizer } == true)
         XCTAssertEqual(mainPhoto.contentMode, .scaleAspectFill)
         XCTAssertTrue(mainPhoto.clipsToBounds)
         XCTAssertEqual(controller.imageDict[0]?.cgImage?.width, portrait.cgImage?.width, "Zoom must retain the full original resolution")
@@ -921,6 +1050,10 @@ class PennyMeTests: XCTestCase {
                 controller.dismiss(animated: false) { continuation.resume() }
             }
         }
+        controller.paywallButton.sendActions(for: .touchUpInside)
+        await waitForAlert()
+        XCTAssertEqual((controller.presentedViewController as? UIAlertController)?.title, "Paywall!")
+        await dismissAlert()
         manager.testLocation = CLLocation(coordinate: machine.coordinate, altitude: 0, horizontalAccuracy: 5, verticalAccuracy: -1,
                                           timestamp: Date().addingTimeInterval(-60))
         controller.perform(NSSelectorFromString("showSeenInfo"))
@@ -947,13 +1080,13 @@ class PennyMeTests: XCTestCase {
         XCTAssertGreaterThan(try XCTUnwrap(preview.image).size.height, try XCTUnwrap(preview.image).size.width)
         let collect = try XCTUnwrap(descendants(coinCell).first { $0.accessibilityIdentifier == "collectCoin_1" } as? UIButton)
         XCTAssertTrue((thumbnail as? CoinPreviewView)?.isCollected == true)
-        XCTAssertEqual(coinCell.layer.borderWidth, 2.5)
+        XCTAssertEqual(coinCell.layer.borderWidth, 5)
         collect.sendActions(for: .touchUpInside)
         XCTAssertFalse((thumbnail as? CoinPreviewView)?.isCollected == true)
         XCTAssertEqual(coinCell.layer.borderWidth, 0)
         collect.sendActions(for: .touchUpInside)
         XCTAssertTrue((thumbnail as? CoinPreviewView)?.isCollected == true)
-        XCTAssertEqual(coinCell.layer.borderWidth, 2.5)
+        XCTAssertEqual(coinCell.layer.borderWidth, 5)
         controller.pageControl.currentPage = 1
         controller.view.setNeedsLayout()
         controller.view.layoutIfNeeded()
@@ -1008,6 +1141,52 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testMachinePhotoPansVerticallyWithoutTakingHorizontalSwipes() throws {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 200, height: 600)).image { context in
+            UIColor.systemBlue.setFill()
+            context.fill(CGRect(x: 0, y: 0, width: 200, height: 600))
+        }
+        let imageView = UIImageView(image: image)
+        var opens = 0
+        let viewport = MachinePhotoViewport(imageView: imageView) { opens += 1 }
+        viewport.frame = CGRect(x: 0, y: 0, width: 320, height: 180)
+        viewport.layoutIfNeeded()
+        XCTAssertEqual(imageView.frame.size, CGSize(width: 320, height: 960))
+        XCTAssertEqual(imageView.frame.minY, -390, accuracy: 1)
+        XCTAssertTrue(viewport.canPan(velocity: CGPoint(x: 10, y: 100)))
+        XCTAssertFalse(viewport.canPan(velocity: CGPoint(x: 100, y: 10)))
+        viewport.movePhotoVertically(by: -150)
+        XCTAssertEqual(imageView.frame.minY, -540, accuracy: 1)
+        viewport.movePhotoVertically(by: -10_000)
+        XCTAssertEqual(imageView.frame.maxY, viewport.bounds.height, accuracy: 1, "Never pan beyond the bottom of the image")
+        viewport.movePhotoVertically(by: 10_000)
+        XCTAssertEqual(imageView.frame.minY, 0, accuracy: 1, "Never pan beyond the top of the image")
+        viewport.frame.size = CGSize(width: 640, height: 360)
+        viewport.layoutIfNeeded()
+        XCTAssertEqual(imageView.frame.minY, 0, accuracy: 1, "Resizing should preserve the selected part of the photo")
+        XCTAssertTrue(viewport.accessibilityActivate())
+        XCTAssertEqual(opens, 1)
+        viewport.isPanEnabled = false
+        viewport.layoutIfNeeded()
+        XCTAssertFalse(viewport.canPan(velocity: CGPoint(x: 0, y: 100)))
+        XCTAssertFalse(viewport.accessibilityActivate())
+        XCTAssertEqual(imageView.frame, viewport.bounds)
+        XCTAssertTrue(imageView.image === image, "Preview panning must not modify the original image")
+
+        let wide = MachinePhotoViewport(imageView: UIImageView(image: UIGraphicsImageRenderer(size: CGSize(width: 1200, height: 400)).image { _ in })) {}
+        wide.frame = CGRect(x: 0, y: 0, width: 320, height: 180)
+        wide.layoutIfNeeded()
+        XCTAssertFalse(wide.canPan(velocity: CGPoint(x: 0, y: 100)), "A photo that already fits vertically should allow normal page scrolling")
+    }
+
+    func testCompactAddressRemovesCountryWithoutDroppingStreetOrState() {
+        XCTAssertEqual(PinViewController.compactAddress("Schloss Laufen, 8447 Laufen-Uhwiesen, Switzerland"), "Schloss Laufen, 8447 Laufen-Uhwiesen")
+        XCTAssertEqual(PinViewController.compactAddress("1 Main Street, Atlanta, Georgia, USA"), "1 Main Street, Atlanta, Georgia")
+        XCTAssertEqual(PinViewController.compactAddress("1 Main Street, Atlanta, Georgia"), "1 Main Street, Atlanta, Georgia")
+        XCTAssertEqual(PinViewController.compactAddress("Adenauerallee 3, Hannover"), "Adenauerallee 3, Hannover")
+    }
+
+    @MainActor
     func testCoinOutlinesFollowTransparentAndOpaqueCoinShapes() throws {
         func alpha(_ image: UIImage, at point: CGPoint) throws -> UInt8 {
             let source = try XCTUnwrap(image.cgImage)
@@ -1034,17 +1213,17 @@ class PennyMeTests: XCTestCase {
                 UIBezierPath(ovalIn: CGRect(x: 32, y: 42, width: 16, height: 16)).fill()
             }
             let ring = try XCTUnwrap(CoinPreviewView.collectionOutline(for: coin, size: coin.size))
-            XCTAssertGreaterThan(try alpha(ring, at: CGPoint(x: 16, y: 56)), 100, "Ring should hug the coin's left edge")
-            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 6, y: 56)), 10, "Ring must not follow the preview's bounding rectangle")
-            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 46, y: 56)), 10, "White details inside an opaque coin must remain inside its silhouette")
+            XCTAssertGreaterThan(try alpha(ring, at: CGPoint(x: 15, y: 58)), 100, "The six-point ring should extend five points beyond the coin's edge")
+            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 11, y: 58)), 10, "Ring must not follow the preview's bounding rectangle")
+            XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 48, y: 58)), 10, "White details inside an opaque coin must remain inside its silhouette")
             XCTAssertLessThan(try alpha(ring, at: CGPoint(x: 8, y: 8)), 10)
-            XCTAssertGreaterThan(try alpha(ring, at: CGPoint(x: 80, y: 27)), 100, "An asymmetric edge must follow the picture in the correct orientation")
+            XCTAssertGreaterThan(try alpha(ring, at: CGPoint(x: 82, y: 29)), 100, "An asymmetric edge must follow the picture in the correct orientation")
             XCTAssertFalse(CoinPreviewView(image: coin).clipsToBounds, "The ring must remain visible beyond the image bounds")
             let horizontal = CoinPreviewView.orientedImage(coin, landscape: true)
             XCTAssertGreaterThan(horizontal.size.width, horizontal.size.height)
             let rotatedRing = try XCTUnwrap(CoinPreviewView.collectionOutline(for: horizontal, size: horizontal.size))
-            XCTAssertGreaterThan(try alpha(rotatedRing, at: CGPoint(x: 12, y: 46)), 100)
-            XCTAssertLessThan(try alpha(rotatedRing, at: CGPoint(x: 6, y: 46)), 10, "Rotating an opaque photo must still preserve its coin silhouette")
+            XCTAssertGreaterThan(try alpha(rotatedRing, at: CGPoint(x: 14, y: 48)), 100)
+            XCTAssertLessThan(try alpha(rotatedRing, at: CGPoint(x: 7, y: 48)), 10, "Rotating an opaque photo must still preserve its coin silhouette")
         }
         XCTAssertGreaterThan(CoinPreviewView.placeholder.size.height, CoinPreviewView.placeholder.size.width)
         XCTAssertEqual(PinViewController.externalWebsiteTitle(for: "http://locations.pennycollector.com/Details.aspx?location=42"), "PennyCollector (External)")
@@ -1068,11 +1247,11 @@ class PennyMeTests: XCTestCase {
             session.invalidateAndCancel()
         }
         func descendants(_ view: UIView) -> [UIView] { [view] + view.subviews.flatMap(descendants) }
-        for count in [1, 3, 6] {
+        for count in [1, 2, 3, 6] {
             let controller = PinViewController(style: .insetGrouped)
             controller.pinData = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
                                          coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: 98765433,
-                                         last_updated: "2026-11-01", multimachine: 1, paywall: false,
+                                         last_updated: "2026-11-01", multimachine: 1, paywall: count == 1,
                                          machineStatus: "available", area: "Germany", numCoins: count)
             controller.contentSession = session
             window.rootViewController = UINavigationController(rootViewController: controller)
@@ -1086,6 +1265,12 @@ class PennyMeTests: XCTestCase {
             let strip = try XCTUnwrap(descendants(cell).first { $0.accessibilityIdentifier == "coinDesignsScroll" } as? UIScrollView)
             strip.layoutIfNeeded()
             XCTAssertGreaterThan(strip.bounds.height, 100)
+            let thumbnail = try XCTUnwrap(descendants(strip).first { $0.accessibilityIdentifier == "coinThumbnail_1" } as? CoinPreviewView)
+            let image = try XCTUnwrap(thumbnail.image)
+            XCTAssertEqual(image.size.width > image.size.height, count <= 2, "Only one or two designs should use horizontal thumbnails")
+            XCTAssertGreaterThanOrEqual(thumbnail.convert(thumbnail.bounds, to: strip).minY, 8, "Leave room for the thicker outline above the coin")
+            XCTAssertEqual(controller.paywallButton.superview?.isHidden, count != 1)
+            if count == 1 { XCTAssertEqual(controller.paywallButton.superview?.bounds.width ?? 0, 44, accuracy: 1) }
             if count < 4 {
                 let first = try XCTUnwrap(descendants(strip).first { $0.accessibilityIdentifier == "coinThumbnail_1" })
                 let last = try XCTUnwrap(descendants(strip).first { $0.accessibilityIdentifier == "coinThumbnail_\(count)" })
@@ -1360,6 +1545,19 @@ class PennyMeTests: XCTestCase {
         XCTAssertNil(MachinePresencePolicy.rediscoveredMachine(from: Data("{\"machine\":{\"properties\":{\"machine_status\":\"retired\"}}}".utf8)))
     }
 
+    func testMachineAreaSuggestionsUpdateAsTypingAndUseStoredSpelling() {
+        let choices = ["Georgia", "Germany", "Switzerland", "West Virginia"]
+        XCTAssertEqual(MachineAreaField.suggestions(for: "ge", choices: choices), ["Georgia", "Germany"])
+        XCTAssertEqual(MachineAreaField.suggestions(for: " GEr ", choices: choices), ["Germany"])
+        XCTAssertEqual(MachineAreaField.suggestions(for: "Virginia", choices: choices), ["West Virginia"])
+        XCTAssertTrue(MachineAreaField.suggestions(for: "Germany", choices: choices).isEmpty)
+        XCTAssertTrue(MachineAreaField.suggestions(for: "  ", choices: choices).isEmpty)
+        XCTAssertTrue(MachineAreaField.suggestions(for: "zzzz", choices: choices).isEmpty)
+        XCTAssertEqual(MachineAreaField.submittedArea(" germany ", choices: choices), "Germany")
+        XCTAssertEqual(MachineAreaField.submittedArea(" New area ", choices: choices), "New area")
+        XCTAssertEqual(MachineAreaField.suggestions(for: "State", choices: (1...8).map { "State \($0)" }).count, 5)
+    }
+
     func testStatusChangeReasonRequiresTenTrimmedCharacters() {
         XCTAssertFalse(MachineChangedForm.isValidStatusReason("          "))
         XCTAssertFalse(MachineChangedForm.isValidStatusReason("123456789"))
@@ -1373,7 +1571,7 @@ class PennyMeTests: XCTestCase {
         XCTAssertNil(MachinePresencePolicy.confirmedLastSeen(from: Data("{\"last_seen\":\"invalid\"}".utf8)))
         let controller = PinViewController(style: .insetGrouped)
         let coordinate = CLLocationCoordinate2D(latitude: 47.677014, longitude: 8.614564)
-        controller.pinData = Artwork(title: "Rheinfall sidewalk", address: "Schloss Laufen", link: "null", status: "unvisited",
+        controller.pinData = Artwork(title: "Rheinfall sidewalk (downstairs)", address: "Schloss Laufen, Switzerland", link: "null", status: "unvisited",
                                      coordinate: coordinate, id: 6042, last_updated: "2026-10-22", multimachine: 1,
                                      paywall: false, machineStatus: "available", area: "Switzerland", numCoins: 0)
         let manager = PresenceTestLocationManager()
@@ -1424,6 +1622,9 @@ class PennyMeTests: XCTestCase {
         XCTAssertEqual(controller.pinData.lastSeen, savedAt)
         XCTAssertTrue(controller.lastSeenLabel.attributedText?.string.contains("Just now") == true)
         XCTAssertEqual(controller.pinData.last_updated, "2026-10-22")
+        XCTAssertLessThanOrEqual(controller.titleLabel.bounds.height, ceil(controller.titleLabel.font.lineHeight) * 2 + 1,
+                                 "Rheinfall should fit in two lines with the badge against the right edge")
+        XCTAssertEqual(controller.addressLabel.text, "Schloss Laufen")
         XCTAssertNil(controller.presentedViewController, "Saving in the background must update state without presenting an alert")
     }
 

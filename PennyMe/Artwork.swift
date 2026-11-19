@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 import Contacts
+import CoreFoundation
+import NaturalLanguage
 
 
 class Artwork: NSObject, MKAnnotation {
@@ -104,6 +106,29 @@ class Artwork: NSObject, MKAnnotation {
     var subtitle: String? {
         return address
     }
+
+    /// Soft hyphens let labels fill each line using dictionary-approved breaks.
+    /// The original name stays intact for searching, copying and submissions.
+    private(set) lazy var displayTitle: NSAttributedString = {
+        let title = self.title ?? ""
+        var breaks: [Int] = []
+        title.enumerateSubstrings(in: title.startIndex..<title.endIndex, options: .byWords) { word, range, _, _ in
+            guard let word = word, let language = NLLanguageRecognizer.dominantLanguage(for: word),
+                  let locale = CFLocaleCreate(nil, CFLocaleIdentifier(rawValue: language.rawValue as CFString)) else { return }
+            let length = (word as NSString).length
+            var before = length
+            while before > 0 {
+                let position = CFStringGetHyphenationLocationBeforeIndex(word as CFString, before,
+                                                                         CFRange(location: 0, length: length), 0, locale, nil)
+                guard position > 0 else { break }
+                breaks.append(NSRange(range, in: title).location + position)
+                before = position
+            }
+        }
+        let display = NSMutableString(string: title)
+        for position in breaks.sorted(by: >) { display.insert("\u{00AD}", at: position) }
+        return NSAttributedString(string: display as String, attributes: [.paragraphStyle: NSParagraphStyle.default])
+    }()
     
     // To get directions in map
     // Annotation right callout accessory opens this mapItem in Maps app

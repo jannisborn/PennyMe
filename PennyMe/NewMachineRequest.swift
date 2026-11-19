@@ -80,11 +80,51 @@ struct ConfirmationMessageView: View {
 }
 
 @available(iOS 15.0, *)
-struct NewMachineFormView: View {
-    private enum Field: Hashable {
-        case area
+struct MachineAreaField: View {
+    @Binding var area: String
+    let choices: [String]
+    @FocusState private var isFocused: Bool
+
+    var body: some View {
+        let matches = Self.suggestions(for: area, choices: choices)
+        VStack(alignment: .leading, spacing: 6) {
+            TextField("Area (Country or US state)", text: $area)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($isFocused)
+                .accessibilityIdentifier("machineArea")
+            if !matches.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    ForEach(matches, id: \.self) { choice in
+                        Button {
+                            area = choice
+                            isFocused = false
+                        } label: {
+                            Text(choice).frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                }
+                .font(.footnote)
+                .padding(.horizontal, 4)
+            }
+        }
     }
 
+    static func suggestions(for area: String, choices: [String]) -> [String] {
+        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return [] }
+        return Array(choices.filter {
+            $0.localizedCaseInsensitiveContains(query) && $0.caseInsensitiveCompare(query) != .orderedSame
+        }.prefix(5))
+    }
+
+    static func submittedArea(_ area: String, choices: [String]) -> String {
+        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
+        return choices.first { $0.caseInsensitiveCompare(query) == .orderedSame } ?? query
+    }
+}
+
+@available(iOS 15.0, *)
+struct NewMachineFormView: View {
     private struct NearbyMachine: Identifiable {
         let machineID: String
         let name: String
@@ -145,7 +185,6 @@ struct NewMachineFormView: View {
     @State private var nearbyMachines: [NearbyMachine] = []
     @State private var nearbyConfirmationPending = false
     @State private var isLoading = false
-    @FocusState private var focusedField: Field?
 
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
@@ -197,24 +236,7 @@ struct NewMachineFormView: View {
             }
             
             // Area input field
-            TextField("Area (Country or US state)", text: $area)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .focused($focusedField, equals: .area)
-            if !matchingAreas.isEmpty {
-                VStack(alignment: .leading, spacing: 6) {
-                    ForEach(matchingAreas.prefix(5), id: \.self) { areaChoice in
-                        Button(action: {
-                            area = areaChoice
-                            focusedField = nil
-                        }) {
-                            Text(areaChoice)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }
-                }
-                .font(.footnote)
-                .padding(.horizontal, 4)
-            }
+            MachineAreaField(area: $area, choices: areaChoices)
 
             
             // Paywall checkbox
@@ -400,17 +422,8 @@ struct NewMachineFormView: View {
         Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
     }
 
-    private var matchingAreas: [String] {
-        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !query.isEmpty else { return [] }
-        return areaChoices.filter {
-            $0.localizedCaseInsensitiveContains(query) && $0.caseInsensitiveCompare(query) != .orderedSame
-        }
-    }
-
     private var submittedArea: String {
-        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
-        return areaChoices.first { $0.caseInsensitiveCompare(query) == .orderedSame } ?? query
+        MachineAreaField.submittedArea(area, choices: areaChoices)
     }
 
     private func warningBox<Content: View>(@ViewBuilder content: () -> Content) -> some View {

@@ -145,11 +145,12 @@ struct CoordinatePickerMap: UIViewRepresentable {
 }
     
 
-@available(iOS 14.0, *)
+@available(iOS 15.0, *)
 struct MachineChangedForm: View {
     // Properties to hold user input
     var coords: CLLocationCoordinate2D
     var pinDataStored: Artwork
+    let areaChoices: [String]
     
     let statusDict = [0: "available", 1: "out-of-order", 2: "retired"]
     @State private var name: String = ""
@@ -178,8 +179,9 @@ struct MachineChangedForm: View {
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
 
-    init(pinData: Artwork, suggestedStatus: String? = nil) {
+    init(pinData: Artwork, suggestedStatus: String? = nil, areaChoices: [String] = []) {
         pinDataStored = pinData
+        self.areaChoices = Array(Set(areaChoices + [pinData.area])).sorted()
         _originalMachineStatus = State(initialValue: pinData.machineStatus)
         _name = State(initialValue: pinData.title!)
         coords = pinData.coordinate
@@ -240,8 +242,7 @@ struct MachineChangedForm: View {
             // Area input field
             VStack(alignment: .leading, spacing: 5) {
                 Text("Area").foregroundColor(Color.gray)
-                TextField("Area", text: $area)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                MachineAreaField(area: $area, choices: areaChoices)
             }
             .padding(3)
             
@@ -361,13 +362,14 @@ struct MachineChangedForm: View {
     // Function to handle the submission of the request
     private func submitRequest(statusReasonConfirmed: Bool = false) {
         isLoading = true
+        let submittedArea = MachineAreaField.submittedArea(area, choices: areaChoices)
         if let reason = TextModeration.blockReason(name) {
             finishLoading(message: reason)
             return
         }
         
         // check if any field is empty
-        if name == "" || address == "" || area == "" {
+        if name == "" || address == "" || submittedArea == "" {
             finishLoading(message: "Please do not leave empty fields.")
             return
         }
@@ -394,7 +396,7 @@ struct MachineChangedForm: View {
         // check if anything was changed at all, otherwise abort
         if (name == pinDataStored.title!) &&
             (address == pinDataStored.address) &&
-            (area == pinDataStored.area) &&
+            (submittedArea == pinDataStored.area) &&
             (paywall == pinDataStored.paywall) &&
             (numCoins == pinDataStored.numCoins) &&
             (lat_coord == pinDataStored.coordinate.latitude) &&
@@ -410,7 +412,7 @@ struct MachineChangedForm: View {
             URLQueryItem(name: "id", value: pinDataStored.id),
             URLQueryItem(name: "title", value: name),
             URLQueryItem(name: "address", value: address),
-            URLQueryItem(name: "area", value: area),
+            URLQueryItem(name: "area", value: submittedArea),
             URLQueryItem(name: "multimachine", value: String(pinDataStored.multimachine)),
             URLQueryItem(name:"paywall", value: String(paywall)),
             URLQueryItem(name:"num_coins", value: String(numCoins)),

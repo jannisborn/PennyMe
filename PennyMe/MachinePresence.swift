@@ -102,6 +102,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     private let isActive: () -> Bool
     private let hasNearbyMachine: (CLLocation) -> Bool
     private let isBlocked: (Int) -> Bool
+    private let areaChoices: () -> [String]
     private var timer: Timer?
     private var task: URLSessionDataTask?
     private var generation = UUID()
@@ -117,11 +118,13 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
     private var pendingChangeEditor: Artwork?
 
     init(hasNearbyMachine: @escaping (CLLocation) -> Bool, isBlocked: @escaping (Int) -> Bool,
+         areaChoices: @escaping () -> [String] = { [] },
          manager: CLLocationManager = CLLocationManager(), confirmationManager: CLLocationManager = CLLocationManager(),
          session: URLSession = .shared,
          isActive: @escaping () -> Bool = { UIApplication.shared.applicationState == .active }) {
         self.hasNearbyMachine = hasNearbyMachine
         self.isBlocked = isBlocked
+        self.areaChoices = areaChoices
         self.manager = manager
         self.confirmationManager = confirmationManager
         self.session = session
@@ -354,7 +357,7 @@ final class MachinePresenceMonitor: NSObject, CLLocationManagerDelegate {
         guard let presenter = availablePresenter() else { return true }
         if let machine = pendingChangeEditor {
             pendingChangeEditor = nil
-            let form = MachineChangedForm(pinData: machine, suggestedStatus: "available")
+            let form = MachineChangedForm(pinData: machine, suggestedStatus: "available", areaChoices: areaChoices())
             presenter.present(UIHostingController(rootView: form), animated: true)
         } else if let machine = pendingRediscovery {
             pendingRediscovery = nil
