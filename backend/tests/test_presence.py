@@ -23,6 +23,9 @@ class PresenceTests(unittest.TestCase):
         app.testing = True
         app.register_blueprint(presence_api)
         self.client = app.test_client()
+        notifier = patch("pennyme.presence.notify_machine_seen")
+        self.notify = notifier.start()
+        self.addCleanup(notifier.stop)
         self.headers = {"X-PennyMe-Anonymous-ID": "test-contributor"}
         self.confirmed_machine = {
             "last_seen": self.now,
@@ -125,10 +128,46 @@ class PresenceTests(unittest.TestCase):
         self.assertEqual(params, (8.54, 47.37, 8.54, 47.37, 8.54, 47.37))
         connection.close.assert_called_once()
 
+    def test_pin_activity_reads_dates_without_modifying_machine(self):
+        connection = MagicMock()
+        cursor = connection.cursor.return_value.__enter__.return_value
+        cursor.fetchone.side_effect = [
+            {"last_seen": self.now, "last_updated": date(2026, 10, 1)},
+            {"last_seen": None, "last_updated": date(2026, 10, 1)},
+            None,
+        ]
+        with patch("pennyme.presence.get_connection", return_value=connection):
+            confirmed = self.client.get("/machines/42/activity", headers=self.headers)
+            unknown = self.client.get("/machines/43/activity", headers=self.headers)
+            missing = self.client.get("/machines/44/activity", headers=self.headers)
+        self.assertEqual(
+            confirmed.json,
+            {"last_seen": self.now.isoformat(), "last_updated": "2026-10-01"},
+        )
+        self.assertEqual(confirmed.headers["Cache-Control"], "no-store")
+        self.assertIsNone(unknown.json["last_seen"])
+        self.assertEqual(missing.status_code, 404)
+        self.assertEqual(
+            cursor.execute.call_args_list[0].args,
+            ("SELECT last_seen, last_updated FROM machines WHERE id = %s", (42,)),
+        )
+        self.assertTrue(
+            all(
+                call.args[0].startswith("SELECT ")
+                for call in cursor.execute.call_args_list
+            )
+        )
+        with patch("pennyme.presence.get_connection") as connect:
+            self.assertEqual(self.client.get("/machines/42/activity").status_code, 400)
+            connect.assert_not_called()
+
     def test_confirmation_is_one_conditional_update_of_only_last_seen(self):
         connection = MagicMock()
         cursor = connection.cursor.return_value.__enter__.return_value
         cursor.fetchone.side_effect = [self.confirmed_machine, None]
+        self.notify.side_effect = lambda *_: self.assertEqual(
+            connection.__exit__.call_count, 1, "Slack must run after SQL commit"
+        )
         with patch("pennyme.presence.get_connection", return_value=connection):
             first = self.client.post(
                 "/machines/42/confirm-presence", json=self.fix, headers=self.headers
@@ -143,6 +182,7 @@ class PresenceTests(unittest.TestCase):
         )
         self.assertEqual(first.json["machine"]["properties"]["address"], "Main Street")
         self.assertEqual(repeated.status_code, 409)
+        self.notify.assert_called_once_with(42, "Zoo")
         for call in cursor.execute.call_args_list:
             sql, params = call.args
             self.assertTrue(
@@ -152,14 +192,14 @@ class PresenceTests(unittest.TestCase):
             )
             self.assertIn("last_seen < CURRENT_TIMESTAMP - INTERVAL '7 days'", sql)
             self.assertIn("::geography, %s)", sql)
-            self.assertIn("INTERVAL '15 seconds'", sql)
+            self.assertEqual(params[-1], 15)
             assignments = sql.split(" WHERE", 1)[0]
             self.assertNotIn("last_updated", assignments)
             self.assertNotIn("machine_status", assignments)
             self.assertEqual(params[:4], (42, 8.54, 47.37, 20))
             self.assertEqual(params[4].tzinfo, timezone.utc)
 
-    def test_manual_confirmation_enforces_one_hundred_metres_without_auto_cooldown(
+    def test_manual_confirmation_enforces_two_hundred_metres_without_auto_cooldown(
         self,
     ):
         connection = MagicMock()
@@ -190,10 +230,10 @@ class PresenceTests(unittest.TestCase):
             self.assertIn("move closer", outside.json["error"])
         for call in cursor.execute.call_args_list:
             sql, params = call.args
-            self.assertEqual(params[:4], (42, 8.54, 47.37, 100))
+            self.assertEqual(params[:4], (42, 8.54, 47.37, 200))
             self.assertNotIn("last_seen <", sql)
             self.assertIn("::geography, %s)", sql)
-            self.assertIn("INTERVAL '15 seconds'", sql)
+            self.assertEqual(params[-1], 120)
             self.assertEqual(
                 sql.split(" WHERE", 1)[0],
                 "UPDATE machines SET last_seen = CURRENT_TIMESTAMP",
@@ -222,6 +262,61 @@ class PresenceTests(unittest.TestCase):
                 )
         self.assertEqual(connection.__exit__.call_args.args[0], RuntimeError)
         connection.close.assert_called_once()
+        self.notify.assert_not_called()
+
+    def test_manual_location_accepts_normal_cached_fixes_but_keeps_limits(self):
+        fix = {
+            **self.fix,
+            "source": "manual",
+            "accuracy": 50,
+            "measured_at": self.now.timestamp() - 120,
+        }
+        parse_location(fix, self.now)
+        for changes in [
+            {"accuracy": 50.1},
+            {"measured_at": self.now.timestamp() - 120.1},
+        ]:
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                parse_location({**fix, **changes}, self.now)
+        with self.assertRaises(ValueError):
+            parse_location({**fix, "source": "automatic"}, self.now)
+
+    def test_commit_failure_never_announces_a_sighting(self):
+        connection = MagicMock()
+        connection.cursor.return_value.__enter__.return_value.fetchone.return_value = (
+            self.confirmed_machine
+        )
+        connection.__exit__.side_effect = RuntimeError("Commit failed")
+        with (
+            patch("pennyme.presence.get_connection", return_value=connection),
+            patch("pennyme.presence.clear_machine_geojson_cache") as invalidate,
+        ):
+            with self.assertRaisesRegex(RuntimeError, "Commit failed"):
+                self.client.post(
+                    "/machines/42/confirm-presence", json=self.fix, headers=self.headers
+                )
+        self.notify.assert_not_called()
+        invalidate.assert_not_called()
+        connection.close.assert_called_once()
+
+    def test_slack_failure_preserves_committed_sighting_and_refreshes_feed(self):
+        connection = MagicMock()
+        connection.cursor.return_value.__enter__.return_value.fetchone.return_value = (
+            self.confirmed_machine
+        )
+        self.notify.side_effect = RuntimeError("Slack unavailable")
+        with (
+            patch("pennyme.presence.get_connection", return_value=connection),
+            patch("pennyme.presence.clear_machine_geojson_cache") as invalidate,
+            self.assertLogs(level="ERROR"),
+        ):
+            response = self.client.post(
+                "/machines/42/confirm-presence", json=self.fix, headers=self.headers
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json["last_seen"], self.now.isoformat())
+        invalidate.assert_called_once()
+        connection.__exit__.assert_called_once_with(None, None, None)
 
     def test_machine_feed_serializes_unknown_and_confirmed_sightings(self):
         frame = gpd.GeoDataFrame(

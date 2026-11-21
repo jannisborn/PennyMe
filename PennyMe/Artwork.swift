@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 import Contacts
+import CoreFoundation
+import NaturalLanguage
 
 
 class Artwork: NSObject, MKAnnotation {
@@ -20,13 +22,14 @@ class Artwork: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let id: String
     let last_updated: String
+    var lastSeen: String?
     let text: String
     let paywall: Bool
     let multimachine: Int
     var machineStatus: String
     let numCoins: Int
     
-    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int) {
+    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int, lastSeen: String? = nil) {
         self.title = title
         self.address = address
         self.coordinate = coordinate
@@ -34,6 +37,7 @@ class Artwork: NSObject, MKAnnotation {
         self.status = status
         self.id = String(id)
         self.last_updated = last_updated
+        self.lastSeen = lastSeen
         self.text = title + address + self.id
         self.multimachine = multimachine
         self.paywall = paywall
@@ -61,6 +65,7 @@ class Artwork: NSObject, MKAnnotation {
         address = (properties["address"] as? String)!
         link = (properties["external_url"] as? String)!
         last_updated = (properties["last_updated"] as? String)!
+        lastSeen = properties["last_seen"] as? String
         id = String((properties["id"] as? Int)!)
         area = String((properties["area"] as? String)!)
       
@@ -101,6 +106,29 @@ class Artwork: NSObject, MKAnnotation {
     var subtitle: String? {
         return address
     }
+
+    /// Soft hyphens let labels fill each line using dictionary-approved breaks.
+    /// The original name stays intact for searching, copying and submissions.
+    private(set) lazy var displayTitle: NSAttributedString = {
+        let title = self.title ?? ""
+        var breaks: [Int] = []
+        title.enumerateSubstrings(in: title.startIndex..<title.endIndex, options: .byWords) { word, range, _, _ in
+            guard let word = word, let language = NLLanguageRecognizer.dominantLanguage(for: word),
+                  let locale = CFLocaleCreate(nil, CFLocaleIdentifier(rawValue: language.rawValue as CFString)) else { return }
+            let length = (word as NSString).length
+            var before = length
+            while before > 0 {
+                let position = CFStringGetHyphenationLocationBeforeIndex(word as CFString, before,
+                                                                         CFRange(location: 0, length: length), 0, locale, nil)
+                guard position > 0 else { break }
+                breaks.append(NSRange(range, in: title).location + position)
+                before = position
+            }
+        }
+        let display = NSMutableString(string: title)
+        for position in breaks.sorted(by: >) { display.insert("\u{00AD}", at: position) }
+        return NSAttributedString(string: display as String, attributes: [.paragraphStyle: NSParagraphStyle.default])
+    }()
     
     // To get directions in map
     // Annotation right callout accessory opens this mapItem in Maps app
@@ -156,23 +184,6 @@ class Artwork: NSObject, MKAnnotation {
     }
 }
 
-extension Artwork {
-  static func artworks() -> [Artwork] {
-    guard
-      let url = Bundle.main.url(forResource: "candies", withExtension: "json"),
-      let data = try? Data(contentsOf: url)
-      else {
-        return []
-    }
-    
-    do {
-      return []
-    } catch {
-      return []
-    }
-  }
-}
-
 /// Snapshot of the server-derived fields of an `Artwork`, persisted on-disk so a prior
 /// app launch's full server state survives across restarts (see `ViewController`'s
 /// `cachedMachinesURL`/`loadCachedMachines`/`persistCachedMachines`). Excludes the
@@ -190,6 +201,7 @@ struct CachedArtwork: Codable, Equatable {
     let numCoins: Int
     let latitude: Double
     let longitude: Double
+    var lastSeen: String? = nil
 }
 
 extension Artwork {
@@ -206,7 +218,8 @@ extension Artwork {
             area: area,
             numCoins: numCoins,
             latitude: coordinate.latitude,
-            longitude: coordinate.longitude
+            longitude: coordinate.longitude,
+            lastSeen: lastSeen
         )
     }
 
@@ -223,7 +236,8 @@ extension Artwork {
             paywall: cached.paywall,
             machineStatus: cached.machineStatus,
             area: cached.area,
-            numCoins: cached.numCoins
+            numCoins: cached.numCoins,
+            lastSeen: cached.lastSeen
         )
     }
 }

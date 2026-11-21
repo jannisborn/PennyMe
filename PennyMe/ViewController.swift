@@ -38,6 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     let regionInMeters: Double = 10000
     // Array for annotation database
     var artworks: [Artwork] = []
+    private var machineAreaChoices: [String] { Array(Set(artworks.map { $0.area })).sorted() }
     var pinIdDict : [String:Int] = [:]
     var isVisible : [String:Bool] = [:]
     var selectedPin: Artwork?
@@ -111,8 +112,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         self.navigationbar.standardAppearance?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
 
-        // Do any additional setup after loading the view, typically from a nib.
-        artworks = Artwork.artworks()
+        artworks = []
 
         // Set up search bar
         searchController.searchResultsUpdater = self
@@ -136,7 +136,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         .distance(from: location) <= 30
                 } ?? false
             },
-            isBlocked: { [weak self] id in self?.blockedMachineIDs.contains(String(id)) ?? true }
+            isBlocked: { [weak self] id in self?.blockedMachineIDs.contains(String(id)) ?? true },
+            areaChoices: { [weak self] in self?.machineAreaChoices ?? [] }
         )
         
         // Map initialization goes here:
@@ -310,7 +311,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     private func newMachineForm(coordinate: CLLocationCoordinate2D) -> NewMachineFormView {
         NewMachineFormView(
             coordinate: coordinate,
-            areaChoices: Array(Set(artworks.map { $0.area })).sorted(),
+            areaChoices: machineAreaChoices,
             openExistingMachine: { [weak self] machineID in
                 self?.dismiss(animated: true) {
                     self?.openMachine(machineID: machineID)
@@ -669,7 +670,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         visitedCount += 1
                         
                         // Increment the count for the specific area
-                        let area = machine.area ?? "Unknown Area"
+                        let area = machine.area
                         visitedByArea[area, default: 0] += 1
                         if machine.machineStatus != "retired" {
                             visitedActiveByArea[area, default: 0] += 1
@@ -1090,6 +1091,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             let destinationViewController = segue.destination as! PinViewController
             destinationViewController.pinData = self.selectedPin!
             destinationViewController.presenceMonitor = presenceMonitor
+            destinationViewController.areaChoices = machineAreaChoices
         }
         
     }
@@ -1137,7 +1139,6 @@ extension ViewController: MKMapViewDelegate {
             }
         // second option: it's a regular machine
         } else if let artworkAnnotation = annotation as? Artwork {
-            let selectedLocation = artworkAnnotation.title
             // set selected pin to pass it to detail VC
             self.selectedPin = artworkAnnotation
             self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
@@ -1362,10 +1363,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "location")
             ?? UITableViewCell(style: .default, reuseIdentifier: "location")
         let artwork = filteredArtworks[indexPath.row]
-        cell.textLabel?.text = artwork.title
+        cell.textLabel?.attributedText = artwork.displayTitle
+        cell.textLabel?.accessibilityLabel = artwork.title
         cell.textLabel?.font = .preferredFont(forTextStyle: .body)
         cell.textLabel?.adjustsFontForContentSizeCategory = true
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.lineBreakStrategy = []
         cell.detailTextLabel?.text = artwork.address
         // Set the custom color for the cell based on the artwork color
         cell.backgroundColor = artwork.markerTintColor.withAlphaComponent(0.15)

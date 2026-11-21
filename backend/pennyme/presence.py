@@ -2,21 +2,27 @@
 
 from contextlib import closing
 from datetime import datetime, timezone
+from html import escape
+import logging
 from math import isfinite
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, current_app, jsonify, request
 from psycopg2.extras import RealDictCursor
 
-from pennyme.database import get_connection
+from pennyme.database import clear_machine_geojson_cache, get_connection
 from pennyme.database_utils import _row_to_geojson_feature
 
 presence_api = Blueprint("presence", __name__)
 
 
 def parse_location(payload, now=None):
-    """Accept only a fresh, precise fix; timestamps are Unix seconds in UTC."""
+    """Validate proximity evidence; deliberate 200 m checks tolerate normal GPS caching."""
     if not isinstance(payload, dict):
-        raise ValueError("A live location is required")
+        raise ValueError("Location is unavailable. Please try again.")
+    source = payload.get("source", "automatic")
+    if source not in ("automatic", "manual"):
+        raise ValueError("Invalid confirmation source")
+    max_age, max_accuracy = (120, 50) if source == "manual" else (15, 10)
     fields = ("latitude", "longitude", "accuracy", "measured_at")
     values = [payload.get(field) for field in fields]
     if any(
@@ -33,18 +39,59 @@ def parse_location(payload, now=None):
     latitude, longitude, accuracy, measured_at = values
     if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
         raise ValueError("Invalid coordinates")
-    if not 0 <= accuracy <= 10:
-        raise ValueError("Location accuracy must be 10 metres or better")
+    if not 0 <= accuracy <= max_accuracy:
+        raise ValueError("Your location is not accurate enough yet. Please try again.")
     now = now or datetime.now(timezone.utc)
-    if not -5 <= now.timestamp() - measured_at <= 15:
-        raise ValueError("Location must have been measured within the last 15 seconds")
+    if not -5 <= now.timestamp() - measured_at <= max_age:
+        raise ValueError("Location is unavailable. Please try again.")
     return latitude, longitude, datetime.fromtimestamp(measured_at, timezone.utc)
+
+
+def send_machine_seen_notification(machine_id, name):
+    # Slack is already initialized by app.py; standalone API tests need no Slack client.
+    try:
+        from pennyme.slack import message_slack_raw
+
+        name = escape(" ".join(name.split()), quote=False)
+        message_slack_raw(f"👀 Machine seen: {name} (#{machine_id})")
+    except Exception:
+        logging.getLogger(__name__).exception(
+            "Sighting saved for machine %s; Slack notification failed", machine_id
+        )
+
+
+def notify_machine_seen(machine_id, name):
+    work_queue = current_app.config.get("PRESENCE_NOTIFICATION_QUEUE")
+    if work_queue is not None:
+        work_queue.put((send_machine_seen_notification, (machine_id, name)))
+    else:
+        send_machine_seen_notification(machine_id, name)
 
 
 @presence_api.before_request
 def require_presence_contributor():
     if not request.headers.get("X-PennyMe-Anonymous-ID", "").strip():
         return jsonify(error="Missing anonymous contributor identifier"), 400
+
+
+@presence_api.get("/machines/<int:machine_id>/activity")
+def machine_activity(machine_id):
+    """Read sightings directly: last_seen changes do not enter the edit delta feed."""
+    with closing(get_connection()) as connection, connection:
+        with connection.cursor(cursor_factory=RealDictCursor) as cursor:
+            cursor.execute(
+                "SELECT last_seen, last_updated FROM machines WHERE id = %s",
+                (machine_id,),
+            )
+            row = cursor.fetchone()
+    if row is None:
+        return jsonify(error="Machine not found"), 404
+    response = jsonify(
+        last_seen=row["last_seen"].isoformat() if row["last_seen"] else None,
+        last_updated=row["last_updated"].isoformat(),
+    )
+    response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 @presence_api.post("/machines/nearby-confirmations")
@@ -61,7 +108,7 @@ def nearby_confirmations():
                 "AND ST_DWithin(geom::geography, "
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 20)) AS needs_confirmation "
                 "FROM machines "
-                # Manual targets can be 100 m away; include their 100 m neighborhood.
+                # Include manual targets up to 200 m away; automatic prompts stay at 20 m.
                 "WHERE ST_DWithin(geom::geography, "
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, 200) "
                 "ORDER BY ST_Distance(geom::geography, "
@@ -89,7 +136,8 @@ def confirm_presence(machine_id):
     source = payload.get("source", "automatic")
     if source not in ("automatic", "manual"):
         return jsonify(error="Invalid confirmation source"), 400
-    radius = 100 if source == "manual" else 20
+    radius = 200 if source == "manual" else 20
+    max_age = 120 if source == "manual" else 15
     # A deliberate sighting may refresh last_seen at any time; only automatic
     # prompts need the seven-day cooldown.
     cooldown = (
@@ -107,21 +155,29 @@ def confirm_presence(machine_id):
                 "AND ST_DWithin(geom::geography, "
                 "ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography, %s) "
                 "AND CURRENT_TIMESTAMP - %s::timestamptz "
-                "BETWEEN INTERVAL '-5 seconds' AND INTERVAL '15 seconds' "
+                "BETWEEN INTERVAL '-5 seconds' AND (%s * INTERVAL '1 second') "
                 "RETURNING last_seen, id, name, area, address, machine_status, "
                 "num_coins, paywall, external_url, internal_url, last_updated, "
                 "ST_X(geom) AS longitude, ST_Y(geom) AS latitude",
-                (machine_id, longitude, latitude, radius, measured_at),
+                (machine_id, longitude, latitude, radius, measured_at, max_age),
             )
             row = cursor.fetchone()
     if row is None:
         return jsonify(
             error=(
-                "Can't validate. Please move closer and try again with a fresh, precise location."
+                "Please move closer to the machine (within 200 metres) and try again."
                 if source == "manual"
-                else "The machine was recently confirmed or your location is no longer valid"
+                else "The machine was recently confirmed or you are no longer nearby."
             )
         ), 409
+    clear_machine_geojson_cache()
+    # Notify only after the transaction committed; a Slack outage must not undo a sighting.
+    try:
+        notify_machine_seen(row["id"], row["name"])
+    except Exception:
+        current_app.logger.exception(
+            "Sighting saved for machine %s; Slack notification failed", machine_id
+        )
     return jsonify(
         last_seen=row["last_seen"].isoformat(),
         machine=_row_to_geojson_feature(dict(row)),

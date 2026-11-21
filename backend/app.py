@@ -63,6 +63,7 @@ from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
+app.config["PRESENCE_NOTIFICATION_QUEUE"] = request_queue
 
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
@@ -110,7 +111,7 @@ app.register_blueprint(presence_api)
 
 @app.before_request
 def check_presence_contributor():
-    if request.blueprint == "presence":
+    if request.blueprint == "presence" and request.method == "POST":
         return blocked_contributor_response()
 
 
