@@ -391,15 +391,22 @@ struct MachineChangedForm: View {
             }
         }
         
-        // check if anything was changed at all, otherwise abort
-        if (name == pinDataStored.title!) &&
-            (address == pinDataStored.address) &&
-            (area == pinDataStored.area) &&
-            (paywall == pinDataStored.paywall) &&
-            (numCoins == pinDataStored.numCoins) &&
-            (lat_coord == pinDataStored.coordinate.latitude) &&
-            (lon_coord == pinDataStored.coordinate.longitude) &&
-            (statusNew == originalMachineStatus) {
+        let editableFields: [(key: String, value: String, original: String?)] = [
+            ("title", name, pinDataStored.title),
+            ("address", address, pinDataStored.address),
+            ("area", area, pinDataStored.area),
+            ("paywall", String(paywall), String(pinDataStored.paywall)),
+            ("num_coins", String(numCoins), String(pinDataStored.numCoins)),
+            ("status", statusNew, pinDataStored.machineStatus),
+        ]
+        var changes = editableFields
+            .filter { $0.value != $0.original }
+            .map { URLQueryItem(name: $0.key, value: $0.value) }
+        if selectedLocation != pinDataStored.coordinate {
+            changes.append(URLQueryItem(name: "lon_coord", value: String(lon_coord)))
+            changes.append(URLQueryItem(name: "lat_coord", value: String(lat_coord)))
+        }
+        guard !changes.isEmpty else {
             finishLoading(message: "Nothing was changed - not submitting.")
             return
         }
@@ -408,16 +415,8 @@ struct MachineChangedForm: View {
         urlComponents.path = "/change_machine"
         urlComponents.queryItems = [
             URLQueryItem(name: "id", value: pinDataStored.id),
-            URLQueryItem(name: "title", value: name),
-            URLQueryItem(name: "address", value: address),
-            URLQueryItem(name: "area", value: area),
-            URLQueryItem(name: "multimachine", value: String(pinDataStored.multimachine)),
-            URLQueryItem(name:"paywall", value: String(paywall)),
-            URLQueryItem(name:"num_coins", value: String(numCoins)),
-            URLQueryItem(name: "lon_coord", value: "\(lon_coord)"),
-            URLQueryItem(name: "lat_coord", value: "\(lat_coord)"),
-            URLQueryItem(name: "status", value: statusNew),
-        ]
+            URLQueryItem(name: "partial", value: "true"),
+        ] + changes
         urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         var request = URLRequest(url: urlComponents.url!)
 
