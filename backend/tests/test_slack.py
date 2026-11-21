@@ -55,6 +55,36 @@ class ProcessUploadedImageTest(unittest.TestCase):
 
 
 class ReportSlackTest(unittest.TestCase):
+    def test_sighting_notification_is_one_line_and_escapes_machine_name(self):
+        from pennyme.presence import send_machine_seen_notification
+
+        with patch.object(slack, "message_slack_raw") as post:
+            send_machine_seen_notification(6042, "Rheinfall\nsidewalk <!channel>")
+        post.assert_called_once_with(
+            "👀 Machine seen: Rheinfall sidewalk &lt;!channel&gt; (#6042)"
+        )
+
+    def test_sighting_uses_existing_worker_without_blocking_or_stopping_it(self):
+        from flask import Flask
+        from pennyme.presence import notify_machine_seen
+
+        app = Flask(__name__)
+        work_queue = Mock()
+        app.config["PRESENCE_NOTIFICATION_QUEUE"] = work_queue
+        with app.app_context(), patch.object(slack, "message_slack_raw") as post:
+            notify_machine_seen(6042, "Rheinfall sidewalk")
+            post.assert_not_called()
+        job, args = work_queue.put.call_args.args[0]
+        with (
+            patch.object(
+                slack,
+                "message_slack_raw",
+                side_effect=RuntimeError("Slack unavailable"),
+            ),
+            self.assertLogs(level="ERROR"),
+        ):
+            job(*args)  # Must not raise: the same worker also handles UGC proposals.
+
     def test_status_change_reason_is_plain_text_and_preserved_with_details_in_thread(
         self,
     ):

@@ -41,6 +41,7 @@ from pennyme.moderation import (
     validate_report,
     validate_status_change_reason,
 )
+from pennyme.photos import photo_inventory
 from pennyme.presence import presence_api
 from pennyme.slack import (
     format_machine_fields,
@@ -63,6 +64,7 @@ from thefuzz import process as fuzzysearch
 
 app = Flask(__name__)
 request_queue = queue.Queue()
+app.config["PRESENCE_NOTIFICATION_QUEUE"] = request_queue
 
 
 PATH_COMMENTS = os.path.join("..", "..", "images", "comments")
@@ -110,7 +112,7 @@ app.register_blueprint(presence_api)
 
 @app.before_request
 def check_presence_contributor():
-    if request.blueprint == "presence":
+    if request.blueprint == "presence" and request.method == "POST":
         return blocked_contributor_response()
 
 
@@ -149,7 +151,25 @@ def machines() -> Tuple[Response, int]:
             datetime.strptime(since, "%Y-%m-%d")
         except ValueError:
             return jsonify({"error": "Invalid 'since', expected YYYY-MM-DD"}), 400
-    return jsonify(get_all_machines_geojson(since=since)), 200
+    collection = get_all_machines_geojson(since=since)
+    inventory = photo_inventory(PATH_IMAGES)
+    if inventory is not None:
+        collection = {
+            **collection,
+            "features": [
+                {
+                    **feature,
+                    "properties": {
+                        **feature["properties"],
+                        "available_images": inventory.get(
+                            str(feature["properties"]["id"]), []
+                        ),
+                    },
+                }
+                for feature in collection["features"]
+            ],
+        }
+    return jsonify(collection), 200
 
 
 @app.route("/change_requests", methods=["GET"])
@@ -338,7 +358,7 @@ def upload_image() -> Tuple[Response, int]:
 
 @app.route("/moderation/manifest/<machine_id>", methods=["GET"])
 def moderation_manifest(machine_id: str) -> Tuple[Response, int]:
-    """Return contributor pseudonyms used for device-local content blocking.
+    """Return contributor pseudonyms and existing photo keys for this machine.
 
     Args:
         machine_id: Machine whose reportable content should be described.
@@ -350,7 +370,11 @@ def moderation_manifest(machine_id: str) -> Tuple[Response, int]:
     viewer_id = MODERATION.contributor_id(anonymous_user_id())
     if viewer_id is None:
         return jsonify({"error": "Missing anonymous installation identifier"}), 400
-    return jsonify({"owners": MODERATION.manifest(machine_id, viewer_id)}), 200
+    manifest = {"owners": MODERATION.manifest(machine_id, viewer_id)}
+    inventory = photo_inventory(PATH_IMAGES)
+    if inventory is not None:
+        manifest["available_images"] = inventory.get(machine_id, [])
+    return jsonify(manifest), 200
 
 
 @app.route("/moderation/listing_manifest", methods=["GET"])

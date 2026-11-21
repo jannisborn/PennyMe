@@ -351,7 +351,7 @@ final class PresenceConfirmationController: UIHostingController<PresenceConfirma
 
     func updateLocation(_ location: CLLocation?, source: PresenceConfirmationSource) {
         let message: String?
-        if let location = location, MachinePresencePolicy.isPreciseAndFresh(location) {
+        if let location = location, MachinePresencePolicy.isPreciseAndFresh(location, source: source) {
             if rootView.location.coordinate.latitude != location.coordinate.latitude
                 || rootView.location.coordinate.longitude != location.coordinate.longitude {
                 rootView.location = location
@@ -359,7 +359,7 @@ final class PresenceConfirmationController: UIHostingController<PresenceConfirma
             message = MachinePresencePolicy.canConfirm(rootView.machine, at: location, source: source)
                 ? nil : "Move within \(Int(source.radius)) metres to confirm this machine."
         } else {
-            message = "A fresh, precise location is needed to confirm."
+            message = "Finding your location…"
         }
         if rootView.locationMessage != message { rootView.locationMessage = message }
     }
