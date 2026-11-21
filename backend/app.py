@@ -774,58 +774,48 @@ def change_machine() -> Tuple[Response, int]:
 
     args = request.args
     partial = args.get("partial") == "true"
-    try:
-        machine_id = int(args["id"])
-    except (KeyError, ValueError):
-        return jsonify(error="Invalid machine ID"), 400
+    machine_id = int(args["id"])
 
     existing_machine_infos = find_machine_in_database(machine_id)
     if existing_machine_infos is None:
         return jsonify({"error": f"Machine {machine_id} not found"}), 404
 
+    # get current info from the database for comparison with submitted data
     properties = existing_machine_infos["properties"]
     lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]
-    old_status = properties["machine_status"]
-    old_address = properties["address"]
+    status_old = properties["machine_status"]
+    address_old = properties["address"]
     title_old = properties["name"]
     paywall_old = properties.get("paywall", False)
     num_coins_old = properties.get("num_coins", 4)
 
     def submitted_text(key: str, current: str) -> str:
+        """Return value from DB if it was not submitted"""
         if partial and key not in args:
             return current
         return args[key].strip()
 
+    # ensure lat and lon a supplied together or not at all
     if partial and ("lat_coord" in args) != ("lon_coord" in args):
         return jsonify(error="Supply both latitude and longitude"), 400
 
-    try:
-        title = submitted_text("title", title_old)
-        address = submitted_text("address", old_address)
-        area = submitted_text("area", properties["area"])
-        status = submitted_text("status", old_status)
-        if not partial or "lat_coord" in args:
-            latitude = float(args["lat_coord"])
-            longitude = float(args["lon_coord"])
-            if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
-                return jsonify(error="Invalid coordinates"), 400
-        else:
-            latitude, longitude = lat_old, lng_old
-        paywall_new = (
-            paywall_old
-            if partial and "paywall" not in args
-            else (args.get("paywall") == "true")
-        )
-        num_coins_new = int(args.get("num_coins", num_coins_old if partial else 4))
-    except (KeyError, ValueError):
-        return jsonify(error="Invalid or missing machine fields"), 400
+    # get submitted values, falling back to current DB values if not provided
+    title = submitted_text("title", title_old)
+    address = submitted_text("address", address_old)
+    area = submitted_text("area", properties["area"])
+    status = submitted_text("status", status_old)
+    if not partial or "lat_coord" in args:
+        latitude = float(args["lat_coord"])
+        longitude = float(args["lon_coord"])
+        if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
+            return jsonify(error="Invalid coordinates"), 400
+    else:
+        latitude, longitude = lat_old, lng_old
+    paywall_default = "true" if partial and paywall_old else "false"
+    paywall_new = args.get("paywall", paywall_default) == "true"
+    num_coins_new = int(args.get("num_coins", num_coins_old if partial else 4))
 
-    if (not partial or "status" in args) and status not in {
-        "available",
-        "out-of-order",
-        "retired",
-    }:
-        return jsonify(error="Unknown machine status"), 422
+    # reject unallowed titles
     if not partial or "title" in args:
         if reason := text_block_reason(title):
             return jsonify({"error": reason}), 422
@@ -842,7 +832,7 @@ def change_machine() -> Tuple[Response, int]:
 
     # Case 1: status was changed:
     status_change_reason = ""
-    if status != old_status:
+    if status != status_old:
         payload = request.get_json(silent=True)
         if not isinstance(payload, dict):
             payload = {}
@@ -851,12 +841,12 @@ def change_machine() -> Tuple[Response, int]:
             if error := validate_status_change_reason(explanation):
                 return jsonify(
                     error=error,
-                    current_status=old_status,
+                    current_status=status_old,
                     requires_status_change_reason=True,
                 ), 422
             status_change_reason = explanation.strip()
     msg = _diff_field(
-        changed_fields, msg, "Status", "machine_status", old_status, status
+        changed_fields, msg, "Status", "machine_status", status_old, status
     )
 
     # Case 2: if area was changed -> match to available areas. Kept custom
@@ -899,7 +889,7 @@ def change_machine() -> Tuple[Response, int]:
 
     # Case 7: address and / or location changed --> check for their correspondence
     address_okay = True  # by default okay
-    address_changed = address != old_address
+    address_changed = address != address_old
     movement_distance_m = haversine(
         (lat_old, lng_old), (latitude, longitude), unit=Unit.METERS
     )
@@ -919,7 +909,7 @@ def change_machine() -> Tuple[Response, int]:
 
         if address_changed:
             changed_fields["address"] = address
-            msg += f"\tAddress from: {old_address} to: {address}\n"
+            msg += f"\tAddress from: {address_old} to: {address}\n"
         if location_changed:
             changed_fields["latitude"] = latitude
             changed_fields["longitude"] = longitude
