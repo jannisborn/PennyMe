@@ -904,7 +904,7 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
-    func testPhotoPreviewsAreImmediateAndOnlyExistingPhotosShowLoading() async throws {
+    func testPhotoPreviewsAreImmediateAndSpinnersFinishIndependently() async throws {
         let machineID = 98765435
         let collectedKey = "collectedCoins_\(machineID)"
         let previousCoins = UserDefaults.standard.object(forKey: collectedKey)
@@ -920,8 +920,7 @@ class PennyMeTests: XCTestCase {
         controller.pinData = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
                                      coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: machineID,
                                      last_updated: "2026-11-01", multimachine: 1, paywall: false,
-                                     machineStatus: "available", area: "Germany", numCoins: 4,
-                                     availableImages: ["machine", "coin_0", "coin_1"])
+                                     machineStatus: "available", area: "Germany", numCoins: 4)
         controller.contentSession = session
         controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
                                                             manager: PresenceTestLocationManager(), session: session, isActive: { false })
@@ -942,7 +941,7 @@ class PennyMeTests: XCTestCase {
             let image = try XCTUnwrap(gallery.compactMap { $0 as? UIImageView }.first { $0.tag == index })
             XCTAssertNotNil(image.image, "Local gallery preview \(index) must exist synchronously")
             let spinner = try XCTUnwrap(gallery.first { $0.accessibilityIdentifier == "photoLoading_\(index)" } as? UIActivityIndicatorView)
-            XCTAssertEqual(spinner.isAnimating, index <= 2)
+            XCTAssertTrue(spinner.isAnimating)
         }
         let coins = controller.tableView(controller.tableView, cellForRowAt: IndexPath(row: 0, section: 2))
         for index in 1...4 {
@@ -950,7 +949,7 @@ class PennyMeTests: XCTestCase {
             XCTAssertNotNil(thumbnail.image)
             XCTAssertFalse(thumbnail.isCollected, "Do not render expensive outlines around temporary placeholders")
             let spinner = try XCTUnwrap(descendants(thumbnail).first { $0.accessibilityIdentifier == "coinLoading_\(index)" } as? UIActivityIndicatorView)
-            XCTAssertEqual(spinner.isAnimating, index <= 2)
+            XCTAssertTrue(spinner.isAnimating)
         }
         window.rootViewController = UINavigationController(rootViewController: controller)
         window.makeKeyAndVisible()
@@ -968,11 +967,14 @@ class PennyMeTests: XCTestCase {
             XCTAssertGreaterThan(image.bounds.height, 0)
         }
         XCTAssertFalse(requests.keys.contains { $0.hasSuffix(".jpg") || $0.hasSuffix(".png") }, "Wait for contributor blocking information before fetching photos")
-        let manifest = try JSONSerialization.data(withJSONObject: ["owners": [:], "available_images": ["machine", "coin_0", "coin_1"]])
-        try XCTUnwrap(requests[manifestPath]).complete(status: 200, data: manifest)
-        await waitUntil { requests.keys.filter { $0.hasSuffix(".jpg") || $0.hasSuffix(".png") }.count == 3 }
-        XCTAssertFalse(requests.values.contains { $0.request.url?.lastPathComponent == "\(machineID)_coin_2.png" })
-        XCTAssertFalse(requests.values.contains { $0.request.url?.lastPathComponent == "\(machineID)_coin_3.png" })
+        try XCTUnwrap(requests[manifestPath]).complete(status: 200, data: Data(#"{"owners":{}}"#.utf8))
+        await waitUntil { requests.keys.filter { $0.hasSuffix(".jpg") || $0.hasSuffix(".png") }.count == 5 }
+        try XCTUnwrap(requests["/\(machineID)_coin_2.png"]).complete(status: 404, data: Data())
+        try XCTUnwrap(requests["/\(machineID)_coin_3.png"]).complete(status: 404, data: Data())
+        let missing = try XCTUnwrap(descendants(coins).first { $0.accessibilityIdentifier == "coinLoading_3" } as? UIActivityIndicatorView)
+        let waiting = try XCTUnwrap(descendants(coins).first { $0.accessibilityIdentifier == "coinLoading_1" } as? UIActivityIndicatorView)
+        await waitUntil { !missing.isAnimating }
+        XCTAssertTrue(waiting.isAnimating, "A missing photo should stop only its own spinner")
         let preview = XCTAttachment(image: UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
             window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
         })
@@ -996,7 +998,7 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
-    func testLegacyPhotoManifestStillLoadsPhotosBeforePinViewAppears() async throws {
+    func testPhotosLoadBeforePinViewAppears() async throws {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [PresenceTestURLProtocol.self]
         let session = URLSession(configuration: configuration)
@@ -1020,16 +1022,16 @@ class PennyMeTests: XCTestCase {
         controller.pinData = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
                                      coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: machineID,
                                      last_updated: "2026-11-01", multimachine: 1, paywall: false,
-                                     machineStatus: "available", area: "Germany", numCoins: 2, availableImages: [])
+                                     machineStatus: "available", area: "Germany", numCoins: 2)
         controller.contentSession = session
         controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
                                                             manager: PresenceTestLocationManager(), session: session, isActive: { false })
-        // A fast legacy manifest can complete before the navigation transition finishes.
+        // The manifest can complete before the navigation transition finishes.
         controller.loadViewIfNeeded()
         let loaded = expectation(for: NSPredicate { _, _ in controller.imageDict.count == 2 }, evaluatedWith: nil)
         await fulfillment(of: [loaded], timeout: 3)
         XCTAssertNil(controller.view.window)
-        XCTAssertEqual(Set(controller.imageDict.keys), [0, 2], "A stale empty photo list must not suppress the hosted photos")
+        XCTAssertEqual(Set(controller.imageDict.keys), [0, 2])
     }
 
     @MainActor
@@ -1431,16 +1433,13 @@ class PennyMeTests: XCTestCase {
                               coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: 1,
                               last_updated: "2026-11-01", multimachine: 1, paywall: false,
                               machineStatus: "available", area: "Germany", numCoins: 0,
-                              lastSeen: "2026-11-15T12:00:00+00:00", availableImages: ["machine", "coin_0"])
+                              lastSeen: "2026-11-15T12:00:00+00:00")
         let data = try JSONEncoder().encode(artwork.cacheSnapshot)
         XCTAssertEqual(Artwork(cached: try JSONDecoder().decode(CachedArtwork.self, from: data)).lastSeen, artwork.lastSeen)
-        XCTAssertEqual(Artwork(cached: try JSONDecoder().decode(CachedArtwork.self, from: data)).availableImages, artwork.availableImages)
         var legacy = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
         legacy.removeValue(forKey: "lastSeen")
-        legacy.removeValue(forKey: "availableImages")
         let restored = try JSONDecoder().decode(CachedArtwork.self, from: JSONSerialization.data(withJSONObject: legacy))
         XCTAssertNil(Artwork(cached: restored).lastSeen)
-        XCTAssertNil(Artwork(cached: restored).availableImages)
     }
 
     @MainActor
