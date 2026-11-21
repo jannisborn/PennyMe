@@ -3,10 +3,13 @@ import os
 import re
 from filecmp import cmp
 from html import escape
+from http.client import HTTPException
+from io import BytesIO
 from pathlib import Path
 from shutil import copy2
 from threading import Thread
 from typing import Any, Dict, List, Literal, Optional, Tuple
+from urllib.request import ProxyHandler, Request, build_opener
 
 import cv2
 import numpy as np
@@ -235,6 +238,57 @@ def reload_server_data() -> Dict[str, str]:
     return MACHINE_NAMES
 
 
+def _load_upload_image(img_path: str, basewidth: int) -> Image.Image:
+    with Image.open(img_path) as source:
+        img = ImageOps.exif_transpose(source)
+    img.thumbnail((basewidth, basewidth), Image.Resampling.LANCZOS)
+    return img
+
+
+def _remove_coin_background(img_path: str, basewidth: int) -> Image.Image:
+    """Use the configured Jetson for standard uploads, with a local CPU fallback."""
+    url = os.environ.get("PENNYME_JETSON_CUTOUT_URL")
+    # if url is configured, send to jetson for background removal
+    if url and basewidth == 1000:
+        try:
+            # Match the Jetson endpoint's upload limit.
+            upload_limit = 20 * 1024 * 1024
+            with open(img_path, "rb") as source:
+                payload = source.read(upload_limit + 1)
+            if len(payload) <= upload_limit:
+                request = Request(
+                    url,
+                    data=payload,
+                    headers={"Content-Type": "application/octet-stream"},
+                )
+                # Send user photos directly to the private endpoint.
+                with build_opener(ProxyHandler({})).open(
+                    request, timeout=3
+                ) as response:
+                    png_limit = 5 * 1024 * 1024
+                    data = response.read(png_limit + 1)
+                if len(data) > png_limit:
+                    raise ValueError("Jetson response exceeds the PNG size limit")
+                with Image.open(BytesIO(data), formats=["PNG"]) as cutout:
+                    if cutout.mode != "RGBA" or max(cutout.size) > basewidth:
+                        raise ValueError("Jetson returned an unexpected cutout")
+                    return cutout.copy()
+        except (
+            OSError,
+            HTTPException,
+            ValueError,
+            Image.DecompressionBombError,
+        ) as error:
+            logger.warning(
+                "Jetson coin background removal failed. Using CPU ({})",
+                type(error).__name__,
+            )
+
+    # fall back to local cpu background removal
+    img = _load_upload_image(img_path, basewidth)
+    return remove(img, session=new_session("u2netp"))
+
+
 def process_uploaded_image(
     img_path: str,
     basewidth: int = 1000,
@@ -252,13 +306,9 @@ def process_uploaded_image(
     Returns:
         String with success message
     """
-    img = ImageOps.exif_transpose(Image.open(img_path))
-    img.thumbnail((basewidth, basewidth), Image.Resampling.LANCZOS)
-
     # If image is a coin, apply background separation and always save as PNG.
-    output_path = img_path
     if "coin" in img_path:
-        img = remove(img, session=new_session("u2netp"))
+        img = _remove_coin_background(img_path, basewidth)
         # Coin images are saved as PNG to support transparency
         in_path = Path(img_path)
         out_path = in_path.with_suffix(".png")
@@ -285,8 +335,8 @@ def process_uploaded_image(
             in_path.unlink()
         return 200, "OK", output_path
 
-    save_image(img, output_path)
-    return 200, "OK", output_path
+    save_image(_load_upload_image(img_path, basewidth), img_path)
+    return 200, "OK", img_path
 
 
 def image_slack(

@@ -10,8 +10,6 @@ import Foundation
 import MapKit
 import UIKit
 
-// RequestFormView.swift
-
 import SwiftUI
 import Combine
 
@@ -20,10 +18,6 @@ struct AlertPresenter: UIViewControllerRepresentable {
     @Binding var showAlert: Bool
     let title: String
     let message: String
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<AlertPresenter>) -> UIViewController {
         UIViewController()
@@ -45,46 +39,54 @@ struct AlertPresenter: UIViewControllerRepresentable {
         }
     }
 
-    class Coordinator: NSObject {
-        var parent: AlertPresenter
-
-        init(_ alertPresenter: AlertPresenter) {
-            parent = alertPresenter
-        }
-    }
 }
 
-@available(iOS 13.0, *)
-struct ConfirmationMessageView: View {
-    let message: String
-    @Binding var isPresented: Bool
-    
-    @available(iOS 13.0.0, *)
+@available(iOS 15.0, *)
+struct MachineAreaField: View {
+    @Binding var area: String
+    let choices: [String]
+    @FocusState private var isFocused: Bool
+
     var body: some View {
-        VStack {
-            Text(message)
-                .padding()
-                .background(Color.gray)
-                .cornerRadius(15)
-        }
-        .opacity(isPresented ? 1 : 0)
-        .animation(.easeInOut(duration: 0.3))
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                withAnimation {
-                    isPresented = false
+        let matches = Self.suggestions(for: area, choices: choices)
+        VStack(alignment: .leading, spacing: 6) {
+            TextField("Area (Country or US state)", text: $area)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($isFocused)
+                .accessibilityIdentifier("machineArea")
+            if !matches.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    ForEach(matches, id: \.self) { choice in
+                        Button {
+                            area = choice
+                            isFocused = false
+                        } label: {
+                            Text(choice).frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
                 }
+                .font(.footnote)
+                .padding(.horizontal, 4)
             }
         }
+    }
+
+    static func suggestions(for area: String, choices: [String]) -> [String] {
+        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return [] }
+        return Array(choices.filter {
+            $0.localizedCaseInsensitiveContains(query) && $0.caseInsensitiveCompare(query) != .orderedSame
+        }.prefix(5))
+    }
+
+    static func submittedArea(_ area: String, choices: [String]) -> String {
+        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
+        return choices.first { $0.caseInsensitiveCompare(query) == .orderedSame } ?? query
     }
 }
 
 @available(iOS 15.0, *)
 struct NewMachineFormView: View {
-    private enum Field: Hashable {
-        case area
-    }
-
     private struct NearbyMachine: Identifiable {
         let machineID: String
         let name: String
@@ -117,7 +119,6 @@ struct NewMachineFormView: View {
         }
     }
 
-    let coords: CLLocationCoordinate2D
     let areaChoices: [String]
     let openExistingMachine: ((String) -> Void)?
     let isExistingMachineVisible: ((String) -> Bool)?
@@ -127,7 +128,6 @@ struct NewMachineFormView: View {
     @State private var address: String = ""
     @State private var area: String = ""
     @State private var paywall: Bool = false
-    @State private var multimachine: String = "1"
     @State private var numCoins: Int = 4
     @State private var showFinishedAlert = false
     @State private var selectedLocation: CLLocationCoordinate2D
@@ -145,7 +145,6 @@ struct NewMachineFormView: View {
     @State private var nearbyMachines: [NearbyMachine] = []
     @State private var nearbyConfirmationPending = false
     @State private var isLoading = false
-    @FocusState private var focusedField: Field?
 
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
@@ -157,12 +156,11 @@ struct NewMachineFormView: View {
         isExistingMachineVisible: ((String) -> Bool)? = nil,
         isExistingMachineBlocked: ((String) -> Bool)? = nil
     ) {
-        coords = coordinate
         self.areaChoices = areaChoices
         self.openExistingMachine = openExistingMachine
         self.isExistingMachineVisible = isExistingMachineVisible
         self.isExistingMachineBlocked = isExistingMachineBlocked
-        _selectedLocation = State(initialValue: coords)
+        _selectedLocation = State(initialValue: coordinate)
         // Observe keyboard frame changes
         keyboardObserver = NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
             .compactMap { $0.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect }
@@ -197,24 +195,7 @@ struct NewMachineFormView: View {
             }
             
             // Area input field
-            TextField("Area (Country or US state)", text: $area)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .focused($focusedField, equals: .area)
-            if !matchingAreas.isEmpty {
-                VStack(alignment: .leading, spacing: 6) {
-                    ForEach(matchingAreas.prefix(5), id: \.self) { areaChoice in
-                        Button(action: {
-                            area = areaChoice
-                            focusedField = nil
-                        }) {
-                            Text(areaChoice)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }
-                }
-                .font(.footnote)
-                .padding(.horizontal, 4)
-            }
+            MachineAreaField(area: $area, choices: areaChoices)
 
             
             // Paywall checkbox
@@ -400,17 +381,8 @@ struct NewMachineFormView: View {
         Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
     }
 
-    private var matchingAreas: [String] {
-        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !query.isEmpty else { return [] }
-        return areaChoices.filter {
-            $0.localizedCaseInsensitiveContains(query) && $0.caseInsensitiveCompare(query) != .orderedSame
-        }
-    }
-
     private var submittedArea: String {
-        let query = area.trimmingCharacters(in: .whitespacesAndNewlines)
-        return areaChoices.first { $0.caseInsensitiveCompare(query) == .orderedSame } ?? query
+        MachineAreaField.submittedArea(area, choices: areaChoices)
     }
 
     private func warningBox<Content: View>(@ViewBuilder content: () -> Content) -> some View {
@@ -629,7 +601,7 @@ struct NewMachineFormView: View {
                     URLQueryItem(name: "title", value: name),
                     URLQueryItem(name: "address", value: address),
                     URLQueryItem(name: "area", value: submittedArea),
-                    URLQueryItem(name: "multimachine", value: multimachine),
+                    URLQueryItem(name: "multimachine", value: "1"),
                     URLQueryItem(name:"paywall", value: String(paywall)),
                     URLQueryItem(name:"num_coins", value: String(numCoins)),
                     URLQueryItem(name: "lon_coord", value: "\(selectedLocation.longitude)"),

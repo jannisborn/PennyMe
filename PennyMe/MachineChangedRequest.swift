@@ -13,9 +13,6 @@ import Combine
 
 import CoreLocation
 
-// variable defining how large the shown region is when changing coordinates
-let regionInMeters: Double = 100
-
 /// Shared coordinate picker for new machines and suggested machine changes.
 @available(iOS 14.0, *)
 struct InteractiveMapView: View {
@@ -145,11 +142,10 @@ struct CoordinatePickerMap: UIViewRepresentable {
 }
     
 
-@available(iOS 14.0, *)
+@available(iOS 15.0, *)
 struct MachineChangedForm: View {
-    // Properties to hold user input
-    var coords: CLLocationCoordinate2D
-    var pinDataStored: Artwork
+    let pinDataStored: Artwork
+    let areaChoices: [String]
     
     let statusDict = [0: "available", 1: "out-of-order", 2: "retired"]
     @State private var name: String = ""
@@ -162,12 +158,7 @@ struct MachineChangedForm: View {
     @State private var statusChangeReason = ""
     @State private var showStatusChangeReason = false
     @State private var statusReasonError: String?
-    @State private var lonLat: String = ""
-    
-    // to select the location on the map
-    @State private var showMap = false
     @State private var selectedLocation: CLLocationCoordinate2D
-    @State private var isMapPresented = false
     
     @State private var showFinishedAlert = false
     @State private var displayResponse: String = ""
@@ -178,20 +169,17 @@ struct MachineChangedForm: View {
     @State private var keyboardHeight: CGFloat = 0
     private var keyboardObserver: AnyCancellable?
 
-    init(pinData: Artwork, suggestedStatus: String? = nil) {
+    init(pinData: Artwork, suggestedStatus: String? = nil, areaChoices: [String] = []) {
         pinDataStored = pinData
+        self.areaChoices = Array(Set(areaChoices + [pinData.area])).sorted()
         _originalMachineStatus = State(initialValue: pinData.machineStatus)
         _name = State(initialValue: pinData.title!)
-        coords = pinData.coordinate
-        _selectedLocation = State(initialValue: coords)
+        _selectedLocation = State(initialValue: pinData.coordinate)
         _address = State(initialValue: pinData.address)
         _area = State(initialValue: pinData.area)
         _paywall = State(initialValue: pinData.paywall)
         _numCoins = State(initialValue: pinData.numCoins)
         
-        let lonLatConverted = "\(coords.latitude)° N, \(coords.longitude)° O".replacingOccurrences(of: ".", with: ",")
-        _lonLat = State(initialValue: lonLatConverted)
-
         switch suggestedStatus ?? pinData.machineStatus {
             case "available":
                 _selectedSegment = State(initialValue: 0)
@@ -230,7 +218,7 @@ struct MachineChangedForm: View {
             .padding(3)
             
             Section(header: Text("Change location").foregroundColor(.gray)) {
-                InteractiveMapView(selectedLocation: $selectedLocation, originalLocation: coords)
+                InteractiveMapView(selectedLocation: $selectedLocation, originalLocation: pinDataStored.coordinate)
 
                 Text("Lat: \(String(format: "%.4f", selectedLocation.latitude)), Lon: \(String(format: "%.4f", selectedLocation.longitude))")
                     .font(.footnote)
@@ -240,8 +228,7 @@ struct MachineChangedForm: View {
             // Area input field
             VStack(alignment: .leading, spacing: 5) {
                 Text("Area").foregroundColor(Color.gray)
-                TextField("Area", text: $area)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                MachineAreaField(area: $area, choices: areaChoices)
             }
             .padding(3)
             
@@ -354,20 +341,17 @@ struct MachineChangedForm: View {
         }
     }
     
-    private func goToMaps() {
-        pinDataStored.mapItem().openInMaps()
-    }
-    
     // Function to handle the submission of the request
     private func submitRequest(statusReasonConfirmed: Bool = false) {
         isLoading = true
+        let submittedArea = MachineAreaField.submittedArea(area, choices: areaChoices)
         if let reason = TextModeration.blockReason(name) {
             finishLoading(message: reason)
             return
         }
         
         // check if any field is empty
-        if name == "" || address == "" || area == "" {
+        if name == "" || address == "" || submittedArea == "" {
             finishLoading(message: "Please do not leave empty fields.")
             return
         }
@@ -394,7 +378,7 @@ struct MachineChangedForm: View {
         let editableFields: [(key: String, value: String, original: String?)] = [
             ("title", name, pinDataStored.title),
             ("address", address, pinDataStored.address),
-            ("area", area, pinDataStored.area),
+            ("area", submittedArea, pinDataStored.area),
             ("paywall", String(paywall), String(pinDataStored.paywall)),
             ("num_coins", String(numCoins), String(pinDataStored.numCoins)),
             ("status", statusNew, pinDataStored.machineStatus),
