@@ -28,8 +28,9 @@ class Artwork: NSObject, MKAnnotation {
     let multimachine: Int
     var machineStatus: String
     let numCoins: Int
+    var availableImages: [String]?
     
-    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int, lastSeen: String? = nil) {
+    init(title: String, address: String, link: String, status: String, coordinate: CLLocationCoordinate2D, id: Int, last_updated: String, multimachine: Int, paywall: Bool, machineStatus: String, area: String, numCoins: Int, lastSeen: String? = nil, availableImages: [String]? = nil) {
         self.title = title
         self.address = address
         self.coordinate = coordinate
@@ -38,6 +39,7 @@ class Artwork: NSObject, MKAnnotation {
         self.id = String(id)
         self.last_updated = last_updated
         self.lastSeen = lastSeen
+        self.availableImages = availableImages
         self.text = title + address + self.id
         self.multimachine = multimachine
         self.paywall = paywall
@@ -66,6 +68,7 @@ class Artwork: NSObject, MKAnnotation {
         link = (properties["external_url"] as? String)!
         last_updated = (properties["last_updated"] as? String)!
         lastSeen = properties["last_seen"] as? String
+        availableImages = properties["available_images"] as? [String]
         id = String((properties["id"] as? Int)!)
         area = String((properties["area"] as? String)!)
       
@@ -202,6 +205,7 @@ struct CachedArtwork: Codable, Equatable {
     let latitude: Double
     let longitude: Double
     var lastSeen: String? = nil
+    var availableImages: [String]? = nil
 }
 
 extension Artwork {
@@ -219,7 +223,8 @@ extension Artwork {
             numCoins: numCoins,
             latitude: coordinate.latitude,
             longitude: coordinate.longitude,
-            lastSeen: lastSeen
+            lastSeen: lastSeen,
+            availableImages: availableImages
         )
     }
 
@@ -237,7 +242,8 @@ extension Artwork {
             machineStatus: cached.machineStatus,
             area: cached.area,
             numCoins: cached.numCoins,
-            lastSeen: cached.lastSeen
+            lastSeen: cached.lastSeen,
+            availableImages: cached.availableImages
         )
     }
 }

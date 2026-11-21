@@ -829,7 +829,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
 
         let lastFullSync = defaults.object(forKey: lastFullMachineSyncKey) as? Date
-        let needsFullSync = appVersionChanged || !hasLoadedCachedMachineSnapshot || (lastFullSync.map {
+        let needsFullSync = appVersionChanged || !hasLoadedCachedMachineSnapshot
+            || artworks.contains(where: { $0.availableImages == nil }) || (lastFullSync.map {
             now.timeIntervalSince($0) >= fullMachineSyncInterval
         } ?? true)
         if !hasLoadedCachedMachineSnapshot {

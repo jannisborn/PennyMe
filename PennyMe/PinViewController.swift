@@ -46,11 +46,21 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         let toggleContainer: UIView?     // nil for idx 0
         let toggleLabel: UILabel?
         let toggleSwitch: UISwitch?
+        let spinner: UIActivityIndicatorView
     }
 
     private var imageItems: [Int: ImageItemViews] = [:]
     private var coinThumbnails: [Int: CoinPreviewView] = [:]
     private var coinButtons: [Int: UIButton] = [:]
+    private var coinSpinners: [Int: UIActivityIndicatorView] = [:]
+    private var pendingImageIndices: Set<Int> = []
+    private var confirmedImageIndices: Set<Int>?
+    private var imageTasks: [Int: (id: UUID, task: URLSessionDataTask)] = [:]
+    private static let machinePlaceholder = UIImage(named: "machine_image")!
+
+    private func imageIndices(for keys: [String]) -> Set<Int> {
+        Set((0...max(0, pinData.numCoins)).filter { keys.contains(ModerationTarget.visibleImage($0).identifier) })
+    }
     private var collectionButtons: [UIButton] = []
     private let coinProgressLabel = UILabel()
     private let coinStrip = UIScrollView()
@@ -139,8 +149,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         return "\(pinData.id):\(serverContentKey)"
     }
 
-    var imagePicker = UIImagePickerController()
-    
     var imageDict: [Int: UIImage] = [:]
     private var pendingImageIndex: Int?
     
@@ -176,17 +184,16 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             })
         }
         loadCollectedFromDefaults()
+        pendingImageIndices = imageIndices(for: pinData.availableImages ?? [])
         overrideUserInterfaceStyle = .light
         lastEdited = pinData.last_updated
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
         buildPinLayout()
         loadModerationManifestAndContent()
     }
 
     deinit {
         activityTask?.cancel()
+        imageTasks.values.forEach { $0.task.cancel() }
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -202,7 +209,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     }
 
     @objc private func blockedContentDidChange() {
-        guard isDisplayingMachine else {
+        guard hasLoadedModerationManifest, isDisplayingMachine else {
             needsBlockedContentRefresh = true
             return
         }
@@ -214,6 +221,10 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         // Align the first title line with the native back button, with room to its right.
         tableView.contentInset.top = -(navigationController?.navigationBar.bounds.height ?? 44)
         refreshActivity()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         guard needsBlockedContentRefresh, hasLoadedModerationManifest else { return }
         needsBlockedContentRefresh = false
         loadCommunityContent()
@@ -325,43 +336,38 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     private func loadModerationManifestAndContent() {
         guard let url = URL(string: flaskURL + "moderation/manifest/\(pinData.id)") else {
-            hasLoadedModerationManifest = true
-            if isDisplayingMachine {
-                loadCommunityContent()
-            } else {
-                needsBlockedContentRefresh = true
-            }
+            applyPhotoManifest(owners: [:], availableImages: nil)
             return
         }
 
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 5
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
         request.addAnonymousUserHeader()
-        let task = contentSession.dataTask(with: request) { [weak self] data, _, _ in
-            guard let self = self else { return }
-            let owners: [String: String]
-            if let data,
-               let json = try? JSONSerialization.jsonObject(
-                   with: data,
-                   options: []
-               ) as? [String: Any],
-               let responseOwners = json?["owners"] as? [String: String] {
-                owners = responseOwners
-            } else {
-                owners = [:]
-            }
+        contentSession.dataTask(with: request) { [weak self] data, response, _ in
+            let json = (response as? HTTPURLResponse)?.statusCode == 200
+                ? data.flatMap { try? JSONSerialization.jsonObject(with: $0) } as? [String: Any]
+                : nil
+            let owners = json?["owners"] as? [String: String] ?? [:]
+            let availableImages = json?["available_images"] as? [String]
             DispatchQueue.main.async {
-                self.contentOwners = owners
-                self.hasLoadedModerationManifest = true
-                if self.isDisplayingMachine {
-                    self.needsBlockedContentRefresh = false
-                    self.loadCommunityContent()
-                } else {
-                    self.needsBlockedContentRefresh = true
-                }
+                self?.applyPhotoManifest(owners: owners, availableImages: availableImages)
             }
+        }.resume()
+    }
+
+    private func applyPhotoManifest(owners: [String: String], availableImages: [String]?) {
+        contentOwners = owners
+        if let availableImages {
+            pinData.availableImages = availableImages
+            let confirmed = imageIndices(for: availableImages)
+            confirmedImageIndices = confirmed
+            pendingImageIndices = confirmed.subtracting(imageDict.keys)
+            updateImageLoadingIndicators()
         }
-        task.resume()
+        hasLoadedModerationManifest = true
+        needsBlockedContentRefresh = false
+        // A response can arrive between appearance callbacks. Start the downloads
+        // as soon as the manifest completes, regardless of navigation timing.
+        loadCommunityContent()
     }
 
     private func loadCommunityContent() {
@@ -1190,6 +1196,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             contributorID: contentOwners[contentKey],
             contentKey: localContentKey(contentKey)
         ) {
+            imageTasks.removeValue(forKey: photoInd)?.task.cancel()
+            pendingImageIndices.remove(photoInd)
             addImageToScrollView(
                 image: UIImage(systemName: "eye.slash")!,
                 img_idx: photoInd,
@@ -1199,21 +1207,30 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             return
         }
 
-        let urlString: String = {
-            if photoInd > 0 {
-                return "\(imageURL)/\(pinData.id)_coin_\(photoInd-1).png"
-            } else {
-                return "\(imageURL)/\(pinData.id).jpg"
-            }
-        }()
-
-        guard let url = URL(string: urlString) else { return }
+        // An older or failed manifest cannot tell us that a cached omission is current.
+        if let available = confirmedImageIndices, !available.contains(photoInd) {
+            imageTasks.removeValue(forKey: photoInd)?.task.cancel()
+            pendingImageIndices.remove(photoInd)
+            imageDict.removeValue(forKey: photoInd)
+            addImageToScrollView(image: photoInd == 0 ? Self.machinePlaceholder : CoinPreviewView.placeholder,
+                                 img_idx: photoInd,
+                                 action: photoInd == 0 ? #selector(startNewMachineUpload(tapGestureRecognizer:)) : #selector(startNewCoinUpload(tapGestureRecognizer:)))
+            return
+        }
+        guard imageTasks[photoInd] == nil else { return }
+        let filename = photoInd == 0 ? "\(pinData.id).jpg" : "\(pinData.id)_coin_\(photoInd - 1).png"
+        guard let url = URL(string: imageURL + filename) else { return }
+        if confirmedImageIndices?.contains(photoInd) == true { pendingImageIndices.insert(photoInd) }
+        updateImageLoadingIndicators()
 
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15)
-        contentSession.dataTask(with: request) { [weak self] data, response, _ in
+        let requestID = UUID()
+        let task = contentSession.dataTask(with: request) { [weak self] data, response, _ in
             let downloadedImage = (response as? HTTPURLResponse)?.statusCode == 200 ? data.flatMap(UIImage.init(data:)) : nil
             DispatchQueue.main.async {
-                guard let self else { return }
+                guard let self, self.imageTasks[photoInd]?.id == requestID else { return }
+                self.imageTasks.removeValue(forKey: photoInd)
+                self.pendingImageIndices.remove(photoInd)
 
                 if self.blockedContributors.isBlocked(
                     contributorID: self.contentOwners[contentKey],
@@ -1237,14 +1254,39 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
                 } else {
                     // pick default
                     self.imageDict.removeValue(forKey: photoInd)
-                    let isCoin = urlString.contains("coin")
-                    finalImage = isCoin ? CoinPreviewView.placeholder : UIImage(named: "machine_image")!
+                    let isCoin = photoInd > 0
+                    finalImage = isCoin ? CoinPreviewView.placeholder : Self.machinePlaceholder
                     action = isCoin ? #selector(self.startNewCoinUpload(tapGestureRecognizer:)) : #selector(self.startNewMachineUpload(tapGestureRecognizer:))
                 }
 
                 self.addImageToScrollView(image: finalImage, img_idx: photoInd, action: action)
             }
-        }.resume()
+        }
+        imageTasks[photoInd] = (requestID, task)
+        task.resume()
+    }
+
+    private func imageSpinner(at index: Int) -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.hidesWhenStopped = true
+        spinner.color = .label
+        spinner.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.9)
+        spinner.layer.cornerRadius = 16
+        spinner.bounds.size = CGSize(width: 32, height: 32)
+        spinner.accessibilityIdentifier = "photoLoading_\(index)"
+        spinner.accessibilityLabel = index == 0 ? "Loading machine photo" : "Loading coin photo \(index)"
+        return spinner
+    }
+
+    private func updateImageLoadingIndicators() {
+        for (index, item) in imageItems {
+            if pendingImageIndices.contains(index) { item.spinner.startAnimating() }
+            else { item.spinner.stopAnimating() }
+        }
+        for (index, spinner) in coinSpinners {
+            if pendingImageIndices.contains(index) { spinner.startAnimating() }
+            else { spinner.stopAnimating() }
+        }
     }
 
     @objc private func collectedSwitchChanged(_ sender: UISwitch) {
@@ -1269,7 +1311,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         let container = UIView()
         container.tag = img_idx
 
-        let galleryImage = img_idx > 0 && action != nil ? CoinPreviewView.orientedImage(image, landscape: true) : image
+        let isCoinPlaceholder = image === CoinPreviewView.placeholder
+        let galleryImage = img_idx > 0 && action != nil
+            ? (isCoinPlaceholder ? CoinPreviewView.landscapePlaceholder : CoinPreviewView.orientedImage(image, landscape: true)) : image
         let imageView: UIImageView = img_idx == 0 ? UIImageView(image: galleryImage) : CoinPreviewView(image: galleryImage)
         imageView.tag = img_idx
         imageView.isUserInteractionEnabled = true
@@ -1326,6 +1370,8 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
 
         scrollView.addSubview(container)
+        let spinner = imageSpinner(at: img_idx)
+        container.addSubview(spinner)
 
         imageItems[img_idx] = ImageItemViews(
             container: container,
@@ -1333,19 +1379,25 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             photoViewport: photoViewport,
             toggleContainer: toggleContainer,
             toggleLabel: toggleLabel,
-            toggleSwitch: toggleSwitch
+            toggleSwitch: toggleSwitch,
+            spinner: spinner
         )
 
         if let thumbnail = coinThumbnails[img_idx] {
-            thumbnail.image = action == nil ? image : CoinPreviewView.orientedImage(image, landscape: pinData.numCoins <= 2)
+            thumbnail.image = action == nil ? image : (isCoinPlaceholder
+                ? (pinData.numCoins <= 2 ? CoinPreviewView.landscapePlaceholder : CoinPreviewView.placeholder)
+                : CoinPreviewView.orientedImage(image, landscape: pinData.numCoins <= 2))
             thumbnail.contentMode = action == nil ? .center : .scaleAspectFit
         }
         updateCollectionAppearance()
+        updateImageLoadingIndicators()
         layoutImageItem(index: img_idx)
     }
 
     private func showBlockedImagePlaceholder(at index: Int) {
         guard let item = imageItems[index] else { return }
+        pendingImageIndices.remove(index)
+        updateImageLoadingIndicators()
 
         item.imageView.gestureRecognizers?.forEach {
             item.imageView.removeGestureRecognizer($0)
@@ -1398,6 +1450,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
             width: pageWidth,
             height: max(0, pageHeight - toggleHeight - spacing)
         )
+        item.spinner.center = CGPoint(x: imageFrame.midX, y: imageFrame.midY)
         if let viewport = item.photoViewport {
             viewport.frame = imageFrame
             viewport.setNeedsLayout()
@@ -1680,6 +1733,17 @@ private extension PinViewController {
                 coinStripStack.addArrangedSubview(column)
                 coinThumbnails[index] = thumbnail
                 coinButtons[index] = button
+                let spinner = imageSpinner(at: index)
+                spinner.accessibilityIdentifier = "coinLoading_\(index)"
+                spinner.translatesAutoresizingMaskIntoConstraints = false
+                thumbnail.addSubview(spinner)
+                NSLayoutConstraint.activate([
+                    spinner.centerXAnchor.constraint(equalTo: thumbnail.centerXAnchor),
+                    spinner.centerYAnchor.constraint(equalTo: thumbnail.centerYAnchor),
+                    spinner.widthAnchor.constraint(equalToConstant: 32),
+                    spinner.heightAnchor.constraint(equalToConstant: 32)
+                ])
+                coinSpinners[index] = spinner
             }
             coinMoreLabel.font = .preferredFont(forTextStyle: .caption2)
             coinMoreLabel.adjustsFontForContentSizeCategory = true
@@ -1755,7 +1819,7 @@ private extension PinViewController {
         updateCollectionAppearance()
 
         for index in 0...max(0, pinData.numCoins) {
-            let placeholder = index == 0 ? UIImage(named: "machine_image")! : CoinPreviewView.placeholder
+            let placeholder = index == 0 ? Self.machinePlaceholder : CoinPreviewView.placeholder
             addImageToScrollView(image: placeholder, img_idx: index,
                                  action: index == 0 ? #selector(startNewMachineUpload(tapGestureRecognizer:)) : #selector(startNewCoinUpload(tapGestureRecognizer:)))
         }
@@ -1868,7 +1932,7 @@ private extension PinViewController {
             let collected = collectedByIndex[index] == true
             let key = ModerationTarget.visibleImage(index).contentKey
             let blocked = blockedContributors.isBlocked(contributorID: contentOwners[key], contentKey: localContentKey(key))
-            thumbnail.isCollected = collected && !blocked
+            thumbnail.isCollected = collected && imageDict[index] != nil && !blocked
             thumbnail.accessibilityLabel = blocked ? "Coin \(index): image from a blocked contributor" : "Coin \(index)\(collected ? ", collected" : ""). Tap to enlarge or add a photo."
             coinButtons[index]?.isEnabled = !blocked
             coinButtons[index]?.setImage(UIImage(systemName: collected ? "checkmark.circle.fill" : "plus.circle"), for: .normal)
@@ -1877,7 +1941,7 @@ private extension PinViewController {
             coinButtons[index]?.accessibilityLabel = "\(collected ? "Uncollect" : "Collect") coin \(index)"
             coinButtons[index]?.accessibilityTraits = collected ? [.button, .selected] : .button
             imageItems[index]?.toggleSwitch?.setOn(collected, animated: true)
-            (imageItems[index]?.imageView as? CoinPreviewView)?.isCollected = collected && !blocked
+            (imageItems[index]?.imageView as? CoinPreviewView)?.isCollected = collected && imageDict[index] != nil && !blocked
         }
     }
 
@@ -2187,6 +2251,8 @@ final class CoinPreviewView: UIImageView {
             inner.stroke()
         }
     }()
+
+    static let landscapePlaceholder = orientedImage(placeholder, landscape: true)
 }
 
 /// A vertical crop inside the horizontal gallery. Full-resolution originals remain unchanged.

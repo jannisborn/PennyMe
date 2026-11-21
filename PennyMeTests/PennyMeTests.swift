@@ -904,6 +904,135 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testPhotoPreviewsAreImmediateAndOnlyExistingPhotosShowLoading() async throws {
+        let machineID = 98765435
+        let collectedKey = "collectedCoins_\(machineID)"
+        let previousCoins = UserDefaults.standard.object(forKey: collectedKey)
+        UserDefaults.standard.set([1, 2], forKey: collectedKey)
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [DeferredPhotoURLProtocol.self]
+        let session = URLSession(configuration: configuration)
+        var requests: [String: DeferredPhotoURLProtocol] = [:]
+        DeferredPhotoURLProtocol.onStart = { pending in
+            DispatchQueue.main.async { requests[pending.request.url!.path] = pending }
+        }
+        let controller = PinViewController(style: .insetGrouped)
+        controller.pinData = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
+                                     coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: machineID,
+                                     last_updated: "2026-11-01", multimachine: 1, paywall: false,
+                                     machineStatus: "available", area: "Germany", numCoins: 4,
+                                     availableImages: ["machine", "coin_0", "coin_1"])
+        controller.contentSession = session
+        controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
+                                                            manager: PresenceTestLocationManager(), session: session, isActive: { false })
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        defer {
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+            DeferredPhotoURLProtocol.onStart = nil
+            session.invalidateAndCancel()
+            UserDefaults.standard.set(previousCoins, forKey: collectedKey)
+        }
+        // No response is permitted before these assertions, including the moderation manifest.
+        controller.loadViewIfNeeded()
+        func descendants(_ view: UIView) -> [UIView] { [view] + view.subviews.flatMap(descendants) }
+        let gallery = descendants(controller.scrollView)
+        for index in 0...4 {
+            let image = try XCTUnwrap(gallery.compactMap { $0 as? UIImageView }.first { $0.tag == index })
+            XCTAssertNotNil(image.image, "Local gallery preview \(index) must exist synchronously")
+            let spinner = try XCTUnwrap(gallery.first { $0.accessibilityIdentifier == "photoLoading_\(index)" } as? UIActivityIndicatorView)
+            XCTAssertEqual(spinner.isAnimating, index <= 2)
+        }
+        let coins = controller.tableView(controller.tableView, cellForRowAt: IndexPath(row: 0, section: 2))
+        for index in 1...4 {
+            let thumbnail = try XCTUnwrap(descendants(coins).first { $0.accessibilityIdentifier == "coinThumbnail_\(index)" } as? CoinPreviewView)
+            XCTAssertNotNil(thumbnail.image)
+            XCTAssertFalse(thumbnail.isCollected, "Do not render expensive outlines around temporary placeholders")
+            let spinner = try XCTUnwrap(descendants(thumbnail).first { $0.accessibilityIdentifier == "coinLoading_\(index)" } as? UIActivityIndicatorView)
+            XCTAssertEqual(spinner.isAnimating, index <= 2)
+        }
+        window.rootViewController = UINavigationController(rootViewController: controller)
+        window.makeKeyAndVisible()
+        window.layoutIfNeeded()
+        controller.view.layoutIfNeeded()
+        func waitUntil(_ condition: @escaping () -> Bool) async {
+            let ready = expectation(for: NSPredicate { _, _ in condition() }, evaluatedWith: nil)
+            await fulfillment(of: [ready], timeout: 3)
+        }
+        let manifestPath = "/moderation/manifest/\(machineID)"
+        await waitUntil { requests[manifestPath] != nil }
+        for index in 0...4 {
+            let image = try XCTUnwrap(descendants(controller.scrollView).compactMap { $0 as? UIImageView }.first { $0.tag == index })
+            XCTAssertGreaterThan(image.bounds.width, 0, "Preview \(index) must have a visible frame before any response")
+            XCTAssertGreaterThan(image.bounds.height, 0)
+        }
+        XCTAssertFalse(requests.keys.contains { $0.hasSuffix(".jpg") || $0.hasSuffix(".png") }, "Wait for contributor blocking information before fetching photos")
+        let manifest = try JSONSerialization.data(withJSONObject: ["owners": [:], "available_images": ["machine", "coin_0", "coin_1"]])
+        try XCTUnwrap(requests[manifestPath]).complete(status: 200, data: manifest)
+        await waitUntil { requests.keys.filter { $0.hasSuffix(".jpg") || $0.hasSuffix(".png") }.count == 3 }
+        XCTAssertFalse(requests.values.contains { $0.request.url?.lastPathComponent == "\(machineID)_coin_2.png" })
+        XCTAssertFalse(requests.values.contains { $0.request.url?.lastPathComponent == "\(machineID)_coin_3.png" })
+        let preview = XCTAttachment(image: UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+            window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+        })
+        preview.name = "Local previews while the network is stalled"
+        preview.lifetime = .keepAlways
+        add(preview)
+        let photo = UIGraphicsImageRenderer(size: CGSize(width: 80, height: 160)).image { context in
+            UIColor.systemTeal.setFill()
+            context.fill(CGRect(x: 0, y: 0, width: 80, height: 160))
+        }
+        let data = try XCTUnwrap(photo.pngData())
+        try XCTUnwrap(requests.values.first { $0.request.url?.lastPathComponent == "\(machineID).jpg" }).complete(status: 200, data: data)
+        try XCTUnwrap(requests.values.first { $0.request.url?.lastPathComponent == "\(machineID)_coin_0.png" }).complete(status: 200, data: data)
+        try XCTUnwrap(requests.values.first { $0.request.url?.lastPathComponent == "\(machineID)_coin_1.png" }).fail()
+        await waitUntil { controller.imageDict.count == 2 && !descendants(controller.view).compactMap { $0 as? UIActivityIndicatorView }.contains(where: \.isAnimating) }
+        XCTAssertNotNil(controller.imageDict[0])
+        XCTAssertNotNil(controller.imageDict[1])
+        XCTAssertNil(controller.imageDict[2])
+        let failed = try XCTUnwrap(descendants(coins).first { $0.accessibilityIdentifier == "coinThumbnail_2" } as? CoinPreviewView)
+        XCTAssertNotNil(failed.image, "A timeout must leave the local preview visible")
+    }
+
+    @MainActor
+    func testLegacyPhotoManifestStillLoadsPhotosBeforePinViewAppears() async throws {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [PresenceTestURLProtocol.self]
+        let session = URLSession(configuration: configuration)
+        let machineID = 98765435
+        let photoData = try XCTUnwrap(UIGraphicsImageRenderer(size: CGSize(width: 10, height: 10)).image { renderer in
+            UIColor.blue.setFill()
+            renderer.fill(CGRect(x: 0, y: 0, width: 10, height: 10))
+        }.pngData())
+        PresenceTestURLProtocol.response = { request in
+            switch request.url?.path {
+            case "/moderation/manifest/\(machineID)": return (200, Data(#"{"owners":{}}"#.utf8))
+            case "/\(machineID).jpg", "/\(machineID)_coin_1.png": return (200, photoData)
+            default: return (404, Data())
+            }
+        }
+        defer {
+            session.invalidateAndCancel()
+            PresenceTestURLProtocol.response = nil
+        }
+        let controller = PinViewController(style: .insetGrouped)
+        controller.pinData = Artwork(title: "Zoo", address: "Street", link: "null", status: "unvisited",
+                                     coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: machineID,
+                                     last_updated: "2026-11-01", multimachine: 1, paywall: false,
+                                     machineStatus: "available", area: "Germany", numCoins: 2, availableImages: [])
+        controller.contentSession = session
+        controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
+                                                            manager: PresenceTestLocationManager(), session: session, isActive: { false })
+        // A fast legacy manifest can complete before the navigation transition finishes.
+        controller.loadViewIfNeeded()
+        let loaded = expectation(for: NSPredicate { _, _ in controller.imageDict.count == 2 }, evaluatedWith: nil)
+        await fulfillment(of: [loaded], timeout: 3)
+        XCTAssertNil(controller.view.window)
+        XCTAssertEqual(Set(controller.imageDict.keys), [0, 2], "A stale empty photo list must not suppress the hosted photos")
+    }
+
+    @MainActor
     func testPinCardsShowFreshActivityCropPhotosAndTrackCollectedCoins() async throws {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: PinViewController.self))
         let controller = try XCTUnwrap(storyboard.instantiateViewController(withIdentifier: "PinViewController") as? PinViewController)
@@ -1302,13 +1431,16 @@ class PennyMeTests: XCTestCase {
                               coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), id: 1,
                               last_updated: "2026-11-01", multimachine: 1, paywall: false,
                               machineStatus: "available", area: "Germany", numCoins: 0,
-                              lastSeen: "2026-11-15T12:00:00+00:00")
+                              lastSeen: "2026-11-15T12:00:00+00:00", availableImages: ["machine", "coin_0"])
         let data = try JSONEncoder().encode(artwork.cacheSnapshot)
         XCTAssertEqual(Artwork(cached: try JSONDecoder().decode(CachedArtwork.self, from: data)).lastSeen, artwork.lastSeen)
+        XCTAssertEqual(Artwork(cached: try JSONDecoder().decode(CachedArtwork.self, from: data)).availableImages, artwork.availableImages)
         var legacy = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
         legacy.removeValue(forKey: "lastSeen")
+        legacy.removeValue(forKey: "availableImages")
         let restored = try JSONDecoder().decode(CachedArtwork.self, from: JSONSerialization.data(withJSONObject: legacy))
         XCTAssertNil(Artwork(cached: restored).lastSeen)
+        XCTAssertNil(Artwork(cached: restored).availableImages)
     }
 
     @MainActor
@@ -1929,6 +2061,20 @@ private final class PresenceTestLocationManager: CLLocationManager {
     override var authorizationStatus: CLAuthorizationStatus { .authorizedWhenInUse }
     override func startUpdatingLocation() {}
     override func stopUpdatingLocation() { stops += 1 }
+}
+
+private final class DeferredPhotoURLProtocol: URLProtocol {
+    static var onStart: ((DeferredPhotoURLProtocol) -> Void)?
+    override class func canInit(with request: URLRequest) -> Bool { true }
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
+    override func startLoading() { Self.onStart?(self) }
+    override func stopLoading() {}
+    func complete(status: Int, data: Data) {
+        client?.urlProtocol(self, didReceive: HTTPURLResponse(url: request.url!, statusCode: status, httpVersion: nil, headerFields: nil)!, cacheStoragePolicy: .notAllowed)
+        client?.urlProtocol(self, didLoad: data)
+        client?.urlProtocolDidFinishLoading(self)
+    }
+    func fail() { client?.urlProtocol(self, didFailWithError: URLError(.timedOut)) }
 }
 
 private final class PresenceTestURLProtocol: URLProtocol {
