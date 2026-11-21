@@ -1273,6 +1273,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         spinner.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.9)
         spinner.layer.cornerRadius = 16
         spinner.bounds.size = CGSize(width: 32, height: 32)
+        if index == 0 {
+            spinner.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }
         spinner.accessibilityIdentifier = "photoLoading_\(index)"
         spinner.accessibilityLabel = index == 0 ? "Loading machine photo" : "Loading coin photo \(index)"
         return spinner
