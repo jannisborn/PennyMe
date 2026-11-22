@@ -761,10 +761,10 @@ def create_machine() -> Tuple[Response, int]:
 def change_machine() -> Tuple[Response, int]:
     """Validate and queue a change to an existing machine.
 
-    The request query parameters describe the machine ID, title, address, area,
-    status, coordinates, and optional machine attributes.
-    The optional JSON key ``status_change_reason`` opts clients into explanation
-    validation; legacy clients omit it and can still suggest status changes.
+    With ``partial=true``, omitted fields keep their approved values and
+    coordinates must be supplied together. Legacy clients send a full form.
+    The JSON key ``status_change_reason`` opts legacy clients into explanation
+    validation and is required for status changes in partial submissions.
 
     Returns:
         A JSON response and HTTP status describing acceptance, invalid input, or
@@ -773,21 +773,53 @@ def change_machine() -> Tuple[Response, int]:
     if blocked := blocked_contributor_response():
         return blocked
 
-    machine_id = int(request.args.get("id"))
-    title = str(request.args.get("title")).strip()
-    address = str(request.args.get("address")).strip()
-    area = str(request.args.get("area")).strip()
-    status = str(request.args.get("status")).strip()
-    if status not in {"available", "out-of-order", "retired"}:
-        return jsonify(error="Unknown machine status"), 422
-    latitude = float(request.args.get("lat_coord"))
-    longitude = float(request.args.get("lon_coord"))
-    if reason := text_block_reason(title):
-        return jsonify({"error": reason}), 422
+    args = request.args
+    partial = args.get("partial") == "true"
+    machine_id = int(args["id"])
 
     existing_machine_infos = find_machine_in_database(machine_id)
     if existing_machine_infos is None:
         return jsonify({"error": f"Machine {machine_id} not found"}), 404
+
+    # get current info from the database for comparison with submitted data
+    properties = existing_machine_infos["properties"]
+    lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]
+    status_old = properties["machine_status"]
+    address_old = properties["address"]
+    title_old = properties["name"]
+    paywall_old = properties.get("paywall", False)
+    num_coins_old = properties.get("num_coins", 4)
+
+    def submitted_text(key: str, current: str) -> str:
+        """Return value from DB if it was not submitted"""
+        if partial and key not in args:
+            return current
+        return args[key].strip()
+
+    # ensure lat and lon a supplied together or not at all
+    if partial and ("lat_coord" in args) != ("lon_coord" in args):
+        return jsonify(error="Supply both latitude and longitude"), 400
+
+    # get submitted values, falling back to current DB values if not provided
+    title = submitted_text("title", title_old)
+    address = submitted_text("address", address_old)
+    area = submitted_text("area", properties["area"])
+    status = submitted_text("status", status_old)
+    if not partial or "lat_coord" in args:
+        latitude = float(args["lat_coord"])
+        longitude = float(args["lon_coord"])
+        if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
+            return jsonify(error="Invalid coordinates"), 400
+    else:
+        latitude, longitude = lat_old, lng_old
+    paywall_default = "true" if partial and paywall_old else "false"
+    paywall_new = args.get("paywall", paywall_default) == "true"
+    num_coins_new = int(args.get("num_coins", num_coins_old if partial else 4))
+
+    # reject unallowed titles
+    if not partial or "title" in args:
+        if reason := text_block_reason(title):
+            return jsonify({"error": reason}), 422
 
     msg = ":\n"
 
@@ -800,28 +832,28 @@ def change_machine() -> Tuple[Response, int]:
     changed_fields: Dict[str, Any] = {}
 
     # Case 1: status was changed:
-    old_status = existing_machine_infos["properties"]["machine_status"]
     status_change_reason = ""
-    if status != old_status:
+    if status != status_old:
         payload = request.get_json(silent=True)
-        # New apps always send this key, even when empty. Old apps omit it.
-        if isinstance(payload, dict) and "status_change_reason" in payload:
-            explanation = payload["status_change_reason"]
+        if not isinstance(payload, dict):
+            payload = {}
+        if partial or "status_change_reason" in payload:
+            explanation = payload.get("status_change_reason")
             if error := validate_status_change_reason(explanation):
                 return jsonify(
                     error=error,
-                    current_status=old_status,
+                    current_status=status_old,
                     requires_status_change_reason=True,
                 ), 422
             status_change_reason = explanation.strip()
     msg = _diff_field(
-        changed_fields, msg, "Status", "machine_status", old_status, status
+        changed_fields, msg, "Status", "machine_status", status_old, status
     )
 
     # Case 2: if area was changed -> match to available areas. Kept custom
     # (not _diff_field) because the fuzzy-match validation only needs to run
     # when the raw input differs, and the *matched* value is what's recorded.
-    if area != existing_machine_infos["properties"]["area"]:
+    if area != properties["area"]:
         # Identify area
         area, score = fuzzysearch.extract(area, COUNTRIES, limit=1)[0]
         if score < 90:
@@ -834,26 +866,19 @@ def change_machine() -> Tuple[Response, int]:
                 400,
             )
         changed_fields["area"] = area
-        msg += (
-            f"\tArea from: {existing_machine_infos['properties']['area']} to: {area} \n"
-        )
+        msg += f"\tArea from: {properties['area']} to: {area} \n"
 
     # Case 3: Title changed
-    title_old = existing_machine_infos["properties"]["name"]
     msg = _diff_field(changed_fields, msg, "Title", "name", title_old, title)
 
     # Case 4: multimachine changed - deprecated
 
     # Case 5: paywall reported
-    paywall_new = request.args.get("paywall") == "true"
-    paywall_old = existing_machine_infos["properties"].get("paywall", False)
     msg = _diff_field(
         changed_fields, msg, "Paywall", "paywall", paywall_old, paywall_new
     )
 
     # Case 6: Number of coins changed
-    num_coins_new = int(request.args.get("num_coins", 4))
-    num_coins_old = existing_machine_infos["properties"].get("num_coins", 4)
     msg = _diff_field(
         changed_fields,
         msg,
@@ -864,10 +889,8 @@ def change_machine() -> Tuple[Response, int]:
     )
 
     # Case 7: address and / or location changed --> check for their correspondence
-    lng_old, lat_old = existing_machine_infos["geometry"]["coordinates"]
-    old_address = existing_machine_infos["properties"]["address"]
     address_okay = True  # by default okay
-    address_changed = address != old_address
+    address_changed = address != address_old
     movement_distance_m = haversine(
         (lat_old, lng_old), (latitude, longitude), unit=Unit.METERS
     )
@@ -887,7 +910,7 @@ def change_machine() -> Tuple[Response, int]:
 
         if address_changed:
             changed_fields["address"] = address
-            msg += f"\tAddress from: {old_address} to: {address}\n"
+            msg += f"\tAddress from: {address_old} to: {address}\n"
         if location_changed:
             changed_fields["latitude"] = latitude
             changed_fields["longitude"] = longitude
