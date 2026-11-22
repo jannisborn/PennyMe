@@ -653,6 +653,8 @@ def _quarantine_report_content(
 ) -> Path:
     """Move approved UGC into the flat ``images/reported`` directory.
 
+    Newly quarantined content replaces the previous backup at the same path.
+
     Args:
         report: Stored report fields from :class:`ModerationStore`.
         images_path: Root directory containing images and comment JSON files.
@@ -662,7 +664,6 @@ def _quarantine_report_content(
 
     Raises:
         FileNotFoundError: If neither the live nor reported file exists.
-        FileExistsError: If both paths exist and choosing one would lose data.
         ValueError: If the report does not identify actionable content.
     """
     root = images_path or PATH_IMAGES
@@ -675,10 +676,8 @@ def _quarantine_report_content(
             f"Reported {report['target_kind']}:{report['target_id']} is missing ({source}). "
             "Check the report target; no content was removed."
         )
-    if destination.exists():
-        raise FileExistsError(destination)
     destination.parent.mkdir(exist_ok=True)
-    return source.rename(destination)
+    return source.replace(destination)
 
 
 def handle_report_review(
