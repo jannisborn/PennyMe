@@ -1114,18 +1114,64 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
 @available(iOS 13.0, *)
 extension ViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let isMachine = annotation is Artwork
+        guard isMachine || annotation is NewMachine else { return nil }
+        let marker = mapView.dequeueReusableAnnotationView(
+            withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+            for: annotation
+        )
+        let shouldCluster = isMachine && UserDefaults.standard.bool(forKey: "clusterPinSwitch")
+        marker.clusteringIdentifier = shouldCluster ? "machine" : nil
+        if isMachine {
+            marker.displayPriority = shouldCluster ? .defaultHigh : .required
+        } else {
+            marker.displayPriority = .defaultLow
+        }
+        return marker
+    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let cluster = view.annotation as? MKClusterAnnotation {
+            mapView.deselectAnnotation(cluster, animated: false)
+            showClusterMachines(cluster, on: mapView)
+            return
+        }
         let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.calloutTapped))
         view.addGestureRecognizer(gesture)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard !(view.annotation is MKClusterAnnotation) else { return }
         if let gestureRecognizers = view.gestureRecognizers {
             for gestureRecognizer in gestureRecognizers {
                 view.removeGestureRecognizer(gestureRecognizer)
             }
         }
+    }
+
+    private func showClusterMachines(_ cluster: MKClusterAnnotation, on mapView: MKMapView) {
+        let machines = cluster.memberAnnotations.compactMap { $0 as? Artwork }
+            .sorted { ($0.title ?? "").localizedStandardCompare($1.title ?? "") == .orderedAscending }
+        let machinesByTitle = Dictionary(grouping: machines, by: \.title)
+        let sheet = UIAlertController(title: "Machines in this cluster", message: nil, preferredStyle: .actionSheet)
+        for machine in machines {
+            var title = machine.title ?? "Machine \(machine.id)"
+            if let name = machine.title, (machinesByTitle[name]?.count ?? 0) > 1 {
+                title = "\(name) (#\(machine.id))"
+            }
+            sheet.addAction(UIAlertAction(title: title, style: .default) { [weak self] _ in
+                self?.openMachine(machineID: machine.id)
+            })
+        }
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if let popover = sheet.popoverPresentationController {
+            let point = mapView.convert(cluster.coordinate, toPointTo: mapView)
+            popover.sourceView = mapView
+            popover.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
+        }
+        present(sheet, animated: true)
     }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {

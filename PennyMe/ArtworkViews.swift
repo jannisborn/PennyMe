@@ -11,7 +11,6 @@ import MapKit
 
 class ArtworkMarkerView: MKMarkerAnnotationView {
     
-    var clusterPins: Bool = true
     override var annotation: MKAnnotation? {
         
         willSet {
@@ -42,11 +41,6 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
             else {
                 guard let artwork = newValue as? Artwork else {
                     return
-                }
-                clusterPins = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
-                
-                if !clusterPins {
-                    displayPriority = MKFeatureDisplayPriority.required
                 }
                 
                 // define annotation view
