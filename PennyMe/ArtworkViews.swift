@@ -9,6 +9,16 @@
 import Foundation
 import MapKit
 
+final class OverlappingMachinesAnnotation: NSObject, MKAnnotation {
+    let machines: [Artwork]
+    let coordinate: CLLocationCoordinate2D
+
+    init(machines: [Artwork], coordinate: CLLocationCoordinate2D) {
+        self.machines = machines
+        self.coordinate = coordinate
+    }
+}
+
 class ArtworkMarkerView: MKMarkerAnnotationView {
     
     override var annotation: MKAnnotation? {
