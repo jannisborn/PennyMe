@@ -665,6 +665,91 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testOverlappingMachinePinsAreReachableFromTheirCluster() throws {
+        let defaults = UserDefaults.standard
+        let setting = "clusterPinSwitch"
+        let originalSetting = defaults.object(forKey: setting)
+        defaults.set(true, forKey: setting)
+        defer { defaults.set(originalSetting, forKey: setting) }
+
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: ViewController.self))
+        let controller: MapLayoutTestController = storyboard.instantiateViewController(identifier: "SettingsViewController") {
+            MapLayoutTestController(coder: $0)
+        }
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = controller
+        window.makeKeyAndVisible()
+        defer {
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+        }
+
+        let map = try XCTUnwrap(controller.PennyMap)
+        map.register(ArtworkMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        let coordinate = CLLocationCoordinate2D(latitude: 41.89, longitude: 12.49)
+        let machines = ["Entrance", "Entrance", "Newsstand"].enumerated().map { index, title in
+            let latitude = coordinate.latitude + (index == 2 ? 0.00001 : 0)
+            return Artwork(title: title, address: "", link: "", status: "unvisited",
+                           coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: coordinate.longitude),
+                           id: index + 1, last_updated: "", multimachine: 1, paywall: false,
+                           machineStatus: "available", area: "", numCoins: 4)
+        }
+        let clusterAdded = expectation(description: "MapKit displays a cluster for all overlapping pins")
+        var displayedCluster: MKClusterAnnotation?
+        controller.onClusterAdded = { cluster in
+            guard displayedCluster == nil else { return }
+            displayedCluster = cluster
+            clusterAdded.fulfill()
+        }
+        map.setRegion(MKCoordinateRegion(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300), animated: false)
+        controller.artworks = machines
+        controller.includedStates = ["unvisited"]
+        controller.updateMachineAnnotations()
+        wait(for: [clusterAdded], timeout: 5)
+
+        let cluster = try XCTUnwrap(displayedCluster)
+        XCTAssertEqual(Set(cluster.memberAnnotations.compactMap { ($0 as? Artwork)?.id }), Set(machines.map(\.id)))
+        map.selectAnnotation(cluster, animated: false)
+        let sheet = try XCTUnwrap(controller.presentedViewController as? UIAlertController)
+        XCTAssertEqual(
+            Set(sheet.actions.filter { $0.style == .default }.compactMap(\.title)),
+            ["Entrance (#1)", "Entrance (#2)", "Newsstand"]
+        )
+
+        sheet.dismiss(animated: false)
+        defaults.set(false, forKey: setting)
+        let other = Artwork(title: "Other machine", address: "", link: "", status: "unvisited",
+                            coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude + 0.000035),
+                            id: 4, last_updated: "", multimachine: 1, paywall: false,
+                            machineStatus: "available", area: "", numCoins: 4)
+        controller.artworks.append(other)
+        controller.updateMachineAnnotations(rebuild: true)
+        let overlap = try XCTUnwrap(map.annotations.compactMap { $0 as? OverlappingMachinesAnnotation }.first)
+        XCTAssertEqual(Set(overlap.machines.map(\.id)), Set(machines.map(\.id)))
+        XCTAssertEqual(map.annotations.compactMap { ($0 as? Artwork)?.id }, [other.id])
+
+        machines[0].status = "visited"
+        controller.updateMachineAnnotations(refreshing: [machines[0]])
+        let visibleOverlap = try XCTUnwrap(map.annotations.compactMap { $0 as? OverlappingMachinesAnnotation }.first)
+        XCTAssertEqual(Set(visibleOverlap.machines.map(\.id)), Set(["2", "3"]))
+        let numberedPin = NSPredicate { _, _ in
+            guard let marker = map.view(for: visibleOverlap) as? MKMarkerAnnotationView else { return false }
+            return marker.glyphText == "2" && marker.clusteringIdentifier == nil && marker.displayPriority == .required
+        }
+        wait(for: [XCTNSPredicateExpectation(predicate: numberedPin, object: nil)], timeout: 5)
+        map.selectAnnotation(visibleOverlap, animated: false)
+        let overlapPicker = try XCTUnwrap(controller.presentedViewController as? UIAlertController)
+        XCTAssertEqual(overlapPicker.actions.filter { $0.style == .default }.compactMap(\.title), ["Entrance", "Newsstand"])
+
+        overlapPicker.dismiss(animated: false)
+        machines[2].status = "visited"
+        controller.updateMachineAnnotations(refreshing: [machines[2]])
+        XCTAssertFalse(map.annotations.contains { $0 is OverlappingMachinesAnnotation })
+        XCTAssertEqual(Set(map.annotations.compactMap { ($0 as? Artwork)?.id }), Set([machines[1].id, other.id]))
+    }
+
+    @MainActor
     func testMapControlsAndSearchResultsResizeWithTheirContainer() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: ViewController.self))
         let controller: MapLayoutTestController = storyboard.instantiateViewController(identifier: "SettingsViewController") {
@@ -2037,6 +2122,8 @@ private final class ContributionHeaderLayoutTestController: UITableViewControlle
 
 // Load the real storyboard and layout without starting location or server requests.
 private final class MapLayoutTestController: ViewController {
+    var onClusterAdded: ((MKClusterAnnotation) -> Void)?
+
     override func viewDidLoad() {
         setDelegates()
         configureMapLayout()
@@ -2044,6 +2131,15 @@ private final class MapLayoutTestController: ViewController {
 
     override func viewWillAppear(_ animated: Bool) {}
     override func viewDidAppear(_ animated: Bool) {}
+
+    @objc(mapView:didAddAnnotationViews:)
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        for view in views {
+            if let cluster = view.annotation as? MKClusterAnnotation {
+                onClusterAdded?(cluster)
+            }
+        }
+    }
 }
 
 private final class PresenceTestLocationManager: CLLocationManager {

@@ -9,9 +9,18 @@
 import Foundation
 import MapKit
 
+final class OverlappingMachinesAnnotation: NSObject, MKAnnotation {
+    let machines: [Artwork]
+    let coordinate: CLLocationCoordinate2D
+
+    init(machines: [Artwork], coordinate: CLLocationCoordinate2D) {
+        self.machines = machines
+        self.coordinate = coordinate
+    }
+}
+
 class ArtworkMarkerView: MKMarkerAnnotationView {
     
-    var clusterPins: Bool = true
     override var annotation: MKAnnotation? {
         
         willSet {
@@ -42,11 +51,6 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
             else {
                 guard let artwork = newValue as? Artwork else {
                     return
-                }
-                clusterPins = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
-                
-                if !clusterPins {
-                    displayPriority = MKFeatureDisplayPriority.required
                 }
                 
                 // define annotation view

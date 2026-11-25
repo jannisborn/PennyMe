@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     var artworks: [Artwork] = []
     private var machineAreaChoices: [String] { Array(Set(artworks.map { $0.area })).sorted() }
     var pinIdDict : [String:Int] = [:]
-    var isVisible : [String:Bool] = [:]
+    private var displayedMachineAnnotations: [[Artwork]: MKAnnotation] = [:]
     var selectedPin: Artwork?
     var isLoadingServerLocations: Bool = false
     private let blockedContributors = BlockedContributorsStore()
@@ -174,7 +174,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         
         // load data
         loadInitialData()
-        addAnnotationsIteratively()
+        updateMachineAnnotations()
         loadListingModerationManifestIfNeeded()
 
         configureMapLayout()
@@ -418,7 +418,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         guard updatedBlockedMachineIDs != blockedMachineIDs else { return }
 
         blockedMachineIDs = updatedBlockedMachineIDs
-        addAnnotationsIteratively()
+        updateMachineAnnotations()
         if isFiltering, let searchText = searchController.searchBar.text {
             filterContentForSearchText(searchText)
         }
@@ -490,21 +490,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         refreshBlockedListingFilter(force: needsListingFilterRefresh)
         needsListingFilterRefresh = false
         refreshServerLocationsIfNeeded()
-        // each time the view appears, check colours of the pins
-        check_json_dict()
-        // check whether some setting has changed, if yes, reload all data on the map
-        if SettingsViewController.hasChanged {
+        let changedStatuses = loadMachineStatuses()
+        let filtersChanged = SettingsViewController.hasChanged
+        let clusteringChanged = SettingsViewController.clusterHasChanged
+        if filtersChanged {
             updateIncludedStates()
-            addAnnotationsIteratively()
             SettingsViewController.hasChanged = false
         }
-        if SettingsViewController.clusterHasChanged {
-            // reload all annotations in that case
-            PennyMap.removeAnnotations(artworks)
-            isVisible = [:]
-            addAnnotationsIteratively()
+        if filtersChanged || clusteringChanged || !changedStatuses.isEmpty {
+            updateMachineAnnotations(refreshing: changedStatuses, rebuild: clusteringChanged)
             SettingsViewController.clusterHasChanged = false
-
         }
         // always remove pins for new machines if there are any
         removeNewMachinePin()
@@ -523,22 +518,50 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
     }
     
-    func addAnnotationsIteratively() {
-        for artwork in artworks {
-            // check if this machine should be visible based on the status
-            let shouldBeShown = !blockedMachineIDs.contains(artwork.id)
-                && checkMachineShouldBeVisible(
-                    status: artwork.status,
-                    machineStatus: artwork.machineStatus
-                )
-            if (!(isVisible[artwork.id] ?? false)) && shouldBeShown {
-                PennyMap.addAnnotation(artwork)
-                isVisible[artwork.id] = true
-            } else if (isVisible[artwork.id] ?? false) && !shouldBeShown {
-                PennyMap.removeAnnotation(artwork)
-                isVisible[artwork.id] = false
+    func updateMachineAnnotations(refreshing changedStatuses: Set<Artwork> = [], rebuild: Bool = false) {
+        let visibleMachines = artworks.filter { machine in
+            !blockedMachineIDs.contains(machine.id)
+                && checkMachineShouldBeVisible(status: machine.status, machineStatus: machine.machineStatus)
+        }
+        let groups = UserDefaults.standard.bool(forKey: "clusterPinSwitch")
+            ? visibleMachines.map { [$0] }
+            : groupOverlappingMachines(visibleMachines)
+        let visibleGroups = Set(groups)
+        let removedGroups = displayedMachineAnnotations.keys.filter { group in
+            rebuild || !visibleGroups.contains(group) || (group.count == 1 && changedStatuses.contains(group[0]))
+        }
+        PennyMap.removeAnnotations(removedGroups.compactMap { displayedMachineAnnotations.removeValue(forKey: $0) })
+
+        let added = groups.compactMap { group -> MKAnnotation? in
+            guard displayedMachineAnnotations[group] == nil else { return nil }
+            let annotation: MKAnnotation = group.count == 1
+                ? group[0]
+                : OverlappingMachinesAnnotation(machines: group, coordinate: group[0].coordinate)
+            displayedMachineAnnotations[group] = annotation
+            return annotation
+        }
+        PennyMap.addAnnotations(added)
+    }
+
+    private func groupOverlappingMachines(_ machines: [Artwork]) -> [[Artwork]] {
+        let overlapDistance: CLLocationDistance = 2
+        // A degree of latitude is at least 110 km. Skip groups outside this latitude band.
+        let latitudeTolerance = overlapDistance / 110_000
+        var groups: [(center: CLLocation, machines: [Artwork])] = []
+        var firstCandidate = 0
+        for machine in machines.sorted(by: { $0.coordinate.latitude < $1.coordinate.latitude }) {
+            let location = CLLocation(latitude: machine.coordinate.latitude, longitude: machine.coordinate.longitude)
+            while firstCandidate < groups.count,
+                  machine.coordinate.latitude - groups[firstCandidate].center.coordinate.latitude > latitudeTolerance {
+                firstCandidate += 1
+            }
+            if let index = (firstCandidate..<groups.count).first(where: { groups[$0].center.distance(from: location) <= overlapDistance }) {
+                groups[index].machines.append(machine)
+            } else {
+                groups.append((location, [machine]))
             }
         }
+        return groups.map(\.machines)
     }
     
     func setDelegates(){
@@ -625,7 +648,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         return ((includedStates.contains(status) && (machineStatus == "available" || status != "unvisited")) || (includedStates.contains("retired") && (machineStatus != "available")))
     }
     
-    func check_json_dict(){
+    private func loadMachineStatuses() -> Set<Artwork> {
+        var changedStatuses: Set<Artwork> = []
         // initialize empty status dictionary
         var statusDict = [[String: String]()]
         //variable indicating whether we load something
@@ -662,7 +686,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 if let pinId = pinIdDict[id_machine] {
                     let machine = artworks[pinId]
                     let personalStatus = statusDict[0][machine.id] ?? "unvisited"
-                    machine.status = personalStatus
+                    if machine.status != personalStatus {
+                        machine.status = personalStatus
+                        changedStatuses.insert(machine)
+                    }
                     
                     // Count how many machines have the personalStatus "visited"
                     if personalStatus == "visited" {
@@ -677,21 +704,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         }
                     }
                     
-                    // check if machine should be displayed based on settings
-                    let shouldDisplayMachine = !blockedMachineIDs.contains(machine.id)
-                        && checkMachineShouldBeVisible(
-                            status: personalStatus,
-                            machineStatus: machine.machineStatus
-                        )
-                    
-                    // remove machine in any case because we need the new pin colour
-                    PennyMap.removeAnnotation(machine)
-                    isVisible[id_machine] = false
-                    // add pin if it should be shown and is not shown at the moment
-                    if shouldDisplayMachine {
-                        PennyMap.addAnnotation(machine)
-                        isVisible[id_machine] = true
-                    }
                 } else {
                     // Error reason: User has a local change of a machine not in list of artworks.
                     // E.g., if server_locations.json is badly formatted (and user changed one of the server-locations-only-machines)
@@ -700,6 +712,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 }
             }
         }
+        return changedStatuses
     }
     
     /// file path to the full merged (bundled + all server syncs so far) machine set is cached
@@ -977,10 +990,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         if isFullSync {
             // The full server response is authoritative, including removals.
             changedRecordCount = pinsFromServer.count
-            PennyMap.removeAnnotations(artworks)
             artworks = pinsFromServer
             pinIdDict = [:]
-            isVisible = [:]
             for (index, pin) in artworks.enumerated() {
                 pinIdDict[pin.id] = index
             }
@@ -991,27 +1002,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                     guard existingPin.cacheSnapshot != pin.cacheSnapshot else { continue }
 
                     changedRecordCount += 1
-                    if isVisible[pin.id] == true {
-                        PennyMap.removeAnnotation(existingPin)
-                    }
                     pin.status = existingPin.status
                     artworks[index] = pin
-                    isVisible[pin.id] = false
                 } else {
                     changedRecordCount += 1
                     artworks.append(pin)
                     pinIdDict[pin.id] = artworks.count - 1
-                    isVisible[pin.id] = false
                 }
             }
         }
 
-        addAnnotationsIteratively()
-        
         recomputeMachineTotals()
-        
-        // update UI-related state
-        check_json_dict()
+        updateMachineAnnotations(refreshing: loadMachineStatuses())
 
         let syncDate = Date()
         let defaults = UserDefaults.standard
@@ -1114,18 +1116,80 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
 
 @available(iOS 13.0, *)
 extension ViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let overlap = annotation as? OverlappingMachinesAnnotation {
+            let identifier = "overlappingMachines"
+            let marker = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+                ?? MKMarkerAnnotationView(annotation: overlap, reuseIdentifier: identifier)
+            marker.annotation = overlap
+            marker.glyphText = String(overlap.machines.count)
+            marker.accessibilityLabel = "\(overlap.machines.count) machines"
+            marker.displayPriority = .required
+            return marker
+        }
+        let isMachine = annotation is Artwork
+        guard isMachine || annotation is NewMachine else { return nil }
+        let marker = mapView.dequeueReusableAnnotationView(
+            withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+            for: annotation
+        )
+        let shouldCluster = isMachine && UserDefaults.standard.bool(forKey: "clusterPinSwitch")
+        marker.clusteringIdentifier = shouldCluster ? "machine" : nil
+        if isMachine {
+            marker.displayPriority = shouldCluster ? .defaultHigh : .required
+        } else {
+            marker.displayPriority = .defaultLow
+        }
+        return marker
+    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let cluster = view.annotation as? MKClusterAnnotation {
+            mapView.deselectAnnotation(cluster, animated: false)
+            let machines = cluster.memberAnnotations.compactMap { $0 as? Artwork }
+            showMachinePicker(machines, at: cluster.coordinate, on: mapView)
+            return
+        }
+        if let overlap = view.annotation as? OverlappingMachinesAnnotation {
+            mapView.deselectAnnotation(overlap, animated: false)
+            showMachinePicker(overlap.machines, at: overlap.coordinate, on: mapView)
+            return
+        }
+        guard view.annotation is Artwork || view.annotation is NewMachine else { return }
         let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.calloutTapped))
         view.addGestureRecognizer(gesture)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard view.annotation is Artwork || view.annotation is NewMachine else { return }
         if let gestureRecognizers = view.gestureRecognizers {
             for gestureRecognizer in gestureRecognizers {
                 view.removeGestureRecognizer(gestureRecognizer)
             }
         }
+    }
+
+    private func showMachinePicker(_ machines: [Artwork], at coordinate: CLLocationCoordinate2D, on mapView: MKMapView) {
+        let machines = machines.sorted { ($0.title ?? "").localizedStandardCompare($1.title ?? "") == .orderedAscending }
+        let machinesByTitle = Dictionary(grouping: machines, by: \.title)
+        let sheet = UIAlertController(title: "Choose a machine", message: nil, preferredStyle: .actionSheet)
+        for machine in machines {
+            var title = machine.title ?? "Machine \(machine.id)"
+            if let name = machine.title, (machinesByTitle[name]?.count ?? 0) > 1 {
+                title = "\(name) (#\(machine.id))"
+            }
+            sheet.addAction(UIAlertAction(title: title, style: .default) { [weak self] _ in
+                self?.openMachine(machineID: machine.id)
+            })
+        }
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if let popover = sheet.popoverPresentationController {
+            let point = mapView.convert(coordinate, toPointTo: mapView)
+            popover.sourceView = mapView
+            popover.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
+        }
+        present(sheet, animated: true)
     }
 
     @objc func calloutTapped(sender:UITapGestureRecognizer) {
