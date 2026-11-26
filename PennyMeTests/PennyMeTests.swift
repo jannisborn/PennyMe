@@ -10,9 +10,41 @@ import XCTest
 import UIKit
 import SwiftUI
 import MapKit
+import StoreKit
+import StoreKitTest
 @testable import PennyMe
 
 class PennyMeTests: XCTestCase {
+
+    @MainActor
+    func testCoffeeTipsStartAtFiveDollarsAndCanBePurchasedAgain() async throws {
+        let configuration = try XCTUnwrap(Bundle(for: PennyMeTests.self)
+            .url(forResource: "CoffeeTips", withExtension: "storekit"))
+        let session = try SKTestSession(contentsOf: configuration)
+        session.clearTransactions()
+        session.disableDialogs = true
+        defer {
+            session.clearTransactions()
+            session.resetToDefaultState()
+        }
+
+        let products = try await CoffeeTips.products()
+        XCTAssertEqual(products.map(\.id), CoffeeTips.productIDs)
+        XCTAssertEqual(products.map(\.price), [5, 10, 25])
+        let coffee = try XCTUnwrap(products.first)
+        for _ in 0..<2 {
+            guard case .success(let transaction) = try await coffee.purchase() else {
+                XCTFail("Expected a successful tip")
+                return
+            }
+            let finished = await CoffeeTips.finish(transaction)
+            XCTAssertTrue(finished)
+        }
+        XCTAssertEqual(session.allTransactions().count, 2)
+        for await _ in StoreKit.Transaction.unfinished {
+            XCTFail("Expected both tips to be finished")
+        }
+    }
 
     @MainActor
     func testContributionHeadersGrowForLargeTextAndKeepTheirToggleWorking() throws {

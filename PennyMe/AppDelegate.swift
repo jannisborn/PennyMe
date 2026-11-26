@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Create the account-free contributor identifier before any UGC request.
         _ = AppSession.anonymousUserID
         UNUserNotificationCenter.current().delegate = self
+        Task { await CoffeeTips.handleTransactionUpdates() }
         return true
     }
 

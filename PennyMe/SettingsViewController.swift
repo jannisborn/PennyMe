@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Contacts
+import SwiftUI
 
 class SettingsViewController: UITableViewController {
     
@@ -24,6 +25,7 @@ class SettingsViewController: UITableViewController {
     
     static var hasChanged = false
     static var clusterHasChanged = false
+    private let coffeeTipIndexPath = IndexPath(row: 1, section: 0)
     private let legalIndexPath = IndexPath(row: 0, section: 4)
     private let blockedContentIndexPath = IndexPath(row: 1, section: 4)
     let default_switches: [String: Bool] = [
@@ -135,7 +137,11 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer { tableView.deselectRow(at: indexPath, animated: true) }
-        if indexPath == legalIndexPath {
+        if indexPath == coffeeTipIndexPath {
+            let controller = UIHostingController(rootView: CoffeeTipView())
+            controller.title = "Buy us a coffee"
+            navigationController?.pushViewController(controller, animated: true)
+        } else if indexPath == legalIndexPath {
             showLegalDocuments()
         } else if indexPath == blockedContentIndexPath {
             let controller = BlockedContentViewController()
