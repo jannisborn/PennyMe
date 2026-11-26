@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import Contacts
-import SwiftUI
 
 class SettingsViewController: UITableViewController {
     
@@ -138,9 +137,7 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer { tableView.deselectRow(at: indexPath, animated: true) }
         if indexPath == coffeeTipIndexPath {
-            let controller = UIHostingController(rootView: CoffeeTipView())
-            controller.title = "Buy us a coffee"
-            navigationController?.pushViewController(controller, animated: true)
+            navigationController?.pushViewController(CoffeeTipView.makeController(), animated: true)
         } else if indexPath == legalIndexPath {
             showLegalDocuments()
         } else if indexPath == blockedContentIndexPath {

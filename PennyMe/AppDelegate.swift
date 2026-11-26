@@ -14,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     private var didStartCommunityGate = false
     private var didCheckForUpdates = false
+    private lazy var coffeeTipReminder = CoffeeTipReminder { [weak self] in
+        self?.presentCoffeeTipPrompt() ?? false
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -64,8 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //    }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        coffeeTipReminder.pause()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -81,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        coffeeTipReminder.resume()
         guard !didStartCommunityGate,
               let rootViewController = window?.rootViewController else {
             return
@@ -92,8 +95,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        coffeeTipReminder.pause()
     }
 
+    private func presentCoffeeTipPrompt() -> Bool {
+        guard UIApplication.shared.applicationState == .active, CommunityTermsGate.hasAccepted,
+              let window, window.isKeyWindow,
+              let navigation = window.rootViewController as? UINavigationController,
+              navigation.presentedViewController == nil,
+              let map = navigation.topViewController as? ViewController,
+              map.viewIfLoaded?.window === window, map.presentedViewController == nil,
+              map.transitionCoordinator == nil, !map.searchController.isActive else { return false }
 
+        let alert = UIAlertController(title: "☕️ Support PennyMe", message: CoffeeTips.supportMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: CoffeeTips.title, style: .default) { [weak navigation] _ in
+            navigation?.pushViewController(CoffeeTipView.makeController(), animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Not now", style: .cancel))
+        map.present(alert, animated: true)
+        return true
+    }
+}
+
+@MainActor
+final class CoffeeTipReminder {
+    private static let interval: TimeInterval = 30 * 60
+    private static let elapsedKey = "coffeeTipReminder.activeSeconds"
+
+    private let defaults: UserDefaults
+    private let present: () -> Bool
+    private var timer: Timer?
+    private var lastCheckpoint: TimeInterval?
+
+    init(defaults: UserDefaults = .standard, present: @escaping () -> Bool) {
+        self.defaults = defaults
+        self.present = present
+    }
+
+    private var elapsed: TimeInterval {
+        get { defaults.double(forKey: Self.elapsedKey) }
+        set { defaults.set(newValue, forKey: Self.elapsedKey) }
+    }
+
+    func resume(at now: TimeInterval = ProcessInfo.processInfo.systemUptime) {
+        guard lastCheckpoint == nil else { return }
+        lastCheckpoint = now
+        scheduleCheck()
+    }
+
+    func pause(at now: TimeInterval = ProcessInfo.processInfo.systemUptime) {
+        timer?.invalidate()
+        timer = nil
+        saveProgress(at: now)
+        lastCheckpoint = nil
+    }
+
+    func check(at now: TimeInterval = ProcessInfo.processInfo.systemUptime) {
+        guard lastCheckpoint != nil else { return }
+        saveProgress(at: now)
+        if elapsed >= Self.interval && present() {
+            elapsed = 0
+        }
+        scheduleCheck()
+    }
+
+    private func saveProgress(at now: TimeInterval) {
+        guard let lastCheckpoint else { return }
+        self.lastCheckpoint = now
+        // Cap at one pending prompt while another screen is in use.
+        elapsed = min(Self.interval, elapsed + max(0, now - lastCheckpoint))
+    }
+
+    private func scheduleCheck() {
+        timer?.invalidate()
+        let remaining = Self.interval - elapsed
+        // Save a checkpoint each minute and retry a deferred prompt after five seconds.
+        let delay = remaining > 0 ? min(remaining, 60) : 5
+        timer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
+            Task { @MainActor in self?.check() }
+        }
+    }
 }

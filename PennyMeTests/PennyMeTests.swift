@@ -17,6 +17,45 @@ import StoreKitTest
 class PennyMeTests: XCTestCase {
 
     @MainActor
+    func testCoffeeReminderAccumulatesActiveTimeAndRepeatsAfterDeferredPrompt() throws {
+        let suite = "CoffeeTipReminderTests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+
+        let firstSession = CoffeeTipReminder(defaults: defaults) {
+            XCTFail("A half-hour of active time has not elapsed")
+            return false
+        }
+        firstSession.resume(at: 100)
+        firstSession.pause(at: 1_000)
+        firstSession.check(at: 100_000)
+
+        var attempts = 0
+        var prompts = 0
+        var canPresent = false
+        let nextSession = CoffeeTipReminder(defaults: defaults) {
+            attempts += 1
+            if canPresent { prompts += 1 }
+            return canPresent
+        }
+        nextSession.resume(at: 100_000)
+        nextSession.check(at: 100_899)
+        XCTAssertEqual(attempts, 0)
+        nextSession.check(at: 100_900)
+        XCTAssertEqual(attempts, 1)
+        XCTAssertEqual(prompts, 0)
+
+        canPresent = true
+        nextSession.check(at: 105_000)
+        XCTAssertEqual(prompts, 1, "Deferred intervals should coalesce into one prompt")
+        nextSession.check(at: 106_799)
+        XCTAssertEqual(prompts, 1)
+        nextSession.check(at: 106_800)
+        XCTAssertEqual(prompts, 2)
+        nextSession.pause(at: 106_800)
+    }
+
+    @MainActor
     func testCoffeeTipsStartAtFiveDollarsAndCanBePurchasedAgain() async throws {
         let configuration = try XCTUnwrap(Bundle(for: PennyMeTests.self)
             .url(forResource: "CoffeeTips", withExtension: "storekit"))

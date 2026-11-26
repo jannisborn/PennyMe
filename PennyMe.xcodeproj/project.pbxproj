@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A52700000000000000000001 /* CoffeeTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52700000000000000000002 /* CoffeeTipView.swift */; };
 		A52700000000000000000003 /* CoffeeTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = A52700000000000000000004 /* CoffeeTips.storekit */; };
+		A52700000000000000000005 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A52700000000000000000006 /* PrivacyInfo.xcprivacy */; };
 		A52600000000000000000003 /* PresenceConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000004 /* PresenceConfirmationView.swift */; };
 		A52600000000000000000001 /* MachinePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000002 /* MachinePresence.swift */; };
 		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		A52700000000000000000002 /* CoffeeTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeTipView.swift; sourceTree = "<group>"; };
 		A52700000000000000000004 /* CoffeeTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoffeeTips.storekit; sourceTree = "<group>"; };
+		A52700000000000000000006 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A52600000000000000000004 /* PresenceConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceConfirmationView.swift; sourceTree = "<group>"; };
 		A52600000000000000000002 /* MachinePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinePresence.swift; sourceTree = "<group>"; };
 		8319D8CF27414AC100E97D93 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				8319D8CF27414AC100E97D93 /* ZoomViewController.swift */,
 				9F9F31AD2300B40A00C0E854 /* LaunchScreen.storyboard */,
 				9F9F31B02300B40A00C0E854 /* Info.plist */,
+				A52700000000000000000006 /* PrivacyInfo.xcprivacy */,
 				9F421AB2261B9755004197B4 /* ArtworkViews.swift */,
 				9FF43BD92621221A00BE3F6A /* SearchFooter.swift */,
 				9F9C64A42A10D12E00C57887 /* VersionManager.swift */,
@@ -396,6 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52700000000000000000005 /* PrivacyInfo.xcprivacy in Resources */,
 				A10000042E40000200C0FFEE /* terms_of_use.md in Resources */,
 				A10000062E40000300C0FFEE /* privacy_policy.md in Resources */,
 				9F9F31AF2300B40A00C0E854 /* LaunchScreen.storyboard in Resources */,

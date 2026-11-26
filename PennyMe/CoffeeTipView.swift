@@ -2,6 +2,8 @@ import StoreKit
 import SwiftUI
 
 enum CoffeeTips {
+    static let title = "Buy us a coffee"
+    static let supportMessage = "PennyMe is 100% free and maintained in our spare time. If it helps you, please leave an optional tip from time to time. This helps to cover the costs of our server and the Apple developer membership. Tips unlock nothing— PennyMe remains free for everyone."
     static let productIDs = ["pennyme.tip.coffee", "pennyme.tip.double", "pennyme.tip.generous"]
 
     static func products() async throws -> [Product] {
@@ -41,10 +43,17 @@ struct CoffeeTipView: View {
     @State private var isPurchasing = false
     @State private var purchaseNotice: PurchaseNotice?
 
+    @MainActor
+    static func makeController() -> UIViewController {
+        let controller = UIHostingController(rootView: CoffeeTipView())
+        controller.title = CoffeeTips.title
+        return controller
+    }
+
     var body: some View {
         List {
             Section {
-                Text("PennyMe is 100% free and maintained in our spare time. If it helps you, please leave an optional tip from time to time. This helps to cover the costs of our server and the Apple developer membership. Tips unlock nothing— PennyMe remains free for everyone.")
+                Text(CoffeeTips.supportMessage)
             }
             Section {
                 if let products {
@@ -77,7 +86,7 @@ struct CoffeeTipView: View {
             products = (try? await CoffeeTips.products()) ?? []
         }
         .alert(item: $purchaseNotice) { notice in
-            Alert(title: Text("Buy us a coffee"), message: Text(notice.rawValue))
+            Alert(title: Text(CoffeeTips.title), message: Text(notice.rawValue))
         }
     }
 
