@@ -10,7 +10,12 @@ from pennyme.pennycollector import DAY, MONTH, YEAR
 from pennyme.utils import get_next_free_machine_id
 from pennyme.webconfig import get_elongated_coin_title
 
-AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia", "Madagascar"]
+OSM_AREAS = list(COUNTRY_TO_CODE.keys()) + [
+    "Slovakia",
+    "Algeria",
+    "Armenia",
+    "Madagascar",
+]
 TODAY = f"{YEAR}-{MONTH}-{DAY}"
 
 
@@ -97,7 +102,7 @@ def osm_to_geojson(result: overpy.Result) -> Dict[str, Any]:
         else:
             country = address.split(",")[-1].strip()
 
-        match, score = fuzzysearch.extract(country, AREAS, limit=1)[0]
+        match, score = fuzzysearch.extract(country, OSM_AREAS, limit=1)[0]
         if score < 75:
             raise ValueError(f"Could not extract country ({country}) from {address}.")
 
