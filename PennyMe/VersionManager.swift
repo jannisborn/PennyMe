@@ -28,7 +28,8 @@ class VersionManager {
         if shouldShowVersionInfo() {
             let alert = UIAlertController(
                 title: "PennyMe v\(currentVersion ?? "")",
-                message: "Small coins, big contributions! Visit your new Profile to track your submissions and reports, check their review status, and see feedback. Find machines by ID and enjoy more accurate collection stats. Thanks for helping PennyMe grow!", preferredStyle: .alert
+                message: "A fresh look for every penny machine! Tap a map pin to see the cleaner, redesigned details screen. Swipe through photos, browse penny designs, and mark the ones you’ve collected.",
+                preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
