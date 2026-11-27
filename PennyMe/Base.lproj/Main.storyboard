@@ -192,6 +192,28 @@
                                             <segue destination="tc2-2V-Hin" kind="show" id="BB9-X1-5aV"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Cfe-Tp-R01">
+                                        <rect key="frame" x="0.0" y="69" width="375" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="Cfe-Tp-R01" id="Cfe-Tp-V01">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <subviews>
+                                                <label adjustsFontForContentSizeCategory="YES" numberOfLines="0" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="☕️ Buy us a coffee" textAlignment="natural" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Cfe-Tp-L01">
+                                                    <rect key="frame" x="23" y="11" width="305" height="29"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cfe-Tp-L01" firstAttribute="leading" secondItem="Cfe-Tp-V01" secondAttribute="leadingMargin" id="Cfe-Tp-C01"/>
+                                                <constraint firstItem="Cfe-Tp-L01" firstAttribute="trailing" secondItem="Cfe-Tp-V01" secondAttribute="trailingMargin" id="Cfe-Tp-C02"/>
+                                                <constraint firstItem="Cfe-Tp-L01" firstAttribute="top" secondItem="Cfe-Tp-V01" secondAttribute="topMargin" id="Cfe-Tp-C03"/>
+                                                <constraint firstItem="Cfe-Tp-L01" firstAttribute="bottom" secondItem="Cfe-Tp-V01" secondAttribute="bottomMargin" id="Cfe-Tp-C04"/>
+                                                <constraint firstItem="Cfe-Tp-V01" firstAttribute="height" relation="greaterThanOrEqual" constant="44" priority="999" id="Cfe-Tp-C05"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection footerTitle="Notify me when within 1KM of unvisited machine. NOTE: Open app regularly to keep this active." id="Aea-F6-n8U">

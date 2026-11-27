@@ -1,0 +1,60 @@
+{
+  "identifier" : "E207251A-0272-4DF5-93EC-901464D85052",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "5.00",
+      "familyShareable" : false,
+      "internalID" : "818010001",
+      "localizations" : [
+        {
+          "description" : "An optional tip to support PennyMe.",
+          "displayName" : "Coffee Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "pennyme.tip.coffee",
+      "referenceName" : "Coffee Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "10.00",
+      "familyShareable" : false,
+      "internalID" : "818010002",
+      "localizations" : [
+        {
+          "description" : "An optional tip to support PennyMe.",
+          "displayName" : "Double Coffee Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "pennyme.tip.double",
+      "referenceName" : "Double Coffee Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "25.00",
+      "familyShareable" : false,
+      "internalID" : "818010003",
+      "localizations" : [
+        {
+          "description" : "An optional tip to support PennyMe.",
+          "displayName" : "Generous Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "pennyme.tip.generous",
+      "referenceName" : "Generous Tip",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_locale" : "en_US",
+    "_storefront" : "USA"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
