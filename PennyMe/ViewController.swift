@@ -124,6 +124,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         searchController.searchBar.overrideUserInterfaceStyle = .light
         // iOS 11 compatability issue
         navigationItem.searchController = searchController
+        navigationItem.backButtonDisplayMode = .minimal
         // Disable search bar if view is changed
         definesPresentationContext = true
 

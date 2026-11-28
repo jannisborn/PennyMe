@@ -1066,7 +1066,7 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
-    func testPinTitleHasRoomForPlaceNameBeforeHyphenating() async throws {
+    func testPinTitleAndActivityRowFitCompactScreens() async throws {
         let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
         let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 375, height: 812))
         let configuration = URLSessionConfiguration.ephemeral
@@ -1079,11 +1079,11 @@ class PennyMeTests: XCTestCase {
             PresenceTestURLProtocol.response = nil
             session.invalidateAndCancel()
         }
-        for width in [375, 393] {
+        for width in [320, 375, 393] {
             window.frame.size.width = CGFloat(width)
-            for suffix in ["Entrance 1", "Entrance 2", "Playground"] {
+            for name in ["Zoo", "Allwetterzoo Münster - Entrance 2 and Playground"] {
                 let controller = PinViewController(style: .insetGrouped)
-                controller.pinData = Artwork(title: "Allwetterzoo Münster - \(suffix)", address: "Sentruper Str. 315, 48161 Münster, Germany",
+                controller.pinData = Artwork(title: name, address: "Sentruper Str. 315, 48161 Münster, Germany",
                                              link: "null", status: "unvisited", coordinate: CLLocationCoordinate2D(latitude: 51.95, longitude: 7.59),
                                              id: 98765434, last_updated: "2026-11-01", multimachine: 1, paywall: true,
                                              machineStatus: "available", area: "Germany", numCoins: 4)
@@ -1092,6 +1092,7 @@ class PennyMeTests: XCTestCase {
                                                                     manager: PresenceTestLocationManager(), session: session, isActive: { false })
                 let map = UIViewController()
                 map.navigationItem.backButtonTitle = "PennyMe"
+                map.navigationItem.backButtonDisplayMode = .minimal
                 let navigation = UINavigationController(rootViewController: map)
                 navigation.pushViewController(controller, animated: false)
                 window.rootViewController = navigation
@@ -1101,20 +1102,46 @@ class PennyMeTests: XCTestCase {
                 controller.view.setNeedsLayout()
                 controller.view.layoutIfNeeded()
                 controller.tableView.layoutIfNeeded()
-                let label = controller.titleLabel
-                let titleFrame = label.convert(label.bounds, to: window)
                 let bar = navigation.navigationBar
                 let barFrame = bar.convert(bar.bounds, to: window)
-                XCTAssertGreaterThanOrEqual(titleFrame.minY, barFrame.maxY,
-                                            "The machine title must start below the navigation bar at \(width) points")
-                let needed = ceil(("Allwetterzoo Müns-" as NSString).size(withAttributes: [.font: label.font!]).width)
-                XCTAssertGreaterThanOrEqual(label.bounds.width, needed, "The real title column must fit Allwetterzoo Müns- at \(width) points")
-                XCTAssertLessThanOrEqual(label.bounds.height, ceil(label.font.lineHeight) * 2 + 1,
-                                         "Allwetterzoo Müns-ter should fit in two lines for \(suffix) at \(width) points")
+                let barTitle = try XCTUnwrap(controller.navigationItem.titleView as? UIButton)
+                let barTitleFrame = barTitle.convert(barTitle.bounds, to: window)
+                XCTAssertTrue(barTitle.isDescendant(of: bar))
+                XCTAssertEqual(barTitle.title(for: .normal), controller.pinData.title)
+                XCTAssertGreaterThan(barTitleFrame.width, 0)
+                XCTAssertTrue(barFrame.insetBy(dx: -1, dy: -1).contains(barTitleFrame))
+                let titleLabel = try XCTUnwrap(barTitle.titleLabel)
+                XCTAssertEqual(titleLabel.font.pointSize, 22)
+                XCTAssertEqual(titleLabel.numberOfLines, 1)
+                XCTAssertTrue(titleLabel.adjustsFontSizeToFitWidth)
+                XCTAssertEqual(titleLabel.minimumScaleFactor, 0.55, accuracy: 0.001)
+                let fullWidth = (name as NSString).size(withAttributes: [.font: titleLabel.font!]).width
+                if name != "Zoo" {
+                    XCTAssertGreaterThan(fullWidth, titleLabel.bounds.width)
+                } else {
+                    XCTAssertLessThanOrEqual(fullWidth, titleLabel.bounds.width)
+                }
+                let address = controller.addressLabel.convert(controller.addressLabel.bounds, to: window)
+                XCTAssertGreaterThanOrEqual(address.minY, barFrame.maxY)
+                let activityFrames = [controller.machineStatusButton, controller.lastSeenLabel,
+                                      controller.lastUpdatedLabel, controller.reportButton].map { $0.convert($0.bounds, to: window) }
+                XCTAssertEqual(activityFrames[1].width, activityFrames[2].width, accuracy: 1)
+                XCTAssertGreaterThanOrEqual(activityFrames[0].height, 44)
+                XCTAssertEqual(controller.machineStatusButton.configuration?.background.backgroundInsets.top, 7)
+                XCTAssertEqual(controller.machineStatusButton.configuration?.background.backgroundInsets.bottom, 7)
+                for frame in activityFrames {
+                    XCTAssertGreaterThan(frame.width, 0)
+                    XCTAssertGreaterThanOrEqual(frame.minY, address.maxY)
+                    XCTAssertLessThanOrEqual(frame.maxX, window.bounds.maxX)
+                    XCTAssertEqual(frame.midY, activityFrames[0].midY, accuracy: 1)
+                }
+                for (left, right) in zip(activityFrames, activityFrames.dropFirst()) {
+                    XCTAssertLessThanOrEqual(left.maxX, right.minX)
+                }
                 let preview = XCTAttachment(image: UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
                     window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
                 })
-                preview.name = "Pin title — \(width) — \(suffix)"
+                preview.name = "Pin title — \(width) — \(name)"
                 preview.lifetime = .keepAlways
                 add(preview)
             }
@@ -1357,13 +1384,11 @@ class PennyMeTests: XCTestCase {
         XCTAssertNil(controller.navigationItem.rightBarButtonItems)
         XCTAssertNotNil(controller.reportButton.superview)
         XCTAssertEqual(controller.addressLabel.text, "Adenauerallee 3, Hannover")
-        let titleFrame = controller.titleLabel.convert(controller.titleLabel.bounds, to: controller.view)
         let addressFrame = controller.addressLabel.convert(controller.addressLabel.bounds, to: controller.view)
-        let activityFrame = controller.lastSeenLabel.convert(controller.lastSeenLabel.bounds, to: controller.view)
+        let activityRow = try XCTUnwrap(controller.machineStatusButton.superview)
+        let activityFrame = activityRow.convert(activityRow.bounds, to: controller.view)
         let barFrame = navigation.navigationBar.convert(navigation.navigationBar.bounds, to: controller.view)
-        XCTAssertLessThanOrEqual(titleFrame.minY, barFrame.midY, "The title should open alongside the native back button")
-        XCTAssertGreaterThanOrEqual(titleFrame.minX, 63.5, "The title must stay to the right of the back button")
-        XCTAssertGreaterThanOrEqual(addressFrame.minY, titleFrame.maxY)
+        XCTAssertGreaterThanOrEqual(addressFrame.minY, barFrame.maxY)
         XCTAssertLessThan(addressFrame.maxY, activityFrame.minY + 1)
         XCTAssertLessThanOrEqual(activityFrame.minY - addressFrame.maxY, 10, "Keep the address and activity row close together")
         let editedFrame = controller.lastUpdatedLabel.convert(controller.lastUpdatedLabel.bounds, to: controller.view)
@@ -1377,20 +1402,8 @@ class PennyMeTests: XCTestCase {
         XCTAssertEqual(featuresFrame.minX, photoFrame.minX + 6, accuracy: 1)
         let feeIcon = try XCTUnwrap(controller.paywallButton.imageView)
         let feeFrame = feeIcon.convert(feeIcon.bounds, to: controller.view)
-        let activityGlyph = try XCTUnwrap(controller.lastUpdatedLabel.attributedText?.attribute(.attachment, at: 0, effectiveRange: nil) as? NSTextAttachment)
-        let activityTop = editedFrame.midY - activityGlyph.bounds.height / 2
-        let activityBottom = editedFrame.midY + activityGlyph.bounds.height / 2
-        let previousAddressGap = (32 - addressFrame.height) / 2 + (44 - activityGlyph.bounds.height) / 2
-        let previousAboveFeeGap = (44 - activityGlyph.bounds.height) / 2 + 2 + (44 - feeFrame.height) / 2
-        let previousBelowFeeGap = (44 - feeFrame.height) / 2 + 12
-        XCTAssertEqual(activityTop - addressFrame.maxY, previousAddressGap / 2, accuracy: 1,
-                       "Halve the whitespace between the address and activity icons")
-        XCTAssertEqual(feeFrame.minY - activityBottom, previousAboveFeeGap / 3, accuracy: 2,
-                       "Reduce whitespace above the dollar icon to one third")
-        XCTAssertEqual(photoFrame.minY - feeFrame.maxY, previousBelowFeeGap / 3, accuracy: 1,
-                       "Reduce whitespace below the dollar icon to one third")
-        XCTAssertEqual(feeFrame.midY, (activityBottom + photoFrame.minY) / 2, accuracy: 1,
-                       "Center the feature icon between the activity icons and the photo")
+        XCTAssertGreaterThanOrEqual(feeFrame.minY, activityFrame.maxY)
+        XCTAssertLessThanOrEqual(photoFrame.minY - feeFrame.maxY, 10)
         let galleryCell = controller.tableView(controller.tableView, cellForRowAt: IndexPath(row: 0, section: 1))
         XCTAssertFalse(features.isDescendant(of: galleryCell), "Machine features belong outside the gallery card")
         XCTAssertTrue(features.isDescendant(of: try XCTUnwrap(controller.tableView.tableHeaderView)))
@@ -1407,8 +1420,6 @@ class PennyMeTests: XCTestCase {
         XCTAssertEqual(controller.scrollView.bounds.width / controller.scrollView.bounds.height, 16.0 / 9, accuracy: 0.01)
         let viewport = try XCTUnwrap(controller.scrollView.subviews.flatMap(\.subviews).compactMap { $0 as? MachinePhotoViewport }.first)
         let mainPhoto = viewport.imageView
-        let badgeFrame = controller.machineStatusButton.convert(controller.machineStatusButton.bounds, to: window)
-        XCTAssertEqual(badgeFrame.maxX, window.bounds.maxX - 8, accuracy: 1)
         XCTAssertTrue(viewport.canPan(velocity: CGPoint(x: 0, y: 100)))
         XCTAssertFalse(viewport.canPan(velocity: CGPoint(x: 100, y: 0)))
         let page = controller.pageControl.currentPage
@@ -1502,7 +1513,8 @@ class PennyMeTests: XCTestCase {
         await waitForAlert()
         XCTAssertEqual(UIPasteboard.general.string, "52.380800, 9.771100")
         await dismissAlert()
-        controller.perform(NSSelectorFromString("copyTitle"))
+        let barTitle = try XCTUnwrap(controller.navigationItem.titleView as? UIButton)
+        barTitle.sendActions(for: .touchUpInside)
         await waitForAlert()
         XCTAssertEqual(UIPasteboard.general.string, machine.title)
         await dismissAlert()
@@ -1517,8 +1529,7 @@ class PennyMeTests: XCTestCase {
         controller.tableView.reloadData()
         window.layoutIfNeeded()
         controller.view.layoutIfNeeded()
-        XCTAssertFalse(controller.titleLabel.hasAmbiguousLayout)
-        XCTAssertGreaterThan(controller.titleLabel.bounds.height, 60, "Long names should wrap at large text sizes")
+        XCTAssertFalse(controller.lastSeenLabel.hasAmbiguousLayout)
         XCTAssertEqual(controller.scrollView.bounds.width / controller.scrollView.bounds.height, 16.0 / 9, accuracy: 0.01)
         controller.tableView.scrollToRow(at: IndexPath(row: 4, section: 5), at: .bottom, animated: false)
         controller.tableView.layoutIfNeeded()
@@ -2013,8 +2024,6 @@ class PennyMeTests: XCTestCase {
         XCTAssertEqual(controller.pinData.lastSeen, savedAt)
         XCTAssertTrue(controller.lastSeenLabel.attributedText?.string.contains("Just now") == true)
         XCTAssertEqual(controller.pinData.last_updated, "2026-10-22")
-        XCTAssertLessThanOrEqual(controller.titleLabel.bounds.height, ceil(controller.titleLabel.font.lineHeight) * 2 + 1,
-                                 "Rheinfall should fit in two lines with the badge against the right edge")
         XCTAssertEqual(controller.addressLabel.text, "Schloss Laufen")
         XCTAssertNil(controller.presentedViewController, "Saving in the background must update state without presenting an alert")
     }

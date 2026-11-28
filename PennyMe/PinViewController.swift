@@ -22,7 +22,6 @@ let imageURL = "https://pennyme.duckdns.org/"
 @available(iOS 13.0, *)
 class PinViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let titleLabel = UILabel()
     let updatedLabel = UILabel() // Public comments, retained for the upload flow.
     let submitButton = UIButton(type: .system)
     let commentTextField = UITextField()
@@ -68,7 +67,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
     private var coinWidthConstraints: [NSLayoutConstraint] = []
     private let activityStack = UIStackView()
     private var editedWidthConstraint: NSLayoutConstraint?
-    private let titleStack = UIStackView()
     private let summaryHeader = UIView()
     private let coinHeadingStack = UIStackView()
     private let collectionChoiceStack = UIStackView()
@@ -162,7 +160,7 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         navigationItem.rightBarButtonItems = nil
         navigationItem.largeTitleDisplayMode = .never
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
+        appearance.configureWithDefaultBackground()
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
@@ -262,10 +260,9 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
         }
         let accessibleText = traitCollection.preferredContentSizeCategory.isAccessibilityCategory
         editedWidthConstraint?.isActive = !accessibleText
-        for stack in [activityStack, titleStack, coinHeadingStack, collectionChoiceStack] {
+        for stack in [activityStack, coinHeadingStack, collectionChoiceStack] {
             stack.axis = accessibleText ? .vertical : .horizontal
         }
-        titleStack.alignment = accessibleText ? .leading : .top
         coinHeadingStack.alignment = accessibleText ? .leading : .center
         if tableView.bounds.width > 0 {
             let fitted = summaryHeader.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0),
@@ -1507,18 +1504,20 @@ private extension PinViewController {
         if #available(iOS 26.0, *) { tableView.topEdgeEffect.isHidden = true }
         copyFeedback.prepare()
 
-        titleLabel.font = .preferredFont(forTextStyle: .title2).withWeight(.bold)
-        titleLabel.numberOfLines = 0
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.lineBreakStrategy = []
-        titleLabel.attributedText = pinData.displayTitle
-        titleLabel.accessibilityLabel = pinData.title
-        titleLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.isUserInteractionEnabled = true
-        titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(copyTitle)))
-        titleLabel.accessibilityTraits.insert(.button)
-        titleLabel.accessibilityHint = "Copies the machine name"
-        titleLabel.accessibilityIdentifier = "pinTitle"
+        let navigationTitle = UIButton(type: .system)
+        navigationTitle.setTitle(pinData.title, for: .normal)
+        navigationTitle.setTitleColor(.label, for: .normal)
+        navigationTitle.titleLabel?.font = .systemFont(ofSize: 22, weight: .bold)
+        navigationTitle.titleLabel?.numberOfLines = 1
+        navigationTitle.titleLabel?.adjustsFontSizeToFitWidth = true
+        navigationTitle.titleLabel?.minimumScaleFactor = 0.55
+        navigationTitle.titleLabel?.textAlignment = .center
+        navigationTitle.titleLabel?.lineBreakMode = .byTruncatingTail
+        navigationTitle.accessibilityIdentifier = "pinTitle"
+        navigationTitle.accessibilityLabel = pinData.title
+        navigationTitle.accessibilityHint = "Copies the machine name"
+        navigationTitle.addTarget(self, action: #selector(copyTitle), for: .touchUpInside)
+        navigationItem.titleView = navigationTitle
 
         let statusColor: UIColor = pinData.machineStatus == "available" ? .systemGreen : .systemGray
         var badge = UIButton.Configuration.tinted()
@@ -1529,7 +1528,8 @@ private extension PinViewController {
         badge.baseBackgroundColor = statusColor
         badge.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
         badge.cornerStyle = .capsule
-        badge.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8)
+        badge.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8)
+        badge.background.backgroundInsets = NSDirectionalEdgeInsets(top: 7, leading: 0, bottom: 7, trailing: 0)
         badge.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
             var result = incoming
             result.font = .preferredFont(forTextStyle: .caption1).withWeight(.semibold)
@@ -1544,11 +1544,6 @@ private extension PinViewController {
         multiButton.isHidden = pinData.multimachine <= 1
         if pinData.paywall { addPaywallButton() }
         if pinData.multimachine > 1 { addMultimachineButton() }
-        titleStack.addArrangedSubview(titleLabel)
-        titleStack.addArrangedSubview(machineStatusButton)
-        titleStack.axis = .horizontal
-        titleStack.spacing = 6
-        titleStack.alignment = .top
         for button in [paywallButton, multiButton] {
             button.widthAnchor.constraint(equalToConstant: 44).isActive = true
             button.heightAnchor.constraint(equalToConstant: 32).isActive = true
@@ -1556,8 +1551,6 @@ private extension PinViewController {
         }
         machineStatusButton.setContentHuggingPriority(.required, for: .horizontal)
         machineStatusButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
 
         for label in [lastSeenLabel, lastUpdatedLabel] {
             label.font = .preferredFont(forTextStyle: .caption1)
@@ -1567,8 +1560,7 @@ private extension PinViewController {
         }
         activityStack.spacing = 8
         activityStack.distribution = .fill
-        // Reserve room for reporting by giving Edited 90% of Seen's width.
-        editedWidthConstraint = lastUpdatedLabel.widthAnchor.constraint(equalTo: lastSeenLabel.widthAnchor, multiplier: 0.9)
+        editedWidthConstraint = lastUpdatedLabel.widthAnchor.constraint(equalTo: lastSeenLabel.widthAnchor)
         for (label, action) in [(lastSeenLabel, #selector(showSeenInfo)), (lastUpdatedLabel, #selector(showEditedInfo))] {
             label.isUserInteractionEnabled = true
             label.accessibilityTraits = .button
@@ -1587,9 +1579,8 @@ private extension PinViewController {
         reportButton.accessibilityLabel = "Report content"
         reportButton.accessibilityIdentifier = "reportContentButton"
         reportButton.addTarget(self, action: #selector(showContentSafetyActions), for: .touchUpInside)
-        let activityRow = horizontalStack([activityStack, reportButton], spacing: 4)
-        activityRow.isLayoutMarginsRelativeArrangement = true
-        activityRow.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
+        let activityRow = horizontalStack([machineStatusButton, activityStack, reportButton], spacing: 6)
+        activityRow.setCustomSpacing(12, after: machineStatusButton)
 
         let directions = UIImageView(image: UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17.82)))
         directions.tintColor = .systemBlue
@@ -1620,7 +1611,7 @@ private extension PinViewController {
         featureRow.isHidden = features.isHidden
         featureRow.isLayoutMarginsRelativeArrangement = true
         featureRow.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 4, trailing: 10)
-        let summary = UIStackView(arrangedSubviews: [titleStack, address, activityRow, featureRow])
+        let summary = UIStackView(arrangedSubviews: [address, activityRow, featureRow])
         summary.axis = .vertical
         summary.spacing = 0
         summary.translatesAutoresizingMaskIntoConstraints = false
@@ -1629,7 +1620,7 @@ private extension PinViewController {
             summary.leadingAnchor.constraint(equalTo: summaryHeader.leadingAnchor, constant: 16),
             summary.trailingAnchor.constraint(equalTo: summaryHeader.trailingAnchor, constant: -8),
             summary.topAnchor.constraint(equalTo: summaryHeader.topAnchor, constant: 8),
-            summary.bottomAnchor.constraint(equalTo: summaryHeader.bottomAnchor)
+            summary.bottomAnchor.constraint(equalTo: summaryHeader.bottomAnchor, constant: featureRow.isHidden ? -4 : 0)
         ])
         tableView.tableHeaderView = summaryHeader
 
