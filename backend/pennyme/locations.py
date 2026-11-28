@@ -13,12 +13,13 @@ def remove_html_and(x: str) -> str:
     return x.replace("&amp;", "&")
 
 
-# Mapping the areas to the country codes as in pennycollector.com
+# Mapping the areas to the country codes as in pennycollector.com (legacy version)
 # http://locations.pennycollector.com/AreaList.aspx
 COUNTRY_TO_CODE = {
     " Private Rollers": 123,
     "Alabama": 41,
     "Alaska": 42,
+    "Albania": 201,
     "Arizona": 43,
     "Arkansas": 44,
     "Australia": 18,
@@ -142,8 +143,6 @@ COUNTRY_TO_CODE = {
     "Sweeded": 149,
     "_Collector Books_": 132,
 }
-
-AREAS = list(COUNTRY_TO_CODE.keys()) + ["Slovakia", "Algeria", "Armenia"]
 
 COUNTRIES = [
     "Afghanistan",
