@@ -528,7 +528,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             : groupOverlappingMachines(visibleMachines)
         let visibleGroups = Set(groups)
         let removedGroups = displayedMachineAnnotations.keys.filter { group in
-            rebuild || !visibleGroups.contains(group) || (group.count == 1 && machinesToRefresh.contains(group[0]))
+            rebuild || !visibleGroups.contains(group) || group.contains(where: machinesToRefresh.contains)
         }
         PennyMap.removeAnnotations(removedGroups.compactMap { displayedMachineAnnotations.removeValue(forKey: $0) })
 
@@ -544,24 +544,40 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     }
 
     private func groupOverlappingMachines(_ machines: [Artwork]) -> [[Artwork]] {
-        let overlapDistance: CLLocationDistance = 2
-        // A degree of latitude is at least 110 km. Skip groups outside this latitude band.
+        let overlapDistance: CLLocationDistance = 3
+        // A degree of latitude is at least 110 km. Skip pairs outside this latitude band.
         let latitudeTolerance = overlapDistance / 110_000
-        var groups: [(center: CLLocation, machines: [Artwork])] = []
+        let sortedMachines = machines.sorted { $0.coordinate.latitude < $1.coordinate.latitude }
+        let locations = sortedMachines.map { CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude) }
+        var parents = Array(sortedMachines.indices)
+
+        func root(of index: Int) -> Int {
+            var index = index
+            while parents[index] != index {
+                parents[index] = parents[parents[index]]
+                index = parents[index]
+            }
+            return index
+        }
+
         var firstCandidate = 0
-        for machine in machines.sorted(by: { $0.coordinate.latitude < $1.coordinate.latitude }) {
-            let location = CLLocation(latitude: machine.coordinate.latitude, longitude: machine.coordinate.longitude)
-            while firstCandidate < groups.count,
-                  machine.coordinate.latitude - groups[firstCandidate].center.coordinate.latitude > latitudeTolerance {
+        for (index, location) in locations.enumerated() {
+            while location.coordinate.latitude - locations[firstCandidate].coordinate.latitude > latitudeTolerance {
                 firstCandidate += 1
             }
-            if let index = (firstCandidate..<groups.count).first(where: { groups[$0].center.distance(from: location) <= overlapDistance }) {
-                groups[index].machines.append(machine)
-            } else {
-                groups.append((location, [machine]))
+            for candidate in firstCandidate..<index {
+                let candidateRoot = root(of: candidate)
+                if candidateRoot != index && location.distance(from: locations[candidate]) <= overlapDistance {
+                    parents[candidateRoot] = index
+                }
             }
         }
-        return groups.map(\.machines)
+
+        var groups = Array(repeating: [Artwork](), count: sortedMachines.count)
+        for (index, machine) in sortedMachines.enumerated() {
+            groups[root(of: index)].append(machine)
+        }
+        return groups.filter { !$0.isEmpty }
     }
     
     func setDelegates(){
@@ -571,6 +587,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         locationResult.delegate = self
         locationResult.dataSource = self
         searchController.searchBar.delegate = self
+    }
+
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        for case let marker as MKMarkerAnnotationView in views {
+            guard let members = memberAnnotations(of: marker.annotation) else { continue }
+            let color = (members.first as? Artwork)?.markerTintColor
+            marker.markerTintColor = members.allSatisfy {
+                ($0 as? Artwork)?.markerTintColor == color
+            } ? color : nil
+        }
+    }
+
+    private func memberAnnotations(of annotation: MKAnnotation?) -> [MKAnnotation]? {
+        if let overlap = annotation as? OverlappingMachinesAnnotation { return overlap.machines }
+        return (annotation as? MKClusterAnnotation)?.memberAnnotations
     }
 
     
@@ -1148,16 +1179,10 @@ extension ViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let cluster = view.annotation as? MKClusterAnnotation {
-            mapView.deselectAnnotation(cluster, animated: false)
-            let machines = cluster.memberAnnotations.compactMap { $0 as? Artwork }
-            showMachinePicker(machines, at: cluster.coordinate, on: mapView)
-            return
-        }
-        if let overlap = view.annotation as? OverlappingMachinesAnnotation {
-            mapView.deselectAnnotation(overlap, animated: false)
-            showMachinePicker(overlap.machines, at: overlap.coordinate, on: mapView)
-        }
+        guard let annotation = view.annotation, let members = memberAnnotations(of: annotation) else { return }
+        mapView.deselectAnnotation(annotation, animated: false)
+        let machines = members.compactMap { $0 as? Artwork }
+        showMachinePicker(machines, at: annotation.coordinate, on: mapView)
     }
 
     private func showMachinePicker(_ machines: [Artwork], at coordinate: CLLocationCoordinate2D, on mapView: MKMapView) {
