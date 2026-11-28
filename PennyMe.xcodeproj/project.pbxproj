@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A52700000000000000000001 /* CoffeeTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52700000000000000000002 /* CoffeeTipView.swift */; };
-		A52700000000000000000003 /* CoffeeTips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = A52700000000000000000004 /* CoffeeTips.storekit */; };
-		A52700000000000000000005 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A52700000000000000000006 /* PrivacyInfo.xcprivacy */; };
-		A52600000000000000000003 /* PresenceConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000004 /* PresenceConfirmationView.swift */; };
-		A52600000000000000000001 /* MachinePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52600000000000000000002 /* MachinePresence.swift */; };
 		8319D8D027414AC100E97D93 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319D8CF27414AC100E97D93 /* ZoomViewController.swift */; };
 		837476502CADDAD800812146 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8374764F2CADDAD800812146 /* StatisticsViewController.swift */; };
 		837476532CB0918000812146 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 837476522CB0918000812146 /* DGCharts */; };
@@ -91,11 +86,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A52700000000000000000002 /* CoffeeTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeTipView.swift; sourceTree = "<group>"; };
-		A52700000000000000000004 /* CoffeeTips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoffeeTips.storekit; sourceTree = "<group>"; };
-		A52700000000000000000006 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		A52600000000000000000004 /* PresenceConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceConfirmationView.swift; sourceTree = "<group>"; };
-		A52600000000000000000002 /* MachinePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinePresence.swift; sourceTree = "<group>"; };
 		8319D8CF27414AC100E97D93 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		8374764F2CADDAD800812146 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		839CF43F267B78AB00E259D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
