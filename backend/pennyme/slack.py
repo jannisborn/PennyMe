@@ -307,7 +307,7 @@ def process_uploaded_image(
         String with success message
     """
     # If image is a coin, apply background separation and always save as PNG.
-    if "coin" in img_path:
+    if "_coin_" in Path(img_path).stem:
         img = _remove_coin_background(img_path, basewidth)
         # Coin images are saved as PNG to support transparency
         in_path = Path(img_path)

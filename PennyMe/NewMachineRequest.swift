@@ -87,6 +87,17 @@ struct MachineAreaField: View {
 
 @available(iOS 15.0, *)
 struct NewMachineFormView: View {
+    private enum PhotoPicker: String, Identifiable {
+        case machine, coin
+
+        var id: String { rawValue }
+    }
+
+    private struct CoinPreviewUpload: Decodable {
+        let upload_id: String
+        let preview_url: String
+    }
+
     private struct NearbyMachine: Identifiable {
         let machineID: String
         let name: String
@@ -135,7 +146,10 @@ struct NewMachineFormView: View {
     @State private var alertTitle: String = "Could not submit"
     @Environment(\.presentationMode) private var presentationMode // Access the presentationMode environment variable
     @State private var selectedImage: UIImage? = nil
-    @State private var isImagePickerPresented: Bool = false
+    @State private var photoPicker: PhotoPicker?
+    @State private var coinImages: [(id: String, thumbnail: UIImage)] = []
+    @State private var coinDraftID: String?
+    @State private var isProcessingCoin = false
     @State private var selectedPhotoLocation: CLLocationCoordinate2D? = nil
     @State private var pendingPhotoLocation: CLLocationCoordinate2D? = nil
     @State private var isResolvingPhotoLocation = false
@@ -204,19 +218,20 @@ struct NewMachineFormView: View {
                         }
         
             // Number of coins
-            Stepper(value: $numCoins, in: 1...10) {
+            Stepper(value: $numCoins, in: max(1, coinImages.count)...10) {
                 Text("Number of coin designs: \(numCoins)")
             }
             .padding(.vertical)
+            .disabled(isProcessingCoin || isLoading)
 
             
             // Button to open the ImagePicker when tapped
             Button(action: {
                 selectedPhotoLocation = nil
                 pendingPhotoLocation = nil
-                isImagePickerPresented = true
+                photoPicker = .machine
             }) {
-                Text("Select Image")
+                Text("Select Machine Photo")
                     .padding()
                     .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
@@ -232,6 +247,8 @@ struct NewMachineFormView: View {
             }
             .padding()
             
+            coinPhotoControls
+
             // Submit button
             if isLoading || isResolvingPhotoLocation {
                 ProgressView(isResolvingPhotoLocation ? "Looking up photo location..." : "Loading...")
@@ -246,7 +263,7 @@ struct NewMachineFormView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                }.padding().disabled(isLoading)
+                }.padding().disabled(isLoading || isProcessingCoin)
             }
             
             AlertPresenter(showAlert: $showFinishedAlert, title: "Finished", message: "Thanks for suggesting this machine. We will review this request shortly. Note that it may take a few days until the machine becomes visible.")
@@ -257,18 +274,118 @@ struct NewMachineFormView: View {
         }
         .padding()
         .navigationBarTitle("Add new machine")
-        .sheet(isPresented: $isImagePickerPresented, onDismiss: {
+        .sheet(item: $photoPicker, onDismiss: {
             pendingPhotoLocation = selectedPhotoLocation
-        }) {
+            selectedPhotoLocation = nil
+        }) { picker in
+            let coinSelection = Binding<UIImage?>(get: { nil }, set: { image in
+                if let image { uploadCoinPhoto(image) }
+            })
             ImagePicker(
-                selectedImage: $selectedImage,
+                selectedImage: picker == .machine ? $selectedImage : coinSelection,
                 sourceType: .photoLibrary,
-                onLocationFound: { selectedPhotoLocation = $0 }
+                onLocationFound: { location in
+                    if picker == .machine {
+                        selectedPhotoLocation = location
+                    }
+                }
             )
         }
         .overlay(warningOverlay)
         }
         .padding(.bottom, keyboardHeight)
+    }
+
+    private var coinPhotoControls: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Button {
+                    photoPicker = .coin
+                } label: {
+                    Label("Add coin photo", systemImage: "plus")
+                }
+                .disabled(isLoading || isProcessingCoin || coinImages.count >= numCoins)
+
+                Spacer()
+                Text("\(coinImages.count)/\(numCoins) optional")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+            }
+            if isProcessingCoin {
+                ProgressView("Processing coin photo…")
+                    .font(.footnote)
+            }
+            if !coinImages.isEmpty {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(coinImages.indices, id: \.self) { index in
+                            VStack {
+                                Image(uiImage: coinImages[index].thumbnail)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 56, height: 56)
+                                    .clipped()
+                                    .accessibilityHidden(true)
+                                Button {
+                                    coinImages.remove(at: index)
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .frame(minWidth: 44, minHeight: 44)
+                                }
+                                .accessibilityLabel("Remove coin photo \(index + 1)")
+                                .disabled(isLoading)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+
+    private func uploadCoinPhoto(_ image: UIImage) {
+        guard let data = imageDataForUpload(image),
+              let baseURL = URL(string: flaskURL) else {
+            finishLoading(message: "Could not prepare the selected coin photo.")
+            return
+        }
+
+        let draftID = coinDraftID ?? UUID().uuidString.replacingOccurrences(of: "-", with: "").lowercased()
+        coinDraftID = draftID
+        var request = URLRequest(url: baseURL.appendingPathComponent("machine_coin_previews").appendingPathComponent(draftID))
+        request.httpMethod = "POST"
+        request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        request.addAnonymousUserHeader()
+        request.httpBody = data
+        isProcessingCoin = true
+
+        Task { @MainActor in
+            defer { isProcessingCoin = false }
+            do {
+                let (data, response) = try await URLSession.shared.data(for: request)
+                guard let response = response as? HTTPURLResponse,
+                      (200..<300).contains(response.statusCode) else {
+                    let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]
+                    finishLoading(message: json?["error"] as? String ?? "Could not process the coin photo. Please try again.")
+                    return
+                }
+                let upload = try JSONDecoder().decode(CoinPreviewUpload.self, from: data)
+                guard let previewURL = URL(string: upload.preview_url, relativeTo: baseURL) else {
+                    finishLoading(message: "Could not load the coin preview. Please try again.")
+                    return
+                }
+                let (previewData, previewResponse) = try await URLSession.shared.data(from: previewURL)
+                guard let previewResponse = previewResponse as? HTTPURLResponse,
+                      previewResponse.statusCode == 200,
+                      let thumbnail = UIImage(data: previewData)?.preparingThumbnail(of: CGSize(width: 112, height: 112)) else {
+                    finishLoading(message: "Could not load the coin preview. Please try again.")
+                    return
+                }
+                coinImages.append((upload.upload_id, thumbnail))
+            } catch {
+                finishLoading(message: "Could not upload the coin photo or load its preview. Please try again.")
+            }
+        }
     }
 
     @ViewBuilder
@@ -578,6 +695,7 @@ struct NewMachineFormView: View {
 
     // Function to handle the submission of the request
     private func submitRequest(ignoreNearby: Bool = false) {
+        guard !isLoading, !isProcessingCoin else { return }
         isLoading = true
         if let reason = TextModeration.blockReason(name) {
             finishLoading(message: reason)
@@ -613,7 +731,7 @@ struct NewMachineFormView: View {
                 request.httpMethod = "POST"
                 request.addAnonymousUserHeader()
                 
-                // Add the image data to the request body
+                // Add the image and selected draft IDs to the request body.
                 let boundary = UUID().uuidString
                 request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
                 let body = NSMutableData()
@@ -621,9 +739,15 @@ struct NewMachineFormView: View {
                 body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
                 body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
                 body.append(imageData)
+                if let coinDraftID {
+                    let fields = [("coin_draft_id", coinDraftID)] + coinImages.map { ("coin_image_ids", $0.id) }
+                    for (name, value) in fields {
+                        body.append(Data("\r\n--\(boundary)\r\nContent-Disposition: form-data; name=\"\(name)\"\r\n\r\n\(value)".utf8))
+                    }
+                }
                 body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
                 request.httpBody = body as Data
-                
+
                 // Create a URLSessionDataTask to send the request
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                     if let error = error {

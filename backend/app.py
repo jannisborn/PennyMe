@@ -1,20 +1,26 @@
+import autoroot  # noqa: F401  # loads backend/.env before Slack initializes
+
 import json
 import os
 import queue
 import traceback
+from contextlib import nullcontext
 from datetime import datetime
 from math import isfinite
 from pathlib import Path
+from shutil import copyfile, rmtree
+from tempfile import TemporaryDirectory
 from threading import Thread
-from time import sleep
+from time import monotonic, sleep
 from typing import Any, Dict, List, Optional, Tuple
 from uuid import uuid4
 
-import autoroot  # noqa: F401  # loads backend/.env before Slack initializes
-from flask import Flask, Response, jsonify, request
+from flask import Flask, Response, jsonify, request, send_file, url_for
 from googlemaps import Client as GoogleMaps
 from haversine import Unit, haversine
 from loguru import logger
+from PIL import Image
+from pennyme import coin_previews
 from pennyme.database import (
     NearbyMachine,
     dump_machines_to_file,
@@ -466,6 +472,7 @@ def process_pending_image(
     title: str,
     thread_ts: str,
     nearby_machines: Optional[List[NearbyMachine]] = None,
+    coin_count: int = 0,
 ) -> None:
     """Process the image upload for a new pending machine submission and record contributor.
 
@@ -479,7 +486,8 @@ def process_pending_image(
         installation_id: Random installation identifier supplied by the app.
         title: Proposed machine title shown in the Slack image notification.
         thread_ts: Original pending-change Slack message timestamp.
-        nearby_machines: Photos posted after the submitted machine's photo.
+        nearby_machines: Photos posted after the submitted photos.
+        coin_count: Number of processed coin photos already saved for this submission.
 
     Returns:
         None. Processing errors are logged and sent to Slack.
@@ -522,6 +530,15 @@ def process_pending_image(
             pending=True,
             thread_ts=thread_ts,
         )
+        for index in range(coin_count):
+            image_slack(
+                pending_id,
+                fname_suffix=f"_coin_{index}",
+                m_name=title,
+                img_slack_text=f"Coin photo {index + 1}",
+                pending=True,
+                thread_ts=thread_ts,
+            )
         message_slack_machine_images(
             pending_id,
             thread_ts,
@@ -569,9 +586,80 @@ def address_to_coordinates(
     return found_coords, (lat, lng)
 
 
+def coin_preview_url(path: Path) -> str:
+    return url_for(
+        "view_machine_coin_preview",
+        draft=path.parent.name,
+        preview_id=path.stem.split(".")[0],
+        token=coin_previews.preview_token(path),
+    )
+
+
+@app.post("/machine_coin_previews/<draft_id>")
+def upload_machine_coin_preview(draft_id: str):
+    if blocked := blocked_contributor_response():
+        return blocked
+    installation_id = anonymous_user_id()
+    if not installation_id or not coin_previews.valid_upload_id(draft_id):
+        return jsonify(error="Invalid coin photo draft"), 400
+
+    photo = request.stream.read(coin_previews.MAX_UPLOAD_BYTES + 1)
+    if len(photo) > coin_previews.MAX_UPLOAD_BYTES:
+        return jsonify(error="The coin photo is too large"), 413
+    if not photo:
+        return jsonify(error="No coin photo found"), 400
+
+    key = coin_previews.draft_key(installation_id, draft_id)
+    root = coin_previews.preview_root(PATH_IMAGES)
+    with TemporaryDirectory(dir=root, prefix="work-") as directory:
+        source = Path(directory) / "machine_coin_0.jpg"
+        source.write_bytes(photo)
+        try:
+            code, message, output = process_uploaded_image(str(source))
+        except (OSError, ValueError, Image.DecompressionBombError):
+            return jsonify(error="Could not read the coin photo"), 422
+        if code != 200:
+            return jsonify(error=message), 422
+        with coin_previews.locked_previews(PATH_IMAGES):
+            upload_id, path = coin_previews.save_preview(root / key, Path(output))
+            return jsonify(upload_id=upload_id, preview_url=coin_preview_url(path)), 201
+
+
+@app.get("/machine_coin_previews/view/<draft>/<preview_id>")
+def view_machine_coin_preview(draft: str, preview_id: str):
+    if len(draft) != 64 or any(char not in "0123456789abcdef" for char in draft):
+        return jsonify(error="Coin photo preview unavailable"), 404
+    if not coin_previews.valid_upload_id(preview_id):
+        return jsonify(error="Coin photo preview unavailable"), 404
+    with coin_previews.locked_previews(PATH_IMAGES) as root:
+        path = coin_previews.verified_preview(
+            root / draft, preview_id, request.args.get("token", "")
+        )
+        if path is None:
+            return jsonify(error="Coin photo preview unavailable"), 404
+        response = send_file(path, mimetype="image/png", conditional=False)
+        response.headers["Cache-Control"] = "private, no-store"
+        return response
+
+
+@app.post("/machine_coin_previews/<draft_id>/<upload_id>/link")
+def renew_machine_coin_preview(draft_id: str, upload_id: str):
+    installation_id = anonymous_user_id()
+    if not installation_id or not coin_previews.valid_upload_id(draft_id):
+        return jsonify(error="Invalid coin photo draft"), 400
+    key = coin_previews.draft_key(installation_id, draft_id)
+    with coin_previews.locked_previews(PATH_IMAGES) as root:
+        path = coin_previews.saved_previews(root / key).get(upload_id)
+        if path is None:
+            return jsonify(error="Coin photo expired or unavailable"), 404
+        return jsonify(preview_url=coin_preview_url(path))
+
+
 @app.route("/create_machine", methods=["POST"])
 def create_machine() -> Tuple[Response, int]:
-    """Receive and queue a new machine submission.
+    """Receive a machine photo and optional ordered draft coin photo IDs.
+
+    The machine photo remains the only required file.
 
     Returns:
         A JSON response and HTTP status describing success, a validation error,
@@ -692,6 +780,18 @@ def create_machine() -> Tuple[Response, int]:
                     address += formatted_address
 
     num_coins = int(request.args.get("num_coins", 4))
+    draft_id = request.form.get("coin_draft_id")
+    upload_ids = request.form.getlist("coin_image_ids")
+    installation_id = anonymous_user_id()
+    if (draft_id is not None or upload_ids) and (
+        not installation_id
+        or not coin_previews.valid_upload_id(draft_id or "")
+        or len(upload_ids) != len(set(upload_ids))
+    ):
+        return jsonify(error="Invalid coin photo selection"), 400
+    if len(upload_ids) > min(num_coins, 10):
+        return jsonify(error="Too many coin photos for the number of designs"), 400
+
     paywall = True if request.args.get("paywall") == "true" else False
     last_updated = str(datetime.today()).split(" ")[0]
 
@@ -711,16 +811,47 @@ def create_machine() -> Tuple[Response, int]:
     nearest_machines = get_nearby_machines_db(
         location[1], location[0], area, radius_m=None, limit=3
     )
-    pending_id = insert_pending_change_full(
-        machine_id=None,
-        change_type="create",
-        machine_fields=machine_fields,
-        submitted_by=anonymous_user_id(),
-        change_summary="new machine",
-    )
+    with TemporaryDirectory(dir=PATH_IMAGES) as directory:
+        staging = Path(directory)
+        request.files["image"].save(staging / "machine_tmp.jpg")
+        draft_storage = (
+            coin_previews.locked_previews(PATH_IMAGES) if draft_id else nullcontext()
+        )
+        with draft_storage as root:
+            if root is not None:
+                draft = root / coin_previews.draft_key(installation_id, draft_id)
+                previews = coin_previews.saved_previews(draft)
+                for index, upload_id in enumerate(upload_ids):
+                    if upload_id not in previews:
+                        return (
+                            jsonify(
+                                error=f"Coin photo {index + 1} expired or is unavailable. Remove it and add it again."
+                            ),
+                            410,
+                        )
+                    copyfile(previews[upload_id], staging / f"machine_coin_{index}.png")
 
+            pending_id = insert_pending_change_full(
+                machine_id=None,
+                change_type="create",
+                machine_fields=machine_fields,
+                submitted_by=installation_id,
+                change_summary="new machine",
+                staged_images=staging,
+            )
+            if root is not None and draft.exists():
+                try:
+                    rmtree(draft)
+                except OSError:
+                    logger.exception("Could not remove submitted coin photo draft")
+
+    for index in range(len(upload_ids)):
+        MODERATION.record_content(
+            str(pending_id),
+            MODERATION.content_key("image", f"coin_{index}"),
+            installation_id,
+        )
     tmp_path = os.path.join(PATH_IMAGES, f"pending_{pending_id}_tmp.jpg")
-    request.files["image"].save(tmp_path)
 
     thread_ts = message_slack_pending_change(
         change_id=pending_id,
@@ -738,10 +869,11 @@ def create_machine() -> Tuple[Response, int]:
             (
                 pending_id,
                 tmp_path,
-                anonymous_user_id(),
+                installation_id,
                 title,
                 thread_ts,
                 nearest_machines,
+                len(upload_ids),
             ),
         )
     )
@@ -1048,8 +1180,21 @@ def worker():
     """
     Worker thread that processes the machine change requests.
     """
+    next_cleanup = monotonic()
     while True:
-        function, args = request_queue.get()
+        if monotonic() >= next_cleanup:
+            try:
+                with coin_previews.locked_previews(PATH_IMAGES) as root:
+                    coin_previews.remove_expired_drafts(root)
+            except OSError:
+                logger.exception("Could not remove expired coin photo drafts")
+            next_cleanup = monotonic() + 3600
+        try:
+            function, args = request_queue.get(
+                timeout=max(0, next_cleanup - monotonic())
+            )
+        except queue.Empty:
+            continue
         try:
             function(*args)
         except Exception as e:

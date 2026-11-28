@@ -151,23 +151,19 @@ def filter_changed_features(old_path: str, new_path: str) -> Dict[str, Any]:
 def _rename_pending_change_image(
     change_type: str, change_id: int, machine_id: int
 ) -> None:
-    """Rename an approved 'create' change's image from its pending name to its machine ID.
-
-    New-machine images are uploaded as ``pending_{change_id}.<ext>`` before a
-    machine row exists to attach them to (see ``process_pending_image`` in
-    app.py); on approval they must be renamed to ``{machine_id}.<ext>`` so the
-    app can find them.
-    """
+    """Publish the machine photo and processed coin photos under the final ID."""
     if change_type != "create":
         return
-    matches = list(Path(PATH_IMAGES).glob(f"pending_{change_id}.*"))
+    prefix = f"pending_{change_id}"
+    images = Path(PATH_IMAGES)
+    matches = [*images.glob(f"{prefix}.*"), *images.glob(f"{prefix}_coin_[0-9]*.png")]
     if not matches:
         logger.warning(
             f"Expected pending image for change {change_id} not found; skipping rename"
         )
         return
     for src in matches:
-        dst = src.with_name(f"{machine_id}{src.suffix}")
+        dst = src.with_name(f"{machine_id}{src.name.removeprefix(prefix)}")
         try:
             src.rename(dst)
             logger.info(f"Renamed {src} -> {dst}")

@@ -618,6 +618,7 @@ def insert_pending_change_full(
     submitted_by: Optional[str],
     change_summary: str,
     status: str = "open",
+    staged_images: Optional[Path] = None,
 ) -> int:
     """Write a proposed change (create or update) to pending_changes.
 
@@ -636,6 +637,7 @@ def insert_pending_change_full(
         change_summary: Human-readable description (``'new machine'`` or the
             ``msg`` string from ``change_machine``).
         status: Review state for the row. Defaults to ``'open'``.
+        staged_images: Optional directory of new machine uploads named machine*.<ext>.
 
     Returns:
         The auto-assigned ``id`` of the new pending_changes row.
@@ -645,6 +647,7 @@ def insert_pending_change_full(
     """
 
     session = get_session()
+    published_images = []
     try:
         change = PendingChange.from_dict(
             machine_id=machine_id,
@@ -657,8 +660,18 @@ def insert_pending_change_full(
         session.add(change)
         session.flush()
         change_id = change.id
+        if staged_images is not None:
+            for source in staged_images.iterdir():
+                suffix = source.name.removeprefix("machine")
+                destination = staged_images.parent / f"pending_{change_id}{suffix}"
+                source.rename(destination)
+                published_images.append(destination)
         session.commit()
         return change_id
+    except Exception:
+        for image in published_images:
+            image.unlink(missing_ok=True)
+        raise
     finally:
         session.close()
 
@@ -851,8 +864,8 @@ def approve_pending_change(change_id: int) -> ReviewResult:
     change was already reviewed, nothing is modified and
     ``ReviewResult.applied`` is False.
 
-    For ``create`` changes, also renames the pending machine image on disk
-    from ``pending_{change_id}.<ext>`` to ``{machine_id}.<ext>``.
+    For ``create`` changes, also renames the pending machine and coin photos
+    to use the final machine ID.
 
     Raises:
         KeyError: If the pending change is not found, or an update change
