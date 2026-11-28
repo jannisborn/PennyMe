@@ -490,15 +490,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         refreshBlockedListingFilter(force: needsListingFilterRefresh)
         needsListingFilterRefresh = false
         refreshServerLocationsIfNeeded()
-        let changedStatuses = loadMachineStatuses()
+        let machinesToRefresh = loadMachineStatuses()
         let filtersChanged = SettingsViewController.hasChanged
         let clusteringChanged = SettingsViewController.clusterHasChanged
         if filtersChanged {
             updateIncludedStates()
             SettingsViewController.hasChanged = false
         }
-        if filtersChanged || clusteringChanged || !changedStatuses.isEmpty {
-            updateMachineAnnotations(refreshing: changedStatuses, rebuild: clusteringChanged)
+        if filtersChanged || clusteringChanged || !machinesToRefresh.isEmpty {
+            updateMachineAnnotations(refreshing: machinesToRefresh, rebuild: clusteringChanged)
             SettingsViewController.clusterHasChanged = false
         }
         // always remove pins for new machines if there are any
@@ -518,7 +518,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
         }
     }
     
-    func updateMachineAnnotations(refreshing changedStatuses: Set<Artwork> = [], rebuild: Bool = false) {
+    func updateMachineAnnotations(refreshing machinesToRefresh: Set<Artwork> = [], rebuild: Bool = false) {
         let visibleMachines = artworks.filter { machine in
             !blockedMachineIDs.contains(machine.id)
                 && checkMachineShouldBeVisible(status: machine.status, machineStatus: machine.machineStatus)
@@ -528,7 +528,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
             : groupOverlappingMachines(visibleMachines)
         let visibleGroups = Set(groups)
         let removedGroups = displayedMachineAnnotations.keys.filter { group in
-            rebuild || !visibleGroups.contains(group) || (group.count == 1 && changedStatuses.contains(group[0]))
+            rebuild || !visibleGroups.contains(group) || (group.count == 1 && machinesToRefresh.contains(group[0]))
         }
         PennyMap.removeAnnotations(removedGroups.compactMap { displayedMachineAnnotations.removeValue(forKey: $0) })
 
@@ -649,7 +649,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
     }
     
     private func loadMachineStatuses() -> Set<Artwork> {
-        var changedStatuses: Set<Artwork> = []
+        var machinesToRefresh: Set<Artwork> = []
         // initialize empty status dictionary
         var statusDict = [[String: String]()]
         //variable indicating whether we load something
@@ -686,10 +686,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 if let pinId = pinIdDict[id_machine] {
                     let machine = artworks[pinId]
                     let personalStatus = statusDict[0][machine.id] ?? "unvisited"
-                    if machine.status != personalStatus {
-                        machine.status = personalStatus
-                        changedStatuses.insert(machine)
-                    }
+                    machine.status = personalStatus
                     
                     // Count how many machines have the personalStatus "visited"
                     if personalStatus == "visited" {
@@ -704,6 +701,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                         }
                     }
                     
+                    // The detail screen may already have changed this same Artwork.
+                    // Refresh its marker even when the saved and in-memory statuses match.
+                    machinesToRefresh.insert(machine)
                 } else {
                     // Error reason: User has a local change of a machine not in list of artworks.
                     // E.g., if server_locations.json is badly formatted (and user changed one of the server-locations-only-machines)
@@ -712,7 +712,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizer
                 }
             }
         }
-        return changedStatuses
+        return machinesToRefresh
     }
     
     /// file path to the full merged (bundled + all server syncs so far) machine set is cached

@@ -1070,7 +1070,7 @@ class PennyMeTests: XCTestCase {
                 controller.presenceMonitor = MachinePresenceMonitor(hasNearbyMachine: { _ in false }, isBlocked: { _ in false },
                                                                     manager: PresenceTestLocationManager(), session: session, isActive: { false })
                 let map = UIViewController()
-                map.navigationItem.backButtonTitle = ""
+                map.navigationItem.backButtonTitle = "PennyMe"
                 let navigation = UINavigationController(rootViewController: map)
                 navigation.pushViewController(controller, animated: false)
                 window.rootViewController = navigation
@@ -1081,6 +1081,11 @@ class PennyMeTests: XCTestCase {
                 controller.view.layoutIfNeeded()
                 controller.tableView.layoutIfNeeded()
                 let label = controller.titleLabel
+                let titleFrame = label.convert(label.bounds, to: window)
+                let bar = navigation.navigationBar
+                let barFrame = bar.convert(bar.bounds, to: window)
+                XCTAssertGreaterThanOrEqual(titleFrame.minY, barFrame.maxY,
+                                            "The machine title must start below the navigation bar at \(width) points")
                 let needed = ceil(("Allwetterzoo Müns-" as NSString).size(withAttributes: [.font: label.font!]).width)
                 XCTAssertGreaterThanOrEqual(label.bounds.width, needed, "The real title column must fit Allwetterzoo Müns- at \(width) points")
                 XCTAssertLessThanOrEqual(label.bounds.height, ceil(label.font.lineHeight) * 2 + 1,

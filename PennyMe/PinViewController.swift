@@ -12,7 +12,11 @@ import SwiftUI
 import CoreImage
 
 
+// #if targetEnvironment(simulator)
+//  let flaskURL = "http://127.0.0.1:5000/"
+// #else
 let flaskURL = "https://pennyme-backend.duckdns.org/"
+// #endif
 let imageURL = "https://pennyme.duckdns.org/"
 
 @available(iOS 13.0, *)
@@ -212,8 +216,6 @@ class PinViewController: UITableViewController, UIImagePickerControllerDelegate,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Align the first title line with the native back button, with room to its right.
-        tableView.contentInset.top = -(navigationController?.navigationBar.bounds.height ?? 44)
         refreshActivity()
     }
 
@@ -1547,8 +1549,6 @@ private extension PinViewController {
         titleStack.axis = .horizontal
         titleStack.spacing = 6
         titleStack.alignment = .top
-        titleStack.isLayoutMarginsRelativeArrangement = true
-        titleStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 48, bottom: 0, trailing: 0)
         for button in [paywallButton, multiButton] {
             button.widthAnchor.constraint(equalToConstant: 44).isActive = true
             button.heightAnchor.constraint(equalToConstant: 32).isActive = true
@@ -1628,7 +1628,7 @@ private extension PinViewController {
         NSLayoutConstraint.activate([
             summary.leadingAnchor.constraint(equalTo: summaryHeader.leadingAnchor, constant: 16),
             summary.trailingAnchor.constraint(equalTo: summaryHeader.trailingAnchor, constant: -8),
-            summary.topAnchor.constraint(equalTo: summaryHeader.topAnchor),
+            summary.topAnchor.constraint(equalTo: summaryHeader.topAnchor, constant: 8),
             summary.bottomAnchor.constraint(equalTo: summaryHeader.bottomAnchor)
         ])
         tableView.tableHeaderView = summaryHeader
