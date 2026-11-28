@@ -736,6 +736,84 @@ class PennyMeTests: XCTestCase {
     }
 
     @MainActor
+    func testNativeMachinePinShowsTitleAndPreviewWithoutEnlarging() throws {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: ViewController.self))
+        let controller: MapLayoutTestController = storyboard.instantiateViewController(identifier: "SettingsViewController") {
+            MapLayoutTestController(coder: $0)
+        }
+        controller.loadViewIfNeeded()
+        let navigation = UINavigationController(rootViewController: controller)
+        let originalWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = navigation
+        window.makeKeyAndVisible()
+        window.layoutIfNeeded()
+        defer {
+            window.isHidden = true
+            originalWindow?.makeKeyAndVisible()
+        }
+
+        let map = try XCTUnwrap(controller.PennyMap)
+        map.register(ArtworkMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        let coordinate = CLLocationCoordinate2D(latitude: 41.89, longitude: 12.49)
+        let machine = Artwork(title: "Newsstand", address: "Via Roma 12", link: "", status: "unvisited",
+                              coordinate: coordinate, id: 1, last_updated: "", multimachine: 1,
+                              paywall: true, machineStatus: "available", area: "Rome", numCoins: 4)
+        let visitedMachine = Artwork(title: "Station", address: "Via Roma 14", link: "", status: "visited",
+                                    coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude + 0.0006),
+                                    id: 2, last_updated: "", multimachine: 1, paywall: false,
+                                    machineStatus: "available", area: "Rome", numCoins: 4)
+        map.setRegion(MKCoordinateRegion(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300), animated: false)
+        map.addAnnotations([machine, visitedMachine])
+        let pinAdded = NSPredicate { _, _ in
+            (map.view(for: machine) as? MKMarkerAnnotationView)?.markerTintColor == .red
+                && (map.view(for: visitedMachine) as? MKMarkerAnnotationView)?.markerTintColor == .green
+        }
+        wait(for: [XCTNSPredicateExpectation(predicate: pinAdded, object: nil)], timeout: 5)
+
+        let pin = try XCTUnwrap(map.view(for: machine) as? MKMarkerAnnotationView)
+        let visitedPin = try XCTUnwrap(map.view(for: visitedMachine) as? MKMarkerAnnotationView)
+        XCTAssertEqual(pin.titleVisibility, .adaptive)
+        XCTAssertEqual(pin.annotation?.title ?? nil, machine.title)
+        func statusColorPixels(_ pin: MKAnnotationView, channel: Int) throws -> Int {
+            let frame = pin.convert(pin.bounds, to: map)
+            let snapshot = UIGraphicsImageRenderer(size: frame.size).image { context in
+                context.cgContext.translateBy(x: -frame.minX, y: -frame.minY)
+                map.drawHierarchy(in: map.bounds, afterScreenUpdates: true)
+            }
+            let image = try XCTUnwrap(snapshot.cgImage)
+            var pixels = [UInt8](repeating: 0, count: image.width * image.height * 4)
+            return try pixels.withUnsafeMutableBytes { bytes in
+                let context = try XCTUnwrap(CGContext(data: bytes.baseAddress, width: image.width, height: image.height,
+                                                     bitsPerComponent: 8, bytesPerRow: image.width * 4,
+                                                     space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+                context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
+                return stride(from: 0, to: bytes.count, by: 4).filter { index in
+                    bytes[index + channel] > 200 && bytes[index + (1 - channel)] < 50 && bytes[index + 2] < 50
+                }.count
+            }
+        }
+        let unselectedRedPixels = try statusColorPixels(pin, channel: 0)
+        XCTAssertGreaterThan(unselectedRedPixels, 0, "Unvisited pins should render red")
+        XCTAssertGreaterThan(try statusColorPixels(visitedPin, channel: 1), 0, "Visited pins should render green")
+
+        let details = try XCTUnwrap(pin.detailCalloutAccessoryView as? UIButton)
+        let directions = try XCTUnwrap(pin.rightCalloutAccessoryView as? UIButton)
+        map.selectAnnotation(machine, animated: false)
+        let previewShown = NSPredicate { _, _ in details.window === window && directions.window === window }
+        wait(for: [XCTNSPredicateExpectation(predicate: previewShown, object: nil)], timeout: 5)
+        XCTAssertLessThanOrEqual(try statusColorPixels(pin, channel: 0), unselectedRedPixels)
+        XCTAssertEqual(details.title(for: .normal), machine.address)
+        XCTAssertEqual(directions.backgroundImage(for: .normal), UIImage(named: "maps"))
+        XCTAssertNotNil(pin.leftCalloutAccessoryView)
+        XCTAssertTrue(navigation.topViewController === controller)
+
+        details.sendActions(for: .touchUpInside)
+        let pinView = try XCTUnwrap(navigation.topViewController as? PinViewController)
+        XCTAssertTrue(pinView.pinData === machine)
+    }
+
+    @MainActor
     func testOverlappingMachinePinsAreReachableFromTheirCluster() throws {
         let defaults = UserDefaults.standard
         let setting = "clusterPinSwitch"

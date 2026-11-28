@@ -1134,6 +1134,9 @@ extension ViewController: MKMapViewDelegate {
             withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
             for: annotation
         )
+        (marker as? ArtworkMarkerView)?.openDetails = { [weak self] annotation in
+            self?.openMapPin(annotation)
+        }
         let shouldCluster = isMachine && UserDefaults.standard.bool(forKey: "clusterPinSwitch")
         marker.clusteringIdentifier = shouldCluster ? "machine" : nil
         if isMachine {
@@ -1154,19 +1157,6 @@ extension ViewController: MKMapViewDelegate {
         if let overlap = view.annotation as? OverlappingMachinesAnnotation {
             mapView.deselectAnnotation(overlap, animated: false)
             showMachinePicker(overlap.machines, at: overlap.coordinate, on: mapView)
-            return
-        }
-        guard view.annotation is Artwork || view.annotation is NewMachine else { return }
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.calloutTapped))
-        view.addGestureRecognizer(gesture)
-    }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        guard view.annotation is Artwork || view.annotation is NewMachine else { return }
-        if let gestureRecognizers = view.gestureRecognizers {
-            for gestureRecognizer in gestureRecognizers {
-                view.removeGestureRecognizer(gestureRecognizer)
-            }
         }
     }
 
@@ -1192,32 +1182,22 @@ extension ViewController: MKMapViewDelegate {
         present(sheet, animated: true)
     }
 
-    @objc func calloutTapped(sender:UITapGestureRecognizer) {
-        guard let annotation = (sender.view as? MKAnnotationView)?.annotation  else {return}
-        // first option: it's a new machine pin - present form
-        if let newmachine = annotation as? NewMachine {
+    private func openMapPin(_ annotation: MKAnnotation) {
+        if let newMachine = annotation as? NewMachine {
             if #available(iOS 15.0, *) {
-                let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: newmachine.coordinate))
+                let swiftUIViewController = UIHostingController(rootView: newMachineForm(coordinate: newMachine.coordinate))
                 present(swiftUIViewController, animated: true, completion: removeNewMachinePin)
-                
             }
-        // second option: it's a regular machine
-        } else if let artworkAnnotation = annotation as? Artwork {
-            // set selected pin to pass it to detail VC
-            self.selectedPin = artworkAnnotation
-            self.performSegue(withIdentifier: "ShowPinViewController", sender: self)
-        } else {return}
+        } else if let artwork = annotation as? Artwork {
+            selectedPin = artwork
+            performSegue(withIdentifier: "ShowPinViewController", sender: self)
+        }
     }
-    
+
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        //     callout when maps button is pressed
-        let location = view.annotation as! Artwork
-        if (control == view.rightCalloutAccessoryView) {
-            // This would open the directions
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-            location.mapItem().openInMaps(launchOptions: launchOptions)
-        }
+        guard control === view.rightCalloutAccessoryView, let artwork = view.annotation as? Artwork else { return }
+        artwork.mapItem().openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
     }
 }
 

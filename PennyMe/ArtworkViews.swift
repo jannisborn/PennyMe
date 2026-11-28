@@ -19,66 +19,49 @@ final class OverlappingMachinesAnnotation: NSObject, MKAnnotation {
     }
 }
 
-class ArtworkMarkerView: MKMarkerAnnotationView {
-    
-    override var annotation: MKAnnotation? {
-        
-        willSet {
-            // define subtitle subtitles
-            let detailLabel = UILabel()
-            detailLabel.numberOfLines = 0
-            detailLabel.font = detailLabel.font.withSize(12)
-            
-            // 1
-            let check = newValue?.title
-            if check == "New Machine"{
-                guard let newmachine = newValue as? NewMachine else {
-                    return
-                }
-                // define annotation view
-                var view: MKMarkerAnnotationView
-                let identifier = "newmachine"
-                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                
-                // add callouts (only address as subtitle)
-                detailLabel.text = newmachine.text
-                detailCalloutAccessoryView = detailLabel
-                rightCalloutAccessoryView = nil
-                leftCalloutAccessoryView = nil
-            }
-            else {
-                guard let artwork = newValue as? Artwork else {
-                    return
-                }
-                
-                // define annotation view
-                var view: MKMarkerAnnotationView
-                let identifier = artwork.title
-                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                
-                // Set marker color
-                markerTintColor = artwork.markerTintColor
-                
-                // Create right button
-                rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                let mapsButton = UIButton(
-                    frame: CGRect(origin: CGPoint.zero,
-                                  size: CGSize(width: 30, height: 30))
-                )
-                mapsButton.setBackgroundImage(UIImage(named: "maps"), for: UIControl.State())
-                rightCalloutAccessoryView = mapsButton
-                
-                // Multiline subtitles
-                detailLabel.text = artwork.subtitle
-                detailCalloutAccessoryView = detailLabel
-                
-                // create left paywall image if required
-                leftCalloutAccessoryView = artwork.getPaywallSymbol()
-            }
+final class ArtworkMarkerView: MKMarkerAnnotationView {
+    var openDetails: ((MKAnnotation) -> Void)?
+    private lazy var selectedPinTap = UITapGestureRecognizer(target: self, action: #selector(openPin))
+
+    override func prepareForDisplay() {
+        super.prepareForDisplay()
+        let artwork = annotation as? Artwork
+        let newMachine = annotation as? NewMachine
+        markerTintColor = artwork?.markerTintColor
+        titleVisibility = .adaptive
+        canShowCallout = true
+        calloutOffset = CGPoint(x: -5, y: 5)
+
+        let details = UIButton(type: .custom)
+        details.setTitle(artwork?.subtitle ?? newMachine?.text, for: .normal)
+        details.setTitleColor(.label, for: .normal)
+        details.titleLabel?.font = .systemFont(ofSize: 12)
+        details.titleLabel?.numberOfLines = 0
+        details.titleLabel?.lineBreakMode = .byWordWrapping
+        details.contentHorizontalAlignment = .leading
+        details.addTarget(self, action: #selector(openPin), for: .touchUpInside)
+        detailCalloutAccessoryView = details
+        leftCalloutAccessoryView = artwork?.getPaywallSymbol()
+
+        rightCalloutAccessoryView = nil
+        if artwork != nil {
+            let mapsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            mapsButton.setBackgroundImage(UIImage(named: "maps"), for: .normal)
+            mapsButton.accessibilityLabel = "Walking directions in Maps"
+            rightCalloutAccessoryView = mapsButton
         }
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        if selected {
+            addGestureRecognizer(selectedPinTap)
+        } else {
+            removeGestureRecognizer(selectedPinTap)
+        }
+    }
+
+    @objc private func openPin() {
+        if let annotation { openDetails?(annotation) }
     }
 }
